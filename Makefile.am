@@ -29,12 +29,12 @@ EXTRA_DIST = $(apps_DATA) $(icon_DATA) mini-kshisen.xpm
 
 install-data-local:
 	$(mkinstalldirs) $(kde_minidir)
-	$(INSTALL_DATA) $(srcdir)/mini-kshisen.xpm $(kde_icondir)hisen.xpm
+	$(INSTALL_DATA) $(srcdir)/mini-kshisen.xpm $(kde_minidir)/MMhisen.xpm
 	$(mkinstalldirs) $(kde_icondir)/large
 	$(INSTALL_DATA) $(srcdir)/large-kshisen.xpm $(kde_icondir)/large/kshisen.xpm
 
 uninstall-local:
-	-rm -f $(kde_icondir)hisen.xpm
+	-rm -f $(kde_minidir)/MMhisen.xpm
 	-rm -f $(kde_icondir)/large/kshisen.xpm
 
 messages:
