@@ -140,6 +140,8 @@ App::App() : KMainWindow(0) {
 App::~App() {
   delete b;
   delete sb;
+  delete highscoreTable;
+
 }
 
 void App::initKAction() {
