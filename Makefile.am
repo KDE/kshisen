@@ -19,8 +19,6 @@ KDE_ICON  = kshisen
 
 SUBDIRS = pics 
 
-EXTRA_DIST = $(xdg_apps_DATA) 
-
 rcdir = $(kde_datadir)/kshisen
 rc_DATA = kshisenui.rc
 
