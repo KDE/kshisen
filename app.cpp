@@ -335,7 +335,7 @@ void App::updateScore()
 void App::setCheatMode()
 {
 	// set the cheat mode if not set
-	if(cheat)
+	if(!cheat)
 	{
 		cheat = TRUE;
 		statusBar()->changeItem(i18n(" Cheat mode "), SBI_CHEAT);
