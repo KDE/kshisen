@@ -1,9 +1,9 @@
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN" [
- <!ENTITY kappname "&kshisen;">
- <!ENTITY % English "INCLUDE">
- <!ENTITY % addindex "IGNORE">
- <!ENTITY % ents PUBLIC "-//KDE//ENTITIES Documentation V1.0//EN">
- %ents;
+  <!ENTITY kappname "&kshisen;">
+  <!ENTITY % English "INCLUDE" -- change language only here -->
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % ents PUBLIC "-//KDE//ENTITIES Documentation V1.0//EN">
+  %ents;
 ]>
 
 <book lang="&language;">
@@ -265,8 +265,10 @@ Documentation Copyright 2000 Dirk Doerflinger
 
 <para>
 &kshisen; is written for the KDE project
-<ulink url="http://www.kde.org">http://www.kde.org</ulink> by Mario Weilguni <email>mweilguni@sime.com</email>.
+<ulink url="http://www.kde.org">http://www.kde.org</ulink>
+by Mario Weilguni <email>mweilguni@sime.com</email>.
 </para>
+
 <para>
 &kshisen; can be found in the package kdegames on
 <ulink url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>, 
