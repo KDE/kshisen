@@ -1,10 +1,9 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1-Based Variant V1.0//EN" "dtd/kdex.dtd" [
   <!ENTITY kappname "&kshisen;">
+  <!ENTITY package "kdegames">
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
   <!ENTITY % addindex "IGNORE">
-  
-  
 ]>
 
 <book lang="&language;">
@@ -90,37 +89,37 @@ current game, as there are:</para>
 <variablelist>
 <varlistentry>
 <term><menuchoice> <shortcut><keycombo
-action="simul"><keycap>Ctrl</keycap><keycap>Z</keycap></keycombo></shortcut>
-<guimenu><accel>G</accel>ame</guimenu>
-<guimenuitem><accel>U</accel>ndo</guimenuitem></menuchoice></term>
+action="simul">&Ctrl;<keycap>Z</keycap></keycombo></shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>Undo</guimenuitem></menuchoice></term>
 <listitem><para><action>Undo the last step</action>. Same as the
 <guibutton>back</guibutton> button in the Toolbar.</para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><menuchoice><shortcut><keycombo
-action="simul"><keycap>Ctrl</keycap><keycap>D</keycap></keycombo></shortcut> 
-<guimenu><accel>G</accel>ame</guimenu>
-<guimenuitem><accel>R</accel>edo</guimenuitem></menuchoice></term>
+action="simul">&Ctrl;<keycap>D</keycap></keycombo></shortcut> 
+<guimenu>Game</guimenu>
+<guimenuitem>Redo</guimenuitem></menuchoice></term>
 <listitem><para><action>Redo the last step</action>. Same as the
 <guibutton>forward</guibutton> button in the toolbar.</para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><menuchoice>
-<shortcut><keycombo action="simul"><keycap>Ctrl</keycap>
+<shortcut><keycombo action="simul">&Ctrl;
 <keycap>H</keycap></keycombo></shortcut>
-<guimenu><accel>G</accel>ame</guimenu><guimenuitem>Get
-<accel>H</accel>int</guimenuitem></menuchoice></term> 
+<guimenu>Game</guimenu><guimenuitem>Get
+Hint</guimenuitem></menuchoice></term> 
 <listitem><para><action>Show a tip</action>, which two tiles to remove
 next.</para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><menuchoice>
-<shortcut><keycombo action="simul"><keycap>Ctrl</keycap>
+<shortcut><keycombo action="simul">&Ctrl;
 <keycap>N</keycap></keycombo></shortcut>
-<guimenu><accel>G</accel>ame</guimenu><guimenuitem><accel>N</accel>ew
+<guimenu>Game</guimenu><guimenuitem>New
 Game</guimenuitem></menuchoice></term>
 <listitem><para><action>Finish the actual game</action> set and start a new
 session with new tiles. </para></listitem>
@@ -128,17 +127,17 @@ session with new tiles. </para></listitem>
 
 <varlistentry>
 <term><menuchoice>
-<shortcut><keycombo action="simul"><keycap>Ctrl</keycap>
+<shortcut><keycombo action="simul">&Ctrl;
 <keycap>R</keycap></keycombo></shortcut>
-<guimenu><accel>G</accel>ame</guimenu><guimenuitem>Res<accel>t</accel>art
+<guimenu>Game</guimenu><guimenuitem>Restart
 Game</guimenuitem></menuchoice></term>
 <listitem><para><action>Restart the current game with the same
 tiles.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu><accel>G</accel>ame</guimenu>
-<guimenuitem><accel>P</accel>ause Game</guimenuitem></menuchoice></term>
+<term><menuchoice><guimenu>Game</guimenu>
+<guimenuitem>Pause Game</guimenuitem></menuchoice></term>
 <listitem><para><action>Pauses the entire game</action>, especially the timer
 which is needed for the high score. The menu-entry then turns to
 <guimenuitem>Resume Game</guimenuitem>, which is used for resuming the
@@ -146,7 +145,7 @@ game.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu><accel>G</accel>ame</guimenu>
+<term><menuchoice><guimenu>Game</guimenu>
 <guimenuitem>Is game solvable?</guimenuitem></menuchoice></term>
 <listitem><para>Shows a Dialog which <action>tells you whether the game is solvable or
 not</action>. If the menu-entry <guimenuitem>Disallow unsolvable
@@ -155,15 +154,14 @@ is absolutely useless.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu><accel>G</accel>ame</guimenu><guimenuitem>Hall of
-<accel>F</accel>ame</guimenuitem></menuchoice></term>
+<term><menuchoice><guimenu>Game</guimenu><guimenuitem>Hall of
+Fame</guimenuitem></menuchoice></term>
 <listitem><para>Shows the (local) Top-Ten-charts of Shisen-Sho.</para> </listitem>
 </varlistentry>
 
 </variablelist>
 
-<para>Some of the menu items can also be controlled by hot-keys. See the section
-<link linkend="key-bindings"></link> for a list.</para> 
+<para>Some of the menu items can also be controlled by hot-keys. See <xref linkend="key-bindings" /> for a list.</para> 
 
 </sect1>
 </chapter>
@@ -182,30 +180,30 @@ can be changed from the menu <guimenu>Options</guimenu>. </para>
 <variablelist>
 <varlistentry>
 <term>
-<menuchoice><guimenu><accel>O</accel>ptions</guimenu>
-<guisubmenu>Si<accel>z</accel>e</guisubmenu></menuchoice></term>
+<menuchoice><guimenu>Options</guimenu>
+<guisubmenu>Size</guisubmenu></menuchoice></term>
 <listitem><para>In the sub-menu <guisubmenu>Size</guisubmenu> you can change the
 number of tiles on the board. The more tiles you have, the harder (and longer)
 the game will be. </para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu><accel>O</accel>ptions</guimenu>
-<guisubmenu>S<accel>p</accel>eed</guisubmenu></menuchoice></term>
+<term><menuchoice><guimenu>Options</guimenu>
+<guisubmenu>Speed</guisubmenu></menuchoice></term>
 <listitem><para>The sub-menu <guisubmenu>Speed</guisubmenu> sets the time for
 the tiles to disappear when connected correctly. </para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu><accel>O</accel>ptions</guimenu>
-<guisubmenu><accel>L</accel>evel</guisubmenu></menuchoice></term>
+<term><menuchoice><guimenu>Options</guimenu>
+<guisubmenu>Level</guisubmenu></menuchoice></term>
 <listitem><para>Choose your game skill in the sub-menu
 <guisubmenu>Level</guisubmenu>.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu><accel>O</accel>ptions</guimenu>
-<guimenuitem>G<accel>r</accel>avity</guimenuitem></menuchoice></term>
+<term><menuchoice><guimenu>Options</guimenu>
+<guimenuitem>Gravity</guimenuitem></menuchoice></term>
 <listitem><para>Checking this item makes the game even harder: If a tile is
 removed, all tiles lying above it will fall down one step. </para></listitem>
 </varlistentry>
@@ -229,11 +227,11 @@ have to try again if you didn't solve the game, but if it's checked, the game
 <para>Default key bindings are:
 </para>
 <simplelist>
-<member>Quit: <keycombo action="simul"><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo></member>
-<member>Undo: <keycombo action="simul"><keycap>Ctrl</keycap><keycap>Z</keycap></keycombo></member>
-<member>Redo: <keycombo action="simul"><keycap>Ctrl</keycap><keycap>D</keycap></keycombo></member>
-<member>New Game: <keycombo action="simul"><keycap>Ctrl</keycap><keycap>N</keycap></keycombo></member>
-<member>Restart Game: <keycombo action="simul"><keycap>Ctrl</keycap><keycap>R</keycap></keycombo></member>
+<member>Quit: <keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></member>
+<member>Undo: <keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo></member>
+<member>Redo: <keycombo action="simul">&Ctrl;<keycap>D</keycap></keycombo></member>
+<member>New Game: <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></member>
+<member>Restart Game: <keycombo action="simul">&Ctrl;<keycap>R</keycap></keycombo></member>
 <member>Help: <keycombo action="simul"><keycap>F1</keycap></keycombo></member>
 <member>What's this?: <keycombo action="simul"><keycap>Shift</keycap><keycap>F1</keycap></keycombo></member>
 </simplelist>
@@ -268,48 +266,25 @@ Documentation Copyright 2000 Dirk Doerflinger
 <sect1 id="getting-kshisen">
 <title>How to obtain Shisen-Sho</title>
 
-<para>
-&kshisen; is written for the KDE project
-<ulink url="http://www.kde.org">http://www.kde.org</ulink>
-by Mario Weilguni <email>mweilguni@sime.com</email>.
-</para>
+&install.intro.documentation;
 
-<para>
-&kshisen; can be found in the package kdegames on
-<ulink url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>, 
-the main ftp site of the KDE project.</para>
 </sect1>
 
 <sect1 id="requirements">
 <title>Requirements</title>
 
 <para>
-In order to successfully compile &kshisen;, you need KDE 2.0
+In order to successfully compile &kshisen;, you need &kde; 3.0
 All required libraries as well as &kshisen; itself can be found on
-<ulink url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>.</para>
+&kde-ftp;.</para>
 </sect1>
 
 
 <sect1 id="compilation">
 <title>Compilation and Installation</title>
 
-<para>
-In order to compile and install &kshisen; on your
-system, extract the package and type the following in the base directory of the
-&kshisen; distribution:
-</para>
+&install.compile.documentation;
 
-<para>
-<screen width="40">
-<prompt>%</prompt> <userinput>./configure</userinput>
-<prompt>%</prompt> <userinput>make</userinput>
-<prompt>%</prompt> <userinput>make install</userinput>
-</screen>
-</para>
-      
-<para>
-Since <application>Shisen-Sho</application> uses <application>autoconf</application> and <application>automake</application> you should have not trouble compiling it.
-</para>
 </sect1>
 </appendix>
 
