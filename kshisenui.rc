@@ -7,14 +7,10 @@
   </Menu>
 </MenuBar>
 <ToolBar name="mainToolBar"><text>Main Toolbar</text>
-  <Action name="game_quit"/>
-  <Separator/>
   <Action name="move_undo"/>
   <Action name="move_redo"/>
   <Separator/>
   <Action name="game_pause"/>
-  <Separator/>
-  <Action name="help_contents"/>
 </ToolBar>
 <StatusBar/>
 </kpartgui>
