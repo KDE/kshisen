@@ -962,7 +962,7 @@ int Board::tilesLeft() {
   int left = 0;
 
   for(int i = 0; i < x_tiles(); i++)
-    for(int j = 0; j < x_tiles(); j++)
+    for(int j = 0; j < y_tiles(); j++)
       if(getField(i, j) != EMPTY)
 	left++;
 
