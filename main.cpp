@@ -39,6 +39,7 @@
 #include <kapp.h>
 #include <kconfig.h>
 #include <klocale.h>
+#include <kaboutdata.h>
 #include <kcmdlineargs.h>
 
 #include "version.h"
