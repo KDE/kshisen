@@ -180,13 +180,6 @@ action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo></shortcut>
 next.</para></listitem>
 </varlistentry>
 
-<varlistentry>
-<term><menuchoice><guimenu>Move</guimenu>
-<guimenuitem>Is Game Solvable?</guimenuitem></menuchoice></term>
-<listitem><para>Shows a dialog which <action>tells you whether the game is
-solvable or not</action>.</para></listitem>
-</varlistentry>
-
 </variablelist>
 </sect1>
 </chapter>
@@ -242,6 +235,15 @@ have to try again if you didn't solve the game, but if it's checked, the game
 <emphasis>will</emphasis> be solvable.</para></listitem>
 </varlistentry>
 
+<varlistentry>
+<term><menuchoice><guimenu>Settings</guimenu>
+<guimenuitem>Prefer Unscaled Tiles</guimenuitem></menuchoice></term>
+<listitem><para>Resizing the window causes the tiles on the board to be scaled to
+match the window size. When this option is checked, the window is resized to fit
+the tiles' natural size. You can still adjust the size of the window. Doing so
+causes this mode to be disengaged.</para></listitem>
+</varlistentry>
+
 </variablelist>
 
 </sect1>
@@ -261,6 +263,8 @@ have to try again if you didn't solve the game, but if it's checked, the game
 <member>Undo: <keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo></member>
 <member>Redo: <keycombo action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo></member>
 <member>Hint: <keycombo><keycap>H</keycap></keycombo></member>
+
+<member>Prefer Unscaled Tiles: <keycombo><keycap>S</keycap></keycombo></member>
 
 <member>What's This?: <keycombo action="simul">&Shift;<keycap>F1</keycap></keycombo></member>
 </simplelist>
