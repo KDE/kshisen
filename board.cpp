@@ -281,7 +281,7 @@ bool Board::loadTiles(double scale) {
 
     int w = tileset.width() / 9;
     int h = tileset.height() / 5;
-    QSize scaledTileSize(scale * w, scale * h);
+    QSize scaledTileSize( int(scale * w), int(scale * h) );
 
     for(i = 0; i < 9; i++) {
       for(j = 0; j < 5; j++) {
