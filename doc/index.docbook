@@ -300,7 +300,7 @@ system, extract the package and type the following in the base directory of the
 </para>
 
 <para>
-<screen Width="40">
+<screen width="40">
 <prompt>%</prompt> <userinput>./configure</userinput>
 <prompt>%</prompt> <userinput>make</userinput>
 <prompt>%</prompt> <userinput>make install</userinput>
