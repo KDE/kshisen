@@ -133,7 +133,6 @@ private: // functions
 
 private:
   time_t starttime;
-  time_t stoptime;
   time_t time_for_game;
 
   QList<Move> _undo;

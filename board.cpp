@@ -446,9 +446,9 @@ void Board::marked(int x, int y) {
       int dummyx;
       History dummyh[4];
 
-      // game is over?
+      // game is over?      
       if(!getHint_I(dummyx,dummyx,dummyx,dummyx,dummyh)) {
-	time_for_game = starttime;
+	time_for_game = (int)time((time_t)NULL) - starttime;
 	emit endOfGame();
       }
       
@@ -794,7 +794,7 @@ int Board::getCurrentTime() {
 
 int Board::getTimeForGame() {
   if(tilesLeft() == 0) 
-    return (int)(stoptime - starttime);
+    return time_for_game;
   else
     return (int)(time((time_t *)0) - starttime);
 }
