@@ -128,10 +128,13 @@ signals:
 public slots:
 	bool pause();
   void loadSettings();
-
+	
 private slots:
 	void undrawConnection();
 	void gravity(int, bool);
+
+protected:
+	virtual QSize sizeHint() const;
 
 private: // functions
 	void initBoard();

@@ -87,6 +87,8 @@ App::App(QWidget *parent, const char *name) : KMainWindow(parent, name),
 
 	setCentralWidget(board);
 
+	setupGUI();
+
 	connect(board, SIGNAL(changed()), this, SLOT(enableItems()));
 
 	QTimer *t = new QTimer(this);
@@ -123,8 +125,6 @@ void App::initKAction()
 
 	// Settings
 	KStdAction::preferences(this, SLOT(showSettings()), actionCollection());
-
-	setupGUI();
 }
 
 void App::hallOfFame()

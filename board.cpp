@@ -1062,4 +1062,9 @@ bool Board::pause()
 	return paused;
 }
 
+QSize Board::sizeHint() const
+{
+	return QSize(500,370);
+}
+
 #include "board.moc"
