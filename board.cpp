@@ -75,7 +75,7 @@ Board::Board(QWidget *parent) : QWidget(parent) {
   grav_col_1 = -1;
   grav_col_2 = -1;
   setGravityFlag(false);
-  current_scale = 0.0f;
+  current_scale = 0.0;
 
   // randomze
   setShuffle(DEFAULTSHUFFLE);
@@ -258,48 +258,41 @@ void Board::setSize(int x, int y) {
   emit sizeChange();
 }
 
-bool Board::loadTiles(float scale) {
-  int i, j, x, y;
-
+bool Board::loadTiles(double scale) {
+  
   if(scale != current_scale)
   {
+    int i, j;
+
     // delete old tiles
-    for(i = 0; i < 45; i++)
+    for(i = 0; i < 45; i++) {
       if(pm_tile[i] != 0) {
         delete pm_tile[i];
         pm_tile[i] = 0;
       }
+    }
 
     // locate tileset
-    QPixmap pm(KGlobal::dirs()->findResource("appdata", "kshisen.xpm"));
-    QBitmap mask(KGlobal::dirs()->findResource("appdata", "mask.xpm"));
-    if(pm.width() == 0 || pm.height() == 0) {
+    QImage tileset(KGlobal::dirs()->findResource("appdata", "kshisen.xpm"));
+    if(tileset.width() == 0 || tileset.height() == 0) {
         KMessageBox::sorry(this, i18n("Cannot load pixmaps!"));
         exit(1);
     }
-    pm.setMask(mask);
 
-    if(pm.width() == 0 || pm.height() == 0)
-      return false;
+    int w = tileset.width() / 9;
+    int h = tileset.height() / 5;
+    QSize scaledTileSize(scale * w, scale * h);
 
-    x = pm.width() / 9;
-    y = pm.height() / 5;
-
-    for(i = 0; i < 9; i++)
+    for(i = 0; i < 9; i++) {
       for(j = 0; j < 5; j++) {
-        pm_tile[i + j*9] = new QPixmap(x,y);
-        QBitmap bm(x, y);
-        bitBlt(pm_tile[i + j*9], 0, 0, &pm, x * i, y * j, x, y, CopyROP);
-        bitBlt(&bm, 0, 0, &mask, x *i, y * j, x, y, CopyROP);
-        pm_tile[i+j*9]->setMask(bm);
-        if(scale != 1.0) {
-          QWMatrix wm;
-          wm.scale(scale, scale);
-          *pm_tile[i + j*9] = pm_tile[i + j*9]->xForm(wm);
-        }
+        QImage tile = tileset.copy( w*i, h*j, w, h );
+        if(scale != 1.0)
+          tile = tile.smoothScale(scaledTileSize);
+        pm_tile[i + j*9] = new QPixmap(tile);
       }
+    }
 
-    unscaled_tile = QSize(x, y);
+    unscaled_tile = QSize(w, h);
     current_scale = scale;
   }
 
