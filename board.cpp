@@ -240,10 +240,10 @@ void Board::setSize(int x, int y) {
       setField(i, j, EMPTY);
 
   // calculate scaling required to fit all tiles on the screen
-  double scale_x = (kapp->desktop()->width() - 4*XBORDER) /
-    (unscaled_tile.width() * x_tiles());
-  double scale_y = (kapp->desktop()->height() - 4*YBORDER) /
-    (unscaled_tile.height() * y_tiles());
+  double scale_x = static_cast<double>(kapp->desktop()->width() - 4*XBORDER) /
+    static_cast<double>(unscaled_tile.width() * x_tiles());
+  double scale_y = static_cast<double>(kapp->desktop()->height() - 4*YBORDER) /
+    static_cast<double>(unscaled_tile.height() * y_tiles());
 
   // round down to nearest multiple of 0.2
   scale_x = static_cast<int>(scale_x * 5.0) / 5.0;
