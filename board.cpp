@@ -43,7 +43,7 @@
 #include <qpainter.h>
 #include <qimage.h>
 #include <qtimer.h>
-#include <qlist.h>
+#include <qptrlist.h>
 #include <qbitarray.h>
 #include <qbitmap.h>
 

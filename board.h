@@ -152,8 +152,8 @@ private:
 
   KRandomSequence random;
 
-  QList<Move> _undo;
-  QList<Move> _redo;
+  QPtrList<Move> _undo;
+  QPtrList<Move> _redo;
 
   int undraw_timer_id;
   int mark_x;

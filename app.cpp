@@ -48,6 +48,7 @@
 #include <qlineedit.h>
 #include <qpushbutton.h>
 #include <qdialog.h>
+#include <qstyle.h>
 
 #include <kapp.h>
 #include <kiconloader.h>
@@ -404,10 +405,12 @@ QString App::getPlayerName() {
 
   QPushButton *b = new QPushButton(i18n("OK"), dlg);
   b->setDefault(TRUE);
+#if QT_VERSION < 300
   if(style().guiStyle() == MotifStyle)
     b->setFixedSize(b->sizeHint().width() + 10,
 		    b->sizeHint().height() +10);
   else
+#endif
     b->setFixedSize(b->sizeHint());
   connect(b, SIGNAL(released()), dlg, SLOT(accept()));
   connect(e, SIGNAL(returnPressed()), 
@@ -724,10 +727,12 @@ void App::showHighscore(int focusitem)  {
     }
     
   QPushButton *b = new QPushButton(i18n("Close"), dlg);
+#if QT_VERSION < 300
   if(style().guiStyle() == MotifStyle)
     b->setFixedSize(b->sizeHint().width() + 10,
 		    b->sizeHint().height() + 10);
   else
+#endif
     b->setFixedSize(b->sizeHint());
 
   // connect the "Close"-button to done

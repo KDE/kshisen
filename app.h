@@ -113,7 +113,7 @@ private:
 private:
   Board *b;
   KStatusBar *sb;
-  QArray<HighScore> highscore;
+  QMemArray<HighScore> highscore;
   KHighscore* highscoreTable;
   bool cheat;
 };
