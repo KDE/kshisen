@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="kshisen" version="2">
+<kpartgui name="kshisen" version="3">
 <MenuBar>
   <Menu name="game"><text>&amp;Game</text>
     <Action name="game_hint"/>
