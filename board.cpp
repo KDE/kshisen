@@ -715,8 +715,9 @@ void Board::getHint() {
 }
 
 bool Board::getHint_I(int &x1, int &y1, int &x2, int &y2, History h[4]) {
-  QBitArray done(45);
-  done.fill(FALSE);
+  short done[45];
+  for( short index = 0; index < 45; index++ )
+     done[index] = 0;
 
   // remember old history
   History old[4];
@@ -731,7 +732,7 @@ bool Board::getHint_I(int &x1, int &y1, int &x2, int &y2, History h[4]) {
 
   for(int x = 0; x < x_tiles(); x++)
     for(int y = 0; y < y_tiles(); y++)
-      if(getField(x, y) != EMPTY && !done.testBit(getField(x, y))) {
+      if(getField(x, y) != EMPTY && done[getField(x, y)] != 4) {
 	int tile = getField(x, y);
 	
 	// for all these types of tile search path's
@@ -753,7 +754,7 @@ bool Board::getHint_I(int &x1, int &y1, int &x2, int &y2, History h[4]) {
 		}
 	
 	clearHistory();
-	done.setBit(tile);
+	done[tile]++;
       }
 
   for(int i = 0; i < 4; i++)
