@@ -357,12 +357,10 @@ void App::slotEndOfGame() {
       int rank = insertHighscore(hs);
       showHighscore(rank);
     } else {
-      QString s;
-      s.sprintf(
-		i18n("Congratulations! You made it in %02d:%02d:%02d").utf8(),
-		b->getTimeForGame()/3600,
-		(b->getTimeForGame() / 60)  % 60,
-		b->getTimeForGame() % 60);
+      QString s = i18n("Congratulations! You made it in %1:%2:%3")
+		.arg(QString().sprintf("%02d", b->getTimeForGame()/3600))
+		.arg(QString().sprintf("%02d", (b->getTimeForGame() / 60) % 60))
+		.arg(QString().sprintf("%02d", b->getTimeForGame() % 60));
 
       KMessageBox::information(this, s, i18n("End of Game"));
     }
