@@ -1,0 +1,86 @@
+# This is a sample Makefile.in 
+
+# @CXXFLAGS@     : is set to -g -Wall (when debuging) or -O2 -Wall (when not)
+# @all_includes@ : is set to all needed include paths for QT, KDE and X11
+# -I.. 	         : needed for config.h
+CXXFLAGS= @CXXFLAGS@ @all_includes@ -DHAVE_CONFIG_H -I..
+
+# @LDFLAGS@    : is set to -s (when not debuging) for stripping
+# @all_libra.@ : is set to all needed libraries paths for QT, KDE and X11
+# you need also @LIBSOCKET@, if you link with -lkfm
+LDFLAGS	= @LDFLAGS@ @all_libraries@ -lkdecore -lqt -lXext -lX11 -lkdeui
+
+# both are clear, I think
+CXX     = @CXX@
+MOC   	= @MOC@
+
+############# INSTALL #################
+
+install = @INSTALL@
+INSTALL = $(install) -m 0755
+INSTALL_DATA = $(install) -m 0644
+INSTALL_DIR = $(install) -d -m 0755
+INSTALL_DIR_PRIVATE = $(install) -d -m 0700
+
+prefix = @prefix@
+KDEINC = $(prefix)/include
+BINDIR = $(prefix)/bin
+KDELNKDIR= $(prefix)/share/applnk/Games
+LIBDIR = $(prefix)/lib
+PICDIR = $(prefix)/share/apps/kshisen/pics
+DOCDIR = $(prefix)/share/doc/HTML/kshisen
+
+########### File Formats ###########
+
+.SUFFIXES: .cpp
+
+.cpp.o:
+	$(CXX) -c $(CXXFLAGS) $<
+
+%.moc: %.h
+	$(MOC) $< -o $@
+
+########## Files #####################
+
+OBJECTS	= main.o board.o app.o kfixedtopwidget.o
+SRCMETA	= board.moc app.moc kfixedtopwidget.moc
+PICS=kshisen.xpm kshisen_bgnd.xpm
+TARGET = kshisen
+
+######### build rules ################
+
+all: Makefile $(TARGET)
+
+Makefile: Makefile.in
+	cd .. && CONFIG_FILES=kshisen/$@ CONFIG_HEADERS= $(SHELL) ./config.status
+
+$(TARGET): $(SRCMETA) $(OBJECTS)
+	$(CXX) $(OBJECTS) -o $(TARGET) $(LDFLAGS)
+
+clean:
+	rm -f *.o *.bak *~ *% #*
+	rm -f $(SRCMETA) $(TARGET)
+
+distclean: clean
+	rm -f Makefile
+
+install:
+	$(INSTALL_DIR) $(BINDIR)
+	$(INSTALL) $(TARGET) $(BINDIR)
+	$(INSTALL_DIR) $(BINDIR)
+	$(INSTALL) $(TARGET) $(BINDIR)
+	$(INSTALL_DIR) $(KDELNKDIR)
+	$(INSTALL_DATA) kshisen.kdelnk $(KDELNKDIR)
+	$(INSTALL_DIR) $(PICDIR)
+	@for i in $(PICS); do \
+	echo $(INSTALL_DATA) pics/$$i $(PICDIR); \
+	$(INSTALL_DATA) pics/$$i $(PICDIR)/$$i; \
+	done
+	$(INSTALL_DIR) $(DOCDIR)
+	$(INSTALL_DATA) html/kshisen.html $(DOCDIR)
+
+
+uninstall:
+	rm -f $(BINDIR)/$(TARGET)
+
+# DO NOT DELETE THIS LINE -- make depend depends on it.
