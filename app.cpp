@@ -619,7 +619,7 @@ void App::writeHighscore() {
 void App::showHighscore(int focusitem)  {
   // this may look a little bit confusing...
   QDialog *dlg = new QDialog(0, "hall_Of_fame", TRUE);
-  dlg->setCaption(i18n("Shisen-Sho: Hall Of Fame"));
+  dlg->setCaption(i18n("Shisen-Sho: Hall of Fame"));
 
   QVBoxLayout *tl = new QVBoxLayout(dlg, 10);
   
