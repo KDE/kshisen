@@ -36,7 +36,7 @@ uninstall-local:
 	-rm -f $(kde_minidir)/kshisen.xpm
 
 messages:
-	@XGETTEXT@ -C -ktranslate -x ../../kdelibs/po/kde.pot *.cpp && mv messages.po ../po/kshisen.pot
+	@XGETTEXT@ -C -ktranslate -ki18n -x ../../kdelibs/po/kde.pot *.cpp && mv messages.po ../po/kshisen.pot
 
 board.cpp:board.moc
 board.moc: board.h
