@@ -366,7 +366,7 @@ void App::slotEndOfGame() {
 void App::updateScore() {
 
   int t = b->getTimeForGame();
-  QString s = i18n(" Your time: %1:%2:%3%4 ")
+  QString s = i18n(" Your time: %1:%2:%3 %4")
 		.arg(QString().sprintf("%02d", t / 3600 ))
 		.arg(QString().sprintf("%02d", (t / 60) % 60 ))
 		.arg(QString().sprintf("%02d", t % 60 ))
