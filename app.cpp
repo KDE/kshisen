@@ -158,7 +158,7 @@ void App::initKAction()
 	//	SLOT(isSolvable()), actionCollection(), "move_solvable");
 
 #ifdef DEBUGGING
-	(void)new KAction("&Finish", 0, b, SLOT(finish()), actionCollection(), "move_finish");
+	(void)new KAction(i18n("&Finish"), 0, b, SLOT(finish()), actionCollection(), "move_finish");
 #endif
 
 	// Settings
