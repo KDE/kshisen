@@ -14,6 +14,8 @@ bin_PROGRAMS = kshisen
 SRCMETA = board.moc app.moc
 DISTCLEANFILES = $(SRCMETA)
 
+noinst_HEADERS = app.h board.h debug.h version.h
+
 kshisen_SOURCES = main.cpp board.cpp app.cpp
 
 appsdir = $(kde_appsdir)/Games
@@ -23,6 +25,8 @@ icondir = $(kde_icondir)
 icon_DATA = kshisen.xpm
 
 SUBDIRS = html pics 
+
+EXTRA_DIST = $(apps_DATA) $(icon_DATA) mini-kshisen.xpm
 
 install-data-local:
 	$(mkinstalldirs) $(kde_minidir)
