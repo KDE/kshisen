@@ -76,11 +76,20 @@ can use the Hint feature to find two tiles which may be removed.  Clicking a
 tile with the &RMB; will show you all corresponding tiles, no matter if they are
 removable at the moment or not.</para>
 
-<para> The game is over if no moves are possible and some tiles are left on the
+<para>The game is over if no moves are possible and some tiles are left on the
 board (this should not happen if the option <guimenuitem>No unsolvable
 games</guimenuitem> in the <guimenu>Option</guimenu> menu is checked, since for
 these games there is at least one way to solve it, though it may happen that you
-choose the wrong way). </para>
+choose the wrong way).</para>
+
+<para>The resulting score is calculated using the following formula, assuming
+that <quote>n</quote> represents the number of tiles present when the game
+started and <quote>t</quote> standing for the time (in seconds) it took to clear
+the field:<inlineequation>
+<alt>score=(n/t)*sqrt(n/84)*0.0014</alt>
+<graphic fileref="score-formula.png"/></inlineequation>
+If you played with the <guilabel>Gravity</guilabel> option enabled, this score
+will additionally get multiplicated by two.</para>
 
 </sect1>
 
