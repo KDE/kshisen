@@ -46,12 +46,13 @@
 #include <kmenubar.h>
 #include <klocale.h>
 #include <time.h>
+#include <qvaluevector.h>
 #include "board.h"
 
  class KHighscore;
 
 struct HighScore {
-  char name[32];
+  QString name;
   int  seconds;
   int  x, y;
   time_t date;
@@ -103,16 +104,16 @@ private:
   void readOldHighscore();
   void readHighscore();
   void writeHighscore();
-  int  insertHighscore(HighScore &);
-  int  getScore(HighScore &);
-  bool isBetter(HighScore &, HighScore &);
+  int  insertHighscore(const HighScore &);
+  int  getScore(const HighScore &);
+  bool isBetter(const HighScore &, const HighScore &);
   void showHighscore(int focusitem = -1);
 
   void initKAction();
 
 private:
   Board *b;
-  QMemArray<HighScore> highscore;
+  QValueVector<HighScore> highscore;
   KHighscore* highscoreTable;
   bool cheat;
 };

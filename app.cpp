@@ -352,11 +352,8 @@ void App::slotEndOfGame() {
       isHighscore = TRUE;
 
     if(isHighscore) {
-      QString name = getPlayerName();
-      strncpy(hs.name, name.utf8(), sizeof(hs.name) - 1);
+      hs.name = getPlayerName();
       hs.date = time((time_t*)0);
-      hs.x = b->x_tiles();
-      hs.y = b->y_tiles();
       int rank = insertHighscore(hs);
       showHighscore(rank);
     } else {
@@ -366,7 +363,7 @@ void App::slotEndOfGame() {
 		b->getTimeForGame()/3600,
 		(b->getTimeForGame() / 60)  % 60,
 		b->getTimeForGame() % 60);
-      
+
       KMessageBox::information(this, s, i18n("End of Game"));
     }
   }
@@ -438,7 +435,7 @@ QString App::getPlayerName() {
   return s;
 }
 
-int App::getScore(HighScore &hs) {
+int App::getScore(const HighScore &hs) {
   double ntiles = hs.x*hs.y;
   double tilespersec = ntiles/(double)hs.seconds;
   
@@ -451,15 +448,15 @@ int App::getScore(HighScore &hs) {
     return (int)(points * sizebonus);
 }
 
-bool App::isBetter(HighScore &hs, HighScore &than) {
+bool App::isBetter(const HighScore &hs, const HighScore &than) {
   if(getScore(hs) > getScore(than))
-    return TRUE;
+    return true;
   else
-    return FALSE;
+    return false;
 }
 
 
-int App::insertHighscore(HighScore &hs) {
+int App::insertHighscore(const HighScore &hs) {
   int i;
 
   if(highscore.size() == 0) {
@@ -511,7 +508,6 @@ void App::readHighscore() {
       highscore.resize(i+1);
     
       HighScore hs;
-      memset(hs.name, 0, sizeof(hs.name));
 
       hs.x = hi_x[i].toInt();
       hs.y = hi_y[i].toInt();
@@ -519,8 +515,8 @@ void App::readHighscore() {
       hs.date = hi_date[i].toInt();
       hs.date = hi_date[i].toInt();
       hs.gravity = hi_grav[i].toInt();
-      strncpy(hs.name, hi_name[i].utf8(), 16);
-      
+      hs.name = hi_name[i];
+
       highscore[i] = hs;
   }
 }
@@ -543,7 +539,6 @@ void App::readOldHighscore() {
       highscore.resize(i+1);
 
       HighScore hs;
-      memset(hs.name, 0, sizeof(hs.name));
       
       QStringList e = conf->readListEntry(s, ' ');
       int nelem = e.count();
@@ -555,12 +550,12 @@ void App::readOldHighscore() {
       if (nelem == 4) // old version <= 1.1
       {
         hs.gravity = 0;
-        strncpy(hs.name, (*e.at(4)).utf8(), 16);
+        hs.name = *e.at(4);
       }
       else
       {
         hs.gravity = (*e.at(4)).toInt();
-        strncpy(hs.name, (*e.at(5)).utf8(), 16);
+        hs.name = *e.at(5);
       }
 
       highscore[i] = hs;
@@ -575,7 +570,7 @@ void App::readOldHighscore() {
 //     hs.x = 28;
 //     hs.y = 16;
 //     hs.seconds = 367;
-//     strcpy(hs.name, "Mario");
+//     hs.name = "Mario";
 //     highscore.resize(1);
 //     highscore[0] = hs;
 //   }
