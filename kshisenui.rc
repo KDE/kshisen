@@ -1,9 +1,9 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<gui name="kshisen" version="7">
+<gui name="kshisen" version="8">
 <MenuBar>
-  <Menu name="move">
+  <Menu name="move"><!--
     <Action name="move_solvable"/>
-    <Action name="game_finish"/>
+    <Action name="move_finish"/>-->
   </Menu>
   <Menu name="settings">
     <Action name="options_size"/>

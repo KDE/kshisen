@@ -161,8 +161,8 @@ void App::initKAction()
 	KStdGameAction::undo(this, SLOT(undo()), actionCollection());
 	KStdGameAction::redo(this, SLOT(redo()), actionCollection());
 	KStdGameAction::hint(this, SLOT(hint()), actionCollection());
-	(void)new KAction(i18n("Is Game Solvable?"), 0, this,
-		SLOT(isSolvable()), actionCollection(), "move_solvable");
+	//new KAction(i18n("Is Game Solvable?"), 0, this,
+	//	SLOT(isSolvable()), actionCollection(), "move_solvable");
 
 #ifdef DEBUGGING
 	(void)new KAction("&Finish", 0, b, SLOT(finish()), actionCollection(), "move_finish");
