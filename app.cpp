@@ -391,7 +391,7 @@ void App::menuCallback(int id) {
     break;
 
   case ID_HHELP:
-    KApplication::kApplication()->invokeHTMLHelp("", ""); 
+    KApplication::kApplication()->invokeHelp(); 
     break;
 
   case ID_OGRAVITY:
