@@ -40,7 +40,7 @@
 #define __BOARD__H__
 
 #include <config.h>
-#include <qlist.h>
+#include <qptrlist.h>
 #include <qwidget.h>
 #include <qpixmap.h>
 #include <qdatetime.h>
@@ -142,7 +142,7 @@ private: // functions
   bool findPath(int x1, int y1, int x2, int y2);
   bool findSimplePath(int x1, int y1, int x2, int y2);
   void drawArrow(int, int, int, int);
-  QPoint midCoord(int, int);  
+  QPoint midCoord(int, int);
   void clearHistory();
 
 private:
