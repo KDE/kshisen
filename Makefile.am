@@ -30,4 +30,4 @@ messages: rc.cpp
 	$(XGETTEXT) rc.cpp $(kshisen_SOURCES) -o $(podir)/kshisen.pot
 
 install-data-local:
-	rm -rf $(kde_appsdir)/Games/kshisen.desktop
+	rm -rf $(DESTDIR)$(kde_appsdir)/Games/kshisen.desktop
