@@ -15,19 +15,19 @@
 
 
     <entry name="Speed" type="Int">
+      <default>2</default>
       <min>0</min>
       <max>4</max>
-      <default>2</default>
     </entry>
     <entry name="Size" type="Int">
+      <default>2</default>
       <min>0</min>
       <max>4</max>
-      <default>2</default>
     </entry>
     <entry name="Level" type="Int">
+      <default>1</default>
       <min>0</min>
       <max>2</max>
-      <default>1</default>
     </entry>
   </group>
 </kcfg>
