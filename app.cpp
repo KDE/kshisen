@@ -111,9 +111,6 @@ App::App() : KMainWindow(0) {
 
   // create menu
   mb = new KMenuBar(this);
-  QPopupMenu *fm = new QPopupMenu;
-  fm->insertItem(i18n("&Quit"), ID_FQUIT);
-
   QPopupMenu *gm = new QPopupMenu;
   gm->insertItem(i18n("&Undo"), ID_GUNDO);
   gm->insertItem(i18n("&Redo"), ID_GREDO);
@@ -131,6 +128,9 @@ App::App() : KMainWindow(0) {
   gm->insertSeparator();
   gm->insertItem("&Finish", ID_GFINISH);
 #endif
+  gm->insertSeparator();
+  gm->insertItem(i18n("&Quit"), ID_FQUIT);
+
 
   QPopupMenu *om = new QPopupMenu;
   om->setCheckable(TRUE);
@@ -159,7 +159,6 @@ App::App() : KMainWindow(0) {
                                     + i18n("\n\nby Mario Weilguni")
                                     + " (mweilguni@sime.com)");
 
-  mb->insertItem(i18n("&File"), fm);
   mb->insertItem(i18n("&Game"), gm);
   om->insertItem(i18n("Si&ze"), om_s);
   om->insertItem(i18n("S&peed"), om_sp);
@@ -429,6 +428,9 @@ void App::enableItems() {
 
 void App::sizeChanged() {
   b->setFixedSize(b->sizeHint());
+  /* The followin line fixes the autoresizing  problems.
+     I don't know why, but this is the only way, it works. */
+  setFixedSize(1,1);
 }
 
 void App::slotEndOfGame() {
@@ -663,7 +665,7 @@ void App::writeHighscore() {
   for(i = 0; i < (int)highscore.size(); i++) {
     s.sprintf("Highscore_%d", i);
     HighScore hs = highscore[i];
-    e.sprintf("%d %d %d %ld %d %30s",
+    e.sprintf("%d %d %d %ld %d %-16s",
 	      hs.x, hs.y, hs.seconds, hs.date, hs.gravity, hs.name);
     conf->writeEntry(s, e);
   }
