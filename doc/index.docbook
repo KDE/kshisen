@@ -86,11 +86,15 @@ choose the wrong way).</para>
 following formula, assuming that <quote>n</quote> represents the
 number of tiles present when the game started and <quote>t</quote>
 standing for the time (in seconds) it took to clear the
-field:<inlineequation> <alt>S=(n/t)*sqrt(n/84)/0.0014</alt>
-<inlinemediaobject><imageobject>
+field:</para>
+
+<mediaobject><imageobject>
 <imagedata fileref="score-formula.png" format="PNG"/>
-</imageobject></inlinemediaobject></inlineequation>
-If you played with the <guilabel>Gravity</guilabel> setting enabled, this score
+</imageobject><textobject>
+<phrase>S=(n/t)*sqrt(n/84)/0.0014</phrase>
+</textobject></mediaobject>
+
+<para>If you played with the <guilabel>Gravity</guilabel> setting enabled, this score
 will additionally get multiplied by two.</para>
 </sect1>
 
