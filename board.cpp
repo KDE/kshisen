@@ -352,18 +352,15 @@ int MAX(int a, int b) {
     return b;
 }
 
-QPixmap *Board::lighten(QPixmap *src, float factor) {
+QPixmap *Board::lighten(QPixmap *src) {
+  const float FACTOR = 1.3;
+
   QImage img = src->convertToImage();
   for(int y = 0; y < src->height(); y++) {
-    uint *p = (uint*)img.scanLine(y);
-    for(int x = 0; x < src->width(); x++) {
-      unsigned char *pc = (unsigned char *)p;
+    uchar *p = (uchar *)img.scanLine(y);
+    for(int x = 0; x < src->width() * 4; x++) {
+      *p = (unsigned char)MIN(255, (int)(FACTOR * (*p)));
       p++;
-      *pc = MIN(255, (int)(*pc * factor));
-      pc++;
-      *pc = MIN(255, (int)(*pc * factor));
-      pc++;
-      *pc = MIN(255, (int)(*pc * factor));
     }
   }
  
@@ -386,7 +383,7 @@ void Board::paintEvent(QPaintEvent *e) {
       if(e->rect().intersects(r)) {
 	// check if it is a marked piece
 	if(i == mark_x && j == mark_y) {
-	  QPixmap *lpm = lighten(pm_tile[getField(i, j)-1], 1.3);
+	  QPixmap *lpm = lighten(pm_tile[getField(i, j)-1]);
 	  p.drawPixmap(xpos, ypos, *lpm);
 	  delete lpm;
 	} else

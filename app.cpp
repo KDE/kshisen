@@ -78,7 +78,7 @@ static int size_x[5] = {14, 18, 22, 26, 30};
 static int size_y[5] = { 6,  8, 10, 14, 16};
 static int DELAY[5] = {125, 250, 500, 750, 1000};
 
-App::App() : KFixedTopWidget() {
+App::App() : KTopLevelWidget() {
   locale = kapp->getLocale();
   setCaption(locale->translate("Shisen-Sho"));
 

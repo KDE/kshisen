@@ -119,7 +119,7 @@ private: // functions
   int  y_tiles();
   int  random(int max);
   void updateField(int, int);
-  QPixmap *lighten(QPixmap *src, float factor = 4.0/3.0);
+  QPixmap *lighten(QPixmap *src);
   bool canMakePath(int x1, int y1, int x2, int y2);
   bool findPath(int x1, int y1, int x2, int y2);
   bool findSimplePath(int x1, int y1, int x2, int y2);

@@ -41,14 +41,14 @@
 #define __APP__H__
 
 #include <kapp.h>
-#include "kfixedtopwidget.h"
 #include <ktoolbar.h>
 #include <kstatusbar.h>
 #include <kmenubar.h>
 #include <klocale.h>
+#include <ktopwidget.h>
 #include "board.h"
 
-class App : public KFixedTopWidget {
+class App : public KTopLevelWidget {
   Q_OBJECT
 public:
   App();
