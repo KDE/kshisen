@@ -8,7 +8,11 @@
 
 \begin{document}
 
-\begin{equation*}
-\text{score} =  \frac{n}{t} \cdot \sqrt{\frac{n}{84}} \cdot 0.0014 
-\end{equation*}
+\begin{align*}
+  \text{S} & = \frac{n}{t} \cdot \sqrt{\frac{n}{84}} / 0.0014 \\
+  & = \frac{n}{t} \cdot \frac{\sqrt{\frac{n}{84}}}{0.0014} \\
+  & = \frac{n}{t} \cdot \frac{\sqrt{n}}{\sqrt{84}\cdot 0.0014} \\
+  & = \frac{n}{t} \cdot \frac{\sqrt{n}}{0.012831211946} \\
+  & = \frac{\sqrt{n^3}}{0.012831211946\cdot t} \\
+\end{align*}
 \end{document}
