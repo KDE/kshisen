@@ -331,6 +331,27 @@ void App::sizeChanged() {
   setFixedSize(1,1);
 }
 
+// This is a kludge to ensure that maxSize is always >= minSize (some window
+// managers display a 1x1-pixel window otherwise).The proper fix is already
+// in HEAD (the playing window is now resizable).
+void App::setMinimumSize(int minw, int minh) {
+  KMainWindow::setMinimumSize(minw, minh);
+
+  bool clamped = false;
+  QSize max = maximumSize();
+
+  if(max.width() < minw) {
+    max.setWidth(minw);
+    clamped = true;
+  }
+  if(max.height() < minh) {
+    max.setHeight(minh);
+    clamped = true;
+  }
+  if(clamped)
+    setMaximumSize(max);
+}
+
 void App::slotEndOfGame() {
   if(b->tilesLeft() > 0)
       KMessageBox::information(this,

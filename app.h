@@ -68,6 +68,8 @@ public:
   App();
   ~App();
 
+  virtual void setMinimumSize(int minw, int minh);
+
 private slots:
   void slotEndOfGame();
   void enableItems();
