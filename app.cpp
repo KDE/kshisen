@@ -461,7 +461,7 @@ void App::slotEndOfGame() {
 
     if(isHighscore) {
       QString name = getPlayerName();
-      strncpy(hs.name, (const char *)name, sizeof(hs.name) - 1);
+      strncpy(hs.name, name.utf8(), sizeof(hs.name) - 1);
       hs.date = time((time_t*)0);
       hs.x = b->x_tiles();
       hs.y = b->y_tiles();
@@ -470,7 +470,7 @@ void App::slotEndOfGame() {
     } else {
       QString s;
       s.sprintf(
-		i18n("Congratulations! You made it in %02d:%02d:%02d"),
+		i18n("Congratulations! You made it in %02d:%02d:%02d").utf8(),
 		b->getTimeForGame()/3600,
 		(b->getTimeForGame() / 60)  % 60,
 		b->getTimeForGame() % 60);
@@ -512,7 +512,7 @@ QString App::getPlayerName() {
 
   QPushButton *b = new QPushButton(i18n("OK"), dlg);
   b->setDefault(TRUE);
-  if(style() == MotifStyle)
+  if(style().guiStyle() == MotifStyle)
     b->setFixedSize(b->sizeHint().width() + 10,
 		    b->sizeHint().height() +10);
   else
@@ -621,18 +621,23 @@ void App::readHighscore() {
       HighScore hs;
       memset(hs.name, 0, sizeof(hs.name));
       
-      int nelem;
-      nelem = sscanf((const char *)e, "%d %d %d %ld %d %30c",
-		     &hs.x, &hs.y, &hs.seconds, &hs.date, 
-		     &hs.gravity, (char*)&hs.name);
-    
-      // old version <= 1.1
-      if(nelem == 4) {
-	nelem = sscanf((const char *)e, "%d %d %d %ld %30c",
-		       &hs.x, &hs.y, &hs.seconds, &hs.date, 
-		       (char*)&hs.name);
-	hs.gravity=0;
-      }      
+      QStringList e = conf->readListEntry(s, ' ');
+      int nelem = e.count();
+      hs.x = (*e.at(0)).toInt();
+      hs.y = (*e.at(1)).toInt();
+      hs.seconds = (*e.at(2)).toInt();
+      hs.date = (*e.at(3)).toInt();
+
+      if (nelem == 4) // old version <= 1.1
+      {
+        hs.gravity = 0;
+        strncpy(hs.name, (*e.at(4)).utf8(), 16);
+      }
+      else
+      {
+        hs.gravity = (*e.at(4)).toInt();
+        strncpy(hs.name, (*e.at(5)).utf8(), 16);
+      }
 
       highscore[i] = hs;
     } else
@@ -677,7 +682,7 @@ void App::writeHighscore() {
 
 void App::showHighscore(int focusitem)  {
   // this may look a little bit confusing...
-  QDialog *dlg = new QDialog(0, i18n("Hall Of Fame"), TRUE);
+  QDialog *dlg = new QDialog(0, "hall_Of_fame", TRUE);
   dlg->setCaption(i18n("Shisen-Sho: Hall Of Fame"));
 
   QVBoxLayout *tl = new QVBoxLayout(dlg, 10);
@@ -786,7 +791,7 @@ void App::showHighscore(int focusitem)  {
     }
     
   QPushButton *b = new QPushButton(i18n("Close"), dlg);
-  if(style() == MotifStyle)
+  if(style().guiStyle() == MotifStyle)
     b->setFixedSize(b->sizeHint().width() + 10,
 		    b->sizeHint().height() + 10);
   else
