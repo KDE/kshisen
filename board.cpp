@@ -67,6 +67,10 @@
 #define DEFAULTDELAY	500
 #define DEFAULTSHUFFLE	4
 
+#define TILES_X	9
+#define TILES_Y	4
+#define NUM_TILES	(TILES_X * TILES_Y)
+
 Board::Board(QWidget *parent) : QWidget(parent) {
   pausedIcon = 0;
   paused = false;
@@ -83,7 +87,7 @@ Board::Board(QWidget *parent) : QWidget(parent) {
   random.setSeed(0);
   starttime = time((time_t *)0);
 
-  for(int i = 0; i < 45; i++)
+  for(int i = 0; i < NUM_TILES; i++)
     pm_tile[i] = 0;
 
   setDelay(DEFAULTDELAY);
@@ -105,7 +109,7 @@ Board::Board(QWidget *parent) : QWidget(parent) {
 }
 
 Board::~Board() {
-  for(int i = 0; i < 45; i++)
+  for(int i = 0; i < NUM_TILES; i++)
     if(pm_tile[i])
       delete pm_tile[i];  
   delete [] field;
@@ -265,7 +269,7 @@ bool Board::loadTiles(double scale) {
     int i, j;
 
     // delete old tiles
-    for(i = 0; i < 45; i++) {
+    for(i = 0; i < NUM_TILES; i++) {
       if(pm_tile[i] != 0) {
         delete pm_tile[i];
         pm_tile[i] = 0;
@@ -273,22 +277,22 @@ bool Board::loadTiles(double scale) {
     }
 
     // locate tileset
-    QImage tileset(KGlobal::dirs()->findResource("appdata", "kshisen.xpm"));
+    QImage tileset(KGlobal::dirs()->findResource("appdata", "tileset.png"));
     if(tileset.width() == 0 || tileset.height() == 0) {
         KMessageBox::sorry(this, i18n("Cannot load pixmaps!"));
         exit(1);
     }
 
-    int w = tileset.width() / 9;
-    int h = tileset.height() / 5;
+    int w = tileset.width() / TILES_X;
+    int h = tileset.height() / TILES_Y;
     QSize scaledTileSize(scale * w, scale * h);
 
-    for(i = 0; i < 9; i++) {
-      for(j = 0; j < 5; j++) {
+    for(i = 0; i < TILES_X; i++) {
+      for(j = 0; j < TILES_Y; j++) {
         QImage tile = tileset.copy( w*i, h*j, w, h );
         if(scale != 1.0)
           tile = tile.smoothScale(scaledTileSize);
-        pm_tile[i + j*9] = new QPixmap(tile);
+        pm_tile[i + j*TILES_X] = new QPixmap(tile);
       }
     }
 
@@ -300,44 +304,26 @@ bool Board::loadTiles(double scale) {
 }
 
 void Board::newGame() {
-  int i, j, x, y, k;
+  int i, x, y, k;
 
   mark_x = -1;
   mark_y = -1;
 
-  while(_undo.count())
-    _undo.removeFirst();
-  while(_redo.count())
-    _redo.removeFirst();
-
+  _undo.clear();
+  _redo.clear();
   clearHistory();
 
-  for(i = 0; i < x_tiles(); i++)
-    for(j = 0; j < y_tiles(); j++)
-      setField(i, j, EMPTY);
-
   // distribute all tiles on board
-  int cur_tile = 0;
+  int cur_tile = 1;
   for(y = 0; y < y_tiles(); y += 4) {
     for(x = 0; x < x_tiles(); ++x) {
-      // map the tileindex to a tile
-      // not all tiles from the pixmap are really used, only
-      // 36 out of 45 are used. This maps and index to
-      // the "real" index.
-      int tile;
-      if(cur_tile == 28)
-        tile = 31;
-      else if(cur_tile >= 29 && cur_tile <= 35)
-        tile = cur_tile + 8;
-      else
-        tile = cur_tile + 1;
+
+      for(k = 0; k < 4 && y + k < y_tiles(); k++)
+        setField(x, y + k, cur_tile);
 
       cur_tile++;
-      if(cur_tile == 36)
-        cur_tile = 0;
-
-      for(k = 0; k < 4 && k + y < y_tiles(); k++)
-        setField(x, y+k, tile);
+      if(cur_tile > NUM_TILES)
+        cur_tile = 1;
     }
   }
 
@@ -881,8 +867,8 @@ void Board::finish() {
 #endif
 
 bool Board::getHint_I(int &x1, int &y1, int &x2, int &y2, History h[4]) {
-  short done[45];
-  for( short index = 0; index < 45; index++ )
+  short done[NUM_TILES];
+  for( short index = 0; index < NUM_TILES; index++ )
      done[index] = 0;
 
   // remember old history
@@ -896,11 +882,11 @@ bool Board::getHint_I(int &x1, int &y1, int &x2, int &y2, History h[4]) {
   y1 = -1;
   y2 = -1;
 
-  for(int x = 0; x < x_tiles(); x++)
-    for(int y = 0; y < y_tiles(); y++)
-      if(getField(x, y) != EMPTY && done[getField(x, y)] != 4) {
-	int tile = getField(x, y);
-	
+  for(int x = 0; x < x_tiles(); x++) {
+    for(int y = 0; y < y_tiles(); y++) {
+      int tile = getField(x, y);
+      if(tile != EMPTY && done[tile - 1] != 4) {
+
 	// for all these types of tile search path's
 	for(int xx = 0; xx < x_tiles(); xx++)
 	  for(int yy = 0; yy < y_tiles(); yy++)
@@ -920,8 +906,10 @@ bool Board::getHint_I(int &x1, int &y1, int &x2, int &y2, History h[4]) {
 		}
 	
 	clearHistory();
-	done[tile]++;
+	done[tile - 1]++;
       }
+    }
+  }
 
   for(int i = 0; i < 4; i++)
     history[i] = old[i];
