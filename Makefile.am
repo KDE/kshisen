@@ -24,7 +24,7 @@ SUBDIRS = pics
 EXTRA_DIST = $(apps_DATA) 
 
 messages:
-	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot $(kshisen_SOURCES) && mv messages.po ../po/kshisen.pot
+	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot $(kshisen_SOURCES) && mv messages.po $(podir)/kshisen.pot
 
 
 
