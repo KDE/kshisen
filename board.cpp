@@ -45,7 +45,7 @@
 #include <qtimer.h>
 #include <qlist.h>
 #include <sys/times.h>
-#include <qbitarry.h>
+#include <qbitarray.h>
 #include <kmsgbox.h>
 #include <debug.h>
 

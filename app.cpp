@@ -46,7 +46,7 @@
 #include <kiconloader.h>
 #include <kseparator.h>
 #include <qlayout.h>
-#include <qmsgbox.h>
+#include <qmessagebox.h>
 #include <debug.h>
 #include <math.h>
 

@@ -43,7 +43,7 @@
 #include <qlist.h>
 #include <qwidget.h>
 #include <qpixmap.h>
-#include <qdatetm.h>
+#include <qdatetime.h>
 #include <time.h>
 #include <debug.h>
 
