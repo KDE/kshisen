@@ -39,6 +39,7 @@
 #include <kapp.h>
 #include <kconfig.h>
 #include <klocale.h>
+#include <kglobal.h>
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
 
@@ -57,6 +58,7 @@ int main(int argc, char **argv)
   KCmdLineArgs::init( argc, argv, &aboutData );
 
   KApplication a;
+  KGlobal::locale()->insertCatalogue("libkdegames");
 
   App *app = new App();
   app->resize(800, 500);
