@@ -232,6 +232,7 @@ void Board::mousePressEvent(QMouseEvent *e)
 		}
 
 		for(int i = 0; i < x_tiles(); i++)
+		{
 			for(int j = 0; j < y_tiles(); j++)
 			{
 				int field_tile = getField(i, j);
@@ -248,6 +249,7 @@ void Board::mousePressEvent(QMouseEvent *e)
 					updateField(i, j, false);
 				}
 			}
+		}
 		mark_x=-1;
 		mark_y=-1;   // no tile selected
 	}
@@ -454,8 +456,8 @@ void Board::updateField(int x, int y, bool erase)
 	        yOffset() + y * tiles.tileHeight(),
 	        tiles.tileWidth(),
 	        tiles.tileHeight());
-	if(isUpdatesEnabled())
-		repaint(r, erase);
+
+	repaint(r, erase);
 }
 
 void Board::paintEvent(QPaintEvent *e)
