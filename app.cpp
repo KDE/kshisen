@@ -723,7 +723,9 @@ void App::showHighscore(int focusitem)  {
 
     // insert score
     if(i < highscore.size()) 
-      s = QString("%1 %2").arg(tScore(hs)).arg(hs.gravity ? i18n("(gravity)") : "");
+      s = QString("%1 %2")
+	.arg(getScore(hs))
+	.arg(hs.gravity ? i18n("(gravity)") : QString(""));
     else
       s = "";
     e[i][4] = new QLabel(s, dlg);
