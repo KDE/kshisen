@@ -855,7 +855,7 @@ void Board::redo()
 	}
 }
 
-void Board::getHint()
+void Board::showHint()
 {
 	Path hintPath;
 	if(getHint_I(hintPath))

@@ -249,7 +249,7 @@ void App::hint() {
 #ifdef DEBUGGING
   b->makeHintMove();
 #else
-  b->getHint();
+  b->showHint();
   setCheatMode();
 #endif
   enableItems();

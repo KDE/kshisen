@@ -97,7 +97,7 @@ public:
 	void setShuffle(int);
 	int  getShuffle() const;
 
-	void getHint();
+	void showHint();
 	bool getHint_I(Path& p) const;
 
 #ifdef DEBUGGING
