@@ -82,15 +82,16 @@ games</guimenuitem> in the <guimenu>Option</guimenu> menu is checked, since for
 these games there is at least one way to solve it, though it may happen that you
 choose the wrong way).</para>
 
-<para>The resulting score <quote>S</quote> is calculated using the following formula, assuming
-that <quote>n</quote> represents the number of tiles present when the game
-started and <quote>t</quote> standing for the time (in seconds) it took to clear
-the field:<inlineequation>
-<alt>S=(n/t)*sqrt(n/84)/0.0014</alt>
-<graphic fileref="score-formula.png"/></inlineequation>
+<para>The resulting score <quote>S</quote> is calculated using the
+following formula, assuming that <quote>n</quote> represents the
+number of tiles present when the game started and <quote>t</quote>
+standing for the time (in seconds) it took to clear the
+field:<inlineequation> <alt>S=(n/t)*sqrt(n/84)/0.0014</alt>
+<inlinemediaobject><imageobject>
+<imagedata fileref="score-formula.png" format="PNG"/>
+</imageobject></inlinemediaobject></inlineequation>
 If you played with the <guilabel>Gravity</guilabel> option enabled, this score
 will additionally get multiplied by two.</para>
-
 </sect1>
 
 <sect1 id="game-menu">
