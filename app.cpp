@@ -152,7 +152,7 @@ App::App() : KTMainWindow() {
   om_l->insertItem(i18n("Medium"), ID_OLVL2);
   om_l->insertItem(i18n("Hard"), ID_OLVL3);
 
-  QPopupMenu *help = kapp->helpMenu(true, i18n("Shisen-Sho")
+  QPopupMenu *help = helpMenu(i18n("Shisen-Sho")
                                     + " " + KSHISEN_VERSION
                                     + i18n("\n\nby Mario Weilguni")
                                     + " (mweilguni@sime.com)");
