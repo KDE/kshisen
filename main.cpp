@@ -37,11 +37,20 @@
  */
 
 #include <kapp.h>
-#include "app.h"
 #include <kconfig.h>
+#include <klocale.h>
+#include <kcmdlineargs.h>
+
+#include "version.h"
+#include "app.h"
+
+
+static const char *description = I18N_NOOP("KDE Game");
 
 int main(int argc, char **argv) {
-  KApplication a(argc, argv, "kshisen");
+  KCmdLineArgs::init(argc, argv, "kshisen", description, KSHISEN_VERSION);
+
+  KApplication a;
 
   App *app = new App();
   app->resize(800, 500);
