@@ -454,7 +454,7 @@ QString App::getPlayerName() {
   e->setText("");
   e->setFocus();
 
-  QPushButton *b = new QPushButton("OK", dlg);
+  QPushButton *b = new QPushButton(i18n("OK"), dlg);
   b->setDefault(TRUE);
   if(style() == MotifStyle)
     b->setFixedSize(b->sizeHint().width() + 10,
