@@ -27,11 +27,11 @@
 
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
 
-<date>2002-03-31</date>
-<releaseinfo>1.03.00</releaseinfo>
+<date>2003-03-03</date>
+<releaseinfo>1.04.00</releaseinfo>
 
 <abstract>
-<para>This Handbook describes &kshisen; Version 1.3</para>
+<para>This Handbook describes &kshisen; Version 1.5</para>
 </abstract>
 
 <keywordset>
@@ -112,6 +112,15 @@ session with new tiles. </para></listitem>
 
 <varlistentry>
 <term><menuchoice>
+<shortcut><keycombo><keycap>F5</keycap></keycombo></shortcut>
+<guimenu>Game</guimenu><guimenuitem>Restart
+Game</guimenuitem></menuchoice></term>
+<listitem><para><action>Restart the current game with the same
+tiles.</action></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
 <shortcut><keycombo><keycap>P</keycap></keycombo></shortcut>
 <guimenu>Game</guimenu>
 <guimenuitem>Pause</guimenuitem></menuchoice></term>
@@ -127,35 +136,7 @@ game.</para></listitem>
 </shortcut>
 <guimenu>Game</guimenu><guimenuitem>Show
 Highscores</guimenuitem></menuchoice></term>
-<listitem><para>Shows the (local) Top-Ten charts of Shisen-Sho.</para> </listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<shortcut><keycombo><keycap>H</keycap></keycombo></shortcut>
-<guimenu>Game</guimenu><guimenuitem>Get
-Hint</guimenuitem></menuchoice></term> 
-<listitem><para><action>Show a tip</action>, which two tiles to remove
-next.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<shortcut><keycombo action="simul">&Ctrl;
-<keycap>R</keycap></keycombo></shortcut>
-<guimenu>Game</guimenu><guimenuitem>Restart
-Game</guimenuitem></menuchoice></term>
-<listitem><para><action>Restart the current game with the same
-tiles.</action></para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><guimenu>Game</guimenu>
-<guimenuitem>Is Game Solvable?</guimenuitem></menuchoice></term>
-<listitem><para>Shows a dialog which <action>tells you whether the game is
-solvable or not</action>. If the menu entry <guimenuitem>Disallow Unsolvable
-Games</guimenuitem> in the <guimenu>Settings</guimenu> menu is checked, this option
-is absolutely useless.</para></listitem>
+<listitem><para>Shows the (local) Top-Ten charts of &kshisen;.</para> </listitem>
 </varlistentry>
 
 </variablelist>
@@ -164,14 +145,14 @@ is absolutely useless.</para></listitem>
 
 </sect1>
 
-<sect1 id="edit-menu">
-<title>The <guimenu>Edit</guimenu> Menu</title>
+<sect1 id="move-menu">
+<title>The <guimenu>Move</guimenu> Menu</title>
 
 <variablelist>
 <varlistentry>
 <term><menuchoice> <shortcut><keycombo
 action="simul">&Ctrl;<keycap>Z</keycap></keycombo></shortcut>
-<guimenu>Edit</guimenu>
+<guimenu>Move</guimenu>
 <guimenuitem>Undo</guimenuitem></menuchoice></term>
 <listitem><para><action>Undo the last step</action>. Same as the
 <guibutton>Undo</guibutton> button in the toolbar.</para></listitem>
@@ -180,11 +161,28 @@ action="simul">&Ctrl;<keycap>Z</keycap></keycombo></shortcut>
 <varlistentry>
 <term><menuchoice><shortcut><keycombo
 action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo></shortcut> 
-<guimenu>Game</guimenu>
+<guimenu>Move</guimenu>
 <guimenuitem>Redo</guimenuitem></menuchoice></term>
 <listitem><para><action>Redo the last step</action>. Same as the
 <guibutton>Redo</guibutton> button in the toolbar.</para></listitem>
 </varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut><keycombo><keycap>H</keycap></keycombo></shortcut>
+<guimenu>Move</guimenu>
+<guimenuitem>Hint</guimenuitem></menuchoice></term>
+<listitem><para><action>Show a tip</action>, which two tiles to remove
+next.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><guimenu>Move</guimenu>
+<guimenuitem>Is Game Solvable?</guimenuitem></menuchoice></term>
+<listitem><para>Shows a dialog which <action>tells you whether the game is
+solvable or not</action>.</para></listitem>
+</varlistentry>
+
 </variablelist>
 </sect1>
 </chapter>
@@ -250,12 +248,16 @@ have to try again if you didn't solve the game, but if it's checked, the game
 <para>Default key bindings are:
 </para>
 <simplelist>
+<member>New: <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></member>
+<member>Restart Game: <keycombo><keycap>F5</keycap></keycombo></member>
+<member>Pause: <keycombo><keycap>P</keycap></keycombo></member>
+<member>Show Highscores: <keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></member>
 <member>Quit: <keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></member>
+
 <member>Undo: <keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo></member>
 <member>Redo: <keycombo action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo></member>
-<member>New Game: <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></member>
-<member>Restart Game: <keycombo action="simul">&Ctrl;<keycap>R</keycap></keycombo></member>
-<member>Help: <keycombo action="simul"><keycap>F1</keycap></keycombo></member>
+<member>Hint: <keycombo><keycap>H</keycap></keycombo></member>
+
 <member>What's This?: <keycombo action="simul">&Shift;<keycap>F1</keycap></keycombo></member>
 </simplelist>
 </sect1>
@@ -287,7 +289,7 @@ Documentation Copyright 2000 Dirk Doerflinger
 <title>Installation</title>
 
 <sect1 id="getting-kshisen">
-<title>How to obtain Shisen-Sho</title>
+<title>How to obtain &kshisen;</title>
 
 &install.intro.documentation;
 
