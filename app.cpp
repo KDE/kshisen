@@ -392,6 +392,8 @@ void App::slotEndOfGame() {
     // create highscore entry
     HighScore hs;
     hs.seconds = b->getTimeForGame();
+    hs.x = b->x_tiles();
+    hs.y = b->y_tiles();
 
     // check if we made it into Top10
     bool isHighscore = FALSE;
