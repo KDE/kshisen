@@ -54,7 +54,9 @@ int main(int argc, char **argv)
   KAboutData aboutData( "kshisen", I18N_NOOP("Shisen-Sho"), 
     KSHISEN_VERSION, description, KAboutData::License_GPL, 
     "(c) 1997, Mario Weilguni");
+  aboutData.addAuthor("Dave Corrie", 0, "kde@davecorrie.com");
   aboutData.addAuthor("Mario Weilguni",0, "mweilguni@sime.com");
+  aboutData.addCredit("Jason Lane", 0, "jglane@btopenworld.com");
   KCmdLineArgs::init( argc, argv, &aboutData );
 
   KApplication a;
