@@ -55,7 +55,7 @@ int main(int argc, char **argv)
 	aboutData.addAuthor("Dave Corrie", I18N_NOOP("Current Maintainer"), "kde@davecorrie.com");
 	aboutData.addAuthor("Mario Weilguni", I18N_NOOP("Original Author"), "mweilguni@sime.com");
 	aboutData.addCredit("Jason Lane", I18N_NOOP("Added 'tiles removed' counter\nTile smooth-scaling and window resizing"), "jglane@btopenworld.com");
-	aboutData.addCredit(I18N_NOOP("Thanks also to everyone who should be listed here but isn't!"), 0, 0);
+	aboutData.addCredit(0, I18N_NOOP("Thanks also to everyone who should be listed here but isn't!"), 0);
 	KCmdLineArgs::init( argc, argv, &aboutData );
 
 	KApplication a;
