@@ -40,6 +40,9 @@
 #ifndef __APP__H__
 #define __APP__H__
 
+// Should this get the whole HAVE_SYS_TIME_H TIME_WITH_SYS_TIME treatment?
+#include <time.h>
+
 #include <kmainwindow.h>
 #include "board.h"
 
