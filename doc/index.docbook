@@ -89,7 +89,7 @@ the field:<inlineequation>
 <alt>score=(n/t)*sqrt(n/84)*0.0014</alt>
 <graphic fileref="score-formula.png"/></inlineequation>
 If you played with the <guilabel>Gravity</guilabel> option enabled, this score
-will additionally get multiplicated by two.</para>
+will additionally get multiplied by two.</para>
 
 </sect1>
 
