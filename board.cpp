@@ -219,8 +219,8 @@ bool Board::loadTiles(float scale) {
 
   QPixmap pm((PICDIR + "/kshisen.xpm").data());
   if(pm.width() == 0 || pm.height() == 0) {
-    KMsgBox::message(0, klocale->translate("Shisen-Sho"), 
-		     klocale->translate("Cannot load pixmaps!"));
+    KMsgBox::message(0, i18n("Shisen-Sho"), 
+		     i18n("Cannot load pixmaps!"));
     exit(1);
   }
   
