@@ -297,6 +297,7 @@ void Board::setSize(int x, int y)
 void Board::resizeEvent(QResizeEvent*)
 {
 	resizeBoard();
+	emit resized();
 }
 
 void Board::resizeBoard()
@@ -310,6 +311,13 @@ void Board::resizeBoard()
 	h = std::min(h, static_cast<int>((tiles.unscaledTileHeight() * MAXIMUM_SCALE) + 0.5));
 
 	tiles.resizeTiles(w, h);
+}
+
+QSize Board::unscaledSize() const
+{
+	int w = tiles.unscaledTileWidth() * x_tiles() + tiles.unscaledTileWidth();
+	int h = tiles.unscaledTileHeight() * y_tiles() + tiles.unscaledTileWidth();
+	return QSize(w, h);
 }
 
 void Board::newGame()

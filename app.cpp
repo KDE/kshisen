@@ -122,14 +122,22 @@ App::App() : KMainWindow(0)
 	b->setGravityFlag(_b);
 	((KToggleAction*)actionCollection()->action("options_gravity"))->setChecked(_b);
 
+	_b = conf->readBoolEntry("Unscaled", true);
+	((KToggleAction*)actionCollection()->action("options_unscaled"))->setChecked(_b);
+
 	kapp->processEvents();
 	i = conf->readNumEntry("Level", 311 + 1) - 311;
 	((KSelectAction*)actionCollection()->action("options_level"))->setCurrentItem(i);
 	b->setShuffle(i * 4 + 1);
 
-	changeSize();
+	changeSize(); // initiates new game
 	updateScore();
 	enableItems();
+
+	// This connect call needs to happen after the above call to changeSize() because
+	// otherwise the 'Prefer Unscaled Tiles' setting is not preserved between sessions.
+	// TODO: sort out this crazy init sequence...
+	connect(b, SIGNAL(resized()), this, SLOT(boardResized()));
 }
 
 App::~App()
@@ -194,6 +202,9 @@ void App::initKAction()
 
 	(void)new KToggleAction(i18n("Disallow Unsolvable Games"), 0, this,
 		SLOT(toggleDisallowUnsolvable()), actionCollection(), "options_disallow");
+
+	new KToggleAction(i18n("Prefer Unscaled Tiles"), 0, this,
+		SLOT(preferUnscaled()), actionCollection(), "options_unscaled");
 
 	KStdAction::keyBindings(this, SLOT(keyBindings()), actionCollection());
 
@@ -289,6 +300,32 @@ void App::toggleDisallowUnsolvable()
 	kapp->config()->writeEntry("Solvable", (int)b->getSolvableFlag());
 }
 
+void App::preferUnscaled()
+{
+	// Setting 'Prefer Unscaled Tiles' to on is known to fail in the following situation:
+	//
+	// The Keramik window decoration is in use AND caption bubbles stick out above the title
+	// bar (i.e. Keramik's 'Draw small caption bubbles on active windows' configuration entry
+	// is set to off) AND the kshisen window is maximized.
+	//
+	// The user can work-around this situation by un-maximizing the window first.
+
+	bool unscaled = dynamic_cast<KToggleAction*>(actionCollection()->action("options_unscaled"))->isChecked();
+	if(unscaled)
+	{
+		QSize s = b->unscaledSize();
+
+		// Compensate for bug in KMainWindow::sizeForCentralWidgetSize()
+		// Bug present in KDE: 3.1.90 (CVS >= 20030225)
+		s.setHeight(s.height() + 1);
+
+		resize(sizeForCentralWidgetSize(s));
+		//kdDebug() << "App::preferUnscaled() set size to: " << s.width() << " x " << s.height() << endl;
+	}
+
+	kapp->config()->writeEntry("Unscaled", unscaled);
+}
+
 void App::changeSpeed()
 {
 	int index = ((KSelectAction*)actionCollection()->action("options_speed"))->currentItem();
@@ -301,6 +338,7 @@ void App::changeSize()
 	int index = ((KSelectAction*)actionCollection()->action("options_size"))->currentItem();
 	b->setSize(size_x[index], size_y[index]);
 	resetCheatMode();
+	preferUnscaled();
 	kapp->config()->writeEntry("Size", 300 + index);// 300 is from the old QPopuMenu+ID way - before KAction
 }
 
@@ -347,6 +385,17 @@ void App::enableItems()
 		actionCollection()->action("options_gravity")->setEnabled(!b->canUndo() && !b->canRedo());
 		((KToggleAction*)actionCollection()->action("options_gravity"))->setChecked(b->gravityFlag());
 	}
+}
+
+void App::boardResized()
+{
+	// If the board has been resized to a size that requires scaled tiles, then the
+	// 'Prefer Unscaled Tiles' option should be set to off.
+
+	//kdDebug() << "App::boardResized " << b->width() << " x " << b->height() << endl;
+	bool unscaled = dynamic_cast<KToggleAction*>(actionCollection()->action("options_unscaled"))->isChecked();
+	if(unscaled && b->size() != b->unscaledSize())
+		dynamic_cast<KToggleAction*>(actionCollection()->action("options_unscaled"))->setChecked(false);
 }
 
 void App::slotEndOfGame()

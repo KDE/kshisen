@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<gui name="kshisen" version="6">
+<gui name="kshisen" version="7">
 <MenuBar>
   <Menu name="move">
     <Action name="move_solvable"/>
@@ -11,6 +11,7 @@
     <Action name="options_level"/>
     <Action name="options_gravity"/>
     <Action name="options_disallow"/>
+    <Action name="options_unscaled"/>
   </Menu>
 </MenuBar>
 <ToolBar name="mainToolBar"><text>Main Toolbar</text>

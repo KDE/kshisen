@@ -93,6 +93,7 @@ public:
 
 	void setSize(int x, int y);
 	void resizeBoard();
+	QSize unscaledSize() const;
 	void newGame();
 	void setShuffle(int);
 	int  getShuffle() const;
@@ -129,6 +130,7 @@ signals:
 	void madeMove(int, int, int, int);
 	void changed();
 	void endOfGame();
+	void resized();
 
 public slots:
 	bool pause();

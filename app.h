@@ -85,11 +85,13 @@ private slots:
 	void hint();
 	void toggleDisallowUnsolvable();
 	void toggleGravity();
+	void preferUnscaled();
 	void changeLevel();
 	void changeSpeed();
 	void changeSize();
 	void hallOfFame();
 	void keyBindings();
+	void boardResized();
 
 private:
 	void lockMenus(bool);
