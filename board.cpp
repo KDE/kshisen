@@ -70,7 +70,6 @@
 Board::Board(QWidget *parent) : QWidget(parent, 0, WResizeNoErase)
 {
 	paused = false;
-	trying = false;
 	_solvable_flag = true;
 	grav_col_1 = -1;
 	grav_col_2 = -1;
@@ -341,12 +340,9 @@ void Board::newGame()
 
 	if(getShuffle() == 0)
 	{
-		if(!trying)
-		{
-			update();
-			starttime = time((time_t *)0);
-			emit changed();
-		}
+		update();
+		starttime = time((time_t *)0);
+		emit changed();
 		return;
 	}
 
@@ -367,12 +363,9 @@ void Board::newGame()
 	// do not make solvable if _solvable_flag is false
 	if(!_solvable_flag)
 	{
-		if(!trying)
-		{
-			update();
-			starttime = time((time_t *)0);
-			emit changed();
-		}
+		update();
+		starttime = time((time_t *)0);
+		emit changed();
 		return;
 	}
 
@@ -430,12 +423,9 @@ void Board::newGame()
 	delete pos;
 	delete oldfield;
 
-	if(!trying)
-	{
-		update();
-		starttime = time((time_t *)0);
-		emit changed();
-	}
+	update();
+	starttime = time((time_t *)0);
+	emit changed();
 }
 
 bool Board::isTileHighlighted(int x, int y) const
@@ -460,9 +450,6 @@ bool Board::isTileHighlighted(int x, int y) const
 
 void Board::updateField(int x, int y, bool erase)
 {
-	if(trying)
-		return;
-
 	QRect r(xOffset() + x * tiles.tileWidth(),
 	        yOffset() + y * tiles.tileHeight(),
 	        tiles.tileWidth(),
@@ -666,9 +653,6 @@ bool Board::findSimplePath(int x1, int y1, int x2, int y2, Path& p) const
 
 void Board::drawConnection(int timeout)
 {
-	if(trying)
-		return;
-
 	if(connection.empty())
 		return;
 
@@ -700,9 +684,6 @@ void Board::drawConnection(int timeout)
 
 void Board::undrawConnection()
 {
-	if(trying)
-		return;
-
 	if(grav_col_1 != -1 || grav_col_2 != -1)
 	{
 		gravity(grav_col_1, true);

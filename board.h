@@ -178,7 +178,6 @@ private:
 	bool paused;
 	time_t pause_start;
 
-	bool trying;
 	bool gravity_flag;
 	bool _solvable_flag;
 	int grav_col_1, grav_col_2;
