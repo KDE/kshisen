@@ -27,11 +27,11 @@
 
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
 
-<date>2003-03-03</date>
-<releaseinfo>1.04.00</releaseinfo>
+<date>2003-09-17</date>
+<releaseinfo>1.4.90</releaseinfo>
 
 <abstract>
-<para>This Handbook describes &kshisen; Version 1.5</para>
+<para>This Handbook describes &kshisen; Version 1.4.90</para>
 </abstract>
 
 <keywordset>
@@ -142,6 +142,15 @@ game.</para></listitem>
 Highscores</guimenuitem></menuchoice></term>
 <listitem><para>Shows the (local) Top-Ten charts of &kshisen;.</para> </listitem>
 </varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut><keycombo action="simul">&Ctrl;
+<keycap>Q</keycap></keycombo></shortcut>
+<guimenu>Game</guimenu><guimenuitem>Quit</guimenuitem></menuchoice></term>
+<listitem><para><action>Quits</action> &kshisen;. </para></listitem>
+</varlistentry>
+
 
 </variablelist>
 
