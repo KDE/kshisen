@@ -37,6 +37,8 @@
  */
 
 #include "app.h"
+#include "version.h"
+
 #include <kapp.h>
 #include <kmsgbox.h>
 #include <qtimer.h>
@@ -73,9 +75,7 @@
 #define ID_OSOLVABLE	314
 
 #define ID_HTUTORIAL	901
-#define ID_HHELP	902
-#define ID_HABOUT	903
-#define ID_HABOUTQT	904
+#define ID_HHELP	900	
 
 static int size_x[5] = {14, 18, 22, 26, 30};
 static int size_y[5] = { 6,  8, 10, 14, 16};
@@ -130,12 +130,11 @@ App::App() : KTopLevelWidget() {
   om_l->insertItem(locale->translate("Medium"), ID_OLVL2);
   om_l->insertItem(locale->translate("Hard"), ID_OLVL3);
 
-  QPopupMenu *hm = new QPopupMenu;
-  hm->insertItem(locale->translate("&Help"), ID_HHELP);
-  //hm->insertItem(locale->translate("Start &Tutorial"), ID_HTUTORIAL);
-  hm->insertSeparator();
-  hm->insertItem(locale->translate("About &Qt..."), ID_HABOUTQT);
-  hm->insertItem(locale->translate("A&bout..."), ID_HABOUT);
+  QPopupMenu *help = kapp->getHelpMenu(true, QString(i18n("Shisen-Sho"))
+                                         + " " + KSHISEN_VERSION
+                                         + i18n("\n\nby Mario Weilguni")
+                                         + " (mweilguni@sime.com)");    
+
 
   mb->insertItem(locale->translate("&File"), fm);
   mb->insertItem(locale->translate("&Game"), gm);
@@ -145,7 +144,7 @@ App::App() : KTopLevelWidget() {
   om->insertItem(locale->translate("Disallow unsolvable games"), ID_OSOLVABLE);
   mb->insertItem(locale->translate("&Options"), om);
   mb->insertSeparator();
-  mb->insertItem(locale->translate("&Help"), hm);
+  mb->insertItem(locale->translate("&Help"), help);
 
   mb->setAccel(CTRL+Key_Q, ID_FQUIT);
   mb->setAccel(CTRL+Key_Z, ID_GUNDO);
@@ -233,6 +232,9 @@ App::~App() {
 
 void App::menuCallback(int id) {
   int i;
+
+  if ( id < 10 )		// Use default help menu
+    return;
 
   switch(id) {
   case ID_FQUIT:
@@ -332,27 +334,12 @@ void App::menuCallback(int id) {
       mb->setItemChecked(i, i == id);
     break;
 
-  case ID_HHELP:
-    kapp->invokeHTMLHelp("", "");
-    break;
-
   case ID_HTUTORIAL:
     printf("ENTER TUTORIAL\n");
     break;
 
-  case ID_HABOUTQT:
-    QMessageBox::aboutQt(this);
-    break;
-
-  case ID_HABOUT:
-    KMsgBox::message(this, locale->translate("About Shisen-Sho"),
-    locale->translate("Shisen-Sho\n\n" \
-		      "version 0.2\n" \
-		      "(c) 1997 Mario Weilguni <mweilguni@sime.com>\n\n"\
-		      "This program is free software published \nunder "\
-		      "the GNU General Public License GPL.\n" \
-		      "More about this in the help."),
-		     KMsgBox::INFORMATION);
+  case ID_HHELP:
+    KApplication::getKApplication()->invokeHTMLHelp("", ""); 
     break;
 
   default:
