@@ -64,6 +64,9 @@ extern QString PICDIR;
 Board::Board(QWidget *parent) : QWidget(parent) {
   trying = FALSE;
   _solvable_flag = TRUE;
+  grav_col_1 = -1;
+  grav_col_2 = -1;
+  setGravityFlag(false);
 
   // randomze
   setShuffle(DEFAULTSHUFFLE);
@@ -131,6 +134,28 @@ int Board::getField(int x, int y) {
     return 0; // makes gcc happy
   } else
     return field[y * x_tiles() + x];
+}
+
+void Board::gravity(int col) {
+  if(gravity_flag) {
+    int rptr = y_tiles()-1, wptr = y_tiles()-1;
+    while(rptr >= 0) {
+      if(getField(col, wptr) != EMPTY) {
+	rptr--;
+	wptr--;
+      } else {
+	if(getField(col, rptr) != EMPTY) {
+	  setField(col, wptr, getField(col, rptr));
+	  setField(col, rptr, EMPTY);
+	  updateField(col, rptr);
+	  updateField(col, wptr);
+	  wptr--;
+	  rptr--;
+	} else
+	  rptr--;	
+      }
+    }
+  }
 }
 
 void Board::mousePressEvent(QMouseEvent *e) {
@@ -489,6 +514,8 @@ void Board::marked(int x, int y) {
       drawArrow(mark_x, mark_y, x, y);
       setField(mark_x, mark_y, EMPTY);
       setField(x, y, EMPTY);
+      grav_col_1 = x;
+      grav_col_2 = mark_x;
       mark_x = -1;
       mark_y = -1;
 
@@ -644,6 +671,13 @@ void Board::drawArrow(int x1, int y1, int x2, int y2) {
 void Board::undrawArrow() {
   if(trying)
     return;
+
+  if(grav_col_1 != -1 || grav_col_2 != -1) {
+    gravity(grav_col_1);
+    gravity(grav_col_2);
+    grav_col_1 = -1;
+    grav_col_2 = -1;
+  }
 
   // is already undrawn?
   if(history[0].x == -2)
@@ -898,6 +932,14 @@ bool Board::getSolvableFlag() {
 
 void Board::setSolvableFlag(bool value) {
   _solvable_flag = value;
+}
+
+bool Board::gravityFlag() {
+  return gravity_flag;
+}
+
+void Board::setGravityFlag(bool b) {
+  gravity_flag = b;
 }
 
 #include "board.moc"

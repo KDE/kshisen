@@ -54,6 +54,7 @@ struct HighScore {
   int  seconds;
   int  x, y;
   time_t date;
+  int gravity;
 };
 
 const unsigned HIGHSCORE_MAX = 10;

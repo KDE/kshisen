@@ -79,6 +79,7 @@
 #define ID_OLVL2	312
 #define ID_OLVL3	313
 #define ID_OSOLVABLE	314
+#define ID_OGRAVITY     315
 
 #define ID_HTUTORIAL	901
 #define ID_HHELP	900	
@@ -112,7 +113,7 @@ App::App() : KTopLevelWidget() {
   gm->insertSeparator();
   gm->insertItem(locale->translate("Is game solvable?"), ID_GISSOLVE);
   gm->insertSeparator();
-  gm->insertItem(locale->translate("&Hall of Fame"), ID_GHOF);
+  gm->insertItem(locale->translate("Hall of &Fame"), ID_GHOF);
 #ifdef DEBUGGING
   gm->insertSeparator();
   gm->insertItem("&Finish", ID_GFINISH);
@@ -143,14 +144,14 @@ App::App() : KTopLevelWidget() {
   QPopupMenu *help = kapp->getHelpMenu(true, QString(i18n("Shisen-Sho"))
                                          + " " + KSHISEN_VERSION
                                          + i18n("\n\nby Mario Weilguni")
-                                         + " (mweilguni@sime.com)");    
-
+                                         + " (mweilguni@sime.com)");
 
   mb->insertItem(locale->translate("&File"), fm);
   mb->insertItem(locale->translate("&Game"), gm);
   om->insertItem(locale->translate("Si&ze"), om_s);
   om->insertItem(locale->translate("S&peed"), om_sp);
   om->insertItem(locale->translate("&Level"), om_l);
+  om->insertItem(locale->translate("G&ravity"), ID_OGRAVITY);
   om->insertItem(locale->translate("Disallow unsolvable games"), ID_OSOLVABLE);
   mb->insertItem(locale->translate("&Options"), om);
   mb->insertSeparator();
@@ -229,6 +230,10 @@ App::App() : KTopLevelWidget() {
   b->setSolvableFlag(_b);
   mb->setItemChecked(ID_OSOLVABLE, 
 		     b->getSolvableFlag());
+
+  _b = conf->readNumEntry("Gravity", 1) > 0;
+  b->setGravityFlag(_b);
+  mb->setItemChecked(ID_OGRAVITY, _b);
 
   kapp->processEvents();
   i = conf->readNumEntry("Level", ID_OLVL2);
@@ -363,6 +368,13 @@ void App::menuCallback(int id) {
     KApplication::getKApplication()->invokeHTMLHelp("", ""); 
     break;
 
+  case ID_OGRAVITY:
+    if(!b->canUndo()) {
+      b->setGravityFlag(!b->gravityFlag());
+      kapp->getConfig()->writeEntry("Gravity", (int)b->gravityFlag());
+    }
+    break;
+
   default:
     printf("kshisen: unimplemented command %d\n", id);
   }
@@ -377,6 +389,8 @@ void App::enableItems() {
   tb->setItemEnabled(ID_GUNDO, b->canUndo());
   tb->setItemEnabled(ID_GREDO, b->canRedo());
   tb->setItemEnabled(ID_GRESTART, b->canUndo());
+  mb->setItemEnabled(ID_OGRAVITY, !b->canUndo());
+  mb->setItemChecked(ID_OGRAVITY, b->gravityFlag());
 }
 
 void App::sizeChanged() {
@@ -394,6 +408,7 @@ void App::slotEndOfGame() {
     hs.seconds = b->getTimeForGame();
     hs.x = b->x_tiles();
     hs.y = b->y_tiles();
+    hs.gravity = (int)b->gravityFlag();
 
     // check if we made it into Top10
     bool isHighscore = FALSE;
@@ -494,7 +509,11 @@ int App::getScore(HighScore &hs) {
   
   double sizebonus = sqrt(ntiles/(double)(14.0 * 6.0));
   double points = tilespersec / 0.14 * 100.0;
-  return (int)(points * sizebonus);
+
+  if(hs.gravity)
+    return (int)(2.0 * points * sizebonus);
+  else
+    return (int)(points * sizebonus);
 }
 
 bool App::isBetter(HighScore &hs, HighScore &than) {
@@ -560,8 +579,20 @@ void App::readHighscore() {
 
       HighScore hs;
       memset(hs.name, 0, sizeof(hs.name));
-      sscanf((const char *)e, "%d %d %d %ld %30c",
-	     &hs.x, &hs.y, &hs.seconds, &hs.date, (char*)&hs.name);
+      
+      int nelem;
+      nelem = sscanf((const char *)e, "%d %d %d %ld %d %30c",
+		     &hs.x, &hs.y, &hs.seconds, &hs.date, 
+		     &hs.gravity, (char*)&hs.name);
+    
+      // old version <= 1.1
+      if(nelem == 4) {
+	nelem = sscanf((const char *)e, "%d %d %d %ld %30c",
+		       &hs.x, &hs.y, &hs.seconds, &hs.date, 
+		       (char*)&hs.name);
+	hs.gravity=0;
+      }      
+
       highscore[i] = hs;
     } else
       eol = TRUE;
@@ -594,8 +625,8 @@ void App::writeHighscore() {
   for(i = 0; i < (int)highscore.size(); i++) {
     s.sprintf("Highscore_%d", i);
     HighScore hs = highscore[i];
-    e.sprintf("%d %d %d %ld %30s",
-	      hs.x, hs.y, hs.seconds, hs.date, hs.name);
+    e.sprintf("%d %d %d %ld %30s %d",
+	      hs.x, hs.y, hs.seconds, hs.date, hs.name, hs.gravity);
     conf->writeEntry(s, e);
   }
   
@@ -649,7 +680,7 @@ void App::showHighscore(int focusitem)  {
   table->addWidget(l, 0, 3);
   l = new QLabel(locale->translate("Score"), dlg);
   l->setFont(f);
-  l->setMinimumSize(l->sizeHint());
+  l->setMinimumSize(l->sizeHint().width()*3, l->sizeHint().height());
   table->addWidget(l, 0, 4);
   
   QString s;
@@ -689,7 +720,9 @@ void App::showHighscore(int focusitem)  {
 
     // insert score
     if(i < highscore.size()) 
-      s.sprintf("%d", getScore(hs));
+      s.sprintf("%d %s", 
+		getScore(hs),
+		hs.gravity ? locale->translate("(gravity)").data() : "");
     else
       s = "";
     e[i][4] = new QLabel(s.data(), dlg);

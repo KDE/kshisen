@@ -1,4 +1,11 @@
-1999-01-03  Mario Weilguni  <mweilguni@kde.org>
+1999-03-31  Mario Weilguni  <mweilguni@kde.org> (v.1.2)
+
+	* added gravity. 
+	* TODO: gravity and the check for unsolvable games do not work
+	together
+	* fixed menu accelerator
+
+1999-01-03  Mario Weilguni  <mweilguni@kde.org> (v.1.1)
 
 	* some board sizes did not match the entry shown in the
 	menu. Fixed.

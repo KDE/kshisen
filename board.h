@@ -102,6 +102,8 @@ public:
 
   bool getSolvableFlag();
   void setSolvableFlag(bool);
+  bool gravityFlag();
+  void setGravityFlag(bool);
 
   int  x_tiles();
   int  y_tiles();
@@ -120,6 +122,7 @@ private slots:
   void marked(int, int);
   void undrawArrow();
   void slotMadeMove(int, int, int, int);
+  void gravity(int);
 
 private: // functions
   bool loadTiles(float scale = 1.0);
@@ -156,7 +159,9 @@ private:
   int _shuffle;
 
   bool trying;
+  bool gravity_flag;
   bool _solvable_flag;
+  int  grav_col_1, grav_col_2;
 
   int highlighted_tile;
 };
