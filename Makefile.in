@@ -10,6 +10,14 @@ KDE_RPATH = @KDE_RPATH@
 LIBTOOL = @LIBTOOL@
 kde_libraries = @kde_libraries@
 qt_libraries = @qt_libraries@
+install_root    = @install_root@
+kde_datadir     = @kde_datadir@
+kde_appsdir     = @kde_appsdir@
+kde_bindir      = @kde_bindir@
+kde_minidir     = @kde_minidir@
+kde_icondir     = @kde_icondir@
+kde_confdir     = @kde_confdir@
+kde_htmldir     = @kde_htmldir@
 
 # @LDFLAGS@    : is set to -s (when not debuging) for stripping
 # @all_libra.@ : is set to all needed libraries paths for QT, KDE and X11
@@ -29,12 +37,10 @@ INSTALL_DIR = $(install) -d -m 0755
 INSTALL_DIR_PRIVATE = $(install) -d -m 0700
 
 prefix = @prefix@
-KDEINC = $(prefix)/include
-BINDIR = $(prefix)/bin
-KDELNKDIR= $(prefix)/share/applnk/Games
-LIBDIR = $(prefix)/lib
-PICDIR = $(prefix)/share/apps/kshisen/pics
-DOCDIR = $(prefix)/share/doc/HTML/en/kshisen
+BINDIR = $(kde_bindir)
+KDELNKDIR= $(kde_appsdir)/Games
+PICDIR = $(kde_datadir)/kshisen/pics
+DOCDIR = $(kde_htmldir)/en/kshisen
 
 ########### File Formats ###########
 
