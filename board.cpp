@@ -36,24 +36,25 @@
  *******************************************************************
  */
 
-#include "board.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/times.h>
+
 #include <qpainter.h>
-#include <kapp.h>
 #include <qimage.h>
 #include <qtimer.h>
 #include <qlist.h>
-#include <sys/times.h>
 #include <qbitarray.h>
-#include <debug.h>
+#include <qbitmap.h>
+
+#include <kapp.h>
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kglobal.h>
 #include <kstddirs.h>
-#include <qbitmap.h>
-
 #include <kmessagebox.h>
+
+#include "board.h"
 
 #ifdef DEBUGGING
 #include <unistd.h>

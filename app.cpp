@@ -39,7 +39,6 @@
 #include "app.h"
 #include "version.h"
 
-#include <debug.h>
 #include <math.h>
 #include <stdio.h>
 
