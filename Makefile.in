@@ -10,6 +10,7 @@ KDE_RPATH = @KDE_RPATH@
 LIBTOOL = @LIBTOOL@
 kde_libraries = @kde_libraries@
 qt_libraries = @qt_libraries@
+exec_prefix = @exec_prefix@
 install_root    = @install_root@
 kde_datadir     = @kde_datadir@
 kde_appsdir     = @kde_appsdir@
