@@ -29,7 +29,7 @@
                 <cstring>kcfg_Solvable</cstring>
             </property>
             <property name="text">
-                <string>Allow Unsolvable Games</string>
+                <string>Allow unsolvable games</string>
             </property>
         </widget>
         <widget class="QGroupBox">
@@ -141,7 +141,7 @@
                 <cstring>kcfg_Unscaled</cstring>
             </property>
             <property name="text">
-                <string>Prefer Unscaled Tiles</string>
+                <string>Prefer unscaled tiles</string>
             </property>
         </widget>
         <widget class="QGroupBox">
