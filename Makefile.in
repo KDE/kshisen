@@ -34,7 +34,7 @@ BINDIR = $(prefix)/bin
 KDELNKDIR= $(prefix)/share/applnk/Games
 LIBDIR = $(prefix)/lib
 PICDIR = $(prefix)/share/apps/kshisen/pics
-DOCDIR = $(prefix)/share/doc/HTML/default/kshisen
+DOCDIR = $(prefix)/share/doc/HTML/en/kshisen
 
 ########### File Formats ###########
 
