@@ -15,19 +15,15 @@ noinst_HEADERS = app.h board.h tileset.h debug.h version.h
 
 kshisen_SOURCES = main.cpp board.cpp app.cpp tileset.cpp
 
-appsdir   = $(kde_appsdir)/Games/Board
-apps_DATA = kshisen.desktop
+xdg_apps_DATA = kshisen.desktop
 KDE_ICON  = kshisen
 
 SUBDIRS = pics 
 
-EXTRA_DIST = $(apps_DATA) 
+EXTRA_DIST = $(xdg_apps_DATA) 
 
 rcdir = $(kde_datadir)/kshisen
 rc_DATA = kshisenui.rc
 
 messages: rc.cpp
 	$(XGETTEXT) rc.cpp $(kshisen_SOURCES) -o $(podir)/kshisen.pot
-
-install-data-local:
-	rm -rf $(DESTDIR)$(kde_appsdir)/Games/kshisen.desktop
