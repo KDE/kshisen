@@ -48,11 +48,12 @@
 #include <kpopupmenu.h>
 #include <kstatusbar.h>
 #include <klocale.h>
+#include <kpushbutton.h>
+#include <kstdguiitem.h>
 
 #include <qlayout.h>
 #include <qtimer.h>
 #include <qlineedit.h>
-#include <qpushbutton.h>
 
 #include <cmath>
 
@@ -499,7 +500,7 @@ QString App::getPlayerName()
 	e->setText( lastPlayerName );
 	e->setFocus();
 
-	QPushButton *b = new QPushButton(i18n("OK"), dlg);
+	QPushButton *b = new KPushButton(KStdGuiItem::ok(), dlg);
 	b->setDefault(TRUE);
 	b->setFixedSize(b->sizeHint());
 
@@ -850,7 +851,7 @@ void App::showHighscore(int focusitem)
 		}
 	}
 
-	QPushButton *b = new QPushButton(i18n("Close"), dlg);
+	QPushButton *b = new KPushButton(KStdGuiItem::close(), dlg);
 
 	b->setFixedSize(b->sizeHint());
 
