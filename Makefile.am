@@ -29,13 +29,13 @@ EXTRA_DIST = $(apps_DATA) $(icon_DATA) mini-kshisen.xpm
 
 install-data-local:
 	$(mkinstalldirs) $(kde_minidir)
-	$(INSTALL_DATA) $(srcdir)/mini-kshisen.xpm $(kde_minidir)/kshisen.xpm
-	$(mkinstalldirs) $(kde_minidir)/../large
-	$(INSTALL_DATA) $(srcdir)/large-kshisen.xpm $(kde_minidir)/../large/kshisen.xpm
+	$(INSTALL_DATA) $(srcdir)/mini-kshisen.xpm $(kde_icondir)hisen.xpm
+	$(mkinstalldirs) $(kde_icondir)/large
+	$(INSTALL_DATA) $(srcdir)/large-kshisen.xpm $(kde_icondir)/large/kshisen.xpm
 
 uninstall-local:
-	-rm -f $(kde_minidir)/kshisen.xpm
-	-rm -f $(kde_minidir)/../large/kshisen.xpm
+	-rm -f $(kde_icondir)hisen.xpm
+	-rm -f $(kde_icondir)/large/kshisen.xpm
 
 messages:
 	$(XGETTEXT) -C -ktranslate -ki18n -x $(includedir)/kde.pot $(kshisen_SOURCES) && mv messages.po ../po/kshisen.pot
