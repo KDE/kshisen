@@ -415,10 +415,7 @@ QString App::getPlayerName() {
   e->setText("XXXXXXXXXXXXXXXX");
   e->setMinimumWidth(e->sizeHint().width());
   e->setFixedHeight(e->sizeHint().height());
-  if ( !lastPlayerName.isEmpty() )
-    e->setText( lastPlayerName );
-  else
-    e->setText("");
+  e->setText( lastPlayerName );
   e->setFocus();
 
   QPushButton *b = new QPushButton(i18n("OK"), dlg);
