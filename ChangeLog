@@ -1,3 +1,20 @@
+2002-08-01  Dave Corrie  <kde@davecorrie.com> (v.1.4)
+
+	Recent changes of note. (Does not list all the changes that
+	happened in the last three years!)
+
+	* [Andreas Beckermann] make keybindings configurable
+	* [Jason Lane] statusbar shows number of tiles remaining
+	* [Jason Lane] smoothScale tiles when shrinking
+	* [Jason Lane] remove need for separate tile mask pixmap
+	* [Jason Lane] reset "cheat mode" flag when changing board
+	  size or difficulty level
+	* unicode names are now shown correctly in highscore table
+	* improved speed of layout calculation
+	* reduced flicker when highlighting/unhighlighting tiles
+	* cache current tile scale value
+	* FINALLY fix undo/redo in gravity mode
+
 1999-06-19  Mario Weilguni  <mweilguni@kde.org> (v.1.3)
 
 	* tiles now have a mask, better drawing
@@ -15,7 +32,7 @@
 
 	* replace all locale->translate with i18n
 	* fixed a bug in the writeHighscore method
-	
+
 1999-03-31  Mario Weilguni  <mweilguni@kde.org> (v.1.2)
 
 	* added gravity. 
