@@ -151,6 +151,8 @@ private:
 
   bool trying;
   bool _solvable_flag;
+
+  int highlighted_tile;
 };
 
 #endif

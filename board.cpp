@@ -83,10 +83,12 @@ Board::Board(QWidget *parent) : QWidget(parent) {
   connect(this, SIGNAL(fieldClicked(int, int)),
 	  this, SLOT(marked(int, int)));
   connect(this, SIGNAL(madeMove(int, int, int, int)),
-	  this, SLOT(slotMadeMove(int, int, int, int)));
+	  this, SLOT(slotMadeMove(int, int, int, int)));  
 
   setShuffle(0);
   setSize(18, 8);
+
+  highlighted_tile = -1;
 }
 
 Board::~Board() {
@@ -136,14 +138,29 @@ void Board::mousePressEvent(QMouseEvent *e) {
 // Mark tile
 
       if(e->button() == LeftButton) {
-      if(pos_x >= 0 && pos_x < x_tiles() && pos_y >= 0 && pos_y < y_tiles())
-              emit fieldClicked(pos_x, pos_y);  
+	int oldmarkx = mark_x;
+	int oldmarky = mark_y;
+
+	mark_x=-1; mark_y=-1;
+	if(highlighted_tile != -1) {
+	  for(int i = 0; i < x_tiles(); i++)
+	    for(int j = 0; j < y_tiles(); j++){
+	      if( highlighted_tile == getField(i, j))
+		updateField(i, j);	      
+	    }
+	  mark_x = oldmarkx; 
+	  mark_y = oldmarky;   // no tile selected	  
+	}
+
+	if(pos_x >= 0 && pos_x < x_tiles() && pos_y >= 0 && pos_y < y_tiles())
+	  emit fieldClicked(pos_x, pos_y);  
       }
 
 // Assist by lighting all tiles of same type
 
       if(e->button() == RightButton) {
               int field = getField(pos_x,pos_y);
+	      highlighted_tile = field;
 
               for(int i = 0; i < x_tiles(); i++)
                       for(int j = 0; j < y_tiles(); j++){
