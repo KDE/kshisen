@@ -194,13 +194,13 @@ App::App() : KTopLevelWidget() {
   connect(tb, SIGNAL(clicked(int)),
 	  this, SLOT(menuCallback(int)));
 
-  tb->insertButton(ICON("exit.xpm"), 
+  tb->insertButton(BarIcon("exit"), 
 		   ID_FQUIT, TRUE, i18n("Quit"));
-  tb->insertButton(ICON("back.xpm"), 
+  tb->insertButton(BarIcon("back"), 
 		   ID_GUNDO, TRUE, i18n("Undo"));
-  tb->insertButton(ICON("forward.xpm"), 
+  tb->insertButton(BarIcon("forward"), 
 		   ID_GREDO, TRUE, i18n("Redo"));
-  tb->insertButton(ICON("help.xpm"), 
+  tb->insertButton(BarIcon("help"), 
 		   ID_HHELP, TRUE, i18n("Help"));
   tb->show();
   addToolBar(tb);
