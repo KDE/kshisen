@@ -55,47 +55,9 @@
 #include <kglobal.h>
 #include <kmessagebox.h>
 #include <kconfig.h>
-
-#define ID_FQUIT	101
-
-#define ID_GFIRST       201
-#define ID_GUNDO	201
-#define ID_GREDO	202
-#define ID_GHOF		203
-#define ID_GRESTART	204
-#define ID_GNEW		205
-#define ID_GHINT	206
-#define ID_GISSOLVE	207
-#define ID_GPAUSE       208
-#define ID_GLAST        208
-
-#ifdef DEBUGGING
-#define ID_GFINISH      220
-#undef  ID_GLAST
-#define ID_GLAST        208
-#endif
-
-#define ID_OFIRST       300
-#define ID_OSIZE1	300
-#define ID_OSIZE2	301
-#define ID_OSIZE3	302
-#define ID_OSIZE4	303
-#define ID_OSIZE5	304
-//#define ID_OSIZECUSTOM	305
-#define ID_OSPEED1	306
-#define ID_OSPEED2	307
-#define ID_OSPEED3	308
-#define ID_OSPEED4	309
-#define ID_OSPEED5	310
-#define ID_OLVL1	311
-#define ID_OLVL2	312
-#define ID_OLVL3	313
-#define ID_OSOLVABLE	314
-#define ID_OGRAVITY     315
-#define ID_OLAST        315
-
-#define ID_HTUTORIAL	901
-#define ID_HHELP	900	
+#include <kaction.h>
+#include <kstdaction.h>
+#include <kdebug.h>
 
 static int size_x[5] = {14, 18, 24, 26, 30};
 static int size_y[5] = { 6,  8, 12, 14, 16};
@@ -108,76 +70,9 @@ App::App() : KMainWindow(0) {
   readHighscore();
 
   cheat = FALSE;
+  
 
-  // create menu
-  mb = new KMenuBar(this);
-  QPopupMenu *gm = new QPopupMenu;
-  gm->insertItem(i18n("&Undo"), ID_GUNDO);
-  gm->insertItem(i18n("&Redo"), ID_GREDO);
-  gm->insertSeparator();
-  gm->insertItem(i18n("Get &hint"), ID_GHINT);
-  gm->insertSeparator();
-  gm->insertItem(i18n("&New game"), ID_GNEW);
-  gm->insertItem(i18n("Res&tart game"), ID_GRESTART);
-  gm->insertItem(i18n("&Pause game"), ID_GPAUSE);
-  gm->insertSeparator();
-  gm->insertItem(i18n("Is game solvable?"), ID_GISSOLVE);
-  gm->insertSeparator();
-  gm->insertItem(i18n("Hall of &Fame"), ID_GHOF);
-#ifdef DEBUGGING
-  gm->insertSeparator();
-  gm->insertItem("&Finish", ID_GFINISH);
-#endif
-  gm->insertSeparator();
-  gm->insertItem(i18n("&Quit"), ID_FQUIT);
-
-
-  QPopupMenu *om = new QPopupMenu;
-  om->setCheckable(TRUE);
-  QPopupMenu *om_s = new QPopupMenu;
-  om_s->setCheckable(TRUE);
-  om_s->insertItem(i18n("14x6"), ID_OSIZE1);
-  om_s->insertItem(i18n("18x8"), ID_OSIZE2);
-  om_s->insertItem(i18n("24x12"), ID_OSIZE3);
-  om_s->insertItem(i18n("26x14"), ID_OSIZE4);
-  om_s->insertItem(i18n("30x16"), ID_OSIZE5);
-  //om_s->insertItem(i18n("Custom size..."), ID_OSIZECUSTOM);
-  QPopupMenu *om_sp = new QPopupMenu;
-  om_sp->setCheckable(TRUE);
-  om_sp->insertItem(i18n("Very fast"), ID_OSPEED1);
-  om_sp->insertItem(i18n("Fast"), ID_OSPEED2);
-  om_sp->insertItem(i18n("Medium"), ID_OSPEED3);
-  om_sp->insertItem(i18n("Slow"), ID_OSPEED4);
-  om_sp->insertItem(i18n("Very slow"), ID_OSPEED5);
-  QPopupMenu *om_l = new QPopupMenu;
-  om_l->insertItem(i18n("Easy"), ID_OLVL1);
-  om_l->insertItem(i18n("Medium"), ID_OLVL2);
-  om_l->insertItem(i18n("Hard"), ID_OLVL3);
-
-  QPopupMenu *help = helpMenu(i18n("Shisen-Sho")
-                                    + " " + KSHISEN_VERSION
-                                    + i18n("\n\nby Mario Weilguni")
-                                    + " (mweilguni@sime.com)");
-
-  mb->insertItem(i18n("&Game"), gm);
-  om->insertItem(i18n("Si&ze"), om_s);
-  om->insertItem(i18n("S&peed"), om_sp);
-  om->insertItem(i18n("&Level"), om_l);
-  om->insertItem(i18n("G&ravity"), ID_OGRAVITY);
-  om->insertItem(i18n("Disallow unsolvable games"), ID_OSOLVABLE);
-  mb->insertItem(i18n("&Options"), om);
-  mb->insertSeparator();
-  mb->insertItem(i18n("&Help"), help);
-
-  mb->setAccel(CTRL+Key_Q, ID_FQUIT);
-  mb->setAccel(CTRL+Key_Z, ID_GUNDO);
-  mb->setAccel(CTRL+Key_N, ID_GNEW);
-  mb->setAccel(CTRL+Key_D, ID_GREDO);
-  mb->setAccel(CTRL+Key_R, ID_GRESTART);
-  mb->setAccel(CTRL+Key_H, ID_GHINT);
-  mb->setAccel(Key_F1, ID_HHELP);
-
-  mb->show();
+  initKAction();
 
   b = new Board(this);  
   setCentralWidget(b);
@@ -186,22 +81,6 @@ App::App() : KMainWindow(0) {
   sb->insertItem(i18n("Your time: XX:XX:XX (XXXXXXXXXXXXXXX)"), 1);
   sb->insertItem(i18n("Cheat mode"), 2);
   sb->changeItem("", 2);
-
-  tb = new KToolBar(this);
-  connect(tb, SIGNAL(clicked(int)),
-	  this, SLOT(menuCallback(int)));
-
-  tb->insertButton(BarIcon("exit"), 
-		   ID_FQUIT, TRUE, i18n("Quit"));
-  tb->insertButton(BarIcon("back"), 
-		   ID_GUNDO, TRUE, i18n("Undo"));
-  tb->insertButton(BarIcon("forward"), 
-		   ID_GREDO, TRUE, i18n("Redo"));
-  tb->insertButton(BarIcon("help"), 
-		   ID_HHELP, TRUE, i18n("Help"));
-
-  connect(mb, SIGNAL(activated(int)),
-	  this, SLOT(menuCallback(int)));
 
   connect(b, SIGNAL(changed()),
 	  this, SLOT(enableItems()));
@@ -212,14 +91,16 @@ App::App() : KMainWindow(0) {
   // load default settings
   KConfig *conf = kapp->config();
   int i;
-  i = conf->readNumEntry("Speed", ID_OSPEED3);
-  menuCallback(i); // what a hack
+  i = conf->readNumEntry("Speed", 2);
+  ((KSelectAction*)actionCollection()->action("options_speed"))->setCurrentItem(i);
+  changeSpeed();
 
-  i = conf->readNumEntry("Size", ID_OSIZE2);
+  i = conf->readNumEntry("Size", 300 + 2);
   //if(i == ID_OSIZECUSTOM)
-  //printf("CUSTOM SIZE, TODO\n");
+  //kdDebug() << "CUSTOM SIZE, TODO" << endl;
   //  else
-    menuCallback(i);
+  ((KSelectAction*)actionCollection()->action("options_size"))->setCurrentItem(i - 300);
+  changeSize();
 
   QTimer *t = new QTimer(this);
   t->start(1000);
@@ -233,196 +114,205 @@ App::App() : KMainWindow(0) {
   bool _b;
   _b = conf->readNumEntry("Solvable", 1) > 0;
   b->setSolvableFlag(_b);
-  mb->setItemChecked(ID_OSOLVABLE, 
-		     b->getSolvableFlag());
+  ((KToggleAction*)actionCollection()->action("options_disallow"))->setChecked(b->getSolvableFlag());
 
   _b = conf->readNumEntry("Gravity", 1) > 0;
   b->setGravityFlag(_b);
-  mb->setItemChecked(ID_OGRAVITY, _b);
+  ((KToggleAction*)actionCollection()->action("options_gravity"))->setChecked(_b);
 
   kapp->processEvents();
-  i = conf->readNumEntry("Level", ID_OLVL2);
-  menuCallback(i);
+  i = conf->readNumEntry("Level", 311 + 1);
+  ((KSelectAction*)actionCollection()->action("options_level"))->setCurrentItem(i - 311);
+  changeLevel();
 
   sizeChanged();
   enableItems();
 }
 
 App::~App() {
-  delete tb;
-  delete mb;
   delete b;
   delete sb;
 }
 
-void App::menuCallback(int id) {
-  int i;
+void App::initKAction() {
+//Game - does everything belong to here (esp. undo / redo)?
+  KStdAction::openNew(this, SLOT(newGame()), actionCollection(), "game_new");
+  KStdAction::quit(this, SLOT(quitGame()), actionCollection(), "game_quit");
+  KStdAction::undo(this, SLOT(undo()), actionCollection(), "game_undo");//belongs to edit, not game
+  KStdAction::redo(this, SLOT(redo()), actionCollection(), "game_redo");//belongs to edit, not game
 
-  if ( id < 10 )		// Use default help menu
-    return;
+  (void)new KAction(i18n("Is game solvable?"), 0, this, SLOT(isSolvable()), actionCollection(), "game_solvable");
+  (void)new KAction(i18n("Res&tart game"), KAccel::stringToKey("CTRL+R"), this, SLOT(restartGame()), actionCollection(), "game_restart");
+  (void)new KAction(i18n("&Pause game"), 0, this, SLOT(pause()), actionCollection(), "game_pause");
+  (void)new KAction(i18n("Get &hint"), KAccel::stringToKey("CTRL+H"), this, SLOT(hint()), actionCollection(), "game_hint");
+  (void)new KAction(i18n("Hall of &Fame"), 0, this, SLOT(hallOfFame()), actionCollection(), "game_fame");
 
-  switch(id) {
-  case ID_FQUIT:
-    delete this;
-    kapp->quit();
-    return;
-    break;
-
-  case ID_GPAUSE: 
-    {
-      bool paused = b->pause();      
-      lockMenus(paused);
-      if(paused)
-	mb->changeItem(i18n("Resume game"), ID_GPAUSE);
-      else
-	mb->changeItem(i18n("Pause game"), ID_GPAUSE);
-    }
-    break;
-
-  case ID_GISSOLVE:
-    if(b->solvable())
-	KMessageBox::information(this,
-				i18n("This game is solveable"));
-    else
-	KMessageBox::information(this,
-				 i18n("This game is NOT solveable"));
-    break;
-
-  case ID_GHINT:
 #ifdef DEBUGGING
-    b->makeHintMove();
-#else
-    b->getHint();
-    cheat = TRUE;
-    sb->changeItem(i18n("Cheat mode"), 2);
+  (void)new KAction("&Finish", 0, b, SLOT(finish()), actionCollection(), "game_finish");
 #endif
-    break;
 
-  case ID_GHOF:
-    showHighscore();
-    break;
 
-  case ID_GNEW:
-    b->newGame();
-    cheat = FALSE;
+//Settings
+  QStringList list;
+  KSelectAction* size = new KSelectAction(i18n("Si&ze"), 0, this, SLOT(changeSize()), actionCollection(), "options_size");
+  list.append(i18n("14x6"));
+  list.append(i18n("18x8"));
+  list.append(i18n("24x12"));
+  list.append(i18n("26x14"));
+  list.append(i18n("30x16"));
+  size->setItems(list);
+
+  list.clear();
+  KSelectAction* speed = new KSelectAction(i18n("S&peed"), 0, this, SLOT(changeSpeed()), actionCollection(), "options_speed");
+  list.append(i18n("Very fast"));
+  list.append(i18n("Fast"));
+  list.append(i18n("Medium"));
+  list.append(i18n("Slow"));
+  list.append(i18n("Very slow"));
+  speed->setItems(list);
+
+  list.clear();
+  KSelectAction* level = new KSelectAction(i18n("&Level"), 0, this, SLOT(changeLevel()), actionCollection(), "options_level");
+  list.append(i18n("Easy"));
+  list.append(i18n("Medium"));
+  list.append(i18n("Hard"));
+  level->setItems(list);
+
+  (void)new KToggleAction(i18n("G&ravity"), 0, this, SLOT(toggleGravity()), actionCollection(), "options_gravity");
+  (void)new KToggleAction(i18n("Disallow unsolvable games"), 0, this, SLOT(toggleDisallowUnsolvable()), actionCollection(), "options_disallow");
+  
+  createGUI("kshisenui.rc");
+}
+
+void App::hallOfFame() {
+  showHighscore();
+}
+
+void App::newGame() {
+  b->newGame();
+  cheat = FALSE;
   sb->changeItem("", 2);
-    break;
-
-  case ID_GRESTART:
-    b->setUpdatesEnabled(FALSE);
-    while(b->canUndo())
-      b->undo();
-    b->setUpdatesEnabled(TRUE);
-    b->update();
-    break;
-
-  case ID_GUNDO:
-    if(b->canUndo()) {
-      b->undo();
-      cheat = TRUE;
-      sb->changeItem(i18n("Cheat mode"), 2);
-    }
-    break;
-
-  case ID_GREDO:
-    if(b->canRedo()) 
-      b->redo();
-    break;
-
-#ifdef DEBUGGING
-  case ID_GFINISH:
-    b->finish();
-    break;
-#endif
-
-  case ID_OSOLVABLE:
-    b->setSolvableFlag(!b->getSolvableFlag());
-    kapp->config()->writeEntry("Solvable", (int)b->getSolvableFlag());
-    mb->setItemChecked(id, b->getSolvableFlag());
-    break;
-
-  case ID_OLVL1:
-  case ID_OLVL2:
-  case ID_OLVL3:
-    for(i = ID_OLVL1; i <= ID_OLVL3; i++)
-      mb->setItemChecked(i, i == id);
-    b->setShuffle((id - ID_OLVL1) * 4 + 1);
-    b->newGame();
-    kapp->config()->writeEntry("Level", id);
-    break;
-   
-  case ID_OSIZE1:
-  case ID_OSIZE2:
-  case ID_OSIZE3:
-  case ID_OSIZE4:
-  case ID_OSIZE5:
-    {
-      b->setSize(size_x[id-ID_OSIZE1], size_y[id-ID_OSIZE1]);
-      b->newGame();
-      for(i = ID_OSIZE1; i <= ID_OSIZE5; i++)
-	mb->setItemChecked(i, FALSE);
-      mb->setItemChecked(id, TRUE);
-      kapp->config()->writeEntry("Size", id);
-    }
-    break;
-
-    //  case ID_OSIZECUSTOM:
-    //printf("CUSTOM SIZE\n");
-    //break;
-
-  case ID_OSPEED1:
-  case ID_OSPEED2:
-  case ID_OSPEED3:
-  case ID_OSPEED4:
-  case ID_OSPEED5:
-    b->setDelay(DELAY[id - ID_OSPEED1]);
-    for(i = ID_OSPEED1; i <= ID_OSPEED5; i++)
-      mb->setItemChecked(i, i == id);
-    break;
-
-  case ID_HTUTORIAL:
-    printf("ENTER TUTORIAL\n");
-    break;
-
-  case ID_HHELP:
-    KApplication::kApplication()->invokeHelp(); 
-    break;
-
-  case ID_OGRAVITY:
-    if(!b->canUndo()) {
-      b->setGravityFlag(!b->gravityFlag());
-      kapp->config()->writeEntry("Gravity", (int)b->gravityFlag());
-    }
-    break;
-
-  default:
-    printf("kshisen: unimplemented command %d\n", id);
-  }
-
   enableItems();
 }
 
+void App::quitGame() {
+  delete this;
+  kapp->quit();
+}
+
+void App::restartGame() {
+  b->setUpdatesEnabled(FALSE);
+  while(b->canUndo())
+    b->undo();
+  b->setUpdatesEnabled(TRUE);
+  b->update();
+  enableItems();
+}
+
+void App::isSolvable() {
+  if(b->solvable())
+	KMessageBox::information(this,
+				i18n("This game is solveable"));
+  else
+	KMessageBox::information(this,
+				 i18n("This game is NOT solveable"));
+}
+
+void App::pause() {
+  bool paused = b->pause();      
+  lockMenus(paused);
+  if(paused)
+	actionCollection()->action("game_pause")->setText("R&esume game");
+  else
+	actionCollection()->action("game_pause")->setText("&Pause game");
+}
+
+void App::undo() {
+  if(b->canUndo()) {
+    b->undo();
+    cheat = TRUE;
+    sb->changeItem(i18n("Cheat mode"), 2);
+    enableItems();
+  }
+}
+
+void App::redo() {
+  if(b->canRedo()) 
+    b->redo();
+    enableItems();
+}
+
+void App::hint() {
+#ifdef DEBUGGING
+  b->makeHintMove();
+#else
+  b->getHint();
+  cheat = TRUE;
+  sb->changeItem(i18n("Cheat mode"), 2);
+#endif
+  enableItems();
+}
+
+void App::toggleGravity() {
+  if(!b->canUndo()) {
+    b->setGravityFlag(!b->gravityFlag());
+    kapp->config()->writeEntry("Gravity", (int)b->gravityFlag());
+  } else {
+    ((KToggleAction*)actionCollection()->action("options_gravity"))->setChecked(b->gravityFlag());
+  }
+}
+
+void App::toggleDisallowUnsolvable() {
+  b->setSolvableFlag(!b->getSolvableFlag());
+  kapp->config()->writeEntry("Solvable", (int)b->getSolvableFlag());
+}
+
+void App::changeSpeed() {
+  int index = ((KSelectAction*)actionCollection()->action("options_speed"))->currentItem();
+  b->setDelay(DELAY[index]);
+  kapp->config()->writeEntry("Speed", index);
+}
+
+void App::changeSize() {
+  int index = ((KSelectAction*)actionCollection()->action("options_size"))->currentItem();
+  b->setSize(size_x[index], size_y[index]);
+  b->newGame();
+  kapp->config()->writeEntry("Size", 300 + index);// 300 is from the old QPopuMenu+ID way - before KAction
+}
+
+void App::changeLevel() {
+  int index = ((KSelectAction*)actionCollection()->action("options_level"))->currentItem();
+  b->setShuffle(index * 4 + 1);
+  b->newGame();
+  kapp->config()->writeEntry("Level", 311 + index); // 311 is from the old QPopuMenu+ID way - before KAction
+}
+
 void App::lockMenus(bool lock) {
-  int i;
-  
-  for(i = ID_GFIRST; i <= ID_GLAST; i++)
-    mb->setItemEnabled(i, !lock | i==ID_GPAUSE);
-  
-  for(i = ID_OFIRST; i <= ID_OLAST; i++)
-    mb->setItemEnabled(i, !lock);
+//#warning FIXME
+  QValueList<KAction*> list = actionCollection()->actions();
+  for (int unsigned i = 0; i < list.count(); i++) {
+      list[i]->setEnabled(!lock);
+  }
+  actionCollection()->action("game_pause")->setEnabled(true);
+
+  //FIXME This is ugly - a better solution (which can be used directly in the loop
+  //withput knowing which entries exist in the "help" menu) is wanted!
+  actionCollection()->action(KStdAction::stdName(KStdAction::HelpContents))->setEnabled(true);
+  actionCollection()->action(KStdAction::stdName(KStdAction::WhatsThis))->setEnabled(true);
+  actionCollection()->action(KStdAction::stdName(KStdAction::ReportBug))->setEnabled(true);
+  actionCollection()->action(KStdAction::stdName(KStdAction::AboutApp))->setEnabled(true);
+  actionCollection()->action(KStdAction::stdName(KStdAction::AboutKDE))->setEnabled(true);
+
   enableItems();
 }
 
 void App::enableItems() {
   if(!b->isPaused()) {
-    mb->setItemEnabled(ID_GUNDO, b->canUndo());
-    mb->setItemEnabled(ID_GREDO, b->canRedo());
-    mb->setItemEnabled(ID_GRESTART, b->canUndo());
-    tb->setItemEnabled(ID_GUNDO, b->canUndo());
-    tb->setItemEnabled(ID_GREDO, b->canRedo());
-    tb->setItemEnabled(ID_GRESTART, b->canUndo());
-    mb->setItemEnabled(ID_OGRAVITY, !b->canUndo());
-    mb->setItemChecked(ID_OGRAVITY, b->gravityFlag());
+    actionCollection()->action("game_undo")->setEnabled(b->canUndo());
+    actionCollection()->action("game_redo")->setEnabled(b->canRedo());
+    actionCollection()->action("game_restart")->setEnabled(b->canUndo());
+    actionCollection()->action("options_gravity")->setEnabled(!b->canUndo());
+    ((KToggleAction*)actionCollection()->action("options_gravity"))->setChecked(b->gravityFlag());
   }
 }
 

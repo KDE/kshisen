@@ -66,11 +66,27 @@ public:
   ~App();
 
 private slots:
-  void menuCallback(int);
   void slotEndOfGame();
   void enableItems();
   void sizeChanged();
   void updateScore();
+
+  void newGame();
+  void quitGame();
+  void restartGame();
+  void isSolvable();
+  void pause();
+  void undo();
+  void redo();
+  void hint();
+  void toggleDisallowUnsolvable();
+  void toggleGravity();
+  void changeLevel();
+  void changeSpeed();
+  void changeSize();
+  void hallOfFame();
+
+
 
 private:
   void lockMenus(bool);
@@ -82,10 +98,10 @@ private:
   bool isBetter(HighScore &, HighScore &);
   void showHighscore(int focusitem = -1);
 
+  void initKAction();
+
 private:
   Board *b;
-  KMenuBar *mb;
-  KToolBar *tb;
   KStatusBar *sb;
   QArray<HighScore> highscore;
   bool cheat;

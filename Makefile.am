@@ -23,8 +23,11 @@ SUBDIRS = pics
 
 EXTRA_DIST = $(apps_DATA) 
 
-messages:
-	$(XGETTEXT) $(kshisen_SOURCES) -o $(podir)/kshisen.pot
+rcdir = $(kde_datadir)/kshisen
+rc_DATA = kshisenui.rc
+
+messages: rc.cpp
+	$(XGETTEXT) rc.cpp $(kshisen_SOURCES) -o $(podir)/kshisen.pot
 
 
 
