@@ -287,7 +287,7 @@ All required libraries as well as &kshisen; itself can be found on
 <title>Compilation and installation</title>
 
 <para>
-In order to compile and install &kshisen on your
+In order to compile and install &kshisen; on your
 system, extract the package and type the following in the base directory of the
 &kshisen; distribution:
 </para>
