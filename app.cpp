@@ -61,10 +61,9 @@
 #include <kstdgameaction.h>
 #include <khighscore.h>
 #include <kdebug.h>
-
-static int size_x[5] = {14, 18, 24, 26, 30};
+static int size_x[5] = { 14, 18, 24, 26, 30};
 static int size_y[5] = { 6,  8, 12, 14, 16};
-static int DELAY[5] = {125, 250, 500, 750, 1000};
+static int DELAY[5] = { 125, 250, 500, 750, 1000};
 
 extern int MAX(int, int);
 
@@ -357,7 +356,7 @@ void App::slotEndOfGame() {
 
     if(isHighscore) {
       QString name = getPlayerName();
-      strncpy(hs.name, name.local8Bit() , sizeof(hs.name) - 1);
+      strncpy(hs.name, name.utf8() , sizeof(hs.name) - 1);
       hs.date = time((time_t*)0);
       hs.x = b->x_tiles();
       hs.y = b->y_tiles();
@@ -606,7 +605,7 @@ void App::writeHighscore() {
     hi_sec.append(QString::number(hs.seconds));
     hi_date.append(QString::number(hs.date));
     hi_grav.append(QString::number(hs.gravity));
-    hi_name.append(hs.name);
+    hi_name.append(QString::fromUtf8( hs.name ));
   }
   highscoreTable->writeList("x", hi_x);
   highscoreTable->writeList("y", hi_y);
@@ -681,7 +680,7 @@ void App::showHighscore(int focusitem)  {
 
     // insert name
     if(i < highscore.size())
-      e[i][1] = new QLabel(QString::fromUtf8( hs.name, 16 ), dlg);
+      e[i][1] = new QLabel(QString::fromUtf8( hs.name ), dlg);
     else
       e[i][1] = new QLabel("", dlg);
 
