@@ -102,15 +102,15 @@ Board::~Board() {
       delete pm_tile[i];  
 }
 
-inline int Board::x_tiles() {
+int Board::x_tiles() {
   return _x_tiles;
 }
 
-inline int Board::y_tiles() {
+int Board::y_tiles() {
   return _y_tiles;
 }
 
-inline void Board::setField(int x, int y, int value) {
+void Board::setField(int x, int y, int value) {
   if(x < x_tiles() && y < y_tiles())
     field[y * x_tiles() + x] = value;
   else {
@@ -119,7 +119,7 @@ inline void Board::setField(int x, int y, int value) {
   }
 }
 
-inline int Board::getField(int x, int y) {
+int Board::getField(int x, int y) {
   if(x == x_tiles() || x == -1)
     return EMPTY;
   else if(y == y_tiles() || y == -1)

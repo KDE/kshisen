@@ -603,7 +603,7 @@ void App::writeHighscore() {
   conf->setGroup(grp.data());
 }
 
-void App::showHighscore(int focusitem = -1) {
+void App::showHighscore(int focusitem)  {
   // this may look a little bit confusing...
   QDialog *dlg = new QDialog(0, locale->translate("Hall Of Fame"), TRUE);
   dlg->setCaption(locale->translate("Shisen-Sho: Hall Of Fame"));
