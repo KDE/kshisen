@@ -45,7 +45,7 @@
 #include <qpixmap.h>
 #include <qdatetime.h>
 #include <krandomsequence.h>
-#include <debug.h>
+#include "debug.h"
 #include <time.h>
 
 #include "tileset.h"
