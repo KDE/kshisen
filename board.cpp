@@ -39,6 +39,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/times.h>
+#include <algorithm>
 
 #include <qpainter.h>
 #include <qimage.h>
