@@ -1,4 +1,8 @@
-Fri Apr 10 15:59:17 1998    <mweilguni@kde.org>
+1998-07-17  Mario Weilguni  <mweilguni@kde.org>
+	
+	* moved to version 1.0 (it´s stable enough now)
+
+1998-04-10  Mario Weilguni  <mweilguni@kde.org>
 
 	* better highscore management. highscores are now score-based, not
 	time based

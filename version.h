@@ -1,1 +1,1 @@
-#define KSHISEN_VERSION	"0.3"
+#define KSHISEN_VERSION	"1.0"
