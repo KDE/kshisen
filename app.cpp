@@ -39,19 +39,22 @@
 #include "app.h"
 #include "version.h"
 
-#include <kapp.h>
-#include <qtimer.h>
-#include <qaccel.h>
-#include <kiconloader.h>
-#include <kseparator.h>
-#include <qlayout.h>
-#include <qmessagebox.h>
 #include <debug.h>
 #include <math.h>
-#include <qlineedit.h>
 #include <stdio.h>
-#include <kglobal.h>
+
+#include <qlayout.h>
+#include <qtimer.h>
+#include <qaccel.h>
+#include <qlineedit.h>
 #include <qpushbutton.h>
+#include <qdialog.h>
+
+#include <kapp.h>
+#include <kiconloader.h>
+#include <kseparator.h>
+#include <kglobal.h>
+#include <kmessagebox.h>
 #include <kconfig.h>
 
 #define ID_FQUIT	101
@@ -287,11 +290,11 @@ void App::menuCallback(int id) {
 
   case ID_GISSOLVE:
     if(b->solvable())
-	QMessageBox::information(this, i18n("Information"),
-				i18n("This game is solveable"), i18n("OK"));
+	KMessageBox::information(this,
+				i18n("This game is solveable"));
     else
-	QMessageBox::information(this, i18n("Information"),
-				 i18n("This game is NOT solveable"), i18n("OK"));
+	KMessageBox::information(this,
+				 i18n("This game is NOT solveable"));
     break;
 
   case ID_GHINT:
@@ -439,9 +442,9 @@ void App::sizeChanged() {
 
 void App::slotEndOfGame() {
   if(b->tilesLeft() > 0)
-      QMessageBox::information(this, i18n("End of game"),
+      KMessageBox::information(this,
 			       i18n("No more moves possible!"),
-			       i18n("OK"));
+			       i18n("End of game"));
   else {
     // create highscore entry
     HighScore hs;
@@ -473,7 +476,7 @@ void App::slotEndOfGame() {
 		(b->getTimeForGame() / 60)  % 60,
 		b->getTimeForGame() % 60);
       
-      QMessageBox::information(this, i18n("End of game"), s, i18n("OK"));
+      KMessageBox::information(this, s, i18n("End of game"));
     }
   }
 
