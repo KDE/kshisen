@@ -56,6 +56,7 @@
 #include <kglobal.h>
 #include <kmessagebox.h>
 #include <kconfig.h>
+#include <kkeysequence.h>
 #include <kaction.h>
 #include <kstdaction.h>
 #include <kstdgameaction.h>
@@ -150,7 +151,7 @@ void App::initKAction() {
   KStdGameAction::pause(this, SLOT(pause()), actionCollection());
 
   (void)new KAction(i18n("Is game solvable?"), 0, this, SLOT(isSolvable()), actionCollection(), "game_solvable");
-  (void)new KAction(i18n("Res&tart game"), KAccel::stringToKey("CTRL+R"), this, SLOT(restartGame()), actionCollection(), "game_restart");
+  (void)new KAction(i18n("Res&tart game"), KKeySequence("CTRL+R"), this, SLOT(restartGame()), actionCollection(), "game_restart");
   (void)new KAction(i18n("Get &hint"), Key_H, this, SLOT(hint()), actionCollection(), "game_hint");
 
 #ifdef DEBUGGING
