@@ -59,4 +59,4 @@ Comment[vi]=Shisen-Sho,trò chơi tương tự như Mahjongg
 Comment[xh]=Shisen-Sho, umdlalo oyelene ku Mahjongg
 Comment[zh_CN.GB2312]=Shisen-Sho，类似于 Mahjongg 的游戏
 Icon=kshisen
-KDE-X-StartupNotify=true
+X-KDE-StartupNotify=true
