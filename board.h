@@ -148,6 +148,7 @@ private: // functions
 	bool canMakePath(int x1, int y1, int x2, int y2) const;
 	bool findPath(int x1, int y1, int x2, int y2, Path& p) const;
 	bool findSimplePath(int x1, int y1, int x2, int y2, Path& p) const;
+	bool isTileHighlighted(int x, int y) const;
 	void drawConnection(int timeout);
 	QPoint midCoord(int x, int y) const;
 	void marked(int x, int y);

@@ -438,6 +438,26 @@ void Board::newGame()
 	}
 }
 
+bool Board::isTileHighlighted(int x, int y) const
+{
+	if(x == mark_x && y == mark_y)
+		return true;
+
+	if(getField(x, y) == highlighted_tile)
+		return true;
+
+	if(!connection.empty())
+	{
+		if(x == connection.front().x && y == connection.front().y)
+			return true;
+
+		if(x == connection.back().x && y == connection.back().y)
+			return true;
+	}
+
+	return false;
+}
+
 void Board::updateField(int x, int y, bool erase)
 {
 	if(trying)
@@ -482,8 +502,7 @@ void Board::paintEvent(QPaintEvent *e)
 				QRect r(xpos, ypos, w, h);
 				if(e->rect().intersects(r))
 				{
-					// check if it is a marked piece
-					if(tile == highlighted_tile || (i == mark_x && j == mark_y))
+					if(isTileHighlighted(i, j))
 						p.drawPixmap(xpos, ypos, tiles.highlightedTile(tile-1));
 					else
 						p.drawPixmap(xpos, ypos, tiles.tile(tile-1));
@@ -654,18 +673,8 @@ void Board::drawConnection(int timeout)
 		return;
 
 	// lighten the fields
-	// remember mark_x,mark_y
-	int mx = mark_x, my = mark_y;
-	mark_x = connection.front().x;
-	mark_y = connection.front().y;
 	updateField(connection.front().x, connection.front().y);
-	mark_x = connection.back().x;
-	mark_y = connection.back().y;
 	updateField(connection.back().x, connection.back().y);
-
-	// restore the mark
-	mark_x = mx;
-	mark_y = my;
 
 	QPainter p;
 	p.begin(this);
@@ -708,9 +717,12 @@ void Board::undrawConnection()
 
 	// Redraw all affected fields
 
+	Path oldConnection = connection;
+	connection.clear();
+
 	// Path.size() will always be >= 2
-	Path::const_iterator pathEnd = connection.end();
-	Path::const_iterator pt1 = connection.begin();
+	Path::const_iterator pathEnd = oldConnection.end();
+	Path::const_iterator pt1 = oldConnection.begin();
 	Path::const_iterator pt2 = pt1;
 	++pt2;
 	while(pt2 != pathEnd)
@@ -728,8 +740,6 @@ void Board::undrawConnection()
 		++pt1;
 		++pt2;
 	}
-
-	connection.clear();
 
 	Path dummyPath;
 	// game is over?
