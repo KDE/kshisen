@@ -43,6 +43,7 @@
 #include <qwidget.h>
 #include <qpixmap.h>
 #include <qdatetm.h>
+#include <time.h>
 
 typedef struct History {
   int x, y;
@@ -88,8 +89,8 @@ public:
   bool getHint_I(int &, int &, int &, int &, History h[4]);
 
   int   tilesLeft();
-  QTime getCurrentTime();
-  QTime getTimeForGame();
+  int   getCurrentTime();
+  int   getTimeForGame();
 
   bool solvable(bool norestore = FALSE);
 
@@ -131,8 +132,9 @@ private: // functions
   void clearHistory();
 
 private:
-  QTime starttime;
-  QTime time_for_game;
+  time_t starttime;
+  time_t stoptime;
+  time_t time_for_game;
 
   QList<Move> _undo;
   QList<Move> _redo;

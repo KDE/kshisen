@@ -383,9 +383,7 @@ void App::slotEndOfGame() {
   else {
     // create highscore entry
     HighScore hs;
-    hs.seconds = b->getTimeForGame().hour() * 3600 + 
-      b->getTimeForGame().minute() * 60 +
-      b->getTimeForGame().second();
+    hs.seconds = b->getTimeForGame();
     QString name = getPlayerName();
     strncpy(hs.name, (const char *)name, sizeof(hs.name) - 1);
     hs.date = time((time_t*)0);
@@ -399,9 +397,9 @@ void App::slotEndOfGame() {
       QString s;
       s.sprintf(
 		locale->translate("Congratulations! You made it in %02d:%02d:%02d"),
-		b->getTimeForGame().hour(),
-		b->getTimeForGame().minute(),
-		b->getTimeForGame().second());
+		b->getTimeForGame()/3600,
+		(b->getTimeForGame() / 60)  % 60,
+		b->getTimeForGame() % 60);
       
       KMsgBox::message(this, locale->translate("End of game"), s.data());
     }
@@ -416,9 +414,9 @@ void App::updateScore() {
   QString s;
   s.sprintf(
 	    locale->translate("Your time: %02d:%02d:%02d"),
-	    b->getTimeForGame().hour(),
-	    b->getTimeForGame().minute(),
-	    b->getTimeForGame().second());
+	    b->getTimeForGame()/3600,
+	    (b->getTimeForGame() / 60)  % 60,
+	    b->getTimeForGame() % 60);
 
   sb->changeItem(s.data(), 1);
 }

@@ -17,4 +17,10 @@
 	(the elapsed time was taken after getPlayerName() instead
 	of taking it before)
 
+	Fixed that "game-starts-before-midnight-and-ends-after-midnight"
+	bug. This will allow games with a duration up to 68 years,
+	hopefully enough for the common player. The first player who
+	breaks this limit should contact me in the year 2065; I will send 
+	him 20 bottles of Austrian beer ("Murauer") :-)
+	
 	

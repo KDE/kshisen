@@ -67,7 +67,7 @@ Board::Board(QWidget *parent) : QWidget(parent) {
   t = times(&dummy); 
   srand((int)t);
 
-  starttime.start();
+  starttime = time((time_t *)0);
 
   for(int i = 0; i < 45; i++)
     pm_tile[i] = 0;
@@ -243,7 +243,7 @@ void Board::newGame() {
   if(getShuffle() == 0) {
     if(!trying) {
       update();
-      starttime.restart();
+      starttime = time((time_t *)0);
       emit changed();
     }    
     return;
@@ -266,7 +266,7 @@ void Board::newGame() {
   if(!_solvable_flag) {
     if(!trying) {
       update();
-      starttime.restart();
+      starttime = time((time_t *)0);
       emit changed();
     }    
     return;
@@ -321,7 +321,7 @@ void Board::newGame() {
 
   if(!trying) {
     update();
-    starttime.restart();
+    starttime = time((time_t *)0);
     emit changed();
   }
 }
@@ -788,17 +788,15 @@ int Board::tilesLeft() {
   return left;
 }
 
-QTime Board::getCurrentTime() {
-  QTime midnight(0, 0, 0, 0);  
-  return midnight.addSecs(starttime.elapsed()/1000);
+int Board::getCurrentTime() {
+  return (int)(time((time_t *)0) - starttime);
 }
 
-QTime Board::getTimeForGame() {
-  if(tilesLeft() == 0) {
-    QTime midnight(0, 0, 0, 0); 
-    return midnight.addSecs(time_for_game.elapsed()/1000);
-  } else
-    return getCurrentTime();
+int Board::getTimeForGame() {
+  if(tilesLeft() == 0) 
+    return (int)(stoptime - starttime);
+  else
+    return (int)(time((time_t *)0) - starttime);
 }
 
 bool Board::solvable(bool norestore) {
