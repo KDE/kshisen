@@ -221,10 +221,10 @@ void App::restartGame() {
 void App::isSolvable() {
   if(b->solvable())
 	KMessageBox::information(this,
-				i18n("This game is solvable"));
+				i18n("This game is solvable."));
   else
 	KMessageBox::information(this,
-				 i18n("This game is NOT solvable"));
+				 i18n("This game is NOT solvable."));
 }
 
 void App::pause() {
