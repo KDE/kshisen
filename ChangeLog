@@ -1,8 +1,14 @@
+Fri Apr 10 15:59:17 1998    <mweilguni@kde.org>
+
+	* better highscore management. highscores are now score-based, not
+	time based
+	* board.cpp: fixed some bugs
+	* the game doesn´t ask anymore for a name if the score
+	  is not good enough for the hall of fame	
+
 0.2.1:
   * [Robert Williams]  Added getHelpMenu()
   * [Robert Williams]  Added version.h
-
-0.1:	initial release
 
 0.2:	added this changelog
 
@@ -27,4 +33,4 @@
 	breaks this limit should contact me in the year 2065; I will send 
 	him 20 bottles of Austrian beer ("Murauer") :-)
 	
-	
+0.1:	initial release

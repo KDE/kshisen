@@ -47,6 +47,11 @@
 #include <sys/times.h>
 #include <qbitarry.h>
 #include <kmsgbox.h>
+#include <debug.h>
+
+#ifdef DEBUGGING
+#include <unistd.h>
+#endif
 
 #define EMPTY		0
 #define XBORDER		20
@@ -135,45 +140,44 @@ void Board::mousePressEvent(QMouseEvent *e) {
     int pos_y = (e->pos().y() - YBORDER <0)?-1:
                               (e->pos().y() - YBORDER) / pm_tile[0]->height();
 
-// Mark tile
-
-      if(e->button() == LeftButton) {
+    // Mark tile
+    if(e->button() == LeftButton) {
+      if(highlighted_tile != -1) {
 	int oldmarkx = mark_x;
 	int oldmarky = mark_y;
-
+	
 	mark_x=-1; mark_y=-1;
-	if(highlighted_tile != -1) {
-	  for(int i = 0; i < x_tiles(); i++)
-	    for(int j = 0; j < y_tiles(); j++){
-	      if( highlighted_tile == getField(i, j))
-		updateField(i, j);	      
-	    }
-	  mark_x = oldmarkx; 
-	  mark_y = oldmarky;   // no tile selected	  
+	for(int i = 0; i < x_tiles(); i++)
+	  for(int j = 0; j < y_tiles(); j++){
+	    if( highlighted_tile == getField(i, j))
+	      updateField(i, j);	      
+	  }
+	mark_x = oldmarkx; 
+	mark_y = oldmarky;   // no tile selected
+	highlighted_tile = -1;
+      }
+      
+      if(pos_x >= 0 && pos_x < x_tiles() && pos_y >= 0 && pos_y < y_tiles())
+	emit fieldClicked(pos_x, pos_y);  
+    }
+
+    // Assist by lighting all tiles of same type
+    if(e->button() == RightButton) {
+      int field = getField(pos_x,pos_y);
+      highlighted_tile = field;
+      
+      for(int i = 0; i < x_tiles(); i++)
+	for(int j = 0; j < y_tiles(); j++){
+	  if( field == getField(i, j)){
+	    mark_x=i; mark_y=j;
+	  }
+	  else{
+	    mark_x=-1; mark_y=-1;
+	  }
+	  updateField(i, j);
 	}
-
-	if(pos_x >= 0 && pos_x < x_tiles() && pos_y >= 0 && pos_y < y_tiles())
-	  emit fieldClicked(pos_x, pos_y);  
-      }
-
-// Assist by lighting all tiles of same type
-
-      if(e->button() == RightButton) {
-              int field = getField(pos_x,pos_y);
-	      highlighted_tile = field;
-
-              for(int i = 0; i < x_tiles(); i++)
-                      for(int j = 0; j < y_tiles(); j++){
-                              if( field == getField(i, j)){
-                                      mark_x=i; mark_y=j;
-                              }
-                              else{
-                                      mark_x=-1; mark_y=-1;
-                              }
-                              updateField(i, j);
-                      }
-              mark_x=-1; mark_y=-1;   // no tile selected
-      }
+      mark_x=-1; mark_y=-1;   // no tile selected
+    }
 }
 
 void Board::setSize(int x, int y) {
@@ -763,6 +767,25 @@ void Board::getHint() {
     setDelay(old_delay);
   }
 }
+
+#ifdef DEBUGGING
+void Board::finish() {
+  int x1, y1, x2, y2;
+  History h[4];
+  bool ready=FALSE;
+
+  while(!ready && getHint_I(x1, y1, x2, y2, h)) {
+    mark_x = -1;
+    mark_y = -1;
+    if(tilesLeft() == 2)
+      ready = TRUE;
+    marked(x1, y1);
+    marked(x2, y2);
+    kapp->processEvents();
+    usleep(250*1000);
+  }
+}
+#endif
 
 bool Board::getHint_I(int &x1, int &y1, int &x2, int &y2, History h[4]) {
   short done[45];

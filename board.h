@@ -44,6 +44,7 @@
 #include <qpixmap.h>
 #include <qdatetm.h>
 #include <time.h>
+#include <debug.h>
 
 typedef struct History {
   int x, y;
@@ -87,6 +88,10 @@ public:
 
   void getHint();
   bool getHint_I(int &, int &, int &, int &, History h[4]);
+
+#ifdef DEBUGGING
+  void finish();
+#endif
 
   int   tilesLeft();
   int   getCurrentTime();

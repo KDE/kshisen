@@ -47,6 +47,8 @@
 #include <kseparator.h>
 #include <qlayout.h>
 #include <qmsgbox.h>
+#include <debug.h>
+#include <math.h>
 
 #define ID_FQUIT	101
 
@@ -57,6 +59,10 @@
 #define ID_GNEW		205
 #define ID_GHINT	206
 #define ID_GISSOLVE	207
+
+#ifdef DEBUGGING
+#define ID_GFINISH      220
+#endif
 
 #define ID_OSIZE1	300
 #define ID_OSIZE2	301
@@ -107,6 +113,10 @@ App::App() : KTopLevelWidget() {
   gm->insertItem(locale->translate("Is game solvable?"), ID_GISSOLVE);
   gm->insertSeparator();
   gm->insertItem(locale->translate("&Hall of Fame"), ID_GHOF);
+#ifdef DEBUGGING
+  gm->insertSeparator();
+  gm->insertItem("&Finish", ID_GFINISH);
+#endif
 
   QPopupMenu *om = new QPopupMenu;
   om->setCheckable(TRUE);
@@ -172,10 +182,14 @@ App::App() : KTopLevelWidget() {
   connect(tb, SIGNAL(clicked(int)),
 	  this, SLOT(menuCallback(int)));
   KIconLoader *il = kapp->getIconLoader();
-  tb->insertButton(il->loadIcon("exit.xpm"), ID_FQUIT, TRUE, locale->translate("Quit"));
-  tb->insertButton(il->loadIcon("back.xpm"), ID_GUNDO, TRUE, locale->translate("Undo"));
-  tb->insertButton(il->loadIcon("forward.xpm"), ID_GREDO, TRUE, locale->translate("Redo"));
-  tb->insertButton(il->loadIcon("help.xpm"), ID_HHELP, TRUE, locale->translate("Help"));
+  tb->insertButton(il->loadIcon("exit.xpm"), 
+		   ID_FQUIT, TRUE, locale->translate("Quit"));
+  tb->insertButton(il->loadIcon("back.xpm"), 
+		   ID_GUNDO, TRUE, locale->translate("Undo"));
+  tb->insertButton(il->loadIcon("forward.xpm"), 
+		   ID_GREDO, TRUE, locale->translate("Redo"));
+  tb->insertButton(il->loadIcon("help.xpm"), 
+		   ID_HHELP, TRUE, locale->translate("Help"));
   tb->show();
   addToolBar(tb);
   updateRects();
@@ -213,7 +227,8 @@ App::App() : KTopLevelWidget() {
   bool _b;
   _b = conf->readNumEntry("Solvable", 1) > 0;
   b->setSolvableFlag(_b);
-  mb->setItemChecked(ID_OSOLVABLE, b->getSolvableFlag());
+  mb->setItemChecked(ID_OSOLVABLE, 
+		     b->getSolvableFlag());
 
   kapp->processEvents();
   i = conf->readNumEntry("Level", ID_OLVL2);
@@ -288,6 +303,12 @@ void App::menuCallback(int id) {
     if(b->canRedo()) 
       b->redo();
     break;
+
+#ifdef DEBUGGING
+  case ID_GFINISH:
+    b->finish();
+    break;
+#endif
 
   case ID_OSOLVABLE:
     b->setSolvableFlag(!b->getSolvableFlag());
@@ -371,16 +392,23 @@ void App::slotEndOfGame() {
     // create highscore entry
     HighScore hs;
     hs.seconds = b->getTimeForGame();
-    QString name = getPlayerName();
-    strncpy(hs.name, (const char *)name, sizeof(hs.name) - 1);
-    hs.date = time((time_t*)0);
-    hs.x = b->x_tiles();
-    hs.y = b->y_tiles();
 
-    int rank = insertHighscore(hs);
-    if(rank != -1)
+    // check if we made it into Top10
+    bool isHighscore = FALSE;
+    if(highscore.size() < HIGHSCORE_MAX)
+      isHighscore = TRUE;
+    else if(isBetter(hs, highscore[HIGHSCORE_MAX-1]))
+      isHighscore = TRUE;
+
+    if(isHighscore) {
+      QString name = getPlayerName();
+      strncpy(hs.name, (const char *)name, sizeof(hs.name) - 1);
+      hs.date = time((time_t*)0);
+      hs.x = b->x_tiles();
+      hs.y = b->y_tiles();
+      int rank = insertHighscore(hs);
       showHighscore(rank);
-    else {
+    } else {
       QString s;
       s.sprintf(
 		locale->translate("Congratulations! You made it in %02d:%02d:%02d"),
@@ -458,8 +486,17 @@ QString App::getPlayerName() {
   return s;
 }
 
+int App::getScore(HighScore &hs) {
+  double ntiles = hs.x*hs.y;
+  double tilespersec = ntiles/(double)hs.seconds;
+  
+  double sizebonus = sqrt(ntiles/(double)(14.0 * 6.0));
+  double points = tilespersec / 0.14 * 100.0;
+  return (int)(points * sizebonus);
+}
+
 bool App::isBetter(HighScore &hs, HighScore &than) {
-  if(hs.seconds < than.seconds)
+  if(getScore(hs) > getScore(than))
     return TRUE;
   else
     return FALSE;
@@ -529,6 +566,17 @@ void App::readHighscore() {
     i++;
   }
 
+  // freshly installed, add my own highscore
+  if(highscore.size() == 0) {
+    HighScore hs;
+    hs.x = 28;
+    hs.y = 16;
+    hs.seconds = 367;
+    strcpy(hs.name, "Mario");
+    highscore.resize(1);
+    highscore[0] = hs;
+  }
+
   // restore old group
   conf->setGroup(grp.data());
 }
@@ -571,12 +619,12 @@ void App::showHighscore(int focusitem = -1) {
   tl->addWidget(l);
 
   // insert highscores in a gridlayout
-  QGridLayout *table = new QGridLayout(12, 4, 5);
+  QGridLayout *table = new QGridLayout(12, 5, 5);
   tl->addLayout(table, 1);
 
   // add a separator line
   KSeparator *sep = new KSeparator(dlg);
-  table->addMultiCellWidget(sep, 1, 1, 0, 3);
+  table->addMultiCellWidget(sep, 1, 1, 0, 4);
 
   // add titles
   f = font();
@@ -597,9 +645,13 @@ void App::showHighscore(int focusitem = -1) {
   l->setFont(f);
   l->setMinimumSize(l->sizeHint());
   table->addWidget(l, 0, 3);
+  l = new QLabel(locale->translate("Score"), dlg);
+  l->setFont(f);
+  l->setMinimumSize(l->sizeHint());
+  table->addWidget(l, 0, 4);
   
   QString s;
-  QLabel *e[10][4];
+  QLabel *e[10][5];
   unsigned i, j;
 
   for(i = 0; i < 10; i++) {
@@ -632,14 +684,21 @@ void App::showHighscore(int focusitem = -1) {
     else
       s = "";
     e[i][3] = new QLabel(s.data(), dlg);
-    
+
+    // insert score
+    if(i < highscore.size()) 
+      s.sprintf("%d", getScore(hs));
+    else
+      s = "";
+    e[i][4] = new QLabel(s.data(), dlg);
+    e[i][4]->setAlignment(AlignRight);
   }
 
   f = font();
   f.setBold(TRUE);
   f.setItalic(TRUE);
   for(i = 0; i < 10; i++)
-    for(j = 0; j < 4; j++) {
+    for(j = 0; j < 5; j++) {
       e[i][j]->setMinimumHeight(e[i][j]->sizeHint().height());
       if(j == 1)
 	e[i][j]->setMinimumWidth(MAX(e[i][j]->sizeHint().width(), 100));
@@ -673,5 +732,4 @@ void App::showHighscore(int focusitem = -1) {
   delete dlg;
 }
 
-    
 #include "app.moc"

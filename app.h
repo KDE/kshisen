@@ -76,6 +76,7 @@ private:
   void readHighscore();
   void writeHighscore();
   int  insertHighscore(HighScore &);
+  int  getScore(HighScore &);
   bool isBetter(HighScore &, HighScore &);
   void showHighscore(int focusitem = -1);
 
