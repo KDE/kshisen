@@ -181,10 +181,10 @@ void Board::mousePressEvent(QMouseEvent *e) {
 	
 	mark_x=-1; mark_y=-1;
 	for(int i = 0; i < x_tiles(); i++)
-	  for(int j = 0; j < y_tiles(); j++){
-	    if( highlighted_tile == getField(i, j))
+	  for(int j = 0; j < y_tiles(); j++)
+	    if(highlighted_tile == getField(i, j) && !(i == pos_x && j == pos_y))
 	      updateField(i, j, false);
-	  }
+
 	mark_x = oldmarkx; 
 	mark_y = oldmarky;   // no tile selected
 	highlighted_tile = -1;
@@ -196,16 +196,16 @@ void Board::mousePressEvent(QMouseEvent *e) {
 
     // Assist by lighting all tiles of same type
     if(e->button() == RightButton) {
-      if(mark_x != -1 && mark_y != -1){
+      int old_highlighted = highlighted_tile;
+      int field = getField(pos_x,pos_y);
+      highlighted_tile = field;
+
+      if(mark_x != -1 && getField(mark_x, mark_y) != highlighted_tile){
         int oldmarkx = mark_x;
         int oldmarky = mark_y;
         mark_x=-1; mark_y=-1;
         updateField(oldmarkx, oldmarky, false);
       }
-
-      int old_highlighted = highlighted_tile;
-      int field = getField(pos_x,pos_y);
-      highlighted_tile = field;
 
       for(int i = 0; i < x_tiles(); i++)
 	for(int j = 0; j < y_tiles(); j++){
