@@ -152,10 +152,10 @@ App::App() : KTMainWidget() {
   om_l->insertItem(i18n("Medium"), ID_OLVL2);
   om_l->insertItem(i18n("Hard"), ID_OLVL3);
 
-  QPopupMenu *help = kapp->getHelpMenu(true, i18n("Shisen-Sho")
-                                         + " " + KSHISEN_VERSION
-                                         + i18n("\n\nby Mario Weilguni")
-                                         + " (mweilguni@sime.com)");
+  QPopupMenu *help = kapp->helpMenu(true, i18n("Shisen-Sho")
+                                    + " " + KSHISEN_VERSION
+                                    + i18n("\n\nby Mario Weilguni")
+                                    + " (mweilguni@sime.com)");
 
   mb->insertItem(i18n("&File"), fm);
   mb->insertItem(i18n("&Game"), gm);
@@ -216,7 +216,7 @@ App::App() : KTMainWidget() {
 	  this, SLOT(sizeChanged()));
 
   // load default settings
-  KConfig *conf = kapp->getConfig();
+  KConfig *conf = kapp->config();
   int i;
   i = conf->readNumEntry("Speed", ID_OSPEED3);
   menuCallback(i); // what a hack
@@ -343,7 +343,7 @@ void App::menuCallback(int id) {
 
   case ID_OSOLVABLE:
     b->setSolvableFlag(!b->getSolvableFlag());
-    kapp->getConfig()->writeEntry("Solvable", (int)b->getSolvableFlag());
+    kapp->config()->writeEntry("Solvable", (int)b->getSolvableFlag());
     mb->setItemChecked(id, b->getSolvableFlag());
     break;
 
@@ -354,7 +354,7 @@ void App::menuCallback(int id) {
       mb->setItemChecked(i, i == id);
     b->setShuffle((id - ID_OLVL1) * 4 + 1);
     b->newGame();
-    kapp->getConfig()->writeEntry("Level", id);
+    kapp->config()->writeEntry("Level", id);
     break;
    
   case ID_OSIZE1:
@@ -368,7 +368,7 @@ void App::menuCallback(int id) {
       for(i = ID_OSIZE1; i <= ID_OSIZE5; i++)
 	mb->setItemChecked(i, FALSE);
       mb->setItemChecked(id, TRUE);
-      kapp->getConfig()->writeEntry("Size", id);
+      kapp->config()->writeEntry("Size", id);
     }
     break;
 
@@ -391,13 +391,13 @@ void App::menuCallback(int id) {
     break;
 
   case ID_HHELP:
-    KApplication::getKApplication()->invokeHTMLHelp("", ""); 
+    KApplication::kApplication()->invokeHTMLHelp("", ""); 
     break;
 
   case ID_OGRAVITY:
     if(!b->canUndo()) {
       b->setGravityFlag(!b->gravityFlag());
-      kapp->getConfig()->writeEntry("Gravity", (int)b->gravityFlag());
+      kapp->config()->writeEntry("Gravity", (int)b->gravityFlag());
     }
     break;
 
@@ -603,7 +603,7 @@ int App::insertHighscore(HighScore &hs) {
 void App::readHighscore() {
   int i;
   QString s, e, grp;
-  KConfig *conf = kapp->getConfig();
+  KConfig *conf = kapp->config();
 
   highscore.resize(0);
   i = 0;
@@ -657,7 +657,7 @@ void App::readHighscore() {
 void App::writeHighscore() {
   int i;
   QString s, e, grp;
-  KConfig *conf = kapp->getConfig();
+  KConfig *conf = kapp->config();
 
   grp = conf->group();
   conf->setGroup("Hall of Fame");

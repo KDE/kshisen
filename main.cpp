@@ -47,6 +47,6 @@ int main(int argc, char **argv) {
   app->resize(800, 500);
   app->show();
   a.setMainWidget(app);
-  a.getConfig()->sync();
+  a.config()->sync();
   return a.exec();
 }

@@ -253,9 +253,9 @@ bool Board::loadTiles(float scale) {
   QPixmap pm(KGlobal::dirs()->findResource("appdata", "kshisen.xpm"));
   QBitmap mask(KGlobal::dirs()->findResource("appdata", "mask.xpm"));
   if(pm.width() == 0 || pm.height() == 0) {
-      QMessageBox::warning(this, kapp->getCaption(),
-			   i18n("Cannot load pixmaps!"), 
-			   i18n("OK"));
+      QMessageBox::warning(this, kapp->caption(),
+                           i18n("Cannot load pixmaps!"), 
+                           i18n("OK"));
       exit(1);
   }
   pm.setMask(mask);
