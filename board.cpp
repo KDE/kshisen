@@ -258,7 +258,7 @@ bool Board::loadTiles(float scale) {
       exit(1);
   }
   pm.setMask(mask);
-  
+
   if(pm.width() == 0 || pm.height() == 0)
     return false;
 
@@ -277,7 +277,7 @@ bool Board::loadTiles(float scale) {
 	  *pm_tile[i + j*9] = pm_tile[i + j*9]->xForm(wm);
 	}
     }
-  
+
   return true;
 }
 
@@ -300,29 +300,27 @@ void Board::newGame() {
 
   // distribute all tiles on board
   int cur_tile = 0;
-  for(i = 0; i < x_tiles() * y_tiles() * 12; i++) {
-    // map the tileindex to a tile
-    // not all tiles from the pixmap are really used, only
-    // 36 out of 45 are used. This maps and index to
-    // the "real" index.
-    int tile;
-    if(cur_tile == 28)
-      tile = 30;
-    else if(cur_tile >= 29 && cur_tile <= 35)
-      tile = cur_tile + 7;
-    else
-      tile = cur_tile;
-    
-    cur_tile++;
-    if(cur_tile == 36)
-      cur_tile = 0;
+  for(y = 0; y < y_tiles(); y += 4) {
+    for(x = 0; x < x_tiles(); ++x) {
+      // map the tileindex to a tile
+      // not all tiles from the pixmap are really used, only
+      // 36 out of 45 are used. This maps and index to
+      // the "real" index.
+      int tile;
+      if(cur_tile == 28)
+        tile = 31;
+      else if(cur_tile >= 29 && cur_tile <= 35)
+        tile = cur_tile + 8;
+      else
+        tile = cur_tile + 1;
 
-    x = i % x_tiles();
-    y = i / x_tiles() * 4;
+      cur_tile++;
+      if(cur_tile == 36)
+        cur_tile = 0;
 
-    tile++;
-    for(k = 0; k < 4 && k + y < y_tiles(); k++)
-      setField(x, y+k, tile);
+      for(k = 0; k < 4 && k + y < y_tiles(); k++)
+        setField(x, y+k, tile);
+    }
   }
 
   if(getShuffle() == 0) {
