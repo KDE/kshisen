@@ -325,7 +325,7 @@ void App::preferUnscaled()
 		s += size() - b->size(); // compensate for chrome (toolbars, statusbars etc.)
 		resize(s);
 
-		kdDebug() << "App::preferUnscaled() set size to: " << s.width() << " x " << s.height() << endl;
+		//kdDebug() << "App::preferUnscaled() set size to: " << s.width() << " x " << s.height() << endl;
 	}
 
 	kapp->config()->writeEntry("Unscaled", unscaled);
