@@ -227,12 +227,12 @@ void App::isSolvable() {
 }
 
 void App::pause() {
-  bool paused = b->pause();      
+  bool paused = b->pause();
   lockMenus(paused);
   if(paused)
-	actionCollection()->action("game_pause")->setText("R&esume game");
+	actionCollection()->action("game_pause")->setText(i18n("R&esume game"));
   else
-	actionCollection()->action("game_pause")->setText("&Pause game");
+	actionCollection()->action("game_pause")->setText(i18n("&Pause game"));
 }
 
 void App::undo() {
