@@ -415,7 +415,10 @@ QString App::getPlayerName() {
   e->setText("XXXXXXXXXXXXXXXX");
   e->setMinimumWidth(e->sizeHint().width());
   e->setFixedHeight(e->sizeHint().height());
-  e->setText("");
+  if ( !lastPlayerName.isEmpty() )
+    e->setText( lastPlayerName );
+  else
+    e->setText("");
   e->setFocus();
 
   QPushButton *b = new QPushButton(i18n("OK"), dlg);
@@ -446,12 +449,12 @@ QString App::getPlayerName() {
 
   dlg->exec();
 
-  QString s = e->text();
+  lastPlayerName = e->text();
   delete dlg;
 
-  if(s.length() == 0)
-    s = " ";
-  return s;
+  if(lastPlayerName.isEmpty())
+    return " ";
+  return lastPlayerName;
 }
 
 int App::getScore(const HighScore &hs) {

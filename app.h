@@ -112,6 +112,7 @@ private:
   void resetCheatMode();
 
 private:
+  QString lastPlayerName;
   Board *b;
   QValueVector<HighScore> highscore;
   KHighscore* highscoreTable;
