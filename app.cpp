@@ -357,7 +357,7 @@ void App::slotEndOfGame() {
 
     if(isHighscore) {
       QString name = getPlayerName();
-      strncpy(hs.name, name.utf8(), sizeof(hs.name) - 1);
+      strncpy(hs.name, name.local8Bit() , sizeof(hs.name) - 1);
       hs.date = time((time_t*)0);
       hs.x = b->x_tiles();
       hs.y = b->y_tiles();
