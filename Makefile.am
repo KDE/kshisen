@@ -15,10 +15,9 @@ noinst_HEADERS = app.h board.h debug.h version.h
 
 kshisen_SOURCES = main.cpp board.cpp app.cpp
 
-appsdir = $(kde_appsdir)/Games
+appsdir   = $(kde_appsdir)/Programs/Games
 apps_DATA = kshisen.desktop
-
-KDE_ICON = kshisen
+KDE_ICON  = kshisen
 
 SUBDIRS = pics 
 
