@@ -535,15 +535,9 @@ void Board::marked(int x, int y) {
       mark_x = -1;
       mark_y = -1;
 
-      int dummyx;
-      History dummyh[4];
-
-      // game is over?      
-      if(!getHint_I(dummyx,dummyx,dummyx,dummyx,dummyh)) {
-	time_for_game = (int)difftime( time((time_t)0), starttime);
-	emit endOfGame();
-      }
-      
+      // game is over?
+      // Must delay until after tiles fall to make this test
+      // See undrawArrow GP.
     } else {
       clearHistory();
       emit markError();
@@ -574,7 +568,7 @@ bool Board::canMakePath(int x1, int y1, int x2, int y2) {
 }
 
 bool Board::findPath(int x1, int y1, int x2, int y2) {
- clearHistory();
+  clearHistory();
 
   if(findSimplePath(x1, y1, x2, y2))
      return true;
@@ -714,6 +708,14 @@ void Board::undrawArrow() {
   }
 
   clearHistory();
+
+  int dummyx;
+  History dummyh[4];
+  // game is over?
+  if(!getHint_I(dummyx,dummyx,dummyx,dummyx,dummyh)) {
+     time_for_game = (int)difftime( time((time_t)0), starttime);
+     emit endOfGame();
+  }
 }
 
 QPoint Board::midCoord(int x, int y) {
