@@ -48,6 +48,7 @@
 #include <qbitarray.h>
 #include <kmsgbox.h>
 #include <debug.h>
+#include <klocale.h>
 
 #ifdef DEBUGGING
 #include <unistd.h>
