@@ -35,7 +35,7 @@ uninstall-local:
 	-rm -f $(kde_minidir)/kshisen.xpm
 
 messages:
-	$(XGETTEXT) -C -ktranslate -ki18n -x $(includedir)/kde.pot $(kshisen_SOURCES) && mv messages.po ../po/kshisen.pot
+	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot $(kshisen_SOURCES) && mv messages.po ../po/kshisen.pot
 
 
 
