@@ -51,7 +51,7 @@ static const char *description = I18N_NOOP("KDE Game");
 
 int main(int argc, char **argv)
 {
-  KAboutData aboutData( "kshisen", I18N_NOOP("KShisen"), 
+  KAboutData aboutData( "kshisen", I18N_NOOP("Shisen-Sho"), 
     KSHISEN_VERSION, description, KAboutData::License_GPL, 
     "(c) 1997, Mario Weilguni");
   aboutData.addAuthor("Mario Weilguni",0, "mweilguni@sime.com");
