@@ -89,9 +89,6 @@ Board::Board(QWidget *parent) : QWidget(parent, 0, WResizeNoErase)
 	field = 0;
 	QPixmap bg(KGlobal::dirs()->findResource("appdata", "kshisen_bgnd.xpm"));
 	setBackgroundPixmap(bg);
-	connect(this, SIGNAL(madeMove(int, int, int, int)),
-	        this, SLOT(slotMadeMove(int, int, int, int)));
-
 	setShuffle(0);
 
 	highlighted_tile = -1;
@@ -534,7 +531,7 @@ void Board::marked(int x, int y)
 		// trace
 		if(findPath(mark_x, mark_y, x, y, connection))
 		{
-			emit madeMove(mark_x, mark_y, x, y);
+			madeMove(mark_x, mark_y, x, y);
 			drawConnection(getDelay());
 			setField(mark_x, mark_y, EMPTY);
 			setField(x, y, EMPTY);
@@ -778,7 +775,7 @@ int Board::getDelay() const
 	return _delay;
 }
 
-void Board::slotMadeMove(int x1, int y1, int x2, int y2)
+void Board::madeMove(int x1, int y1, int x2, int y2)
 {
 	Move *m = new Move(x1, y1, x2, y2, getField(x1, y1));
 	_undo.append(m);

@@ -125,7 +125,6 @@ public:
 
 signals:
 	void markMatched();
-	void madeMove(int, int, int, int);
 	void changed();
 	void endOfGame();
 	void resized();
@@ -135,7 +134,6 @@ public slots:
 
 private slots:
 	void undrawConnection();
-	void slotMadeMove(int, int, int, int);
 	void gravity(int, bool);
 
 private: // functions
@@ -151,8 +149,9 @@ private: // functions
 	bool findPath(int x1, int y1, int x2, int y2, Path& p) const;
 	bool findSimplePath(int x1, int y1, int x2, int y2, Path& p) const;
 	void drawConnection(int timeout);
-	QPoint midCoord(int, int) const;
-	void marked(int, int);
+	QPoint midCoord(int x, int y) const;
+	void marked(int x, int y);
+	void madeMove(int x1, int y1, int x2, int y2);
 
 private:
 	time_t starttime;
