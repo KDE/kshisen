@@ -18,19 +18,11 @@ kshisen_SOURCES = main.cpp board.cpp app.cpp
 appsdir = $(kde_appsdir)/Games
 apps_DATA = kshisen.desktop
 
-icondir = $(kde_icondir)
-icon_DATA = kshisen.xpm
+KDE_ICON = kshisen
 
 SUBDIRS = pics 
 
-EXTRA_DIST = $(apps_DATA) $(icon_DATA) mini-kshisen.xpm
-
-install-data-local:
-	$(mkinstalldirs) $(kde_minidir)
-	$(INSTALL_DATA) $(srcdir)/mini-kshisen.xpm $(kde_minidir)/kshisen.xpm
-
-uninstall-local:
-	-rm -f $(kde_minidir)/kshisen.xpm
+EXTRA_DIST = $(apps_DATA) 
 
 messages:
 	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot $(kshisen_SOURCES) && mv messages.po ../po/kshisen.pot
