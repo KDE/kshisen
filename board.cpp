@@ -79,7 +79,6 @@ Board::Board(QWidget *parent) : QWidget(parent) {
   grav_col_1 = -1;
   grav_col_2 = -1;
   setGravityFlag(false);
-  current_scale = 0.0;
 
   // randomze
   setShuffle(DEFAULTSHUFFLE);
@@ -244,61 +243,65 @@ void Board::setSize(int x, int y) {
       setField(i, j, EMPTY);
 
   // calculate scaling required to fit all tiles on the screen
-  double scale_x = static_cast<double>(kapp->desktop()->width() - 4*XBORDER) /
-    static_cast<double>(unscaled_tile.width() * x_tiles());
-  double scale_y = static_cast<double>(kapp->desktop()->height() - 4*YBORDER) /
-    static_cast<double>(unscaled_tile.height() * y_tiles());
+  int w = static_cast<int>( static_cast<double>(kapp->desktop()->width() - 4*XBORDER) / x_tiles() );
+  int h = static_cast<int>( static_cast<double>(kapp->desktop()->height() - 4*YBORDER) / y_tiles() );
 
-  // round down to nearest multiple of 0.2
-  scale_x = static_cast<int>(scale_x * 5.0) / 5.0;
-  scale_y = static_cast<int>(scale_y * 5.0) / 5.0;
+  const double MAXIMUM_SCALE = 1.0;
+  w = std::min(w, qRound(unscaled_tile.width() * MAXIMUM_SCALE));
+  h = std::min(h, qRound(unscaled_tile.height() * MAXIMUM_SCALE));
 
-  double scaler = std::min(scale_x, scale_y);
-  scaler = std::min(1.0, scaler); // prevents scaling up
-  loadTiles(scaler);
+  loadTiles(w, h);
 
   newGame();
   emit changed();
   emit sizeChange();
 }
 
-bool Board::loadTiles(double scale) {
-  
-  if(scale != current_scale)
-  {
-    int i, j;
+bool Board::loadTiles(int maxWidth, int maxHeight) {
 
-    // delete old tiles
-    for(i = 0; i < NUM_TILES; i++) {
-      if(pm_tile[i] != 0) {
-        delete pm_tile[i];
-        pm_tile[i] = 0;
-      }
-    }
+  if(maxWidth != -1 && maxHeight != -1) {
+    // calculate largest tile size that will fit in maxWidth/maxHeight
+    // and maintain the tile's height-to-width ratio
+    double ratio = static_cast<double>(unscaled_tile.height()) / unscaled_tile.width();
+    if(maxWidth * ratio < maxHeight)
+      maxHeight = qRound(maxWidth * ratio);
+    else
+      maxWidth = qRound(maxHeight / ratio);
 
-    // locate tileset
-    QImage tileset(KGlobal::dirs()->findResource("appdata", "tileset.png"));
-    if(tileset.width() == 0 || tileset.height() == 0) {
-        KMessageBox::sorry(this, i18n("Cannot load pixmaps!"));
-        exit(1);
-    }
-
-    int w = tileset.width() / TILES_X;
-    int h = tileset.height() / TILES_Y;
-    QSize scaledTileSize(scale * w, scale * h);
-
-    for(i = 0; i < TILES_X; i++) {
-      for(j = 0; j < TILES_Y; j++) {
-        QImage tile = tileset.copy( w*i, h*j, w, h );
-        if(scale != 1.0)
-          tile = tile.smoothScale(scaledTileSize);
-        pm_tile[i + j*TILES_X] = new QPixmap(tile);
-      }
-    }
-
-    unscaled_tile = QSize(w, h);
-    current_scale = scale;
+    if(pm_tile[0] && maxHeight == pm_tile[0]->height() && maxWidth == pm_tile[0]->width())
+      return true;
   }
+
+  int i, j;
+
+  // delete old tiles
+  for(i = 0; i < NUM_TILES; i++) {
+    if(pm_tile[i] != 0) {
+      delete pm_tile[i];
+      pm_tile[i] = 0;
+    }
+  }
+
+  // locate tileset
+  QImage tileset(KGlobal::dirs()->findResource("appdata", "tileset.png"));
+  if(tileset.width() == 0 || tileset.height() == 0) {
+      KMessageBox::sorry(this, i18n("Cannot load pixmaps!"));
+      exit(1);
+  }
+
+  int w = tileset.width() / TILES_X;
+  int h = tileset.height() / TILES_Y;
+
+  for(i = 0; i < TILES_X; i++) {
+    for(j = 0; j < TILES_Y; j++) {
+      QImage tile = tileset.copy( w*i, h*j, w, h );
+      if(maxWidth != -1 && maxHeight != -1)
+        tile = tile.smoothScale(maxWidth, maxHeight);
+      pm_tile[i + j*TILES_X] = new QPixmap(tile);
+    }
+  }
+
+  unscaled_tile = QSize(w, h);
 
   return true;
 }
