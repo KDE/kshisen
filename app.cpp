@@ -63,6 +63,7 @@
 #include <khighscore.h>
 #include <kdebug.h>
 #include <kkeydialog.h>
+#include <kpopupmenu.h>
 
 static int size_x[5] = {14, 18, 24, 26, 30};
 static int size_y[5] = { 6,  8, 12, 14, 16};
@@ -144,21 +145,19 @@ App::~App() {
 void App::initKAction() {
 //Game
   KStdGameAction::gameNew(this, SLOT(newGame()), actionCollection());
-  KStdGameAction::quit(this, SLOT(quitGame()), actionCollection());
-  KStdGameAction::highscores(this, SLOT(hallOfFame()), actionCollection());
+  KStdGameAction::restart(this, SLOT(restartGame()), actionCollection());
   KStdGameAction::pause(this, SLOT(pause()), actionCollection());
+  KStdGameAction::highscores(this, SLOT(hallOfFame()), actionCollection());
+  KStdGameAction::quit(this, SLOT(quitGame()), actionCollection());
 
-  (void)new KAction(i18n("Is Game Solvable?"), 0, this, SLOT(isSolvable()), actionCollection(), "game_solvable");
-  (void)new KAction(i18n("Res&tart Game"), Qt::CTRL+Qt::Key_R, this, SLOT(restartGame()), actionCollection(), "game_restart");
-  (void)new KAction(i18n("Get &Hint"), Key_H, this, SLOT(hint()), actionCollection(), "game_hint");
-
+//Move
+  KStdGameAction::undo(this, SLOT(undo()), actionCollection());
+  KStdGameAction::redo(this, SLOT(redo()), actionCollection());
+  KStdGameAction::hint(this, SLOT(hint()), actionCollection());
+  (void)new KAction(i18n("Is Game Solvable?"), 0, this, SLOT(isSolvable()), actionCollection(), "move_solvable");
 #ifdef DEBUGGING
-  (void)new KAction("&Finish", 0, b, SLOT(finish()), actionCollection(), "game_finish");
+  (void)new KAction("&Finish", 0, b, SLOT(finish()), actionCollection(), "move_finish");
 #endif
-
-//Edit
-  KStdAction::undo(this, SLOT(undo()), actionCollection());
-  KStdAction::redo(this, SLOT(redo()), actionCollection());
 
 //Settings
   QStringList list;
@@ -190,7 +189,7 @@ void App::initKAction() {
   (void)new KToggleAction(i18n("Disallow Unsolvable Games"), 0, this, SLOT(toggleDisallowUnsolvable()), actionCollection(), "options_disallow");
 
   KStdAction::keyBindings(this, SLOT(keyBindings()), actionCollection());
-  
+
   createGUI("kshisenui.rc");
 }
 
@@ -230,10 +229,6 @@ void App::isSolvable() {
 void App::pause() {
   bool paused = b->pause();
   lockMenus(paused);
-  if(paused)
-	actionCollection()->action("game_pause")->setText(i18n("R&esume game"));
-  else
-	actionCollection()->action("game_pause")->setText(i18n("&Pause game"));
 }
 
 void App::undo() {
@@ -296,29 +291,32 @@ void App::changeLevel() {
 }
 
 void App::lockMenus(bool lock) {
-//#warning FIXME
-  QValueList<KAction*> list = actionCollection()->actions();
-  for (int unsigned i = 0; i < list.count(); i++) {
-      list[i]->setEnabled(!lock);
-  }
-  actionCollection()->action("game_pause")->setEnabled(true);
+  // Disable all actions apart from (un)pause, quit and those that are help-related.
+  // (Only undo/redo and hint actually *need* to be disabled, but disabling everything
+  // provides a good visual hint to the user, that they need to unpause to continue.
+  KPopupMenu* help = dynamic_cast<KPopupMenu*>(child("help", "KPopupMenu", false));
+  KActionPtrList actions = actionCollection()->actions();
+  KActionPtrList::iterator actionIter = actions.begin();
+  KActionPtrList::iterator actionIterEnd = actions.end();
 
-  //FIXME This is ugly - a better solution (which can be used directly in the loop
-  //withput knowing which entries exist in the "help" menu) is wanted!
-  actionCollection()->action(KStdAction::stdName(KStdAction::HelpContents))->setEnabled(true);
-  actionCollection()->action(KStdAction::stdName(KStdAction::WhatsThis))->setEnabled(true);
-  actionCollection()->action(KStdAction::stdName(KStdAction::ReportBug))->setEnabled(true);
-  actionCollection()->action(KStdAction::stdName(KStdAction::AboutApp))->setEnabled(true);
-  actionCollection()->action(KStdAction::stdName(KStdAction::AboutKDE))->setEnabled(true);
+  while(actionIter != actionIterEnd) {
+    KAction* a = *actionIter;
+    if(!a->isPlugged(help))
+      a->setEnabled(!lock);
+    ++actionIter;
+  }
+
+  actionCollection()->action(KStdGameAction::name(KStdGameAction::Pause))->setEnabled(true);
+  actionCollection()->action(KStdGameAction::name(KStdGameAction::Quit))->setEnabled(true);
 
   enableItems();
 }
 
 void App::enableItems() {
   if(!b->isPaused()) {
-    actionCollection()->action(KStdAction::stdName(KStdAction::Undo))->setEnabled(b->canUndo());
-    actionCollection()->action(KStdAction::stdName(KStdAction::Redo))->setEnabled(b->canRedo());
-    actionCollection()->action("game_restart")->setEnabled(b->canUndo());
+    actionCollection()->action(KStdGameAction::name(KStdGameAction::Undo))->setEnabled(b->canUndo());
+    actionCollection()->action(KStdGameAction::name(KStdGameAction::Redo))->setEnabled(b->canRedo());
+    actionCollection()->action(KStdGameAction::name(KStdGameAction::Restart))->setEnabled(b->canUndo());
     actionCollection()->action("options_gravity")->setEnabled(!b->canUndo() && !b->canRedo());
     ((KToggleAction*)actionCollection()->action("options_gravity"))->setChecked(b->gravityFlag());
   }

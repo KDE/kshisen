@@ -1,29 +1,23 @@
-<!DOCTYPE kpartgui>
-<kpartgui name="kshisen" version="5">
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+<gui name="kshisen" version="6">
 <MenuBar>
-  <Menu name="game"><text>&amp;Game</text>
-    <Action name="game_hint"/>
-    <Separator/>
-    <Action name="game_restart"/>
+  <Menu name="move">
+    <Action name="move_solvable"/>
     <Action name="game_finish"/>
-    <Separator/>
-    <Action name="game_solvable"/>
   </Menu>
-  <Menu name="settings" noMerge="1"><text>&amp;Settings</text>
+  <Menu name="settings">
     <Action name="options_size"/>
     <Action name="options_speed"/>
     <Action name="options_level"/>
     <Action name="options_gravity"/>
     <Action name="options_disallow"/>
-    <Separator/>
-    <Action name="options_configure_keybinding"/>
   </Menu>
 </MenuBar>
-<ToolBar name="mainToolBar" noMerge="1"><text>Main Toolbar</text>
+<ToolBar name="mainToolBar"><text>Main Toolbar</text>
   <Action name="game_quit"/>
   <Separator/>
-  <Action name="edit_undo"/>
-  <Action name="edit_redo"/>
+  <Action name="move_undo"/>
+  <Action name="move_redo"/>
   <Separator/>
   <Action name="game_pause"/>
   <Separator/>
