@@ -3,5 +3,6 @@
 Exec=kshisen
 DocPath=kshisen/index.html
 Name=Shisen-Sho
+Type=Application
 Comment=Shisen-Sho, a game similar to Mahjongg
 Comment[pl]=Shisen-Sho, gra podobna do Mahjongg'a.
