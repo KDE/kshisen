@@ -86,7 +86,6 @@ private:
   KMenuBar *mb;
   KToolBar *tb;
   KStatusBar *sb;
-  KLocale *locale;
   QArray<HighScore> highscore;
   bool cheat;
 };

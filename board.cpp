@@ -136,7 +136,7 @@ int Board::getField(int x, int y) {
     return field[y * x_tiles() + x];
 }
 
-void Board::gravity(int col) {
+void Board::gravity(int col, bool update) {
   if(gravity_flag) {
     int rptr = y_tiles()-1, wptr = y_tiles()-1;
     while(rptr >= 0) {
@@ -147,8 +147,10 @@ void Board::gravity(int col) {
 	if(getField(col, rptr) != EMPTY) {
 	  setField(col, wptr, getField(col, rptr));
 	  setField(col, rptr, EMPTY);
-	  updateField(col, rptr);
-	  updateField(col, wptr);
+	  if(update) {
+	    updateField(col, rptr);
+	    updateField(col, wptr);
+	  }
 	  wptr--;
 	  rptr--;
 	} else
@@ -673,8 +675,8 @@ void Board::undrawArrow() {
     return;
 
   if(grav_col_1 != -1 || grav_col_2 != -1) {
-    gravity(grav_col_1);
-    gravity(grav_col_2);
+    gravity(grav_col_1, true);
+    gravity(grav_col_2, true);
     grav_col_1 = -1;
     grav_col_2 = -1;
   }
@@ -803,7 +805,20 @@ void Board::getHint() {
   }
 }
 
+
 #ifdef DEBUGGING
+void Board::makeHintMove() {
+  int x1, y1, x2, y2;
+  History h[4];
+
+  if(getHint_I(x1, y1, x2, y2, h)) {
+    mark_x = -1;
+    mark_y = -1;
+    marked(x1, y1);
+    marked(x2, y2);
+  }
+}
+
 void Board::finish() {
   int x1, y1, x2, y2;
   History h[4];
@@ -914,6 +929,10 @@ bool Board::solvable(bool norestore) {
   while(getHint_I(x1, y1, x2, y2, h)) {
     setField(x1, y1, EMPTY);
     setField(x2, y2, EMPTY);
+//      if(gravityFlag()) {
+//        gravity(x1, false);
+//        gravity(x2, false);
+//      }
   }
   
   int left = tilesLeft();

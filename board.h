@@ -91,6 +91,7 @@ public:
   bool getHint_I(int &, int &, int &, int &, History h[4]);
 
 #ifdef DEBUGGING
+  void makeHintMove();
   void finish();
 #endif
 
@@ -122,7 +123,7 @@ private slots:
   void marked(int, int);
   void undrawArrow();
   void slotMadeMove(int, int, int, int);
-  void gravity(int);
+  void gravity(int, bool);
 
 private: // functions
   bool loadTiles(float scale = 1.0);
