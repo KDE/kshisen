@@ -87,7 +87,7 @@ private slots:
   void changeSpeed();
   void changeSize();
   void hallOfFame();
-
+  void keyBindings();
 
 
 private:

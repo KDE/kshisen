@@ -9,7 +9,7 @@
     <Separator/>
     <Action name="game_solvable"/>
   </Menu>
-  <Menu name="settings" noMerge="1"><text>&amp;Settings</text>
+  <Menu name="settings"><text>&amp;Settings</text>
     <Action name="options_size"/>
     <Action name="options_speed"/>
     <Action name="options_level"/>

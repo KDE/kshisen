@@ -62,6 +62,7 @@
 #include <kstdgameaction.h>
 #include <khighscore.h>
 #include <kdebug.h>
+#include <kkeydialog.h>
 
 static int size_x[5] = {14, 18, 24, 26, 30};
 static int size_y[5] = { 6,  8, 12, 14, 16};
@@ -189,6 +190,8 @@ void App::initKAction() {
 
   (void)new KToggleAction(i18n("G&ravity"), 0, this, SLOT(toggleGravity()), actionCollection(), "options_gravity");
   (void)new KToggleAction(i18n("Disallow Unsolvable Games"), 0, this, SLOT(toggleDisallowUnsolvable()), actionCollection(), "options_disallow");
+
+  KStdAction::keyBindings(this, SLOT(keyBindings()), actionCollection());
   
   createGUI("kshisenui.rc");
 }
@@ -234,7 +237,6 @@ void App::pause() {
 	actionCollection()->action("game_pause")->setText(i18n("R&esume game"));
   else
 	actionCollection()->action("game_pause")->setText(i18n("&Pause game"));
-  actionCollection()->action("game_pause")->setAccel(Qt::Key_P);
 }
 
 void App::undo() {
@@ -749,6 +751,11 @@ void App::showHighscore(int focusitem)  {
 
   dlg->exec();
   delete dlg;
+}
+
+void App::keyBindings()
+{
+  KKeyDialog::configure(actionCollection(), this);
 }
 
 #include "app.moc"
