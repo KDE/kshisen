@@ -522,7 +522,7 @@ void App::readHighscore() {
       hs.date = hi_date[i].toInt();
       hs.gravity = hi_grav[i].toInt();
       strncpy(hs.name, hi_name[i].utf8(), 16);
-      
+
       highscore[i] = hs;
   }
 }
@@ -681,7 +681,7 @@ void App::showHighscore(int focusitem)  {
 
     // insert name
     if(i < highscore.size())
-      e[i][1] = new QLabel(hs.name, dlg);
+      e[i][1] = new QLabel(QString::fromUtf8( hs.name, 16 ), dlg);
     else
       e[i][1] = new QLabel("", dlg);
 
