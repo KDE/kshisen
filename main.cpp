@@ -44,7 +44,7 @@ QString PICDIR;
 int main(int argc, char **argv) {
   KApplication a(argc, argv);
 
-  PICDIR = a.kdedir() + "/share/apps/kshisen/pics/";
+  PICDIR = a.kde_datadir() + "/kshisen/pics/";
 
   App *app = new App();
   app->resize(800, 500);
