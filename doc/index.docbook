@@ -295,11 +295,11 @@ system, extract the package and type the following in the base directory of the
 </para>
 
 <para>
-<Screen Width="40">
-<Prompt>%</Prompt> <Userinput>./configure</Userinput>
-<Prompt>%</Prompt> <Userinput>make</Userinput>
-<Prompt>%</Prompt> <Userinput>make install</Userinput>
-</Screen>
+<screen Width="40">
+<prompt>%</prompt> <userinput>./configure</userinput>
+<prompt>%</prompt> <userinput>make</userinput>
+<prompt>%</prompt> <userinput>make install</userinput>
+</screen>
 </para>
       
 <para>
