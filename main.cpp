@@ -36,7 +36,7 @@
  *******************************************************************
  */
 
-#include <kapp.h>
+#include "kapp.h"
 #include "app.h"
 
 QString PICDIR;

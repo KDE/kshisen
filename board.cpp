@@ -127,16 +127,42 @@ inline int Board::getField(int x, int y) {
 }
 
 void Board::mousePressEvent(QMouseEvent *e) {
-  if(e->button() == LeftButton) {
     // calculate position
-    int pos_x = (e->pos().x() - XBORDER) / pm_tile[0]->width();
-    int pos_y = (e->pos().y() - YBORDER) / pm_tile[0]->height();
-    if(pos_x >= 0 && pos_x < x_tiles() && pos_y >= 0 && pos_y < y_tiles())
-      emit fieldClicked(pos_x, pos_y);  
-  }
+    int pos_x = (e->pos().x() - XBORDER <0)?-1:
+                              (e->pos().x() - XBORDER) / pm_tile[0]->width();
+    int pos_y = (e->pos().y() - YBORDER <0)?-1:
+                              (e->pos().y() - YBORDER) / pm_tile[0]->height();
+
+// Mark tile
+
+      if(e->button() == LeftButton) {
+      if(pos_x >= 0 && pos_x < x_tiles() && pos_y >= 0 && pos_y < y_tiles())
+              emit fieldClicked(pos_x, pos_y);  
+      }
+
+// Assist by lighting all tiles of same type
+
+      if(e->button() == RightButton) {
+              int field = getField(pos_x,pos_y);
+
+              for(int i = 0; i < x_tiles(); i++)
+                      for(int j = 0; j < y_tiles(); j++){
+                              if( field == getField(i, j)){
+                                      mark_x=i; mark_y=j;
+                              }
+                              else{
+                                      mark_x=-1; mark_y=-1;
+                              }
+                              updateField(i, j);
+                      }
+              mark_x=-1; mark_y=-1;   // no tile selected
+      }
 }
 
 void Board::setSize(int x, int y) {
+  if(x == x_tiles() && y == y_tiles())
+    return;
+
   if(field != 0)
     free(field);
 
@@ -272,6 +298,7 @@ void Board::newGame() {
     return;
   }
 
+  
   int fsize = x_tiles() * y_tiles() * sizeof(int);
   int *oldfield = new int[x_tiles() * y_tiles()];
   memcpy(oldfield, field, fsize);			// save field
@@ -287,7 +314,7 @@ void Board::newGame() {
 	tiles[num_tiles] = field[i];
 	num_tiles++;
       }
-    
+
     // restore field
     memcpy(field, oldfield, fsize);
     
