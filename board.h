@@ -65,6 +65,7 @@ class Board : public QWidget {
   Q_OBJECT
 public:
   Board(QWidget *parent = 0);
+  ~Board();
 
   virtual void paintEvent(QPaintEvent *);
   virtual void mousePressEvent(QMouseEvent *);

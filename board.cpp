@@ -801,7 +801,7 @@ QTime Board::getTimeForGame() {
     return getCurrentTime();
 }
 
-bool Board::solvable(bool norestore = FALSE) {
+bool Board::solvable(bool norestore) {
   int x1, y1, x2, y2;
   History h[4];
   int *oldfield = 0;
