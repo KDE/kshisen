@@ -136,7 +136,7 @@ private: // functions
 
   void setField(int x, int y, int value);
   int  getField(int x, int y);
-  void updateField(int, int);
+  void updateField(int, int, bool erase = true);
   QPixmap *lighten(QPixmap *src);
   bool canMakePath(int x1, int y1, int x2, int y2);
   bool findPath(int x1, int y1, int x2, int y2);

@@ -183,7 +183,7 @@ void Board::mousePressEvent(QMouseEvent *e) {
 	for(int i = 0; i < x_tiles(); i++)
 	  for(int j = 0; j < y_tiles(); j++){
 	    if( highlighted_tile == getField(i, j))
-	      updateField(i, j);	      
+	      updateField(i, j, false);
 	  }
 	mark_x = oldmarkx; 
 	mark_y = oldmarky;   // no tile selected
@@ -196,18 +196,28 @@ void Board::mousePressEvent(QMouseEvent *e) {
 
     // Assist by lighting all tiles of same type
     if(e->button() == RightButton) {
+      if(mark_x != -1 && mark_y != -1){
+        int oldmarkx = mark_x;
+        int oldmarky = mark_y;
+        mark_x=-1; mark_y=-1;
+        updateField(oldmarkx, oldmarky, false);
+      }
+
+      int old_highlighted = highlighted_tile;
       int field = getField(pos_x,pos_y);
       highlighted_tile = field;
 
       for(int i = 0; i < x_tiles(); i++)
 	for(int j = 0; j < y_tiles(); j++){
-	  if( field == getField(i, j)){
+	  int field_tile = getField(i, j);
+	  if(field == field_tile ){
 	    mark_x=i; mark_y=j;
+	    updateField(i, j, false);
 	  }
-	  else{
+	  else if(old_highlighted == field_tile){
 	    mark_x=-1; mark_y=-1;
+	    updateField(i, j, false);
 	  }
-	  updateField(i, j);
 	}
       mark_x=-1; mark_y=-1;   // no tile selected
     }
@@ -423,7 +433,7 @@ void Board::newGame() {
   }
 }
 
-void Board::updateField(int x, int y) {
+void Board::updateField(int x, int y, bool erase) {
   if(trying)
     return;
 
@@ -432,7 +442,7 @@ void Board::updateField(int x, int y) {
 	  pm_tile[0]->width(),
 	  pm_tile[0]->height());
   if(isUpdatesEnabled())
-    repaint(r, true);
+    repaint(r, erase);
 }
 
 QPixmap *Board::lighten(QPixmap *src) {
@@ -503,14 +513,14 @@ void Board::marked(int x, int y) {
     // unmark the piece
     mark_x = -1;
     mark_y = -1;
-    updateField(x, y);
+    updateField(x, y, false);
     return;
   }
 
   if(mark_x == -1) {
     mark_x = x;
     mark_y = y;
-    updateField(x, y);
+    updateField(x, y, false);
     return;
   } else {
     int fld1 = getField(mark_x, mark_y);
