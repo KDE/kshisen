@@ -75,17 +75,17 @@ App::App(QWidget *parent, const char *name) : KMainWindow(parent, name),
 	else
 		readOldHighscore();
 
+	statusBar()->insertItem("", SBI_TIME);
+	statusBar()->insertItem("", SBI_TILES);
+	statusBar()->insertFixedItem(i18n(" Cheat mode "), SBI_CHEAT);
+	statusBar()->changeItem("", SBI_CHEAT);
+
 	initKAction();
 
 	board = new Board(this, "board");
 	loadSettings();
 
 	setCentralWidget(board);
-
-	statusBar()->insertItem("", SBI_TIME);
-	statusBar()->insertItem("", SBI_TILES);
-	statusBar()->insertFixedItem(i18n(" Cheat mode "), SBI_CHEAT);
-	statusBar()->changeItem("", SBI_CHEAT);
 
 	connect(board, SIGNAL(changed()), this, SLOT(enableItems()));
 
@@ -99,8 +99,6 @@ App::App(QWidget *parent, const char *name) : KMainWindow(parent, name),
 
 	updateScore();
 	enableItems();
-
-	setAutoSaveSettings();
 }
 
 void App::initKAction()
@@ -124,10 +122,9 @@ void App::initKAction()
 #endif
 
 	// Settings
-	KStdAction::keyBindings(this, SLOT(keyBindings()), actionCollection());
 	KStdAction::preferences(this, SLOT(showSettings()), actionCollection());
 
-	createGUI("kshisenui.rc");
+	setupGUI();
 }
 
 void App::hallOfFame()
