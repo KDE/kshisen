@@ -1,0 +1,65 @@
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN">
+<book lang="en">
+<bookinfo>
+<title>The KShisen Handbook</title>
+<authorgroup>
+<author>
+<firstname>Mario</firstname>
+<surname>Weilguni</surname>
+</author>
+</authorgroup>
+<date>Version 0.2, 7 June 1998</date>
+<releaseinfo><!-- information about this particular version --></releaseinfo>
+<revhistory>
+<revision>
+<revnumber></revnumber>
+<date></date>
+</revision>
+</revhistory>
+<abstract>
+<para>This documentation was last updated for kshisen version 0.2. Please make any comments and additions to the author.</para>
+<para>KDE Shisen-Sho</para><!-- Merge this with the previous paragraph; it comes from <META NAME="description" CONTENT="..."> --></abstract>
+<keywordset>
+<keyword>KDE</keyword>
+<keyword>game</keyword>
+<keyword>linux</keyword>
+<keyword>Shisen-Sho</keyword>
+</keywordset>
+</bookinfo>
+<chapter id="Introduction">
+<title>Introduction</title>
+<para>Shisen-Sho is similiar to Mahjongg and uses the same set of tiles as Mahjongg. 
+The object of the game is to remove all tiles from the field. Only two matching tiles can 
+be removed at a time. Two tiles can only be removed if they can be connected 
+with at most three connected lines. Lines can be horizontal or vertical but not diagonal. </para>
+<para>You don't have to make the lines by yourself, the game does this for you. 
+Just mark two matching tiles on the board. If they can be connected with at most three lines, 
+the lines will be drawn and the tiles are removed. </para>
+<para>Remember that lines may cross the empty border. If you are stuck, you can use the 
+<emphasis>Hint</emphasis> feature to find two tiles which may be removed. </para>
+<para>The game is over if no moves are possible and some tiles are left on the board 
+(this should NOT happen if the option <emphasis>No unsolvable games</emphasis> in the <emphasis>Option</emphasis> 
+menu is checked, since for these games there is at least one way to solve it, though it may 
+happen that you choose the wrong way). </para>
+<para>If you use the features <emphasis>Undo</emphasis>, <emphasis>Hint</emphasis> or <emphasis>Redo</emphasis>, no highscore will be generated. </para>
+</chapter>
+<chapter id="Epilogue">
+<title>Epilogue</title>
+<sect1>
+<title>Developer</title>
+<para><literal remap="tt">Mario Weilguni</literal></para>
+</sect1>
+<sect1>
+<title>Authors</title>
+<para><literal remap="tt">Mario Weilguni</literal></para>
+<para><literal remap="tt"><ulink url="mailto:rwilliams@kde.org">Robert Williams</ulink></literal> - Editor</para>
+</sect1>
+</chapter>
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->
