@@ -84,10 +84,10 @@ public:
 	virtual void resizeEvent(QResizeEvent*);
 
 	void setDelay(int);
-	int  getDelay();
+	int  getDelay() const;
 
-	bool canUndo();
-	bool canRedo();
+	bool canUndo() const;
+	bool canRedo() const;
 	void redo();
 	void undo();
 
@@ -95,7 +95,7 @@ public:
 	void resizeBoard();
 	void newGame();
 	void setShuffle(int);
-	int  getShuffle();
+	int  getShuffle() const;
 
 	void getHint();
 	bool getHint_I(Path& p) const;
@@ -106,21 +106,21 @@ public:
 	void dumpBoard() const;
 #endif
 
-	int tilesLeft();
-	int getCurrentTime();
-	int getTimeForGame();
+	int tilesLeft() const;
+	int getCurrentTime() const;
+	int getTimeForGame() const;
 
 	bool solvable(bool norestore = FALSE);
 
-	bool getSolvableFlag();
+	bool getSolvableFlag() const;
 	void setSolvableFlag(bool);
-	bool gravityFlag();
+	bool gravityFlag() const;
 	void setGravityFlag(bool);
 
 	int x_tiles() const;
 	int y_tiles() const;
 
-	bool isPaused() { return paused; }
+	bool isPaused() const { return paused; }
 
 signals:
 	void fieldClicked(int, int);
@@ -142,8 +142,8 @@ private slots:
 private: // functions
 	void initBoard();
 
-	int xOffset();
-	int yOffset();
+	int xOffset() const;
+	int yOffset() const;
 
 	void setField(int x, int y, int value);
 	int getField(int x, int y) const;
@@ -152,7 +152,7 @@ private: // functions
 	bool findPath(int x1, int y1, int x2, int y2, Path& p) const;
 	bool findSimplePath(int x1, int y1, int x2, int y2, Path& p) const;
 	void drawConnection(int timeout);
-	QPoint midCoord(int, int);
+	QPoint midCoord(int, int) const;
 
 private:
 	time_t starttime;

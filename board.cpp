@@ -255,12 +255,12 @@ void Board::mousePressEvent(QMouseEvent *e)
 
 // The board is centred inside the main playing area. xOffset/yOffset provide
 // the coordinates of the top-left corner of the board.
-int Board::xOffset()
+int Board::xOffset() const
 {
 	return (width() - (tiles.tileWidth() * x_tiles())) / 2;
 }
 
-int Board::yOffset()
+int Board::yOffset() const
 {
 	return (height() - (tiles.tileHeight() * y_tiles())) / 2;
 }
@@ -745,7 +745,7 @@ void Board::undrawConnection()
 	}
 }
 
-QPoint Board::midCoord(int x, int y)
+QPoint Board::midCoord(int x, int y) const
 {
 	QPoint p;
 	int w = tiles.tileWidth();
@@ -773,7 +773,7 @@ void Board::setDelay(int newvalue)
 	_delay = newvalue;
 }
 
-int Board::getDelay()
+int Board::getDelay() const
 {
 	return _delay;
 }
@@ -787,14 +787,14 @@ void Board::slotMadeMove(int x1, int y1, int x2, int y2)
 	emit changed();
 }
 
-bool Board::canUndo()
+bool Board::canUndo() const
 {
-	return (bool)(_undo.count() > 0);
+	return !_undo.isEmpty();
 }
 
-bool Board::canRedo()
+bool Board::canRedo() const
 {
-	return (bool)(_redo.count() > 0);
+	return !_redo.isEmpty();
 }
 
 void Board::undo()
@@ -802,7 +802,8 @@ void Board::undo()
 	if(canUndo())
 	{
 		undrawConnection();
-		Move *m = _undo.take(_undo.count() - 1);
+		Move* m = _undo.last();
+		_undo.take();
 		if(gravityFlag())
 		{
 			int y;
@@ -832,7 +833,7 @@ void Board::undo()
 		setField(m->x2, m->y2, m->tile);
 		updateField(m->x1, m->y1);
 		updateField(m->x2, m->y2);
-		_redo.insert(0, m);
+		_redo.prepend(m);
 		emit changed();
 	}
 }
@@ -842,7 +843,7 @@ void Board::redo()
 	if(canRedo())
 	{
 		undrawConnection();
-		Move *m = _redo.take(0);
+		Move* m = _redo.take(0);
 		setField(m->x1, m->y1, EMPTY);
 		setField(m->x2, m->y2, EMPTY);
 		updateField(m->x1, m->y1);
@@ -963,12 +964,12 @@ void Board::setShuffle(int newvalue)
 	_shuffle = newvalue;
 }
 
-int Board::getShuffle()
+int Board::getShuffle() const
 {
 	return _shuffle;
 }
 
-int Board::tilesLeft()
+int Board::tilesLeft() const
 {
 	int left = 0;
 
@@ -980,12 +981,12 @@ int Board::tilesLeft()
 	return left;
 }
 
-int Board::getCurrentTime()
+int Board::getCurrentTime() const
 {
 	return (int)difftime(time((time_t *)0),starttime);
 }
 
-int Board::getTimeForGame()
+int Board::getTimeForGame() const
 {
 	if(tilesLeft() == 0)
 	{
@@ -1037,7 +1038,7 @@ bool Board::solvable(bool norestore)
 	return (bool)(left == 0);
 }
 
-bool Board::getSolvableFlag()
+bool Board::getSolvableFlag() const
 {
 	return _solvable_flag;
 }
@@ -1047,7 +1048,7 @@ void Board::setSolvableFlag(bool value)
 	_solvable_flag = value;
 }
 
-bool Board::gravityFlag()
+bool Board::gravityFlag() const
 {
 	return gravity_flag;
 }
