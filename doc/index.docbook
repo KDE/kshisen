@@ -18,11 +18,16 @@
 <address><email>ddoerflinger@web.de</email></address>
 </affiliation>
 </author>
+<othercredit role="reviewer">
+<firstname>Frerich</firstname><surname>Raabe</surname>
+<contrib>Reviewer</contrib>
+<affiliation><address><email>raabe@kde.org</email></address></affiliation>
+</othercredit>
 </authorgroup>
 
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
 
-<date>2000-12-16</date>
+<date>2000-02-10</date>
 <releaseinfo>1.03.00</releaseinfo>
 
 <abstract>
@@ -30,9 +35,9 @@
 </abstract>
 
 <keywordset>
-      <keyword>KDE</keyword>
-      <keyword>kdegames</keyword>
-      <keyword>KShisen</keyword>
+      <keyword>&kde;</keyword>
+      <keyword>&package;</keyword>
+      <keyword>&kappname;</keyword>
       <keyword>game</keyword>
       <keyword>shisen-sho</keyword>
 </keywordset>
@@ -68,9 +73,8 @@ removed. </para>
 
 <para>Remember that lines only may cross the empty border. If you are stuck, you
 can use the Hint feature to find two tiles which may be removed.  Clicking a
-tile with the <mousebutton>right</mousebutton> mouse button will show you all
-corresponding tiles, no matter if they are removable at the moment or
-not.</para>
+tile with the &RMB; will show you all corresponding tiles, no matter if they are
+removable at the moment or not.</para>
 
 <para> The game is over if no moves are possible and some tiles are left on the
 board (this should not happen if the option <guimenuitem>No unsolvable
@@ -88,41 +92,41 @@ current game, as there are:</para>
 
 <variablelist>
 <varlistentry>
-<term><menuchoice> <shortcut><keycombo
-action="simul">&Ctrl;<keycap>Z</keycap></keycombo></shortcut>
-<guimenu>Game</guimenu>
-<guimenuitem>Undo</guimenuitem></menuchoice></term>
-<listitem><para><action>Undo the last step</action>. Same as the
-<guibutton>back</guibutton> button in the Toolbar.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><shortcut><keycombo
-action="simul">&Ctrl;<keycap>D</keycap></keycombo></shortcut> 
-<guimenu>Game</guimenu>
-<guimenuitem>Redo</guimenuitem></menuchoice></term>
-<listitem><para><action>Redo the last step</action>. Same as the
-<guibutton>forward</guibutton> button in the toolbar.</para></listitem>
+<term><menuchoice>
+<shortcut><keycombo action="simul">&Ctrl;
+<keycap>N</keycap></keycombo></shortcut>
+<guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice></term>
+<listitem><para><action>Finish the actual game</action> set and start a new
+session with new tiles. </para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><menuchoice>
-<shortcut><keycombo action="simul">&Ctrl;
-<keycap>H</keycap></keycombo></shortcut>
+<shortcut><keycombo><keycap>P</keycap></keycombo></shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>Pause</guimenuitem></menuchoice></term>
+<listitem><para><action>Pauses the entire game</action>, especially the timer
+which is needed for the high score. The menu-entry then turns to
+<guimenuitem>Resume Game</guimenuitem>, which is used for resuming the
+game.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu><guimenuitem>Show
+Highscores</guimenuitem></menuchoice></term>
+<listitem><para>Shows the (local) Top-Ten-charts of Shisen-Sho.</para> </listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut><keycombo><keycap>H</keycap></keycombo></shortcut>
 <guimenu>Game</guimenu><guimenuitem>Get
 Hint</guimenuitem></menuchoice></term> 
 <listitem><para><action>Show a tip</action>, which two tiles to remove
 next.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<shortcut><keycombo action="simul">&Ctrl;
-<keycap>N</keycap></keycombo></shortcut>
-<guimenu>Game</guimenu><guimenuitem>New
-Game</guimenuitem></menuchoice></term>
-<listitem><para><action>Finish the actual game</action> set and start a new
-session with new tiles. </para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -137,26 +141,11 @@ tiles.</action></para></listitem>
 
 <varlistentry>
 <term><menuchoice><guimenu>Game</guimenu>
-<guimenuitem>Pause Game</guimenuitem></menuchoice></term>
-<listitem><para><action>Pauses the entire game</action>, especially the timer
-which is needed for the high score. The menu-entry then turns to
-<guimenuitem>Resume Game</guimenuitem>, which is used for resuming the
-game.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><guimenu>Game</guimenu>
-<guimenuitem>Is game solvable?</guimenuitem></menuchoice></term>
-<listitem><para>Shows a Dialog which <action>tells you whether the game is solvable or
-not</action>. If the menu-entry <guimenuitem>Disallow unsolvable
-games</guimenuitem> in the <guimenu>Options </guimenu>menu is checked, this Box
+<guimenuitem>Is Game Solvable?</guimenuitem></menuchoice></term>
+<listitem><para>Shows a dialog which <action>tells you whether the game is
+solvable or not</action>. If the menu-entry <guimenuitem>Disallow Unsolvable
+Games</guimenuitem> in the <guimenu>Options</guimenu> menu is checked, this box
 is absolutely useless.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><guimenu>Game</guimenu><guimenuitem>Hall of
-Fame</guimenuitem></menuchoice></term>
-<listitem><para>Shows the (local) Top-Ten-charts of Shisen-Sho.</para> </listitem>
 </varlistentry>
 
 </variablelist>
@@ -164,23 +153,47 @@ Fame</guimenuitem></menuchoice></term>
 <para>Some of the menu items can also be controlled by hot-keys. See <xref linkend="key-bindings"/> for a list.</para> 
 
 </sect1>
+
+<sect1 id="edit-menu">
+<title>The <guimenu>Edit</guimenu> Menu</title>
+
+<variablelist>
+<varlistentry>
+<term><menuchoice> <shortcut><keycombo
+action="simul">&Ctrl;<keycap>Z</keycap></keycombo></shortcut>
+<guimenu>Edit</guimenu>
+<guimenuitem>Undo</guimenuitem></menuchoice></term>
+<listitem><para><action>Undo the last step</action>. Same as the
+<guibutton>back</guibutton> button in the Toolbar.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><shortcut><keycombo
+action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo></shortcut> 
+<guimenu>Game</guimenu>
+<guimenuitem>Redo</guimenuitem></menuchoice></term>
+<listitem><para><action>Redo the last step</action>. Same as the
+<guibutton>forward</guibutton> button in the toolbar.</para></listitem>
+</varlistentry>
+</variablelist>
+</sect1>
 </chapter>
 
 <chapter id="configuration">
 <title>Configuration</title>
 
-<sect1 id="options-menu">
-<title>The <guimenu>Options</guimenu> Menu</title>
+<sect1 id="settings-menu">
+<title>The <guimenu>Settings</guimenu> Menu</title>
 
 <para>&kshisen; has several possibilities to change its behavior. All options
-can be changed from the menu <guimenu>Options</guimenu>. </para>
+can be changed from the menu <guimenu>Settings</guimenu>.</para>
 
 <para>The options will be saved automatically.</para>
 
 <variablelist>
 <varlistentry>
 <term>
-<menuchoice><guimenu>Options</guimenu>
+<menuchoice><guimenu>Settings</guimenu>
 <guisubmenu>Size</guisubmenu></menuchoice></term>
 <listitem><para>In the sub-menu <guisubmenu>Size</guisubmenu> you can change the
 number of tiles on the board. The more tiles you have, the harder (and longer)
@@ -188,29 +201,29 @@ the game will be. </para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu>Options</guimenu>
+<term><menuchoice><guimenu>Settings</guimenu>
 <guisubmenu>Speed</guisubmenu></menuchoice></term>
 <listitem><para>The sub-menu <guisubmenu>Speed</guisubmenu> sets the time for
 the tiles to disappear when connected correctly. </para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu>Options</guimenu>
+<term><menuchoice><guimenu>Settings</guimenu>
 <guisubmenu>Level</guisubmenu></menuchoice></term>
 <listitem><para>Choose your game skill in the sub-menu
 <guisubmenu>Level</guisubmenu>.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu>Options</guimenu>
+<term><menuchoice><guimenu>Settings</guimenu>
 <guimenuitem>Gravity</guimenuitem></menuchoice></term>
 <listitem><para>Checking this item makes the game even harder: If a tile is
 removed, all tiles lying above it will fall down one step. </para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu>Options</guimenu>
-<guimenuitem>Disallow unsolvable games</guimenuitem></menuchoice></term>
+<term><menuchoice><guimenu>Settings</guimenu>
+<guimenuitem>Disallow Unsolvable Games</guimenuitem></menuchoice></term>
 <listitem><para>If this menu-item is checked, only solvable games will be
 created when a new game is started. Note: You may still choose the wrong way and
 have to try again if you didn't solve the game, but if it's checked, the game
@@ -229,11 +242,11 @@ have to try again if you didn't solve the game, but if it's checked, the game
 <simplelist>
 <member>Quit: <keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></member>
 <member>Undo: <keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo></member>
-<member>Redo: <keycombo action="simul">&Ctrl;<keycap>D</keycap></keycombo></member>
+<member>Redo: <keycombo action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo></member>
 <member>New Game: <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></member>
 <member>Restart Game: <keycombo action="simul">&Ctrl;<keycap>R</keycap></keycombo></member>
 <member>Help: <keycombo action="simul"><keycap>F1</keycap></keycombo></member>
-<member>What's this?: <keycombo action="simul"><keycap>Shift</keycap><keycap>F1</keycap></keycombo></member>
+<member>What's this?: <keycombo action="simul">&Shift;<keycap>F1</keycap></keycombo></member>
 </simplelist>
 </sect1>
 </chapter>
