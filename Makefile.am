@@ -2,8 +2,8 @@
 
 INCLUDES = -I$(top_srcdir)/libkdegames $(all_includes)
 
-LDFLAGS	= -L$(top_builddir)/libkdegames $(all_libraries) $(KDE_RPATH)
-LDADD = -lkdegames $(LIB_KDEUI)
+LDFLAGS	= $(all_libraries) $(KDE_RPATH)
+LDADD = $(top_builddir)/libkdegames/libkdegames.la $(LIB_KDEUI)
 
 PICDIR = $(kde_datadir)/kshisen/pics
 
