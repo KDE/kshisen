@@ -495,40 +495,36 @@ int App::insertHighscore(HighScore &hs) {
 
 
 void App::readHighscore() {
-  int i = 0;
-  QStringList list;
+  QStringList hi_x, hi_y, hi_sec, hi_date, hi_grav, hi_name;
+  hi_x = highscoreTable->readList("x", HIGHSCORE_MAX);
+  hi_y = highscoreTable->readList("y", HIGHSCORE_MAX);
+  hi_sec = highscoreTable->readList("seconds", HIGHSCORE_MAX);
+  hi_date = highscoreTable->readList("date", HIGHSCORE_MAX);
+  hi_grav = highscoreTable->readList("gravity", HIGHSCORE_MAX);
+  hi_name = highscoreTable->readList("name", HIGHSCORE_MAX);
   
   highscore.resize(0);
-  list = highscoreTable->readList("Highscore", HIGHSCORE_MAX);
-  for (int i = 0; i < list.count(); i++) {
+
+  for (int unsigned i = 0; i < hi_x.count(); i++) {
       highscore.resize(i+1);
     
       HighScore hs;
       memset(hs.name, 0, sizeof(hs.name));
+
+      hs.x = hi_x[i].toInt();
+      hs.y = hi_y[i].toInt();
+      hs.seconds = hi_sec[i].toInt();
+      hs.date = hi_date[i].toInt();
+      hs.date = hi_date[i].toInt();
+      hs.gravity = hi_grav[i].toInt();
+      strncpy(hs.name, hi_name[i].utf8(), 16);
       
-      QStringList e = QStringList::split(' ', list[i]);
-      int nelem = e.count();
-      hs.x = (*e.at(0)).toInt();
-      hs.y = (*e.at(1)).toInt();
-      hs.seconds = (*e.at(2)).toInt();
-      hs.date = (*e.at(3)).toInt();
-
-      if (nelem == 4) // old version <= 1.1
-      {
-        hs.gravity = 0;
-        strncpy(hs.name, (*e.at(4)).utf8(), 16);
-      }
-      else
-      {
-        hs.gravity = (*e.at(4)).toInt();
-        strncpy(hs.name, (*e.at(5)).utf8(), 16);
-      }
-
       highscore[i] = hs;
   }
 }
 
 void App::readOldHighscore() {
+// this is for before-KHighscore-highscores
   int i;
   QString s, e, grp;
   KConfig *conf = kapp->config();
@@ -594,14 +590,26 @@ void App::readOldHighscore() {
 void App::writeHighscore() {
   int i;
   QString e;
-  QStringList list;
+  QStringList hi_x, hi_y, hi_sec, hi_date, hi_grav, hi_name;
   for(i = 0; i < (int)highscore.size(); i++) {
     HighScore hs = highscore[i];
-    e.sprintf("%d %d %d %ld %d %-16s",
-	      hs.x, hs.y, hs.seconds, hs.date, hs.gravity, hs.name);
-    list.append(e);
+//    e.sprintf("%d %d %d %ld %d %-16s",
+//	      hs.x, hs.y, hs.seconds, hs.date, hs.gravity, hs.name);// original
+//	      line - caused problems with "firstname lastname" names because of
+//	      the space
+    hi_x.append(QString::number(hs.x));
+    hi_y.append(QString::number(hs.y));
+    hi_sec.append(QString::number(hs.seconds));
+    hi_date.append(QString::number(hs.date));
+    hi_grav.append(QString::number(hs.gravity));
+    hi_name.append(hs.name);
   }
-  highscoreTable->writeList("Highscore", list);
+  highscoreTable->writeList("x", hi_x);
+  highscoreTable->writeList("y", hi_y);
+  highscoreTable->writeList("seconds", hi_sec);
+  highscoreTable->writeList("date", hi_date);
+  highscoreTable->writeList("gravity", hi_grav);
+  highscoreTable->writeList("name", hi_name);
   highscoreTable->sync();
 }
 
