@@ -13,3 +13,8 @@
 
 	Added "About Qt" to keep the Trolls happy
 
+	Fixed that "player-has-won-and-must-go-to-the-bathroom"-bug
+	(the elapsed time was taken after getPlayerName() instead
+	of taking it before)
+
+	

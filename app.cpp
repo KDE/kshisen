@@ -142,7 +142,7 @@ App::App() : KTopLevelWidget() {
   om->insertItem(locale->translate("Si&ze"), om_s);
   om->insertItem(locale->translate("S&peed"), om_sp);
   om->insertItem(locale->translate("&Level"), om_l);
-  om->insertItem(locale->translate("No unsolvable games"), ID_OSOLVABLE);
+  om->insertItem(locale->translate("Disallow unsolvable games"), ID_OSOLVABLE);
   mb->insertItem(locale->translate("&Options"), om);
   mb->insertSeparator();
   mb->insertItem(locale->translate("&Help"), hm);
@@ -383,11 +383,11 @@ void App::slotEndOfGame() {
   else {
     // create highscore entry
     HighScore hs;
-    QString name = getPlayerName();
-    strncpy(hs.name, (const char *)name, sizeof(hs.name) - 1);
     hs.seconds = b->getTimeForGame().hour() * 3600 + 
       b->getTimeForGame().minute() * 60 +
       b->getTimeForGame().second();
+    QString name = getPlayerName();
+    strncpy(hs.name, (const char *)name, sizeof(hs.name) - 1);
     hs.date = time((time_t*)0);
     hs.x = b->x_tiles();
     hs.y = b->y_tiles();
