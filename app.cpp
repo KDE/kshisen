@@ -150,9 +150,9 @@ void App::initKAction() {
   KStdGameAction::highscores(this, SLOT(hallOfFame()), actionCollection());
   KStdGameAction::pause(this, SLOT(pause()), actionCollection());
 
-  (void)new KAction(i18n("Is game solvable?"), 0, this, SLOT(isSolvable()), actionCollection(), "game_solvable");
-  (void)new KAction(i18n("Res&tart game"), KKeySequence("CTRL+R"), this, SLOT(restartGame()), actionCollection(), "game_restart");
-  (void)new KAction(i18n("Get &hint"), Key_H, this, SLOT(hint()), actionCollection(), "game_hint");
+  (void)new KAction(i18n("Is Game Solvable?"), 0, this, SLOT(isSolvable()), actionCollection(), "game_solvable");
+  (void)new KAction(i18n("Res&tart Game"), KKeySequence("CTRL+R"), this, SLOT(restartGame()), actionCollection(), "game_restart");
+  (void)new KAction(i18n("Get &Hint"), Key_H, this, SLOT(hint()), actionCollection(), "game_hint");
 
 #ifdef DEBUGGING
   (void)new KAction("&Finish", 0, b, SLOT(finish()), actionCollection(), "game_finish");
@@ -189,7 +189,7 @@ void App::initKAction() {
   level->setItems(list);
 
   (void)new KToggleAction(i18n("G&ravity"), 0, this, SLOT(toggleGravity()), actionCollection(), "options_gravity");
-  (void)new KToggleAction(i18n("Disallow unsolvable games"), 0, this, SLOT(toggleDisallowUnsolvable()), actionCollection(), "options_disallow");
+  (void)new KToggleAction(i18n("Disallow Unsolvable Games"), 0, this, SLOT(toggleDisallowUnsolvable()), actionCollection(), "options_disallow");
   
   createGUI("kshisenui.rc");
 }
