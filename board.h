@@ -95,6 +95,10 @@ public:
   bool getSolvableFlag();
   void setSolvableFlag(bool);
 
+  int  x_tiles();
+  int  y_tiles();
+
+
 signals:
   void fieldClicked(int, int);
   void markError();
@@ -115,8 +119,6 @@ private: // functions
 
   void setField(int x, int y, int value);
   int  getField(int x, int y);
-  int  x_tiles();
-  int  y_tiles();
   int  random(int max);
   void updateField(int, int);
   QPixmap *lighten(QPixmap *src);

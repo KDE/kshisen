@@ -1,0 +1,15 @@
+0.1:	initial release
+
+0.2:	added this changelog
+
+	fixed a bug in the pathfinder (reported and fixed
+	by Stephane Alnet <alnet@u-picardie.fr>)
+
+	fixed a bug in the Board::lighten() function on 8-bit
+	displays. Reported by Marc Diefenbruch 
+	<md@filesvr1.informatik.uni-essen.de>
+
+	Added a "Hall of Fame", mostly taken from kreversi.
+
+	Added "About Qt" to keep the Trolls happy
+

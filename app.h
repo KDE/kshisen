@@ -46,7 +46,17 @@
 #include <kmenubar.h>
 #include <klocale.h>
 #include <ktopwidget.h>
+#include <time.h>
 #include "board.h"
+
+struct HighScore {
+  char name[32];
+  int  seconds;
+  int  x, y;
+  time_t date;
+};
+
+const int HIGHSCORE_MAX = 10;
 
 class App : public KTopLevelWidget {
   Q_OBJECT
@@ -62,11 +72,21 @@ private slots:
   void updateScore();
 
 private:
+  QString getPlayerName();
+  void readHighscore();
+  void writeHighscore();
+  int  insertHighscore(HighScore &);
+  bool isBetter(HighScore &, HighScore &);
+  void showHighscore(int focusitem = -1);
+
+private:
   Board *b;
   KMenuBar *mb;
   KToolBar *tb;
   KStatusBar *sb;
   KLocale *locale;
+  QArray<HighScore> highscore;
+  bool cheat;
 };
 
 #endif

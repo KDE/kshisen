@@ -356,12 +356,18 @@ QPixmap *Board::lighten(QPixmap *src) {
   const float FACTOR = 1.3;
 
   QImage img = src->convertToImage();
-  for(int y = 0; y < src->height(); y++) {
-    uchar *p = (uchar *)img.scanLine(y);
-    for(int x = 0; x < src->width() * 4; x++) {
-      *p = (unsigned char)MIN(255, (int)(FACTOR * (*p)));
-      p++;
+  if(img.depth() > 8) { // at least high-color
+    for(int y = 0; y < src->height(); y++) {
+      uchar *p = (uchar *)img.scanLine(y);
+      for(int x = 0; x < src->width() * 4; x++) {
+	*p = (unsigned char)MIN(255, (int)(FACTOR * (*p)));
+	p++;
+      }
     }
+  } else { // image has a palette
+    // get background color index
+    int idx = img.pixelIndex(8, 1); // should work for all tiles
+    img.setColor(idx, QColor(img.color(idx)).light().rgb());
   }
  
   QPixmap *pm = new QPixmap();
@@ -383,9 +389,9 @@ void Board::paintEvent(QPaintEvent *e) {
       if(e->rect().intersects(r)) {
 	// check if it is a marked piece
 	if(i == mark_x && j == mark_y) {
-	  QPixmap *lpm = lighten(pm_tile[getField(i, j)-1]);
-	  p.drawPixmap(xpos, ypos, *lpm);
-	  delete lpm;
+	    QPixmap *lpm = lighten(pm_tile[getField(i, j)-1]);
+	    p.drawPixmap(xpos, ypos, *lpm);
+	    delete lpm;
 	} else
 	  p.drawPixmap(xpos, ypos, *pm_tile[getField(i, j)-1]);
       }
