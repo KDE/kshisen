@@ -40,11 +40,11 @@
 #ifndef __APP__H__
 #define __APP__H__
 
+#include <ktmainwindow.h>
 #include <ktoolbar.h>
 #include <kstatusbar.h>
 #include <kmenubar.h>
 #include <klocale.h>
-#include <ktmainwindow.h>
 #include <time.h>
 #include "board.h"
 
@@ -60,6 +60,7 @@ const unsigned HIGHSCORE_MAX = 10;
 
 class App : public KTMainWindow {
   Q_OBJECT
+
 public:
   App();
   ~App();
