@@ -88,7 +88,6 @@ Board::Board(QWidget *parent) : QWidget(parent) {
   _redo.setAutoDelete(true);
   _undo.setAutoDelete(true);
 
-  loadTiles(1);
   field = 0;
   QPixmap bg(KGlobal::dirs()->findResource("appdata", "kshisen_bgnd.xpm"));
   setBackgroundPixmap(bg);
@@ -98,7 +97,6 @@ Board::Board(QWidget *parent) : QWidget(parent) {
 	  this, SLOT(slotMadeMove(int, int, int, int)));  
 
   setShuffle(0);
-  setSize(18, 8);
 
   highlighted_tile = -1;
 }
@@ -188,7 +186,7 @@ void Board::mousePressEvent(QMouseEvent *e) {
 	mark_y = oldmarky;   // no tile selected
 	highlighted_tile = -1;
       }
-      
+
       if(pos_x >= 0 && pos_x < x_tiles() && pos_y >= 0 && pos_y < y_tiles())
 	emit fieldClicked(pos_x, pos_y);  
     }
@@ -197,7 +195,7 @@ void Board::mousePressEvent(QMouseEvent *e) {
     if(e->button() == RightButton) {
       int field = getField(pos_x,pos_y);
       highlighted_tile = field;
-      
+
       for(int i = 0; i < x_tiles(); i++)
 	for(int j = 0; j < y_tiles(); j++){
 	  if( field == getField(i, j)){
@@ -355,7 +353,7 @@ void Board::newGame() {
     return;
   }
 
-  
+
   int fsize = x_tiles() * y_tiles() * sizeof(int);
   int *oldfield = new int[x_tiles() * y_tiles()];
   memcpy(oldfield, field, fsize);			// save field

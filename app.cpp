@@ -78,11 +78,11 @@ App::App() : KMainWindow(0) {
   }
 
   cheat = FALSE;
-  
+
 
   initKAction();
 
-  b = new Board(this);  
+  b = new Board(this);
   setCentralWidget(b);
 
   sb = new KStatusBar(this);
@@ -108,13 +108,11 @@ App::App() : KMainWindow(0) {
   //kdDebug() << "CUSTOM SIZE, TODO" << endl;
   //  else
   ((KSelectAction*)actionCollection()->action("options_size"))->setCurrentItem(i - 300);
-  changeSize();
 
   QTimer *t = new QTimer(this);
   t->start(1000);
   connect(t, SIGNAL(timeout()),
 	  this, SLOT(updateScore()));
-  updateScore();
 
   connect(b, SIGNAL(endOfGame()),
  	  this, SLOT(slotEndOfGame()));
@@ -129,11 +127,12 @@ App::App() : KMainWindow(0) {
   ((KToggleAction*)actionCollection()->action("options_gravity"))->setChecked(_b);
 
   kapp->processEvents();
-  i = conf->readNumEntry("Level", 311 + 1);
-  ((KSelectAction*)actionCollection()->action("options_level"))->setCurrentItem(i - 311);
-  changeLevel();
+  i = conf->readNumEntry("Level", 311 + 1) - 311;
+  ((KSelectAction*)actionCollection()->action("options_level"))->setCurrentItem(i);
+  b->setShuffle(i * 4 + 1);
 
-  sizeChanged();
+  changeSize();
+  updateScore();
   enableItems();
 }
 
@@ -249,7 +248,7 @@ void App::undo() {
 }
 
 void App::redo() {
-  if(b->canRedo()) 
+  if(b->canRedo())
     b->redo();
     enableItems();
 }
@@ -288,7 +287,6 @@ void App::changeSpeed() {
 void App::changeSize() {
   int index = ((KSelectAction*)actionCollection()->action("options_size"))->currentItem();
   b->setSize(size_x[index], size_y[index]);
-  b->newGame();
   kapp->config()->writeEntry("Size", 300 + index);// 300 is from the old QPopuMenu+ID way - before KAction
 }
 
