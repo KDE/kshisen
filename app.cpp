@@ -151,7 +151,7 @@ void App::initKAction() {
   KStdGameAction::pause(this, SLOT(pause()), actionCollection());
 
   (void)new KAction(i18n("Is Game Solvable?"), 0, this, SLOT(isSolvable()), actionCollection(), "game_solvable");
-  (void)new KAction(i18n("Res&tart Game"), KKeySequence("CTRL+R"), this, SLOT(restartGame()), actionCollection(), "game_restart");
+  (void)new KAction(i18n("Res&tart Game"), Qt::CTRL+Qt::Key_R, this, SLOT(restartGame()), actionCollection(), "game_restart");
   (void)new KAction(i18n("Get &Hint"), Key_H, this, SLOT(hint()), actionCollection(), "game_hint");
 
 #ifdef DEBUGGING
