@@ -862,13 +862,10 @@ void Board::redo()
 
 void Board::showHint()
 {
-	Path hintPath;
-	if(getHint_I(hintPath))
-	{
-		undrawConnection();
-		connection = hintPath;
+	undrawConnection();
+
+	if(getHint_I(connection))
 		drawConnection(1000);
-	}
 }
 
 
