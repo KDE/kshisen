@@ -70,7 +70,7 @@ Board::Board(QWidget *parent) : QWidget(parent) {
   clock_t t;
   struct tms dummy;
   t = times(&dummy); 
-  srand((int)t);
+  srandom((int)t);
 
   starttime = time((time_t *)0);
 
@@ -449,7 +449,8 @@ void Board::paintEvent(QPaintEvent *e) {
 
 // returns a random number <= max
 int Board::random(int max) {
-  return (int)((float)(max) * rand() / (RAND_MAX+1.0));
+  //return (int)((float)(max) * rand() / (RAND_MAX+1.0));
+  return ::random() % (max+1); // don't depend on RAND_MAX...
 }
 
 void Board::marked(int x, int y) {
