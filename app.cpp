@@ -169,6 +169,8 @@ void App::initKAction()
 #endif
 
 	// Settings
+	KStdAction::keyBindings(this, SLOT(keyBindings()), actionCollection());
+
 	QStringList list;
 	KSelectAction* size = new KSelectAction(i18n("Si&ze"), 0, this,
 		SLOT(changeSize()), actionCollection(), "options_size");
@@ -203,10 +205,8 @@ void App::initKAction()
 	(void)new KToggleAction(i18n("Disallow Unsolvable Games"), 0, this,
 		SLOT(toggleDisallowUnsolvable()), actionCollection(), "options_disallow");
 
-	new KToggleAction(i18n("Prefer Unscaled Tiles"), 0, this,
+	new KToggleAction(i18n("Prefer Un&scaled Tiles"), Qt::Key_S, this,
 		SLOT(preferUnscaled()), actionCollection(), "options_unscaled");
-
-	KStdAction::keyBindings(this, SLOT(keyBindings()), actionCollection());
 
 	createGUI("kshisenui.rc");
 }
