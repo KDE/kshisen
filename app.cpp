@@ -336,7 +336,7 @@ void App::slotEndOfGame() {
   if(b->tilesLeft() > 0)
       KMessageBox::information(this,
 			       i18n("No more moves possible!"),
-			       i18n("End of game"));
+			       i18n("End of Game"));
   else {
     // create highscore entry
     HighScore hs;
@@ -368,7 +368,7 @@ void App::slotEndOfGame() {
 		(b->getTimeForGame() / 60)  % 60,
 		b->getTimeForGame() % 60);
       
-      KMessageBox::information(this, s, i18n("End of game"));
+      KMessageBox::information(this, s, i18n("End of Game"));
     }
   }
 
