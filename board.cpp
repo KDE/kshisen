@@ -529,10 +529,7 @@ void Board::marked(int x, int y)
 
 		// both field same?
 		if(fld1 != fld2)
-		{
-			emit markError();
 			return;
-		}
 
 		// trace
 		if(findPath(mark_x, mark_y, x, y, connection))
@@ -553,7 +550,6 @@ void Board::marked(int x, int y)
 		else
 		{
 			connection.clear();
-			emit markError();
 		}
 	}
 }

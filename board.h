@@ -124,7 +124,6 @@ public:
 	bool isPaused() const { return paused; }
 
 signals:
-	void markError();
 	void markMatched();
 	void madeMove(int, int, int, int);
 	void changed();
