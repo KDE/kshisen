@@ -104,12 +104,12 @@ Board::~Board()
 	delete [] field;
 }
 
-int Board::x_tiles()
+int Board::x_tiles() const
 {
 	return _x_tiles;
 }
 
-int Board::y_tiles()
+int Board::y_tiles() const
 {
 	return _y_tiles;
 }
@@ -125,7 +125,7 @@ void Board::setField(int x, int y, int value)
 	field[y * x_tiles() + x] = value;
 }
 
-int Board::getField(int x, int y)
+int Board::getField(int x, int y) const
 {
 #ifdef DEBUGGING
 	if(x < -1 || y < -1 || x > x_tiles() || y > y_tiles())
@@ -176,6 +176,8 @@ void Board::gravity(int col, bool update)
 
 void Board::mousePressEvent(QMouseEvent *e)
 {
+	//kdDebug() << "mousePressEvent()" << endl;
+
 	// Calculate field position
 	int pos_x = -1;
 	if(e->pos().x() >= xOffset())
@@ -188,6 +190,7 @@ void Board::mousePressEvent(QMouseEvent *e)
 	// Mark tile
 	if(e->button() == LeftButton)
 	{
+		//kdDebug() << "...left button" << endl;
 		if(highlighted_tile != -1)
 		{
 			int oldmarkx = mark_x;
@@ -214,6 +217,7 @@ void Board::mousePressEvent(QMouseEvent *e)
 	// Assist by lighting all tiles of same type
 	if(e->button() == RightButton)
 	{
+		//kdDebug() << "...right button" << endl;
 		int old_highlighted = highlighted_tile;
 		int field = getField(pos_x,pos_y);
 		highlighted_tile = field;
@@ -317,7 +321,7 @@ void Board::newGame()
 
 	_undo.clear();
 	_redo.clear();
-	clearHistory();
+	connection.clear();
 
 	// distribute all tiles on board
 	int cur_tile = 1;
@@ -380,6 +384,9 @@ void Board::newGame()
 
 	while(!solvable(true))
 	{
+		//kdDebug() << "Not solvable" << endl;
+		//dumpBoard();
+
 		// generate a list of free tiles and positions
 		int num_tiles = 0;
 		for(i = 0; i < x_tiles() * y_tiles(); i++)
@@ -489,8 +496,8 @@ void Board::paintEvent(QPaintEvent *e)
 
 void Board::marked(int x, int y)
 {
-	// make sure that the last arrow is correctly undrawn
-	undrawArrow();
+	// make sure that the previous connection is correctly undrawn
+	undrawConnection();
 
 	if(getField(x, y) == EMPTY)
 		return;
@@ -524,10 +531,10 @@ void Board::marked(int x, int y)
 		}
 
 		// trace
-		if(findPath(mark_x, mark_y, x, y))
+		if(findPath(mark_x, mark_y, x, y, connection))
 		{
 			emit madeMove(mark_x, mark_y, x, y);
-			drawArrow(mark_x, mark_y, x, y);
+			drawConnection(getDelay());
 			setField(mark_x, mark_y, EMPTY);
 			setField(x, y, EMPTY);
 			grav_col_1 = x;
@@ -537,23 +544,22 @@ void Board::marked(int x, int y)
 
 			// game is over?
 			// Must delay until after tiles fall to make this test
-			// See undrawArrow GP.
+			// See undrawConnection GP.
 		}
 		else
 		{
-			clearHistory();
+			connection.clear();
 			emit markError();
 		}
 	}
 }
 
-bool Board::canMakePath(int x1, int y1, int x2, int y2)
+// Can we make a path between two tiles with a single line?
+bool Board::canMakePath(int x1, int y1, int x2, int y2) const
 {
-	int i;
-
 	if(x1 == x2)
 	{
-		for(i = std::min(y1, y2)+1; i < std::max(y1, y2); i++)
+		for(int i = std::min(y1, y2) + 1; i < std::max(y1, y2); i++)
 			if(getField(x1, i) != EMPTY)
 				return false;
 
@@ -562,7 +568,7 @@ bool Board::canMakePath(int x1, int y1, int x2, int y2)
 
 	if(y1 == y2)
 	{
-		for(i = std::min(x1, x2)+1; i < std::max(x1, x2); i++)
+		for(int i = std::min(x1, x2) + 1; i < std::max(x1, x2); i++)
 			if(getField(i, y1) != EMPTY)
 				return false;
 
@@ -572,116 +578,95 @@ bool Board::canMakePath(int x1, int y1, int x2, int y2)
 	return false;
 }
 
-bool Board::findPath(int x1, int y1, int x2, int y2)
+bool Board::findPath(int x1, int y1, int x2, int y2, Path& p) const
 {
-	clearHistory();
+	p.clear();
 
-	if(findSimplePath(x1, y1, x2, y2))
-	{
+	if(findSimplePath(x1, y1, x2, y2, p))
 		return true;
-	}
-	else
+
+	// Find a path of 3 segments
+	const int dx[4] = { 1, 0, -1, 0 };
+	const int dy[4] = { 0, 1, 0, -1 };
+
+	for(int i = 0; i < 4; i++)
 	{
-		// find 3-way path
-		int dx[4] = {1, 0, -1, 0};
-		int dy[4] = {0, 1, 0, -1};
-		int i;
-
-		for(i = 0; i < 4; i++)
+		int newx = x1 + dx[i];
+		int newy = y1 + dy[i];
+		while(newx >= -1 && newx <= x_tiles() &&
+			newy >= -1 && newy <= y_tiles() &&
+			getField(newx, newy) == EMPTY)
 		{
-			int newx = x1 + dx[i], newy = y1 + dy[i];
-			while(newx >= -1 && newx <= x_tiles() &&
-				newy >= -1 && newy <= y_tiles() &&
-				getField(newx, newy) == EMPTY)
+			if(findSimplePath(newx, newy, x2, y2, p))
 			{
-				if(findSimplePath(newx, newy, x2, y2))
-				{
-					// make place for history point
-					for(int j = 3; j > 0; j--)
-						history[j] = history[j-1];
-
-					// insert history point
-					history[0].x = x1;
-					history[0].y = y1;
-					return true;
-				}
-
-				newx += dx[i];
-				newy += dy[i];
+				p.push_front(Position(x1, y1));
+				return true;
 			}
+			newx += dx[i];
+			newy += dy[i];
 		}
-
-		clearHistory();
-		return false;
 	}
 
 	return false;
 }
 
-bool Board::findSimplePath(int x1, int y1, int x2, int y2)
+// Find a path of 1 or 2 segments between tiles. Returns whether
+// a path was found, and if so, the path is returned via 'p'.
+bool Board::findSimplePath(int x1, int y1, int x2, int y2, Path& p) const
 {
-	bool r = false;
-
-	// find direct line
+	// Find direct line (path of 1 segment)
 	if(canMakePath(x1, y1, x2, y2))
 	{
-		history[0].x = x1;
-		history[0].y = y1;
-		history[1].x = x2;
-		history[1].y = y2;
-		r = true;
-	}
-	else
-	{
-		if(!(x1 == x2 || y1 == y2)) // requires complex path
-		{
-			if(getField(x2, y1) == EMPTY &&
-			        canMakePath(x1, y1, x2, y1) && canMakePath(x2, y1, x2, y2))
-			{
-				history[0].x = x1;
-				history[0].y = y1;
-				history[1].x = x2;
-				history[1].y = y1;
-				history[2].x = x2;
-				history[2].y = y2;
-				r = true;
-			}
-			else if(getField(x1, y2) == EMPTY &&
-			        canMakePath(x1, y1, x1, y2) && canMakePath(x1, y2, x2, y2))
-			{
-				history[0].x = x1;
-				history[0].y = y1;
-				history[1].x = x1;
-				history[1].y = y2;
-				history[2].x = x2;
-				history[2].y = y2;
-				r = true;
-			}
-		}
+		p.push_back(Position(x1, y1));
+		p.push_back(Position(x2, y2));
+		return true;
 	}
 
-	return r;
+	// If the tiles are in the same row or column, then a
+	// a 'simple path' cannot be found between them
+	if(x1 == x2 || y1 == y2)
+		return false;
+
+	// Find path of 2 segments (route A)
+	if(getField(x2, y1) == EMPTY && canMakePath(x1, y1, x2, y1) &&
+		canMakePath(x2, y1, x2, y2))
+	{
+		p.push_back(Position(x1, y1));
+		p.push_back(Position(x2, y1));
+		p.push_back(Position(x2, y2));
+		return true;
+	}
+
+	// Find path of 2 segments (route B)
+	if(getField(x1, y2) == EMPTY && canMakePath(x1, y1, x1, y2) &&
+		canMakePath(x1, y2, x2, y2))
+	{
+		p.push_back(Position(x1, y1));
+		p.push_back(Position(x1, y2));
+		p.push_back(Position(x2, y2));
+		return true;
+	}
+
+	return false;
 }
 
-void Board::drawArrow(int x1, int y1, int x2, int y2)
+void Board::drawConnection(int timeout)
 {
 	if(trying)
 		return;
 
-	// find out number of array
-	int num = 0;
-	while(num < 4 && history[num].x != -2)
-		num++;
+	if(connection.empty())
+		return;
 
 	// lighten the fields
 	// remember mark_x,mark_y
 	int mx = mark_x, my = mark_y;
-	mark_x = x1;
-	mark_y = y1;
-	updateField(x1, y1);
-	mark_x = x2;
-	mark_y = y2;
-	updateField(x2, y2);
+	mark_x = connection.front().x;
+	mark_y = connection.front().y;
+	updateField(connection.front().x, connection.front().y);
+	mark_x = connection.back().x;
+	mark_y = connection.back().y;
+	updateField(connection.back().x, connection.back().y);
 
 	// restore the mark
 	mark_x = mx;
@@ -690,20 +675,26 @@ void Board::drawArrow(int x1, int y1, int x2, int y2)
 	QPainter p;
 	p.begin(this);
 	p.setPen(QPen(QColor("red"), tiles.lineWidth()));
-	num = 0;
-	while(num < 3 && history[num+1].x != -2)
+
+	// Path.size() will always be >= 2
+	Path::const_iterator pathEnd = connection.end();
+	Path::const_iterator pt1 = connection.begin();
+	Path::const_iterator pt2 = pt1;
+	++pt2;
+	while(pt2 != pathEnd)
 	{
-		p.drawLine(midCoord(history[num].x, history[num].y),
-		           midCoord(history[num+1].x, history[num+1].y));
-		num++;
+		p.drawLine( midCoord(pt1->x, pt1->y), midCoord(pt2->x, pt2->y) );
+		++pt1;
+		++pt2;
 	}
+
 	p.flush();
 	p.end();
 
-	QTimer::singleShot(getDelay(), this, SLOT(undrawArrow()));
+	QTimer::singleShot(timeout, this, SLOT(undrawConnection()));
 }
 
-void Board::undrawArrow()
+void Board::undrawConnection()
 {
 	if(trying)
 		return;
@@ -717,34 +708,37 @@ void Board::undrawArrow()
 	}
 
 	// is already undrawn?
-	if(history[0].x == -2)
+	if(connection.empty())
 		return;
 
-	// redraw all affected fields
-	int num = 0;
-	while(num < 3 && history[num+1].x != -2)
+	// Redraw all affected fields
+
+	// Path.size() will always be >= 2
+	Path::const_iterator pathEnd = connection.end();
+	Path::const_iterator pt1 = connection.begin();
+	Path::const_iterator pt2 = pt1;
+	++pt2;
+	while(pt2 != pathEnd)
 	{
-		if(history[num].y == history[num+1].y)
+		if(pt1->y == pt2->y)
 		{
-			for(int i = std::min(history[num].x, history[num+1].x);
-			        i <= std::max(history[num].x, history[num+1].x); i++)
-				updateField(i, history[num].y);
+			for(int i = std::min(pt1->x, pt2->x); i <= std::max(pt1->x, pt2->x); i++)
+				updateField(i, pt1->y);
 		}
 		else
 		{
-			for(int i = std::min(history[num].y, history[num+1].y);
-			        i <= std::max(history[num].y, history[num+1].y); i++)
-				updateField(history[num].x, i);
+			for(int i = std::min(pt1->y, pt2->y); i <= std::max(pt1->y, pt2->y); i++)
+				updateField(pt1->x, i);
 		}
-		num++;
+		++pt1;
+		++pt2;
 	}
 
-	clearHistory();
+	connection.clear();
 
-	int dummyx;
-	History dummyh[4];
+	Path dummyPath;
 	// game is over?
-	if(!getHint_I(dummyx,dummyx,dummyx,dummyx,dummyh))
+	if(!getHint_I(dummyPath))
 	{
 		time_for_game = (int)difftime( time((time_t)0), starttime);
 		emit endOfGame();
@@ -807,7 +801,7 @@ void Board::undo()
 {
 	if(canUndo())
 	{
-		undrawArrow();
+		undrawConnection();
 		Move *m = _undo.take(_undo.count() - 1);
 		if(gravityFlag())
 		{
@@ -847,7 +841,7 @@ void Board::redo()
 {
 	if(canRedo())
 	{
-		undrawArrow();
+		undrawConnection();
 		Move *m = _redo.take(0);
 		setField(m->x1, m->y1, EMPTY);
 		setField(m->x2, m->y2, EMPTY);
@@ -860,31 +854,14 @@ void Board::redo()
 	}
 }
 
-void Board::clearHistory()
-{
-	// init history
-	for(int i = 0; i < 4; i++)
-	{
-		history[i].x = -2;
-		history[i].y = -2;
-	}
-}
-
 void Board::getHint()
 {
-	int x1, y1, x2, y2;
-	History h[4];
-
-	if(getHint_I(x1, y1, x2, y2, h))
+	Path hintPath;
+	if(getHint_I(hintPath))
 	{
-		undrawArrow();
-		for(int i = 0; i < 4; i++)
-			history[i] = h[i];
-
-		int old_delay = getDelay();
-		setDelay(1000);
-		drawArrow(x1, y1, x2, y2);
-		setDelay(old_delay);
+		undrawConnection();
+		connection = hintPath;
+		drawConnection(1000);
 	}
 }
 
@@ -892,54 +869,60 @@ void Board::getHint()
 #ifdef DEBUGGING
 void Board::makeHintMove()
 {
-	int x1, y1, x2, y2;
-	History h[4];
+	Path p;
 
-	if(getHint_I(x1, y1, x2, y2, h))
+	if(getHint_I(p))
 	{
 		mark_x = -1;
 		mark_y = -1;
-		marked(x1, y1);
-		marked(x2, y2);
+		marked(p.front().x, p.front().y);
+		marked(p.back().x, p.back().y);
 	}
 }
 
 void Board::finish()
 {
-	int x1, y1, x2, y2;
-	History h[4];
+	Path p;
 	bool ready=false;
 
-	while(!ready && getHint_I(x1, y1, x2, y2, h))
+	while(!ready && getHint_I(p))
 	{
 		mark_x = -1;
 		mark_y = -1;
 		if(tilesLeft() == 2)
 			ready = true;
-		marked(x1, y1);
-		marked(x2, y2);
+		marked(p.front().x, p.front().y);
+		marked(p.back().x, p.back().y);
 		kapp->processEvents();
 		usleep(250*1000);
 	}
 }
+
+void Board::dumpBoard() const
+{
+	kdDebug() << "Board contents:" << endl;
+	for(int y = 0; y < y_tiles(); ++y)
+	{
+		QString row;
+		for(int x = 0; x < x_tiles(); ++x)
+		{
+			int tile = getField(x, y);
+			if(tile == EMPTY)
+				row += " --";
+			else
+				row += QString("%1").arg(getField(x, y), 3);
+		}
+		kdDebug() << row << endl;
+	}
+}
 #endif
 
-bool Board::getHint_I(int &x1, int &y1, int &x2, int &y2, History h[4])
+bool Board::getHint_I(Path& p) const
 {
+	//dumpBoard();
 	short done[TileSet::nTiles];
 	for( short index = 0; index < TileSet::nTiles; index++ )
 		done[index] = 0;
-
-	// remember old history
-	History old[4];
-	for(int i = 0; i < 4; i++)
-		old[i] = history[i];
-
-	// initial no hint
-	x1 = -1;
-	x2 = -1;
-	y1 = -1;
-	y2 = -1;
 
 	for(int x = 0; x < x_tiles(); x++)
 	{
@@ -956,33 +939,21 @@ bool Board::getHint_I(int &x1, int &y1, int &x2, int &y2, History h[4])
 						if(xx != x || yy != y)
 						{
 							if(getField(xx, yy) == tile)
-							{
-								if(findPath(x, y, xx, yy))
+								if(findPath(x, y, xx, yy, p))
 								{
-									for(int i = 0; i < 4; i++)
-										h[i] = history[i];
-
-									x1 = x;
-									x2 = xx;
-									y1 = y;
-									y2 = yy;
-									for(int i = 0; i < 4; i++)
-										history[i] = old[i];
+									//kdDebug() << "path.size() == " << p.size() << endl;
+									//for(Path::const_iterator i = p.begin(); i != p.end(); ++i)
+									//	kdDebug() << "pathEntry: (" << i->x << ", " << i->y
+									//		<< ") => " << getField(i->x, i->y) << endl;
 									return true;
 								}
-							}
 						}
 					}
 				}
-
-				clearHistory();
 				done[tile - 1]++;
 			}
 		}
 	}
-
-	for(int i = 0; i < 4; i++)
-		history[i] = old[i];
 
 	return false;
 }
@@ -1031,8 +1002,6 @@ int Board::getTimeForGame()
 
 bool Board::solvable(bool norestore)
 {
-	int x1, y1, x2, y2;
-	History h[4];
 	int *oldfield = 0;
 
 	if(!norestore)
@@ -1041,14 +1010,19 @@ bool Board::solvable(bool norestore)
 		memcpy(oldfield, field, x_tiles() * y_tiles() * sizeof(int));
 	}
 
-	while(getHint_I(x1, y1, x2, y2, h))
+	Path p;
+	while(getHint_I(p))
 	{
-		setField(x1, y1, EMPTY);
-		setField(x2, y2, EMPTY);
+		kdFatal(getField(p.front().x, p.front().y) != getField(p.back().x, p.back().y))
+			<< "Removing unmateched tiles: (" << p.front().x << ", " << p.front().y << ") => "
+			<< getField(p.front().x, p.front().y) << " (" << p.back().x << ", " << p.back().y << ") => "
+            << getField(p.back().x, p.back().y) << endl;
+		setField(p.front().x, p.front().y, EMPTY);
+		setField(p.back().x, p.back().y, EMPTY);
 		//if(gravityFlag())
 		//{
-		//	gravity(x1, false);
-		//	gravity(x2, false);
+		//	gravity(p.front().x, false);
+		//	gravity(p.back().x, false);
 		//}
 	}
 

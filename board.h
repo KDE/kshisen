@@ -47,13 +47,19 @@
 #include <krandomsequence.h>
 #include "debug.h"
 #include <time.h>
+#include <list>
 
 #include "tileset.h"
 
-typedef struct History
+struct Position
 {
-	int x, y;
+	Position() : x(0), y(0) { }
+	Position(int _x, int _y) : x(_x), y(_y) { }
+	int x;
+	int y;
 };
+
+typedef std::list<Position> Path;
 
 class Move
 {
@@ -92,11 +98,12 @@ public:
 	int  getShuffle();
 
 	void getHint();
-	bool getHint_I(int &, int &, int &, int &, History h[4]);
+	bool getHint_I(Path& p) const;
 
 #ifdef DEBUGGING
 	void makeHintMove();
 	void finish();
+	void dumpBoard() const;
 #endif
 
 	int tilesLeft();
@@ -110,8 +117,8 @@ public:
 	bool gravityFlag();
 	void setGravityFlag(bool);
 
-	int x_tiles();
-	int y_tiles();
+	int x_tiles() const;
+	int y_tiles() const;
 
 	bool isPaused() { return paused; }
 
@@ -128,7 +135,7 @@ public slots:
 
 private slots:
 	void marked(int, int);
-	void undrawArrow();
+	void undrawConnection();
 	void slotMadeMove(int, int, int, int);
 	void gravity(int, bool);
 
@@ -139,14 +146,13 @@ private: // functions
 	int yOffset();
 
 	void setField(int x, int y, int value);
-	int getField(int x, int y);
+	int getField(int x, int y) const;
 	void updateField(int, int, bool erase = true);
-	bool canMakePath(int x1, int y1, int x2, int y2);
-	bool findPath(int x1, int y1, int x2, int y2);
-	bool findSimplePath(int x1, int y1, int x2, int y2);
-	void drawArrow(int, int, int, int);
+	bool canMakePath(int x1, int y1, int x2, int y2) const;
+	bool findPath(int x1, int y1, int x2, int y2, Path& p) const;
+	bool findSimplePath(int x1, int y1, int x2, int y2, Path& p) const;
+	void drawConnection(int timeout);
 	QPoint midCoord(int, int);
-	void clearHistory();
 
 private:
 	time_t starttime;
@@ -162,7 +168,7 @@ private:
 	int undraw_timer_id;
 	int mark_x;
 	int mark_y;
-	History history[4];
+	Path connection;
 	int *field;
 	int _x_tiles;
 	int _y_tiles;
