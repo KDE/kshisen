@@ -37,7 +37,6 @@
  */
 
 #include "board.h"
-#include <stdlib.h>
 #include <stdio.h>
 #include <qpainter.h>
 #include <kapp.h>
@@ -75,11 +74,8 @@ Board::Board(QWidget *parent) : QWidget(parent) {
 
   // randomze
   setShuffle(DEFAULTSHUFFLE);
-  clock_t t;
-  struct tms dummy;
-  t = times(&dummy); 
-  srandom((int)t);
 
+  random.setSeed(0);
   starttime = time((time_t *)0);
 
   for(int i = 0; i < 45; i++)
@@ -217,9 +213,9 @@ void Board::setSize(int x, int y) {
     return;
 
   if(field != 0)
-    free(field);
+    delete [] field;
 
-  field = (int*)malloc(sizeof(int) * x * y);
+  field = new int[ x * y ];
   _x_tiles = x;
   _y_tiles = y;
   for(int i = 0; i < x; i++)
@@ -339,10 +335,10 @@ void Board::newGame() {
   int tx = x_tiles();
   int ty = y_tiles();
   for(i = 0; i < x_tiles() * y_tiles() * getShuffle(); i++) {
-    int x1 = random(tx);
-    int y1 = random(ty);
-    int x2 = random(tx);
-    int y2 = random(ty);
+    int x1 = random.getLong(tx);
+    int y1 = random.getLong(ty);
+    int x2 = random.getLong(tx);
+    int y2 = random.getLong(ty);
     int t  = getField(x1, y1);
     setField(x1, y1, getField(x2, y2));
     setField(x2, y2, t);
@@ -381,8 +377,8 @@ void Board::newGame() {
     // redistribute unsolved tiles
     while(num_tiles > 0) {
       // get a random tile
-      int r1 = random(num_tiles);
-      int r2 = random(num_tiles);
+      int r1 = random.getLong(num_tiles);
+      int r2 = random.getLong(num_tiles);
       int tile = tiles[r1];
       int apos = pos[r2];
       
@@ -496,12 +492,6 @@ void Board::paintEvent(QPaintEvent *e) {
   p.end();
 }
 
-// returns a random number < max
-int Board::random(int max) {
-  //return (int)((float)(max) * rand() / (RAND_MAX+1.0));
-  return ::random() % max; // don't depend on RAND_MAX...
-}
-
 void Board::marked(int x, int y) {
   // make sure that the last arrow is correctly undrawn
   undrawArrow();
@@ -548,7 +538,7 @@ void Board::marked(int x, int y) {
 
       // game is over?      
       if(!getHint_I(dummyx,dummyx,dummyx,dummyx,dummyh)) {
-	time_for_game = (int)time((time_t)NULL) - starttime;
+	time_for_game = (int)difftime( time((time_t)0), starttime);
 	emit endOfGame();
       }
       
@@ -965,7 +955,7 @@ int Board::tilesLeft() {
 }
 
 int Board::getCurrentTime() {
-  return (int)(time((time_t *)0) - starttime);
+  return (int)difftime(time((time_t *)0),starttime);
 }
 
 int Board::getTimeForGame() {
@@ -973,9 +963,9 @@ int Board::getTimeForGame() {
     return time_for_game;
   else
     if(paused)
-      return (int)(pause_start - starttime);
+      return (int)difftime(pause_start, starttime);
     else
-      return (int)(time((time_t *)0) - starttime);
+      return (int)difftime(time((time_t *)0), starttime);
 }
 
 bool Board::solvable(bool norestore) {
@@ -984,7 +974,7 @@ bool Board::solvable(bool norestore) {
   int *oldfield = 0;
  
   if(!norestore) {
-    oldfield = (int *)malloc(x_tiles() * y_tiles() * sizeof(int));
+    oldfield = new int [x_tiles() * y_tiles()];
     memcpy(oldfield, field, x_tiles() * y_tiles() * sizeof(int));
   }
 
@@ -1001,7 +991,7 @@ bool Board::solvable(bool norestore) {
 
   if(!norestore) {
     memcpy(field, oldfield, x_tiles() * y_tiles() * sizeof(int));
-    free(oldfield);  
+    delete [] oldfield;  
   }
 
   return (bool)(left == 0);
@@ -1028,7 +1018,7 @@ bool Board::pause() {
   if(paused)
     pause_start = time((time_t *)0);
   else
-    starttime += time((time_t *)0) - pause_start;
+    starttime += (time_t) difftime( time((time_t *)0), pause_start);
   update();
 
   return paused;

@@ -44,8 +44,9 @@
 #include <qwidget.h>
 #include <qpixmap.h>
 #include <qdatetime.h>
-#include <time.h>
+#include <krandomsequence.h>
 #include <debug.h>
+#include <time.h>
 
 typedef struct History {
   int x, y;
@@ -135,7 +136,6 @@ private: // functions
 
   void setField(int x, int y, int value);
   int  getField(int x, int y);
-  int  random(int max);
   void updateField(int, int);
   QPixmap *lighten(QPixmap *src);
   bool canMakePath(int x1, int y1, int x2, int y2);
@@ -149,6 +149,8 @@ private:
   time_t starttime;
   time_t time_for_game;
   QPixmap *pausedIcon;
+
+  KRandomSequence random;
 
   QList<Move> _undo;
   QList<Move> _redo;
