@@ -49,6 +49,9 @@
 #include <qmessagebox.h>
 #include <debug.h>
 #include <math.h>
+#include <qlineedit.h>
+#include <stdio.h>
+#include <kglobal.h>
 
 #define ID_FQUIT	101
 
@@ -181,14 +184,14 @@ App::App() : KTopLevelWidget() {
   tb = new KToolBar(this);
   connect(tb, SIGNAL(clicked(int)),
 	  this, SLOT(menuCallback(int)));
-  KIconLoader *il = kapp->getIconLoader();
-  tb->insertButton(il->loadIcon("exit.xpm"), 
+
+  tb->insertButton(ICON("exit.xpm"), 
 		   ID_FQUIT, TRUE, i18n("Quit"));
-  tb->insertButton(il->loadIcon("back.xpm"), 
+  tb->insertButton(ICON("back.xpm"), 
 		   ID_GUNDO, TRUE, i18n("Undo"));
-  tb->insertButton(il->loadIcon("forward.xpm"), 
+  tb->insertButton(ICON("forward.xpm"), 
 		   ID_GREDO, TRUE, i18n("Redo"));
-  tb->insertButton(il->loadIcon("help.xpm"), 
+  tb->insertButton(ICON("help.xpm"), 
 		   ID_HHELP, TRUE, i18n("Help"));
   tb->show();
   addToolBar(tb);
