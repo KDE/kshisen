@@ -34,106 +34,115 @@
 
 #include "tileset.h"
 
-TileSet::TileSet() : scaledTiles(nTiles) {
+TileSet::TileSet() : scaledTiles(nTiles)
+{
+	//loadTiles
+	QImage tileset(KGlobal::dirs()->findResource("appdata", "tileset.png"));
+	if(tileset.isNull())
+	{
+		KMessageBox::sorry(0, i18n("Cannot load tiles pixmap!"));
+		KApplication::exit(1);
+	}
 
-  //loadTiles
-  QImage tileset(KGlobal::dirs()->findResource("appdata", "tileset.png"));
-  if(tileset.isNull()) {
-    KMessageBox::sorry(0, i18n("Cannot load tiles pixmap!"));
-    KApplication::exit(1);
-  }
+	// split into individual tiles
+	const int TILES_X = 9;
+	const int TILES_Y = 4;
+	unscaledTiles.reserve(nTiles);
 
-  // split into individual tiles
-  const int TILES_X = 9;
-  const int TILES_Y = 4;
-  unscaledTiles.reserve(nTiles);
-
-  int w = tileset.width() / TILES_X;
-  int h = tileset.height() / TILES_Y;
-  for(int row = 0; row < TILES_Y; row++) {
-    for(int col = 0; col < TILES_X; col++) {
-      unscaledTiles.push_back(tileset.copy(col * w, row * h, w, h));
-    }
-  }
+	int w = tileset.width() / TILES_X;
+	int h = tileset.height() / TILES_Y;
+	for(int row = 0; row < TILES_Y; row++)
+	{
+		for(int col = 0; col < TILES_X; col++)
+			unscaledTiles.push_back(tileset.copy(col * w, row * h, w, h));
+	}
 }
 
-TileSet::~TileSet() {
-
+TileSet::~TileSet()
+{
 }
 
-void TileSet::resizeTiles(int maxWidth, int maxHeight) {
+void TileSet::resizeTiles(int maxWidth, int maxHeight)
+{
+	// calculate largest tile size that will fit in maxWidth/maxHeight
+	// and maintain the tile's height-to-width ratio
+	double ratio = static_cast<double>(unscaledTileHeight()) / unscaledTileWidth();
+	if(maxWidth * ratio < maxHeight)
+		maxHeight = qRound(maxWidth * ratio);
+	else
+		maxWidth = qRound(maxHeight / ratio);
 
-  // calculate largest tile size that will fit in maxWidth/maxHeight
-  // and maintain the tile's height-to-width ratio
-  double ratio = static_cast<double>(unscaledTileHeight()) / unscaledTileWidth();
-  if(maxWidth * ratio < maxHeight)
-    maxHeight = qRound(maxWidth * ratio);
-  else
-    maxWidth = qRound(maxHeight / ratio);
+	if(maxHeight == tileHeight() && maxWidth == tileWidth())
+		return;
 
-  if(maxHeight == tileHeight() && maxWidth == tileWidth())
-    return;
+	//kdDebug() << "tile size: " << maxWidth << "x" << maxHeight << endl;
 
-  //kdDebug() << "tile size: " << maxWidth << "x" << maxHeight << endl;
+	QImage img;
+	for(int i = 0; i < nTiles; i++)
+	{
+		if(maxHeight == unscaledTileHeight())
+			img = unscaledTiles[i].copy();//.convertDepth(32);
+		else
+			img = unscaledTiles[i].smoothScale(maxWidth, maxHeight);
 
-  QImage img;
-  for(int i = 0; i < nTiles; i++) {
-    if(maxHeight == unscaledTileHeight())
-      img = unscaledTiles[i].copy();//.convertDepth(32);
-    else
-      img = unscaledTiles[i].smoothScale(maxWidth, maxHeight);
-
-    scaledTiles[i].convertFromImage(img);
-  }
+		scaledTiles[i].convertFromImage(img);
+	}
 }
 
-const QPixmap &TileSet::tile(int n) const {
-  return scaledTiles[n];
+const QPixmap &TileSet::tile(int n) const
+{
+	return scaledTiles[n];
 }
 
-QPixmap TileSet::highlightedTile(int n) const {
+QPixmap TileSet::highlightedTile(int n) const
+{
+	const double LIGHTEN_FACTOR = 1.3;
 
-  const double LIGHTEN_FACTOR = 1.3;
+	// lighten the image
+	QImage img = scaledTiles[n].convertToImage().convertDepth(32);
 
-  // lighten the image
-  QImage img = scaledTiles[n].convertToImage().convertDepth(32);
+	for(int y = 0; y < img.height(); y++)
+	{
+		uchar* p = img.scanLine(y);
+		for(int x = 0; x < img.width() * 4; x++)
+		{
+			*p = static_cast<uchar>(std::min(255, static_cast<int>(*p * LIGHTEN_FACTOR)));
+			p++;
+		}
+	}
 
-  for(int y = 0; y < img.height(); y++) {
-    uchar* p = img.scanLine(y);
-    for(int x = 0; x < img.width() * 4; x++) {
-      *p = static_cast<uchar>(std::min(255, static_cast<int>(*p * LIGHTEN_FACTOR)));
-      p++;
-    }
-  }
+	QPixmap highlightedTile;
+	highlightedTile.convertFromImage(img);
 
-  QPixmap highlightedTile;
-  highlightedTile.convertFromImage(img);
-
-  return highlightedTile;
+	return highlightedTile;
 }
 
-int TileSet::lineWidth() const {
+int TileSet::lineWidth() const
+{
+	int width = qRound(tileHeight() / 10.0);
+	if(width < 3)
+		width = 3;
 
-  int width = qRound(tileHeight() / 10.0);
-  if(width < 3)
-    width = 3;
-
-  return width;
+	return width;
 }
 
-int TileSet:: tileWidth() const {
-  return scaledTiles[0].width();
+int TileSet:: tileWidth() const
+{
+	return scaledTiles[0].width();
 }
 
-int TileSet:: tileHeight() const {
-  return scaledTiles[0].height();
+int TileSet:: tileHeight() const
+{
+	return scaledTiles[0].height();
 }
 
-int TileSet:: unscaledTileHeight() const {
-  return unscaledTiles[0].height();
+int TileSet:: unscaledTileHeight() const
+{
+	return unscaledTiles[0].height();
 }
 
-int TileSet:: unscaledTileWidth() const {
-  return unscaledTiles[0].width();
+int TileSet:: unscaledTileWidth() const
+{
+	return unscaledTiles[0].width();
 }
 

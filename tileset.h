@@ -26,31 +26,32 @@
 
 #include <qvaluevector.h>
 
-class TileSet {
+class TileSet
+{
 
 public:
 
-  static const int nTiles = 36;
+	static const int nTiles = 36;
 
-  TileSet();
-  ~TileSet();
+	TileSet();
+	~TileSet();
 
-  void resizeTiles(int maxWidth, int maxHeight);
+	void resizeTiles(int maxWidth, int maxHeight);
 
-  const QPixmap &tile(int n) const;
-  QPixmap highlightedTile(int n) const;
+	const QPixmap &tile(int n) const;
+	QPixmap highlightedTile(int n) const;
 
-  int lineWidth() const;
+	int lineWidth() const;
 
-  int tileWidth() const;
-  int tileHeight() const;
-  int unscaledTileHeight() const;
-  int unscaledTileWidth() const;
+	int tileWidth() const;
+	int tileHeight() const;
+	int unscaledTileHeight() const;
+	int unscaledTileWidth() const;
 
 private:
 
-  QValueVector<QPixmap> scaledTiles;
-  QValueVector<QImage> unscaledTiles;
+	QValueVector<QPixmap> scaledTiles;
+	QValueVector<QImage> unscaledTiles;
 
 };
 
