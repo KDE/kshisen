@@ -261,7 +261,7 @@ void App::hint() {
 }
 
 void App::toggleGravity() {
-  if(!b->canUndo()) {
+  if(!b->canUndo() && !b->canRedo()) {
     b->setGravityFlag(!b->gravityFlag());
     kapp->config()->writeEntry("Gravity", (int)b->gravityFlag());
   } else {
@@ -319,7 +319,7 @@ void App::enableItems() {
     actionCollection()->action(KStdAction::stdName(KStdAction::Undo))->setEnabled(b->canUndo());
     actionCollection()->action(KStdAction::stdName(KStdAction::Redo))->setEnabled(b->canRedo());
     actionCollection()->action("game_restart")->setEnabled(b->canUndo());
-    actionCollection()->action("options_gravity")->setEnabled(!b->canUndo());
+    actionCollection()->action("options_gravity")->setEnabled(!b->canUndo() && !b->canRedo());
     ((KToggleAction*)actionCollection()->action("options_gravity"))->setChecked(b->gravityFlag());
   }
 }
