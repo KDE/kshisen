@@ -568,7 +568,7 @@ void App::writeHighscore() {
 
 void App::showHighscore(int focusitem = -1) {
   // this may look a little bit confusing...
-  QDialog *dlg = new QDialog(0, locale->translate("Hall of Fame"), TRUE);
+  QDialog *dlg = new QDialog(0, locale->translate("Hall Of Fame"), TRUE);
   dlg->setCaption(locale->translate("Shisen-Sho: Hall Of Fame"));
 
   QVBoxLayout *tl = new QVBoxLayout(dlg, 10);
