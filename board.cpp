@@ -178,16 +178,18 @@ void Board::mousePressEvent(QMouseEvent *e) {
       if(highlighted_tile != -1) {
 	int oldmarkx = mark_x;
 	int oldmarky = mark_y;
-	
 	mark_x=-1; mark_y=-1;
+
+	int old_highlighted = highlighted_tile;
+	highlighted_tile = -1;
+
 	for(int i = 0; i < x_tiles(); i++)
 	  for(int j = 0; j < y_tiles(); j++)
-	    if(highlighted_tile == getField(i, j) && !(i == pos_x && j == pos_y))
+	    if(old_highlighted == getField(i, j) && !(i == pos_x && j == pos_y))
 	      updateField(i, j, false);
 
 	mark_x = oldmarkx; 
 	mark_y = oldmarky;   // no tile selected
-	highlighted_tile = -1;
       }
 
       if(pos_x >= 0 && pos_x < x_tiles() && pos_y >= 0 && pos_y < y_tiles())
