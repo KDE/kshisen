@@ -234,6 +234,7 @@ void App::pause() {
 	actionCollection()->action("game_pause")->setText(i18n("R&esume game"));
   else
 	actionCollection()->action("game_pause")->setText(i18n("&Pause game"));
+  actionCollection()->action("game_pause")->setAccel(Qt::Key_P);
 }
 
 void App::undo() {
