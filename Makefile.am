@@ -11,8 +11,7 @@ DOCDIR = $(kde_htmldir)/en/kshisen
 
 bin_PROGRAMS = kshisen
 
-SRCMETA = board.moc app.moc
-DISTCLEANFILES = $(SRCMETA)
+METASOURCES = board.moc app.moc
 
 noinst_HEADERS = app.h board.h debug.h version.h
 
@@ -30,21 +29,13 @@ EXTRA_DIST = $(apps_DATA) $(icon_DATA) mini-kshisen.xpm
 
 install-data-local:
 	$(mkinstalldirs) $(kde_minidir)
-	$(INSTALL_DATA) mini-kshisen.xpm $(kde_minidir)/kshisen.xpm
+	$(INSTALL_DATA) $(srcdir)/mini-kshisen.xpm $(kde_minidir)/kshisen.xpm
 
 uninstall-local:
 	-rm -f $(kde_minidir)/kshisen.xpm
 
 messages:
 	$(XGETTEXT) -C -ktranslate -ki18n -x $(includedir)/kde.pot $(kshisen_SOURCES) && mv messages.po ../po/kshisen.pot
-
-board.cpp:board.moc
-board.moc: board.h
-	$(MOC) board.h -o board.moc
-
-app.cpp:app.moc
-app.moc: app.h
-	$(MOC) app.h -o app.moc
 
 
 
