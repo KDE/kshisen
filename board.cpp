@@ -46,13 +46,13 @@
 #include <qlist.h>
 #include <sys/times.h>
 #include <qbitarray.h>
-#include <kmsgbox.h>
 #include <debug.h>
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kglobal.h>
 #include <kstddirs.h>
 #include <qbitmap.h>
+#include <qmessagebox.h>
 
 #ifdef DEBUGGING
 #include <unistd.h>
@@ -253,9 +253,10 @@ bool Board::loadTiles(float scale) {
   QPixmap pm(KGlobal::dirs()->findResource("appdata", "kshisen.xpm"));
   QBitmap mask(KGlobal::dirs()->findResource("appdata", "mask.xpm"));
   if(pm.width() == 0 || pm.height() == 0) {
-    KMsgBox::message(0, i18n("Shisen-Sho"), 
-		     i18n("Cannot load pixmaps!"));
-    exit(1);
+      QMessageBox::warning(this, kapp->getCaption(),
+			   i18n("Cannot load pixmaps!"), 
+			   i18n("OK"));
+      exit(1);
   }
   pm.setMask(mask);
   
