@@ -5,7 +5,6 @@ INCLUDES = $(all_includes)
 LDFLAGS	= $(all_libraries) $(KDE_RPATH)
 LDADD =       $(LIB_KDEUI)
 
-KDELNKDIR= $(kde_appsdir)/Games
 PICDIR = $(kde_datadir)/kshisen/pics
 
 bin_PROGRAMS = kshisen
@@ -17,7 +16,7 @@ noinst_HEADERS = app.h board.h debug.h version.h
 kshisen_SOURCES = main.cpp board.cpp app.cpp
 
 appsdir = $(kde_appsdir)/Games
-apps_DATA = kshisen.kdelnk
+apps_DATA = kshisen.desktop
 
 icondir = $(kde_icondir)
 icon_DATA = kshisen.xpm
