@@ -38,6 +38,7 @@
 
 #include <kapp.h>
 #include "app.h"
+#include <kconfig.h>
 
 int main(int argc, char **argv) {
   KApplication a(argc, argv, "kshisen");

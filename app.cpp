@@ -52,6 +52,7 @@
 #include <stdio.h>
 #include <kglobal.h>
 #include <qpushbutton.h>
+#include <kconfig.h>
 
 #define ID_FQUIT	101
 
