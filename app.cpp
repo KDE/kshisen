@@ -79,16 +79,14 @@ App::App() : KMainWindow(0) {
 
   cheat = FALSE;
 
-
   initKAction();
 
   b = new Board(this);
   setCentralWidget(b);
 
-  sb = new KStatusBar(this);
-  sb->insertItem(i18n("Your time: XX:XX:XX (XXXXXXXXXXXXXXX)"), 1);
-  sb->insertItem(i18n("Cheat mode"), 2);
-  sb->changeItem("", 2);
+  statusBar()->insertItem(i18n("Your time: XX:XX:XX (XXXXXXXXXXXXXXX)"), 1);
+  statusBar()->insertItem(i18n("Cheat mode"), 2);
+  statusBar()->changeItem("", 2);
 
   connect(b, SIGNAL(changed()),
 	  this, SLOT(enableItems()));
@@ -138,7 +136,6 @@ App::App() : KMainWindow(0) {
 
 App::~App() {
   delete b;
-  delete sb;
   delete highscoreTable;
 
 }
@@ -203,7 +200,7 @@ void App::hallOfFame() {
 void App::newGame() {
   b->newGame();
   cheat = FALSE;
-  sb->changeItem("", 2);
+  statusBar()->changeItem("", 2);
   enableItems();
 }
 
@@ -243,7 +240,7 @@ void App::undo() {
   if(b->canUndo()) {
     b->undo();
     cheat = TRUE;
-    sb->changeItem(i18n("Cheat mode"), 2);
+    statusBar()->changeItem(i18n("Cheat mode"), 2);
     enableItems();
   }
 }
@@ -260,7 +257,7 @@ void App::hint() {
 #else
   b->getHint();
   cheat = TRUE;
-  sb->changeItem(i18n("Cheat mode"), 2);
+  statusBar()->changeItem(i18n("Cheat mode"), 2);
 #endif
   enableItems();
 }
@@ -375,7 +372,7 @@ void App::slotEndOfGame() {
   }
 
   cheat = FALSE;
-  sb->changeItem("", 2);
+  statusBar()->changeItem("", 2);
   b->newGame();
 }
 
@@ -386,7 +383,7 @@ void App::updateScore() {
 		.arg(QString().sprintf("%02d", b->getTimeForGame() % 60))
 		.arg(b->isPaused()?i18n(" (Paused)"):QString::null);
 
-  sb->changeItem(s, 1);
+  statusBar()->changeItem(s, 1);
 }
 
 QString App::getPlayerName() {
