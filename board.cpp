@@ -39,6 +39,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/times.h>
+#include <algorithm>
 
 #include <qpainter.h>
 #include <qimage.h>
@@ -74,6 +75,7 @@ Board::Board(QWidget *parent) : QWidget(parent) {
   grav_col_1 = -1;
   grav_col_2 = -1;
   setGravityFlag(false);
+  current_scale = 0.0f;
 
   // randomze
   setShuffle(DEFAULTSHUFFLE);
@@ -88,6 +90,7 @@ Board::Board(QWidget *parent) : QWidget(parent) {
   _redo.setAutoDelete(true);
   _undo.setAutoDelete(true);
 
+  loadTiles();
   field = 0;
   QPixmap bg(KGlobal::dirs()->findResource("appdata", "kshisen_bgnd.xpm"));
   setBackgroundPixmap(bg);
@@ -224,13 +227,19 @@ void Board::setSize(int x, int y) {
     for(int j = 0; j < y; j++)
       setField(i, j, EMPTY);
 
-  loadTiles();
-  double scaler = 1.0;
-  while(sizeHint().width() > kapp->desktop()->width() - 2*XBORDER ||
-     sizeHint().height() > kapp->desktop()->height() - 2*YBORDER) {
-    scaler -= 0.2;
-    loadTiles(scaler);
-  }
+  // calculate scaling required to fit all tiles on the screen
+  double scale_x = (kapp->desktop()->width() - 4*XBORDER) /
+    (unscaled_tile.width() * x_tiles());
+  double scale_y = (kapp->desktop()->height() - 4*YBORDER) /
+    (unscaled_tile.height() * y_tiles());
+
+  // round down to nearest multiple of 0.2
+  scale_x = static_cast<int>(scale_x * 5.0) / 5.0;
+  scale_y = static_cast<int>(scale_y * 5.0) / 5.0;
+
+  double scaler = std::min(scale_x, scale_y);
+  scaler = std::min(1.0, scaler); // prevents scaling up
+  loadTiles(scaler);
 
   newGame();
   emit changed();
@@ -240,41 +249,47 @@ void Board::setSize(int x, int y) {
 bool Board::loadTiles(float scale) {
   int i, j, x, y;
 
-  // delete old tiles
-  for(i = 0; i < 45; i++)
-    if(pm_tile[i] != 0) {
-      delete pm_tile[i];
-      pm_tile[i] = 0;
-    }
+  if(scale != current_scale)
+  {
+    // delete old tiles
+    for(i = 0; i < 45; i++)
+      if(pm_tile[i] != 0) {
+        delete pm_tile[i];
+        pm_tile[i] = 0;
+      }
 
-  // locate tileset
-  QPixmap pm(KGlobal::dirs()->findResource("appdata", "kshisen.xpm"));
-  QBitmap mask(KGlobal::dirs()->findResource("appdata", "mask.xpm"));
-  if(pm.width() == 0 || pm.height() == 0) {
-      KMessageBox::sorry(this,
-                           i18n("Cannot load pixmaps!"));
-      exit(1);
+    // locate tileset
+    QPixmap pm(KGlobal::dirs()->findResource("appdata", "kshisen.xpm"));
+    QBitmap mask(KGlobal::dirs()->findResource("appdata", "mask.xpm"));
+    if(pm.width() == 0 || pm.height() == 0) {
+        KMessageBox::sorry(this, i18n("Cannot load pixmaps!"));
+        exit(1);
+    }
+    pm.setMask(mask);
+
+    if(pm.width() == 0 || pm.height() == 0)
+      return false;
+
+    x = pm.width() / 9;
+    y = pm.height() / 5;
+
+    for(i = 0; i < 9; i++)
+      for(j = 0; j < 5; j++) {
+        pm_tile[i + j*9] = new QPixmap(x,y);
+        QBitmap bm(x, y);
+        bitBlt(pm_tile[i + j*9], 0, 0, &pm, x * i, y * j, x, y, CopyROP);
+        bitBlt(&bm, 0, 0, &mask, x *i, y * j, x, y, CopyROP);
+        pm_tile[i+j*9]->setMask(bm);
+        if(scale != 1.0) {
+          QWMatrix wm;
+          wm.scale(scale, scale);
+          *pm_tile[i + j*9] = pm_tile[i + j*9]->xForm(wm);
+        }
+      }
+
+    unscaled_tile = QSize(x, y);
+    current_scale = scale;
   }
-  pm.setMask(mask);
-
-  if(pm.width() == 0 || pm.height() == 0)
-    return false;
-
-  x = pm.width() / 9;
-  y = pm.height() / 5;
-  for(i = 0; i < 9; i++)
-    for(j = 0; j < 5; j++) {
-	pm_tile[i + j*9] = new QPixmap(x,y);
-	QBitmap bm(x, y);
-	bitBlt(pm_tile[i + j*9], 0, 0, &pm, x * i, y * j, x, y, CopyROP);
-	bitBlt(&bm, 0, 0, &mask, x *i, y * j, x, y, CopyROP);
-	pm_tile[i+j*9]->setMask(bm);
-	if(scale != 1.0) {
-	  QWMatrix wm;
-	  wm.scale(scale, scale);
-	  *pm_tile[i + j*9] = pm_tile[i + j*9]->xForm(wm);
-	}
-    }
 
   return true;
 }
@@ -420,20 +435,6 @@ void Board::updateField(int x, int y) {
     repaint(r, true);
 }
 
-int MIN(int a, int b) {
-  if(a < b)
-    return a;
-  else
-    return b;
-}
-
-int MAX(int a, int b) {
-  if(a > b)
-    return a;
-  else
-    return b;
-}
-
 QPixmap *Board::lighten(QPixmap *src) {
   const float FACTOR = 1.3;
 
@@ -442,7 +443,7 @@ QPixmap *Board::lighten(QPixmap *src) {
     for(int y = 0; y < src->height(); y++) {
       uchar *p = (uchar *)img.scanLine(y);
       for(int x = 0; x < src->width() * 4; x++) {
-	*p = (unsigned char)MIN(255, (int)(FACTOR * (*p)));
+	*p = (unsigned char)std::min(255, (int)(FACTOR * (*p)));
 	p++;
       }
     }
@@ -546,7 +547,7 @@ bool Board::canMakePath(int x1, int y1, int x2, int y2) {
   int i;
 
   if(x1 == x2) {
-    for(i = MIN(y1, y2)+1; i < MAX(y1, y2); i++) 
+    for(i = std::min(y1, y2)+1; i < std::max(y1, y2); i++)
       if(getField(x1, i) != EMPTY)
 	return false;
   
@@ -554,7 +555,7 @@ bool Board::canMakePath(int x1, int y1, int x2, int y2) {
   } 
 
   if(y1 == y2) {
-    for(i = MIN(x1, x2)+1; i < MAX(x1, x2); i++)
+    for(i = std::min(x1, x2)+1; i < std::max(x1, x2); i++)
       if(getField(i, y1) != EMPTY)
 	return false;
 
@@ -694,12 +695,12 @@ void Board::undrawArrow() {
   int num = 0;
   while(num < 3 && history[num+1].x != -2) {
     if(history[num].y == history[num+1].y)
-      for(int i = MIN(history[num].x, history[num+1].x); 
-	  i <= MAX(history[num].x, history[num+1].x); i++)
+      for(int i = std::min(history[num].x, history[num+1].x); 
+	  i <= std::max(history[num].x, history[num+1].x); i++)
 	updateField(i, history[num].y);
     else 
-      for(int i = MIN(history[num].y, history[num+1].y); 
-	  i <= MAX(history[num].y, history[num+1].y); i++)
+      for(int i = std::min(history[num].y, history[num+1].y); 
+	  i <= std::max(history[num].y, history[num+1].y); i++)
 	updateField(history[num].x, i);
     num++;
   }

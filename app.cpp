@@ -41,6 +41,7 @@
 
 #include <math.h>
 #include <stdio.h>
+#include <algorithm>
 
 #include <qlayout.h>
 #include <qtimer.h>
@@ -65,8 +66,6 @@
 static int size_x[5] = {14, 18, 24, 26, 30};
 static int size_y[5] = { 6,  8, 12, 14, 16};
 static int DELAY[5] = {125, 250, 500, 750, 1000};
-
-extern int MAX(int, int);
 
 App::App() : KMainWindow(0) {
   setCaption(i18n("Shisen-Sho"));
@@ -719,9 +718,9 @@ void App::showHighscore(int focusitem)  {
     for(j = 0; j < 5; j++) {
       e[i][j]->setMinimumHeight(e[i][j]->sizeHint().height());
       if(j == 1)
-	e[i][j]->setMinimumWidth(MAX(e[i][j]->sizeHint().width(), 100));
+	e[i][j]->setMinimumWidth(std::max(e[i][j]->sizeHint().width(), 100));
       else
-	e[i][j]->setMinimumWidth(MAX(e[i][j]->sizeHint().width(), 60));
+	e[i][j]->setMinimumWidth(std::max(e[i][j]->sizeHint().width(), 60));
       if((int)i == focusitem)
 	e[i][j]->setFont(f);
       table->addWidget(e[i][j], i+2, j, AlignCenter);	

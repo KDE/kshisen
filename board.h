@@ -131,7 +131,7 @@ private slots:
   void gravity(int, bool);
 
 private: // functions
-  bool loadTiles(float scale = 1.0);
+  bool loadTiles(float scale = 1.0f);
   void initBoard();
 
   void setField(int x, int y, int value);
@@ -165,6 +165,8 @@ private:
   int _y_tiles;
   int _delay;
   int _shuffle;
+  QSize unscaled_tile;
+  float current_scale;
 
   bool paused;
   time_t pause_start;
