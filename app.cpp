@@ -205,7 +205,7 @@ void App::loadSettings()
 	// Setting 'Prefer Unscaled Tiles' to on is known to fail in the following
 	//  situation: The Keramik window decoration is in use AND caption bubbles
 	//  stick out above the title bar (i.e. Keramik's 'Draw small caption
-	// bubbles on active windows' configuration entry is set to off) AND the 
+	// bubbles on active windows' configuration entry is set to off) AND the
 	// kshisen window is maximized.
 	//
 	// The user can work-around this situation by un-maximizing the window first.
