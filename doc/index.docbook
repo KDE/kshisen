@@ -77,8 +77,8 @@ tile with the &RMB; will show you all corresponding tiles, no matter if they are
 removable at the moment or not.</para>
 
 <para>The game is over if no moves are possible and some tiles are left on the
-board (this should not happen if the option <guimenuitem>No unsolvable
-games</guimenuitem> in the <guimenu>Option</guimenu> menu is checked, since for
+board (this should not happen if the option <guimenuitem>Disallow Unsolvable
+Games</guimenuitem> in the <guimenu>Settings</guimenu> menu is checked, since for
 these games there is at least one way to solve it, though it may happen that you
 choose the wrong way).</para>
 
@@ -90,15 +90,15 @@ field:<inlineequation> <alt>S=(n/t)*sqrt(n/84)/0.0014</alt>
 <inlinemediaobject><imageobject>
 <imagedata fileref="score-formula.png" format="PNG"/>
 </imageobject></inlinemediaobject></inlineequation>
-If you played with the <guilabel>Gravity</guilabel> option enabled, this score
+If you played with the <guilabel>Gravity</guilabel> setting enabled, this score
 will additionally get multiplied by two.</para>
 </sect1>
 
 <sect1 id="game-menu">
 <title>The <guimenu>Game</guimenu> Menu</title>
 
-<para>The menu <guimenu>Game</guimenu> menu lets you control the status of the
-current game, as there are:</para>
+<para>The <guimenu>Game</guimenu> menu lets you control the status of the
+current game:</para>
 
 <variablelist>
 <varlistentry>
@@ -116,7 +116,7 @@ session with new tiles. </para></listitem>
 <guimenu>Game</guimenu>
 <guimenuitem>Pause</guimenuitem></menuchoice></term>
 <listitem><para><action>Pauses the entire game</action>, especially the timer
-which is needed for the high score. The menu-entry then turns to
+which affects the scoring. The menu entry then changes to
 <guimenuitem>Resume Game</guimenuitem>, which is used for resuming the
 game.</para></listitem>
 </varlistentry>
@@ -127,7 +127,7 @@ game.</para></listitem>
 </shortcut>
 <guimenu>Game</guimenu><guimenuitem>Show
 Highscores</guimenuitem></menuchoice></term>
-<listitem><para>Shows the (local) Top-Ten-charts of Shisen-Sho.</para> </listitem>
+<listitem><para>Shows the (local) Top-Ten charts of Shisen-Sho.</para> </listitem>
 </varlistentry>
 
 <varlistentry>
@@ -153,8 +153,8 @@ tiles.</action></para></listitem>
 <term><menuchoice><guimenu>Game</guimenu>
 <guimenuitem>Is Game Solvable?</guimenuitem></menuchoice></term>
 <listitem><para>Shows a dialog which <action>tells you whether the game is
-solvable or not</action>. If the menu-entry <guimenuitem>Disallow Unsolvable
-Games</guimenuitem> in the <guimenu>Options</guimenu> menu is checked, this box
+solvable or not</action>. If the menu entry <guimenuitem>Disallow Unsolvable
+Games</guimenuitem> in the <guimenu>Settings</guimenu> menu is checked, this option
 is absolutely useless.</para></listitem>
 </varlistentry>
 
@@ -174,7 +174,7 @@ action="simul">&Ctrl;<keycap>Z</keycap></keycombo></shortcut>
 <guimenu>Edit</guimenu>
 <guimenuitem>Undo</guimenuitem></menuchoice></term>
 <listitem><para><action>Undo the last step</action>. Same as the
-<guibutton>back</guibutton> button in the Toolbar.</para></listitem>
+<guibutton>Undo</guibutton> button in the toolbar.</para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -183,7 +183,7 @@ action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo></shortcut>
 <guimenu>Game</guimenu>
 <guimenuitem>Redo</guimenuitem></menuchoice></term>
 <listitem><para><action>Redo the last step</action>. Same as the
-<guibutton>forward</guibutton> button in the toolbar.</para></listitem>
+<guibutton>Redo</guibutton> button in the toolbar.</para></listitem>
 </varlistentry>
 </variablelist>
 </sect1>
@@ -256,7 +256,7 @@ have to try again if you didn't solve the game, but if it's checked, the game
 <member>New Game: <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></member>
 <member>Restart Game: <keycombo action="simul">&Ctrl;<keycap>R</keycap></keycombo></member>
 <member>Help: <keycombo action="simul"><keycap>F1</keycap></keycombo></member>
-<member>What's this?: <keycombo action="simul">&Shift;<keycap>F1</keycap></keycombo></member>
+<member>What's This?: <keycombo action="simul">&Shift;<keycap>F1</keycap></keycombo></member>
 </simplelist>
 </sect1>
 </chapter>
@@ -297,7 +297,7 @@ Documentation Copyright 2000 Dirk Doerflinger
 <title>Requirements</title>
 
 <para>
-In order to successfully compile &kshisen;, you need &kde; 3.0
+In order to successfully compile &kshisen;, you need &kde; 3.x.
 All required libraries as well as &kshisen; itself can be found on
 &kde-ftp;.</para>
 </sect1>
