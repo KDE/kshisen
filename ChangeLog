@@ -3,6 +3,7 @@
 	* some board sizes did not match the entry shown in the
 	menu. Fixed.
 	* fixed a few warnings with egcs
+	* removed my initial highscore
 
 1998-07-17  Mario Weilguni  <mweilguni@kde.org>
 	

@@ -568,16 +568,16 @@ void App::readHighscore() {
     i++;
   }
 
-  // freshly installed, add my own highscore
-  if(highscore.size() == 0) {
-    HighScore hs;
-    hs.x = 28;
-    hs.y = 16;
-    hs.seconds = 367;
-    strcpy(hs.name, "Mario");
-    highscore.resize(1);
-    highscore[0] = hs;
-  }
+//   // freshly installed, add my own highscore
+//   if(highscore.size() == 0) {
+//     HighScore hs;
+//     hs.x = 28;
+//     hs.y = 16;
+//     hs.seconds = 367;
+//     strcpy(hs.name, "Mario");
+//     highscore.resize(1);
+//     highscore[0] = hs;
+//   }
 
   // restore old group
   conf->setGroup(grp.data());
