@@ -104,9 +104,10 @@ Board::Board(QWidget *parent) : QWidget(parent) {
 }
 
 Board::~Board() {
-  for(int i = 0; i < 36; i++)
+  for(int i = 0; i < 45; i++)
     if(pm_tile[i])
       delete pm_tile[i];  
+  delete [] field;
 }
 
 int Board::x_tiles() {
