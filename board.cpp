@@ -519,35 +519,33 @@ void Board::marked(int x, int y)
 		updateField(x, y, false);
 		return;
 	}
+
+	int fld1 = getField(mark_x, mark_y);
+	int fld2 = getField(x, y);
+
+	// both field same?
+	if(fld1 != fld2)
+		return;
+
+	// trace
+	if(findPath(mark_x, mark_y, x, y, connection))
+	{
+		madeMove(mark_x, mark_y, x, y);
+		drawConnection(getDelay());
+		setField(mark_x, mark_y, EMPTY);
+		setField(x, y, EMPTY);
+		grav_col_1 = x;
+		grav_col_2 = mark_x;
+		mark_x = -1;
+		mark_y = -1;
+
+		// game is over?
+		// Must delay until after tiles fall to make this test
+		// See undrawConnection GP.
+	}
 	else
 	{
-		int fld1 = getField(mark_x, mark_y);
-		int fld2 = getField(x, y);
-
-		// both field same?
-		if(fld1 != fld2)
-			return;
-
-		// trace
-		if(findPath(mark_x, mark_y, x, y, connection))
-		{
-			madeMove(mark_x, mark_y, x, y);
-			drawConnection(getDelay());
-			setField(mark_x, mark_y, EMPTY);
-			setField(x, y, EMPTY);
-			grav_col_1 = x;
-			grav_col_2 = mark_x;
-			mark_x = -1;
-			mark_y = -1;
-
-			// game is over?
-			// Must delay until after tiles fall to make this test
-			// See undrawConnection GP.
-		}
-		else
-		{
-			connection.clear();
-		}
+		connection.clear();
 	}
 }
 
