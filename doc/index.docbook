@@ -1,59 +1,335 @@
-<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN">
-<book lang="en">
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN" [
+ <!ENTITY kshisen "<application>Shisen-Sho</application>">
+ <!ENTITY % addindex "IGNORE">
+ <![ %addindex; [ <!ENTITY docindex SYSTEM "docindex.docbook"> ]]>
+]>
+
+<book lang="en" id="KShisen">
 <bookinfo>
-<title>The KShisen Handbook</title>
+<title>The KShisen-Sho Handbook</title>
+
 <authorgroup>
 <author>
-<firstname>Mario</firstname>
-<surname>Weilguni</surname>
+<firstname>Dirk</firstname>
+<surname>Doerflinger</surname>
 </author>
 </authorgroup>
-<date>Version 0.2, 7 June 1998</date>
-<releaseinfo><!-- information about this particular version --></releaseinfo>
+
+<date>15/05/2000</date>
+<releaseinfo>0.1</releaseinfo>
+
 <revhistory>
 <revision>
-<revnumber></revnumber>
-<date></date>
+<revnumber>0.1</revnumber>
+<date>15/05/2000</date>
+<authorinitials>D.D.</authorinitials>
+<revremark>Started from scratch
+</revremark>
 </revision>
 </revhistory>
+
 <abstract>
-<para>This documentation was last updated for kshisen version 0.2. Please make any comments and additions to the author.</para>
-<para>KDE Shisen-Sho</para><!-- Merge this with the previous paragraph; it comes from <META NAME="description" CONTENT="..."> --></abstract>
+<para>This Handbook describes &kshisen; Version 1.3</para>
+</abstract>
+
 <keywordset>
-<keyword>KDE</keyword>
-<keyword>game</keyword>
-<keyword>linux</keyword>
-<keyword>Shisen-Sho</keyword>
+      <keyword>KDE</keyword>
+      <keyword>kdegames</keyword>
+      <keyword>KShisen</keyword>
+      <keyword>game</keyword>
+      <keyword>shisen-sho</keyword>
 </keywordset>
 </bookinfo>
+
+
+
 <chapter id="Introduction">
 <title>Introduction</title>
-<para>Shisen-Sho is similiar to Mahjongg and uses the same set of tiles as Mahjongg. 
-The object of the game is to remove all tiles from the field. Only two matching tiles can 
-be removed at a time. Two tiles can only be removed if they can be connected 
-with at most three connected lines. Lines can be horizontal or vertical but not diagonal. </para>
-<para>You don't have to make the lines by yourself, the game does this for you. 
-Just mark two matching tiles on the board. If they can be connected with at most three lines, 
-the lines will be drawn and the tiles are removed. </para>
-<para>Remember that lines may cross the empty border. If you are stuck, you can use the 
-<emphasis>Hint</emphasis> feature to find two tiles which may be removed. </para>
-<para>The game is over if no moves are possible and some tiles are left on the board 
-(this should NOT happen if the option <emphasis>No unsolvable games</emphasis> in the <emphasis>Option</emphasis> 
-menu is checked, since for these games there is at least one way to solve it, though it may 
-happen that you choose the wrong way). </para>
-<para>If you use the features <emphasis>Undo</emphasis>, <emphasis>Hint</emphasis> or <emphasis>Redo</emphasis>, no highscore will be generated. </para>
+<para>
+&kshisen; is a single-player-game similar to Mahjongg and uses the same set of tiles as Mahjongg.</para>
+<para>
+The object of the game is to remove all tiles from the field.
+</para>
 </chapter>
-<chapter id="Epilogue">
-<title>Epilogue</title>
-<sect1 id="developer">
-<title>Developer</title>
-<para><literal remap="tt">Mario Weilguni</literal></para>
+
+
+<chapter id="Installation">
+<title>Installation</title>
+<sect1 id="Getting-KShisen">
+<title>How to obtain Shisen-Sho</title>
+
+<para>
+&kshisen; is written for the KDE project
+<ulink url="http://www.kde.org">http://www.kde.org</ulink> by Mario Weilguni <email>mweilguni@sime.com</email>.
+</para>
+<para>
+&kshisen; can be found in the package kdegames on
+<ulink url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>, 
+the main ftp site of the KDE project.</para>
 </sect1>
-<sect1 id="authors">
-<title>Authors</title>
-<para><literal remap="tt">Mario Weilguni</literal></para>
-<para><literal remap="tt"><ulink url="mailto:rwilliams@kde.org">Robert Williams</ulink></literal> - Editor</para>
+
+<sect1 id="Requirements">
+<title>Requirements</title>
+<para>
+In order to successfully compile &kshisen;, you need KDE 2.0
+All required libraries as well as &kshisen; itself can be found on
+<ulink url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>.</para>
 </sect1>
+
+
+<sect1 id="Compilation">
+<title>Compilation and installation</title>
+
+<para>
+In order to compile and install &kshisen on your
+system, extract the package and type the following in the base directory of the
+&kshisen; distribution:
+</para>
+
+<para>
+<Screen Width="40">
+<Prompt>%</Prompt> <Userinput>./configure</Userinput>
+<Prompt>%</Prompt> <Userinput>make</Userinput>
+<Prompt>%</Prompt> <Userinput>make install</Userinput>
+</Screen>
+</para>
+      
+<para>
+Since <application>Shisen-Sho</application> uses <application>autoconf</application> and <application>automake</application> you should have not trouble compiling it.
+</para>
+</sect1>
+</chapter>
+
+
+<chapter id="PlayingKShisen">
+<title>Playing &kshisen;</title>
+<sect1 id="Playing-KShisen">
+<title>Rules</title>
+
+<para>
+The aim of the game is to remove all tiles from the board. Only two matching tiles can
+be removed at a time. Two tiles can only be removed if they can be connected
+with a maximum of three connected lines. Lines can be horizontal or vertical, but not diagonal.
+</para>
+<para>
+You don't have to draw the lines by yourself, the game does this for you.
+Just mark two matching tiles on the board, if they can be connected with a maximum of three lines,
+the lines will be drawn and the tiles are removed.
+</para>
+<para>
+Remember that lines only may cross the empty border. If you are stuck, you can use the
+Hint feature to find two tiles which may be removed.
+Clicking a tile with the <mousebutton>right</mousebutton> mouse button will show you all corresponding
+tiles, no matter if they are removable at the moment or not.
+</para>
+<para> 
+The game is over if no moves are possible and some tiles
+are left on the board (this should not happen if the option <guimenuitem>No
+unsolvable games</guimenuitem> in the <guimenu>Option</guimenu> menu is
+checked, since for these games there is at least one way to solve it, though
+it may happen that you choose the wrong way). 
+</para>
+</sect1>
+
+
+<sect1 id="gamemenu">
+<title>The Game-Menu</title>
+<para>
+The menu <guimenu>Game</guimenu> lets you control the status of the current
+game, as there are:
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<shortcut><keycombo><keycap>Ctrl</keycap><keycap>Z</keycap></keycombo></shortcut>
+<guimenu>Game</guimenu><guimenuitem>Undo</guimenuitem></menuchoice></term>
+<listitem>
+<para>
+Undo the last step. Same does the <guibutton>back</guibutton> button in the
+Toolbar.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut><keycombo><keycap>Ctrl</keycap><keycap>D</keycap></keycombo></shortcut>
+<guimenu>Game</guimenu><guimenuitem>Redo</guimenuitem></menuchoice></term>
+<listitem>
+<para>
+Redo the last step. Same does the <guibutton>forward</guibutton> button in the
+toolbar.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut><keycombo><keycap>Ctrl</keycap><keycap>H</keycap></keycombo></shortcut>
+<guimenu>Game</guimenu><guimenuitem>Get Hint</guimenuitem></menuchoice></term>
+<listitem>
+<para>
+Show a tip, which two tiles to remove next
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut><keycombo><keycap>Ctrl</keycap><keycap>N</keycap></keycombo></shortcut>
+<guimenu>Game</guimenu><guimenuitem>New Game</guimenuitem></menuchoice></term>
+<listitem>
+<para>
+Finish the actual game set and start a new session with new tiles.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut><keycombo><keycap>Ctrl</keycap><keycap>R</keycap></keycombo></shortcut>
+<guimenu>Game</guimenu><guimenuitem>Restart Game</guimenuitem></menuchoice></term>
+<listitem>
+<para>
+Restart the current game with the same tiles.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice><guimenu>Game</guimenu><guimenuitem>Pause Game</guimenuitem></menuchoice></term>
+<listitem>
+<para>
+Pauses the entire game, especially the timer which is needed for the
+high score. The menu-entry then turns to <guimenuitem>Resume Game </guimenuitem>, which is
+used for resuming the game.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice><guimenu>Game</guimenu><guimenuitem>Is game solvable?</guimenuitem></menuchoice></term>
+<listitem>
+<para>
+Shows a Dialog which tells you, whether the game is solvable or not. If the
+menu-entry <guimenuitem>Disallow unsolvable games</guimenuitem> in the
+<guimenu>Options </guimenu>menu is checked, this Box is absolutely useless.
+</para> 
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice><guimenu>Game</guimenu><guimenuitem>Hall of fame</guimenuitem></menuchoice></term>
+<listitem>
+<para>
+Shows the (local) Top-Ten-charts of Shisen-Sho.
+</para> 
+</listitem>
+</varlistentry>
+</variablelist>
+Some of the menu items can also be controlled by hot-keys. See the section
+<link linkend="keybindings" endterm="keybindings-title"></link> for a list.
+</para> 
+</sect1>
+</chapter>
+
+
+<chapter id="Configuration">
+<title>Configuration </title>
+<sect1 id="optionsmenu">
+<title>The Options-Menu</title>
+
+<para>
+&kshisen; has several possibilities to change its behavior.
+All options can be changed from the menu <guimenu>Options</guimenu>.
+</para>
+<para>
+The options will be saved automatically.
+</para>
+
+
+<para>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice><guimenu>Options</guimenu><guisubmenu>Size</guisubmenu></menuchoice></term>
+<listitem>
+<para>
+In the sub-menu <guisubmenu>Size</guisubmenu> you can change the number of tiles on the board. The more tiles you have, the harder (and longer) the game will be.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><guimenu>Options</guimenu><guisubmenu>Speed</guisubmenu></menuchoice></term>
+<listitem>
+<para>
+The sub-menu <guisubmenu>Speed</guisubmenu> sets the time for the tiles to disappear when connected correctly.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice><guimenu>Options</guimenu><guisubmenu>Level</guisubmenu></menuchoice></term>
+<listitem>
+<para>
+Choose your game skill in the sub-menu
+<guisubmenu>Level</guisubmenu>.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><guimenu>Options</guimenu><guimenuitem>Gravity</guimenuitem></menuchoice></term>
+<listitem>
+<para>
+Checking this item makes the game even harder: If a tile is removed, all tiles lying above it will fall down one step.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><guimenu>Options</guimenu><guimenuitem>Disallow unsolvable games</guimenuitem></menuchoice></term>
+<listitem>
+<para>
+If this menu-item is checked, only solvable games will be created when a new game is started. Note: You may still choose the wrong way and have to try again if you didn't solve the game, but if it's checked, the game <emphasis>will</emphasis> be solvable.
+</para>
+</listitem>
+</varlistentry>
+
+
+</variablelist>
+</para>
+</sect1>
+
+<sect1 id="keybindings">
+<title id="keybindings-title">Key Bindings</title>
+
+<para>Default key bindings are:
+</para>
+<simplelist>
+<member>Quit: <keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo></member>
+<member>Undo: <keycombo><keycap>Ctrl</keycap><keycap>Z</keycap></keycombo></member>
+<member>Redo: <keycombo><keycap>Ctrl</keycap><keycap>D</keycap></keycombo></member>
+<member>New Game: <keycombo><keycap>Ctrl</keycap><keycap>N</keycap></keycombo></member>
+<member>Restart Game: <keycombo><keycap>Ctrl</keycap><keycap>R</keycap></keycombo></member>
+<member>Help: <keycombo><keycap>F1</keycap></keycombo></member>
+<member>What's this?: <keycombo><keycap>Shift</keycap><keycap>F1</keycap></keycombo></member>
+</simplelist>
+</sect1>
+</chapter>
+
+
+<chapter id="Credits">
+<title>Credits and License</title>
+
+<para>
+&kshisen; Copyright 1999 Mario Weilguni
+<email>mweilguni@sime.com</email>
+</para>
+
+
+<para>
+Documentation Copyright 2000 Dirk Doerflinger
+<email>ddoerflinger@gmx.net</email>
+</para>
+
+
+<para>
+This program is licensed under the terms of the
+<ulink URL="common/gpl-license.html">GNU GPL</ulink>.
+</para>
 </chapter>
 </book>
 <!--
