@@ -418,7 +418,7 @@ void App::slotEndOfGame()
 		else if(isBetter(hs, highscore[HIGHSCORE_MAX-1]))
 			isHighscore = TRUE;
 
-		if(isHighscore)
+		if(isHighscore && !cheat)
 		{
 			hs.name = getPlayerName();
 			hs.date = time((time_t*)0);
