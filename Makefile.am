@@ -24,7 +24,7 @@ icon_DATA = kshisen.xpm
 
 SUBDIRS = html pics 
 
-install-local-data:
+install-data-local:
 	$(mkinstalldirs) $(kde_minidir)
 	$(INSTALL_DATA) mini-kshisen.xpm $(kde_minidir)/kshisen.xpm
 
