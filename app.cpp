@@ -315,12 +315,17 @@ void App::preferUnscaled()
 	{
 		QSize s = b->unscaledSize();
 
-		// Compensate for bug in KMainWindow::sizeForCentralWidgetSize()
-		// Bug present in KDE: 3.1.90 (CVS >= 20030225)
-		s.setHeight(s.height() + 1);
+		// We would have liked to have used KMainWindow::sizeForCentralWidgetSize(),
+		// but this function does not seem to work when the toolbar is docked on the
+		// left. sizeForCentralWidgetSize() even reports a value 1 pixel too small
+		// when the toolbar is docked at the top...
+		// These bugs present in KDE: 3.1.90 (CVS >= 20030225)
+		//resize(sizeForCentralWidgetSize(s));
 
-		resize(sizeForCentralWidgetSize(s));
-		//kdDebug() << "App::preferUnscaled() set size to: " << s.width() << " x " << s.height() << endl;
+		s += size() - b->size(); // compensate for chrome (toolbars, statusbars etc.)
+		resize(s);
+
+		kdDebug() << "App::preferUnscaled() set size to: " << s.width() << " x " << s.height() << endl;
 	}
 
 	kapp->config()->writeEntry("Unscaled", unscaled);
