@@ -472,7 +472,7 @@ void App::slotEndOfGame() {
 		(b->getTimeForGame() / 60)  % 60,
 		b->getTimeForGame() % 60);
       
-      QMessageBox::information(this, i18n("End of game"), s);
+      QMessageBox::information(this, i18n("End of game"), s, i18n("OK"));
     }
   }
 
