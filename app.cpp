@@ -172,11 +172,11 @@ void App::initKAction() {
 
   list.clear();
   KSelectAction* speed = new KSelectAction(i18n("S&peed"), 0, this, SLOT(changeSpeed()), actionCollection(), "options_speed");
-  list.append(i18n("Very fast"));
+  list.append(i18n("Very Fast"));
   list.append(i18n("Fast"));
   list.append(i18n("Medium"));
   list.append(i18n("Slow"));
-  list.append(i18n("Very slow"));
+  list.append(i18n("Very Slow"));
   speed->setItems(list);
 
   list.clear();
@@ -410,7 +410,7 @@ void App::resetCheatMode() {
 } 
  
 QString App::getPlayerName() {
-  QDialog *dlg = new QDialog(this, "Hall Of Fame", TRUE);
+  QDialog *dlg = new QDialog(this, "Hall of Fame", TRUE);
 
   QLabel  *l1  = new QLabel(i18n("You've made it into the \"Hall Of Fame\". Type in\nyour name so mankind will always remember\nyour cool rating."), dlg);
   l1->setFixedSize(l1->sizeHint());
@@ -643,7 +643,7 @@ void App::showHighscore(int focusitem)  {
 
   QVBoxLayout *tl = new QVBoxLayout(dlg, 10);
   
-  QLabel *l = new QLabel(i18n("Hall Of Fame"), dlg);
+  QLabel *l = new QLabel(i18n("Hall of Fame"), dlg);
   QFont f = font();
   f.setPointSize(24);
   f.setBold(TRUE);
