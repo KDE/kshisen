@@ -90,7 +90,8 @@ install: all
 	$(INSTALL_DATA) pics/$$i $(PICDIR)/$$i; \
 	done
 	$(INSTALL_DIR) $(DOCDIR)
-	$(INSTALL_DATA) html/index.html $(DOCDIR)
+	$(INSTALL_DATA) html/index.html html/index-1.html html/index-2.html \
+				html/logotp3.gif $(DOCDIR)
 
 
 uninstall:
