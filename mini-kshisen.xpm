@@ -14,7 +14,7 @@ static char*kshisen[]={
 "e c #ffffc0",
 "a c #c05800",
 "c c #ffdca8",
-". c None",
+". c #000000",
 "................",
 ".###abbaccca###.",
 ".###accacdca###.",
