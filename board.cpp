@@ -447,10 +447,10 @@ void Board::paintEvent(QPaintEvent *e) {
   p.end();
 }
 
-// returns a random number <= max
+// returns a random number < max
 int Board::random(int max) {
   //return (int)((float)(max) * rand() / (RAND_MAX+1.0));
-  return ::random() % (max+1); // don't depend on RAND_MAX...
+  return ::random() % max; // don't depend on RAND_MAX...
 }
 
 void Board::marked(int x, int y) {
