@@ -56,7 +56,7 @@ struct HighScore {
   time_t date;
 };
 
-const int HIGHSCORE_MAX = 10;
+const unsigned HIGHSCORE_MAX = 10;
 
 class App : public KTopLevelWidget {
   Q_OBJECT

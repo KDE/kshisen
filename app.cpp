@@ -83,8 +83,8 @@
 #define ID_HTUTORIAL	901
 #define ID_HHELP	900	
 
-static int size_x[5] = {14, 18, 22, 26, 30};
-static int size_y[5] = { 6,  8, 10, 14, 16};
+static int size_x[5] = {14, 18, 24, 26, 30};
+static int size_y[5] = { 6,  8, 12, 14, 16};
 static int DELAY[5] = {125, 250, 500, 750, 1000};
 
 extern int MAX(int, int);
@@ -125,8 +125,8 @@ App::App() : KTopLevelWidget() {
   om_s->insertItem(locale->translate("14x6"), ID_OSIZE1);
   om_s->insertItem(locale->translate("18x8"), ID_OSIZE2);
   om_s->insertItem(locale->translate("24x12"), ID_OSIZE3);
-  om_s->insertItem(locale->translate("28x16"), ID_OSIZE4);
-  om_s->insertItem(locale->translate("32x20"), ID_OSIZE5);
+  om_s->insertItem(locale->translate("26x14"), ID_OSIZE4);
+  om_s->insertItem(locale->translate("30x16"), ID_OSIZE5);
   //om_s->insertItem(locale->translate("Custom size..."), ID_OSIZECUSTOM);
   QPopupMenu *om_sp = new QPopupMenu;
   om_sp->setCheckable(TRUE);
@@ -552,7 +552,7 @@ void App::readHighscore() {
   bool eol = FALSE;
   grp = conf->group();
   conf->setGroup("Hall of Fame");
-  while ((i < HIGHSCORE_MAX) && !eol) {
+  while ((i < (int)HIGHSCORE_MAX) && !eol) {
     s.sprintf("Highscore_%d", i);
     if(conf->hasKey(s)) {
       e = conf->readEntry(s.data());

@@ -1,3 +1,9 @@
+1999-01-03  Mario Weilguni  <mweilguni@kde.org>
+
+	* some board sizes did not match the entry shown in the
+	menu. Fixed.
+	* fixed a few warnings with egcs
+
 1998-07-17  Mario Weilguni  <mweilguni@kde.org>
 	
 	* moved to version 1.0 (it´s stable enough now)
