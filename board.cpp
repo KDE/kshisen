@@ -54,6 +54,7 @@
 #include <kglobal.h>
 #include <kstandarddirs.h>
 #include <kmessagebox.h>
+#include <kglobalsettings.h>
 #include <kdebug.h>
 
 #include "board.h"
@@ -67,7 +68,6 @@
 #define DEFAULTSHUFFLE	4
 
 Board::Board(QWidget *parent) : QWidget(parent, 0, WResizeNoErase) {
-  pausedIcon = 0;
   paused = false;
   trying = false;
   _solvable_flag = true;
@@ -405,12 +405,8 @@ void Board::paintEvent(QPaintEvent *e) {
   p.translate(-ur.x(), -ur.y());   // use widget coordinate system
 
   if(paused) {
-    if(!pausedIcon)
-      pausedIcon = new QPixmap(KGlobal::dirs()->findResource("appdata", "paused.xpm"));
-
-    p.drawPixmap((width()-pausedIcon->width())/2, 
-		 (height()-pausedIcon->height())/2, 
-		 *pausedIcon);
+    p.setFont(KGlobalSettings::largeFont());
+    p.drawText(rect(), Qt::AlignCenter, i18n("Game Paused"));
   } else {
     int w = tiles.tileWidth();
     int h = tiles.tileHeight();

@@ -151,7 +151,6 @@ private: // functions
 private:
   time_t starttime;
   time_t time_for_game;
-  QPixmap *pausedIcon;
 
   TileSet tiles;
 
