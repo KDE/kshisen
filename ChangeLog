@@ -1,3 +1,6 @@
+2004-05-14  Benjamin Meyer (v.1.5.1)
+  * Moved settings into a KConfigXT dialog.
+
 2003-05-23  Dave Corrie  <kde@davecorrie.com> (v.1.4.90)
 
 	* GUI cleanup
