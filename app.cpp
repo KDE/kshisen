@@ -56,7 +56,6 @@
 #include <kglobal.h>
 #include <kmessagebox.h>
 #include <kconfig.h>
-#include <kkeysequence.h>
 #include <kaction.h>
 #include <kstdaction.h>
 #include <kstdgameaction.h>
