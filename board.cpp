@@ -43,6 +43,7 @@
 #include <kdebug.h>
 
 #include <qpainter.h>
+#include <qpaintdevicemetrics.h>
 #include <qtimer.h>
 
 #include "board.h"
@@ -1064,7 +1065,10 @@ bool Board::pause()
 
 QSize Board::sizeHint() const
 {
-	return QSize(500,370);
+	int dpi = QPaintDeviceMetrics(this).logicalDpiX();
+	if (dpi < 75)
+	   dpi = 75;
+	return QSize(9*dpi,7*dpi);
 }
 
 #include "board.moc"
