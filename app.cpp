@@ -36,34 +36,27 @@
  *******************************************************************
  */
 
-#include "app.h"
-#include "version.h"
-
-#include <math.h>
-#include <stdio.h>
-#include <algorithm>
-
-#include <qlayout.h>
-#include <qtimer.h>
-#include <qaccel.h>
-#include <qlineedit.h>
-#include <qpushbutton.h>
-#include <qdialog.h>
-#include <qstyle.h>
-
 #include <kapplication.h>
-#include <kiconloader.h>
 #include <kseparator.h>
-#include <kglobal.h>
 #include <kmessagebox.h>
 #include <kconfig.h>
 #include <kaction.h>
-#include <kstdaction.h>
 #include <kstdgameaction.h>
 #include <khighscore.h>
 #include <kdebug.h>
 #include <kkeydialog.h>
 #include <kpopupmenu.h>
+#include <kstatusbar.h>
+#include <klocale.h>
+
+#include <qlayout.h>
+#include <qtimer.h>
+#include <qlineedit.h>
+#include <qpushbutton.h>
+
+#include <cmath>
+
+#include "app.h"
 
 static int size_x[5] = {14, 18, 24, 26, 30};
 static int size_y[5] = { 6,  8, 12, 14, 16};
@@ -546,7 +539,7 @@ int App::getScore(const HighScore &hs)
 	double ntiles = hs.x*hs.y;
 	double tilespersec = ntiles/(double)hs.seconds;
 
-	double sizebonus = sqrt(ntiles/(double)(14.0 * 6.0));
+	double sizebonus = std::sqrt(ntiles/(double)(14.0 * 6.0));
 	double points = tilespersec / 0.14 * 100.0;
 
 	if(hs.gravity)

@@ -21,16 +21,15 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#include <algorithm>
-
-#include <qimage.h>
-#include <qpixmap.h>
-
 #include <kapplication.h>
 #include <kstandarddirs.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kdebug.h>
+
+#include <qimage.h>
+
+#include <algorithm>
 
 #include "tileset.h"
 

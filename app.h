@@ -41,12 +41,6 @@
 #define __APP__H__
 
 #include <kmainwindow.h>
-#include <ktoolbar.h>
-#include <kstatusbar.h>
-#include <kmenubar.h>
-#include <klocale.h>
-#include <time.h>
-#include <qvaluevector.h>
 #include "board.h"
 
 class KHighscore;

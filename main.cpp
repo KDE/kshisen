@@ -38,8 +38,6 @@
 
 #include <kapplication.h>
 #include <kconfig.h>
-#include <klocale.h>
-#include <kglobal.h>
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
 

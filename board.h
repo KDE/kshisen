@@ -39,17 +39,10 @@
 #ifndef __BOARD__H__
 #define __BOARD__H__
 
-#include <config.h>
-#include <qptrlist.h>
-#include <qwidget.h>
-#include <qpixmap.h>
-#include <qdatetime.h>
 #include <krandomsequence.h>
-#include "debug.h"
-#include <time.h>
 #include <list>
-
 #include "tileset.h"
+#include "debug.h"
 
 struct Position
 {

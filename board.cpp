@@ -36,32 +36,16 @@
  *******************************************************************
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/times.h>
-#include <algorithm>
-
-#include <qpainter.h>
-#include <qimage.h>
-#include <qtimer.h>
-#include <qptrlist.h>
-#include <qbitarray.h>
-#include <qbitmap.h>
-
 #include <kapplication.h>
 #include <klocale.h>
-#include <kiconloader.h>
-#include <kglobal.h>
 #include <kstandarddirs.h>
-#include <kmessagebox.h>
 #include <kglobalsettings.h>
 #include <kdebug.h>
 
-#include "board.h"
+#include <qpainter.h>
+#include <qtimer.h>
 
-#ifdef DEBUGGING
-#include <unistd.h>
-#endif
+#include "board.h"
 
 #define EMPTY		0
 #define DEFAULTDELAY	500
