@@ -7,7 +7,6 @@ LDADD =       $(LIB_KDEUI)
 
 KDELNKDIR= $(kde_appsdir)/Games
 PICDIR = $(kde_datadir)/kshisen/pics
-DOCDIR = $(kde_htmldir)/en/kshisen
 
 bin_PROGRAMS = kshisen
 
@@ -23,7 +22,7 @@ apps_DATA = kshisen.kdelnk
 icondir = $(kde_icondir)
 icon_DATA = kshisen.xpm
 
-SUBDIRS = html pics 
+SUBDIRS = pics 
 
 EXTRA_DIST = $(apps_DATA) $(icon_DATA) mini-kshisen.xpm
 
