@@ -124,7 +124,6 @@ public:
 	bool isPaused() const { return paused; }
 
 signals:
-	void fieldClicked(int, int);
 	void markError();
 	void markMatched();
 	void madeMove(int, int, int, int);
@@ -136,7 +135,6 @@ public slots:
 	bool pause();
 
 private slots:
-	void marked(int, int);
 	void undrawConnection();
 	void slotMadeMove(int, int, int, int);
 	void gravity(int, bool);
@@ -155,6 +153,7 @@ private: // functions
 	bool findSimplePath(int x1, int y1, int x2, int y2, Path& p) const;
 	void drawConnection(int timeout);
 	QPoint midCoord(int, int) const;
+	void marked(int, int);
 
 private:
 	time_t starttime;

@@ -89,8 +89,6 @@ Board::Board(QWidget *parent) : QWidget(parent, 0, WResizeNoErase)
 	field = 0;
 	QPixmap bg(KGlobal::dirs()->findResource("appdata", "kshisen_bgnd.xpm"));
 	setBackgroundPixmap(bg);
-	connect(this, SIGNAL(fieldClicked(int, int)),
-	        this, SLOT(marked(int, int)));
 	connect(this, SIGNAL(madeMove(int, int, int, int)),
 	        this, SLOT(slotMadeMove(int, int, int, int)));
 
@@ -176,21 +174,21 @@ void Board::gravity(int col, bool update)
 
 void Board::mousePressEvent(QMouseEvent *e)
 {
-	//kdDebug() << "mousePressEvent()" << endl;
-
 	// Calculate field position
-	int pos_x = -1;
-	if(e->pos().x() >= xOffset())
-		pos_x = (e->pos().x() - xOffset()) / tiles.tileWidth();
+	int pos_x = (e->pos().x() - xOffset()) / tiles.tileWidth();
+	int pos_y = (e->pos().y() - yOffset()) / tiles.tileHeight();
 
-	int pos_y = -1;
-	if(e->pos().y() >= yOffset())
-		pos_y = (e->pos().y() - yOffset()) / tiles.tileHeight();
+	if(e->pos().x() < xOffset() || e->pos().y() < yOffset() ||
+		pos_x >= x_tiles() || pos_y >= y_tiles())
+	{
+		pos_x = -1;
+		pos_y = -1;
+	}
 
 	// Mark tile
 	if(e->button() == LeftButton)
 	{
-		//kdDebug() << "...left button" << endl;
+		// Clear highlighted tiles
 		if(highlighted_tile != -1)
 		{
 			int old_highlighted = highlighted_tile;
@@ -202,48 +200,52 @@ void Board::mousePressEvent(QMouseEvent *e)
 						updateField(i, j, false);
 		}
 
-		if(pos_x >= 0 && pos_x < x_tiles() && pos_y >= 0 && pos_y < y_tiles())
-			emit fieldClicked(pos_x, pos_y);
+		if(pos_x != -1)
+			marked(pos_x, pos_y);
 	}
 
-	// Assist by lighting all tiles of same type
+	// Assist by highlighting all tiles of same type
 	if(e->button() == RightButton)
 	{
-		//kdDebug() << "...right button" << endl;
-		int old_highlighted = highlighted_tile;
-		int field = getField(pos_x,pos_y);
-		highlighted_tile = field;
+		int clicked_tile = getField(pos_x, pos_y);
 
-		if(mark_x != -1 && getField(mark_x, mark_y) != highlighted_tile)
+		// Clear marked tile
+		if(mark_x != -1 && getField(mark_x, mark_y) != clicked_tile)
 		{
+			// We need to set mark_x and mark_y to -1 before calling
+			// updateField() to ensure the tile is redrawn as unmarked.
 			int oldmarkx = mark_x;
 			int oldmarky = mark_y;
-			mark_x=-1;
-			mark_y=-1;
+			mark_x = -1;
+			mark_y = -1;
 			updateField(oldmarkx, oldmarky, false);
 		}
-
-		for(int i = 0; i < x_tiles(); i++)
+		else
 		{
-			for(int j = 0; j < y_tiles(); j++)
+			mark_x = -1;
+			mark_y = -1;
+		}
+
+		// Perform highlighting
+		if(clicked_tile != highlighted_tile)
+		{
+			int old_highlighted = highlighted_tile;
+			highlighted_tile = clicked_tile;
+			for(int i = 0; i < x_tiles(); i++)
 			{
-				int field_tile = getField(i, j);
-				if(field == field_tile )
+				for(int j = 0; j < y_tiles(); j++)
 				{
-					mark_x=i;
-					mark_y=j;
-					updateField(i, j, false);
-				}
-				else if(old_highlighted == field_tile)
-				{
-					mark_x=-1;
-					mark_y=-1;
-					updateField(i, j, false);
+					const int field_tile = getField(i, j);
+					if(field_tile != EMPTY)
+					{
+						if(field_tile == old_highlighted)
+							updateField(i, j, false);
+						else if(field_tile == clicked_tile)
+							updateField(i, j, false);
+					}
 				}
 			}
 		}
-		mark_x=-1;
-		mark_y=-1;   // no tile selected
 	}
 }
 
