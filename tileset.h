@@ -2,6 +2,7 @@
  * tileset.h
  *
  * Copyright (c) 2002 Jason Lane <jglane@btopenworld.com>
+ *           (c) 2002 Dave Corrie <kde@davecorrie.com>
  *
  *  This file is part of KShisen.
  *
