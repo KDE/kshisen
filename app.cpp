@@ -69,702 +69,773 @@ static int size_x[5] = {14, 18, 24, 26, 30};
 static int size_y[5] = { 6,  8, 12, 14, 16};
 static int DELAY[5] = {125, 250, 500, 750, 1000};
 
-App::App() : KMainWindow(0) {
-  setCaption(i18n("Shisen-Sho"));
-  highscoreTable = new KHighscore();
-  if (highscoreTable->hasTable()) {
-    readHighscore();
-  } else {
-    readOldHighscore();
-  }
+App::App() : KMainWindow(0)
+{
+	setCaption(i18n("Shisen-Sho"));
+	highscoreTable = new KHighscore();
 
-  cheat = FALSE;
+	if(highscoreTable->hasTable())
+		readHighscore();
+	else
+		readOldHighscore();
 
-  initKAction();
+	cheat = FALSE;
 
-  b = new Board(this);
-  setCentralWidget(b);
+	initKAction();
 
-  statusBar()->insertItem("", SBI_TIME);
-  statusBar()->insertItem("", SBI_TILES);
-  statusBar()->insertFixedItem(i18n(" Cheat mode "), SBI_CHEAT);
-  statusBar()->changeItem("", SBI_CHEAT);
+	b = new Board(this);
+	setCentralWidget(b);
 
-  connect(b, SIGNAL(changed()),
-	  this, SLOT(enableItems()));
+	statusBar()->insertItem("", SBI_TIME);
+	statusBar()->insertItem("", SBI_TILES);
+	statusBar()->insertFixedItem(i18n(" Cheat mode "), SBI_CHEAT);
+	statusBar()->changeItem("", SBI_CHEAT);
 
-  // load default settings
-  KConfig *conf = kapp->config();
-  restoreWindowSize(conf);
+	connect(b, SIGNAL(changed()), this, SLOT(enableItems()));
 
-  int i;
-  i = conf->readNumEntry("Speed", 2);
-  ((KSelectAction*)actionCollection()->action("options_speed"))->setCurrentItem(i);
-  changeSpeed();
+	// load default settings
+	KConfig *conf = kapp->config();
+	restoreWindowSize(conf);
 
-  i = conf->readNumEntry("Size", 300 + 2);
-  //if(i == ID_OSIZECUSTOM)
-  //kdDebug() << "CUSTOM SIZE, TODO" << endl;
-  //  else
-  ((KSelectAction*)actionCollection()->action("options_size"))->setCurrentItem(i - 300);
+	int i;
+	i = conf->readNumEntry("Speed", 2);
+	((KSelectAction*)actionCollection()->action("options_speed"))->setCurrentItem(i);
+	changeSpeed();
 
-  QTimer *t = new QTimer(this);
-  t->start(1000);
-  connect(t, SIGNAL(timeout()),
-	  this, SLOT(updateScore()));
+	i = conf->readNumEntry("Size", 300 + 2);
+	//if(i == ID_OSIZECUSTOM)
+	//kdDebug() << "CUSTOM SIZE, TODO" << endl;
+	//  else
+	((KSelectAction*)actionCollection()->action("options_size"))->setCurrentItem(i - 300);
 
-  connect(b, SIGNAL(endOfGame()),
- 	  this, SLOT(slotEndOfGame()));
+	QTimer *t = new QTimer(this);
+	t->start(1000);
+	connect(t, SIGNAL(timeout()), this, SLOT(updateScore()));
+	connect(b, SIGNAL(endOfGame()), this, SLOT(slotEndOfGame()));
 
-  bool _b;
-  _b = conf->readNumEntry("Solvable", 1) > 0;
-  b->setSolvableFlag(_b);
-  ((KToggleAction*)actionCollection()->action("options_disallow"))->setChecked(b->getSolvableFlag());
+	bool _b;
+	_b = conf->readNumEntry("Solvable", 1) > 0;
+	b->setSolvableFlag(_b);
+	((KToggleAction*)actionCollection()->action("options_disallow"))->setChecked(b->getSolvableFlag());
 
-  _b = conf->readNumEntry("Gravity", 1) > 0;
-  b->setGravityFlag(_b);
-  ((KToggleAction*)actionCollection()->action("options_gravity"))->setChecked(_b);
+	_b = conf->readNumEntry("Gravity", 1) > 0;
+	b->setGravityFlag(_b);
+	((KToggleAction*)actionCollection()->action("options_gravity"))->setChecked(_b);
 
-  kapp->processEvents();
-  i = conf->readNumEntry("Level", 311 + 1) - 311;
-  ((KSelectAction*)actionCollection()->action("options_level"))->setCurrentItem(i);
-  b->setShuffle(i * 4 + 1);
+	kapp->processEvents();
+	i = conf->readNumEntry("Level", 311 + 1) - 311;
+	((KSelectAction*)actionCollection()->action("options_level"))->setCurrentItem(i);
+	b->setShuffle(i * 4 + 1);
 
-  changeSize();
-  updateScore();
-  enableItems();
+	changeSize();
+	updateScore();
+	enableItems();
 }
 
-App::~App() {
-  saveWindowSize(kapp->config());
-  delete b;
-  delete highscoreTable;
+App::~App()
+{
+	saveWindowSize(kapp->config());
+	delete b;
+	delete highscoreTable;
 
 }
 
-void App::initKAction() {
-//Game
-  KStdGameAction::gameNew(this, SLOT(newGame()), actionCollection());
-  KStdGameAction::restart(this, SLOT(restartGame()), actionCollection());
-  KStdGameAction::pause(this, SLOT(pause()), actionCollection());
-  KStdGameAction::highscores(this, SLOT(hallOfFame()), actionCollection());
-  KStdGameAction::quit(this, SLOT(quitGame()), actionCollection());
+void App::initKAction()
+{
+	// Game
+	KStdGameAction::gameNew(this, SLOT(newGame()), actionCollection());
+	KStdGameAction::restart(this, SLOT(restartGame()), actionCollection());
+	KStdGameAction::pause(this, SLOT(pause()), actionCollection());
+	KStdGameAction::highscores(this, SLOT(hallOfFame()), actionCollection());
+	KStdGameAction::quit(this, SLOT(quitGame()), actionCollection());
 
-//Move
-  KStdGameAction::undo(this, SLOT(undo()), actionCollection());
-  KStdGameAction::redo(this, SLOT(redo()), actionCollection());
-  KStdGameAction::hint(this, SLOT(hint()), actionCollection());
-  (void)new KAction(i18n("Is Game Solvable?"), 0, this, SLOT(isSolvable()), actionCollection(), "move_solvable");
+	// Move
+	KStdGameAction::undo(this, SLOT(undo()), actionCollection());
+	KStdGameAction::redo(this, SLOT(redo()), actionCollection());
+	KStdGameAction::hint(this, SLOT(hint()), actionCollection());
+	(void)new KAction(i18n("Is Game Solvable?"), 0, this,
+		SLOT(isSolvable()), actionCollection(), "move_solvable");
+
 #ifdef DEBUGGING
-  (void)new KAction("&Finish", 0, b, SLOT(finish()), actionCollection(), "move_finish");
+	(void)new KAction("&Finish", 0, b, SLOT(finish()), actionCollection(), "move_finish");
 #endif
 
-//Settings
-  QStringList list;
-  KSelectAction* size = new KSelectAction(i18n("Si&ze"), 0, this, SLOT(changeSize()), actionCollection(), "options_size");
-  list.append(i18n("14x6"));
-  list.append(i18n("18x8"));
-  list.append(i18n("24x12"));
-  list.append(i18n("26x14"));
-  list.append(i18n("30x16"));
-  size->setItems(list);
+	// Settings
+	QStringList list;
+	KSelectAction* size = new KSelectAction(i18n("Si&ze"), 0, this,
+		SLOT(changeSize()), actionCollection(), "options_size");
+	list.append(i18n("14x6"));
+	list.append(i18n("18x8"));
+	list.append(i18n("24x12"));
+	list.append(i18n("26x14"));
+	list.append(i18n("30x16"));
+	size->setItems(list);
 
-  list.clear();
-  KSelectAction* speed = new KSelectAction(i18n("S&peed"), 0, this, SLOT(changeSpeed()), actionCollection(), "options_speed");
-  list.append(i18n("Very Fast"));
-  list.append(i18n("Fast"));
-  list.append(i18n("Medium"));
-  list.append(i18n("Slow"));
-  list.append(i18n("Very Slow"));
-  speed->setItems(list);
+	list.clear();
+	KSelectAction* speed = new KSelectAction(i18n("S&peed"), 0, this,
+		SLOT(changeSpeed()), actionCollection(), "options_speed");
+	list.append(i18n("Very Fast"));
+	list.append(i18n("Fast"));
+	list.append(i18n("Medium"));
+	list.append(i18n("Slow"));
+	list.append(i18n("Very Slow"));
+	speed->setItems(list);
 
-  list.clear();
-  KSelectAction* level = new KSelectAction(i18n("&Level"), 0, this, SLOT(changeLevel()), actionCollection(), "options_level");
-  list.append(i18n("Easy"));
-  list.append(i18n("Medium"));
-  list.append(i18n("Hard"));
-  level->setItems(list);
+	list.clear();
+	KSelectAction* level = new KSelectAction(i18n("&Level"), 0, this,
+		SLOT(changeLevel()), actionCollection(), "options_level");
+	list.append(i18n("Easy"));
+	list.append(i18n("Medium"));
+	list.append(i18n("Hard"));
+	level->setItems(list);
 
-  (void)new KToggleAction(i18n("G&ravity"), 0, this, SLOT(toggleGravity()), actionCollection(), "options_gravity");
-  (void)new KToggleAction(i18n("Disallow Unsolvable Games"), 0, this, SLOT(toggleDisallowUnsolvable()), actionCollection(), "options_disallow");
+	(void)new KToggleAction(i18n("G&ravity"), 0, this,
+		SLOT(toggleGravity()), actionCollection(), "options_gravity");
 
-  KStdAction::keyBindings(this, SLOT(keyBindings()), actionCollection());
+	(void)new KToggleAction(i18n("Disallow Unsolvable Games"), 0, this,
+		SLOT(toggleDisallowUnsolvable()), actionCollection(), "options_disallow");
 
-  createGUI("kshisenui.rc");
+	KStdAction::keyBindings(this, SLOT(keyBindings()), actionCollection());
+
+	createGUI("kshisenui.rc");
 }
 
-void App::hallOfFame() {
-  showHighscore();
+void App::hallOfFame()
+{
+	showHighscore();
 }
 
-void App::newGame() {
-  b->newGame();
-  resetCheatMode();
-  enableItems();
+void App::newGame()
+{
+	b->newGame();
+	resetCheatMode();
+	enableItems();
 }
 
-void App::quitGame() {
-  delete this;
-  kapp->quit();
+void App::quitGame()
+{
+	delete this;
+	kapp->quit();
 }
 
-void App::restartGame() {
-  b->setUpdatesEnabled(FALSE);
-  while(b->canUndo())
-    b->undo();
-  b->setUpdatesEnabled(TRUE);
-  b->update();
-  enableItems();
+void App::restartGame()
+{
+	b->setUpdatesEnabled(FALSE);
+	while(b->canUndo())
+		b->undo();
+	b->setUpdatesEnabled(TRUE);
+	b->update();
+	enableItems();
 }
 
-void App::isSolvable() {
-  if(b->solvable())
-	KMessageBox::information(this,
-				i18n("This game is solvable."));
-  else
-	KMessageBox::information(this,
-				 i18n("This game is NOT solvable."));
+void App::isSolvable()
+{
+	if(b->solvable())
+		KMessageBox::information(this, i18n("This game is solvable."));
+	else
+		KMessageBox::information(this, i18n("This game is NOT solvable."));
 }
 
-void App::pause() {
-  bool paused = b->pause();
-  lockMenus(paused);
+void App::pause()
+{
+	bool paused = b->pause();
+	lockMenus(paused);
 }
 
-void App::undo() {
-  if(b->canUndo()) {
-    b->undo();
-    setCheatMode();
-    enableItems();
-  }
+void App::undo()
+{
+	if(b->canUndo())
+	{
+		b->undo();
+		setCheatMode();
+		enableItems();
+	}
 }
 
-void App::redo() {
-  if(b->canRedo())
-    b->redo();
-    enableItems();
+void App::redo()
+{
+	if(b->canRedo())
+		b->redo();
+	enableItems();
 }
 
-void App::hint() {
+void App::hint()
+{
 #ifdef DEBUGGING
-  b->makeHintMove();
+	b->makeHintMove();
 #else
-  b->showHint();
-  setCheatMode();
+	b->showHint();
+	setCheatMode();
 #endif
-  enableItems();
+	enableItems();
 }
 
-void App::toggleGravity() {
-  if(!b->canUndo() && !b->canRedo()) {
-    b->setGravityFlag(!b->gravityFlag());
-    kapp->config()->writeEntry("Gravity", (int)b->gravityFlag());
-  } else {
-    ((KToggleAction*)actionCollection()->action("options_gravity"))->setChecked(b->gravityFlag());
-  }
+void App::toggleGravity()
+{
+	if(!b->canUndo() && !b->canRedo())
+	{
+		b->setGravityFlag(!b->gravityFlag());
+		kapp->config()->writeEntry("Gravity", (int)b->gravityFlag());
+	}
+	else
+	{
+		((KToggleAction*)actionCollection()->action("options_gravity"))->setChecked(b->gravityFlag());
+	}
 }
 
-void App::toggleDisallowUnsolvable() {
-  b->setSolvableFlag(!b->getSolvableFlag());
-  kapp->config()->writeEntry("Solvable", (int)b->getSolvableFlag());
+void App::toggleDisallowUnsolvable()
+{
+	b->setSolvableFlag(!b->getSolvableFlag());
+	kapp->config()->writeEntry("Solvable", (int)b->getSolvableFlag());
 }
 
-void App::changeSpeed() {
-  int index = ((KSelectAction*)actionCollection()->action("options_speed"))->currentItem();
-  b->setDelay(DELAY[index]);
-  kapp->config()->writeEntry("Speed", index);
+void App::changeSpeed()
+{
+	int index = ((KSelectAction*)actionCollection()->action("options_speed"))->currentItem();
+	b->setDelay(DELAY[index]);
+	kapp->config()->writeEntry("Speed", index);
 }
 
-void App::changeSize() {
-  int index = ((KSelectAction*)actionCollection()->action("options_size"))->currentItem();
-  b->setSize(size_x[index], size_y[index]);
-  resetCheatMode();  
-  kapp->config()->writeEntry("Size", 300 + index);// 300 is from the old QPopuMenu+ID way - before KAction
+void App::changeSize()
+{
+	int index = ((KSelectAction*)actionCollection()->action("options_size"))->currentItem();
+	b->setSize(size_x[index], size_y[index]);
+	resetCheatMode();
+	kapp->config()->writeEntry("Size", 300 + index);// 300 is from the old QPopuMenu+ID way - before KAction
 }
 
-void App::changeLevel() {
-  int index = ((KSelectAction*)actionCollection()->action("options_level"))->currentItem();
-  b->setShuffle(index * 4 + 1);
-  b->newGame();
-  resetCheatMode();
-  kapp->config()->writeEntry("Level", 311 + index); // 311 is from the old QPopuMenu+ID way - before KAction
+void App::changeLevel()
+{
+	int index = ((KSelectAction*)actionCollection()->action("options_level"))->currentItem();
+	b->setShuffle(index * 4 + 1);
+	b->newGame();
+	resetCheatMode();
+	kapp->config()->writeEntry("Level", 311 + index); // 311 is from the old QPopuMenu+ID way - before KAction
 }
 
-void App::lockMenus(bool lock) {
-  // Disable all actions apart from (un)pause, quit and those that are help-related.
-  // (Only undo/redo and hint actually *need* to be disabled, but disabling everything
-  // provides a good visual hint to the user, that they need to unpause to continue.
-  KPopupMenu* help = dynamic_cast<KPopupMenu*>(child("help", "KPopupMenu", false));
-  KActionPtrList actions = actionCollection()->actions();
-  KActionPtrList::iterator actionIter = actions.begin();
-  KActionPtrList::iterator actionIterEnd = actions.end();
+void App::lockMenus(bool lock)
+{
+	// Disable all actions apart from (un)pause, quit and those that are help-related.
+	// (Only undo/redo and hint actually *need* to be disabled, but disabling everything
+	// provides a good visual hint to the user, that they need to unpause to continue.
+	KPopupMenu* help = dynamic_cast<KPopupMenu*>(child("help", "KPopupMenu", false));
+	KActionPtrList actions = actionCollection()->actions();
+	KActionPtrList::iterator actionIter = actions.begin();
+	KActionPtrList::iterator actionIterEnd = actions.end();
 
-  while(actionIter != actionIterEnd) {
-    KAction* a = *actionIter;
-    if(!a->isPlugged(help))
-      a->setEnabled(!lock);
-    ++actionIter;
-  }
+	while(actionIter != actionIterEnd)
+	{
+		KAction* a = *actionIter;
+		if(!a->isPlugged(help))
+			a->setEnabled(!lock);
+		++actionIter;
+	}
 
-  actionCollection()->action(KStdGameAction::name(KStdGameAction::Pause))->setEnabled(true);
-  actionCollection()->action(KStdGameAction::name(KStdGameAction::Quit))->setEnabled(true);
+	actionCollection()->action(KStdGameAction::name(KStdGameAction::Pause))->setEnabled(true);
+	actionCollection()->action(KStdGameAction::name(KStdGameAction::Quit))->setEnabled(true);
 
-  enableItems();
+	enableItems();
 }
 
-void App::enableItems() {
-  if(!b->isPaused()) {
-    actionCollection()->action(KStdGameAction::name(KStdGameAction::Undo))->setEnabled(b->canUndo());
-    actionCollection()->action(KStdGameAction::name(KStdGameAction::Redo))->setEnabled(b->canRedo());
-    actionCollection()->action(KStdGameAction::name(KStdGameAction::Restart))->setEnabled(b->canUndo());
-    actionCollection()->action("options_gravity")->setEnabled(!b->canUndo() && !b->canRedo());
-    ((KToggleAction*)actionCollection()->action("options_gravity"))->setChecked(b->gravityFlag());
-  }
+void App::enableItems()
+{
+	if(!b->isPaused())
+	{
+		actionCollection()->action(KStdGameAction::name(KStdGameAction::Undo))->setEnabled(b->canUndo());
+		actionCollection()->action(KStdGameAction::name(KStdGameAction::Redo))->setEnabled(b->canRedo());
+		actionCollection()->action(KStdGameAction::name(KStdGameAction::Restart))->setEnabled(b->canUndo());
+		actionCollection()->action("options_gravity")->setEnabled(!b->canUndo() && !b->canRedo());
+		((KToggleAction*)actionCollection()->action("options_gravity"))->setChecked(b->gravityFlag());
+	}
 }
 
-void App::slotEndOfGame() {
-  if(b->tilesLeft() > 0)
-      KMessageBox::information(this,
-			       i18n("No more moves possible!"),
-			       i18n("End of Game"));
-  else {
-    // create highscore entry
-    HighScore hs;
-    hs.seconds = b->getTimeForGame();
-    hs.x = b->x_tiles();
-    hs.y = b->y_tiles();
-    hs.gravity = (int)b->gravityFlag();
+void App::slotEndOfGame()
+{
+	if(b->tilesLeft() > 0)
+	{
+		KMessageBox::information(this, i18n("No more moves possible!"), i18n("End of Game"));
+	}
+	else
+	{
+		// create highscore entry
+		HighScore hs;
+		hs.seconds = b->getTimeForGame();
+		hs.x = b->x_tiles();
+		hs.y = b->y_tiles();
+		hs.gravity = (int)b->gravityFlag();
 
-    // check if we made it into Top10
-    bool isHighscore = FALSE;
-    if(highscore.size() < HIGHSCORE_MAX)
-      isHighscore = TRUE;
-    else if(isBetter(hs, highscore[HIGHSCORE_MAX-1]))
-      isHighscore = TRUE;
+		// check if we made it into Top10
+		bool isHighscore = FALSE;
+		if(highscore.size() < HIGHSCORE_MAX)
+			isHighscore = TRUE;
+		else if(isBetter(hs, highscore[HIGHSCORE_MAX-1]))
+			isHighscore = TRUE;
 
-    if(isHighscore) {
-      hs.name = getPlayerName();
-      hs.date = time((time_t*)0);
-      int rank = insertHighscore(hs);
-      showHighscore(rank);
-    } else {
-      QString s = i18n("Congratulations! You made it in %1:%2:%3")
-		.arg(QString().sprintf("%02d", b->getTimeForGame()/3600))
-		.arg(QString().sprintf("%02d", (b->getTimeForGame() / 60) % 60))
-		.arg(QString().sprintf("%02d", b->getTimeForGame() % 60));
+		if(isHighscore)
+		{
+			hs.name = getPlayerName();
+			hs.date = time((time_t*)0);
+			int rank = insertHighscore(hs);
+			showHighscore(rank);
+		}
+		else
+		{
+			QString s = i18n("Congratulations! You made it in %1:%2:%3")
+				.arg(QString().sprintf("%02d", b->getTimeForGame()/3600))
+				.arg(QString().sprintf("%02d", (b->getTimeForGame() / 60) % 60))
+				.arg(QString().sprintf("%02d", b->getTimeForGame() % 60));
 
-      KMessageBox::information(this, s, i18n("End of Game"));
-    }
-  }
+			KMessageBox::information(this, s, i18n("End of Game"));
+		}
+	}
 
-  resetCheatMode();
-  b->newGame();
+	resetCheatMode();
+	b->newGame();
 }
 
-void App::updateScore() {
+void App::updateScore()
+{
 
-  int t = b->getTimeForGame();
-  QString s = i18n(" Your time: %1:%2:%3 %4")
+	int t = b->getTimeForGame();
+	QString s = i18n(" Your time: %1:%2:%3 %4")
 		.arg(QString().sprintf("%02d", t / 3600 ))
 		.arg(QString().sprintf("%02d", (t / 60) % 60 ))
 		.arg(QString().sprintf("%02d", t % 60 ))
 		.arg(b->isPaused()?i18n("(Paused) "):QString::null);
-  statusBar()->changeItem(s, SBI_TIME);
-  
-  // Number of tiles
-  int tl = (b->x_tiles() * b->y_tiles());
-  s = i18n(" Removed: %1/%2 ") 
+
+	statusBar()->changeItem(s, SBI_TIME);
+
+	// Number of tiles
+	int tl = (b->x_tiles() * b->y_tiles());
+	s = i18n(" Removed: %1/%2 ")
 		.arg(QString().sprintf("%d", tl - b->tilesLeft()))
 		.arg(QString().sprintf("%d", tl ));
-  statusBar()->changeItem(s, SBI_TILES);
-      
-}
 
-void App::setCheatMode() {
-  
-  // set the cheat mode if not set
-  if (!cheat) {
-   	cheat = TRUE;
-   	statusBar()->changeItem(i18n(" Cheat mode "), SBI_CHEAT);
-  } 
+	statusBar()->changeItem(s, SBI_TILES);
 
 }
 
-void App::resetCheatMode() {
-  
-  // reset cheat mode if set
-  if (cheat) {
-  	cheat = FALSE;
-  	statusBar()->changeItem("", SBI_CHEAT);
-  }
+void App::setCheatMode()
+{
+	// set the cheat mode if not set
+	if(!cheat)
+	{
+		cheat = TRUE;
+		statusBar()->changeItem(i18n(" Cheat mode "), SBI_CHEAT);
+	}
+}
 
-} 
- 
-QString App::getPlayerName() {
-  QDialog *dlg = new QDialog(this, "Hall of Fame", TRUE);
+void App::resetCheatMode()
+{
+	// reset cheat mode if set
+	if(cheat)
+	{
+		cheat = FALSE;
+		statusBar()->changeItem("", SBI_CHEAT);
+	}
+}
 
-  QLabel  *l1  = new QLabel(i18n("You've made it into the \"Hall Of Fame\". Type in\nyour name so mankind will always remember\nyour cool rating."), dlg);
-  l1->setFixedSize(l1->sizeHint());
+QString App::getPlayerName()
+{
+	QDialog *dlg = new QDialog(this, "Hall of Fame", TRUE);
 
-  QLabel *l2 = new QLabel(i18n("Your name:"), dlg);
-  l2->setFixedSize(l2->sizeHint());
+	QLabel  *l1  = new QLabel(i18n("You've made it into the \"Hall Of Fame\". Type in\nyour name so mankind will always remember\nyour cool rating."), dlg);
+	l1->setFixedSize(l1->sizeHint());
 
-  QLineEdit *e = new QLineEdit(dlg);
-  e->setText("XXXXXXXXXXXXXXXX");
-  e->setMinimumWidth(e->sizeHint().width());
-  e->setFixedHeight(e->sizeHint().height());
-  e->setText( lastPlayerName );
-  e->setFocus();
+	QLabel *l2 = new QLabel(i18n("Your name:"), dlg);
+	l2->setFixedSize(l2->sizeHint());
 
-  QPushButton *b = new QPushButton(i18n("OK"), dlg);
-  b->setDefault(TRUE);
+	QLineEdit *e = new QLineEdit(dlg);
+	e->setText("XXXXXXXXXXXXXXXX");
+	e->setMinimumWidth(e->sizeHint().width());
+	e->setFixedHeight(e->sizeHint().height());
+	e->setText( lastPlayerName );
+	e->setFocus();
+
+	QPushButton *b = new QPushButton(i18n("OK"), dlg);
+	b->setDefault(TRUE);
 #if QT_VERSION < 300
-  if(style().guiStyle() == MotifStyle)
-    b->setFixedSize(b->sizeHint().width() + 10,
-		    b->sizeHint().height() +10);
-  else
+	if(style().guiStyle() == MotifStyle)
+		b->setFixedSize(b->sizeHint().width() + 10, b->sizeHint().height() +10);
+	else
 #endif
-    b->setFixedSize(b->sizeHint());
-  connect(b, SIGNAL(released()), dlg, SLOT(accept()));
-  connect(e, SIGNAL(returnPressed()), 
-	  dlg, SLOT(accept()));
+		b->setFixedSize(b->sizeHint());
 
-  // create layout
-  QVBoxLayout *tl = new QVBoxLayout(dlg, 10);
-  QHBoxLayout *tl1 = new QHBoxLayout();
-  tl->addWidget(l1);
-  tl->addSpacing(5);
-  tl->addLayout(tl1);
-  tl1->addWidget(l2);
-  tl1->addWidget(e);
-  tl->addSpacing(5);
-  tl->addWidget(b);
-  tl->activate();
-  tl->freeze();
+	connect(b, SIGNAL(released()), dlg, SLOT(accept()));
+	connect(e, SIGNAL(returnPressed()), dlg, SLOT(accept()));
 
-  dlg->exec();
+	// create layout
+	QVBoxLayout *tl = new QVBoxLayout(dlg, 10);
+	QHBoxLayout *tl1 = new QHBoxLayout();
+	tl->addWidget(l1);
+	tl->addSpacing(5);
+	tl->addLayout(tl1);
+	tl1->addWidget(l2);
+	tl1->addWidget(e);
+	tl->addSpacing(5);
+	tl->addWidget(b);
+	tl->activate();
+	tl->freeze();
 
-  lastPlayerName = e->text();
-  delete dlg;
+	dlg->exec();
 
-  if(lastPlayerName.isEmpty())
-    return " ";
-  return lastPlayerName;
+	lastPlayerName = e->text();
+	delete dlg;
+
+	if(lastPlayerName.isEmpty())
+		return " ";
+	return lastPlayerName;
 }
 
-int App::getScore(const HighScore &hs) {
-  double ntiles = hs.x*hs.y;
-  double tilespersec = ntiles/(double)hs.seconds;
-  
-  double sizebonus = sqrt(ntiles/(double)(14.0 * 6.0));
-  double points = tilespersec / 0.14 * 100.0;
+int App::getScore(const HighScore &hs)
+{
+	double ntiles = hs.x*hs.y;
+	double tilespersec = ntiles/(double)hs.seconds;
 
-  if(hs.gravity)
-    return (int)(2.0 * points * sizebonus);
-  else
-    return (int)(points * sizebonus);
+	double sizebonus = sqrt(ntiles/(double)(14.0 * 6.0));
+	double points = tilespersec / 0.14 * 100.0;
+
+	if(hs.gravity)
+		return (int)(2.0 * points * sizebonus);
+	else
+		return (int)(points * sizebonus);
 }
 
-bool App::isBetter(const HighScore &hs, const HighScore &than) {
-  if(getScore(hs) > getScore(than))
-    return true;
-  else
-    return false;
+bool App::isBetter(const HighScore &hs, const HighScore &than)
+{
+	if(getScore(hs) > getScore(than))
+		return true;
+	else
+		return false;
+}
+
+int App::insertHighscore(const HighScore &hs)
+{
+	int i;
+
+	if(highscore.size() == 0)
+	{
+		highscore.resize(1);
+		highscore[0] = hs;
+		writeHighscore();
+		return 0;
+	}
+	else
+	{
+		HighScore last = highscore[highscore.size() - 1];
+		if(isBetter(hs, last) || (highscore.size() < HIGHSCORE_MAX))
+		{
+			if(highscore.size() == HIGHSCORE_MAX)
+			{
+				highscore[HIGHSCORE_MAX - 1] = hs;
+			}
+			else
+			{
+				highscore.resize(highscore.size()+1);
+				highscore[highscore.size() - 1] = hs;
+			}
+
+			// sort in new entry
+			int bestsofar = highscore.size() - 1;
+			for(i = highscore.size() - 1; i > 0; i--)
+			{
+				if(isBetter(highscore[i], highscore[i-1]))
+				{
+					// swap entries
+					HighScore temp = highscore[i-1];
+					highscore[i-1] = highscore[i];
+					highscore[i] = temp;
+					bestsofar = i - 1;
+				}
+			}
+
+			writeHighscore();
+			return bestsofar;
+		}
+	}
+	return -1;
 }
 
 
-int App::insertHighscore(const HighScore &hs) {
-  int i;
+void App::readHighscore()
+{
+	QStringList hi_x, hi_y, hi_sec, hi_date, hi_grav, hi_name;
+	hi_x = highscoreTable->readList("x", HIGHSCORE_MAX);
+	hi_y = highscoreTable->readList("y", HIGHSCORE_MAX);
+	hi_sec = highscoreTable->readList("seconds", HIGHSCORE_MAX);
+	hi_date = highscoreTable->readList("date", HIGHSCORE_MAX);
+	hi_grav = highscoreTable->readList("gravity", HIGHSCORE_MAX);
+	hi_name = highscoreTable->readList("name", HIGHSCORE_MAX);
 
-  if(highscore.size() == 0) {
-    highscore.resize(1);
-    highscore[0] = hs;
-    writeHighscore();
-    return 0;
-  } else {
-    HighScore last = highscore[highscore.size() - 1];
-    if(isBetter(hs, last) || (highscore.size() < HIGHSCORE_MAX)) {
-      if(highscore.size() == HIGHSCORE_MAX)
-	highscore[HIGHSCORE_MAX - 1] = hs;
-      else {
-	highscore.resize(highscore.size()+1);
-	highscore[highscore.size() - 1] = hs;
-      }
+	highscore.resize(0);
 
-      // sort in new entry
-      int bestsofar = highscore.size() - 1;
-      for(i = highscore.size() - 1; i > 0; i--)
-	if(isBetter(highscore[i], highscore[i-1])) {
-	  // swap entries
-	  HighScore temp = highscore[i-1];
-	  highscore[i-1] = highscore[i];
-	  highscore[i] = temp;
-	  bestsofar = i - 1;
+	for (unsigned int i = 0; i < hi_x.count(); i++)
+	{
+		highscore.resize(i+1);
+
+		HighScore hs;
+
+		hs.x = hi_x[i].toInt();
+		hs.y = hi_y[i].toInt();
+		hs.seconds = hi_sec[i].toInt();
+		hs.date = hi_date[i].toInt();
+		hs.date = hi_date[i].toInt();
+		hs.gravity = hi_grav[i].toInt();
+		hs.name = hi_name[i];
+
+		highscore[i] = hs;
+	}
+}
+
+void App::readOldHighscore()
+{
+	// this is for before-KHighscore-highscores
+	int i;
+	QString s, e, grp;
+	KConfig *conf = kapp->config();
+
+	highscore.resize(0);
+	i = 0;
+	bool eol = FALSE;
+	grp = conf->group();
+	conf->setGroup("Hall of Fame");
+	while ((i < (int)HIGHSCORE_MAX) && !eol)
+	{
+		s.sprintf("Highscore_%d", i);
+		if(conf->hasKey(s))
+		{
+			e = conf->readEntry(s);
+			highscore.resize(i+1);
+
+			HighScore hs;
+
+			QStringList e = conf->readListEntry(s, ' ');
+			int nelem = e.count();
+			hs.x = (*e.at(0)).toInt();
+			hs.y = (*e.at(1)).toInt();
+			hs.seconds = (*e.at(2)).toInt();
+			hs.date = (*e.at(3)).toInt();
+
+			if(nelem == 4) // old version <= 1.1
+			{
+				hs.gravity = 0;
+				hs.name = *e.at(4);
+			}
+			else
+			{
+				hs.gravity = (*e.at(4)).toInt();
+				hs.name = *e.at(5);
+			}
+
+			highscore[i] = hs;
+		}
+		else
+		{
+			eol = TRUE;
+		}
+		i++;
 	}
 
-      writeHighscore();
-      return bestsofar;
-    }
-  }
-  return -1;
+//	// freshly installed, add my own highscore
+//	if(highscore.size() == 0)
+//	{
+//		HighScore hs;
+//		hs.x = 28;
+//		hs.y = 16;
+//		hs.seconds = 367;
+//		hs.name = "Mario";
+//		highscore.resize(1);
+//		highscore[0] = hs;
+//	}
+
+	// restore old group
+	conf->setGroup(grp);
+
+	// write in new KHighscore format
+	writeHighscore();
+	// read form KHighscore format
+	readHighscore();
 }
 
-
-void App::readHighscore() {
-  QStringList hi_x, hi_y, hi_sec, hi_date, hi_grav, hi_name;
-  hi_x = highscoreTable->readList("x", HIGHSCORE_MAX);
-  hi_y = highscoreTable->readList("y", HIGHSCORE_MAX);
-  hi_sec = highscoreTable->readList("seconds", HIGHSCORE_MAX);
-  hi_date = highscoreTable->readList("date", HIGHSCORE_MAX);
-  hi_grav = highscoreTable->readList("gravity", HIGHSCORE_MAX);
-  hi_name = highscoreTable->readList("name", HIGHSCORE_MAX);
-  
-  highscore.resize(0);
-
-  for (int unsigned i = 0; i < hi_x.count(); i++) {
-      highscore.resize(i+1);
-    
-      HighScore hs;
-
-      hs.x = hi_x[i].toInt();
-      hs.y = hi_y[i].toInt();
-      hs.seconds = hi_sec[i].toInt();
-      hs.date = hi_date[i].toInt();
-      hs.date = hi_date[i].toInt();
-      hs.gravity = hi_grav[i].toInt();
-      hs.name = hi_name[i];
-
-      highscore[i] = hs;
-  }
+void App::writeHighscore()
+{
+	int i;
+	QStringList hi_x, hi_y, hi_sec, hi_date, hi_grav, hi_name;
+	for(i = 0; i < (int)highscore.size(); i++)
+	{
+		HighScore hs = highscore[i];
+		hi_x.append(QString::number(hs.x));
+		hi_y.append(QString::number(hs.y));
+		hi_sec.append(QString::number(hs.seconds));
+		hi_date.append(QString::number(hs.date));
+		hi_grav.append(QString::number(hs.gravity));
+		hi_name.append(hs.name);
+	}
+	highscoreTable->writeList("x", hi_x);
+	highscoreTable->writeList("y", hi_y);
+	highscoreTable->writeList("seconds", hi_sec);
+	highscoreTable->writeList("date", hi_date);
+	highscoreTable->writeList("gravity", hi_grav);
+	highscoreTable->writeList("name", hi_name);
+	highscoreTable->sync();
 }
 
-void App::readOldHighscore() {
-// this is for before-KHighscore-highscores
-  int i;
-  QString s, e, grp;
-  KConfig *conf = kapp->config();
+void App::showHighscore(int focusitem)
+{
+	// this may look a little bit confusing...
+	QDialog *dlg = new QDialog(0, "hall_Of_fame", TRUE);
+	dlg->setCaption(i18n("Shisen-Sho: Hall of Fame"));
 
-  highscore.resize(0);
-  i = 0;
-  bool eol = FALSE;
-  grp = conf->group();
-  conf->setGroup("Hall of Fame");
-  while ((i < (int)HIGHSCORE_MAX) && !eol) {
-    s.sprintf("Highscore_%d", i);
-    if(conf->hasKey(s)) {
-      e = conf->readEntry(s);
-      highscore.resize(i+1);
+	QVBoxLayout *tl = new QVBoxLayout(dlg, 10);
 
-      HighScore hs;
-      
-      QStringList e = conf->readListEntry(s, ' ');
-      int nelem = e.count();
-      hs.x = (*e.at(0)).toInt();
-      hs.y = (*e.at(1)).toInt();
-      hs.seconds = (*e.at(2)).toInt();
-      hs.date = (*e.at(3)).toInt();
+	QLabel *l = new QLabel(i18n("Hall of Fame"), dlg);
+	QFont f = font();
+	f.setPointSize(24);
+	f.setBold(TRUE);
+	l->setFont(f);
+	l->setFixedSize(l->sizeHint());
+	l->setFixedWidth(l->width() + 32);
+	l->setAlignment(AlignCenter);
+	tl->addWidget(l);
 
-      if (nelem == 4) // old version <= 1.1
-      {
-        hs.gravity = 0;
-        hs.name = *e.at(4);
-      }
-      else
-      {
-        hs.gravity = (*e.at(4)).toInt();
-        hs.name = *e.at(5);
-      }
+	// insert highscores in a gridlayout
+	QGridLayout *table = new QGridLayout(12, 5, 5);
+	tl->addLayout(table, 1);
 
-      highscore[i] = hs;
-    } else
-      eol = TRUE;
-    i++;
-  }
+	// add a separator line
+	KSeparator *sep = new KSeparator(dlg);
+	table->addMultiCellWidget(sep, 1, 1, 0, 4);
 
-//   // freshly installed, add my own highscore
-//   if(highscore.size() == 0) {
-//     HighScore hs;
-//     hs.x = 28;
-//     hs.y = 16;
-//     hs.seconds = 367;
-//     hs.name = "Mario";
-//     highscore.resize(1);
-//     highscore[0] = hs;
-//   }
+	// add titles
+	f = font();
+	f.setBold(TRUE);
+	l = new QLabel(i18n("Rank"), dlg);
+	l->setFont(f);
+	l->setMinimumSize(l->sizeHint());
+	table->addWidget(l, 0, 0);
+	l = new QLabel(i18n("Name"), dlg);
+	l->setFont(f);
+	l->setMinimumSize(l->sizeHint());
+	table->addWidget(l, 0, 1);
+	l = new QLabel(i18n("Time"), dlg);
+	l->setFont(f);
+	l->setMinimumSize(l->sizeHint());
+	table->addWidget(l, 0, 2);
+	l = new QLabel(i18n("Size"), dlg);
+	l->setFont(f);
+	l->setMinimumSize(l->sizeHint());
+	table->addWidget(l, 0, 3);
+	l = new QLabel(i18n("Score"), dlg);
+	l->setFont(f);
+	l->setMinimumSize(l->sizeHint().width()*3, l->sizeHint().height());
+	table->addWidget(l, 0, 4);
 
-  // restore old group
-  conf->setGroup(grp);
+	QString s;
+	QLabel *e[10][5];
+	unsigned i, j;
 
-  // write in new KHighscore format
-  writeHighscore();
-  // read form KHighscore format
-  readHighscore();
-}
+	for(i = 0; i < 10; i++)
+	{
+		HighScore hs;
+		if(i < highscore.size())
+			hs = highscore[i];
 
-void App::writeHighscore() {
-  int i;
-  QString e;
-  QStringList hi_x, hi_y, hi_sec, hi_date, hi_grav, hi_name;
-  for(i = 0; i < (int)highscore.size(); i++) {
-    HighScore hs = highscore[i];
-//    e.sprintf("%d %d %d %ld %d %-16s",
-//	      hs.x, hs.y, hs.seconds, hs.date, hs.gravity, hs.name);// original
-//	      line - caused problems with "firstname lastname" names because of
-//	      the space
-    hi_x.append(QString::number(hs.x));
-    hi_y.append(QString::number(hs.y));
-    hi_sec.append(QString::number(hs.seconds));
-    hi_date.append(QString::number(hs.date));
-    hi_grav.append(QString::number(hs.gravity));
-    hi_name.append(hs.name);
-  }
-  highscoreTable->writeList("x", hi_x);
-  highscoreTable->writeList("y", hi_y);
-  highscoreTable->writeList("seconds", hi_sec);
-  highscoreTable->writeList("date", hi_date);
-  highscoreTable->writeList("gravity", hi_grav);
-  highscoreTable->writeList("name", hi_name);
-  highscoreTable->sync();
-}
+		// insert rank
+		s.sprintf("%d", i+1);
+		e[i][0] = new QLabel(s, dlg);
 
-void App::showHighscore(int focusitem)  {
-  // this may look a little bit confusing...
-  QDialog *dlg = new QDialog(0, "hall_Of_fame", TRUE);
-  dlg->setCaption(i18n("Shisen-Sho: Hall of Fame"));
+		// insert name
+		if(i < highscore.size())
+			e[i][1] = new QLabel(hs.name, dlg);
+		else
+			e[i][1] = new QLabel("", dlg);
 
-  QVBoxLayout *tl = new QVBoxLayout(dlg, 10);
-  
-  QLabel *l = new QLabel(i18n("Hall of Fame"), dlg);
-  QFont f = font();
-  f.setPointSize(24);
-  f.setBold(TRUE);
-  l->setFont(f);
-  l->setFixedSize(l->sizeHint());
-  l->setFixedWidth(l->width() + 32);
-  l->setAlignment(AlignCenter);
-  tl->addWidget(l);
+		// insert time
+		QTime ti(0,0,0);
+		if(i < highscore.size())
+		{
+			ti = ti.addSecs(hs.seconds);
+			s.sprintf("%02d:%02d:%02d", ti.hour(), ti.minute(), ti.second());
+			e[i][2] = new QLabel(s, dlg);
+		}
+		else
+		{
+			e[i][2] = new QLabel("", dlg);
+		}
 
-  // insert highscores in a gridlayout
-  QGridLayout *table = new QGridLayout(12, 5, 5);
-  tl->addLayout(table, 1);
+		// insert size
+		if(i < highscore.size())
+			s.sprintf("%d x %d", hs.x, hs.y);
+		else
+			s = "";
 
-  // add a separator line
-  KSeparator *sep = new KSeparator(dlg);
-  table->addMultiCellWidget(sep, 1, 1, 0, 4);
+		e[i][3] = new QLabel(s, dlg);
 
-  // add titles
-  f = font();
-  f.setBold(TRUE);
-  l = new QLabel(i18n("Rank"), dlg);
-  l->setFont(f);
-  l->setMinimumSize(l->sizeHint());
-  table->addWidget(l, 0, 0);
-  l = new QLabel(i18n("Name"), dlg);
-  l->setFont(f);
-  l->setMinimumSize(l->sizeHint());
-  table->addWidget(l, 0, 1);
-  l = new QLabel(i18n("Time"), dlg);
-  l->setFont(f);
-  l->setMinimumSize(l->sizeHint());
-  table->addWidget(l, 0, 2);
-  l = new QLabel(i18n("Size"), dlg);
-  l->setFont(f);
-  l->setMinimumSize(l->sizeHint());
-  table->addWidget(l, 0, 3);
-  l = new QLabel(i18n("Score"), dlg);
-  l->setFont(f);
-  l->setMinimumSize(l->sizeHint().width()*3, l->sizeHint().height());
-  table->addWidget(l, 0, 4);
-  
-  QString s;
-  QLabel *e[10][5];
-  unsigned i, j;
+		// insert score
+		if(i < highscore.size())
+		{
+			s = QString("%1 %2")
+			    .arg(getScore(hs))
+			    .arg(hs.gravity ? i18n("(gravity)") : QString(""));
+		}
+		else
+		{
+			s = "";
+		}
 
-  for(i = 0; i < 10; i++) {
-    HighScore hs;
-    if(i < highscore.size())
-      hs = highscore[i];   
-    
-    // insert rank    
-    s.sprintf("%d", i+1);
-    e[i][0] = new QLabel(s, dlg);
+		e[i][4] = new QLabel(s, dlg);
+		e[i][4]->setAlignment(AlignRight);
+	}
 
-    // insert name
-    if(i < highscore.size())
-      e[i][1] = new QLabel(hs.name, dlg);
-    else
-      e[i][1] = new QLabel("", dlg);
+	f = font();
+	f.setBold(TRUE);
+	f.setItalic(TRUE);
+	for(i = 0; i < 10; i++)
+	{
+		for(j = 0; j < 5; j++)
+		{
+			e[i][j]->setMinimumHeight(e[i][j]->sizeHint().height());
 
-    // insert time
-    QTime ti(0,0,0);
-    if(i < highscore.size()) {
-      ti = ti.addSecs(hs.seconds);
-      s.sprintf("%02d:%02d:%02d", ti.hour(), ti.minute(), ti.second());
-      e[i][2] = new QLabel(s, dlg);
-    } else
-      e[i][2] = new QLabel("", dlg);
+			if(j == 1)
+				e[i][j]->setMinimumWidth(std::max(e[i][j]->sizeHint().width(), 100));
+			else
+				e[i][j]->setMinimumWidth(std::max(e[i][j]->sizeHint().width(), 60));
 
-    // insert size
-    if(i < highscore.size()) 
-      s.sprintf("%d x %d", hs.x, hs.y);
-    else
-      s = "";
-    e[i][3] = new QLabel(s, dlg);
+			if((int)i == focusitem)
+				e[i][j]->setFont(f);
 
-    // insert score
-    if(i < highscore.size()) 
-      s = QString("%1 %2")
-	.arg(getScore(hs))
-	.arg(hs.gravity ? i18n("(gravity)") : QString(""));
-    else
-      s = "";
-    e[i][4] = new QLabel(s, dlg);
-    e[i][4]->setAlignment(AlignRight);
-  }
+			table->addWidget(e[i][j], i+2, j, AlignCenter);
+		}
+	}
 
-  f = font();
-  f.setBold(TRUE);
-  f.setItalic(TRUE);
-  for(i = 0; i < 10; i++)
-    for(j = 0; j < 5; j++) {
-      e[i][j]->setMinimumHeight(e[i][j]->sizeHint().height());
-      if(j == 1)
-	e[i][j]->setMinimumWidth(std::max(e[i][j]->sizeHint().width(), 100));
-      else
-	e[i][j]->setMinimumWidth(std::max(e[i][j]->sizeHint().width(), 60));
-      if((int)i == focusitem)
-	e[i][j]->setFont(f);
-      table->addWidget(e[i][j], i+2, j, AlignCenter);	
-    }
-    
-  QPushButton *b = new QPushButton(i18n("Close"), dlg);
+	QPushButton *b = new QPushButton(i18n("Close"), dlg);
+
 #if QT_VERSION < 300
-  if(style().guiStyle() == MotifStyle)
-    b->setFixedSize(b->sizeHint().width() + 10,
-		    b->sizeHint().height() + 10);
-  else
+	if(style().guiStyle() == MotifStyle)
+		b->setFixedSize(b->sizeHint().width() + 10,
+		                b->sizeHint().height() + 10);
+	else
 #endif
-    b->setFixedSize(b->sizeHint());
+		b->setFixedSize(b->sizeHint());
 
-  // connect the "Close"-button to done
-  connect(b, SIGNAL(clicked()),
-	  dlg, SLOT(accept()));
-  b->setDefault(TRUE);
-  b->setFocus();
+	// connect the "Close"-button to done
+	connect(b, SIGNAL(clicked()), dlg, SLOT(accept()));
+	b->setDefault(TRUE);
+	b->setFocus();
 
-  // make layout
-  tl->addSpacing(10);
-  tl->addWidget(b);
-  tl->activate();
-  tl->freeze();
+	// make layout
+	tl->addSpacing(10);
+	tl->addWidget(b);
+	tl->activate();
+	tl->freeze();
 
-  dlg->exec();
-  delete dlg;
+	dlg->exec();
+	delete dlg;
 }
 
 void App::keyBindings()
 {
-  KKeyDialog::configure(actionCollection(), this);
+	KKeyDialog::configure(actionCollection(), this);
 }
 
 #include "app.moc"
