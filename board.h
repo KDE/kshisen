@@ -75,7 +75,7 @@ public:
 
   virtual void paintEvent(QPaintEvent *);
   virtual void mousePressEvent(QMouseEvent *);
-  virtual QSize sizeHint();
+  virtual void resizeEvent(QResizeEvent*);
 
   void setDelay(int);
   int  getDelay();
@@ -86,6 +86,7 @@ public:
   void undo();
 
   void setSize(int x, int y);
+  void resizeBoard();
   void newGame();
   void setShuffle(int);
   int  getShuffle();
@@ -120,7 +121,6 @@ signals:
   void markMatched();
   void madeMove(int, int, int, int);
   void changed();
-  void sizeChange();
   void endOfGame();
 
 public slots:
@@ -134,6 +134,9 @@ private slots:
 
 private: // functions
   void initBoard();
+
+  int xOffset();
+  int yOffset();
 
   void setField(int x, int y, int value);
   int  getField(int x, int y);

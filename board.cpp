@@ -62,8 +62,6 @@
 #endif
 
 #define EMPTY		0
-#define XBORDER		20
-#define YBORDER		20
 #define DEFAULTDELAY	500
 #define DEFAULTSHUFFLE	4
 
@@ -160,10 +158,13 @@ void Board::gravity(int col, bool update) {
 
 void Board::mousePressEvent(QMouseEvent *e) {
     // calculate position
-    int pos_x = (e->pos().x() - XBORDER <0)?-1:
-                              (e->pos().x() - XBORDER) / tiles.tileWidth();
-    int pos_y = (e->pos().y() - YBORDER <0)?-1:
-                              (e->pos().y() - YBORDER) / tiles.tileHeight();
+    int pos_x = -1;
+    if(e->pos().x() >= xOffset())
+      pos_x = (e->pos().x() - xOffset()) / tiles.tileWidth();
+
+    int pos_y = -1;
+    if(e->pos().y() >= yOffset())
+      pos_y = (e->pos().y() - yOffset()) / tiles.tileHeight();
 
     // Mark tile
     if(e->button() == LeftButton) {
@@ -217,6 +218,16 @@ void Board::mousePressEvent(QMouseEvent *e) {
     }
 }
 
+// The board is centred inside the main playing area. xOffset/yOffset provide
+// the coordinates of the top-left corner of the board.
+int Board::xOffset() {
+  return (width() - (tiles.tileWidth() * x_tiles())) / 2;
+}
+
+int Board::yOffset() {
+  return (height() - (tiles.tileHeight() * y_tiles())) / 2;
+}
+
 void Board::setSize(int x, int y) {
   if(x == x_tiles() && y == y_tiles())
     return;
@@ -231,19 +242,34 @@ void Board::setSize(int x, int y) {
     for(int j = 0; j < y; j++)
       setField(i, j, EMPTY);
 
-  // calculate scaling required to fit all tiles on the screen
-  int w = static_cast<int>( static_cast<double>(kapp->desktop()->width() - 4*XBORDER) / x_tiles() );
-  int h = static_cast<int>( static_cast<double>(kapp->desktop()->height() - 4*YBORDER) / y_tiles() );
+  // set the minimum size of the scalable window
+  const double MINIMUM_SCALE = 0.2;
+  int w = qRound(tiles.unscaledTileWidth() * MINIMUM_SCALE) * x_tiles();
+  int h = qRound(tiles.unscaledTileHeight() * MINIMUM_SCALE) * y_tiles();
+  w += tiles.unscaledTileWidth();
+  h += tiles.unscaledTileWidth();
 
-  const double MAXIMUM_SCALE = 1.0;
-  w = std::min(w, qRound(tiles.unscaledTileWidth() * MAXIMUM_SCALE));
-  h = std::min(h, qRound(tiles.unscaledTileHeight() * MAXIMUM_SCALE));
+  setMinimumSize(w, h);
 
-  tiles.resizeTiles(w, h);
-
+  resizeBoard();
   newGame();
   emit changed();
-  emit sizeChange();
+}
+
+void Board::resizeEvent(QResizeEvent*) {
+  resizeBoard();
+}
+
+void Board::resizeBoard() {
+  // calculate tile size required to fit all tiles in the window
+  int w = static_cast<int>( static_cast<double>(width() - tiles.unscaledTileWidth()) / x_tiles() );
+  int h = static_cast<int>( static_cast<double>(height() - tiles.unscaledTileWidth()) / y_tiles() );
+
+  const double MAXIMUM_SCALE = 2.0;
+  w = std::min(w, static_cast<int>((tiles.unscaledTileWidth() * MAXIMUM_SCALE) + 0.5));
+  h = std::min(h, static_cast<int>((tiles.unscaledTileHeight() * MAXIMUM_SCALE) + 0.5));
+
+  tiles.resizeTiles(w, h);
 }
 
 void Board::newGame() {
@@ -361,8 +387,8 @@ void Board::updateField(int x, int y, bool erase) {
   if(trying)
     return;
 
-  QRect r(XBORDER + x * tiles.tileWidth(),
-	  YBORDER + y * tiles.tileHeight(),
+  QRect r(xOffset() + x * tiles.tileWidth(),
+	  yOffset() + y * tiles.tileHeight(),
 	  tiles.tileWidth(),
 	  tiles.tileHeight());
   if(isUpdatesEnabled())
@@ -389,8 +415,8 @@ void Board::paintEvent(QPaintEvent *e) {
 	if(tile == EMPTY)
 	  continue;
 
-	int xpos = XBORDER + i * w;
-	int ypos = YBORDER + j * h;
+	int xpos = xOffset() + i * w;
+	int ypos = yOffset() + j * h;
 	QRect r(xpos, ypos, w, h);
 	if(e->rect().intersects(r)) {
 	  // check if it is a marked piece
@@ -633,22 +659,20 @@ QPoint Board::midCoord(int x, int y) {
   int w = tiles.tileWidth();
   int h = tiles.tileHeight();
 
-  if(x == -1) 
-    p.setX(XBORDER/2 - w/2);
+  if(x == -1)
+    p.setX(xOffset() - (w / 4));
   else if(x == x_tiles())
-    p.setX(XBORDER/2 + w * x_tiles());
-  else 
-    p.setX(XBORDER + w * x);
+    p.setX(xOffset() + (w * x_tiles()) + (w / 4));
+  else
+    p.setX(xOffset() + (w * x) + (w / 2));
 
-  if(y == -1) 
-    p.setY(YBORDER/2 - h/2);
+  if(y == -1)
+    p.setY(yOffset() - (w / 4));
   else if(y == y_tiles())
-    p.setY(YBORDER/2 + h * y_tiles());
-  else 
-    p.setY(YBORDER + h * y);
+    p.setY(yOffset() + (h * y_tiles()) + (w / 4));
+  else
+    p.setY(yOffset() + (h * y) + (h / 2));
 
-  p.setX(p.x() + w/2);
-  p.setY(p.y() + h/2);
   return p;
 } 
 
@@ -723,11 +747,6 @@ void Board::redo() {
     _undo.append(m);
     emit changed();
   }
-}
-
-QSize Board::sizeHint() {
-  return QSize(x_tiles() * tiles.tileWidth() + 2 * XBORDER,
-	       y_tiles() * tiles.tileHeight() + 2 * YBORDER);
 }
 
 void Board::clearHistory() {

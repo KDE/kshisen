@@ -92,11 +92,10 @@ App::App() : KMainWindow(0) {
   connect(b, SIGNAL(changed()),
 	  this, SLOT(enableItems()));
 
-  connect(b, SIGNAL(sizeChange()),
-	  this, SLOT(sizeChanged()));
-
   // load default settings
   KConfig *conf = kapp->config();
+  restoreWindowSize(conf);
+
   int i;
   i = conf->readNumEntry("Speed", 2);
   ((KSelectAction*)actionCollection()->action("options_speed"))->setCurrentItem(i);
@@ -136,6 +135,7 @@ App::App() : KMainWindow(0) {
 }
 
 App::~App() {
+  saveWindowSize(kapp->config());
   delete b;
   delete highscoreTable;
 
@@ -322,13 +322,6 @@ void App::enableItems() {
     actionCollection()->action("options_gravity")->setEnabled(!b->canUndo());
     ((KToggleAction*)actionCollection()->action("options_gravity"))->setChecked(b->gravityFlag());
   }
-}
-
-void App::sizeChanged() {
-  b->setFixedSize(b->sizeHint());
-  /* The followin line fixes the autoresizing  problems.
-     I don't know why, but this is the only way, it works. */
-  setFixedSize(1,1);
 }
 
 void App::slotEndOfGame() {

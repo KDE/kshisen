@@ -61,7 +61,6 @@ int main(int argc, char **argv)
   KGlobal::locale()->insertCatalogue("libkdegames");
 
   App *app = new App();
-  app->resize(800, 500);
   app->show();
   a.setMainWidget(app);
   a.config()->sync();

@@ -71,7 +71,6 @@ public:
 private slots:
   void slotEndOfGame();
   void enableItems();
-  void sizeChanged();
   void updateScore();
 
   void newGame();
