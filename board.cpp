@@ -773,36 +773,22 @@ void Board::undo() {
     Move *m = _undo.take(_undo.count() - 1);
     if(gravityFlag()) {
       int y;
-      int delta = 1;
-      
-      if(m->x1 == m->x2) {
-	delta++;
 
-	/* damned, I hate this. This undo/redo stuff is really complicated
-	 * when used with gravity. This avoids a bug when both tiles reside
-	 * in the same row, but not adjascent y positions. In that case, the
-	 * order of undo is important
-	 */
-	if(m->y1>m->y2) {
-	  int t = m->x1;
-	  m->x1 = m->x2;
-	  m->x2 = t;
-	  t = m->y1;
-	  m->y1 = m->y2;
-	  m->y2 = t;
-	}
+      // When both tiles reside in the same column, the order of undo is
+      // significant (we must undo the lower tile first).
+      if(m->x1 == m->x2 && m->y1 < m->y2) {
+        std::swap(m->x1, m->x2);
+        std::swap(m->y1, m->y2);
       }
-      
-      for(y = 0; y <= m->y1-1; y++) {
-	setField(m->x1, y, getField(m->x1, y+delta));
-	updateField(m->x1, y);
+
+      for(y = 0; y < m->y1; y++) {
+        setField(m->x1, y, getField(m->x1, y+1));
+        updateField(m->x1, y);
       }
      
-      if(m->x1 != m->x2) {
-	for(y = 0; y < m->y2; y++) {
-	  setField(m->x2, y, getField(m->x2, y+1));
-	  updateField(m->x2, y);
-	}
+      for(y = 0; y < m->y2; y++) {
+        setField(m->x2, y, getField(m->x2, y+1));
+        updateField(m->x2, y);
       }
     }
 
