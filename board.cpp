@@ -590,9 +590,9 @@ bool Board::findPath(int x1, int y1, int x2, int y2)
 		for(i = 0; i < 4; i++)
 		{
 			int newx = x1 + dx[i], newy = y1 + dy[i];
-			while(getField(newx, newy) == EMPTY &&
-			        newx >= -1 && newx <= x_tiles() &&
-			        newy >= -1 && newy <= y_tiles())
+			while(newx >= -1 && newx <= x_tiles() &&
+				newy >= -1 && newy <= y_tiles() &&
+				getField(newx, newy) == EMPTY)
 			{
 				if(findSimplePath(newx, newy, x2, y2))
 				{
