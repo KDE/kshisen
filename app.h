@@ -64,13 +64,15 @@ class App : public KMainWindow
 	Q_OBJECT
 
 public:
-	App();
-	~App();
+	App(QWidget *parent = 0, const char *name=0);
 
 private slots:
+	void loadSettings();
+
 	void slotEndOfGame();
 	void enableItems();
 	void updateScore();
+	void showSettings();
 
 	void newGame();
 	void quitGame();
@@ -80,12 +82,6 @@ private slots:
 	void undo();
 	void redo();
 	void hint();
-	void toggleDisallowUnsolvable();
-	void toggleGravity();
-	void preferUnscaled();
-	void changeLevel();
-	void changeSpeed();
-	void changeSize();
 	void hallOfFame();
 	void keyBindings();
 	void boardResized();
@@ -114,7 +110,7 @@ private:
 
 private:
 	QString lastPlayerName;
-	Board *b;
+	Board *board;
 	QValueVector<HighScore> highscore;
 	KHighscore* highscoreTable;
 	bool cheat;

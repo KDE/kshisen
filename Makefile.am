@@ -10,11 +10,12 @@ METASOURCES = board.moc app.moc
 
 noinst_HEADERS = app.h board.h tileset.h debug.h version.h
 
-kshisen_SOURCES = main.cpp board.cpp app.cpp tileset.cpp
+kshisen_SOURCES = main.cpp board.cpp app.cpp tileset.cpp settings.ui prefs.kcfgc
 kshisen_LDADD = $(LIB_KDEGAMES) $(LIB_KDEUI)
 kshisen_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 
 xdg_apps_DATA = kshisen.desktop
+kde_kcfg_DATA = kshisen.kcfg
 KDE_ICON  = kshisen
 
 SUBDIRS = pics 

@@ -37,13 +37,12 @@
  */
 
 #include <kapplication.h>
-#include <kconfig.h>
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
+#include <kconfig.h>
 
 #include "version.h"
 #include "app.h"
-
 
 static const char description[] = I18N_NOOP("KDE Game");
 
@@ -65,5 +64,6 @@ int main(int argc, char **argv)
 	app->show();
 	a.setMainWidget(app);
 	a.config()->sync();
-	return a.exec();
+  return a.exec();
 }
+

@@ -50,6 +50,7 @@
 #include <klocale.h>
 #include <kpushbutton.h>
 #include <kstdguiitem.h>
+#include <kconfigdialog.h>
 
 #include <qlayout.h>
 #include <qtimer.h>
@@ -58,88 +59,48 @@
 #include <cmath>
 
 #include "app.h"
+#include "prefs.h"
+#include "settings.h"
 
-static int size_x[5] = {14, 18, 24, 26, 30};
-static int size_y[5] = { 6,  8, 12, 14, 16};
-static int DELAY[5] = {125, 250, 500, 750, 1000};
-
-App::App() : KMainWindow(0)
+App::App(QWidget *parent, const char *name) : KMainWindow(parent, name),
+   cheat(false)
 {
-	setCaption(i18n("Shisen-Sho"));
-	highscoreTable = new KHighscore();
+	highscoreTable = new KHighscore(this);
 
+	// TODO?
+	// Would it make sense long term to have a kconfig update rather then
+	// havin both formats supported in the code?
 	if(highscoreTable->hasTable())
 		readHighscore();
 	else
 		readOldHighscore();
 
-	cheat = FALSE;
-
 	initKAction();
 
-	b = new Board(this);
-	setCentralWidget(b);
+	board = new Board(this, "board");
+	loadSettings();
+
+	setCentralWidget(board);
 
 	statusBar()->insertItem("", SBI_TIME);
 	statusBar()->insertItem("", SBI_TILES);
 	statusBar()->insertFixedItem(i18n(" Cheat mode "), SBI_CHEAT);
 	statusBar()->changeItem("", SBI_CHEAT);
 
-	connect(b, SIGNAL(changed()), this, SLOT(enableItems()));
-
-	// load default settings
-	KConfig *conf = kapp->config();
-	restoreWindowSize(conf);
-
-	int i;
-	i = conf->readNumEntry("Speed", 2);
-	((KSelectAction*)actionCollection()->action("options_speed"))->setCurrentItem(i);
-	changeSpeed();
-
-	i = conf->readNumEntry("Size", 300 + 2);
-	//if(i == ID_OSIZECUSTOM)
-	//kdDebug() << "CUSTOM SIZE, TODO" << endl;
-	//  else
-	((KSelectAction*)actionCollection()->action("options_size"))->setCurrentItem(i - 300);
+	connect(board, SIGNAL(changed()), this, SLOT(enableItems()));
 
 	QTimer *t = new QTimer(this);
 	t->start(1000);
 	connect(t, SIGNAL(timeout()), this, SLOT(updateScore()));
-	connect(b, SIGNAL(endOfGame()), this, SLOT(slotEndOfGame()));
-
-	bool _b;
-	_b = conf->readNumEntry("Solvable", 1) > 0;
-	b->setSolvableFlag(_b);
-	((KToggleAction*)actionCollection()->action("options_disallow"))->setChecked(b->getSolvableFlag());
-
-	_b = conf->readNumEntry("Gravity", 1) > 0;
-	b->setGravityFlag(_b);
-	((KToggleAction*)actionCollection()->action("options_gravity"))->setChecked(_b);
-
-	_b = conf->readBoolEntry("Unscaled", true);
-	((KToggleAction*)actionCollection()->action("options_unscaled"))->setChecked(_b);
+	connect(board, SIGNAL(endOfGame()), this, SLOT(slotEndOfGame()));
+	connect(board, SIGNAL(resized()), this, SLOT(boardResized()));
 
 	kapp->processEvents();
-	i = conf->readNumEntry("Level", 311 + 1) - 311;
-	((KSelectAction*)actionCollection()->action("options_level"))->setCurrentItem(i);
-	b->setShuffle(i * 4 + 1);
 
-	changeSize(); // initiates new game
 	updateScore();
 	enableItems();
 
-	// This connect call needs to happen after the above call to changeSize() because
-	// otherwise the 'Prefer Unscaled Tiles' setting is not preserved between sessions.
-	// TODO: sort out this crazy init sequence...
-	connect(b, SIGNAL(resized()), this, SLOT(boardResized()));
-}
-
-App::~App()
-{
-	saveWindowSize(kapp->config());
-	delete b;
-	delete highscoreTable;
-
+	setAutoSaveSettings();
 }
 
 void App::initKAction()
@@ -159,48 +120,12 @@ void App::initKAction()
 	//	SLOT(isSolvable()), actionCollection(), "move_solvable");
 
 #ifdef DEBUGGING
-	(void)new KAction(i18n("&Finish"), 0, b, SLOT(finish()), actionCollection(), "move_finish");
+	(void)new KAction(i18n("&Finish"), 0, board, SLOT(finish()), actionCollection(), "move_finish");
 #endif
 
 	// Settings
 	KStdAction::keyBindings(this, SLOT(keyBindings()), actionCollection());
-
-	QStringList list;
-	KSelectAction* size = new KSelectAction(i18n("Si&ze"), 0, this,
-		SLOT(changeSize()), actionCollection(), "options_size");
-	list.append(i18n("14x6"));
-	list.append(i18n("18x8"));
-	list.append(i18n("24x12"));
-	list.append(i18n("26x14"));
-	list.append(i18n("30x16"));
-	size->setItems(list);
-
-	list.clear();
-	KSelectAction* speed = new KSelectAction(i18n("S&peed"), 0, this,
-		SLOT(changeSpeed()), actionCollection(), "options_speed");
-	list.append(i18n("Very Fast"));
-	list.append(i18n("Fast"));
-	list.append(i18n("Medium"));
-	list.append(i18n("Slow"));
-	list.append(i18n("Very Slow"));
-	speed->setItems(list);
-
-	list.clear();
-	KSelectAction* level = new KSelectAction(i18n("&Level"), 0, this,
-		SLOT(changeLevel()), actionCollection(), "options_level");
-	list.append(i18n("Easy"));
-	list.append(i18n("Medium"));
-	list.append(i18n("Hard"));
-	level->setItems(list);
-
-	(void)new KToggleAction(i18n("G&ravity"), 0, this,
-		SLOT(toggleGravity()), actionCollection(), "options_gravity");
-
-	(void)new KToggleAction(i18n("Disallow Unsolvable Games"), 0, this,
-		SLOT(toggleDisallowUnsolvable()), actionCollection(), "options_disallow");
-
-	new KToggleAction(i18n("Prefer Un&scaled Tiles"), Qt::Key_S, this,
-		SLOT(preferUnscaled()), actionCollection(), "options_unscaled");
+	KStdAction::preferences(this, SLOT(showSettings()), actionCollection());
 
 	createGUI("kshisenui.rc");
 }
@@ -212,7 +137,7 @@ void App::hallOfFame()
 
 void App::newGame()
 {
-	b->newGame();
+	board->newGame();
 	resetCheatMode();
 	enableItems();
 }
@@ -225,17 +150,17 @@ void App::quitGame()
 
 void App::restartGame()
 {
-	b->setUpdatesEnabled(FALSE);
-	while(b->canUndo())
-		b->undo();
-	b->setUpdatesEnabled(TRUE);
-	b->update();
+	board->setUpdatesEnabled(FALSE);
+	while(board->canUndo())
+		board->undo();
+	board->setUpdatesEnabled(TRUE);
+	board->update();
 	enableItems();
 }
 
 void App::isSolvable()
 {
-	if(b->solvable())
+	if(board->solvable())
 		KMessageBox::information(this, i18n("This game is solvable."));
 	else
 		KMessageBox::information(this, i18n("This game is NOT solvable."));
@@ -243,15 +168,15 @@ void App::isSolvable()
 
 void App::pause()
 {
-	bool paused = b->pause();
+	bool paused = board->pause();
 	lockMenus(paused);
 }
 
 void App::undo()
 {
-	if(b->canUndo())
+	if(board->canUndo())
 	{
-		b->undo();
+		board->undo();
 		setCheatMode();
 		enableItems();
 	}
@@ -259,55 +184,34 @@ void App::undo()
 
 void App::redo()
 {
-	if(b->canRedo())
-		b->redo();
+	if(board->canRedo())
+		board->redo();
 	enableItems();
 }
 
 void App::hint()
 {
 #ifdef DEBUGGING
-	b->makeHintMove();
+	board->makeHintMove();
 #else
-	b->showHint();
+	board->showHint();
 	setCheatMode();
 #endif
 	enableItems();
 }
 
-void App::toggleGravity()
+void App::loadSettings()
 {
-	if(!b->canUndo() && !b->canRedo())
-	{
-		b->setGravityFlag(!b->gravityFlag());
-		kapp->config()->writeEntry("Gravity", (int)b->gravityFlag());
-	}
-	else
-	{
-		((KToggleAction*)actionCollection()->action("options_gravity"))->setChecked(b->gravityFlag());
-	}
-}
-
-void App::toggleDisallowUnsolvable()
-{
-	b->setSolvableFlag(!b->getSolvableFlag());
-	kapp->config()->writeEntry("Solvable", (int)b->getSolvableFlag());
-}
-
-void App::preferUnscaled()
-{
-	// Setting 'Prefer Unscaled Tiles' to on is known to fail in the following situation:
-	//
-	// The Keramik window decoration is in use AND caption bubbles stick out above the title
-	// bar (i.e. Keramik's 'Draw small caption bubbles on active windows' configuration entry
-	// is set to off) AND the kshisen window is maximized.
+	// Setting 'Prefer Unscaled Tiles' to on is known to fail in the following
+	//  situation: The Keramik window decoration is in use AND caption bubbles
+	//  stick out above the title bar (i.e. Keramik's 'Draw small caption
+	// bubbles on active windows' configuration entry is set to off) AND the 
+	// kshisen window is maximized.
 	//
 	// The user can work-around this situation by un-maximizing the window first.
-
-	bool unscaled = dynamic_cast<KToggleAction*>(actionCollection()->action("options_unscaled"))->isChecked();
-	if(unscaled)
+	if(Prefs::unscaled())
 	{
-		QSize s = b->unscaledSize();
+		QSize s = board->unscaledSize();
 
 		// We would have liked to have used KMainWindow::sizeForCentralWidgetSize(),
 		// but this function does not seem to work when the toolbar is docked on the
@@ -316,38 +220,10 @@ void App::preferUnscaled()
 		// These bugs present in KDE: 3.1.90 (CVS >= 20030225)
 		//resize(sizeForCentralWidgetSize(s));
 
-		s += size() - b->size(); // compensate for chrome (toolbars, statusbars etc.)
+		s += size() - board->size(); // compensate for chrome (toolbars, statusbars etc.)
 		resize(s);
-
 		//kdDebug() << "App::preferUnscaled() set size to: " << s.width() << " x " << s.height() << endl;
 	}
-
-	kapp->config()->writeEntry("Unscaled", unscaled);
-}
-
-void App::changeSpeed()
-{
-	int index = ((KSelectAction*)actionCollection()->action("options_speed"))->currentItem();
-	b->setDelay(DELAY[index]);
-	kapp->config()->writeEntry("Speed", index);
-}
-
-void App::changeSize()
-{
-	int index = ((KSelectAction*)actionCollection()->action("options_size"))->currentItem();
-	b->setSize(size_x[index], size_y[index]);
-	resetCheatMode();
-	preferUnscaled();
-	kapp->config()->writeEntry("Size", 300 + index);// 300 is from the old QPopuMenu+ID way - before KAction
-}
-
-void App::changeLevel()
-{
-	int index = ((KSelectAction*)actionCollection()->action("options_level"))->currentItem();
-	b->setShuffle(index * 4 + 1);
-	b->newGame();
-	resetCheatMode();
-	kapp->config()->writeEntry("Level", 311 + index); // 311 is from the old QPopuMenu+ID way - before KAction
 }
 
 void App::lockMenus(bool lock)
@@ -376,13 +252,11 @@ void App::lockMenus(bool lock)
 
 void App::enableItems()
 {
-	if(!b->isPaused())
+	if(!board->isPaused())
 	{
-		actionCollection()->action(KStdGameAction::name(KStdGameAction::Undo))->setEnabled(b->canUndo());
-		actionCollection()->action(KStdGameAction::name(KStdGameAction::Redo))->setEnabled(b->canRedo());
-		actionCollection()->action(KStdGameAction::name(KStdGameAction::Restart))->setEnabled(b->canUndo());
-		actionCollection()->action("options_gravity")->setEnabled(!b->canUndo() && !b->canRedo());
-		((KToggleAction*)actionCollection()->action("options_gravity"))->setChecked(b->gravityFlag());
+		actionCollection()->action(KStdGameAction::name(KStdGameAction::Undo))->setEnabled(board->canUndo());
+		actionCollection()->action(KStdGameAction::name(KStdGameAction::Redo))->setEnabled(board->canRedo());
+		actionCollection()->action(KStdGameAction::name(KStdGameAction::Restart))->setEnabled(board->canUndo());
 	}
 }
 
@@ -392,14 +266,14 @@ void App::boardResized()
 	// 'Prefer Unscaled Tiles' option should be set to off.
 
 	//kdDebug() << "App::boardResized " << b->width() << " x " << b->height() << endl;
-	bool unscaled = dynamic_cast<KToggleAction*>(actionCollection()->action("options_unscaled"))->isChecked();
-	if(unscaled && b->size() != b->unscaledSize())
-		dynamic_cast<KToggleAction*>(actionCollection()->action("options_unscaled"))->setChecked(false);
+	bool unscaled = Prefs::unscaled();
+	if(unscaled && board->size() != board->unscaledSize())
+		Prefs::setUnscaled(false);
 }
 
 void App::slotEndOfGame()
 {
-	if(b->tilesLeft() > 0)
+	if(board->tilesLeft() > 0)
 	{
 		KMessageBox::information(this, i18n("No more moves possible!"), i18n("End of Game"));
 	}
@@ -407,10 +281,10 @@ void App::slotEndOfGame()
 	{
 		// create highscore entry
 		HighScore hs;
-		hs.seconds = b->getTimeForGame();
-		hs.x = b->x_tiles();
-		hs.y = b->y_tiles();
-		hs.gravity = (int)b->gravityFlag();
+		hs.seconds = board->getTimeForGame();
+		hs.x = board->x_tiles();
+		hs.y = board->y_tiles();
+		hs.gravity = (int)board->gravityFlag();
 
 		// check if we made it into Top10
 		bool isHighscore = FALSE;
@@ -429,44 +303,42 @@ void App::slotEndOfGame()
 		else
 		{
 			QString s = i18n("Congratulations! You made it in %1:%2:%3")
-				.arg(QString().sprintf("%02d", b->getTimeForGame()/3600))
-				.arg(QString().sprintf("%02d", (b->getTimeForGame() / 60) % 60))
-				.arg(QString().sprintf("%02d", b->getTimeForGame() % 60));
+				.arg(QString().sprintf("%02d", board->getTimeForGame()/3600))
+				.arg(QString().sprintf("%02d", (board->getTimeForGame() / 60) % 60))
+				.arg(QString().sprintf("%02d", board->getTimeForGame() % 60));
 
 			KMessageBox::information(this, s, i18n("End of Game"));
 		}
 	}
 
 	resetCheatMode();
-	b->newGame();
+	board->newGame();
 }
 
 void App::updateScore()
 {
-
-	int t = b->getTimeForGame();
+	int t = board->getTimeForGame();
 	QString s = i18n(" Your time: %1:%2:%3 %4")
 		.arg(QString().sprintf("%02d", t / 3600 ))
 		.arg(QString().sprintf("%02d", (t / 60) % 60 ))
 		.arg(QString().sprintf("%02d", t % 60 ))
-		.arg(b->isPaused()?i18n("(Paused) "):QString::null);
+		.arg(board->isPaused()?i18n("(Paused) "):QString::null);
 
 	statusBar()->changeItem(s, SBI_TIME);
 
 	// Number of tiles
-	int tl = (b->x_tiles() * b->y_tiles());
+	int tl = (board->x_tiles() * board->y_tiles());
 	s = i18n(" Removed: %1/%2 ")
-		.arg(QString().sprintf("%d", tl - b->tilesLeft()))
+		.arg(QString().sprintf("%d", tl - board->tilesLeft()))
 		.arg(QString().sprintf("%d", tl ));
 
 	statusBar()->changeItem(s, SBI_TILES);
-
 }
 
 void App::setCheatMode()
 {
 	// set the cheat mode if not set
-	if(!cheat)
+	if(cheat)
 	{
 		cheat = TRUE;
 		statusBar()->changeItem(i18n(" Cheat mode "), SBI_CHEAT);
@@ -598,7 +470,6 @@ int App::insertHighscore(const HighScore &hs)
 	}
 	return -1;
 }
-
 
 void App::readHighscore()
 {
@@ -873,6 +744,21 @@ void App::showHighscore(int focusitem)
 void App::keyBindings()
 {
 	KKeyDialog::configure(actionCollection(), this);
+}
+
+/**
+ * Show Settings dialog.
+ */
+void App::showSettings(){
+	if(KConfigDialog::showDialog("settings"))
+		return;
+
+	KConfigDialog *dialog = new KConfigDialog(this, "settings", Prefs::self(), KDialogBase::Swallow);
+	Settings *general = new Settings(0, "General");
+	dialog->addPage(general, i18n("General"), "package_settings");
+	connect(dialog, SIGNAL(settingsChanged()), this, SLOT(loadSettings()));
+	connect(dialog, SIGNAL(settingsChanged()), board, SLOT(loadSettings()));
+	dialog->show();
 }
 
 #include "app.moc"

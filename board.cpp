@@ -46,19 +46,23 @@
 #include <qtimer.h>
 
 #include "board.h"
+#include "prefs.h"
 
 #define EMPTY		0
 #define DEFAULTDELAY	500
 #define DEFAULTSHUFFLE	4
 
-Board::Board(QWidget *parent) : QWidget(parent, 0, WResizeNoErase)
-{
-	paused = false;
-	_solvable_flag = true;
-	grav_col_1 = -1;
-	grav_col_2 = -1;
-	setGravityFlag(false);
+static int size_x[5] = {14, 18, 24, 26, 30};
+static int size_y[5] = { 6,  8, 12, 14, 16};
+static int DELAY[5] = {1000, 750, 500, 250, 125};
 
+Board::Board(QWidget *parent, const char *name) : 
+       QWidget(parent, name, WResizeNoErase), field(0),
+       _x_tiles(0), _y_tiles(0),
+       _delay(125), paused(false),
+       gravity_flag(true), _solvable_flag(true),
+	     grav_col_1(-1), grav_col_2(-1), highlighted_tile(-1)
+{
 	// Randomize
 	setShuffle(DEFAULTSHUFFLE);
 
@@ -69,17 +73,25 @@ Board::Board(QWidget *parent) : QWidget(parent, 0, WResizeNoErase)
 	_redo.setAutoDelete(true);
 	_undo.setAutoDelete(true);
 
-	field = 0;
-	QPixmap bg(KGlobal::dirs()->findResource("appdata", "kshisen_bgnd.xpm"));
+	QPixmap bg(KGlobal::dirs()->findResource("appdata", "kshisen_bgnd.png"));
 	setBackgroundPixmap(bg);
-	setShuffle(0);
 
-	highlighted_tile = -1;
+	loadSettings();
 }
 
 Board::~Board()
 {
 	delete [] field;
+}
+
+void Board::loadSettings(){
+	int index = Prefs::size();
+	setSize(size_x[index], size_y[index]);
+
+	setShuffle(Prefs::level() * 4 + 1);
+	setGravityFlag(Prefs::gravity());
+	setSolvableFlag(Prefs::solvable());
+	setDelay(DELAY[Prefs::speed()]);
 }
 
 int Board::x_tiles() const
@@ -298,6 +310,7 @@ QSize Board::unscaledSize() const
 
 void Board::newGame()
 {
+	//kdDebug() << "NewGame" << endl;
 	int i, x, y, k;
 
 	mark_x = -1;
@@ -928,7 +941,10 @@ bool Board::getHint_I(Path& p) const
 
 void Board::setShuffle(int newvalue)
 {
-	_shuffle = newvalue;
+	if(newvalue != _shuffle){
+		_shuffle = newvalue;
+		newGame();
+	}
 }
 
 int Board::getShuffle() const
@@ -1012,7 +1028,12 @@ bool Board::getSolvableFlag() const
 
 void Board::setSolvableFlag(bool value)
 {
-	_solvable_flag = value;
+	if(value && !_solvable_flag && !solvable()){
+		_solvable_flag = value;
+		newGame(); 
+	}
+	else 
+		_solvable_flag = value;
 }
 
 bool Board::gravityFlag() const
@@ -1022,7 +1043,11 @@ bool Board::gravityFlag() const
 
 void Board::setGravityFlag(bool b)
 {
-	gravity_flag = b;
+	if( gravity_flag != b ){
+		if(canUndo() || canRedo())
+			newGame();
+		gravity_flag = b;
+	}
 }
 
 bool Board::pause()

@@ -72,7 +72,7 @@ class Board : public QWidget
 	Q_OBJECT
 
 public:
-	Board(QWidget *parent = 0);
+	Board(QWidget *parent = 0, const char *name=0);
 	~Board();
 
 	virtual void paintEvent(QPaintEvent *);
@@ -127,6 +127,7 @@ signals:
 
 public slots:
 	bool pause();
+  void loadSettings();
 
 private slots:
 	void undrawConnection();

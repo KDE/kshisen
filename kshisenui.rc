@@ -5,14 +5,6 @@
     <Action name="move_solvable"/>
     <Action name="move_finish"/>-->
   </Menu>
-  <Menu name="settings">
-    <Action name="options_size" append="save_merge"/>
-    <Action name="options_speed" append="save_merge"/>
-    <Action name="options_level" append="save_merge"/>
-    <Action name="options_gravity" append="save_merge"/>
-    <Action name="options_disallow" append="save_merge"/>
-    <Action name="options_unscaled" append="save_merge"/>
-  </Menu>
 </MenuBar>
 <ToolBar name="mainToolBar"><text>Main Toolbar</text>
   <Action name="game_quit"/>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE kcfg SYSTEM "http://www.kde.org/standards/kcfg/1.0/kcfg.dtd">
+<kcfg>
+  <kcfgfile name="kshisenrc"/>
+  <group name="Game">
+    <entry name="Solvable" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="Gravity" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="Unscaled" type="Bool">
+      <default>true</default>
+    </entry>
+
+
+    <entry name="Speed" type="Int">
+      <min>0</min>
+      <max>4</max>
+      <default>2</default>
+    </entry>
+    <entry name="Size" type="Int">
+      <min>0</min>
+      <max>4</max>
+      <default>2</default>
+    </entry>
+    <entry name="Level" type="Int">
+      <min>0</min>
+      <max>2</max>
+      <default>1</default>
+    </entry>
+  </group>
+</kcfg>
