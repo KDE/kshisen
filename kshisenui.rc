@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<gui name="kshisen" version="8">
+<kpartgui name="kshisen" version="9">
 <MenuBar>
   <Menu name="move"><!--
     <Action name="move_solvable"/>
