@@ -47,11 +47,11 @@
 #include <qbitarray.h>
 #include <qbitmap.h>
 
-#include <kapp.h>
+#include <kapplication.h>
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kglobal.h>
-#include <kstddirs.h>
+#include <kstandarddirs.h>
 #include <kmessagebox.h>
 
 #include "board.h"
