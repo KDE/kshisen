@@ -20,6 +20,8 @@
 </author>
 </authorgroup>
 
+<!-- TRANS:ROLES_OF_TRANSLATORS -->
+
 <date>16/12/2000</date>
 <releaseinfo>1.03.00</releaseinfo>
 
@@ -251,6 +253,8 @@ have to try again if you didn't solve the game, but if it's checked, the game
 Documentation Copyright 2000 Dirk Doerflinger
 <email>ddoerflinger@gmx.net</email>
 </para>
+
+<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
 
 &underFDL;
 &underGPL;
