@@ -35,7 +35,7 @@ BINDIR = $(prefix)/bin
 KDELNKDIR= $(prefix)/share/applnk/Games
 LIBDIR = $(prefix)/lib
 PICDIR = $(prefix)/share/apps/kshisen/pics
-DOCDIR = $(prefix)/share/doc/HTML/kshisen
+DOCDIR = $(prefix)/share/doc/HTML/en/kshisen
 
 ########### File Formats ###########
 
@@ -82,7 +82,7 @@ install: all
 	$(INSTALL_DATA) pics/$$i $(PICDIR)/$$i; \
 	done
 	$(INSTALL_DIR) $(DOCDIR)
-	$(INSTALL_DATA) html/kshisen.html $(DOCDIR)
+	$(INSTALL_DATA) html/index.html $(DOCDIR)
 
 
 uninstall:
