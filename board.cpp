@@ -833,11 +833,12 @@ void Board::clearHistory() {
 }
 
 void Board::getHint() {
+  undrawArrow();
+
   int x1, y1, x2, y2;
   History h[4];
 
   if(getHint_I(x1, y1, x2, y2, h)) {
-    undrawArrow();
     for(int i = 0; i < 4; i++)
       history[i] = h[i];
 
