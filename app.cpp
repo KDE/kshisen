@@ -436,7 +436,7 @@ void App::slotEndOfGame() {
 		(b->getTimeForGame() / 60)  % 60,
 		b->getTimeForGame() % 60);
       
-      KMsgBox::message(this, i18n("End of game"), s.data());
+      KMsgBox::message(this, i18n("End of game"), s);
     }
   }
 
@@ -453,7 +453,7 @@ void App::updateScore() {
 	    (b->getTimeForGame() / 60)  % 60,
 	    b->getTimeForGame() % 60);
 
-  sb->changeItem(s.data(), 1);
+  sb->changeItem(s, 1);
 }
 
 QString App::getPlayerName() {
@@ -577,7 +577,7 @@ void App::readHighscore() {
   while ((i < (int)HIGHSCORE_MAX) && !eol) {
     s.sprintf("Highscore_%d", i);
     if(conf->hasKey(s)) {
-      e = conf->readEntry(s.data());
+      e = conf->readEntry(s);
       highscore.resize(i+1);
 
       HighScore hs;
@@ -614,7 +614,7 @@ void App::readHighscore() {
 //   }
 
   // restore old group
-  conf->setGroup(grp.data());
+  conf->setGroup(grp);
 }
 
 
@@ -634,7 +634,7 @@ void App::writeHighscore() {
   }
   
   // restore old group
-  conf->setGroup(grp.data());
+  conf->setGroup(grp);
 }
 
 void App::showHighscore(int focusitem)  {
@@ -697,7 +697,7 @@ void App::showHighscore(int focusitem)  {
     
     // insert rank    
     s.sprintf("%d", i+1);
-    e[i][0] = new QLabel(s.data(), dlg);
+    e[i][0] = new QLabel(s, dlg);
 
     // insert name
     if(i < highscore.size())
@@ -710,7 +710,7 @@ void App::showHighscore(int focusitem)  {
     if(i < highscore.size()) {
       ti = ti.addSecs(hs.seconds);
       s.sprintf("%02d:%02d:%02d", ti.hour(), ti.minute(), ti.second());
-      e[i][2] = new QLabel(s.data(), dlg);
+      e[i][2] = new QLabel(s, dlg);
     } else
       e[i][2] = new QLabel("", dlg);
 
@@ -719,16 +719,14 @@ void App::showHighscore(int focusitem)  {
       s.sprintf("%d x %d", hs.x, hs.y);
     else
       s = "";
-    e[i][3] = new QLabel(s.data(), dlg);
+    e[i][3] = new QLabel(s, dlg);
 
     // insert score
     if(i < highscore.size()) 
-      s.sprintf("%d %s", 
-		getScore(hs),
-		hs.gravity ? i18n("(gravity)").data() : "");
+      s = QString("%1 %2").arg(tScore(hs)).arg(hs.gravity ? i18n("(gravity)") : "");
     else
       s = "";
-    e[i][4] = new QLabel(s.data(), dlg);
+    e[i][4] = new QLabel(s, dlg);
     e[i][4]->setAlignment(AlignRight);
   }
 

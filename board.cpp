@@ -87,7 +87,7 @@ Board::Board(QWidget *parent) : QWidget(parent) {
 
   loadTiles(1);
   field = 0;
-  QPixmap bg((PICDIR + "/kshisen_bgnd.xpm").data());
+  QPixmap bg((PICDIR + "/kshisen_bgnd.xpm"));
   setBackgroundPixmap(bg);
   connect(this, SIGNAL(fieldClicked(int, int)),
 	  this, SLOT(marked(int, int)));
@@ -245,7 +245,7 @@ bool Board::loadTiles(float scale) {
       pm_tile[i] = 0;
     }
 
-  QPixmap pm((PICDIR + "/kshisen.xpm").data());
+  QPixmap pm((PICDIR + "/kshisen.xpm"));
   if(pm.width() == 0 || pm.height() == 0) {
     KMsgBox::message(0, i18n("Shisen-Sho"), 
 		     i18n("Cannot load pixmaps!"));
