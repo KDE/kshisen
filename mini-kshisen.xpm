@@ -1,0 +1,34 @@
+/* XPM */
+/* Drawn  by Nico Shirwing for the K Desktop Environment */
+/* See http://www.kde.org */
+static char*kshisen[]={
+"16 16 12 1",
+"h c #c0c0c0",
+"g c #ffffff",
+"# c #008000",
+"j c #800080",
+"i c #808000",
+"d c #00c000",
+"b c #ff0000",
+"f c #ff00ff",
+"e c #ffffc0",
+"a c #c05800",
+"c c #ffdca8",
+". c None",
+"................",
+".###abbaccca###.",
+".###accacdca###.",
+".###abcaccca###.",
+".###accaccca###.",
+".eee#eeeeee#eee.",
+".cfcaddaghgacae.",
+".cfcaccaghgaice.",
+".cjcaddaghgaaie.",
+".cccaccagggacce.",
+".####eeeeee#eee.",
+".###acaacfcabbe.",
+".###aicacfcacce.",
+".###aaiacjcabce.",
+".###accacccacce.",
+"................"};
+

@@ -42,6 +42,8 @@ BINDIR = $(kde_bindir)
 KDELNKDIR= $(kde_appsdir)/Games
 PICDIR = $(kde_datadir)/kshisen/pics
 DOCDIR = $(kde_htmldir)/en/kshisen
+ICONDIR = $(kde_icondir)
+MINIDIR = $(kde_minidir)
 
 ########### File Formats ###########
 
@@ -84,6 +86,10 @@ install: all
 	$(INSTALL) $(TARGET) $(BINDIR)
 	$(INSTALL_DIR) $(KDELNKDIR)
 	$(INSTALL_DATA) kshisen.kdelnk $(KDELNKDIR)
+	$(INSTALL_DIR) $(ICONDIR)
+	$(INSTALL_DATA) kshisen.xpm $(ICONDIR)
+	$(INSTALL_DIR) $(MINIDIR)
+	$(INSTALL_DATA) mini-kshisen.xpm $(MINIDIR)/kshisen.xpm
 	$(INSTALL_DIR) $(PICDIR)
 	@for i in $(PICS); do \
 	echo $(INSTALL_DATA) pics/$$i $(PICDIR); \
