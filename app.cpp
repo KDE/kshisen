@@ -483,14 +483,11 @@ void App::slotEndOfGame() {
 }
 
 void App::updateScore() {
-  char s[1024];
-  sprintf(s, 
-	  i18n("Your time: %02d:%02d:%02d %s"),
-	  b->getTimeForGame()/3600,
-	  (b->getTimeForGame() / 60)  % 60,
-	  b->getTimeForGame() % 60,
-	  b->isPaused()?" (Paused)": ""
-	  );
+  QString s = i18n("Your time: %1:%2:%3 %4")
+		.arg(QString().sprintf("%02d", b->getTimeForGame()/3600))
+		.arg(QString().sprintf("%02d", (b->getTimeForGame() / 60) % 60))
+		.arg(QString().sprintf("%02d", b->getTimeForGame() % 60))
+		.arg(b->isPaused()?i18n(" (Paused)"):QString::null);
 
   sb->changeItem(s, 1);
 }
