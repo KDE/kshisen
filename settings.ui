@@ -141,7 +141,7 @@
                 <cstring>kcfg_Unscaled</cstring>
             </property>
             <property name="text">
-                <string>Prefer Unscalled Tiles</string>
+                <string>Prefer Unscaled Tiles</string>
             </property>
         </widget>
         <widget class="QGroupBox">
