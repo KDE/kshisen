@@ -482,7 +482,8 @@ void Board::paintEvent(QPaintEvent *e) {
   } else {
     for(int i = 0; i < x_tiles(); i++)
       for(int j = 0; j < y_tiles(); j++) {
-	if(getField(i, j) == EMPTY)
+	int tile = getField(i, j);
+	if(tile == EMPTY)
 	  continue;
 
 	int xpos = XBORDER + i * pm_tile[1]->width();
@@ -490,12 +491,12 @@ void Board::paintEvent(QPaintEvent *e) {
 	QRect r(xpos, ypos, pm_tile[1]->width(), pm_tile[1]->height());
 	if(e->rect().intersects(r)) {
 	  // check if it is a marked piece
-	  if(i == mark_x && j == mark_y) {
-	    QPixmap *lpm = lighten(pm_tile[getField(i, j)-1]);
+	  if(tile == highlighted_tile || (i == mark_x && j == mark_y)){
+	    QPixmap *lpm = lighten(pm_tile[tile-1]);
 	    p.drawPixmap(xpos, ypos, *lpm);
 	    delete lpm;
 	  } else
-	    p.drawPixmap(xpos, ypos, *pm_tile[getField(i, j)-1]);
+	    p.drawPixmap(xpos, ypos, *pm_tile[tile-1]);
 	}
       }
   }
