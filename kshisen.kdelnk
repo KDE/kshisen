@@ -1,4 +1,6 @@
 [KDE Desktop Entry]
 Exec=kshisen
 DocPath=kshisen.html
+Name=Shisen-Sho
 Comment=Shisen-Sho, a game similar to Mahjongg
+Comment[pl]=Shisen-Sho, gra podobna do Mahjongg'a.
