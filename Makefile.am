@@ -2,9 +2,6 @@
 
 INCLUDES = -I$(top_srcdir)/libkdegames -I$(top_srcdir)/libkdegames/highscore $(all_includes)
 
-LDFLAGS	= $(all_libraries) $(KDE_RPATH)
-LDADD = $(LIB_KDEGAMES) $(LIB_KDEUI)
-
 PICDIR = $(kde_datadir)/kshisen/pics
 
 bin_PROGRAMS = kshisen
@@ -14,6 +11,8 @@ METASOURCES = board.moc app.moc
 noinst_HEADERS = app.h board.h tileset.h debug.h version.h
 
 kshisen_SOURCES = main.cpp board.cpp app.cpp tileset.cpp
+kshisen_LDADD = $(LIB_KDEGAMES) $(LIB_KDEUI)
+kshisen_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 
 xdg_apps_DATA = kshisen.desktop
 KDE_ICON  = kshisen
