@@ -11,9 +11,9 @@ bin_PROGRAMS = kshisen
 
 METASOURCES = board.moc app.moc
 
-noinst_HEADERS = app.h board.h debug.h version.h
+noinst_HEADERS = app.h board.h tileset.h debug.h version.h
 
-kshisen_SOURCES = main.cpp board.cpp app.cpp
+kshisen_SOURCES = main.cpp board.cpp app.cpp tileset.cpp
 
 appsdir   = $(kde_appsdir)/Games/Board
 apps_DATA = kshisen.desktop

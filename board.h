@@ -48,6 +48,8 @@
 #include <debug.h>
 #include <time.h>
 
+#include "tileset.h"
+
 typedef struct History {
   int x, y;
 };
@@ -131,13 +133,11 @@ private slots:
   void gravity(int, bool);
 
 private: // functions
-  bool loadTiles(int maxWidth = -1, int maxHeight = -1);
   void initBoard();
 
   void setField(int x, int y, int value);
   int  getField(int x, int y);
   void updateField(int, int, bool erase = true);
-  QPixmap *lighten(QPixmap *src);
   bool canMakePath(int x1, int y1, int x2, int y2);
   bool findPath(int x1, int y1, int x2, int y2);
   bool findSimplePath(int x1, int y1, int x2, int y2);
@@ -150,6 +150,8 @@ private:
   time_t time_for_game;
   QPixmap *pausedIcon;
 
+  TileSet tiles;
+
   KRandomSequence random;
 
   QPtrList<Move> _undo;
@@ -160,12 +162,10 @@ private:
   int mark_y;
   History history[4];
   int *field;
-  QPixmap *pm_tile[45];
   int _x_tiles;
   int _y_tiles;
   int _delay;
   int _shuffle;
-  QSize unscaled_tile;
 
   bool paused;
   time_t pause_start;

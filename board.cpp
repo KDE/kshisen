@@ -67,10 +67,6 @@
 #define DEFAULTDELAY	500
 #define DEFAULTSHUFFLE	4
 
-#define TILES_X	9
-#define TILES_Y	4
-#define NUM_TILES	(TILES_X * TILES_Y)
-
 Board::Board(QWidget *parent) : QWidget(parent) {
   pausedIcon = 0;
   paused = false;
@@ -86,14 +82,10 @@ Board::Board(QWidget *parent) : QWidget(parent) {
   random.setSeed(0);
   starttime = time((time_t *)0);
 
-  for(int i = 0; i < NUM_TILES; i++)
-    pm_tile[i] = 0;
-
   setDelay(DEFAULTDELAY);
   _redo.setAutoDelete(true);
   _undo.setAutoDelete(true);
 
-  loadTiles();
   field = 0;
   QPixmap bg(KGlobal::dirs()->findResource("appdata", "kshisen_bgnd.xpm"));
   setBackgroundPixmap(bg);
@@ -108,9 +100,6 @@ Board::Board(QWidget *parent) : QWidget(parent) {
 }
 
 Board::~Board() {
-  for(int i = 0; i < NUM_TILES; i++)
-    if(pm_tile[i])
-      delete pm_tile[i];  
   delete [] field;
 }
 
@@ -172,9 +161,9 @@ void Board::gravity(int col, bool update) {
 void Board::mousePressEvent(QMouseEvent *e) {
     // calculate position
     int pos_x = (e->pos().x() - XBORDER <0)?-1:
-                              (e->pos().x() - XBORDER) / pm_tile[0]->width();
+                              (e->pos().x() - XBORDER) / tiles.tileWidth();
     int pos_y = (e->pos().y() - YBORDER <0)?-1:
-                              (e->pos().y() - YBORDER) / pm_tile[0]->height();
+                              (e->pos().y() - YBORDER) / tiles.tileHeight();
 
     // Mark tile
     if(e->button() == LeftButton) {
@@ -247,63 +236,14 @@ void Board::setSize(int x, int y) {
   int h = static_cast<int>( static_cast<double>(kapp->desktop()->height() - 4*YBORDER) / y_tiles() );
 
   const double MAXIMUM_SCALE = 1.0;
-  w = std::min(w, qRound(unscaled_tile.width() * MAXIMUM_SCALE));
-  h = std::min(h, qRound(unscaled_tile.height() * MAXIMUM_SCALE));
+  w = std::min(w, qRound(tiles.unscaledTileWidth() * MAXIMUM_SCALE));
+  h = std::min(h, qRound(tiles.unscaledTileHeight() * MAXIMUM_SCALE));
 
-  loadTiles(w, h);
+  tiles.resizeTiles(w, h);
 
   newGame();
   emit changed();
   emit sizeChange();
-}
-
-bool Board::loadTiles(int maxWidth, int maxHeight) {
-
-  if(maxWidth != -1 && maxHeight != -1) {
-    // calculate largest tile size that will fit in maxWidth/maxHeight
-    // and maintain the tile's height-to-width ratio
-    double ratio = static_cast<double>(unscaled_tile.height()) / unscaled_tile.width();
-    if(maxWidth * ratio < maxHeight)
-      maxHeight = qRound(maxWidth * ratio);
-    else
-      maxWidth = qRound(maxHeight / ratio);
-
-    if(pm_tile[0] && maxHeight == pm_tile[0]->height() && maxWidth == pm_tile[0]->width())
-      return true;
-  }
-
-  int i, j;
-
-  // delete old tiles
-  for(i = 0; i < NUM_TILES; i++) {
-    if(pm_tile[i] != 0) {
-      delete pm_tile[i];
-      pm_tile[i] = 0;
-    }
-  }
-
-  // locate tileset
-  QImage tileset(KGlobal::dirs()->findResource("appdata", "tileset.png"));
-  if(tileset.width() == 0 || tileset.height() == 0) {
-      KMessageBox::sorry(this, i18n("Cannot load pixmaps!"));
-      exit(1);
-  }
-
-  int w = tileset.width() / TILES_X;
-  int h = tileset.height() / TILES_Y;
-
-  for(i = 0; i < TILES_X; i++) {
-    for(j = 0; j < TILES_Y; j++) {
-      QImage tile = tileset.copy( w*i, h*j, w, h );
-      if(maxWidth != -1 && maxHeight != -1)
-        tile = tile.smoothScale(maxWidth, maxHeight);
-      pm_tile[i + j*TILES_X] = new QPixmap(tile);
-    }
-  }
-
-  unscaled_tile = QSize(w, h);
-
-  return true;
 }
 
 void Board::newGame() {
@@ -325,7 +265,7 @@ void Board::newGame() {
         setField(x, y + k, cur_tile);
 
       cur_tile++;
-      if(cur_tile > NUM_TILES)
+      if(cur_tile > TileSet::nTiles)
         cur_tile = 1;
     }
   }
@@ -421,35 +361,12 @@ void Board::updateField(int x, int y, bool erase) {
   if(trying)
     return;
 
-  QRect r(XBORDER + x * pm_tile[0]->width(),
-	  YBORDER + y * pm_tile[0]->height(),
-	  pm_tile[0]->width(),
-	  pm_tile[0]->height());
+  QRect r(XBORDER + x * tiles.tileWidth(),
+	  YBORDER + y * tiles.tileHeight(),
+	  tiles.tileWidth(),
+	  tiles.tileHeight());
   if(isUpdatesEnabled())
     repaint(r, erase);
-}
-
-QPixmap *Board::lighten(QPixmap *src) {
-  const float FACTOR = 1.3;
-
-  QImage img = src->convertToImage();
-  if(img.depth() > 8) { // at least high-color
-    for(int y = 0; y < src->height(); y++) {
-      uchar *p = (uchar *)img.scanLine(y);
-      for(int x = 0; x < src->width() * 4; x++) {
-	*p = (unsigned char)std::min(255, (int)(FACTOR * (*p)));
-	p++;
-      }
-    }
-  } else { // image has a palette
-    // get background color index
-    int idx = img.pixelIndex(8, 1); // should work for all tiles
-    img.setColor(idx, QColor(img.color(idx)).light().rgb());
-  }
- 
-  QPixmap *pm = new QPixmap();
-  pm->convertFromImage(img);
-  return pm;
 }
 
 void Board::paintEvent(QPaintEvent *e) {  
@@ -464,23 +381,23 @@ void Board::paintEvent(QPaintEvent *e) {
 		 (height()-pausedIcon->height())/2, 
 		 *pausedIcon);
   } else {
+    int w = tiles.tileWidth();
+    int h = tiles.tileHeight();
     for(int i = 0; i < x_tiles(); i++)
       for(int j = 0; j < y_tiles(); j++) {
 	int tile = getField(i, j);
 	if(tile == EMPTY)
 	  continue;
 
-	int xpos = XBORDER + i * pm_tile[1]->width();
-	int ypos = YBORDER + j * pm_tile[1]->height();
-	QRect r(xpos, ypos, pm_tile[1]->width(), pm_tile[1]->height());
+	int xpos = XBORDER + i * w;
+	int ypos = YBORDER + j * h;
+	QRect r(xpos, ypos, w, h);
 	if(e->rect().intersects(r)) {
 	  // check if it is a marked piece
 	  if(tile == highlighted_tile || (i == mark_x && j == mark_y)){
-	    QPixmap *lpm = lighten(pm_tile[tile-1]);
-	    p.drawPixmap(xpos, ypos, *lpm);
-	    delete lpm;
+	    p.drawPixmap(xpos, ypos, tiles.highlightedTile(tile-1));
 	  } else
-	    p.drawPixmap(xpos, ypos, *pm_tile[tile-1]);
+	    p.drawPixmap(xpos, ypos, tiles.tile(tile-1));
 	}
       }
   }
@@ -658,7 +575,7 @@ void Board::drawArrow(int x1, int y1, int x2, int y2) {
 
   QPainter p;
   p.begin(this);
-  p.setPen(QPen(QColor("red"), 6));
+  p.setPen(QPen(QColor("red"), tiles.lineWidth()));
   num = 0;
   while(num < 3 && history[num+1].x != -2) {
     p.drawLine(midCoord(history[num].x, history[num].y),
@@ -713,8 +630,8 @@ void Board::undrawArrow() {
 
 QPoint Board::midCoord(int x, int y) {
   QPoint p;
-  int w = pm_tile[0]->width();
-  int h = pm_tile[0]->height();
+  int w = tiles.tileWidth();
+  int h = tiles.tileHeight();
 
   if(x == -1) 
     p.setX(XBORDER/2 - w/2);
@@ -809,8 +726,8 @@ void Board::redo() {
 }
 
 QSize Board::sizeHint() {
-  return QSize(x_tiles() * pm_tile[0]->width() + 2 * XBORDER,
-	       y_tiles() * pm_tile[0]->height() + 2 * YBORDER);
+  return QSize(x_tiles() * tiles.tileWidth() + 2 * XBORDER,
+	       y_tiles() * tiles.tileHeight() + 2 * YBORDER);
 }
 
 void Board::clearHistory() {
@@ -870,8 +787,8 @@ void Board::finish() {
 #endif
 
 bool Board::getHint_I(int &x1, int &y1, int &x2, int &y2, History h[4]) {
-  short done[NUM_TILES];
-  for( short index = 0; index < NUM_TILES; index++ )
+  short done[TileSet::nTiles];
+  for( short index = 0; index < TileSet::nTiles; index++ )
      done[index] = 0;
 
   // remember old history
