@@ -1,3 +1,13 @@
+2002-11-27  Dave Corrie  <kde@davecorrie.com> (v.1.4.1)
+
+	In conjunction with Jason Lane:
+
+	* Move tile handling (loading/scaling/highlighting etc) into
+	  separate class (class TileSet)
+	* Permit resize of playing window
+	* TODO: game startup optimization, double buffering, remove
+	  paused icon (not i18n friendly)
+
 2002-08-01  Dave Corrie  <kde@davecorrie.com> (v.1.4)
 
 	Recent changes of note. (Does not list all the changes that
