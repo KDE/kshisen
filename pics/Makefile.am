@@ -1,5 +1,5 @@
 
-pics_DATA = kshisen.xpm  kshisen_bgnd.xpm
-picsdir = $(kde_datadir)/kshisen/pics
+pics_DATA = kshisen.xpm  kshisen_bgnd.xpm mask.xpm
+picsdir = $(kde_datadir)/kshisen/
 
 EXTRA_DIST =  $(pics_DATA)

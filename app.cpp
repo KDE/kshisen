@@ -55,6 +55,7 @@
 
 #define ID_FQUIT	101
 
+#define ID_GFIRST       201
 #define ID_GUNDO	201
 #define ID_GREDO	202
 #define ID_GHOF		203
@@ -62,11 +63,16 @@
 #define ID_GNEW		205
 #define ID_GHINT	206
 #define ID_GISSOLVE	207
+#define ID_GPAUSE       208
+#define ID_GLAST        208
 
 #ifdef DEBUGGING
 #define ID_GFINISH      220
+#undef  ID_GLAST
+#define ID_GLAST        208
 #endif
 
+#define ID_OFIRST       300
 #define ID_OSIZE1	300
 #define ID_OSIZE2	301
 #define ID_OSIZE3	302
@@ -83,6 +89,7 @@
 #define ID_OLVL3	313
 #define ID_OSOLVABLE	314
 #define ID_OGRAVITY     315
+#define ID_OLAST        315
 
 #define ID_HTUTORIAL	901
 #define ID_HHELP	900	
@@ -112,6 +119,7 @@ App::App() : KTopLevelWidget() {
   gm->insertSeparator();
   gm->insertItem(i18n("&New game"), ID_GNEW);
   gm->insertItem(i18n("Res&tart game"), ID_GRESTART);
+  gm->insertItem(i18n("&Pause game"), ID_GPAUSE);
   gm->insertSeparator();
   gm->insertItem(i18n("Is game solvable?"), ID_GISSOLVE);
   gm->insertSeparator();
@@ -175,7 +183,7 @@ App::App() : KTopLevelWidget() {
   b->show();
 
   sb = new KStatusBar(this);
-  sb->insertItem(i18n("Your time: XX:XX:XX"), 1);
+  sb->insertItem(i18n("Your time: XX:XX:XX (XXXXXXXXXXXXXXX)"), 1);
   sb->insertItem(i18n("Cheat mode"), 2);
   sb->show();
   setStatusBar(sb);
@@ -263,6 +271,17 @@ void App::menuCallback(int id) {
     delete this;
     kapp->quit();
     return;
+    break;
+
+  case ID_GPAUSE: 
+    {
+      bool paused = b->pause();      
+      lockMenus(paused);
+      if(paused)
+	mb->changeItem(i18n("Resume game"), ID_GPAUSE);
+      else
+	mb->changeItem(i18n("Pause game"), ID_GPAUSE);
+    }
     break;
 
   case ID_GISSOLVE:
@@ -388,15 +407,28 @@ void App::menuCallback(int id) {
   enableItems();
 }
 
+void App::lockMenus(bool lock) {
+  int i;
+  
+  for(i = ID_GFIRST; i <= ID_GLAST; i++)
+    mb->setItemEnabled(i, !lock | i==ID_GPAUSE);
+  
+  for(i = ID_OFIRST; i <= ID_OLAST; i++)
+    mb->setItemEnabled(i, !lock);
+  enableItems();
+}
+
 void App::enableItems() {
-  mb->setItemEnabled(ID_GUNDO, b->canUndo());
-  mb->setItemEnabled(ID_GREDO, b->canRedo());
-  mb->setItemEnabled(ID_GRESTART, b->canUndo());
-  tb->setItemEnabled(ID_GUNDO, b->canUndo());
-  tb->setItemEnabled(ID_GREDO, b->canRedo());
-  tb->setItemEnabled(ID_GRESTART, b->canUndo());
-  mb->setItemEnabled(ID_OGRAVITY, !b->canUndo());
-  mb->setItemChecked(ID_OGRAVITY, b->gravityFlag());
+  if(!b->isPaused()) {
+    mb->setItemEnabled(ID_GUNDO, b->canUndo());
+    mb->setItemEnabled(ID_GREDO, b->canRedo());
+    mb->setItemEnabled(ID_GRESTART, b->canUndo());
+    tb->setItemEnabled(ID_GUNDO, b->canUndo());
+    tb->setItemEnabled(ID_GREDO, b->canRedo());
+    tb->setItemEnabled(ID_GRESTART, b->canUndo());
+    mb->setItemEnabled(ID_OGRAVITY, !b->canUndo());
+    mb->setItemChecked(ID_OGRAVITY, b->gravityFlag());
+  }
 }
 
 void App::sizeChanged() {
@@ -449,12 +481,14 @@ void App::slotEndOfGame() {
 }
 
 void App::updateScore() {
-  QString s;
-  s.sprintf(
-	    i18n("Your time: %02d:%02d:%02d"),
-	    b->getTimeForGame()/3600,
-	    (b->getTimeForGame() / 60)  % 60,
-	    b->getTimeForGame() % 60);
+  char s[1024];
+  sprintf(s, 
+	  i18n("Your time: %02d:%02d:%02d %s"),
+	  b->getTimeForGame()/3600,
+	  (b->getTimeForGame() / 60)  % 60,
+	  b->getTimeForGame() % 60,
+	  b->isPaused()?" (Paused)": ""
+	  );
 
   sb->changeItem(s, 1);
 }

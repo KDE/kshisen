@@ -49,6 +49,10 @@
 #include <kmsgbox.h>
 #include <debug.h>
 #include <klocale.h>
+#include <kiconloader.h>
+#include <kglobal.h>
+#include <kstddirs.h>
+#include <qbitmap.h>
 
 #ifdef DEBUGGING
 #include <unistd.h>
@@ -60,11 +64,11 @@
 #define DEFAULTDELAY	500
 #define DEFAULTSHUFFLE	4
 
-extern QString PICDIR;
-
 Board::Board(QWidget *parent) : QWidget(parent) {
-  trying = FALSE;
-  _solvable_flag = TRUE;
+  pausedIcon = 0;
+  paused = false;
+  trying = false;
+  _solvable_flag = true;
   grav_col_1 = -1;
   grav_col_2 = -1;
   setGravityFlag(false);
@@ -82,12 +86,12 @@ Board::Board(QWidget *parent) : QWidget(parent) {
     pm_tile[i] = 0;
 
   setDelay(DEFAULTDELAY);
-  _redo.setAutoDelete(TRUE);
-  _undo.setAutoDelete(TRUE);
+  _redo.setAutoDelete(true);
+  _undo.setAutoDelete(true);
 
   loadTiles(1);
   field = 0;
-  QPixmap bg((PICDIR + "/kshisen_bgnd.xpm"));
+  QPixmap bg(KGlobal::dirs()->findResource("appdata", "kshisen_bgnd.xpm"));
   setBackgroundPixmap(bg);
   connect(this, SIGNAL(fieldClicked(int, int)),
 	  this, SLOT(marked(int, int)));
@@ -245,22 +249,28 @@ bool Board::loadTiles(float scale) {
       pm_tile[i] = 0;
     }
 
-  QPixmap pm((PICDIR + "/kshisen.xpm"));
+  // locate tileset
+  QPixmap pm(KGlobal::dirs()->findResource("appdata", "kshisen.xpm"));
+  QBitmap mask(KGlobal::dirs()->findResource("appdata", "mask.xpm"));
   if(pm.width() == 0 || pm.height() == 0) {
     KMsgBox::message(0, i18n("Shisen-Sho"), 
 		     i18n("Cannot load pixmaps!"));
     exit(1);
   }
+  pm.setMask(mask);
   
   if(pm.width() == 0 || pm.height() == 0)
-    return FALSE;
+    return false;
 
   x = pm.width() / 9;
   y = pm.height() / 5;
   for(i = 0; i < 9; i++)
     for(j = 0; j < 5; j++) {
 	pm_tile[i + j*9] = new QPixmap(x,y);
+	QBitmap bm(x, y);
 	bitBlt(pm_tile[i + j*9], 0, 0, &pm, x * i, y * j, x, y, CopyROP);
+	bitBlt(&bm, 0, 0, &mask, x *i, y * j, x, y, CopyROP);
+	pm_tile[i+j*9]->setMask(bm);
 	if(scale != 1.0) {
 	  QWMatrix wm;
 	  wm.scale(scale, scale);
@@ -268,7 +278,7 @@ bool Board::loadTiles(float scale) {
 	}
     }
   
-  return TRUE;
+  return true;
 }
 
 void Board::newGame() {
@@ -337,7 +347,7 @@ void Board::newGame() {
     setField(x2, y2, t);
   }
 
-  // do not make solvable if _solvable_flag is FALSE
+  // do not make solvable if _solvable_flag is false
   if(!_solvable_flag) {
     if(!trying) {
       update();
@@ -354,7 +364,7 @@ void Board::newGame() {
   int *tiles = new int[x_tiles() * y_tiles()];
   int *pos = new int[x_tiles() * y_tiles()];
 
-  while(!solvable(TRUE)) {
+  while(!solvable(true)) {
     // generate a list of free tiles and positions
     int num_tiles = 0;
     for(i = 0; i < x_tiles() * y_tiles(); i++)
@@ -411,7 +421,7 @@ void Board::updateField(int x, int y) {
 	  pm_tile[0]->width(),
 	  pm_tile[0]->height());
   if(isUpdatesEnabled())
-    repaint(r, TRUE);
+    repaint(r, true);
 }
 
 int MIN(int a, int b) {
@@ -451,27 +461,37 @@ QPixmap *Board::lighten(QPixmap *src) {
   return pm;
 }
 
-void Board::paintEvent(QPaintEvent *e) {
+void Board::paintEvent(QPaintEvent *e) {  
   QPainter p;
   p.begin(this);
-  for(int i = 0; i < x_tiles(); i++)
-    for(int j = 0; j < y_tiles(); j++) {
-      if(getField(i, j) == EMPTY)
-	continue;
 
-      int xpos = XBORDER + i * pm_tile[1]->width();
-      int ypos = YBORDER + j * pm_tile[1]->height();
-      QRect r(xpos, ypos, pm_tile[1]->width(), pm_tile[1]->height());
-      if(e->rect().intersects(r)) {
-	// check if it is a marked piece
-	if(i == mark_x && j == mark_y) {
+  if(paused) {
+    if(!pausedIcon)
+      pausedIcon = new QPixmap(KGlobal::dirs()->findResource("appdata", "paused.xpm"));
+
+    p.drawPixmap((width()-pausedIcon->width())/2, 
+		 (height()-pausedIcon->height())/2, 
+		 *pausedIcon);
+  } else {
+    for(int i = 0; i < x_tiles(); i++)
+      for(int j = 0; j < y_tiles(); j++) {
+	if(getField(i, j) == EMPTY)
+	  continue;
+
+	int xpos = XBORDER + i * pm_tile[1]->width();
+	int ypos = YBORDER + j * pm_tile[1]->height();
+	QRect r(xpos, ypos, pm_tile[1]->width(), pm_tile[1]->height());
+	if(e->rect().intersects(r)) {
+	  // check if it is a marked piece
+	  if(i == mark_x && j == mark_y) {
 	    QPixmap *lpm = lighten(pm_tile[getField(i, j)-1]);
 	    p.drawPixmap(xpos, ypos, *lpm);
 	    delete lpm;
-	} else
-	  p.drawPixmap(xpos, ypos, *pm_tile[getField(i, j)-1]);
+	  } else
+	    p.drawPixmap(xpos, ypos, *pm_tile[getField(i, j)-1]);
+	}
       }
-    }
+  }
   p.end();
 }
 
@@ -544,27 +564,27 @@ bool Board::canMakePath(int x1, int y1, int x2, int y2) {
   if(x1 == x2) {
     for(i = MIN(y1, y2)+1; i < MAX(y1, y2); i++) 
       if(getField(x1, i) != EMPTY)
-	return FALSE;
+	return false;
   
-    return TRUE;
+    return true;
   } 
 
   if(y1 == y2) {
     for(i = MIN(x1, x2)+1; i < MAX(x1, x2); i++)
       if(getField(i, y1) != EMPTY)
-	return FALSE;
+	return false;
 
-    return TRUE;
+    return true;
   }
 
-  return FALSE;
+  return false;
 }
 
 bool Board::findPath(int x1, int y1, int x2, int y2) {
  clearHistory();
 
   if(findSimplePath(x1, y1, x2, y2))
-     return TRUE;
+     return true;
   else {
     // find 3-way path
     int dx[4] = {1, 0, -1, 0};
@@ -584,7 +604,7 @@ bool Board::findPath(int x1, int y1, int x2, int y2) {
 	  // insert history point
 	  history[0].x = x1;
 	  history[0].y = y1;
-	  return TRUE;	 
+	  return true;	 
 	}
 
 	newx += dx[i];
@@ -593,14 +613,14 @@ bool Board::findPath(int x1, int y1, int x2, int y2) {
     }
 
     clearHistory();
-    return FALSE;
+    return false;
   }
 
-  return FALSE;
+  return false;
 }
 
 bool Board::findSimplePath(int x1, int y1, int x2, int y2) {
-  bool r = FALSE;
+  bool r = false;
 
   // find direct line
   if(canMakePath(x1, y1, x2, y2)) {
@@ -608,7 +628,7 @@ bool Board::findSimplePath(int x1, int y1, int x2, int y2) {
     history[0].y = y1;
     history[1].x = x2;
     history[1].y = y2;
-    r = TRUE;
+    r = true;
   } else {
     if(!(x1 == x2 || y1 == y2)) // requires complex path
       if(getField(x2, y1) == EMPTY &&
@@ -619,7 +639,7 @@ bool Board::findSimplePath(int x1, int y1, int x2, int y2) {
 	history[1].y = y1;
 	history[2].x = x2;
 	history[2].y = y2;
-	r = TRUE;
+	r = true;
       } else if(getField(x1, y2) == EMPTY &&
 		canMakePath(x1, y1, x1, y2) && canMakePath(x1, y2, x2, y2)) {
 	history[0].x = x1;
@@ -628,7 +648,7 @@ bool Board::findSimplePath(int x1, int y1, int x2, int y2) {
 	history[1].y = y2;
 	history[2].x = x2;
 	history[2].y = y2;
-	r = TRUE;
+	r = true;
       }
   }
   
@@ -755,6 +775,41 @@ void Board::undo() {
   if(canUndo()) {
     undrawArrow();
     Move *m = _undo.take(_undo.count() - 1);
+    if(gravityFlag()) {
+      int y;
+      int delta = 1;
+      
+      if(m->x1 == m->x2) {
+	delta++;
+
+	/* damned, I hate this. This undo/redo stuff is really complicated
+	 * when used with gravity. This avoids a bug when both tiles reside
+	 * in the same row, but not adjascent y positions. In that case, the
+	 * order of undo is important
+	 */
+	if(m->y1>m->y2) {
+	  int t = m->x1;
+	  m->x1 = m->x2;
+	  m->x2 = t;
+	  t = m->y1;
+	  m->y1 = m->y2;
+	  m->y2 = t;
+	}
+      }
+      
+      for(y = 0; y <= m->y1-1; y++) {
+	setField(m->x1, y, getField(m->x1, y+delta));
+	updateField(m->x1, y);
+      }
+     
+      if(m->x1 != m->x2) {
+	for(y = 0; y < m->y2; y++) {
+	  setField(m->x2, y, getField(m->x2, y+1));
+	  updateField(m->x2, y);
+	}
+      }
+    }
+
     setField(m->x1, m->y1, m->tile);
     setField(m->x2, m->y2, m->tile);
     updateField(m->x1, m->y1);
@@ -772,6 +827,8 @@ void Board::redo() {
     setField(m->x2, m->y2, EMPTY);
     updateField(m->x1, m->y1);
     updateField(m->x2, m->y2);
+    gravity(m->x1, true);
+    gravity(m->x2, true);
     _undo.append(m);
     emit changed();
   }
@@ -823,13 +880,13 @@ void Board::makeHintMove() {
 void Board::finish() {
   int x1, y1, x2, y2;
   History h[4];
-  bool ready=FALSE;
+  bool ready=false;
 
   while(!ready && getHint_I(x1, y1, x2, y2, h)) {
     mark_x = -1;
     mark_y = -1;
     if(tilesLeft() == 2)
-      ready = TRUE;
+      ready = true;
     marked(x1, y1);
     marked(x2, y2);
     kapp->processEvents();
@@ -874,7 +931,7 @@ bool Board::getHint_I(int &x1, int &y1, int &x2, int &y2, History h[4]) {
 		  y2 = yy;
 		  for(int i = 0; i < 4; i++)
 		    history[i] = old[i];
-		  return TRUE;
+		  return true;
 		}
 	
 	clearHistory();
@@ -884,7 +941,7 @@ bool Board::getHint_I(int &x1, int &y1, int &x2, int &y2, History h[4]) {
   for(int i = 0; i < 4; i++)
     history[i] = old[i];
 
-  return FALSE;
+  return false;
 }
 
 void Board::setShuffle(int newvalue) {
@@ -914,7 +971,10 @@ int Board::getTimeForGame() {
   if(tilesLeft() == 0) 
     return time_for_game;
   else
-    return (int)(time((time_t *)0) - starttime);
+    if(paused)
+      return (int)(pause_start - starttime);
+    else
+      return (int)(time((time_t *)0) - starttime);
 }
 
 bool Board::solvable(bool norestore) {
@@ -960,6 +1020,17 @@ bool Board::gravityFlag() {
 
 void Board::setGravityFlag(bool b) {
   gravity_flag = b;
+}
+
+bool Board::pause() {
+  paused = !paused;
+  if(paused)
+    pause_start = time((time_t *)0);
+  else
+    starttime += time((time_t *)0) - pause_start;
+  update();
+
+  return paused;
 }
 
 #include "board.moc"

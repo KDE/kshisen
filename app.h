@@ -72,6 +72,7 @@ private slots:
   void updateScore();
 
 private:
+  void lockMenus(bool);
   QString getPlayerName();
   void readHighscore();
   void writeHighscore();

@@ -109,6 +109,7 @@ public:
   int  x_tiles();
   int  y_tiles();
 
+  bool isPaused() { return paused; }
 
 signals:
   void fieldClicked(int, int);
@@ -118,6 +119,9 @@ signals:
   void changed();
   void sizeChange();
   void endOfGame();
+
+public slots:
+  bool pause();
 
 private slots:
   void marked(int, int);
@@ -144,6 +148,7 @@ private: // functions
 private:
   time_t starttime;
   time_t time_for_game;
+  QPixmap *pausedIcon;
 
   QList<Move> _undo;
   QList<Move> _redo;
@@ -158,6 +163,9 @@ private:
   int _y_tiles;
   int _delay;
   int _shuffle;
+
+  bool paused;
+  time_t pause_start;
 
   bool trying;
   bool gravity_flag;

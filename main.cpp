@@ -39,12 +39,8 @@
 #include <kapp.h>
 #include "app.h"
 
-QString PICDIR;
-
 int main(int argc, char **argv) {
-  KApplication a(argc, argv);
-
-  PICDIR = a.kde_datadir() + "/kshisen/pics/";
+  KApplication a(argc, argv, "kshisen");
 
   App *app = new App();
   app->resize(800, 500);
