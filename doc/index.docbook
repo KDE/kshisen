@@ -1,10 +1,10 @@
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN" [
- <!ENTITY kshisen "<application>Shisen-Sho</application>">
+ <!ENTITY kshisen "<application>KShisen-Sho</application>">
  <!ENTITY % addindex "IGNORE">
  <![ %addindex; [ <!ENTITY docindex SYSTEM "docindex.docbook"> ]]>
 ]>
 
-<book lang="en" id="KShisen">
+<book lang="en">
 <bookinfo>
 <title>The KShisen-Sho Handbook</title>
 
@@ -12,21 +12,14 @@
 <author>
 <firstname>Dirk</firstname>
 <surname>Doerflinger</surname>
+<affiliation>
+<address><email>ddoerflinger@web.de</email></address>
+</affiliation>
 </author>
 </authorgroup>
 
 <date>15/05/2000</date>
-<releaseinfo>0.1</releaseinfo>
-
-<revhistory>
-<revision>
-<revnumber>0.1</revnumber>
-<date>15/05/2000</date>
-<authorinitials>D.D.</authorinitials>
-<revremark>Started from scratch
-</revremark>
-</revision>
-</revhistory>
+<releaseinfo>1.03.00</releaseinfo>
 
 <abstract>
 <para>This Handbook describes &kshisen; Version 1.3</para>
@@ -39,12 +32,13 @@
       <keyword>game</keyword>
       <keyword>shisen-sho</keyword>
 </keywordset>
+
 </bookinfo>
 
 
-
-<chapter id="Introduction">
+<chapter id="introduction">
 <title>Introduction</title>
+
 <para>
 &kshisen; is a single-player-game similar to Mahjongg and uses the same set of tiles as Mahjongg.</para>
 <para>
@@ -53,9 +47,10 @@ The object of the game is to remove all tiles from the field.
 </chapter>
 
 
-<chapter id="Installation">
+<chapter id="installation">
 <title>Installation</title>
-<sect1 id="Getting-KShisen">
+
+<sect1 id="getting-kshisen">
 <title>How to obtain Shisen-Sho</title>
 
 <para>
@@ -68,8 +63,9 @@ The object of the game is to remove all tiles from the field.
 the main ftp site of the KDE project.</para>
 </sect1>
 
-<sect1 id="Requirements">
+<sect1 id="requirements">
 <title>Requirements</title>
+
 <para>
 In order to successfully compile &kshisen;, you need KDE 2.0
 All required libraries as well as &kshisen; itself can be found on
@@ -77,7 +73,7 @@ All required libraries as well as &kshisen; itself can be found on
 </sect1>
 
 
-<sect1 id="Compilation">
+<sect1 id="compilation">
 <title>Compilation and installation</title>
 
 <para>
@@ -101,9 +97,10 @@ Since <application>Shisen-Sho</application> uses <application>autoconf</applicat
 </chapter>
 
 
-<chapter id="PlayingKShisen">
+<chapter id="playing-kshisen">
 <title>Playing &kshisen;</title>
-<sect1 id="Playing-KShisen">
+
+<sect1 id="rules">
 <title>Rules</title>
 
 <para>
@@ -132,8 +129,9 @@ it may happen that you choose the wrong way).
 </sect1>
 
 
-<sect1 id="gamemenu">
+<sect1 id="game-menu">
 <title>The Game-Menu</title>
+
 <para>
 The menu <guimenu>Game</guimenu> lets you control the status of the current
 game, as there are:
@@ -220,15 +218,16 @@ Shows the (local) Top-Ten-charts of Shisen-Sho.
 </varlistentry>
 </variablelist>
 Some of the menu items can also be controlled by hot-keys. See the section
-<link linkend="keybindings" endterm="keybindings-title"></link> for a list.
+<link linkend="key-bindings"></link> for a list.
 </para> 
 </sect1>
 </chapter>
 
 
-<chapter id="Configuration">
-<title>Configuration </title>
-<sect1 id="optionsmenu">
+<chapter id="configuration">
+<title>Configuration</title>
+
+<sect1 id="options-menu">
 <title>The Options-Menu</title>
 
 <para>
@@ -293,8 +292,8 @@ If this menu-item is checked, only solvable games will be created when a new gam
 </para>
 </sect1>
 
-<sect1 id="keybindings">
-<title id="keybindings-title">Key Bindings</title>
+<sect1 id="key-bindings">
+<title>Key Bindings</title>
 
 <para>Default key bindings are:
 </para>
@@ -311,7 +310,7 @@ If this menu-item is checked, only solvable games will be created when a new gam
 </chapter>
 
 
-<chapter id="Credits">
+<chapter id="credits">
 <title>Credits and License</title>
 
 <para>
@@ -331,11 +330,5 @@ This program is licensed under the terms of the
 <ulink URL="common/gpl-license.html">GNU GPL</ulink>.
 </para>
 </chapter>
+
 </book>
-<!--
-Local Variables:
-mode: sgml
-sgml-omittag: nil
-sgml-shorttag: t
-End:
--->
