@@ -1,3 +1,14 @@
+2003-05-23  Dave Corrie  <kde@davecorrie.com> (v.1.4.90)
+
+	* GUI cleanup
+	* Double-buffer painting
+	* Replaced paused pixmap with i18n-friendly text
+	* Code cleanup
+	* Added 'Prefer Unscaled Tiles' feature
+	* Removed 'Is Game Solvable?' feature (it didn't work). It
+	  will be re-instated when a suitable algorithm is present
+	* Fix bug 53893: Gravity should be applied before calculating hints
+
 2002-11-27  Dave Corrie  <kde@davecorrie.com> (v.1.4.1)
 
 	In conjunction with Jason Lane:
