@@ -49,7 +49,7 @@
 #include <qvaluevector.h>
 #include "board.h"
 
- class KHighscore;
+class KHighscore;
 
 struct HighScore {
   QString name;
@@ -90,7 +90,6 @@ private slots:
   void hallOfFame();
   void keyBindings();
 
-
 private:
   void lockMenus(bool);
   QString getPlayerName();
@@ -110,12 +109,17 @@ private:
   void showHighscore(int focusitem = -1);
 
   void initKAction();
+  void setCheatMode();
+  void resetCheatMode();
 
 private:
   Board *b;
   QValueVector<HighScore> highscore;
   KHighscore* highscoreTable;
   bool cheat;
+  
+  enum statusBarItems { SBI_TIME, SBI_TILES, SBI_CHEAT };
+  
 };
 
 #endif

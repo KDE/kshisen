@@ -84,9 +84,10 @@ App::App() : KMainWindow(0) {
   b = new Board(this);
   setCentralWidget(b);
 
-  statusBar()->insertItem(i18n("Your time: XX:XX:XX (XXXXXXXXXXXXXXX)"), 1);
-  statusBar()->insertItem(i18n("Cheat mode"), 2);
-  statusBar()->changeItem("", 2);
+  statusBar()->insertItem("", SBI_TIME);
+  statusBar()->insertItem("", SBI_TILES);
+  statusBar()->insertFixedItem(i18n(" Cheat mode "), SBI_CHEAT);
+  statusBar()->changeItem("", SBI_CHEAT);
 
   connect(b, SIGNAL(changed()),
 	  this, SLOT(enableItems()));
@@ -199,8 +200,7 @@ void App::hallOfFame() {
 
 void App::newGame() {
   b->newGame();
-  cheat = FALSE;
-  statusBar()->changeItem("", 2);
+  resetCheatMode();
   enableItems();
 }
 
@@ -239,8 +239,7 @@ void App::pause() {
 void App::undo() {
   if(b->canUndo()) {
     b->undo();
-    cheat = TRUE;
-    statusBar()->changeItem(i18n("Cheat mode"), 2);
+    setCheatMode();
     enableItems();
   }
 }
@@ -256,8 +255,7 @@ void App::hint() {
   b->makeHintMove();
 #else
   b->getHint();
-  cheat = TRUE;
-  statusBar()->changeItem(i18n("Cheat mode"), 2);
+  setCheatMode();
 #endif
   enableItems();
 }
@@ -285,6 +283,7 @@ void App::changeSpeed() {
 void App::changeSize() {
   int index = ((KSelectAction*)actionCollection()->action("options_size"))->currentItem();
   b->setSize(size_x[index], size_y[index]);
+  resetCheatMode();  
   kapp->config()->writeEntry("Size", 300 + index);// 300 is from the old QPopuMenu+ID way - before KAction
 }
 
@@ -292,6 +291,7 @@ void App::changeLevel() {
   int index = ((KSelectAction*)actionCollection()->action("options_level"))->currentItem();
   b->setShuffle(index * 4 + 1);
   b->newGame();
+  resetCheatMode();
   kapp->config()->writeEntry("Level", 311 + index); // 311 is from the old QPopuMenu+ID way - before KAction
 }
 
@@ -366,21 +366,49 @@ void App::slotEndOfGame() {
     }
   }
 
-  cheat = FALSE;
-  statusBar()->changeItem("", 2);
+  resetCheatMode();
   b->newGame();
 }
 
 void App::updateScore() {
-  QString s = i18n("Your time: %1:%2:%3 %4")
-		.arg(QString().sprintf("%02d", b->getTimeForGame()/3600))
-		.arg(QString().sprintf("%02d", (b->getTimeForGame() / 60) % 60))
-		.arg(QString().sprintf("%02d", b->getTimeForGame() % 60))
-		.arg(b->isPaused()?i18n(" (Paused)"):QString::null);
 
-  statusBar()->changeItem(s, 1);
+  int t = b->getTimeForGame();
+  QString s = i18n(" Your time: %1:%2:%3%4 ")
+		.arg(QString().sprintf("%02d", t / 3600 ))
+		.arg(QString().sprintf("%02d", (t / 60) % 60 ))
+		.arg(QString().sprintf("%02d", t % 60 ))
+		.arg(b->isPaused()?i18n("(Paused) "):QString::null);
+  statusBar()->changeItem(s, SBI_TIME);
+  
+  // Number of tiles
+  int tl = (b->x_tiles() * b->y_tiles());
+  s = i18n(" Removed: %1/%2 ") 
+		.arg(QString().sprintf("%d", tl - b->tilesLeft()))
+		.arg(QString().sprintf("%d", tl ));
+  statusBar()->changeItem(s, SBI_TILES);
+      
 }
 
+void App::setCheatMode() {
+  
+  // set the cheat mode if not set
+  if (!cheat) {
+   	cheat = TRUE;
+   	statusBar()->changeItem(i18n(" Cheat mode "), SBI_CHEAT);
+  } 
+
+}
+
+void App::resetCheatMode() {
+  
+  // reset cheat mode if set
+  if (cheat) {
+  	cheat = FALSE;
+  	statusBar()->changeItem("", SBI_CHEAT);
+  }
+
+} 
+ 
 QString App::getPlayerName() {
   QDialog *dlg = new QDialog(this, "Hall Of Fame", TRUE);
 
