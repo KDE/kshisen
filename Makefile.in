@@ -5,6 +5,12 @@
 # -I.. 	         : needed for config.h
 CXXFLAGS= @CXXFLAGS@ @all_includes@ -DHAVE_CONFIG_H -I..
 
+top_builddir = ..
+KDE_RPATH = @KDE_RPATH@
+LIBTOOL = @LIBTOOL@
+kde_libraries = @kde_libraries@
+qt_libraries = @qt_libraries@
+
 # @LDFLAGS@    : is set to -s (when not debuging) for stripping
 # @all_libra.@ : is set to all needed libraries paths for QT, KDE and X11
 # you need also @LIBSOCKET@, if you link with -lkfm
@@ -55,7 +61,7 @@ Makefile: Makefile.in
 	cd .. && CONFIG_FILES=kshisen/$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
 $(TARGET): $(SRCMETA) $(OBJECTS)
-	$(CXX) $(OBJECTS) -o $(TARGET) $(LDFLAGS)
+	$(LIBTOOL) --mode=link $(CXX) $(OBJECTS) -o $(TARGET) $(LDFLAGS) $(KDE_RPATH)
 
 clean:
 	rm -f *.o *.bak *~ *% #*
