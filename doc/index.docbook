@@ -161,7 +161,7 @@ Fame</guimenuitem></menuchoice></term>
 
 </variablelist>
 
-<para>Some of the menu items can also be controlled by hot-keys. See <xref linkend="key-bindings" /> for a list.</para> 
+<para>Some of the menu items can also be controlled by hot-keys. See <xref linkend="key-bindings"/> for a list.</para> 
 
 </sect1>
 </chapter>
