@@ -40,7 +40,6 @@
 #ifndef __APP__H__
 #define __APP__H__
 
-#include "kapp.h"
 #include <ktoolbar.h>
 #include <kstatusbar.h>
 #include <kmenubar.h>
