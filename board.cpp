@@ -54,6 +54,7 @@
 #include <kglobal.h>
 #include <kstandarddirs.h>
 #include <kmessagebox.h>
+#include <kdebug.h>
 
 #include "board.h"
 
@@ -65,7 +66,7 @@
 #define DEFAULTDELAY	500
 #define DEFAULTSHUFFLE	4
 
-Board::Board(QWidget *parent) : QWidget(parent) {
+Board::Board(QWidget *parent) : QWidget(parent, 0, WResizeNoErase) {
   pausedIcon = 0;
   paused = false;
   trying = false;
@@ -396,8 +397,12 @@ void Board::updateField(int x, int y, bool erase) {
 }
 
 void Board::paintEvent(QPaintEvent *e) {  
-  QPainter p;
-  p.begin(this);
+
+  QRect ur = e->rect();            // rectangle to update
+  QPixmap pm(ur.size());           // Pixmap for double-buffering
+  pm.fill(this, ur.topLeft());     // fill with widget background
+  QPainter p(&pm);
+  p.translate(-ur.x(), -ur.y());   // use widget coordinate system
 
   if(paused) {
     if(!pausedIcon)
@@ -428,6 +433,7 @@ void Board::paintEvent(QPaintEvent *e) {
       }
   }
   p.end();
+  bitBlt( this, ur.topLeft(), &pm );
 }
 
 void Board::marked(int x, int y) {
