@@ -57,6 +57,7 @@
 #include <kconfig.h>
 #include <kaction.h>
 #include <kstdaction.h>
+#include <kstdgameaction.h>
 #include <kdebug.h>
 
 static int size_x[5] = {14, 18, 24, 26, 30};
@@ -136,21 +137,22 @@ App::~App() {
 
 void App::initKAction() {
 //Game - does everything belong to here (esp. undo / redo)?
-  KStdAction::openNew(this, SLOT(newGame()), actionCollection(), "game_new");
-  KStdAction::quit(this, SLOT(quitGame()), actionCollection(), "game_quit");
-  KStdAction::undo(this, SLOT(undo()), actionCollection(), "game_undo");//belongs to edit, not game
-  KStdAction::redo(this, SLOT(redo()), actionCollection(), "game_redo");//belongs to edit, not game
+  KStdGameAction::gameNew(this, SLOT(newGame()), actionCollection());
+  KStdGameAction::quit(this, SLOT(quitGame()), actionCollection());
+  KStdGameAction::highscores(this, SLOT(hallOfFame()), actionCollection());
 
   (void)new KAction(i18n("Is game solvable?"), 0, this, SLOT(isSolvable()), actionCollection(), "game_solvable");
   (void)new KAction(i18n("Res&tart game"), KAccel::stringToKey("CTRL+R"), this, SLOT(restartGame()), actionCollection(), "game_restart");
   (void)new KAction(i18n("&Pause game"), 0, this, SLOT(pause()), actionCollection(), "game_pause");
-  (void)new KAction(i18n("Get &hint"), KAccel::stringToKey("CTRL+H"), this, SLOT(hint()), actionCollection(), "game_hint");
-  (void)new KAction(i18n("Hall of &Fame"), 0, this, SLOT(hallOfFame()), actionCollection(), "game_fame");
+  (void)new KAction(i18n("Get &hint"), KAccel::stringToKey("CTRL+T"), this, SLOT(hint()), actionCollection(), "game_hint");
 
 #ifdef DEBUGGING
   (void)new KAction("&Finish", 0, b, SLOT(finish()), actionCollection(), "game_finish");
 #endif
 
+//Edit
+  KStdAction::undo(this, SLOT(undo()), actionCollection());
+  KStdAction::redo(this, SLOT(redo()), actionCollection());
 
 //Settings
   QStringList list;
@@ -308,8 +310,8 @@ void App::lockMenus(bool lock) {
 
 void App::enableItems() {
   if(!b->isPaused()) {
-    actionCollection()->action("game_undo")->setEnabled(b->canUndo());
-    actionCollection()->action("game_redo")->setEnabled(b->canRedo());
+    actionCollection()->action(KStdAction::stdName(KStdAction::Undo))->setEnabled(b->canUndo());
+    actionCollection()->action(KStdAction::stdName(KStdAction::Redo))->setEnabled(b->canRedo());
     actionCollection()->action("game_restart")->setEnabled(b->canUndo());
     actionCollection()->action("options_gravity")->setEnabled(!b->canUndo());
     ((KToggleAction*)actionCollection()->action("options_gravity"))->setChecked(b->gravityFlag());
