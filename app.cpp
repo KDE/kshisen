@@ -142,14 +142,14 @@ App::~App() {
 }
 
 void App::initKAction() {
-//Game - does everything belong to here (esp. undo / redo)?
+//Game
   KStdGameAction::gameNew(this, SLOT(newGame()), actionCollection());
   KStdGameAction::quit(this, SLOT(quitGame()), actionCollection());
   KStdGameAction::highscores(this, SLOT(hallOfFame()), actionCollection());
+  KStdGameAction::pause(this, SLOT(pause()), actionCollection());
 
   (void)new KAction(i18n("Is game solvable?"), 0, this, SLOT(isSolvable()), actionCollection(), "game_solvable");
   (void)new KAction(i18n("Res&tart game"), KAccel::stringToKey("CTRL+R"), this, SLOT(restartGame()), actionCollection(), "game_restart");
-  (void)new KAction(i18n("&Pause game"), 0, this, SLOT(pause()), actionCollection(), "game_pause");
   (void)new KAction(i18n("Get &hint"), Key_H, this, SLOT(hint()), actionCollection(), "game_hint");
 
 #ifdef DEBUGGING

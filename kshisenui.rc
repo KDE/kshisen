@@ -5,7 +5,6 @@
     <Action name="game_hint"/>
     <Separator/>
     <Action name="game_restart"/>
-    <Action name="game_pause"/>
     <Action name="game_finish"/>
     <Separator/>
     <Action name="game_solvable"/>
@@ -23,6 +22,8 @@
   <Separator/>
   <Action name="edit_undo"/>
   <Action name="edit_redo"/>
+  <Separator/>
+  <Action name="game_pause"/>
   <Separator/>
   <Action name="help_contents"/>
 </ToolBar>
