@@ -101,7 +101,7 @@ static int DELAY[5] = {125, 250, 500, 750, 1000};
 
 extern int MAX(int, int);
 
-App::App() : KTopLevelWidget() {
+App::App() : KTMainWidget() {
   setCaption(i18n("Shisen-Sho"));
   readHighscore();
 

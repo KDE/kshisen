@@ -58,7 +58,7 @@ struct HighScore {
 
 const unsigned HIGHSCORE_MAX = 10;
 
-class App : public KTopLevelWidget {
+class App : public KTMainWindow {
   Q_OBJECT
 public:
   App();
