@@ -48,6 +48,8 @@
 #include <time.h>
 #include "board.h"
 
+ class KHighscore;
+
 struct HighScore {
   char name[32];
   int  seconds;
@@ -91,6 +93,14 @@ private slots:
 private:
   void lockMenus(bool);
   QString getPlayerName();
+
+  /**
+   * Read the old (befor @ref KHighscore) highscore table.
+   *
+   * This reads the config file first, then saves it in the new format and
+   * re-reads it again as a KHighscore table.
+   **/
+  void readOldHighscore();
   void readHighscore();
   void writeHighscore();
   int  insertHighscore(HighScore &);
@@ -104,6 +114,7 @@ private:
   Board *b;
   KStatusBar *sb;
   QArray<HighScore> highscore;
+  KHighscore* highscoreTable;
   bool cheat;
 };
 

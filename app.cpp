@@ -58,6 +58,7 @@
 #include <kaction.h>
 #include <kstdaction.h>
 #include <kstdgameaction.h>
+#include <khighscore.h>
 #include <kdebug.h>
 
 static int size_x[5] = {14, 18, 24, 26, 30};
@@ -68,7 +69,12 @@ extern int MAX(int, int);
 
 App::App() : KMainWindow(0) {
   setCaption(i18n("Shisen-Sho"));
-  readHighscore();
+  highscoreTable = new KHighscore();
+  if (highscoreTable->hasTable()) {
+    readHighscore();
+  } else {
+    readOldHighscore();
+  }
 
   cheat = FALSE;
   
@@ -489,6 +495,40 @@ int App::insertHighscore(HighScore &hs) {
 
 
 void App::readHighscore() {
+  int i = 0;
+  QStringList list;
+  
+  highscore.resize(0);
+  list = highscoreTable->readList("Highscore", HIGHSCORE_MAX);
+  for (int i = 0; i < list.count(); i++) {
+      highscore.resize(i+1);
+    
+      HighScore hs;
+      memset(hs.name, 0, sizeof(hs.name));
+      
+      QStringList e = QStringList::split(' ', list[i]);
+      int nelem = e.count();
+      hs.x = (*e.at(0)).toInt();
+      hs.y = (*e.at(1)).toInt();
+      hs.seconds = (*e.at(2)).toInt();
+      hs.date = (*e.at(3)).toInt();
+
+      if (nelem == 4) // old version <= 1.1
+      {
+        hs.gravity = 0;
+        strncpy(hs.name, (*e.at(4)).utf8(), 16);
+      }
+      else
+      {
+        hs.gravity = (*e.at(4)).toInt();
+        strncpy(hs.name, (*e.at(5)).utf8(), 16);
+      }
+
+      highscore[i] = hs;
+  }
+}
+
+void App::readOldHighscore() {
   int i;
   QString s, e, grp;
   KConfig *conf = kapp->config();
@@ -544,26 +584,25 @@ void App::readHighscore() {
 
   // restore old group
   conf->setGroup(grp);
-}
 
+  // write in new KHighscore format
+  writeHighscore();
+  // read form KHighscore format
+  readHighscore();
+}
 
 void App::writeHighscore() {
   int i;
-  QString s, e, grp;
-  KConfig *conf = kapp->config();
-
-  grp = conf->group();
-  conf->setGroup("Hall of Fame");
+  QString e;
+  QStringList list;
   for(i = 0; i < (int)highscore.size(); i++) {
-    s.sprintf("Highscore_%d", i);
     HighScore hs = highscore[i];
     e.sprintf("%d %d %d %ld %d %-16s",
 	      hs.x, hs.y, hs.seconds, hs.date, hs.gravity, hs.name);
-    conf->writeEntry(s, e);
+    list.append(e);
   }
-  
-  // restore old group
-  conf->setGroup(grp);
+  highscoreTable->writeList("Highscore", list);
+  highscoreTable->sync();
 }
 
 void App::showHighscore(int focusitem)  {
