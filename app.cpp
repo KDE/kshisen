@@ -103,7 +103,7 @@ static int DELAY[5] = {125, 250, 500, 750, 1000};
 
 extern int MAX(int, int);
 
-App::App() : KTMainWindow() {
+App::App() : KMainWindow(0) {
   setCaption(i18n("Shisen-Sho"));
   readHighscore();
 
@@ -179,17 +179,13 @@ App::App() : KTMainWindow() {
   mb->setAccel(Key_F1, ID_HHELP);
 
   mb->show();
-  setMenu(mb);
 
   b = new Board(this);  
-  setView(b);
-  b->show();
+  setCentralWidget(b);
 
   sb = new KStatusBar(this);
   sb->insertItem(i18n("Your time: XX:XX:XX (XXXXXXXXXXXXXXX)"), 1);
   sb->insertItem(i18n("Cheat mode"), 2);
-  sb->show();
-  setStatusBar(sb);
   sb->changeItem("", 2);
 
   tb = new KToolBar(this);
@@ -204,9 +200,6 @@ App::App() : KTMainWindow() {
 		   ID_GREDO, TRUE, i18n("Redo"));
   tb->insertButton(BarIcon("help"), 
 		   ID_HHELP, TRUE, i18n("Help"));
-  tb->show();
-  addToolBar(tb);
-  updateRects();
 
   connect(mb, SIGNAL(activated(int)),
 	  this, SLOT(menuCallback(int)));
@@ -436,7 +429,6 @@ void App::enableItems() {
 
 void App::sizeChanged() {
   b->setFixedSize(b->sizeHint());
-  updateRects();
 }
 
 void App::slotEndOfGame() {

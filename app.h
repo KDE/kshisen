@@ -40,7 +40,7 @@
 #ifndef __APP__H__
 #define __APP__H__
 
-#include <ktmainwindow.h>
+#include <kmainwindow.h>
 #include <ktoolbar.h>
 #include <kstatusbar.h>
 #include <kmenubar.h>
@@ -58,7 +58,7 @@ struct HighScore {
 
 const unsigned HIGHSCORE_MAX = 10;
 
-class App : public KTMainWindow {
+class App : public KMainWindow {
   Q_OBJECT
 
 public:
