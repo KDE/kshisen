@@ -147,10 +147,10 @@ void App::quitGame()
 
 void App::restartGame()
 {
-	board->setUpdatesEnabled(FALSE);
+	board->setUpdatesEnabled(false);
 	while(board->canUndo())
 		board->undo();
-	board->setUpdatesEnabled(TRUE);
+	board->setUpdatesEnabled(true);
 	board->update();
 	enableItems();
 }
@@ -284,11 +284,11 @@ void App::slotEndOfGame()
 		hs.gravity = (int)board->gravityFlag();
 
 		// check if we made it into Top10
-		bool isHighscore = FALSE;
+		bool isHighscore = false;
 		if(highscore.size() < HIGHSCORE_MAX)
-			isHighscore = TRUE;
+			isHighscore = true;
 		else if(isBetter(hs, highscore[HIGHSCORE_MAX-1]))
-			isHighscore = TRUE;
+			isHighscore = true;
 
 		if(isHighscore && !cheat)
 		{
@@ -337,7 +337,7 @@ void App::setCheatMode()
 	// set the cheat mode if not set
 	if(!cheat)
 	{
-		cheat = TRUE;
+		cheat = true;
 		statusBar()->changeItem(i18n(" Cheat mode "), SBI_CHEAT);
 	}
 }
@@ -347,14 +347,14 @@ void App::resetCheatMode()
 	// reset cheat mode if set
 	if(cheat)
 	{
-		cheat = FALSE;
+		cheat = false;
 		statusBar()->changeItem("", SBI_CHEAT);
 	}
 }
 
 QString App::getPlayerName()
 {
-	QDialog *dlg = new QDialog(this, "Hall of Fame", TRUE);
+	QDialog *dlg = new QDialog(this, "Hall of Fame", true);
 
 	QLabel  *l1  = new QLabel(i18n("You've made it into the \"Hall Of Fame\". Type in\nyour name so mankind will always remember\nyour cool rating."), dlg);
 	l1->setFixedSize(l1->sizeHint());
@@ -370,7 +370,7 @@ QString App::getPlayerName()
 	e->setFocus();
 
 	QPushButton *b = new KPushButton(KStdGuiItem::ok(), dlg);
-	b->setDefault(TRUE);
+	b->setDefault(true);
 	b->setFixedSize(b->sizeHint());
 
 	connect(b, SIGNAL(released()), dlg, SLOT(accept()));
@@ -507,7 +507,7 @@ void App::readOldHighscore()
 
 	highscore.resize(0);
 	i = 0;
-	bool eol = FALSE;
+	bool eol = false;
 	grp = conf->group();
 	conf->setGroup("Hall of Fame");
 	while ((i < (int)HIGHSCORE_MAX) && !eol)
@@ -542,7 +542,7 @@ void App::readOldHighscore()
 		}
 		else
 		{
-			eol = TRUE;
+			eol = true;
 		}
 		i++;
 	}
@@ -594,7 +594,7 @@ void App::writeHighscore()
 void App::showHighscore(int focusitem)
 {
 	// this may look a little bit confusing...
-	QDialog *dlg = new QDialog(0, "hall_Of_fame", TRUE);
+	QDialog *dlg = new QDialog(0, "hall_Of_fame", true);
 	dlg->setCaption(i18n("Hall of Fame"));
 
 	QVBoxLayout *tl = new QVBoxLayout(dlg, 10);
@@ -602,7 +602,7 @@ void App::showHighscore(int focusitem)
 	QLabel *l = new QLabel(i18n("Hall of Fame"), dlg);
 	QFont f = font();
 	f.setPointSize(24);
-	f.setBold(TRUE);
+	f.setBold(true);
 	l->setFont(f);
 	l->setFixedSize(l->sizeHint());
 	l->setFixedWidth(l->width() + 32);
@@ -619,7 +619,7 @@ void App::showHighscore(int focusitem)
 
 	// add titles
 	f = font();
-	f.setBold(TRUE);
+	f.setBold(true);
 	l = new QLabel(i18n("Rank"), dlg);
 	l->setFont(f);
 	l->setMinimumSize(l->sizeHint());
@@ -699,8 +699,8 @@ void App::showHighscore(int focusitem)
 	}
 
 	f = font();
-	f.setBold(TRUE);
-	f.setItalic(TRUE);
+	f.setBold(true);
+	f.setItalic(true);
 	for(i = 0; i < 10; i++)
 	{
 		for(j = 0; j < 5; j++)
@@ -725,7 +725,7 @@ void App::showHighscore(int focusitem)
 
 	// connect the "Close"-button to done
 	connect(b, SIGNAL(clicked()), dlg, SLOT(accept()));
-	b->setDefault(TRUE);
+	b->setDefault(true);
 	b->setFocus();
 
 	// make layout
