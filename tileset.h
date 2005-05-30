@@ -24,7 +24,7 @@
 #ifndef __IMAGEDATA__H__
 #define __IMAGEDATA__H__
 
-#include <qvaluevector.h>
+#include <qvector.h>
 
 class TileSet
 {
@@ -50,8 +50,8 @@ public:
 
 private:
 
-	QValueVector<QPixmap> scaledTiles;
-	QValueVector<QImage> unscaledTiles;
+	QVector<QPixmap> scaledTiles;
+	QVector<QImage> unscaledTiles;
 
 };
 

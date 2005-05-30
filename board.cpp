@@ -42,8 +42,9 @@
 #include <kglobalsettings.h>
 #include <kdebug.h>
 
+#include <qevent.h>
 #include <qpainter.h>
-#include <qpaintdevicemetrics.h>
+#include <q3paintdevicemetrics.h>
 #include <qtimer.h>
 
 #include "board.h"
@@ -58,7 +59,7 @@ static int size_y[5] = { 6,  8, 12, 14, 16};
 static int DELAY[5] = {1000, 750, 500, 250, 125};
 
 Board::Board(QWidget *parent, const char *name) : 
-       QWidget(parent, name, WResizeNoErase), field(0),
+       QWidget(parent, name, Qt::WResizeNoErase), field(0),
        _x_tiles(0), _y_tiles(0),
        _delay(125), paused(false),
        gravity_flag(true), _solvable_flag(true),
@@ -179,7 +180,7 @@ void Board::mousePressEvent(QMouseEvent *e)
 	}
 
 	// Mark tile
-	if(e->button() == LeftButton)
+	if(e->button() == Qt::LeftButton)
 	{
 		// Clear highlighted tiles
 		if(highlighted_tile != -1)
@@ -198,7 +199,7 @@ void Board::mousePressEvent(QMouseEvent *e)
 	}
 
 	// Assist by highlighting all tiles of same type
-	if(e->button() == RightButton)
+	if(e->button() == Qt::RightButton)
 	{
 		int clicked_tile = getField(pos_x, pos_y);
 
@@ -674,7 +675,6 @@ void Board::drawConnection(int timeout)
 		++pt2;
 	}
 
-	p.flush();
 	p.end();
 
 	QTimer::singleShot(timeout, this, SLOT(undrawConnection()));
@@ -1065,7 +1065,7 @@ bool Board::pause()
 
 QSize Board::sizeHint() const
 {
-	int dpi = QPaintDeviceMetrics(this).logicalDpiX();
+	int dpi = Q3PaintDeviceMetrics(this).logicalDpiX();
 	if (dpi < 75)
 	   dpi = 75;
 	return QSize(9*dpi,7*dpi);

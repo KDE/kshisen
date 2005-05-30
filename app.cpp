@@ -480,7 +480,7 @@ void App::readHighscore()
 
 	highscore.resize(0);
 
-	for (unsigned int i = 0; i < hi_x.count(); i++)
+	for (int i = 0; i < hi_x.count(); i++)
 	{
 		highscore.resize(i+1);
 
@@ -522,20 +522,20 @@ void App::readOldHighscore()
 
 			QStringList e = conf->readListEntry(s, ' ');
 			int nelem = e.count();
-			hs.x = (*e.at(0)).toInt();
-			hs.y = (*e.at(1)).toInt();
-			hs.seconds = (*e.at(2)).toInt();
-			hs.date = (*e.at(3)).toInt();
+			hs.x = e.at(0).toInt();
+			hs.y = e.at(1).toInt();
+			hs.seconds = e.at(2).toInt();
+			hs.date = e.at(3).toInt();
 
 			if(nelem == 4) // old version <= 1.1
 			{
 				hs.gravity = 0;
-				hs.name = *e.at(4);
+				hs.name = e.at(4);
 			}
 			else
 			{
-				hs.gravity = (*e.at(4)).toInt();
-				hs.name = *e.at(5);
+				hs.gravity = e.at(4).toInt();
+				hs.name = e.at(5);
 			}
 
 			highscore[i] = hs;
@@ -606,7 +606,7 @@ void App::showHighscore(int focusitem)
 	l->setFont(f);
 	l->setFixedSize(l->sizeHint());
 	l->setFixedWidth(l->width() + 32);
-	l->setAlignment(AlignCenter);
+	l->setAlignment(Qt::AlignCenter);
 	tl->addWidget(l);
 
 	// insert highscores in a gridlayout
@@ -643,7 +643,7 @@ void App::showHighscore(int focusitem)
 
 	QString s;
 	QLabel *e[10][5];
-	unsigned i, j;
+	signed i, j;
 
 	for(i = 0; i < 10; i++)
 	{
@@ -695,7 +695,7 @@ void App::showHighscore(int focusitem)
 		}
 
 		e[i][4] = new QLabel(s, dlg);
-		e[i][4]->setAlignment(AlignRight);
+		e[i][4]->setAlignment(Qt::AlignRight);
 	}
 
 	f = font();
@@ -715,7 +715,7 @@ void App::showHighscore(int focusitem)
 			if((int)i == focusitem)
 				e[i][j]->setFont(f);
 
-			table->addWidget(e[i][j], i+2, j, AlignCenter);
+			table->addWidget(e[i][j], i+2, j, Qt::AlignCenter);
 		}
 	}
 

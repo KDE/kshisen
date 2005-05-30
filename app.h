@@ -57,7 +57,7 @@ struct HighScore
 	int gravity;
 };
 
-const unsigned HIGHSCORE_MAX = 10;
+const signed HIGHSCORE_MAX = 10;
 
 class App : public KMainWindow
 {
@@ -111,7 +111,7 @@ private:
 private:
 	QString lastPlayerName;
 	Board *board;
-	QValueVector<HighScore> highscore;
+	QVector<HighScore> highscore;
 	KHighscore* highscoreTable;
 	bool cheat;
 
