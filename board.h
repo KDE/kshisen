@@ -185,6 +185,10 @@ private:
 	int grav_col_1, grav_col_2;
 
 	int highlighted_tile;
+	
+	int _connectionTimeout;
+	bool _paintConnection;
+	QPair<int, int> tileRemove1, tileRemove2;
 };
 
 #endif
