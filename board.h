@@ -42,6 +42,8 @@
 // Should this get the whole HAVE_SYS_TIME_H TIME_WITH_SYS_TIME treatment?
 #include <time.h>
 
+#include <q3ptrlist.h>
+
 #include <krandomsequence.h>
 #include <list>
 #include "tileset.h"
@@ -162,8 +164,8 @@ private:
 
 	KRandomSequence random;
 
-	QPtrList<Move> _undo;
-	QPtrList<Move> _redo;
+	Q3PtrList<Move> _undo;
+	Q3PtrList<Move> _redo;
 
 	int undraw_timer_id;
 	int mark_x;
@@ -183,6 +185,10 @@ private:
 	int grav_col_1, grav_col_2;
 
 	int highlighted_tile;
+	
+	int _connectionTimeout;
+	bool _paintConnection;
+	QPair<int, int> tileRemove1, tileRemove2;
 };
 
 #endif

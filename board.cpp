@@ -42,8 +42,9 @@
 #include <kglobalsettings.h>
 #include <kdebug.h>
 
+#include <qevent.h>
 #include <qpainter.h>
-#include <qpaintdevicemetrics.h>
+#include <q3paintdevicemetrics.h>
 #include <qtimer.h>
 
 #include "board.h"
@@ -58,12 +59,13 @@ static int size_y[5] = { 6,  8, 12, 14, 16};
 static int DELAY[5] = {1000, 750, 500, 250, 125};
 
 Board::Board(QWidget *parent, const char *name) : 
-       QWidget(parent, name, WResizeNoErase), field(0),
+       QWidget(parent, name, Qt::WResizeNoErase), field(0),
        _x_tiles(0), _y_tiles(0),
        _delay(125), paused(false),
        gravity_flag(true), _solvable_flag(true),
-	     grav_col_1(-1), grav_col_2(-1), highlighted_tile(-1)
+	     grav_col_1(-1), grav_col_2(-1), highlighted_tile(-1), _paintConnection(false)
 {
+	tileRemove1.first = -1;
 	// Randomize
 	setShuffle(DEFAULTSHUFFLE);
 
@@ -179,7 +181,7 @@ void Board::mousePressEvent(QMouseEvent *e)
 	}
 
 	// Mark tile
-	if(e->button() == LeftButton)
+	if(e->button() == Qt::LeftButton)
 	{
 		// Clear highlighted tiles
 		if(highlighted_tile != -1)
@@ -198,7 +200,7 @@ void Board::mousePressEvent(QMouseEvent *e)
 	}
 
 	// Assist by highlighting all tiles of same type
-	if(e->button() == RightButton)
+	if(e->button() == Qt::RightButton)
 	{
 		int clicked_tile = getField(pos_x, pos_y);
 
@@ -434,7 +436,9 @@ bool Board::isTileHighlighted(int x, int y) const
 	if(getField(x, y) == highlighted_tile)
 		return true;
 
-	if(!connection.empty())
+	// tileRemove1.first != -1 is used because the repaint of the first if
+	// on undrawConnection highlihgted the tiles that fell because of gravity
+	if(!connection.empty() && tileRemove1.first != -1)
 	{
 		if(x == connection.front().x && y == connection.front().y)
 			return true;
@@ -458,7 +462,6 @@ void Board::updateField(int x, int y, bool erase)
 
 void Board::paintEvent(QPaintEvent *e)
 {
-
 	QRect ur = e->rect();            // rectangle to update
 	QPixmap pm(ur.size());           // Pixmap for double-buffering
 	pm.fill(this, ur.topLeft());     // fill with widget background
@@ -497,6 +500,28 @@ void Board::paintEvent(QPaintEvent *e)
 	}
 	p.end();
 	bitBlt( this, ur.topLeft(), &pm );
+	
+	if (_paintConnection)
+	{
+		QPainter p;
+		p.begin(this);
+		p.setPen(QPen(QColor("red"), tiles.lineWidth()));
+
+		// Path.size() will always be >= 2
+		Path::const_iterator pathEnd = connection.end();
+		Path::const_iterator pt1 = connection.begin();
+		Path::const_iterator pt2 = pt1;
+		++pt2;
+		while(pt2 != pathEnd)
+		{
+			p.drawLine( midCoord(pt1->x, pt1->y), midCoord(pt2->x, pt2->y) );
+			++pt1;
+			++pt2;
+		}
+		p.end();
+		QTimer::singleShot(_connectionTimeout, this, SLOT(undrawConnection()));
+		_paintConnection = false;
+	}
 }
 
 void Board::marked(int x, int y)
@@ -536,8 +561,8 @@ void Board::marked(int x, int y)
 	{
 		madeMove(mark_x, mark_y, x, y);
 		drawConnection(getDelay());
-		setField(mark_x, mark_y, EMPTY);
-		setField(x, y, EMPTY);
+		tileRemove1 = QPair<int, int>(mark_x, mark_y);
+		tileRemove2 = QPair<int, int>(x, y);
 		grav_col_1 = x;
 		grav_col_2 = mark_x;
 		mark_x = -1;
@@ -658,30 +683,21 @@ void Board::drawConnection(int timeout)
 	updateField(connection.front().x, connection.front().y);
 	updateField(connection.back().x, connection.back().y);
 
-	QPainter p;
-	p.begin(this);
-	p.setPen(QPen(QColor("red"), tiles.lineWidth()));
-
-	// Path.size() will always be >= 2
-	Path::const_iterator pathEnd = connection.end();
-	Path::const_iterator pt1 = connection.begin();
-	Path::const_iterator pt2 = pt1;
-	++pt2;
-	while(pt2 != pathEnd)
-	{
-		p.drawLine( midCoord(pt1->x, pt1->y), midCoord(pt2->x, pt2->y) );
-		++pt1;
-		++pt2;
-	}
-
-	p.flush();
-	p.end();
-
-	QTimer::singleShot(timeout, this, SLOT(undrawConnection()));
+	_connectionTimeout = timeout;
+	_paintConnection = true;
+	update();
 }
 
 void Board::undrawConnection()
 {
+	if (tileRemove1.first != -1)
+	{
+		setField(tileRemove1.first, tileRemove1.second, EMPTY);
+		setField(tileRemove2.first, tileRemove2.second, EMPTY);
+		tileRemove1.first = -1;
+		repaint();
+	}
+	
 	if(grav_col_1 != -1 || grav_col_2 != -1)
 	{
 		gravity(grav_col_1, true);
@@ -1065,7 +1081,7 @@ bool Board::pause()
 
 QSize Board::sizeHint() const
 {
-	int dpi = QPaintDeviceMetrics(this).logicalDpiX();
+	int dpi = Q3PaintDeviceMetrics(this).logicalDpiX();
 	if (dpi < 75)
 	   dpi = 75;
 	return QSize(9*dpi,7*dpi);
