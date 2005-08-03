@@ -59,8 +59,8 @@
                     <property name="orientation">
                         <enum>Horizontal</enum>
                     </property>
-                    <property name="tickmarks">
-                        <enum>Below</enum>
+                    <property name="tickPosition">
+                        <enum>TicksBelow</enum>
                     </property>
                 </widget>
                 <widget class="QLabel" row="1" column="0">
@@ -111,8 +111,8 @@
                     <property name="orientation">
                         <enum>Horizontal</enum>
                     </property>
-                    <property name="tickmarks">
-                        <enum>Below</enum>
+                    <property name="tickPosition">
+                        <enum>TicksBelow</enum>
                     </property>
                 </widget>
                 <widget class="QLabel" row="1" column="0">
@@ -215,8 +215,8 @@
                     <property name="orientation">
                         <enum>Horizontal</enum>
                     </property>
-                    <property name="tickmarks">
-                        <enum>Below</enum>
+                    <property name="tickPosition">
+                        <enum>TicksBelow</enum>
                     </property>
                 </widget>
                 <widget class="QLabel" row="1" column="2">
