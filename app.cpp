@@ -141,7 +141,6 @@ void App::newGame()
 
 void App::quitGame()
 {
-	delete this;
 	kapp->quit();
 }
 
