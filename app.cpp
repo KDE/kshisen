@@ -45,7 +45,7 @@
 #include <khighscore.h>
 #include <kdebug.h>
 #include <kkeydialog.h>
-#include <kpopupmenu.h>
+#include <kmenu.h>
 #include <kstatusbar.h>
 #include <klocale.h>
 #include <kpushbutton.h>
@@ -227,7 +227,7 @@ void App::lockMenus(bool lock)
 	// Disable all actions apart from (un)pause, quit and those that are help-related.
 	// (Only undo/redo and hint actually *need* to be disabled, but disabling everything
 	// provides a good visual hint to the user, that they need to unpause to continue.
-	KPopupMenu* help = dynamic_cast<KPopupMenu*>(child("help", "KPopupMenu", false));
+	KMenu* help = dynamic_cast<KMenu*>(child("help", "KMenu", false));
 	KActionPtrList actions = actionCollection()->actions();
 	KActionPtrList::iterator actionIter = actions.begin();
 	KActionPtrList::iterator actionIterEnd = actions.end();
