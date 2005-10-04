@@ -28,6 +28,7 @@
 #include <kdebug.h>
 
 #include <qimage.h>
+#include <qpixmap.h>
 
 #include <algorithm>
 
