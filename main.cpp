@@ -40,6 +40,8 @@
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
 #include <kconfig.h>
+#include <klocale.h>
+#include <kglobal.h>
 
 #include "version.h"
 #include "app.h"
