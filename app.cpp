@@ -57,6 +57,7 @@
 #include <qlineedit.h>
 
 #include <cmath>
+#include <kglobal.h>
 
 #include "app.h"
 #include "prefs.h"
@@ -502,7 +503,7 @@ void App::readOldHighscore()
 	// this is for before-KHighscore-highscores
 	int i;
 	QString s, e, grp;
-	KConfig *conf = kapp->config();
+	KConfig *conf = KGlobal::config();
 
 	highscore.resize(0);
 	i = 0;
