@@ -70,7 +70,6 @@ int main(int argc, char **argv)
 	App *app = new App();
 	app->show();
 	a.setMainWidget(app);
-	a.config()->sync();
-  return a.exec();
+        return a.exec();
 }
 
