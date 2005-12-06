@@ -73,14 +73,14 @@
 
 1998-07-17  Mario Weilguni  <mweilguni@kde.org>
 	
-	* moved to version 1.0 (it´s stable enough now)
+	* moved to version 1.0 (itÂ´s stable enough now)
 
 1998-04-10  Mario Weilguni  <mweilguni@kde.org>
 
 	* better highscore management. highscores are now score-based, not
 	time based
 	* board.cpp: fixed some bugs
-	* the game doesn´t ask anymore for a name if the score
+	* the game doesnÂ´t ask anymore for a name if the score
 	  is not good enough for the hall of fame	
 
 0.2.1:
