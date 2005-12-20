@@ -15,23 +15,23 @@
 <firstname>Dirk</firstname>
 <surname>Doerflinger</surname>
 <affiliation>
-<address><email>ddoerflinger@web.de</email></address>
+<address>&Dirk.Doerflinger.mail;</address>
 </affiliation>
 </author>
 <othercredit role="reviewer">
 <firstname>Frerich</firstname><surname>Raabe</surname>
 <contrib>Reviewer</contrib>
-<affiliation><address><email>raabe@kde.org</email></address></affiliation>
+<affiliation><address>&Frerich.Raabe.mail;</address></affiliation>
 </othercredit>
+<!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
 
-<!-- TRANS:ROLES_OF_TRANSLATORS -->
 
-<date>2003-09-17</date>
-<releaseinfo>1.4.90</releaseinfo>
+<date>2005-12-17</date>
+<releaseinfo>1.5.1</releaseinfo>
 
 <abstract>
-<para>This Handbook describes &kshisen; Version 1.4.90</para>
+<para>This Handbook describes &kshisen; Version 1.5.1</para>
 </abstract>
 
 <keywordset>
@@ -76,11 +76,12 @@ can use the Hint feature to find two tiles which may be removed.  Clicking a
 tile with the &RMB; will show you all corresponding tiles, no matter if they are
 removable at the moment or not.</para>
 
-<para>The game is over if no moves are possible and some tiles are left on the
-board (this should not happen if the option <guimenuitem>Disallow Unsolvable
-Games</guimenuitem> in the <guimenu>Settings</guimenu> menu is checked, since for
-these games there is at least one way to solve it, though it may happen that you
-choose the wrong way).</para>
+<para>The game is over when no moves are possible. This could be due to 
+clearing all the tiles from the field or reaching a point in the game 
+where no two matching tiles can be connected by three lines.  
+Some games are unsolvable, if you would like to avoid unsolvable 
+games uncheck the the option <guilabel>Allow unsolvable
+games</guilabel> in the configuration dialog.</para>
 
 <para>The resulting score <quote>S</quote> is calculated using the
 following formula, assuming that <quote>n</quote> represents the
@@ -97,6 +98,10 @@ field:</para>
 <para>If you played with the <guilabel>Gravity</guilabel> setting enabled, this score
 will additionally get multiplied by two.</para>
 </sect1>
+</chapter>
+
+<chapter id="menu-reference">
+<title>Menu Reference</title>
 
 <sect1 id="game-menu">
 <title>The <guimenu>Game</guimenu> Menu</title>
@@ -129,8 +134,7 @@ tiles.</action></para></listitem>
 <guimenu>Game</guimenu>
 <guimenuitem>Pause</guimenuitem></menuchoice></term>
 <listitem><para><action>Pauses the entire game</action>, especially the timer
-which affects the scoring. The menu entry then changes to
-<guimenuitem>Resume Game</guimenuitem>, which is used for resuming the
+which affects the scoring. The menu entry is also used for resuming the
 game.</para></listitem>
 </varlistentry>
 
@@ -151,10 +155,10 @@ Highscores</guimenuitem></menuchoice></term>
 <listitem><para><action>Quits</action> &kshisen;. </para></listitem>
 </varlistentry>
 
-
 </variablelist>
 
-<para>Some of the menu items can also be controlled by hot-keys. See <xref linkend="key-bindings"/> for a list.</para> 
+<para>Some of the menu items can also be controlled by keykoard shortcuts. 
+See <xref linkend="key-bindings"/> for a list.</para> 
 
 </sect1>
 
@@ -191,107 +195,192 @@ next.</para></listitem>
 
 </variablelist>
 </sect1>
+
+<sect1 id="settings-menu">
+<title>The <guimenu>Settings</guimenu> Menu</title>
+
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Show Toolbar</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para>
+Toggle on and off the display of the toolbar.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Show Statusbar</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para>
+Toggle on and off the display of the status bar.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure Shortcuts...</guimenuitem>
+</menuchoice></term>
+<listitem><para>
+<action>Open a dialog which lets you redefine all the keyboard shortcuts.</action>
+</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure Toolbars...</guimenuitem>
+</menuchoice></term>
+<listitem><para>Displays a &kde; standard dialog where you can configure the toolbar icons.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure &kshisen;...</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para>Opens the <link linkend="configuration">configuration
+dialog</link> to change &kshisen; settings.
+The options will be saved automatically.</para></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+
+<sect1 id="helpmenu">
+<title>The <guimenu>Help</guimenu> Menu</title>
+
+&help.menu.documentation;
+
+</sect1>
+
+<sect1 id="key-bindings">
+<title>Shortcuts</title>
+
+<para>Default shortcuts are:
+</para>
+
+<informaltable>
+<tgroup cols="2">
+<tbody>
+<row><entry>New</entry><entry><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></entry></row>
+<row><entry>Restart Game</entry><entry><keycap>F5</keycap></entry></row>
+<row><entry>Pause</entry><entry><keycap>P</keycap></entry></row>
+<row><entry>Show Highscores</entry><entry><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></entry></row>
+<row><entry>Quit</entry><entry><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></entry></row>
+<row><entry>Undo</entry><entry><keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo></entry></row>
+<row><entry>Redo</entry><entry><keycombo action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo></entry></row>
+<row><entry>Hint</entry><entry><keycap>H</keycap></entry></row>
+<row><entry>&kshisen; Handbook</entry><entry><keycap>F1</keycap></entry></row>
+<row><entry>What's This</entry><entry><keycombo action="simul">&Ctrl;&Shift;<keycap>F1</keycap></keycombo></entry></row>
+</tbody>
+</tgroup>
+</informaltable>
+
+</sect1>
 </chapter>
 
 <chapter id="configuration">
 <title>Configuration</title>
 
-<sect1 id="settings-menu">
-<title>The <guimenu>Settings</guimenu> Menu</title>
+<para>Selecting the <menuchoice><guimenu>Settings</guimenu>
+<guimenuitem>Configure &kshisen;...</guimenuitem></menuchoice> menu item will
+open a configuration dialog which lets you alter the behavior of the game.</para>
 
-<para>&kshisen; has several possibilities to change its behavior. All options
-can be changed from the menu <guimenu>Settings</guimenu>.</para>
-
-<para>The options will be saved automatically.</para>
+<screenshot>
+<screeninfo>&kshisen; configuration dialog</screeninfo>
+<mediaobject>
+<imageobject><imagedata fileref="kshisen-configuration.png" format="PNG"/></imageobject>
+<textobject><phrase>&kshisen; configuration dialog</phrase></textobject>
+</mediaobject>
+</screenshot>
 
 <variablelist>
 <varlistentry>
-<term>
-<menuchoice><guimenu>Settings</guimenu>
-<guisubmenu>Size</guisubmenu></menuchoice></term>
-<listitem><para>In the sub-menu <guisubmenu>Size</guisubmenu> you can change the
-number of tiles on the board. The more tiles you have, the harder (and longer)
-the game will be. </para></listitem>
+<term><guilabel>Gravity</guilabel></term>
+<listitem><para>Checking this makes the game even harder: If a tile is
+removed, all tiles lying above it will fall down one step.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu>
-<guisubmenu>Speed</guisubmenu></menuchoice></term>
-<listitem><para>The sub-menu <guisubmenu>Speed</guisubmenu> sets the time for
-the tiles to disappear when connected correctly. </para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu>
-<guisubmenu>Level</guisubmenu></menuchoice></term>
-<listitem><para>Choose your game skill in the sub-menu
-<guisubmenu>Level</guisubmenu>.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu>
-<guimenuitem>Gravity</guimenuitem></menuchoice></term>
-<listitem><para>Checking this item makes the game even harder: If a tile is
-removed, all tiles lying above it will fall down one step. </para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu>
-<guimenuitem>Disallow Unsolvable Games</guimenuitem></menuchoice></term>
-<listitem><para>If this menu-item is checked, only solvable games will be
+<term><guilabel>Allow unsolvable games</guilabel></term>
+<listitem><para>If checked, only solvable games will be
 created when a new game is started. Note: You may still choose the wrong way and
 have to try again if you didn't solve the game, but if it's checked, the game
 <emphasis>will</emphasis> be solvable.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu>
-<guimenuitem>Prefer Unscaled Tiles</guimenuitem></menuchoice></term>
+<term><guilabel>Board Difficulty</guilabel></term>
+<listitem><para>The slider controls the difficulty of the board. There are three
+options <guilabel>Easy</guilabel>, <guilabel>Medium</guilabel> and 
+<guilabel>Hard</guilabel>.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Piece Removal Speed</guilabel></term>
+<listitem><para>Adjusting this slider alters the speed at which the pieces are 
+removed from the screen after a match has been made.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Prefer Unscaled Tiles</guilabel></term>
 <listitem><para>Resizing the window causes the tiles on the board to be scaled to
 match the window size. When this option is checked, the window is resized to fit
 the tiles' natural size. You can still adjust the size of the window. Doing so
 causes this mode to be disengaged.</para></listitem>
 </varlistentry>
 
+<varlistentry>
+<term><guilabel>Tile Size</guilabel></term>
+<listitem><para>This slider allows you to can change the number of tiles 
+on the board. The more tiles you have, the harder (and longer)
+the game will be.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guibutton>Help</guibutton></term>
+<listitem><para>Opens &kshisen; help pages. (this document).</para></listitem></varlistentry>
+
+<varlistentry>
+<term><guibutton>Defaults</guibutton></term>
+<listitem><para>Reverts all settings to defaults.</para></listitem></varlistentry>
+
+<varlistentry>
+<term><guibutton>OK</guibutton></term>
+<listitem><para>Saves your changes and closes the dialog.</para></listitem></varlistentry>
+
+<varlistentry>
+<term><guibutton>Apply</guibutton></term>
+<listitem><para>Saves your changes but doesn't close the dialog.</para></listitem></varlistentry>
+
+<varlistentry>
+<term><guibutton>Cancel</guibutton></term>
+<listitem><para>Cancels all your changes and closes the dialog.</para></listitem></varlistentry>
+
 </variablelist>
-
-</sect1>
-
-<sect1 id="key-bindings">
-<title>Key Bindings</title>
-
-<para>Default key bindings are:
-</para>
-<simplelist>
-<member>New: <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></member>
-<member>Restart Game: <keycombo><keycap>F5</keycap></keycombo></member>
-<member>Pause: <keycombo><keycap>P</keycap></keycombo></member>
-<member>Show Highscores: <keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></member>
-<member>Quit: <keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></member>
-
-<member>Undo: <keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo></member>
-<member>Redo: <keycombo action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo></member>
-<member>Hint: <keycombo><keycap>H</keycap></keycombo></member>
-
-<member>Prefer Unscaled Tiles: <keycombo><keycap>S</keycap></keycombo></member>
-
-<member>What's This?: <keycombo action="simul">&Shift;<keycap>F1</keycap></keycombo></member>
-</simplelist>
-</sect1>
 </chapter>
-
 
 <chapter id="credits">
 <title>Credits and License</title>
 
 <para>
-&kshisen; Copyright 1999 Mario Weilguni
-<email>mweilguni@sime.com</email>
+&kshisen; Copyright 1999 &Mario.Weilguni;
+&Mario.Weilguni.mail;
 </para>
 
 
 <para>
-Documentation Copyright 2000 Dirk Doerflinger
+Documentation Copyright 2000 &Dirk.Doerflinger;
 <email>ddoerflinger@gmx.net</email>
 </para>
 
