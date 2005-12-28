@@ -1,6 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
-Exec=kshisen %i %m -caption "%c"
+Exec=kshisen -caption "%c"
 Type=Application
 DocPath=kshisen/index.html
 Name=Shisen-Sho
