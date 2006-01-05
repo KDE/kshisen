@@ -515,7 +515,7 @@ void App::readOldHighscore()
 		s.sprintf("Highscore_%d", i);
 		if(conf->hasKey(s))
 		{
-			e = conf->readEntry(s);
+			e = conf->readEntry(s,QString());
 			highscore.resize(i+1);
 
 			HighScore hs;
