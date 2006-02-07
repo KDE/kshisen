@@ -75,7 +75,7 @@ void TileSet::resizeTiles(int maxWidth, int maxHeight)
 	if(maxHeight == tileHeight() && maxWidth == tileWidth())
 		return;
 
-	//kdDebug() << "tile size: " << maxWidth << "x" << maxHeight << endl;
+	//kDebug() << "tile size: " << maxWidth << "x" << maxHeight << endl;
 
 	QImage img;
 	for(int i = 0; i < nTiles; i++)

@@ -111,7 +111,7 @@ void Board::setField(int x, int y, int value)
 {
 	if(x < 0 || y < 0 || x >= x_tiles() || y >= y_tiles())
 	{
-		kdFatal() << "Attempted write to invalid field position "
+		kFatal() << "Attempted write to invalid field position "
 			"(" << x << ", " << y << ")" << endl;
 	}
 
@@ -123,7 +123,7 @@ int Board::getField(int x, int y) const
 #ifdef DEBUGGING
 	if(x < -1 || y < -1 || x > x_tiles() || y > y_tiles())
 	{
-		kdFatal() << "Attempted read from invalid field position "
+		kFatal() << "Attempted read from invalid field position "
 			"(" << x << ", " << y << ")" << endl;
 	}
 #endif
@@ -313,7 +313,7 @@ QSize Board::unscaledSize() const
 
 void Board::newGame()
 {
-	//kdDebug() << "NewGame" << endl;
+	//kDebug() << "NewGame" << endl;
 	int i, x, y, k;
 
 	mark_x = -1;
@@ -378,7 +378,7 @@ void Board::newGame()
 
 	while(!solvable(true))
 	{
-		//kdDebug() << "Not solvable" << endl;
+		//kDebug() << "Not solvable" << endl;
 		//dumpBoard();
 
 		// generate a list of free tiles and positions
@@ -898,7 +898,7 @@ void Board::finish()
 
 void Board::dumpBoard() const
 {
-	kdDebug() << "Board contents:" << endl;
+	kDebug() << "Board contents:" << endl;
 	for(int y = 0; y < y_tiles(); ++y)
 	{
 		QString row;
@@ -910,7 +910,7 @@ void Board::dumpBoard() const
 			else
 				row += QString("%1").arg(getField(x, y), 3);
 		}
-		kdDebug() << row << endl;
+		kDebug() << row << endl;
 	}
 }
 #endif
@@ -939,9 +939,9 @@ bool Board::getHint_I(Path& p) const
 							if(getField(xx, yy) == tile)
 								if(findPath(x, y, xx, yy, p))
 								{
-									//kdDebug() << "path.size() == " << p.size() << endl;
+									//kDebug() << "path.size() == " << p.size() << endl;
 									//for(Path::const_iterator i = p.begin(); i != p.end(); ++i)
-									//	kdDebug() << "pathEntry: (" << i->x << ", " << i->y
+									//	kDebug() << "pathEntry: (" << i->x << ", " << i->y
 									//		<< ") => " << getField(i->x, i->y) << endl;
 									return true;
 								}
@@ -1014,7 +1014,7 @@ bool Board::solvable(bool norestore)
 	Path p;
 	while(getHint_I(p))
 	{
-		kdFatal(getField(p.front().x, p.front().y) != getField(p.back().x, p.back().y))
+		kFatal(getField(p.front().x, p.front().y) != getField(p.back().x, p.back().y))
 			<< "Removing unmateched tiles: (" << p.front().x << ", " << p.front().y << ") => "
 			<< getField(p.front().x, p.front().y) << " (" << p.back().x << ", " << p.back().y << ") => "
             << getField(p.back().x, p.back().y) << endl;

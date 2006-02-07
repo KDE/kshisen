@@ -219,7 +219,7 @@ void App::loadSettings()
 
 		s += size() - board->size(); // compensate for chrome (toolbars, statusbars etc.)
 		resize(s);
-		//kdDebug() << "App::preferUnscaled() set size to: " << s.width() << " x " << s.height() << endl;
+		//kDebug() << "App::preferUnscaled() set size to: " << s.width() << " x " << s.height() << endl;
 	}
 }
 
@@ -262,7 +262,7 @@ void App::boardResized()
 	// If the board has been resized to a size that requires scaled tiles, then the
 	// 'Prefer Unscaled Tiles' option should be set to off.
 
-	//kdDebug() << "App::boardResized " << b->width() << " x " << b->height() << endl;
+	//kDebug() << "App::boardResized " << b->width() << " x " << b->height() << endl;
 	bool unscaled = Prefs::unscaled();
 	if(unscaled && board->size() != board->unscaledSize())
 		Prefs::setUnscaled(false);
