@@ -47,7 +47,7 @@
                     <property name="name">
                         <cstring>kcfg_Level</cstring>
                     </property>
-                    <property name="maxValue">
+                    <property name="maximum">
                         <number>2</number>
                     </property>
                     <property name="pageStep">
@@ -99,7 +99,7 @@
                     <property name="name">
                         <cstring>kcfg_Speed</cstring>
                     </property>
-                    <property name="maxValue">
+                    <property name="maximum">
                         <number>4</number>
                     </property>
                     <property name="pageStep">
@@ -200,10 +200,10 @@
                     <property name="name">
                         <cstring>kcfg_Size</cstring>
                     </property>
-                    <property name="minValue">
+                    <property name="minimum">
                         <number>0</number>
                     </property>
-                    <property name="maxValue">
+                    <property name="maximum">
                         <number>4</number>
                     </property>
                     <property name="pageStep">
