@@ -15,7 +15,7 @@ set(kshisen_SRCS
 
 kde4_automoc(${kshisen_SRCS})
 
-kde4_add_ui_files(kshisen_SRCS settings.ui )
+kde4_add_ui3_files(kshisen_SRCS settings.ui )
 
 kde4_add_kcfg_files(kshisen_SRCS prefs.kcfgc )
 
