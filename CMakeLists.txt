@@ -21,7 +21,7 @@ kde4_add_kcfg_files(kshisen_SRCS prefs.kcfgc )
 
 kde4_add_executable(kshisen ${kshisen_SRCS})
 
-target_link_libraries(kshisen  ${QT_AND_KDECORE_LIBS} kdeui )
+target_link_libraries(kshisen  ${LIB_KDEUI} kdegames )
 
 install_targets(/bin kshisen )
 
