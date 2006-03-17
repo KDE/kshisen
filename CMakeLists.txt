@@ -1,4 +1,5 @@
 kde4_header()
+project(kshisen)
 
 add_subdirectory( pics ) 
 
