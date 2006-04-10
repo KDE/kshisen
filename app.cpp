@@ -299,10 +299,10 @@ void App::slotEndOfGame()
 		}
 		else
 		{
-			QString s = i18n("Congratulations! You made it in %1:%2:%3")
-				.arg(QString().sprintf("%02d", board->getTimeForGame()/3600))
-				.arg(QString().sprintf("%02d", (board->getTimeForGame() / 60) % 60))
-				.arg(QString().sprintf("%02d", board->getTimeForGame() % 60));
+			QString s = i18n("Congratulations! You made it in %1:%2:%3",
+				 QString().sprintf("%02d", board->getTimeForGame()/3600),
+				 QString().sprintf("%02d", (board->getTimeForGame() / 60) % 60),
+				 QString().sprintf("%02d", board->getTimeForGame() % 60));
 
 			KMessageBox::information(this, s, i18n("End of Game"));
 		}
@@ -315,19 +315,19 @@ void App::slotEndOfGame()
 void App::updateScore()
 {
 	int t = board->getTimeForGame();
-	QString s = i18n(" Your time: %1:%2:%3 %4")
-		.arg(QString().sprintf("%02d", t / 3600 ))
-		.arg(QString().sprintf("%02d", (t / 60) % 60 ))
-		.arg(QString().sprintf("%02d", t % 60 ))
-		.arg(board->isPaused()?i18n("(Paused) "):QString::null);
+	QString s = i18n(" Your time: %1:%2:%3 %4",
+		 QString().sprintf("%02d", t / 3600 ),
+		 QString().sprintf("%02d", (t / 60) % 60 ),
+		 QString().sprintf("%02d", t % 60 ),
+		 board->isPaused()?i18n("(Paused) "):QString::null);
 
 	statusBar()->changeItem(s, SBI_TIME);
 
 	// Number of tiles
 	int tl = (board->x_tiles() * board->y_tiles());
-	s = i18n(" Removed: %1/%2 ")
-		.arg(QString().sprintf("%d", tl - board->tilesLeft()))
-		.arg(QString().sprintf("%d", tl ));
+	s = i18n(" Removed: %1/%2 ",
+		 QString().sprintf("%d", tl - board->tilesLeft()),
+		 QString().sprintf("%d", tl ));
 
 	statusBar()->changeItem(s, SBI_TILES);
 }
