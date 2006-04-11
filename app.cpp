@@ -740,7 +740,8 @@ void App::showHighscore(int focusitem)
 
 void App::keyBindings()
 {
-	KKeyDialog::configure(actionCollection(), this);
+	KKeyDialog::configure( actionCollection(), KKeyChooser::LetterShortcutsAllowed, this );
+		
 }
 
 /**
