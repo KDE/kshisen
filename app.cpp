@@ -229,9 +229,9 @@ void App::lockMenus(bool lock)
 	// (Only undo/redo and hint actually *need* to be disabled, but disabling everything
 	// provides a good visual hint to the user, that they need to unpause to continue.
 	KMenu* help = dynamic_cast<KMenu*>(child("help", "KMenu", false));
-	KActionPtrList actions = actionCollection()->actions();
-	KActionPtrList::iterator actionIter = actions.begin();
-	KActionPtrList::iterator actionIterEnd = actions.end();
+	QList<KAction*> actions = actionCollection()->actions();
+	QList<KAction*>::const_iterator actionIter = actions.begin();
+	QList<KAction*>::const_iterator actionIterEnd = actions.end();
 
 	while(actionIter != actionIterEnd)
 	{
