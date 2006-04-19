@@ -83,9 +83,11 @@ void TileSet::resizeTiles(int maxWidth, int maxHeight)
 		if(maxHeight == unscaledTileHeight())
 			img = unscaledTiles[i].copy();//.convertDepth(32);
 		else
-			img = unscaledTiles[i].smoothScale(maxWidth, maxHeight);
+			img = unscaledTiles[i].scaled(maxWidth, maxHeight,
+						      Qt::IgnoreAspectRatio,
+						      Qt::SmoothTransformation );
 
-		scaledTiles[i].convertFromImage(img);
+		scaledTiles[i] = QPixmap::fromImage(img);
 	}
 }
 
@@ -99,7 +101,7 @@ QPixmap TileSet::highlightedTile(int n) const
 	const double LIGHTEN_FACTOR = 1.3;
 
 	// lighten the image
-	QImage img = scaledTiles[n].convertToImage().convertDepth(32);
+	QImage img = scaledTiles[n].toImage().convertDepth(32);
 
 	for(int y = 0; y < img.height(); y++)
 	{
@@ -112,7 +114,7 @@ QPixmap TileSet::highlightedTile(int n) const
 	}
 
 	QPixmap highlightedTile;
-	highlightedTile.convertFromImage(img);
+	highlightedTile = QPixmap::fromImage(img);
 
 	return highlightedTile;
 }

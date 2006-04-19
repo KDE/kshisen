@@ -83,7 +83,8 @@ App::App(QWidget *parent, const char *name) : KMainWindow(parent, name),
 
 	initKAction();
 
-	board = new Board(this, "board");
+	board = new Board(this);
+        board->setObjectName( "board" );
 	loadSettings();
 
 	setCentralWidget(board);
@@ -228,7 +229,7 @@ void App::lockMenus(bool lock)
 	// Disable all actions apart from (un)pause, quit and those that are help-related.
 	// (Only undo/redo and hint actually *need* to be disabled, but disabling everything
 	// provides a good visual hint to the user, that they need to unpause to continue.
-	KMenu* help = dynamic_cast<KMenu*>(child("help", "KMenu", false));
+	KMenu* help = findChild<KMenu*>("help" );
 	QList<KAction*> actions = actionCollection()->actions();
 	QList<KAction*>::const_iterator actionIter = actions.begin();
 	QList<KAction*>::const_iterator actionIterEnd = actions.end();
@@ -354,9 +355,10 @@ void App::resetCheatMode()
 
 QString App::getPlayerName()
 {
-	QDialog *dlg = new QDialog(this, "Hall of Fame", true);
-
-	QLabel  *l1  = new QLabel(i18n("You've made it into the \"Hall Of Fame\". Type in\nyour name so mankind will always remember\nyour cool rating."), dlg);
+	QDialog *dlg = new QDialog(this);
+	dlg->setObjectName( "Hall of Fame" );
+	dlg->setModal( true );
+        QLabel  *l1  = new QLabel(i18n("You've made it into the \"Hall Of Fame\". Type in\nyour name so mankind will always remember\nyour cool rating."), dlg);
 	l1->setFixedSize(l1->sizeHint());
 
 	QLabel *l2 = new QLabel(i18n("Your name:"), dlg);
@@ -377,7 +379,8 @@ QString App::getPlayerName()
 	connect(e, SIGNAL(returnPressed()), dlg, SLOT(accept()));
 
 	// create layout
-	QVBoxLayout *tl = new QVBoxLayout(dlg, 10);
+	QVBoxLayout *tl = new QVBoxLayout(dlg);
+	tl->setMargin( 10 );
 	QHBoxLayout *tl1 = new QHBoxLayout();
 	tl->addWidget(l1);
 	tl->addSpacing(5);
@@ -594,10 +597,13 @@ void App::writeHighscore()
 void App::showHighscore(int focusitem)
 {
 	// this may look a little bit confusing...
-	QDialog *dlg = new QDialog(0, "hall_Of_fame", true);
-	dlg->setCaption(i18n("Hall of Fame"));
+	QDialog *dlg = new QDialog;
+	dlg->setObjectName( "hall_Of_fame" );
+	dlg->setModal( true );
+	dlg->setWindowTitle(i18n("Hall of Fame"));
 
-	QVBoxLayout *tl = new QVBoxLayout(dlg, 10);
+	QVBoxLayout *tl = new QVBoxLayout(dlg);
+	tl->setMargin( 10 );
 
 	QLabel *l = new QLabel(i18n("Hall of Fame"), dlg);
 	QFont f = font();
@@ -741,7 +747,7 @@ void App::showHighscore(int focusitem)
 void App::keyBindings()
 {
 	KKeyDialog::configure( actionCollection(), KKeyChooser::LetterShortcutsAllowed, this );
-		
+
 }
 
 /**

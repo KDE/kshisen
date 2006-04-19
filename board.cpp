@@ -58,8 +58,8 @@ static int size_x[5] = {14, 18, 24, 26, 30};
 static int size_y[5] = { 6,  8, 12, 14, 16};
 static int DELAY[5] = {1000, 750, 500, 250, 125};
 
-Board::Board(QWidget *parent, const char *name) : 
-       QWidget(parent, name, Qt::WResizeNoErase), field(0),
+Board::Board(QWidget *parent) :
+       QWidget(parent, Qt::WResizeNoErase), field(0),
        _x_tiles(0), _y_tiles(0),
        _delay(125), paused(false),
        gravity_flag(true), _solvable_flag(true),
@@ -77,7 +77,9 @@ Board::Board(QWidget *parent, const char *name) :
 	_undo.setAutoDelete(true);
 
 	QPixmap bg(KGlobal::dirs()->findResource("appdata", "kshisen_bgnd.png"));
-	setBackgroundPixmap(bg);
+        QPalette palette;
+        palette.setBrush( backgroundRole(), QBrush( bg ) );
+        setPalette( palette );
 
 	loadSettings();
 }
@@ -192,7 +194,7 @@ void Board::mousePressEvent(QMouseEvent *e)
 			for(int i = 0; i < x_tiles(); i++)
 				for(int j = 0; j < y_tiles(); j++)
 					if(old_highlighted == getField(i, j) && !(i == pos_x && j == pos_y))
-						updateField(i, j, false);
+						updateField(i, j);
 		}
 
 		if(pos_x != -1)
@@ -213,7 +215,7 @@ void Board::mousePressEvent(QMouseEvent *e)
 			int oldmarky = mark_y;
 			mark_x = -1;
 			mark_y = -1;
-			updateField(oldmarkx, oldmarky, false);
+			updateField(oldmarkx, oldmarky);
 		}
 		else
 		{
@@ -234,9 +236,9 @@ void Board::mousePressEvent(QMouseEvent *e)
 					if(field_tile != EMPTY)
 					{
 						if(field_tile == old_highlighted)
-							updateField(i, j, false);
+							updateField(i, j);
 						else if(field_tile == clicked_tile)
-							updateField(i, j, false);
+							updateField(i, j);
 					}
 				}
 			}
@@ -450,14 +452,14 @@ bool Board::isTileHighlighted(int x, int y) const
 	return false;
 }
 
-void Board::updateField(int x, int y, bool erase)
+void Board::updateField(int x, int y)
 {
 	QRect r(xOffset() + x * tiles.tileWidth(),
 	        yOffset() + y * tiles.tileHeight(),
 	        tiles.tileWidth(),
 	        tiles.tileHeight());
 
-	repaint(r, erase);
+	repaint(r);
 }
 
 void Board::paintEvent(QPaintEvent *e)
@@ -500,7 +502,7 @@ void Board::paintEvent(QPaintEvent *e)
 	}
 	p.end();
 	bitBlt( this, ur.topLeft(), &pm );
-	
+
 	if (_paintConnection)
 	{
 		QPainter p;
@@ -537,7 +539,7 @@ void Board::marked(int x, int y)
 		// unmark the piece
 		mark_x = -1;
 		mark_y = -1;
-		updateField(x, y, false);
+		updateField(x, y);
 		return;
 	}
 
@@ -545,7 +547,7 @@ void Board::marked(int x, int y)
 	{
 		mark_x = x;
 		mark_y = y;
-		updateField(x, y, false);
+		updateField(x, y);
 		return;
 	}
 
@@ -697,7 +699,7 @@ void Board::undrawConnection()
 		tileRemove1.first = -1;
 		repaint();
 	}
-	
+
 	if(grav_col_1 != -1 || grav_col_2 != -1)
 	{
 		gravity(grav_col_1, true);
@@ -1047,9 +1049,9 @@ void Board::setSolvableFlag(bool value)
 {
 	if(value && !_solvable_flag && !solvable()){
 		_solvable_flag = value;
-		newGame(); 
+		newGame();
 	}
-	else 
+	else
 		_solvable_flag = value;
 }
 

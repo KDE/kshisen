@@ -69,7 +69,6 @@ int main(int argc, char **argv)
 
 	App *app = new App();
 	app->show();
-	a.setMainWidget(app);
         return a.exec();
 }
 

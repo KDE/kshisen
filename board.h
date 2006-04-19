@@ -74,7 +74,7 @@ class Board : public QWidget
 	Q_OBJECT
 
 public:
-	Board(QWidget *parent = 0, const char *name=0);
+	Board(QWidget *parent = 0);
 	~Board();
 
 	virtual void paintEvent(QPaintEvent *);
@@ -130,7 +130,7 @@ signals:
 public slots:
 	bool pause();
   void loadSettings();
-	
+
 private slots:
 	void undrawConnection();
 	void gravity(int, bool);
@@ -146,7 +146,7 @@ private: // functions
 
 	void setField(int x, int y, int value);
 	int getField(int x, int y) const;
-	void updateField(int, int, bool erase = true);
+	void updateField(int, int);
 	bool canMakePath(int x1, int y1, int x2, int y2) const;
 	bool findPath(int x1, int y1, int x2, int y2, Path& p) const;
 	bool findSimplePath(int x1, int y1, int x2, int y2, Path& p) const;
@@ -185,7 +185,7 @@ private:
 	int grav_col_1, grav_col_2;
 
 	int highlighted_tile;
-	
+
 	int _connectionTimeout;
 	bool _paintConnection;
 	QPair<int, int> tileRemove1, tileRemove2;
