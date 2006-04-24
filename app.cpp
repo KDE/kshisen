@@ -390,7 +390,7 @@ QString App::getPlayerName()
 	tl->addSpacing(5);
 	tl->addWidget(b);
 	tl->activate();
-	tl->freeze();
+        tl->setSizeConstraint(QLayout::SetFixedSize);
 
 	dlg->exec();
 
@@ -616,12 +616,13 @@ void App::showHighscore(int focusitem)
 	tl->addWidget(l);
 
 	// insert highscores in a gridlayout
-	QGridLayout *table = new QGridLayout(12, 5, 5);
+	QGridLayout *table = new QGridLayout;
+	tl->setSpacing(5);
 	tl->addLayout(table, 1);
 
 	// add a separator line
 	KSeparator *sep = new KSeparator(dlg);
-	table->addMultiCellWidget(sep, 1, 1, 0, 4);
+	table->addWidget(sep, 1, 0, 1, 5);
 
 	// add titles
 	f = font();
@@ -738,7 +739,7 @@ void App::showHighscore(int focusitem)
 	tl->addSpacing(10);
 	tl->addWidget(b);
 	tl->activate();
-	tl->freeze();
+	tl->setSizeConstraint(QLayout::SetFixedSize);
 
 	dlg->exec();
 	delete dlg;

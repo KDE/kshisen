@@ -501,12 +501,12 @@ void Board::paintEvent(QPaintEvent *e)
 		}
 	}
 	p.end();
-	bitBlt( this, ur.topLeft(), &pm );
+
+	p.begin( this );
+	p.drawPixmap( ur.topLeft(), pm );
 
 	if (_paintConnection)
 	{
-		QPainter p;
-		p.begin(this);
 		p.setPen(QPen(QColor("red"), tiles.lineWidth()));
 
 		// Path.size() will always be >= 2
@@ -520,10 +520,11 @@ void Board::paintEvent(QPaintEvent *e)
 			++pt1;
 			++pt2;
 		}
-		p.end();
 		QTimer::singleShot(_connectionTimeout, this, SLOT(undrawConnection()));
 		_paintConnection = false;
 	}
+
+	p.end(); //this
 }
 
 void Board::marked(int x, int y)
