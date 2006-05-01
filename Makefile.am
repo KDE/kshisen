@@ -24,5 +24,3 @@ SUBDIRS = pics
 rcdir = $(kde_datadir)/kshisen
 rc_DATA = kshisenui.rc
 
-messages: rc.cpp
-	$(XGETTEXT) rc.cpp $(kshisen_SOURCES) -o $(podir)/kshisen.pot
