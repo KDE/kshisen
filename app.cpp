@@ -37,6 +37,8 @@
  */
 
 #include <kapplication.h>
+#include <kactioncollection.h>
+#include <kstdaction.h>
 #include <kseparator.h>
 #include <kmessagebox.h>
 #include <kconfig.h>
