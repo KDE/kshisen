@@ -54,9 +54,9 @@
 #include <kstdguiitem.h>
 #include <kconfigdialog.h>
 
-#include <qlayout.h>
+#include <QLayout>
 #include <qtimer.h>
-#include <qlineedit.h>
+#include <QLineEdit>
 
 #include <cmath>
 #include <kglobal.h>
