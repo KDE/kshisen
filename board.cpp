@@ -45,7 +45,7 @@
 #include <qevent.h>
 #include <qpainter.h>
 #include <q3paintdevicemetrics.h>
-#include <qtimer.h>
+#include <QTimer>
 
 #include "board.h"
 #include "prefs.h"

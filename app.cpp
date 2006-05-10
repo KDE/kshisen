@@ -55,7 +55,7 @@
 #include <kconfigdialog.h>
 
 #include <QLayout>
-#include <qtimer.h>
+#include <QTimer>
 #include <QLineEdit>
 
 #include <cmath>
