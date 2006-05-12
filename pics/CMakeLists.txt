@@ -1,4 +1,3 @@
-kde4_header()
 
 
 
@@ -7,7 +6,6 @@ kde4_header()
 
 install_files( ${DATA_INSTALL_DIR}/kshisen/ FILES tileset.png kshisen_bgnd.png )
 
-kde4_footer()
 
 
 

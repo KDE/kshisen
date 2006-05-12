@@ -1,4 +1,3 @@
-kde4_header()
 project(kshisen)
 
 add_subdirectory( pics ) 
@@ -35,7 +34,6 @@ install_files( ${DATA_INSTALL_DIR}/kshisen FILES kshisenui.rc )
 
 kde4_install_icons( ${ICON_INSTALL_DIR}  hicolor )
 
-kde4_footer()
 
 
 
