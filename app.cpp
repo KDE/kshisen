@@ -760,7 +760,7 @@ void App::showSettings(){
 	if(KConfigDialog::showDialog("settings"))
 		return;
 
-	KConfigDialog *dialog = new KConfigDialog(this, "settings", Prefs::self(), KDialogBase::Swallow);
+	KConfigDialog *dialog = new KConfigDialog(this, "settings", Prefs::self(), KPageDialog::Plain);
 	Settings *general = new Settings(0, "General");
 	dialog->addPage(general, i18n("General"), "package_settings");
 	connect(dialog, SIGNAL(settingsChanged(const QString &)), this, SLOT(loadSettings()));
