@@ -109,7 +109,7 @@ public:
 	int getCurrentTime() const;
 	int getTimeForGame() const;
 
-	bool solvable(bool norestore = FALSE);
+	bool solvable(bool norestore = false);
 
 	bool getSolvableFlag() const;
 	void setSolvableFlag(bool);
