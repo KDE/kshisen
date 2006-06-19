@@ -60,6 +60,7 @@ GenericName[sr@Latn]=Shisen-Sho, igra sa poljima nalik na Mahjongg
 GenericName[sv]=Shisen-Sho Mahjongg-liknande brickspel
 GenericName[ta]=ஷிசெந்ஷோ மாஹ்ஜோங் போன்ற ஓடு விளையாட்டு
 GenericName[zh_CN]=类似连连看的麻将游戏
+GenericName[zh_TW]=四川省麻將牌遊戲
 Icon=kshisen
 X-KDE-StartupNotify=true
 X-DCOP-ServiceType=Multi
