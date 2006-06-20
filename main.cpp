@@ -46,7 +46,7 @@
 #include "version.h"
 #include "app.h"
 
-static const char description[] = I18N_NOOP("A KDE game similiar to Mahjongg");
+static const char description[] = I18N_NOOP("A KDE game similar to Mahjongg");
 
 // A hack to circumvent tricky i18n issue, not used later on in the code.
 // Both context and contents must be exactly the same as for the entry in
