@@ -4,7 +4,7 @@
 
 ########### install files ###############
 
-install_files( ${DATA_INSTALL_DIR}/kshisen/ FILES tileset.png kshisen_bgnd.png )
+install( FILES tileset.png kshisen_bgnd.png  DESTINATION  ${DATA_INSTALL_DIR}/kshisen/ )
 
 
 
