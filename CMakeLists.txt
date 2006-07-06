@@ -23,7 +23,7 @@ kde4_add_executable(kshisen ${kshisen_SRCS})
 
 target_link_libraries(kshisen  ${KDE4_KDEUI_LIBS} kdegames )
 
-install_targets(/bin kshisen )
+install(TARGETS kshisen  DESTINATION ${BIN_INSTALL_DIR} )
 
 
 ########### install files ###############
