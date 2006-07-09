@@ -27,11 +27,11 @@
 </authorgroup>
 
 
-<date>2005-12-17</date>
+<date>2006-06-17</date>
 <releaseinfo>1.5.1</releaseinfo>
 
 <abstract>
-<para>This Handbook describes &kshisen; Version 1.5.1</para>
+<para>&kshisen; is a game similar to Mahjongg for &kde;.</para>
 </abstract>
 
 <keywordset>
@@ -80,7 +80,7 @@ removable at the moment or not.</para>
 clearing all the tiles from the field or reaching a point in the game 
 where no two matching tiles can be connected by three lines.  
 Some games are unsolvable, if you would like to avoid unsolvable 
-games uncheck the the option <guilabel>Allow unsolvable
+games uncheck the option <guilabel>Allow unsolvable
 games</guilabel> in the configuration dialog.</para>
 
 <para>The resulting score <quote>S</quote> is calculated using the
@@ -250,7 +250,7 @@ Toggle on and off the display of the status bar.
 <listitem>
 <para>Opens the <link linkend="configuration">configuration
 dialog</link> to change &kshisen; settings.
-The options will be saved automatically.</para></listitem>
+</para></listitem>
 </varlistentry>
 
 </variablelist>
