@@ -63,7 +63,17 @@
 
 #include "app.h"
 #include "prefs.h"
-#include "settings.h"
+#include "ui_settings.h"
+
+class Settings : public QWidget, public Ui::Settings
+{
+public:
+    Settings(QWidget *parent)
+        : QWidget(parent)
+    {
+        setupUi(this);
+    }
+};
 
 App::App(QWidget *parent, const char *name) : KMainWindow(parent, name),
    cheat(false)
@@ -761,7 +771,7 @@ void App::showSettings(){
 		return;
 
 	KConfigDialog *dialog = new KConfigDialog(this, "settings", Prefs::self(), KPageDialog::Plain);
-	Settings *general = new Settings(0, "General");
+	Settings *general = new Settings(0);
 	dialog->addPage(general, i18n("General"), "package_settings");
 	connect(dialog, SIGNAL(settingsChanged(const QString &)), this, SLOT(loadSettings()));
 	connect(dialog, SIGNAL(settingsChanged(const QString &)), board, SLOT(loadSettings()));

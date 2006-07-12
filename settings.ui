@@ -1,255 +1,248 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
-<class>Settings</class>
-<widget class="QWidget">
-    <property name="name">
-        <cstring>Settings</cstring>
-    </property>
-    <property name="geometry">
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>385</width>
-            <height>381</height>
-        </rect>
-    </property>
-    <vbox>
-        <property name="name">
-            <cstring>unnamed</cstring>
+<ui version="4.0" >
+ <class>Settings</class>
+ <widget class="QWidget" name="Settings" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>525</width>
+    <height>399</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <widget class="QCheckBox" name="kcfg_Gravity" >
+     <property name="text" >
+      <string>Gravity</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="kcfg_Solvable" >
+     <property name="text" >
+      <string>Allow unsolvable games</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="difficulty_groupBox" >
+     <property name="title" >
+      <string>Board Difficulty</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>5</number>
+      </property>
+      <property name="spacing" >
+       <number>2</number>
+      </property>
+      <item row="0" column="0" colspan="2" >
+       <widget class="QSlider" name="kcfg_Level" >
+        <property name="maximum" >
+         <number>2</number>
         </property>
-        <widget class="QCheckBox">
-            <property name="name">
-                <cstring>kcfg_Gravity</cstring>
-            </property>
-            <property name="text">
-                <string>Gravity</string>
-            </property>
-        </widget>
-        <widget class="QCheckBox">
-            <property name="name">
-                <cstring>kcfg_Solvable</cstring>
-            </property>
-            <property name="text">
-                <string>Allow unsolvable games</string>
-            </property>
-        </widget>
-        <widget class="QGroupBox">
-            <property name="name">
-                <cstring>difficulty_groupBox</cstring>
-            </property>
-            <property name="title">
-                <string>Board Difficulty</string>
-            </property>
-            <grid>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <widget class="QSlider" row="0" column="0" rowspan="1" colspan="2">
-                    <property name="name">
-                        <cstring>kcfg_Level</cstring>
-                    </property>
-                    <property name="maximum">
-                        <number>2</number>
-                    </property>
-                    <property name="pageStep">
-                        <number>1</number>
-                    </property>
-                    <property name="value">
-                        <number>1</number>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="tickPosition">
-                        <enum>TicksBelow</enum>
-                    </property>
-                </widget>
-                <widget class="QLabel" row="1" column="0">
-                    <property name="name">
-                        <cstring>textLabel1</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Easy</string>
-                    </property>
-                </widget>
-                <widget class="QLabel" row="1" column="1">
-                    <property name="name">
-                        <cstring>textLabel3</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Hard</string>
-                    </property>
-                    <property name="alignment">
-                        <set>AlignVCenter|AlignRight</set>
-                    </property>
-                </widget>
-            </grid>
-        </widget>
-        <widget class="QGroupBox">
-            <property name="name">
-                <cstring>speed_groupBox</cstring>
-            </property>
-            <property name="title">
-                <string>Piece Removal Speed</string>
-            </property>
-            <grid>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <widget class="QSlider" row="0" column="0" rowspan="1" colspan="3">
-                    <property name="name">
-                        <cstring>kcfg_Speed</cstring>
-                    </property>
-                    <property name="maximum">
-                        <number>4</number>
-                    </property>
-                    <property name="pageStep">
-                        <number>1</number>
-                    </property>
-                    <property name="value">
-                        <number>2</number>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="tickPosition">
-                        <enum>TicksBelow</enum>
-                    </property>
-                </widget>
-                <widget class="QLabel" row="1" column="0">
-                    <property name="name">
-                        <cstring>textLabel4</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Slow</string>
-                    </property>
-                </widget>
-                <widget class="QLabel" row="1" column="2">
-                    <property name="name">
-                        <cstring>textLabel6</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Fast</string>
-                    </property>
-                    <property name="alignment">
-                        <set>AlignVCenter|AlignRight</set>
-                    </property>
-                </widget>
-            </grid>
-        </widget>
-        <widget class="QCheckBox">
-            <property name="name">
-                <cstring>kcfg_Unscaled</cstring>
-            </property>
-            <property name="text">
-                <string>Prefer unscaled tiles</string>
-            </property>
-        </widget>
-        <widget class="QGroupBox">
-            <property name="name">
-                <cstring>size_groupBox</cstring>
-            </property>
-            <property name="title">
-                <string>Tile Size</string>
-            </property>
-            <grid>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <widget class="QLabel" row="1" column="0">
-                    <property name="name">
-                        <cstring>textLabel8</cstring>
-                    </property>
-                    <property name="text">
-                        <string>14x6</string>
-                    </property>
-                </widget>
-                <widget class="QLabel" row="1" column="1">
-                    <property name="name">
-                        <cstring>textLabel9</cstring>
-                    </property>
-                    <property name="text">
-                        <string>18x8</string>
-                    </property>
-                    <property name="alignment">
-                        <set>AlignCenter</set>
-                    </property>
-                </widget>
-                <widget class="QLabel" row="1" column="3">
-                    <property name="name">
-                        <cstring>textLabel11</cstring>
-                    </property>
-                    <property name="text">
-                        <string>26x14</string>
-                    </property>
-                    <property name="alignment">
-                        <set>AlignCenter</set>
-                    </property>
-                </widget>
-                <widget class="QLabel" row="1" column="4">
-                    <property name="name">
-                        <cstring>textLabel12</cstring>
-                    </property>
-                    <property name="text">
-                        <string>30x16</string>
-                    </property>
-                    <property name="alignment">
-                        <set>AlignVCenter|AlignRight</set>
-                    </property>
-                </widget>
-                <widget class="QSlider" row="0" column="0" rowspan="1" colspan="5">
-                    <property name="name">
-                        <cstring>kcfg_Size</cstring>
-                    </property>
-                    <property name="minimum">
-                        <number>0</number>
-                    </property>
-                    <property name="maximum">
-                        <number>4</number>
-                    </property>
-                    <property name="pageStep">
-                        <number>1</number>
-                    </property>
-                    <property name="value">
-                        <number>2</number>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="tickPosition">
-                        <enum>TicksBelow</enum>
-                    </property>
-                </widget>
-                <widget class="QLabel" row="1" column="2">
-                    <property name="name">
-                        <cstring>textLabel10</cstring>
-                    </property>
-                    <property name="text">
-                        <string>24x12</string>
-                    </property>
-                    <property name="alignment">
-                        <set>AlignCenter</set>
-                    </property>
-                </widget>
-            </grid>
-        </widget>
-        <spacer>
-            <property name="name">
-                <cstring>spacer1</cstring>
-            </property>
-            <property name="orientation">
-                <enum>Vertical</enum>
-            </property>
-            <property name="sizeType">
-                <enum>Expanding</enum>
-            </property>
-            <property name="sizeHint">
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
-            </property>
-        </spacer>
-    </vbox>
-</widget>
-<layoutdefaults spacing="6" margin="11"/>
-</UI>
+        <property name="pageStep" >
+         <number>1</number>
+        </property>
+        <property name="value" >
+         <number>1</number>
+        </property>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="tickPosition" >
+         <enum>QSlider::TicksBelow</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="textLabel1" >
+        <property name="text" >
+         <string>Easy</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QLabel" name="textLabel3" >
+        <property name="text" >
+         <string>Hard</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="speed_groupBox" >
+     <property name="title" >
+      <string>Piece Removal Speed</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>5</number>
+      </property>
+      <property name="spacing" >
+       <number>2</number>
+      </property>
+      <item row="1" column="1" >
+       <widget class="QLabel" name="textLabel6" >
+        <property name="text" >
+         <string>Fast</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="textLabel4" >
+        <property name="text" >
+         <string>Slow</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="2" >
+       <widget class="QSlider" name="kcfg_Speed" >
+        <property name="maximum" >
+         <number>4</number>
+        </property>
+        <property name="pageStep" >
+         <number>1</number>
+        </property>
+        <property name="value" >
+         <number>2</number>
+        </property>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="tickPosition" >
+         <enum>QSlider::TicksBelow</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="kcfg_Unscaled" >
+     <property name="text" >
+      <string>Prefer unscaled tiles</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="size_groupBox" >
+     <property name="title" >
+      <string>Tile Size</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>5</number>
+      </property>
+      <property name="spacing" >
+       <number>2</number>
+      </property>
+      <item row="1" column="4" >
+       <widget class="QLabel" name="textLabel12" >
+        <property name="text" >
+         <string>30x16</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3" >
+       <widget class="QLabel" name="textLabel11" >
+        <property name="text" >
+         <string>26x14</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2" >
+       <widget class="QLabel" name="textLabel10" >
+        <property name="text" >
+         <string>24x12</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QLabel" name="textLabel9" >
+        <property name="text" >
+         <string>18x8</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="5" >
+       <widget class="QSlider" name="kcfg_Size" >
+        <property name="minimum" >
+         <number>0</number>
+        </property>
+        <property name="maximum" >
+         <number>4</number>
+        </property>
+        <property name="pageStep" >
+         <number>1</number>
+        </property>
+        <property name="value" >
+         <number>2</number>
+        </property>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="tickPosition" >
+         <enum>QSlider::TicksBelow</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="textLabel8" >
+        <property name="text" >
+         <string>14x6</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>507</width>
+       <height>31</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <resources/>
+ <connections/>
+</ui>
