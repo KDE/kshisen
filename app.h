@@ -64,7 +64,7 @@ class App : public KMainWindow
 	Q_OBJECT
 
 public:
-	App(QWidget *parent = 0, const char *name=0);
+	App(QWidget *parent = 0);
 
 private slots:
 	void loadSettings();

@@ -75,7 +75,7 @@ public:
     }
 };
 
-App::App(QWidget *parent, const char *name) : KMainWindow(parent, name),
+App::App(QWidget *parent) : KMainWindow(parent),
    cheat(false)
 {
 	highscoreTable = new KHighscore(this);
