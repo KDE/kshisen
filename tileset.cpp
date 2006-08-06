@@ -101,7 +101,7 @@ QPixmap TileSet::highlightedTile(int n) const
 	const double LIGHTEN_FACTOR = 1.3;
 
 	// lighten the image
-	QImage img = scaledTiles[n].toImage().convertDepth(32);
+	QImage img = scaledTiles[n].toImage().convertToFormat(QImage::Format_ARGB32);
 
 	for(int y = 0; y < img.height(); y++)
 	{

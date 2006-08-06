@@ -42,9 +42,8 @@
 #include <kglobalsettings.h>
 #include <kdebug.h>
 
-#include <qevent.h>
-#include <qpainter.h>
-#include <q3paintdevicemetrics.h>
+#include <QMouseEvent>
+#include <QPainter>
 #include <QTimer>
 
 #include "board.h"
@@ -73,8 +72,6 @@ Board::Board(QWidget *parent) :
 	starttime = time((time_t *)0);
 
 	setDelay(DEFAULTDELAY);
-	_redo.setAutoDelete(true);
-	_undo.setAutoDelete(true);
 
 	QPixmap bg(KGlobal::dirs()->findResource("appdata", "kshisen_bgnd.png"));
         QPalette palette;
@@ -300,8 +297,8 @@ void Board::resizeBoard()
 	int h = static_cast<int>( static_cast<double>(height() - tiles.unscaledTileWidth()) / y_tiles() );
 
 	const double MAXIMUM_SCALE = 2.0;
-	w = std::min(w, static_cast<int>((tiles.unscaledTileWidth() * MAXIMUM_SCALE) + 0.5));
-	h = std::min(h, static_cast<int>((tiles.unscaledTileHeight() * MAXIMUM_SCALE) + 0.5));
+	w = qMin(w, static_cast<int>((tiles.unscaledTileWidth() * MAXIMUM_SCALE) + 0.5));
+	h = qMin(h, static_cast<int>((tiles.unscaledTileHeight() * MAXIMUM_SCALE) + 0.5));
 
 	tiles.resizeTiles(w, h);
 }
@@ -321,6 +318,8 @@ void Board::newGame()
 	mark_x = -1;
 	mark_y = -1;
 
+        qDeleteAll(_undo);
+        qDeleteAll(_redo);
 	_undo.clear();
 	_redo.clear();
 	connection.clear();
@@ -440,12 +439,12 @@ bool Board::isTileHighlighted(int x, int y) const
 
 	// tileRemove1.first != -1 is used because the repaint of the first if
 	// on undrawConnection highlihgted the tiles that fell because of gravity
-	if(!connection.empty() && tileRemove1.first != -1)
+	if(!connection.isEmpty() && tileRemove1.first != -1)
 	{
-		if(x == connection.front().x && y == connection.front().y)
+		if(x == connection.first().x && y == connection.first().y)
 			return true;
 
-		if(x == connection.back().x && y == connection.back().y)
+		if(x == connection.last().x && y == connection.last().y)
 			return true;
 	}
 
@@ -510,13 +509,13 @@ void Board::paintEvent(QPaintEvent *e)
 		p.setPen(QPen(QColor("red"), tiles.lineWidth()));
 
 		// Path.size() will always be >= 2
-		Path::const_iterator pathEnd = connection.end();
-		Path::const_iterator pt1 = connection.begin();
+		Path::const_iterator pathEnd = connection.constEnd();
+		Path::const_iterator pt1 = connection.constBegin();
 		Path::const_iterator pt2 = pt1;
 		++pt2;
 		while(pt2 != pathEnd)
 		{
-			p.drawLine( midCoord(pt1->x, pt1->y), midCoord(pt2->x, pt2->y) );
+			p.drawLine( midCoord((*pt1).x, (*pt1).y), midCoord((*pt2).x, (*pt2).y) );
 			++pt1;
 			++pt2;
 		}
@@ -586,7 +585,7 @@ bool Board::canMakePath(int x1, int y1, int x2, int y2) const
 {
 	if(x1 == x2)
 	{
-		for(int i = std::min(y1, y2) + 1; i < std::max(y1, y2); i++)
+		for(int i = qMin(y1, y2) + 1; i < qMax(y1, y2); i++)
 			if(getField(x1, i) != EMPTY)
 				return false;
 
@@ -595,7 +594,7 @@ bool Board::canMakePath(int x1, int y1, int x2, int y2) const
 
 	if(y1 == y2)
 	{
-		for(int i = std::min(x1, x2) + 1; i < std::max(x1, x2); i++)
+		for(int i = qMin(x1, x2) + 1; i < qMax(x1, x2); i++)
 			if(getField(i, y1) != EMPTY)
 				return false;
 
@@ -626,7 +625,7 @@ bool Board::findPath(int x1, int y1, int x2, int y2, Path& p) const
 		{
 			if(findSimplePath(newx, newy, x2, y2, p))
 			{
-				p.push_front(Position(x1, y1));
+				p.prepend(Position(x1, y1));
 				return true;
 			}
 			newx += dx[i];
@@ -644,8 +643,8 @@ bool Board::findSimplePath(int x1, int y1, int x2, int y2, Path& p) const
 	// Find direct line (path of 1 segment)
 	if(canMakePath(x1, y1, x2, y2))
 	{
-		p.push_back(Position(x1, y1));
-		p.push_back(Position(x2, y2));
+		p.append(Position(x1, y1));
+		p.append(Position(x2, y2));
 		return true;
 	}
 
@@ -658,9 +657,9 @@ bool Board::findSimplePath(int x1, int y1, int x2, int y2, Path& p) const
 	if(getField(x2, y1) == EMPTY && canMakePath(x1, y1, x2, y1) &&
 		canMakePath(x2, y1, x2, y2))
 	{
-		p.push_back(Position(x1, y1));
-		p.push_back(Position(x2, y1));
-		p.push_back(Position(x2, y2));
+		p.append(Position(x1, y1));
+		p.append(Position(x2, y1));
+		p.append(Position(x2, y2));
 		return true;
 	}
 
@@ -668,9 +667,9 @@ bool Board::findSimplePath(int x1, int y1, int x2, int y2, Path& p) const
 	if(getField(x1, y2) == EMPTY && canMakePath(x1, y1, x1, y2) &&
 		canMakePath(x1, y2, x2, y2))
 	{
-		p.push_back(Position(x1, y1));
-		p.push_back(Position(x1, y2));
-		p.push_back(Position(x2, y2));
+		p.append(Position(x1, y1));
+		p.append(Position(x1, y2));
+		p.append(Position(x2, y2));
 		return true;
 	}
 
@@ -679,12 +678,12 @@ bool Board::findSimplePath(int x1, int y1, int x2, int y2, Path& p) const
 
 void Board::drawConnection(int timeout)
 {
-	if(connection.empty())
+	if(connection.isEmpty())
 		return;
 
 	// lighten the fields
-	updateField(connection.front().x, connection.front().y);
-	updateField(connection.back().x, connection.back().y);
+	updateField(connection.first().x, connection.first().y);
+	updateField(connection.last().x, connection.last().y);
 
 	_connectionTimeout = timeout;
 	_paintConnection = true;
@@ -710,7 +709,7 @@ void Board::undrawConnection()
 	}
 
 	// is already undrawn?
-	if(connection.empty())
+	if(connection.isEmpty())
 		return;
 
 	// Redraw all affected fields
@@ -727,12 +726,12 @@ void Board::undrawConnection()
 	{
 		if(pt1->y == pt2->y)
 		{
-			for(int i = std::min(pt1->x, pt2->x); i <= std::max(pt1->x, pt2->x); i++)
+			for(int i = qMin(pt1->x, pt2->x); i <= qMax(pt1->x, pt2->x); i++)
 				updateField(i, pt1->y);
 		}
 		else
 		{
-			for(int i = std::min(pt1->y, pt2->y); i <= std::max(pt1->y, pt2->y); i++)
+			for(int i = qMin(pt1->y, pt2->y); i <= qMax(pt1->y, pt2->y); i++)
 				updateField(pt1->x, i);
 		}
 		++pt1;
@@ -786,7 +785,10 @@ void Board::madeMove(int x1, int y1, int x2, int y2)
 	Move *m = new Move(x1, y1, x2, y2, getField(x1, y1));
 	_undo.append(m);
 	while(_redo.count())
+	{
+		delete _redo.first();
 		_redo.removeFirst();
+	}
 	emit changed();
 }
 
@@ -805,8 +807,7 @@ void Board::undo()
 	if(canUndo())
 	{
 		undrawConnection();
-		Move* m = _undo.last();
-		_undo.take();
+		Move* m = _undo.takeLast();
 		if(gravityFlag())
 		{
 			int y;
@@ -815,8 +816,8 @@ void Board::undo()
 			// significant (we must undo the lower tile first).
 			if(m->x1 == m->x2 && m->y1 < m->y2)
 			{
-				std::swap(m->x1, m->x2);
-				std::swap(m->y1, m->y2);
+				qSwap(m->x1, m->x2);
+				qSwap(m->y1, m->y2);
 			}
 
 			for(y = 0; y < m->y1; y++)
@@ -846,7 +847,7 @@ void Board::redo()
 	if(canRedo())
 	{
 		undrawConnection();
-		Move* m = _redo.take(0);
+		Move* m = _redo.takeFirst();
 		setField(m->x1, m->y1, EMPTY);
 		setField(m->x2, m->y2, EMPTY);
 		updateField(m->x1, m->y1);
@@ -876,8 +877,8 @@ void Board::makeHintMove()
 	{
 		mark_x = -1;
 		mark_y = -1;
-		marked(p.front().x, p.front().y);
-		marked(p.back().x, p.back().y);
+		marked(p.first().x, p.first().y);
+		marked(p.last().x, p.last().y);
 	}
 }
 
@@ -892,8 +893,8 @@ void Board::finish()
 		mark_y = -1;
 		if(tilesLeft() == 2)
 			ready = true;
-		marked(p.front().x, p.front().y);
-		marked(p.back().x, p.back().y);
+		marked(p.first().x, p.first().y);
+		marked(p.last().x, p.last().y);
 		kapp->processEvents();
 		usleep(250*1000);
 	}
@@ -1017,16 +1018,16 @@ bool Board::solvable(bool norestore)
 	Path p;
 	while(getHint_I(p))
 	{
-		kFatal(getField(p.front().x, p.front().y) != getField(p.back().x, p.back().y))
-			<< "Removing unmateched tiles: (" << p.front().x << ", " << p.front().y << ") => "
-			<< getField(p.front().x, p.front().y) << " (" << p.back().x << ", " << p.back().y << ") => "
-            << getField(p.back().x, p.back().y) << endl;
-		setField(p.front().x, p.front().y, EMPTY);
-		setField(p.back().x, p.back().y, EMPTY);
+		kFatal(getField(p.first().x, p.first().y) != getField(p.last().x, p.last().y))
+			<< "Removing unmateched tiles: (" << p.first().x << ", " << p.first().y << ") => "
+			<< getField(p.first().x, p.first().y) << " (" << p.last().x << ", " << p.last().y << ") => "
+            << getField(p.last().x, p.last().y) << endl;
+		setField(p.first().x, p.first().y, EMPTY);
+		setField(p.last().x, p.last().y, EMPTY);
 		//if(gravityFlag())
 		//{
-		//	gravity(p.front().x, false);
-		//	gravity(p.back().x, false);
+		//	gravity(p.first().x, false);
+		//	gravity(p.last().x, false);
 		//}
 	}
 
@@ -1084,7 +1085,7 @@ bool Board::pause()
 
 QSize Board::sizeHint() const
 {
-	int dpi = Q3PaintDeviceMetrics(this).logicalDpiX();
+	int dpi = logicalDpiX();
 	if (dpi < 75)
 	   dpi = 75;
 	return QSize(9*dpi,7*dpi);

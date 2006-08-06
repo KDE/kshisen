@@ -727,9 +727,9 @@ void App::showHighscore(int focusitem)
 			e[i][j]->setMinimumHeight(e[i][j]->sizeHint().height());
 
 			if(j == 1)
-				e[i][j]->setMinimumWidth(std::max(e[i][j]->sizeHint().width(), 100));
+				e[i][j]->setMinimumWidth(qMax(e[i][j]->sizeHint().width(), 100));
 			else
-				e[i][j]->setMinimumWidth(std::max(e[i][j]->sizeHint().width(), 60));
+				e[i][j]->setMinimumWidth(qMax(e[i][j]->sizeHint().width(), 60));
 
 			if((int)i == focusitem)
 				e[i][j]->setFont(f);

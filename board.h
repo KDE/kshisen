@@ -42,10 +42,8 @@
 // Should this get the whole HAVE_SYS_TIME_H TIME_WITH_SYS_TIME treatment?
 #include <time.h>
 
-#include <q3ptrlist.h>
-
 #include <krandomsequence.h>
-#include <list>
+#include <QList>
 #include "tileset.h"
 #include "debug.h"
 
@@ -57,7 +55,7 @@ struct Position
 	int y;
 };
 
-typedef std::list<Position> Path;
+typedef QList<Position> Path;
 
 class Move
 {
@@ -164,8 +162,8 @@ private:
 
 	KRandomSequence random;
 
-	Q3PtrList<Move> _undo;
-	Q3PtrList<Move> _redo;
+	QList<Move*> _undo;
+	QList<Move*> _redo;
 
 	int undraw_timer_id;
 	int mark_x;
