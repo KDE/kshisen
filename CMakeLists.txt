@@ -32,7 +32,7 @@ install( FILES kshisen.desktop  DESTINATION  ${XDG_APPS_DIR} )
 install( FILES kshisen.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
 install( FILES kshisenui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kshisen )
 
-kde4_install_icons( ${ICON_INSTALL_DIR}  hicolor )
+kde4_install_icons( ${ICON_INSTALL_DIR}   )
 
 
 
