@@ -420,9 +420,9 @@ void Board::newGame()
 
 	// restore field
 	memcpy(field, oldfield, fsize);
-	delete tiles;
-	delete pos;
-	delete oldfield;
+	delete [] tiles;
+	delete [] pos;
+	delete [] oldfield;
 
 	update();
 	starttime = time((time_t *)0);
