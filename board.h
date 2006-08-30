@@ -145,6 +145,7 @@ private: // functions
 	void setField(int x, int y, int value);
 	int getField(int x, int y) const;
 	void updateField(int, int);
+	void clearHighlight();
 	bool canMakePath(int x1, int y1, int x2, int y2) const;
 	bool findPath(int x1, int y1, int x2, int y2, Path& p) const;
 	bool findSimplePath(int x1, int y1, int x2, int y2, Path& p) const;

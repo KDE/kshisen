@@ -182,17 +182,7 @@ void Board::mousePressEvent(QMouseEvent *e)
 	// Mark tile
 	if(e->button() == Qt::LeftButton)
 	{
-		// Clear highlighted tiles
-		if(highlighted_tile != -1)
-		{
-			int old_highlighted = highlighted_tile;
-			highlighted_tile = -1;
-
-			for(int i = 0; i < x_tiles(); i++)
-				for(int j = 0; j < y_tiles(); j++)
-					if(old_highlighted == getField(i, j) && !(i == pos_x && j == pos_y))
-						updateField(i, j);
-		}
+		clearHighlight();
 
 		if(pos_x != -1)
 			marked(pos_x, pos_y);
@@ -317,6 +307,7 @@ void Board::newGame()
 
 	mark_x = -1;
 	mark_y = -1;
+	highlighted_tile = -1; // will clear previous highlight
 
         qDeleteAll(_undo);
         qDeleteAll(_redo);
@@ -580,6 +571,21 @@ void Board::marked(int x, int y)
 	}
 }
 
+
+void Board::clearHighlight()
+{
+	if(highlighted_tile != -1)
+	{
+		int old_highlight = highlighted_tile;
+		highlighted_tile = -1;
+
+		for(int i = 0; i < x_tiles(); i++)
+			for(int j = 0; j < y_tiles(); j++)
+				if(old_highlight == getField(i, j))
+					updateField(i, j);
+	}
+}
+
 // Can we make a path between two tiles with a single line?
 bool Board::canMakePath(int x1, int y1, int x2, int y2) const
 {
@@ -806,6 +812,7 @@ void Board::undo()
 {
 	if(canUndo())
 	{
+		clearHighlight();
 		undrawConnection();
 		Move* m = _undo.takeLast();
 		if(gravityFlag())
@@ -846,6 +853,7 @@ void Board::redo()
 {
 	if(canRedo())
 	{
+		clearHighlight();
 		undrawConnection();
 		Move* m = _redo.takeFirst();
 		setField(m->x1, m->y1, EMPTY);
