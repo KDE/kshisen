@@ -370,7 +370,7 @@ QString App::getPlayerName()
 	QDialog *dlg = new QDialog(this);
 	dlg->setObjectName( "Hall of Fame" );
 	dlg->setModal( true );
-        QLabel  *l1  = new QLabel(i18n("You've made it into the \"Hall Of Fame\". Type in\nyour name so mankind will always remember\nyour cool rating."), dlg);
+        QLabel  *l1  = new QLabel(i18n("You have made it into the \"Hall Of Fame\". Type in\nyour name so mankind will always remember\nyour cool rating."), dlg);
 	l1->setFixedSize(l1->sizeHint());
 
 	QLabel *l2 = new QLabel(i18n("Your name:"), dlg);
