@@ -13,7 +13,7 @@ set(kshisen_SRCS
    app.cpp 
    tileset.cpp )
 
-kde4_automoc(${kshisen_SRCS})
+kde4_automoc(kshisen ${kshisen_SRCS})
 
 kde4_add_ui_files(kshisen_SRCS settings.ui )
 
