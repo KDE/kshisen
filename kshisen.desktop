@@ -11,5 +11,5 @@ GenericName[fr]=Jeu de tuiles Shisen-Sho dans le style Mahjongg
 GenericName[x-test]=xxShisen-Sho Mahjongg-like Tile Gamexx
 Icon=kshisen
 X-KDE-StartupNotify=true
-X-DCOP-ServiceType=Multi
+X-DBUS-StartupType=Multi
 Categories=Qt;KDE;Game;BoardGame;
