@@ -242,14 +242,14 @@ void App::lockMenus(bool lock)
 	// (Only undo/redo and hint actually *need* to be disabled, but disabling everything
 	// provides a good visual hint to the user, that they need to unpause to continue.
 	KMenu* help = findChild<KMenu*>("help" );
-	QList<KAction*> actions = actionCollection()->actions();
-	QList<KAction*>::const_iterator actionIter = actions.begin();
-	QList<KAction*>::const_iterator actionIterEnd = actions.end();
+	QList<QAction*> actions = actionCollection()->actions();
+	QList<QAction*>::const_iterator actionIter = actions.begin();
+	QList<QAction*>::const_iterator actionIterEnd = actions.end();
 
 	while(actionIter != actionIterEnd)
 	{
-		KAction* a = *actionIter;
-		if(!a->isPlugged(help))
+		QAction* a = *actionIter;
+		if(!a->associatedWidgets().contains(help))
 			a->setEnabled(!lock);
 		++actionIter;
 	}
