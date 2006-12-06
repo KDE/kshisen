@@ -2,7 +2,7 @@ project(kshisen)
 
 add_subdirectory( pics ) 
 
-include_directories( ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/highscore  )
+include_directories( ${CMAKE_SOURCE_DIR}/libkmahjongg ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/highscore  )
 
 
 ########### next target ###############
@@ -10,8 +10,7 @@ include_directories( ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdeg
 set(kshisen_SRCS 
    main.cpp 
    board.cpp 
-   app.cpp 
-   tileset.cpp )
+   app.cpp )
 
 kde4_automoc(${kshisen_SRCS})
 
@@ -21,7 +20,7 @@ kde4_add_kcfg_files(kshisen_SRCS prefs.kcfgc )
 
 kde4_add_executable(kshisen ${kshisen_SRCS})
 
-target_link_libraries(kshisen  ${KDE4_KDEUI_LIBS} kdegames )
+target_link_libraries(kshisen  ${KDE4_KDEUI_LIBS} kdegames kmahjongglib )
 
 install(TARGETS kshisen  DESTINATION ${BIN_INSTALL_DIR} )
 

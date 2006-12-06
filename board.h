@@ -36,6 +36,8 @@
  *******************************************************************
  */
 
+// KMahjonggLib integration and SVG support for KDE 4: Mauricio Piacentini <mauricio@tabuleiro.com>
+
 #ifndef __BOARD__H__
 #define __BOARD__H__
 
@@ -44,7 +46,7 @@
 
 #include <krandomsequence.h>
 #include <QList>
-#include "tileset.h"
+#include "kmahjonggtileset.h"
 #include "debug.h"
 
 struct Position
@@ -75,6 +77,8 @@ public:
 	Board(QWidget *parent = 0);
 	~Board();
 
+        static const int nTiles = 36;
+
 	virtual void paintEvent(QPaintEvent *);
 	virtual void mousePressEvent(QMouseEvent *);
 	virtual void resizeEvent(QResizeEvent*);
@@ -89,7 +93,7 @@ public:
 
 	void setSize(int x, int y);
 	void resizeBoard();
-	QSize unscaledSize() const;
+	QSize unscaledSize() ;
 	void newGame();
 	void setShuffle(int);
 	int  getShuffle() const;
@@ -139,8 +143,10 @@ protected:
 private: // functions
 	void initBoard();
 
-	int xOffset() const;
-	int yOffset() const;
+	int xOffset() ;
+	int yOffset() ;
+
+        int lineWidth();
 
 	void setField(int x, int y, int value);
 	int getField(int x, int y) const;
@@ -151,7 +157,7 @@ private: // functions
 	bool findSimplePath(int x1, int y1, int x2, int y2, Path& p) const;
 	bool isTileHighlighted(int x, int y) const;
 	void drawConnection(int timeout);
-	QPoint midCoord(int x, int y) const;
+	QPoint midCoord(int x, int y);
 	void marked(int x, int y);
 	void madeMove(int x1, int y1, int x2, int y2);
 
@@ -159,7 +165,7 @@ private:
 	time_t starttime;
 	time_t time_for_game;
 
-	TileSet tiles;
+	KMahjonggTileset tiles;
 
 	KRandomSequence random;
 

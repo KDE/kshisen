@@ -78,6 +78,8 @@ Board::Board(QWidget *parent) :
         palette.setBrush( backgroundRole(), QBrush( bg ) );
         setPalette( palette );
 
+        tiles.loadDefault();
+
 	loadSettings();
 }
 
@@ -169,8 +171,8 @@ void Board::gravity(int col, bool update)
 void Board::mousePressEvent(QMouseEvent *e)
 {
 	// Calculate field position
-	int pos_x = (e->pos().x() - xOffset()) / tiles.tileWidth();
-	int pos_y = (e->pos().y() - yOffset()) / tiles.tileHeight();
+	int pos_x = (e->pos().x() - xOffset()) / tiles.width();
+	int pos_y = (e->pos().y() - yOffset()) / tiles.height();
 
 	if(e->pos().x() < xOffset() || e->pos().y() < yOffset() ||
 		pos_x >= x_tiles() || pos_y >= y_tiles())
@@ -235,14 +237,16 @@ void Board::mousePressEvent(QMouseEvent *e)
 
 // The board is centred inside the main playing area. xOffset/yOffset provide
 // the coordinates of the top-left corner of the board.
-int Board::xOffset() const
+int Board::xOffset() 
 {
-	return (width() - (tiles.tileWidth() * x_tiles())) / 2;
+        int tw = tiles.width();
+	return (width() - (tw * x_tiles())) / 2;
 }
 
-int Board::yOffset() const
+int Board::yOffset() 
 {
-	return (height() - (tiles.tileHeight() * y_tiles())) / 2;
+        int th = tiles.height();
+	return (height() - (th * y_tiles())) / 2;
 }
 
 void Board::setSize(int x, int y)
@@ -262,10 +266,12 @@ void Board::setSize(int x, int y)
 
 	// set the minimum size of the scalable window
 	const double MINIMUM_SCALE = 0.2;
-	int w = qRound(tiles.unscaledTileWidth() * MINIMUM_SCALE) * x_tiles();
-	int h = qRound(tiles.unscaledTileHeight() * MINIMUM_SCALE) * y_tiles();
-	w += tiles.unscaledTileWidth();
-	h += tiles.unscaledTileWidth();
+	//int w = qRound(tiles.unscaledTileWidth() * MINIMUM_SCALE) * x_tiles();
+	//int h = qRound(tiles.unscaledTileHeight() * MINIMUM_SCALE) * y_tiles();
+        int w = qRound(tiles.width() * MINIMUM_SCALE) * x_tiles();
+	int h = qRound(tiles.height() * MINIMUM_SCALE) * y_tiles();
+	w += tiles.width();
+	h += tiles.width();
 
 	setMinimumSize(w, h);
 
@@ -283,20 +289,20 @@ void Board::resizeEvent(QResizeEvent*)
 void Board::resizeBoard()
 {
 	// calculate tile size required to fit all tiles in the window
-	int w = static_cast<int>( static_cast<double>(width() - tiles.unscaledTileWidth()) / x_tiles() );
-	int h = static_cast<int>( static_cast<double>(height() - tiles.unscaledTileWidth()) / y_tiles() );
+	int w = static_cast<int>( static_cast<double>(width() - tiles.width()) / x_tiles() );
+	int h = static_cast<int>( static_cast<double>(height() - tiles.width()) / y_tiles() );
 
 	const double MAXIMUM_SCALE = 2.0;
-	w = qMin(w, static_cast<int>((tiles.unscaledTileWidth() * MAXIMUM_SCALE) + 0.5));
-	h = qMin(h, static_cast<int>((tiles.unscaledTileHeight() * MAXIMUM_SCALE) + 0.5));
+	w = qMin(w, static_cast<int>((tiles.width() * MAXIMUM_SCALE) + 0.5));
+	h = qMin(h, static_cast<int>((tiles.height() * MAXIMUM_SCALE) + 0.5));
 
-	tiles.resizeTiles(w, h);
+	tiles.reloadTileset( QSize(w, h));
 }
 
-QSize Board::unscaledSize() const
+QSize Board::unscaledSize() 
 {
-	int w = tiles.unscaledTileWidth() * x_tiles() + tiles.unscaledTileWidth();
-	int h = tiles.unscaledTileHeight() * y_tiles() + tiles.unscaledTileWidth();
+	int w = tiles.width() * x_tiles() + tiles.width();
+	int h = tiles.height() * y_tiles() + tiles.width();
 	return QSize(w, h);
 }
 
@@ -325,7 +331,7 @@ void Board::newGame()
 				setField(x, y + k, cur_tile);
 
 			cur_tile++;
-			if(cur_tile > TileSet::nTiles)
+			if(cur_tile > Board::nTiles)
 				cur_tile = 1;
 		}
 	}
@@ -444,10 +450,10 @@ bool Board::isTileHighlighted(int x, int y) const
 
 void Board::updateField(int x, int y)
 {
-	QRect r(xOffset() + x * tiles.tileWidth(),
-	        yOffset() + y * tiles.tileHeight(),
-	        tiles.tileWidth(),
-	        tiles.tileHeight());
+	QRect r(xOffset() + x * tiles.width(),
+	        yOffset() + y * tiles.height(),
+	        tiles.width(),
+	        tiles.height());
 
 	repaint(r);
 }
@@ -467,8 +473,10 @@ void Board::paintEvent(QPaintEvent *e)
 	}
 	else
 	{
-		int w = tiles.tileWidth();
-		int h = tiles.tileHeight();
+		int w = tiles.width();
+		int h = tiles.height();
+                //int fw = tiles.qWidth() * 2;
+                //int fh = tiles.qHeight() * 2;
 		for(int i = 0; i < x_tiles(); i++)
 		{
 			for(int j = 0; j < y_tiles(); j++)
@@ -483,9 +491,12 @@ void Board::paintEvent(QPaintEvent *e)
 				if(e->rect().intersects(r))
 				{
 					if(isTileHighlighted(i, j))
-						p.drawPixmap(xpos, ypos, tiles.highlightedTile(tile-1));
+						p.drawPixmap(xpos, ypos, tiles.selectedTile(1));
 					else
-						p.drawPixmap(xpos, ypos, tiles.tile(tile-1));
+						p.drawPixmap(xpos, ypos, tiles.unselectedTile(1));
+
+                                        //draw face
+                                        p.drawPixmap(xpos, ypos, tiles.tileface(tile-1));
 				}
 			}
 		}
@@ -497,7 +508,7 @@ void Board::paintEvent(QPaintEvent *e)
 
 	if (_paintConnection)
 	{
-		p.setPen(QPen(QColor("red"), tiles.lineWidth()));
+		p.setPen(QPen(QColor("red"), lineWidth()));
 
 		// Path.size() will always be >= 2
 		Path::const_iterator pathEnd = connection.constEnd();
@@ -753,11 +764,11 @@ void Board::undrawConnection()
 	}
 }
 
-QPoint Board::midCoord(int x, int y) const
+QPoint Board::midCoord(int x, int y) 
 {
 	QPoint p;
-	int w = tiles.tileWidth();
-	int h = tiles.tileHeight();
+	int w = tiles.width();
+	int h = tiles.height();
 
 	if(x == -1)
 		p.setX(xOffset() - (w / 4));
@@ -927,11 +938,20 @@ void Board::dumpBoard() const
 }
 #endif
 
+int Board::lineWidth()
+{
+	int width = qRound(tiles.height() / 10.0);
+	if(width < 3)
+		width = 3;
+
+	return width;
+}
+
 bool Board::getHint_I(Path& p) const
 {
 	//dumpBoard();
-	short done[TileSet::nTiles];
-	for( short index = 0; index < TileSet::nTiles; index++ )
+	short done[Board::nTiles];
+	for( short index = 0; index < Board::nTiles; index++ )
 		done[index] = 0;
 
 	for(int x = 0; x < x_tiles(); x++)

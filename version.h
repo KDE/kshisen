@@ -11,4 +11,4 @@
 // The MICRO version is increased for every bug-fix to a branch.
 // MICRO numbers >= 90 are used for development milestones in HEAD.
 
-#define KSHISEN_VERSION	"1.5.1"
+#define KSHISEN_VERSION	"1.6.0"
