@@ -97,7 +97,6 @@ App::App(QWidget *parent) : KMainWindow(parent),
 
 	board = new Board(this);
         board->setObjectName( "board" );
-	loadSettings();
 
 	setCentralWidget(board);
 
@@ -109,7 +108,6 @@ App::App(QWidget *parent) : KMainWindow(parent),
 	t->start(1000);
 	connect(t, SIGNAL(timeout()), this, SLOT(updateScore()));
 	connect(board, SIGNAL(endOfGame()), this, SLOT(slotEndOfGame()));
-	connect(board, SIGNAL(resized()), this, SLOT(boardResized()));
 
 	kapp->processEvents();
 
@@ -210,32 +208,6 @@ void App::hint()
 	enableItems();
 }
 
-void App::loadSettings()
-{
-	// Setting 'Prefer Unscaled Tiles' to on is known to fail in the following
-	//  situation: The Keramik window decoration is in use AND caption bubbles
-	//  stick out above the title bar (i.e. Keramik's 'Draw small caption
-	// bubbles on active windows' configuration entry is set to off) AND the
-	// kshisen window is maximized.
-	//
-	// The user can work-around this situation by un-maximizing the window first.
-	if(Prefs::unscaled())
-	{
-		QSize s = board->unscaledSize();
-
-		// We would have liked to have used KMainWindow::sizeForCentralWidgetSize(),
-		// but this function does not seem to work when the toolbar is docked on the
-		// left. sizeForCentralWidgetSize() even reports a value 1 pixel too small
-		// when the toolbar is docked at the top...
-		// These bugs present in KDE: 3.1.90 (CVS >= 20030225)
-		//resize(sizeForCentralWidgetSize(s));
-
-		s += size() - board->size(); // compensate for chrome (toolbars, statusbars etc.)
-		resize(s);
-		//kDebug() << "App::preferUnscaled() set size to: " << s.width() << " x " << s.height() << endl;
-	}
-}
-
 void App::lockMenus(bool lock)
 {
 	// Disable all actions apart from (un)pause, quit and those that are help-related.
@@ -268,17 +240,6 @@ void App::enableItems()
 		actionCollection()->action(KStdGameAction::name(KStdGameAction::Redo))->setEnabled(board->canRedo());
 		actionCollection()->action(KStdGameAction::name(KStdGameAction::Restart))->setEnabled(board->canUndo());
 	}
-}
-
-void App::boardResized()
-{
-	// If the board has been resized to a size that requires scaled tiles, then the
-	// 'Prefer Unscaled Tiles' option should be set to off.
-
-	//kDebug() << "App::boardResized " << b->width() << " x " << b->height() << endl;
-	bool unscaled = Prefs::unscaled();
-	if(unscaled && board->size() != board->unscaledSize())
-		Prefs::setUnscaled(false);
 }
 
 void App::slotEndOfGame()
@@ -773,7 +734,6 @@ void App::showSettings(){
 	KConfigDialog *dialog = new KConfigDialog(this, "settings", Prefs::self(), KPageDialog::Plain);
 	Settings *general = new Settings(0);
 	dialog->addPage(general, i18n("General"), "package_settings");
-	connect(dialog, SIGNAL(settingsChanged(const QString &)), this, SLOT(loadSettings()));
 	connect(dialog, SIGNAL(settingsChanged(const QString &)), board, SLOT(loadSettings()));
 	dialog->show();
 }

@@ -11,11 +11,6 @@
     <entry name="Gravity" type="Bool">
       <default>true</default>
     </entry>
-    <entry name="Unscaled" type="Bool">
-      <default>true</default>
-    </entry>
-
-
     <entry name="Speed" type="Int">
       <default>2</default>
       <min>0</min>

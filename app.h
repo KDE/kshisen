@@ -67,8 +67,6 @@ public:
 	App(QWidget *parent = 0);
 
 private slots:
-	void loadSettings();
-
 	void slotEndOfGame();
 	void enableItems();
 	void updateScore();
@@ -84,7 +82,6 @@ private slots:
 	void hint();
 	void hallOfFame();
 	void keyBindings();
-	void boardResized();
 
 private:
 	void lockMenus(bool);
