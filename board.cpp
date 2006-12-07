@@ -12,7 +12,8 @@
  *
  *******************************************************************
  *
- * created 1997 by Mario Weilguni <mweilguni@sime.com>
+ * Copyright (C) 1997 by Mario Weilguni <mweilguni@sime.com>
+ * Copyright (C) 2002-2004 Dave Corrie  <kde@davecorrie.com>
  *
  *******************************************************************
  *
@@ -35,6 +36,8 @@
  *
  *******************************************************************
  */
+
+// KMahjonggLib integration and SVG support for KDE 4: Mauricio Piacentini <mauricio@tabuleiro.com>
 
 #include <kapplication.h>
 #include <klocale.h>
