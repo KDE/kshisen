@@ -1,7 +1,5 @@
 project(kshisen)
 
-add_subdirectory( pics ) 
-
 include_directories( ${CMAKE_SOURCE_DIR}/libkmahjongg ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/highscore  )
 
 

@@ -48,6 +48,7 @@
 #include <krandomsequence.h>
 #include <QList>
 #include "kmahjonggtileset.h"
+#include "kmahjonggbackground.h"
 #include "debug.h"
 
 struct Position
@@ -167,6 +168,7 @@ private:
 	time_t time_for_game;
 
 	KMahjonggTileset tiles;
+        KMahjonggBackground background;
 
 	KRandomSequence random;
 

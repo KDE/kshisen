@@ -76,12 +76,12 @@ Board::Board(QWidget *parent) :
 
 	setDelay(DEFAULTDELAY);
 
-	QPixmap bg(KGlobal::dirs()->findResource("appdata", "kshisen_bgnd.png"));
-        QPalette palette;
-        palette.setBrush( backgroundRole(), QBrush( bg ) );
-        setPalette( palette );
-
         tiles.loadDefault();
+        background.loadDefault();
+
+        QPalette palette;
+        palette.setBrush( backgroundRole(), background.getBackground() );
+        setPalette( palette );
 
 	loadSettings();
 }
