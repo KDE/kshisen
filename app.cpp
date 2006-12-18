@@ -39,7 +39,7 @@
 
 #include <kapplication.h>
 #include <kactioncollection.h>
-#include <kstdaction.h>
+#include <kstandardaction.h>
 #include <kseparator.h>
 #include <kmessagebox.h>
 #include <kconfig.h>
@@ -137,7 +137,7 @@ void App::initKAction()
 #endif
 
 	// Settings
-	KStdAction::preferences(this, SLOT(showSettings()), actionCollection());
+	KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
 }
 
 void App::hallOfFame()
