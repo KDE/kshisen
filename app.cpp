@@ -44,7 +44,7 @@
 #include <kmessagebox.h>
 #include <kconfig.h>
 #include <kaction.h>
-#include <kstdgameaction.h>
+#include <kstandardgameaction.h>
 #include <khighscore.h>
 #include <kdebug.h>
 #include <kkeydialog.h>
@@ -119,16 +119,16 @@ App::App(QWidget *parent) : KMainWindow(parent),
 void App::initKAction()
 {
 	// Game
-	KStdGameAction::gameNew(this, SLOT(newGame()), actionCollection());
-	KStdGameAction::restart(this, SLOT(restartGame()), actionCollection());
-	KStdGameAction::pause(this, SLOT(pause()), actionCollection());
-	KStdGameAction::highscores(this, SLOT(hallOfFame()), actionCollection());
-	KStdGameAction::quit(this, SLOT(quitGame()), actionCollection());
+	KStandardGameAction::gameNew(this, SLOT(newGame()), actionCollection());
+	KStandardGameAction::restart(this, SLOT(restartGame()), actionCollection());
+	KStandardGameAction::pause(this, SLOT(pause()), actionCollection());
+	KStandardGameAction::highscores(this, SLOT(hallOfFame()), actionCollection());
+	KStandardGameAction::quit(this, SLOT(quitGame()), actionCollection());
 
 	// Move
-	KStdGameAction::undo(this, SLOT(undo()), actionCollection());
-	KStdGameAction::redo(this, SLOT(redo()), actionCollection());
-	KStdGameAction::hint(this, SLOT(hint()), actionCollection());
+	KStandardGameAction::undo(this, SLOT(undo()), actionCollection());
+	KStandardGameAction::redo(this, SLOT(redo()), actionCollection());
+	KStandardGameAction::hint(this, SLOT(hint()), actionCollection());
 	//new KAction(i18n("Is Game Solvable?"), 0, this,
 	//	SLOT(isSolvable()), actionCollection(), "move_solvable");
 
@@ -227,8 +227,8 @@ void App::lockMenus(bool lock)
 		++actionIter;
 	}
 
-	actionCollection()->action(KStdGameAction::name(KStdGameAction::Pause))->setEnabled(true);
-	actionCollection()->action(KStdGameAction::name(KStdGameAction::Quit))->setEnabled(true);
+	actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Pause))->setEnabled(true);
+	actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Quit))->setEnabled(true);
 
 	enableItems();
 }
@@ -237,9 +237,9 @@ void App::enableItems()
 {
 	if(!board->isPaused())
 	{
-		actionCollection()->action(KStdGameAction::name(KStdGameAction::Undo))->setEnabled(board->canUndo());
-		actionCollection()->action(KStdGameAction::name(KStdGameAction::Redo))->setEnabled(board->canRedo());
-		actionCollection()->action(KStdGameAction::name(KStdGameAction::Restart))->setEnabled(board->canUndo());
+		actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Undo))->setEnabled(board->canUndo());
+		actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Redo))->setEnabled(board->canRedo());
+		actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Restart))->setEnabled(board->canUndo());
 	}
 }
 
