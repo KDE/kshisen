@@ -52,7 +52,7 @@
 #include <kstatusbar.h>
 #include <klocale.h>
 #include <kpushbutton.h>
-#include <kstdguiitem.h>
+#include <KStandardGuiItem>
 #include <kconfigdialog.h>
 
 #include <QLayout>
@@ -345,7 +345,7 @@ QString App::getPlayerName()
 	e->setText( lastPlayerName );
 	e->setFocus();
 
-	QPushButton *b = new KPushButton(KStdGuiItem::ok(), dlg);
+	QPushButton *b = new KPushButton(KStandardGuiItem::ok(), dlg);
 	b->setDefault(true);
 	b->setFixedSize(b->sizeHint());
 
@@ -700,7 +700,7 @@ void App::showHighscore(int focusitem)
 		}
 	}
 
-	QPushButton *b = new KPushButton(KStdGuiItem::close(), dlg);
+	QPushButton *b = new KPushButton(KStandardGuiItem::close(), dlg);
 
 	b->setFixedSize(b->sizeHint());
 
