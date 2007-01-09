@@ -730,6 +730,7 @@ void Board::undrawConnection()
 
 	Path oldConnection = connection;
 	connection.clear();
+	_paintConnection = false;
 
 	// Path.size() will always be >= 2
 	Path::const_iterator pathEnd = oldConnection.end();
