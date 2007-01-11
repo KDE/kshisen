@@ -39,7 +39,6 @@
 
 // KMahjonggLib integration and SVG support for KDE 4: Mauricio Piacentini <mauricio@tabuleiro.com>
 
-#include <kapplication.h>
 #include <klocale.h>
 #include <kstandarddirs.h>
 #include <kglobalsettings.h>
@@ -912,7 +911,7 @@ void Board::finish()
 			ready = true;
 		marked(p.first().x, p.first().y);
 		marked(p.last().x, p.last().y);
-		kapp->processEvents();
+		qApp->processEvents();
 		usleep(250*1000);
 	}
 }

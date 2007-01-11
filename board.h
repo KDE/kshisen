@@ -47,6 +47,7 @@
 
 #include <krandomsequence.h>
 #include <QList>
+#include <QWidget>
 #include "kmahjonggtileset.h"
 #include "kmahjonggbackground.h"
 #include "debug.h"

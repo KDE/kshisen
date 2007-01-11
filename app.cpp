@@ -37,7 +37,6 @@
  *******************************************************************
  */
 
-#include <kapplication.h>
 #include <kactioncollection.h>
 #include <kstandardaction.h>
 #include <kseparator.h>
@@ -110,7 +109,7 @@ App::App(QWidget *parent) : KMainWindow(parent),
 	connect(t, SIGNAL(timeout()), this, SLOT(updateScore()));
 	connect(board, SIGNAL(endOfGame()), this, SLOT(slotEndOfGame()));
 
-	kapp->processEvents();
+	qApp->processEvents();
 
 	updateScore();
 	enableItems();
@@ -154,7 +153,7 @@ void App::newGame()
 
 void App::quitGame()
 {
-	kapp->quit();
+	qApp->quit();
 }
 
 void App::restartGame()
