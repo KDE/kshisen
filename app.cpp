@@ -479,7 +479,7 @@ void App::readOldHighscore()
 	// this is for before-KHighscore-highscores
 	int i;
 	QString s, e, grp;
-	KConfig *conf = KGlobal::config();
+	KSharedConfig::Ptr conf = KGlobal::config();
 
 	highscore.resize(0);
 	i = 0;
