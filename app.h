@@ -65,7 +65,7 @@ class App : public KMainWindow
 	Q_OBJECT
 
 public:
-	App(QWidget *parent = 0);
+	explicit App(QWidget *parent = 0);
 
 private slots:
 	void slotEndOfGame();
