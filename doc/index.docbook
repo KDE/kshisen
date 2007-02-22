@@ -313,10 +313,10 @@ removed, all tiles lying above it will fall down one step.</para></listitem>
 
 <varlistentry>
 <term><guilabel>Allow unsolvable games</guilabel></term>
-<listitem><para>If checked, only solvable games will be
-created when a new game is started. Note: You may still choose the wrong way and
-have to try again if you didn't solve the game, but if it's checked, the game
-<emphasis>will</emphasis> be solvable.</para></listitem>
+<listitem><para>If checked, you run the risk of being presented with games that are 
+ impossible to solve. Note: Even when not checked, you will fail to 
+ complete a game if you remove the tiles in the wrong order!
+</para></listitem>
 </varlistentry>
 
 <varlistentry>
