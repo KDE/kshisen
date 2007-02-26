@@ -60,7 +60,7 @@ static int size_y[5] = { 6,  8, 12, 14, 16};
 static int DELAY[5] = {1000, 750, 500, 250, 125};
 
 Board::Board(QWidget *parent) :
-       QWidget(parent, Qt::WResizeNoErase), field(0),
+       QWidget(parent), field(0),
        _x_tiles(0), _y_tiles(0),
        _delay(125), paused(false),
        gravity_flag(true), _solvable_flag(true),
