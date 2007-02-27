@@ -293,6 +293,12 @@ void Board::resizeBoard()
 	// calculate tile size required to fit all tiles in the window
         QSize newsize = tiles.preferredTileSize(QSize(width(),height()), x_tiles(), y_tiles());
         tiles.reloadTileset(newsize);
+        //recalculate bg, if needed
+        background.sizeChanged(width(), height());
+        //reload our bg brush, using the cache in libkmahjongg if possible
+        QPalette palette;
+        palette.setBrush( backgroundRole(), background.getBackground() );
+        setPalette( palette );
 }
 
 QSize Board::unscaledSize() 
