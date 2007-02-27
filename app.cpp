@@ -478,25 +478,24 @@ void App::readOldHighscore()
 {
 	// this is for before-KHighscore-highscores
 	int i;
-	QString s, e, grp;
+	QString s, e;
 	KSharedConfig::Ptr conf = KGlobal::config();
 
 	highscore.resize(0);
 	i = 0;
 	bool eol = false;
-	grp = conf->group();
-	conf->setGroup("Hall of Fame");
+	KConfigGroup group = conf->group("Hall of Fame");
 	while ((i < (int)HIGHSCORE_MAX) && !eol)
 	{
 		s.sprintf("Highscore_%d", i);
 		if(conf->hasKey(s))
 		{
-			e = conf->readEntry(s,QString());
+			e = group.readEntry(s,QString());
 			highscore.resize(i+1);
 
 			HighScore hs;
 
-			QStringList e = conf->readEntry(s,QStringList(), ' ');
+			QStringList e = group.readEntry(s,QStringList(), ' ');
 			int nelem = e.count();
 			hs.x = e.at(0).toInt();
 			hs.y = e.at(1).toInt();
@@ -534,9 +533,6 @@ void App::readOldHighscore()
 //		highscore.resize(1);
 //		highscore[0] = hs;
 //	}
-
-	// restore old group
-	conf->setGroup(grp);
 
 	// write in new KHighscore format
 	writeHighscore();
