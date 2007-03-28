@@ -3,4 +3,4 @@ File=kshisen.kcfg
 ClassName=Prefs
 Singleton=true
 #CustomAdditions=true
-Mutators=Gravity
+Mutators=true

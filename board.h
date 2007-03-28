@@ -14,6 +14,7 @@
  *
  * Copyright (C) 1997 by Mario Weilguni <mweilguni@sime.com>
  * Copyright (C) 2002-2004 Dave Corrie  <kde@davecorrie.com>
+ * Copyright (c) 2007 Mauricio Piacentini <mauricio@tabuleiro.com>
  *
  *******************************************************************
  *
@@ -134,7 +135,9 @@ signals:
 
 public slots:
 	bool pause();
-  void loadSettings();
+        void loadSettings();
+        bool loadTileset    ( const QString & );
+        bool loadBackground ( const QString & );
 
 private slots:
 	void undrawConnection();

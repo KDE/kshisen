@@ -14,6 +14,7 @@
  *
  * Copyright (C) 1997 by Mario Weilguni <mweilguni@sime.com>
  * Copyright (C) 2002-2004 Dave Corrie  <kde@davecorrie.com>
+ * Copyright (C) 2007 Mauricio Piacentini <mauricio@tabuleiro.com>
  *
  *******************************************************************
  *
@@ -36,8 +37,6 @@
  *
  *******************************************************************
  */
-
-// KMahjonggLib integration and SVG support for KDE 4: Mauricio Piacentini <mauricio@tabuleiro.com>
 
 #include <klocale.h>
 #include <kstandarddirs.h>
@@ -75,9 +74,6 @@ Board::Board(QWidget *parent) :
 
 	setDelay(DEFAULTDELAY);
 
-        tiles.loadDefault();
-        background.loadDefault();
-
         QPalette palette;
         palette.setBrush( backgroundRole(), background.getBackground() );
         setPalette( palette );
@@ -91,6 +87,15 @@ Board::~Board()
 }
 
 void Board::loadSettings(){
+    if (!loadTileset(Prefs::tileSet())){
+      qDebug() << "An error occurred when loading the tileset " << Prefs::tileSet() <<"KShisen will continue with the default tileset.";
+    }
+
+    // Load background
+    if( ! loadBackground(Prefs::background())){
+      qDebug() << "An error occurred when loading the background " << Prefs::background() <<"KShisen will continue with the default background.";
+    }
+
 	int index = Prefs::size();
 	setSize(size_x[index], size_y[index]);
 
@@ -98,6 +103,44 @@ void Board::loadSettings(){
 	setGravityFlag(Prefs::gravity());
 	setSolvableFlag(Prefs::solvable());
 	setDelay(DELAY[Prefs::speed()]);
+}
+
+bool Board::loadTileset(const QString &path) {
+
+  if (tiles.loadTileset(path)) {
+    Prefs::setTileSet(path);
+    Prefs::writeConfig();
+    resizeBoard();
+    return true;
+  } else {
+    if (tiles.loadDefault()) {
+      Prefs::setTileSet(tiles.path());
+      Prefs::writeConfig();
+      resizeBoard();
+      return false;
+    } else {
+      return false;
+    }
+  }
+}
+
+bool Board::loadBackground( const QString& pszFileName )
+{
+  if (background.load( pszFileName, width(), height())) {
+    Prefs::setBackground(pszFileName);
+    Prefs::writeConfig();
+    resizeBoard();
+    return true;
+  } else {
+    if (background.loadDefault()) {
+      Prefs::setBackground(background.path());
+      Prefs::writeConfig();
+      resizeBoard();
+      return false;
+    } else {
+      return false;
+    }
+  }
 }
 
 int Board::x_tiles() const

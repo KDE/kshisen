@@ -4,6 +4,14 @@
       xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
       http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
   <kcfgfile name="kshisenrc"/>
+  <group name="General">
+    <entry name="TileSet" type="String" key="Tileset_file">
+      <label>The tile-set to use.</label>
+    </entry>
+    <entry name="Background" type="String" key="Background_file">
+      <label>The background to use.</label>
+    </entry>
+  </group>
   <group name="Game">
     <entry name="Solvable" type="Bool">
       <default>true</default>

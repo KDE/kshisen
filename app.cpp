@@ -14,6 +14,7 @@
  *
  * Copyright (C)  1997 by Mario Weilguni <mweilguni@sime.com>
  * Copyright (C) 2002-2004 Dave Corrie  <kde@davecorrie.com>
+ * Copyright (C) 2007 Mauricio Piacentini <mauricio@tabuleiro.com>
  *
  *******************************************************************
  *
@@ -64,6 +65,8 @@
 #include "app.h"
 #include "prefs.h"
 #include "ui_settings.h"
+
+#include <kmahjonggconfigdialog.h>
 
 class Settings : public QWidget, public Ui::Settings
 {
@@ -724,14 +727,16 @@ void App::keyBindings()
  * Show Settings dialog.
  */
 void App::showSettings(){
-	if(KConfigDialog::showDialog("settings"))
-		return;
+    if(KConfigDialog::showDialog("settings"))
+      return;
 
-	KConfigDialog *dialog = new KConfigDialog(this, "settings", Prefs::self(), KPageDialog::Plain);
-	Settings *general = new Settings(0);
-	dialog->addPage(general, i18n("General"), "package_settings");
-	connect(dialog, SIGNAL(settingsChanged(const QString &)), board, SLOT(loadSettings()));
-	dialog->show();
+     //Use the classes exposed by LibKmahjongg for our configuration dialog     
+    KMahjonggConfigDialog *dialog = new KMahjonggConfigDialog(this, "settings", Prefs::self());
+    dialog->addPage(new Settings(0), i18n("General"), "package_settings");
+    dialog->addTilesetPage();
+    dialog->addBackgroundPage();
+    connect(dialog, SIGNAL(settingsChanged(const QString &)), board, SLOT(loadSettings()));
+    dialog->show();
 }
 
 #include "app.moc"
