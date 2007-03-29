@@ -53,16 +53,18 @@
 #define EMPTY		0
 #define DEFAULTDELAY	500
 #define DEFAULTSHUFFLE	4
+#define SEASONS_START   28
+#define FLOWERS_START   39
 
-static int size_x[5] = {14, 18, 24, 26, 30};
-static int size_y[5] = { 6,  8, 12, 14, 16};
+static int size_x[6] = {14, 16, 18, 24, 26, 30};
+static int size_y[6] = { 6, 9, 8, 12, 14, 16};
 static int DELAY[5] = {1000, 750, 500, 250, 125};
 
 Board::Board(QWidget *parent) :
        QWidget(parent), field(0),
        _x_tiles(0), _y_tiles(0),
        _delay(125), paused(false),
-       gravity_flag(true), _solvable_flag(true),
+       gravity_flag(true), _solvable_flag(true), _chineseStyle_flag(false),
 	     grav_col_1(-1), grav_col_2(-1), highlighted_tile(-1), _paintConnection(false)
 {
 	tileRemove1.first = -1;
@@ -96,13 +98,21 @@ void Board::loadSettings(){
       qDebug() << "An error occurred when loading the background " << Prefs::background() <<"KShisen will continue with the default background.";
     }
 
-	int index = Prefs::size();
-	setSize(size_x[index], size_y[index]);
-
-	setShuffle(Prefs::level() * 4 + 1);
-	setGravityFlag(Prefs::gravity());
-	setSolvableFlag(Prefs::solvable());
-	setDelay(DELAY[Prefs::speed()]);
+    // special rule
+    _chineseStyle_flag = (Prefs::chineseStyle());
+    // need to load solvable before size
+    // because setSize call newGame which uses
+    // the solvable flag
+    // same with suffle
+    setSolvableFlag(Prefs::solvable());
+    //setShuffle(Prefs::level() * 4 + 1);
+    // actually there is no need to call setShuffle
+    // and setShuffle will call newGame
+    _shuffle = Prefs::level() * 4 + 1;
+    int index = Prefs::size();
+    setSize(size_x[index], size_y[index]);
+    setGravityFlag(Prefs::gravity());
+    setDelay(DELAY[Prefs::speed()]);
 }
 
 bool Board::loadTileset(const QString &path) {
@@ -273,6 +283,18 @@ void Board::mousePressEvent(QMouseEvent *e)
 							updateField(i, j);
 						else if(field_tile == clicked_tile)
 							updateField(i, j);
+						else if (_chineseStyle_flag)
+						{
+							if (clicked_tile >= SEASONS_START && clicked_tile <= (SEASONS_START+3) && field_tile >= SEASONS_START && field_tile <= (SEASONS_START+3))
+								updateField(i, j);
+							else if (clicked_tile >= FLOWERS_START && clicked_tile <= (FLOWERS_START+3) && field_tile >= FLOWERS_START && field_tile <= (FLOWERS_START+3))
+								updateField(i, j);
+							// old_highlighted
+							if (old_highlighted >= SEASONS_START && old_highlighted <= (SEASONS_START+3) && field_tile >= SEASONS_START && field_tile <= (SEASONS_START+3))
+								updateField(i, j);
+							else if (old_highlighted >= FLOWERS_START && old_highlighted <= (FLOWERS_START+3) && field_tile >= FLOWERS_START && field_tile <= (FLOWERS_START+3))
+								updateField(i, j);
+						}
 					}
 				}
 			}
@@ -354,7 +376,7 @@ QSize Board::unscaledSize()
 void Board::newGame()
 {
 	//kDebug() << "NewGame" << endl;
-	int i, x, y, k;
+	int i, x, y;//, k; k is unused now
 
 	mark_x = -1;
 	mark_y = -1;
@@ -368,17 +390,37 @@ void Board::newGame()
 
 	// distribute all tiles on board
 	int cur_tile = 1;
-	for(y = 0; y < y_tiles(); y += 4)
+	int tile_count = 0;
+	/*
+	 * Note by jwickers: i changed the way to distribute tiles
+	 *  in chinese mahjongg there are 4 tiles of each
+	 *  except flowers and seasons (4 flowers and 4 seasons,
+	 *  but one unique tile of each, that is why they are
+	 *  the only ones numbered)
+	 * That uses the chineseStyle flag
+	 */
+	for(y = 0; y < y_tiles(); ++y)
 	{
-		for(x = 0; x < x_tiles(); ++x)
-		{
-			for(k = 0; k < 4 && y + k < y_tiles(); k++)
-				setField(x, y + k, cur_tile);
-
-			cur_tile++;
+ 		for(x = 0; x < x_tiles(); ++x)
+ 		{
+			// do not duplicate flowers or seasons
+			if ( !_chineseStyle_flag || !((cur_tile >= SEASONS_START && cur_tile <= (SEASONS_START+3)) || (cur_tile >= FLOWERS_START && cur_tile <= (FLOWERS_START+3))) )
+			{
+				setField(x, y, cur_tile);
+				if (++tile_count >= 4)
+				{
+					tile_count = 0;
+					cur_tile++;
+				}
+			}
+			else
+			{
+				tile_count = 0;
+				setField(x, y, cur_tile++);
+			}
 			if(cur_tile > Board::nTiles)
 				cur_tile = 1;
-		}
+                }
 	}
 
 	if(getShuffle() == 0)
@@ -418,8 +460,10 @@ void Board::newGame()
 	memcpy(oldfield, field, fsize);			// save field
 	int *tiles = new int[x_tiles() * y_tiles()];
 	int *pos = new int[x_tiles() * y_tiles()];
+	//jwickers: in case the game cannot make the game solvable we do not want to run an infinite loop
+	int max_attempts = 200;
 
-	while(!solvable(true))
+	while(!solvable(true) && max_attempts > 0)
 	{
 		//kDebug() << "Not solvable" << endl;
 		//dumpBoard();
@@ -457,6 +501,12 @@ void Board::newGame()
 
 		// remember field
 		memcpy(oldfield, field, fsize);
+                max_attempts--;
+	}
+        	// debug, tell if make solvable failed
+	if (max_attempts == 0)
+	{
+		kDebug() << "NewGame make solvable failed" << endl;
 	}
 
 
@@ -471,14 +521,51 @@ void Board::newGame()
 	emit changed();
 }
 
+/*
+ * Check that two tiles can match
+ *  used for connecting them or highlighting tiles of the same group
+ */
+bool Board::tilesMatch(int tile1, int tile2) const
+{
+	// identical tiles always match
+	if (tile1 == tile2)
+		return true;
+	// when chinese style is set, there are special rules
+	// for flowers and seasons
+	if (_chineseStyle_flag)
+	{
+		// if both tiles are seasons
+		if  (tile1 >= SEASONS_START && tile1 <= SEASONS_START+3
+		  && tile2 >= SEASONS_START && tile2 <= SEASONS_START+3)
+			return true;
+		// if both tiles are flowers
+		if  (tile1 >= FLOWERS_START && tile1 <= FLOWERS_START+3
+		  && tile2 >= FLOWERS_START && tile2 <= FLOWERS_START+3)
+			return true;
+	}
+	return false;
+}
+
 bool Board::isTileHighlighted(int x, int y) const
 {
 	if(x == mark_x && y == mark_y)
 		return true;
 
-	if(getField(x, y) == highlighted_tile)
+	if (tilesMatch(highlighted_tile, getField(x, y)))
 		return true;
-
+/*
+ 	if(getField(x, y) == highlighted_tile)
+ 		return true;
+ 
+	// check chinese style of matching flowers and seasons
+	if (_chineseStyle_flag )
+	{
+		if (getField(x, y) >= SEASONS_START && getField(x, y) <= (SEASONS_START+3) && highlighted_tile >= SEASONS_START && highlighted_tile <= (SEASONS_START+3))
+			return true;
+		else if (getField(x, y) >= FLOWERS_START && getField(x, y) <= (FLOWERS_START+3) && highlighted_tile >= FLOWERS_START && highlighted_tile <= (FLOWERS_START+3))
+			return true;
+	}
+*/
 	// tileRemove1.first != -1 is used because the repaint of the first if
 	// on undrawConnection highlihgted the tiles that fell because of gravity
 	if(!connection.isEmpty() && tileRemove1.first != -1)
@@ -601,8 +688,8 @@ void Board::marked(int x, int y)
 	int fld1 = getField(mark_x, mark_y);
 	int fld2 = getField(x, y);
 
-	// both field same?
-	if(fld1 != fld2)
+	// both field match
+	if(!tilesMatch(fld1, fld2))
 		return;
 
 	// trace
@@ -637,7 +724,7 @@ void Board::clearHighlight()
 
 		for(int i = 0; i < x_tiles(); i++)
 			for(int j = 0; j < y_tiles(); j++)
-				if(old_highlight == getField(i, j))
+				if(tilesMatch(old_highlight, getField(i, j)))
 					updateField(i, j);
 	}
 }
@@ -1014,7 +1101,7 @@ bool Board::getHint_I(Path& p) const
 					{
 						if(xx != x || yy != y)
 						{
-							if(getField(xx, yy) == tile)
+							if(tilesMatch(getField(xx, yy), tile))
 								if(findPath(x, y, xx, yy, p))
 								{
 									//kDebug() << "path.size() == " << p.size() << endl;
@@ -1093,7 +1180,7 @@ bool Board::solvable(bool norestore)
 	while(getHint_I(p))
 	{
 		kFatal(getField(p.first().x, p.first().y) != getField(p.last().x, p.last().y))
-			<< "Removing unmateched tiles: (" << p.first().x << ", " << p.first().y << ") => "
+			<< "Removing unmatched tiles: (" << p.first().x << ", " << p.first().y << ") => "
 			<< getField(p.first().x, p.first().y) << " (" << p.last().x << ", " << p.last().y << ") => "
             << getField(p.last().x, p.last().y) << endl;
 		setField(p.first().x, p.first().y, EMPTY);

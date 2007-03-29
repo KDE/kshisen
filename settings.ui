@@ -31,6 +31,13 @@
     </widget>
    </item>
    <item>
+   <widget class="QCheckBox" name="kcfg_ChineseStyle" >
+     <property name="text" >
+      <string>Use Chinese style: any flower match any flower, any season match any season</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QGroupBox" name="difficulty_groupBox" >
      <property name="title" >
       <string>Board Difficulty</string>
@@ -144,7 +151,7 @@
       <property name="spacing" >
        <number>2</number>
       </property>
-      <item row="1" column="4" >
+      <item row="1" column="5" >
        <widget class="QLabel" name="textLabel12" >
         <property name="text" >
          <string>30x16</string>
@@ -154,7 +161,7 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="3" >
+      <item row="1" column="4" >
        <widget class="QLabel" name="textLabel11" >
         <property name="text" >
          <string>26x14</string>
@@ -164,7 +171,7 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="2" >
+      <item row="1" column="3" >
        <widget class="QLabel" name="textLabel10" >
         <property name="text" >
          <string>24x12</string>
@@ -174,8 +181,8 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="1" >
-       <widget class="QLabel" name="textLabel9" >
+      <item row="1" column="2" >
+       <widget class="QLabel" name="textLabel7" >
         <property name="text" >
          <string>18x8</string>
         </property>
@@ -183,14 +190,31 @@
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
+     </item>
+      <item row="1" column="1" >
+       <widget class="QLabel" name="textLabel9" >
+        <property name="text" >
+         <string>16x9</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
       </item>
-      <item row="0" column="0" colspan="5" >
+      <item row="1" column="0" >
+      <widget class="QLabel" name="textLabel8" >
+        <property name="text" >
+         <string>14x6</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="6" >
        <widget class="QSlider" name="kcfg_Size" >
         <property name="minimum" >
          <number>0</number>
         </property>
         <property name="maximum" >
-         <number>4</number>
+         <number>5</number>
         </property>
         <property name="pageStep" >
          <number>1</number>
@@ -203,13 +227,6 @@
         </property>
         <property name="tickPosition" >
          <enum>QSlider::TicksBelow</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" >
-       <widget class="QLabel" name="textLabel8" >
-        <property name="text" >
-         <string>14x6</string>
         </property>
        </widget>
       </item>

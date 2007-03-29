@@ -81,7 +81,7 @@ public:
 	Board(QWidget *parent = 0);
 	~Board();
 
-        static const int nTiles = 36;
+        static const int nTiles = 42;
 
 	virtual void paintEvent(QPaintEvent *);
 	virtual void mousePressEvent(QMouseEvent *);
@@ -158,6 +158,7 @@ private: // functions
 	int getField(int x, int y) const;
 	void updateField(int, int);
 	void clearHighlight();
+        bool tilesMatch(int tile1, int tile2) const;
 	bool canMakePath(int x1, int y1, int x2, int y2) const;
 	bool findPath(int x1, int y1, int x2, int y2, Path& p) const;
 	bool findSimplePath(int x1, int y1, int x2, int y2, Path& p) const;
@@ -194,6 +195,7 @@ private:
 
 	bool gravity_flag;
 	bool _solvable_flag;
+        bool _chineseStyle_flag;
 	int grav_col_1, grav_col_2;
 
 	int highlighted_tile;
