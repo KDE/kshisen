@@ -932,7 +932,7 @@ int Board::getDelay() const
 
 void Board::madeMove(int x1, int y1, int x2, int y2)
 {
-	Move *m = new Move(x1, y1, x2, y2, getField(x1, y1));
+	Move *m = new Move(x1, y1, x2, y2, getField(x1, y1), getField(x2, y2));
 	_undo.append(m);
 	while(_redo.count())
 	{
@@ -984,8 +984,8 @@ void Board::undo()
 			}
 		}
 
-		setField(m->x1, m->y1, m->tile);
-		setField(m->x2, m->y2, m->tile);
+		setField(m->x1, m->y1, m->tile1);
+		setField(m->x2, m->y2, m->tile2);
 		updateField(m->x1, m->y1);
 		updateField(m->x2, m->y2);
 		_redo.prepend(m);
