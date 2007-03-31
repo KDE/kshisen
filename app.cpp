@@ -47,7 +47,7 @@
 #include <kstandardgameaction.h>
 #include <khighscore.h>
 #include <kdebug.h>
-#include <kkeydialog.h>
+#include <kshortcutsdialog.h>
 #include <kmenu.h>
 #include <kstatusbar.h>
 #include <klocale.h>
@@ -719,7 +719,7 @@ void App::showHighscore(int focusitem)
 
 void App::keyBindings()
 {
-	KKeyDialog::configure( actionCollection(), KKeyChooser::LetterShortcutsAllowed, this );
+	KShortcutsDialog::configure( actionCollection(), KShortcutsEditor::LetterShortcutsAllowed, this );
 
 }
 
