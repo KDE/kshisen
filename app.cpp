@@ -563,7 +563,7 @@ void App::writeHighscore()
 	highscoreTable->writeList("date", hi_date);
 	highscoreTable->writeList("gravity", hi_grav);
 	highscoreTable->writeList("name", hi_name);
-	highscoreTable->sync();
+	highscoreTable->writeAndUnlock();
 }
 
 void App::showHighscore(int focusitem)
