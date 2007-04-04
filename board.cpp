@@ -304,13 +304,13 @@ void Board::mousePressEvent(QMouseEvent *e)
 
 // The board is centred inside the main playing area. xOffset/yOffset provide
 // the coordinates of the top-left corner of the board.
-int Board::xOffset() 
+int Board::xOffset()
 {
         int tw = tiles.qWidth() * 2;
 	return (width() - (tw * x_tiles())) / 2;
 }
 
-int Board::yOffset() 
+int Board::yOffset()
 {
         int th = tiles.qHeight() * 2;
 	return (height() - (th * y_tiles())) / 2;
@@ -366,7 +366,7 @@ void Board::resizeBoard()
         setPalette( palette );
 }
 
-QSize Board::unscaledSize() 
+QSize Board::unscaledSize()
 {
 	int w = tiles.qWidth() * 2 * x_tiles() + tiles.width();
 	int h = tiles.qHeight() * 2 * y_tiles() + tiles.width();
@@ -556,7 +556,7 @@ bool Board::isTileHighlighted(int x, int y) const
 /*
  	if(getField(x, y) == highlighted_tile)
  		return true;
- 
+
 	// check chinese style of matching flowers and seasons
 	if (_chineseStyle_flag )
 	{
@@ -897,7 +897,7 @@ void Board::undrawConnection()
 	}
 }
 
-QPoint Board::midCoord(int x, int y) 
+QPoint Board::midCoord(int x, int y)
 {
 	QPoint p;
 	int w = tiles.qWidth() * 2;
@@ -1179,7 +1179,7 @@ bool Board::solvable(bool norestore)
 	Path p;
 	while(getHint_I(p))
 	{
-		kFatal(getField(p.first().x, p.first().y) != getField(p.last().x, p.last().y))
+		kFatal( !tilesMatch(getField(p.first().x, p.first().y), getField(p.last().x, p.last().y)))
 			<< "Removing unmatched tiles: (" << p.first().x << ", " << p.first().y << ") => "
 			<< getField(p.first().x, p.first().y) << " (" << p.last().x << ", " << p.last().y << ") => "
             << getField(p.last().x, p.last().y) << endl;
