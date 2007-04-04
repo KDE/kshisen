@@ -16,6 +16,9 @@
     <entry name="ChineseStyle" type="Bool">
       <default>false</default>
     </entry>
+    <entry name="TilesCanSlide" type="Bool">
+      <default>false</default>
+    </entry>
     <entry name="Solvable" type="Bool">
       <default>true</default>
     </entry>

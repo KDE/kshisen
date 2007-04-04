@@ -38,6 +38,13 @@
     </widget>
    </item>
    <item>
+   <widget class="QCheckBox" name="kcfg_TilesCanSlide" >
+     <property name="text" >
+      <string>Tiles can slide</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QGroupBox" name="difficulty_groupBox" >
      <property name="title" >
       <string>Board Difficulty</string>

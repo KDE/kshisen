@@ -67,13 +67,18 @@ class Move
 {
 public:
 	Move(int _x1, int _y1, int _x2, int _y2, int _tile) :
-		x1(_x1), y1(_y1), x2(_x2), y2(_y2), tile1(_tile), tile2(_tile) { }
+		x1(_x1), y1(_y1), x2(_x2), y2(_y2), tile1(_tile), tile2(_tile), hasSlide(false), slide_x1(-1), slide_y1(-1), slide_x2(-1), slide_y2(-1) { }
 	Move(int _x1, int _y1, int _x2, int _y2, int _tile1, int _tile2) :
-		x1(_x1), y1(_y1), x2(_x2), y2(_y2), tile1(_tile1), tile2(_tile2) { }
+		x1(_x1), y1(_y1), x2(_x2), y2(_y2), tile1(_tile1), tile2(_tile2), hasSlide(false), slide_x1(-1), slide_y1(-1), slide_x2(-1), slide_y2(-1) { }
+	Move(int _x1, int _y1, int _x2, int _y2, int _tile1, int _tile2, int _slide_x1, int _slide_y1, int _slide_x2, int _slide_y2) :
+		x1(_x1), y1(_y1), x2(_x2), y2(_y2), tile1(_tile1), tile2(_tile2), hasSlide(true), slide_x1(_slide_x1), slide_y1(_slide_y1), slide_x2(_slide_x2), slide_y2(_slide_y2) { }
 
-	int x1, y1, x2, y2;
-	int tile1;
-	int tile2;
+	int x1, y1, x2, y2; // coordinates of the two tiles that matched
+	int tile1;  // type of tile at first set of coordinates
+	int tile2;  // type of tile at second set of coordinates
+	bool hasSlide; // if we performed a slide during the move
+	int slide_x1, slide_y1; // original coordinates of the last slided tile
+	int slide_x2, slide_y2; // final coordinates of the last slided tile
 };
 
 class Board : public QWidget
@@ -163,13 +168,21 @@ private: // functions
 	void clearHighlight();
         bool tilesMatch(int tile1, int tile2) const;
 	bool canMakePath(int x1, int y1, int x2, int y2) const;
+	bool canSlideTiles(int x1, int y1, int x2, int y2, Path& p) const;
+	// kept for compat for now
 	bool findPath(int x1, int y1, int x2, int y2, Path& p) const;
 	bool findSimplePath(int x1, int y1, int x2, int y2, Path& p) const;
+	// with slide
+	bool findPath(int x1, int y1, int x2, int y2, Path& p, Path& s) const;
+	bool findSimplePath(int x1, int y1, int x2, int y2, Path& p, Path& s) const;
+	void performSlide(int x, int y, Path& s);
+	void reverseSlide(int x, int y, int s_x1, int s_y1, int s_x2, int s_y2);
 	bool isTileHighlighted(int x, int y) const;
 	void drawConnection(int timeout);
 	QPoint midCoord(int x, int y);
 	void marked(int x, int y);
 	void madeMove(int x1, int y1, int x2, int y2);
+	void madeMoveWithSlide(int x1, int y1, int x2, int y2, Path& s);
 
 private:
 	time_t starttime;
@@ -187,6 +200,7 @@ private:
 	int mark_x;
 	int mark_y;
 	Path connection;
+	Path slide;
 	int *field;
 	int _x_tiles;
 	int _y_tiles;
@@ -199,6 +213,7 @@ private:
 	bool gravity_flag;
 	bool _solvable_flag;
         bool _chineseStyle_flag;
+        bool _tilesCanSlide_flag;
 	int grav_col_1, grav_col_2;
 
 	int highlighted_tile;

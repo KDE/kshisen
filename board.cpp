@@ -64,7 +64,7 @@ Board::Board(QWidget *parent) :
        QWidget(parent), field(0),
        _x_tiles(0), _y_tiles(0),
        _delay(125), paused(false),
-       gravity_flag(true), _solvable_flag(true), _chineseStyle_flag(false),
+       gravity_flag(true), _solvable_flag(true), _chineseStyle_flag(false), _tilesCanSlide_flag(false),
 	     grav_col_1(-1), grav_col_2(-1), highlighted_tile(-1), _paintConnection(false)
 {
 	tileRemove1.first = -1;
@@ -100,10 +100,11 @@ void Board::loadSettings(){
 
     // special rule
     _chineseStyle_flag = (Prefs::chineseStyle());
+    _tilesCanSlide_flag = (Prefs::tilesCanSlide());
     // need to load solvable before size
     // because setSize call newGame which uses
     // the solvable flag
-    // same with suffle
+    // same with shuffle
     setSolvableFlag(Prefs::solvable());
     //setShuffle(Prefs::level() * 4 + 1);
     // actually there is no need to call setShuffle
@@ -387,6 +388,7 @@ void Board::newGame()
 	_undo.clear();
 	_redo.clear();
 	connection.clear();
+	slide.clear();
 
 	// distribute all tiles on board
 	int cur_tile = 1;
@@ -553,19 +555,7 @@ bool Board::isTileHighlighted(int x, int y) const
 
 	if (tilesMatch(highlighted_tile, getField(x, y)))
 		return true;
-/*
- 	if(getField(x, y) == highlighted_tile)
- 		return true;
 
-	// check chinese style of matching flowers and seasons
-	if (_chineseStyle_flag )
-	{
-		if (getField(x, y) >= SEASONS_START && getField(x, y) <= (SEASONS_START+3) && highlighted_tile >= SEASONS_START && highlighted_tile <= (SEASONS_START+3))
-			return true;
-		else if (getField(x, y) >= FLOWERS_START && getField(x, y) <= (FLOWERS_START+3) && highlighted_tile >= FLOWERS_START && highlighted_tile <= (FLOWERS_START+3))
-			return true;
-	}
-*/
 	// tileRemove1.first != -1 is used because the repaint of the first if
 	// on undrawConnection highlihgted the tiles that fell because of gravity
 	if(!connection.isEmpty() && tileRemove1.first != -1)
@@ -660,6 +650,150 @@ void Board::paintEvent(QPaintEvent *e)
 	p.end(); //this
 }
 
+void Board::reverseSlide(int x, int y, int s_x1, int s_y1, int s_x2, int s_y2)
+{
+	//kDebug() << "reverseSlide " << x << " " << y << endl;
+
+	// s_x2 is the current location of the last tile to slide
+	// s_x1 is its destination
+	// calculate the offset for the tiles to slide
+	int dx = s_x1 - s_x2;
+	int dy = s_y1 - s_y2;
+	/*kDebug() << "reverseSlide last to slide is x=" << s_x2 << ", y= " << s_y2 << endl;
+	kDebug() << "reverseSlide slide to x=" << s_x1 << ", y= " << s_y1 << endl;
+	kDebug() << "reverseSlide offset dx=" << dx << ", dy= " << dy << endl;*/
+	int current_tile;
+	// move all tiles between s_x2, s_y2 and x, y to slide with that offset
+	if (dx == 0)
+	{
+		if (y < s_y2)
+		{
+			for (int i = y+1; i <= s_y2; i++)
+			{
+				current_tile = getField(x, i);
+				if (current_tile == EMPTY)
+					continue;
+				setField(x, i, EMPTY);
+				setField(x, i+dy, current_tile);
+				updateField(x, i);
+				updateField(x, i+dy);
+			}
+		}
+		else
+		{
+			for (int i = y-1; i >= s_y2; i--)
+			{
+				current_tile = getField(x, i);
+				if (current_tile == EMPTY)
+					continue;
+				setField(x, i, EMPTY);
+				setField(x, i+dy, current_tile);
+				updateField(x, i);
+				updateField(x, i+dy);
+			}
+		}
+	}
+	else if (dy == 0)
+	{
+		if (x < s_x2)
+		{
+			for (int i = x+1; i <= s_x2; i++)
+			{
+				current_tile = getField(i, y);
+				if (current_tile == EMPTY)
+					continue;
+				setField(i, y, EMPTY);
+				setField(i+dx, y, current_tile);
+				updateField(i, y);
+				updateField(i+dx, y);
+			}
+		}
+		else
+		{
+			for (int i = x-1; i >= s_x2; i--)
+			{
+				current_tile = getField(i, y);
+				if (current_tile == EMPTY)
+					continue;
+				setField(i, y, EMPTY);
+				setField(i+dx, y, current_tile);
+				updateField(i, y);
+				updateField(i+dx, y);
+			}
+		}
+	}
+}
+
+void Board::performSlide(int x, int y, Path& s)
+{
+	//kDebug() << "performSlide " << x << " " << y << endl;
+
+	// check if there is something to slide
+	if (s.empty())
+		return;
+
+	// slide.first is the current location of the last tile to slide
+	// slide.last is its destination
+	// calculate the offset for the tiles to slide
+	int dx = s.last().x - s.first().x;
+	int dy = s.last().y - s.first().y;
+	/*kDebug() << "performSlide last to slide is x=" << s.first().x << ", y= " << s.first().y << endl;
+	kDebug() << "performSlide slide to x=" << s.last().x << ", y= " << s.last().y << endl;
+	kDebug() << "performSlide offset dx=" << dx << ", dy= " << dy << endl;*/
+	int current_tile;
+	// move all tiles between mark_x, mark_y and the last tile to slide with that offset
+	if (dx == 0)
+	{
+		if (y < s.first().y)
+		{
+			for (int i = s.first().y; i > y; i--)
+			{
+				current_tile = getField(x, i);
+				setField(x, i, EMPTY);
+				setField(x, i+dy, current_tile);
+				updateField(x, i);
+				updateField(x, i+dy);
+			}
+		}
+		else
+		{
+			for (int i = s.first().y; i < y; i++)
+			{
+				current_tile = getField(x, i);
+				setField(x, i, EMPTY);
+				setField(x, i+dy, current_tile);
+				updateField(x, i);
+				updateField(x, i+dy);
+			}
+		}
+	}
+	else if (dy == 0)
+	{
+		if (x < s.first().x)
+		{
+			for (int i = s.first().x; i > x; i--)
+			{
+				current_tile = getField(i, y);
+				setField(i, y, EMPTY);
+				setField(i+dx, y, current_tile);
+				updateField(i, y);
+				updateField(i+dx, y);
+			}
+		}
+		else
+		{
+			for (int i = s.first().x; i < x; i++)
+			{
+				current_tile = getField(i, y);
+				setField(i, y, EMPTY);
+				setField(i+dx, y, current_tile);
+				updateField(i, y);
+				updateField(i+dx, y);
+			}
+		}
+	}
+}
+
 void Board::marked(int x, int y)
 {
 	// make sure that the previous connection is correctly undrawn
@@ -692,10 +826,20 @@ void Board::marked(int x, int y)
 	if(!tilesMatch(fld1, fld2))
 		return;
 
-	// trace
-	if(findPath(mark_x, mark_y, x, y, connection))
+	// trace and perform the move
+	if(findPath(mark_x, mark_y, x, y, connection, slide))
 	{
-		madeMove(mark_x, mark_y, x, y);
+		// if the tiles can slide, we have to update the slided tiles too
+		// and store the slide in a Move
+		if(_tilesCanSlide_flag)
+		{
+			performSlide(mark_x, mark_y, slide);
+			madeMoveWithSlide(mark_x, mark_y, x, y, slide);
+		}
+		else
+		{
+			madeMove(mark_x, mark_y, x, y);
+		}
 		drawConnection(getDelay());
 		tileRemove1 = QPair<int, int>(mark_x, mark_y);
 		tileRemove2 = QPair<int, int>(x, y);
@@ -710,6 +854,7 @@ void Board::marked(int x, int y)
 	}
 	else
 	{
+		slide.clear();
 		connection.clear();
 	}
 }
@@ -753,12 +898,226 @@ bool Board::canMakePath(int x1, int y1, int x2, int y2) const
 	return false;
 }
 
+// Can we slide the tile at (x1,y1) to (x2,y2)
+// the movement of the last tile slided will be stored in the Path p
+bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path& p) const
+{
+	int distance = -1;
+	p.clear();
+	if(x1 == x2)
+	{
+		if (y1 > y2)
+		{
+			distance = y1 - y2;
+			// count how much free space we have for sliding
+			int start_free = -1;
+			int end_free = -1;
+			// find first tile empty
+			for(int i = y1-1; i >= 0; i--)
+			{
+				if(getField(x1, i) == EMPTY)
+				{
+					start_free = i;
+					break;
+				}
+			}
+			// if not found, cannot slide
+			if(start_free == -1)
+			{
+				//kDebug() << "canSlideTiles no free" << endl;
+				return false;
+			}
+			// find last tile empty
+			for(int i = start_free-1; i >= 0; i--)
+			{
+				if(getField(x1, i) != EMPTY)
+				{
+					end_free = i;
+					break;
+				}
+			}
+			// if not found, it is the border: 0
+
+			// so we can slide of start_free - end_free, compare this to the distance
+			//kDebug() << "canSlideTiles distance=" << distance << " free=" << (start_free - end_free) << endl;
+			if(distance <= (start_free - end_free))
+			{
+				// first position of the last slided tile
+				p.append(Position(x1, start_free+1));
+				// final position of the last slided tile
+				p.append(Position(x1, start_free+1-distance));
+				return true;
+			}
+			else
+				return false;
+		}
+		else // y2 > y1
+		{
+			distance = y2 - y1;
+			// count how much free space we have for sliding
+			int start_free = -1;
+			int end_free = y_tiles();
+			// find first tile empty
+			for(int i = y1+1; i < y_tiles(); i++)
+			{
+				if(getField(x1, i) == EMPTY)
+				{
+					start_free = i;
+					break;
+				}
+			}
+			// if not found, cannot slide
+			if(start_free == -1)
+			{
+				//kDebug() << "canSlideTiles no free" << endl;
+				return false;
+			}
+			// find last tile empty
+			for(int i = start_free+1; i < y_tiles(); i++)
+			{
+				if(getField(x1, i) != EMPTY)
+				{
+					end_free = i;
+					break;
+				}
+			}
+			// if not found, it is the border: y_tiles()-1
+
+			// so we can slide of end_free - start_free, compare this to the distance
+			//kDebug() << "canSlideTiles distance=" << distance << " free=" << (end_free - start_free) << endl;
+			if(distance <= (end_free - start_free))
+			{
+				// first position of the last slided tile
+				p.append(Position(x1, start_free-1));
+				// final position of the last slided tile
+				p.append(Position(x1, start_free-1+distance));
+				return true;
+			}
+			else
+				return false;
+		}
+		// y1 == y2 ?!
+		return false;
+	}
+
+	if(y1 == y2)
+	{
+		if (x1 > x2)
+		{
+			distance = x1 - x2;
+			// count how much free space we have for sliding
+			int start_free = -1;
+			int end_free = -1;
+			// find first tile empty
+			for(int i = x1-1; i >= 0; i--)
+			{
+				if(getField(i, y1) == EMPTY)
+				{
+					start_free = i;
+					break;
+				}
+			}
+			// if not found, cannot slide
+			if(start_free == -1)
+			{
+				//kDebug() << "canSlideTiles no free" << endl;
+				return false;
+			}
+			// find last tile empty
+			for(int i = start_free-1; i >= 0; i--)
+			{
+				if(getField(i, y1) != EMPTY)
+				{
+					end_free = i;
+					break;
+				}
+			}
+			// if not found, it is the border: 0
+
+			// so we can slide of start_free - end_free, compare this to the distance
+			//kDebug() << "canSlideTiles distance=" << distance << " free=" << (start_free - end_free) << endl;
+			if(distance <= (start_free - end_free))
+			{
+    				// first position of the last slided tile
+				p.append(Position(start_free+1, y1));
+				// final position of the last slided tile
+				p.append(Position(start_free+1-distance, y1));
+				return true;
+			}
+			else
+				return false;
+		}
+		else // x2 > x1
+		{
+			distance = x2 - x1;
+			// count how much free space we have for sliding
+			int start_free = -1;
+			int end_free = x_tiles();
+			// find first tile empty
+			for(int i = x1+1; i < x_tiles(); i++)
+			{
+				if(getField(i, y1) == EMPTY)
+				{
+					start_free = i;
+					break;
+				}
+			}
+			// if not found, cannot slide
+			if(start_free == -1)
+			{
+				//kDebug() << "canSlideTiles no free" << endl;
+				return false;
+			}
+			// find last tile empty
+			for(int i = start_free+1; i < x_tiles(); i++)
+			{
+				if(getField(i, y1) != EMPTY)
+				{
+					end_free = i;
+					break;
+				}
+			}
+			// if not found, it is the border: x_tiles()-1
+
+			// so we can slide of end_free - start_free, compare this to the distance
+			//kDebug() << "canSlideTiles distance=" << distance << " free=" << (end_free - start_free) << endl;
+			if(distance <= (end_free - start_free))
+			{
+				// first position of the last slided tile
+				p.append(Position(start_free-1, y1));
+				// final position of the last slided tile
+				p.append(Position(start_free-1+distance, y1));
+				return true;
+			}
+			else
+				return false;
+		}
+		// x1 == x2 ?!
+		return false;
+	}
+
+	return false;
+}
+
+// for compat when no sliding is needed
 bool Board::findPath(int x1, int y1, int x2, int y2, Path& p) const
 {
-	p.clear();
+	Path s;
+	return findPath(x1, y1, x2, y2, p, s);
+}
 
-	if(findSimplePath(x1, y1, x2, y2, p))
+// Can we make a path between two tiles (with 2 or 3 lines) ?
+bool Board::findPath(int x1, int y1, int x2, int y2, Path& p, Path& s) const
+{
+	p.clear();
+	s.clear();
+
+	if(findSimplePath(x1, y1, x2, y2, p, s))
 		return true;
+
+	// if the tiles can slide, 2 lines max is allowed
+	if(_tilesCanSlide_flag)
+		return false;
 
 	// Find a path of 3 segments
 	const int dx[4] = { 1, 0, -1, 0 };
@@ -772,7 +1131,7 @@ bool Board::findPath(int x1, int y1, int x2, int y2, Path& p) const
 			newy >= -1 && newy <= y_tiles() &&
 			getField(newx, newy) == EMPTY)
 		{
-			if(findSimplePath(newx, newy, x2, y2, p))
+			if(findSimplePath(newx, newy, x2, y2, p, s))
 			{
 				p.prepend(Position(x1, y1));
 				return true;
@@ -785,9 +1144,15 @@ bool Board::findPath(int x1, int y1, int x2, int y2, Path& p) const
 	return false;
 }
 
+// for compat when no sliding is needed
+bool Board::findSimplePath(int x1, int y1, int x2, int y2, Path& p) const
+{
+	Path s;
+	return findSimplePath(x1, y1, x2, y2, p, s);
+}
 // Find a path of 1 or 2 segments between tiles. Returns whether
 // a path was found, and if so, the path is returned via 'p'.
-bool Board::findSimplePath(int x1, int y1, int x2, int y2, Path& p) const
+bool Board::findSimplePath(int x1, int y1, int x2, int y2, Path& p, Path& s) const
 {
 	// Find direct line (path of 1 segment)
 	if(canMakePath(x1, y1, x2, y2))
@@ -799,8 +1164,35 @@ bool Board::findSimplePath(int x1, int y1, int x2, int y2, Path& p) const
 
 	// If the tiles are in the same row or column, then a
 	// a 'simple path' cannot be found between them
+	// That is, canMakePath should have returned true above if
+	// that was possible
 	if(x1 == x2 || y1 == y2)
 		return false;
+
+	// I isolate the special code when tiles can slide even if it duplicates code for now
+	// Can we make a path sliding tiles ?, the slide move is always first, then a normal path
+	if(_tilesCanSlide_flag)
+	{
+		// Find path of 2 segments (route A)
+		if(canSlideTiles(x1, y1, x2, y1, s) && canMakePath(x2, y1, x2, y2))
+		{
+			p.append(Position(x1, y1));
+			p.append(Position(x2, y1));
+			p.append(Position(x2, y2));
+			return true;
+		}
+
+		// Find path of 2 segments (route B)
+		if(canSlideTiles(x1, y1, x1, y2, s) && canMakePath(x1, y2, x2, y2))
+		{
+			p.append(Position(x1, y1));
+			p.append(Position(x1, y2));
+			p.append(Position(x2, y2));
+			return true;
+		}
+	}
+
+	// Even is tiles can slide, a path could still be done without sliding
 
 	// Find path of 2 segments (route A)
 	if(getField(x2, y1) == EMPTY && canMakePath(x1, y1, x2, y1) &&
@@ -932,7 +1324,22 @@ int Board::getDelay() const
 
 void Board::madeMove(int x1, int y1, int x2, int y2)
 {
-	Move *m = new Move(x1, y1, x2, y2, getField(x1, y1), getField(x2, y2));
+	Path s;
+	s.clear();
+	madeMoveWithSlide(x1, y1, x2, y2, s);
+}
+
+void Board::madeMoveWithSlide(int x1, int y1, int x2, int y2, Path& s)
+{
+	Move *m;
+	if (s.empty())
+	{
+		m = new Move(x1, y1, x2, y2, getField(x1, y1), getField(x2, y2));
+	}
+	else
+	{
+		m = new Move(x1, y1, x2, y2, getField(x1, y1), getField(x2, y2), s.first().x, s.first().y, s.last().x, s.last().y);
+	}
 	_undo.append(m);
 	while(_redo.count())
 	{
@@ -984,10 +1391,19 @@ void Board::undo()
 			}
 		}
 
+		// undo slide if any
+		if(m->hasSlide)
+		{
+			// perform the slide in reverse
+			reverseSlide(m->x1, m->y1, m->slide_x1, m->slide_y1, m->slide_x2, m->slide_y2);
+		}
+
+		// replace taken tiles
 		setField(m->x1, m->y1, m->tile1);
 		setField(m->x2, m->y2, m->tile2);
 		updateField(m->x1, m->y1);
 		updateField(m->x2, m->y2);
+
 		_redo.prepend(m);
 		emit changed();
 	}
@@ -1000,6 +1416,14 @@ void Board::redo()
 		clearHighlight();
 		undrawConnection();
 		Move* m = _redo.takeFirst();
+		// redo th slide if any
+		if(m->hasSlide)
+		{
+			Path s;
+			s.append(Position(m->slide_x1, m->slide_y1));
+			s.append(Position(m->slide_x2, m->slide_y2));
+			performSlide(m->x1, m->y1, s);
+		}
 		setField(m->x1, m->y1, EMPTY);
 		setField(m->x2, m->y2, EMPTY);
 		updateField(m->x1, m->y1);
