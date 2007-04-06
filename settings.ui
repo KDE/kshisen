@@ -40,7 +40,7 @@
    <item>
    <widget class="QCheckBox" name="kcfg_TilesCanSlide" >
      <property name="text" >
-      <string>Tiles can slide</string>
+      <string>Tiles can slide, but you can connect only in 2 lines instead of 3</string>
      </property>
     </widget>
    </item>
