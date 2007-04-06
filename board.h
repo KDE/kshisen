@@ -53,6 +53,9 @@
 #include "kmahjonggbackground.h"
 #include "debug.h"
 
+/*
+ * A couple of int to store a position on the board (x,y)
+ */
 struct Position
 {
 	Position() : x(0), y(0) { }
@@ -61,8 +64,57 @@ struct Position
 	int y;
 };
 
+/*
+ * A list of positions (at least 2) makes a Path
+ */
 typedef QList<Position> Path;
 
+/*
+ * A PossibleMove is a connection Path between two tiles
+ * and optionnally a slide Path.
+ * Sometimes for a couple of tiles to match there may be multiple
+ * possible moves for the user to chose between.
+ */
+class PossibleMove
+{
+public:
+	PossibleMove(Path& p) :
+		path(p), hasSlide(false) { }
+	PossibleMove(Path& p, Path& s) :
+		path(p), hasSlide(true), slide(s) { }
+
+	bool isInPath(int x, int y);
+
+	void Debug()
+	{
+		kDebug() << "PossibleMove " << endl;
+		QList<Position>::iterator i;
+		for (i = path.begin(); i != path.end(); ++i)
+			kDebug() << "    Path: " << (*i).x << "," << (*i).y << endl;
+
+		if (hasSlide)
+		{
+			kDebug() << "   hasSlide " << endl;
+			for (i = slide.begin(); i != slide.end(); ++i)
+				kDebug() << "    Slide: " << (*i).x << "," << (*i).y << endl;
+		}
+	}
+
+	Path path; 	// path used to connect the two tiles
+	bool hasSlide;	// flag set if the move requires a slide
+	Path slide; 	// path representing the movement of the last sliding tile
+};
+
+/*
+ * A list of possible moves the user have to chose between
+ */
+typedef QList<PossibleMove> PossibleMoves;
+
+
+/*
+ * Stores a Move made by the player on the board, contains all the information
+ * needed to undo or redo the Move
+ */
 class Move
 {
 public:
@@ -111,7 +163,7 @@ public:
 	int  getShuffle() const;
 
 	void showHint();
-	bool getHint_I(Path& p) const;
+	bool getHint_I(PossibleMoves& p) const;
 
 #ifdef DEBUGGING
 	void makeHintMove();
@@ -169,16 +221,15 @@ private: // functions
         bool tilesMatch(int tile1, int tile2) const;
 	bool canMakePath(int x1, int y1, int x2, int y2) const;
 	bool canSlideTiles(int x1, int y1, int x2, int y2, Path& p) const;
-	// kept for compat for now
-	bool findPath(int x1, int y1, int x2, int y2, Path& p) const;
-	bool findSimplePath(int x1, int y1, int x2, int y2, Path& p) const;
-	// with slide
-	bool findPath(int x1, int y1, int x2, int y2, Path& p, Path& s) const;
-	bool findSimplePath(int x1, int y1, int x2, int y2, Path& p, Path& s) const;
+	int findPath(int x1, int y1, int x2, int y2, PossibleMoves& p) const;
+	int findSimplePath(int x1, int y1, int x2, int y2, PossibleMoves& p) const;
+	void performMove(PossibleMove& p);
 	void performSlide(int x, int y, Path& s);
 	void reverseSlide(int x, int y, int s_x1, int s_y1, int s_x2, int s_y2);
 	bool isTileHighlighted(int x, int y) const;
 	void drawConnection(int timeout);
+	void drawPossibleMoves();
+	void undrawPossibleMoves();
 	QPoint midCoord(int x, int y);
 	void marked(int x, int y);
 	void madeMove(int x1, int y1, int x2, int y2);
@@ -200,7 +251,7 @@ private:
 	int mark_x;
 	int mark_y;
 	Path connection;
-	Path slide;
+	PossibleMoves possibleMoves;
 	int *field;
 	int _x_tiles;
 	int _y_tiles;
@@ -220,6 +271,7 @@ private:
 
 	int _connectionTimeout;
 	bool _paintConnection;
+	bool _paintPossibleMoves;
 	QPair<int, int> tileRemove1, tileRemove2;
 };
 

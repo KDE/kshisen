@@ -60,12 +60,39 @@ static int size_x[6] = {14, 16, 18, 24, 26, 30};
 static int size_y[6] = { 6, 9, 8, 12, 14, 16};
 static int DELAY[5] = {1000, 750, 500, 250, 125};
 
+bool PossibleMove::isInPath(int x, int y)
+{
+	if (x == path.last().x && y == path.last().y)
+		return false;
+	kDebug() << "isInPath: " << x << "," << y << endl;
+	Debug();
+	QList<Position>::iterator j;
+	// a path has at least 2 positions
+	j = path.begin();
+	int path_x = (*j).x;
+	int path_y = (*j).y;
+	j++;
+	for ( ; j != path.end(); ++j)
+	{
+		// to fix
+		if((x == (*j).x && ( (y > path_y && y <= (*j).y) || (y < path_y && y >= (*j).y) ) )
+		|| (y == (*j).y && ( (x > path_x && x <= (*j).x) || (x < path_x && x >= (*j).x) ) ) )
+		{
+			kDebug() << "isInPath: " << x << "," << y << " found in path " << path_x << "," << path_y << " => " << (*j).x << "," << (*j).y << endl;
+			return true;
+		}
+		path_x = (*j).x;
+		path_y = (*j).y;
+	}
+	return false;
+}
+
 Board::Board(QWidget *parent) :
        QWidget(parent), field(0),
        _x_tiles(0), _y_tiles(0),
        _delay(125), paused(false),
        gravity_flag(true), _solvable_flag(true), _chineseStyle_flag(false), _tilesCanSlide_flag(false),
-	     grav_col_1(-1), grav_col_2(-1), highlighted_tile(-1), _paintConnection(false)
+	     grav_col_1(-1), grav_col_2(-1), highlighted_tile(-1), _paintConnection(false), _paintPossibleMoves(false)
 {
 	tileRemove1.first = -1;
 	// Randomize
@@ -388,7 +415,7 @@ void Board::newGame()
 	_undo.clear();
 	_redo.clear();
 	connection.clear();
-	slide.clear();
+	possibleMoves.clear();
 
 	// distribute all tiles on board
 	int cur_tile = 1;
@@ -646,6 +673,27 @@ void Board::paintEvent(QPaintEvent *e)
 		QTimer::singleShot(_connectionTimeout, this, SLOT(undrawConnection()));
 		_paintConnection = false;
 	}
+	if (_paintPossibleMoves)
+	{
+		p.setPen(QPen(QColor("blue"), lineWidth()));
+		// paint all possible moves
+		QList<PossibleMove>::iterator i;
+		for (i = possibleMoves.begin(); i != possibleMoves.end(); ++i)
+		{
+			// Path.size() will always be >= 2
+			Path::const_iterator pathEnd = (*i).path.constEnd();
+			Path::const_iterator pt1 = (*i).path.constBegin();
+			Path::const_iterator pt2 = pt1;
+			++pt2;
+			while(pt2 != pathEnd)
+			{
+				p.drawLine( midCoord((*pt1).x, (*pt1).y), midCoord((*pt2).x, (*pt2).y) );
+				++pt1;
+				++pt2;
+			}
+		}
+		_paintConnection = false;
+	}
 
 	p.end(); //this
 }
@@ -794,30 +842,74 @@ void Board::performSlide(int x, int y, Path& s)
 	}
 }
 
+void Board::performMove(PossibleMove& p)
+{
+	connection = p.path;
+	// if the tiles can slide, we have to update the slided tiles too
+	// and store the slide in a Move
+	if(p.hasSlide)
+	{
+		performSlide(mark_x, mark_y, p.slide);
+		madeMoveWithSlide(mark_x, mark_y, p.path.last().x, p.path.last().y, p.slide);
+	}
+	else
+	{
+		madeMove(mark_x, mark_y, p.path.last().x, p.path.last().y);
+	}
+	undrawPossibleMoves();
+	drawConnection(getDelay());
+	tileRemove1 = QPair<int, int>(mark_x, mark_y);
+	tileRemove2 = QPair<int, int>(p.path.last().x, p.path.last().y);
+	grav_col_1 = p.path.last().x;
+	grav_col_2 = mark_x;
+	mark_x = -1;
+	mark_y = -1;
+	possibleMoves.clear();
+}
+
 void Board::marked(int x, int y)
 {
 	// make sure that the previous connection is correctly undrawn
 	undrawConnection();
-
-	if(getField(x, y) == EMPTY)
-		return;
 
 	if(x == mark_x && y == mark_y)
 	{
 		// unmark the piece
 		mark_x = -1;
 		mark_y = -1;
+		undrawPossibleMoves();
+		possibleMoves.clear();
 		updateField(x, y);
 		return;
 	}
 
 	if(mark_x == -1)
 	{
+		if(getField(x, y) == EMPTY)
+			return;
 		mark_x = x;
 		mark_y = y;
+		undrawPossibleMoves();
+		possibleMoves.clear();
 		updateField(x, y);
 		return;
 	}
+	else if(possibleMoves.count() > 1) // if the click is on any of the current possible moves, make that move
+	{
+		//kDebug() << "marked: there may be a move to be selected" << endl;
+		QList<PossibleMove>::iterator i;
+
+		for (i = possibleMoves.begin(); i != possibleMoves.end(); ++i)
+		{
+			if((*i).isInPath(x,y))
+			{
+				performMove(*i);
+				return;
+			}
+		}
+	}
+	if(getField(x, y) == EMPTY)
+		return;
 
 	int fld1 = getField(mark_x, mark_y);
 	int fld2 = getField(x, y);
@@ -826,27 +918,31 @@ void Board::marked(int x, int y)
 	if(!tilesMatch(fld1, fld2))
 		return;
 
-	// trace and perform the move
-	if(findPath(mark_x, mark_y, x, y, connection, slide))
+	// trace and perform the move and get the list of possible moves
+	if(findPath(mark_x, mark_y, x, y, possibleMoves))
 	{
-		// if the tiles can slide, we have to update the slided tiles too
-		// and store the slide in a Move
-		if(_tilesCanSlide_flag)
+		if(possibleMoves.count() > 1)
 		{
-			performSlide(mark_x, mark_y, slide);
-			madeMoveWithSlide(mark_x, mark_y, x, y, slide);
+			//kDebug() << "marked: there was " << possibleMoves.count() << " moves possible for this" << endl;
+			QList<PossibleMove>::iterator i;
+			int withSlide = 0;
+			for (i = possibleMoves.begin(); i != possibleMoves.end(); ++i)
+			{
+				(*i).Debug();
+				if((*i).hasSlide)
+					withSlide++;
+			}
+			// if all moves have no slide, it doesn't matter
+			if(withSlide > 0)
+			{
+				drawPossibleMoves();
+				return;
+			}
 		}
-		else
-		{
-			madeMove(mark_x, mark_y, x, y);
-		}
-		drawConnection(getDelay());
-		tileRemove1 = QPair<int, int>(mark_x, mark_y);
-		tileRemove2 = QPair<int, int>(x, y);
-		grav_col_1 = x;
-		grav_col_2 = mark_x;
-		mark_x = -1;
-		mark_y = -1;
+
+		// only one move possible, perform it
+
+		performMove(possibleMoves.first());
 
 		// game is over?
 		// Must delay until after tiles fall to make this test
@@ -854,7 +950,6 @@ void Board::marked(int x, int y)
 	}
 	else
 	{
-		slide.clear();
 		connection.clear();
 	}
 }
@@ -922,7 +1017,8 @@ bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path& p) const
 				}
 			}
 			// if not found, cannot slide
-			if(start_free == -1)
+			// if the first free tile is just next to the sliding tile, no slide (should be a normal move)
+			if(start_free == -1 || start_free == y1-1)
 			{
 				//kDebug() << "canSlideTiles no free" << endl;
 				return false;
@@ -951,7 +1047,7 @@ bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path& p) const
 			else
 				return false;
 		}
-		else // y2 > y1
+		else if(y2 > y1)
 		{
 			distance = y2 - y1;
 			// count how much free space we have for sliding
@@ -967,7 +1063,8 @@ bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path& p) const
 				}
 			}
 			// if not found, cannot slide
-			if(start_free == -1)
+			// if the first free tile is just next to the sliding tile, no slide (should be a normal move)
+			if(start_free == -1 || start_free == y1+1)
 			{
 				//kDebug() << "canSlideTiles no free" << endl;
 				return false;
@@ -1018,7 +1115,8 @@ bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path& p) const
 				}
 			}
 			// if not found, cannot slide
-			if(start_free == -1)
+			// if the first free tile is just next to the sliding tile, no slide (should be a normal move)
+			if(start_free == -1 || start_free == x1-1)
 			{
 				//kDebug() << "canSlideTiles no free" << endl;
 				return false;
@@ -1047,7 +1145,7 @@ bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path& p) const
 			else
 				return false;
 		}
-		else // x2 > x1
+		else if(x2 > x1)
 		{
 			distance = x2 - x1;
 			// count how much free space we have for sliding
@@ -1063,7 +1161,8 @@ bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path& p) const
 				}
 			}
 			// if not found, cannot slide
-			if(start_free == -1)
+			// if the first free tile is just next to the sliding tile, no slide (should be a normal move)
+			if(start_free == -1 || start_free == x1+1)
 			{
 				//kDebug() << "canSlideTiles no free" << endl;
 				return false;
@@ -1099,27 +1198,24 @@ bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path& p) const
 	return false;
 }
 
-// for compat when no sliding is needed
-bool Board::findPath(int x1, int y1, int x2, int y2, Path& p) const
-{
-	Path s;
-	return findPath(x1, y1, x2, y2, p, s);
-}
-
 // Can we make a path between two tiles (with 2 or 3 lines) ?
-bool Board::findPath(int x1, int y1, int x2, int y2, Path& p, Path& s) const
+// returns the number of possible paths
+// put all the paths found in p
+int Board::findPath(int x1, int y1, int x2, int y2, PossibleMoves& p) const
 {
 	p.clear();
-	s.clear();
 
-	if(findSimplePath(x1, y1, x2, y2, p, s))
-		return true;
+	int n_path = 0;
+	int n_simple_path = 0;
+
+	// first find the simple paths
+	n_path = findSimplePath(x1, y1, x2, y2, p);
 
 	// if the tiles can slide, 2 lines max is allowed
 	if(_tilesCanSlide_flag)
-		return false;
+		return n_path;
 
-	// Find a path of 3 segments
+	// Find paths of 3 segments
 	const int dx[4] = { 1, 0, -1, 0 };
 	const int dy[4] = { 0, 1, 0, -1 };
 
@@ -1131,35 +1227,33 @@ bool Board::findPath(int x1, int y1, int x2, int y2, Path& p, Path& s) const
 			newy >= -1 && newy <= y_tiles() &&
 			getField(newx, newy) == EMPTY)
 		{
-			if(findSimplePath(newx, newy, x2, y2, p, s))
+			if(n_simple_path = findSimplePath(newx, newy, x2, y2, p))
 			{
-				p.prepend(Position(x1, y1));
-				return true;
+				p.last().path.prepend(Position(x1, y1));
+				n_path += n_simple_path;
 			}
 			newx += dx[i];
 			newy += dy[i];
 		}
 	}
 
-	return false;
+	return n_path;
 }
 
-// for compat when no sliding is needed
-bool Board::findSimplePath(int x1, int y1, int x2, int y2, Path& p) const
+// Find a path of 1 or 2 segments between tiles.
+// Returns the number of paths found
+// and all the possible moves in p
+int Board::findSimplePath(int x1, int y1, int x2, int y2, PossibleMoves& p) const
 {
-	Path s;
-	return findSimplePath(x1, y1, x2, y2, p, s);
-}
-// Find a path of 1 or 2 segments between tiles. Returns whether
-// a path was found, and if so, the path is returned via 'p'.
-bool Board::findSimplePath(int x1, int y1, int x2, int y2, Path& p, Path& s) const
-{
+	int n_path = 0;
+	Path _p;
 	// Find direct line (path of 1 segment)
 	if(canMakePath(x1, y1, x2, y2))
 	{
-		p.append(Position(x1, y1));
-		p.append(Position(x2, y2));
-		return true;
+		_p.append(Position(x1, y1));
+		_p.append(Position(x2, y2));
+		p.append(PossibleMove(_p));
+		n_path++;
 	}
 
 	// If the tiles are in the same row or column, then a
@@ -1167,28 +1261,33 @@ bool Board::findSimplePath(int x1, int y1, int x2, int y2, Path& p, Path& s) con
 	// That is, canMakePath should have returned true above if
 	// that was possible
 	if(x1 == x2 || y1 == y2)
-		return false;
+		return n_path;
 
 	// I isolate the special code when tiles can slide even if it duplicates code for now
 	// Can we make a path sliding tiles ?, the slide move is always first, then a normal path
 	if(_tilesCanSlide_flag)
 	{
+		Path _s;
 		// Find path of 2 segments (route A)
-		if(canSlideTiles(x1, y1, x2, y1, s) && canMakePath(x2, y1, x2, y2))
+		if(canSlideTiles(x1, y1, x2, y1, _s) && canMakePath(x2, y1, x2, y2))
 		{
-			p.append(Position(x1, y1));
-			p.append(Position(x2, y1));
-			p.append(Position(x2, y2));
-			return true;
+			_p.clear();
+			_p.append(Position(x1, y1));
+			_p.append(Position(x2, y1));
+			_p.append(Position(x2, y2));
+			p.append(PossibleMove(_p, _s));
+			n_path++;
 		}
 
 		// Find path of 2 segments (route B)
-		if(canSlideTiles(x1, y1, x1, y2, s) && canMakePath(x1, y2, x2, y2))
+		if(canSlideTiles(x1, y1, x1, y2, _s) && canMakePath(x1, y2, x2, y2))
 		{
-			p.append(Position(x1, y1));
-			p.append(Position(x1, y2));
-			p.append(Position(x2, y2));
-			return true;
+			_p.clear();
+			_p.append(Position(x1, y1));
+			_p.append(Position(x1, y2));
+			_p.append(Position(x2, y2));
+			p.append(PossibleMove(_p, _s));
+			n_path++;
 		}
 	}
 
@@ -1198,23 +1297,45 @@ bool Board::findSimplePath(int x1, int y1, int x2, int y2, Path& p, Path& s) con
 	if(getField(x2, y1) == EMPTY && canMakePath(x1, y1, x2, y1) &&
 		canMakePath(x2, y1, x2, y2))
 	{
-		p.append(Position(x1, y1));
-		p.append(Position(x2, y1));
-		p.append(Position(x2, y2));
-		return true;
+		_p.clear();
+		_p.append(Position(x1, y1));
+		_p.append(Position(x2, y1));
+		_p.append(Position(x2, y2));
+		p.append(PossibleMove(_p));
+		n_path++;
 	}
 
 	// Find path of 2 segments (route B)
 	if(getField(x1, y2) == EMPTY && canMakePath(x1, y1, x1, y2) &&
 		canMakePath(x1, y2, x2, y2))
 	{
-		p.append(Position(x1, y1));
-		p.append(Position(x1, y2));
-		p.append(Position(x2, y2));
-		return true;
+		_p.clear();
+		_p.append(Position(x1, y1));
+		_p.append(Position(x1, y2));
+		_p.append(Position(x2, y2));
+		p.append(PossibleMove(_p));
+		n_path++;
 	}
 
-	return false;
+	return n_path;
+}
+
+void Board::drawPossibleMoves()
+{
+	if(possibleMoves.isEmpty())
+		return;
+
+	_paintPossibleMoves = true;
+	update();
+}
+
+void Board::undrawPossibleMoves()
+{
+	if(possibleMoves.isEmpty())
+		return;
+
+	_paintPossibleMoves = false;
+	update();
 }
 
 void Board::drawConnection(int timeout)
@@ -1280,9 +1401,9 @@ void Board::undrawConnection()
 		++pt2;
 	}
 
-	Path dummyPath;
+	PossibleMoves dummyPossibleMoves;
 	// game is over?
-	if(!getHint_I(dummyPath))
+	if(!getHint_I(dummyPossibleMoves))
 	{
 		time_for_game = (int)difftime( time((time_t)0), starttime);
 		emit endOfGame();
@@ -1439,28 +1560,31 @@ void Board::showHint()
 {
 	undrawConnection();
 
-	if(getHint_I(connection))
+	if(getHint_I(possibleMoves))
+	{
+		connection = possibleMoves.first().path;
 		drawConnection(1000);
+	}
 }
 
 
 #ifdef DEBUGGING
 void Board::makeHintMove()
 {
-	Path p;
+	PossibleMoves p;
 
 	if(getHint_I(p))
 	{
 		mark_x = -1;
 		mark_y = -1;
-		marked(p.first().x, p.first().y);
-		marked(p.last().x, p.last().y);
+		marked(p.first().path.first().x, p.first().path.first().y);
+		marked(p.first().path.last().x,  p.first().path.last().y);
 	}
 }
 
 void Board::finish()
 {
-	Path p;
+	PossibleMoves p;
 	bool ready=false;
 
 	while(!ready && getHint_I(p))
@@ -1469,8 +1593,8 @@ void Board::finish()
 		mark_y = -1;
 		if(tilesLeft() == 2)
 			ready = true;
-		marked(p.first().x, p.first().y);
-		marked(p.last().x, p.last().y);
+		marked(p.first().path.first().x, p.first().path.first().y);
+		marked(p.first().path.last().x,  p.first().path.last().y);
 		qApp->processEvents();
 		usleep(250*1000);
 	}
@@ -1504,7 +1628,7 @@ int Board::lineWidth()
 	return width;
 }
 
-bool Board::getHint_I(Path& p) const
+bool Board::getHint_I(PossibleMoves& p) const
 {
 	//dumpBoard();
 	short done[Board::nTiles];
@@ -1600,15 +1724,15 @@ bool Board::solvable(bool norestore)
 		memcpy(oldfield, field, x_tiles() * y_tiles() * sizeof(int));
 	}
 
-	Path p;
+	PossibleMoves p;
 	while(getHint_I(p))
 	{
-		kFatal( !tilesMatch(getField(p.first().x, p.first().y), getField(p.last().x, p.last().y)))
-			<< "Removing unmatched tiles: (" << p.first().x << ", " << p.first().y << ") => "
-			<< getField(p.first().x, p.first().y) << " (" << p.last().x << ", " << p.last().y << ") => "
-            << getField(p.last().x, p.last().y) << endl;
-		setField(p.first().x, p.first().y, EMPTY);
-		setField(p.last().x, p.last().y, EMPTY);
+		kFatal( !tilesMatch(getField(p.first().path.first().x, p.first().path.first().y), getField(p.first().path.last().x, p.first().path.last().y)))
+			<< "Removing unmatched tiles: (" << p.first().path.first().x << ", " << p.first().path.first().y << ") => "
+			<< getField(p.first().path.first().x, p.first().path.first().y) << " (" << p.first().path.last().x << ", " << p.first().path.last().y << ") => "
+            << getField(p.first().path.last().x, p.first().path.last().y) << endl;
+		setField(p.first().path.first().x, p.first().path.first().y, EMPTY);
+		setField(p.first().path.last().x, p.first().path.last().y, EMPTY);
 		//if(gravityFlag())
 		//{
 		//	gravity(p.first().x, false);
