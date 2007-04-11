@@ -1226,7 +1226,7 @@ int Board::findPath(int x1, int y1, int x2, int y2, PossibleMoves& p) const
 			newy >= -1 && newy <= y_tiles() &&
 			getField(newx, newy) == EMPTY)
 		{
-			if(n_simple_path = findSimplePath(newx, newy, x2, y2, p))
+			if((n_simple_path = findSimplePath(newx, newy, x2, y2, p)))
 			{
 				p.last().path.prepend(Position(x1, y1));
 				n_path += n_simple_path;
