@@ -38,16 +38,15 @@
  *******************************************************************
  */
 
+#include "board.h"
+
 #include <klocale.h>
 #include <kstandarddirs.h>
 #include <kglobalsettings.h>
-#include <kdebug.h>
 
 #include <QMouseEvent>
 #include <QPainter>
 #include <QTimer>
-
-#include "board.h"
 #include "prefs.h"
 
 #define EMPTY		0

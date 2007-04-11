@@ -38,6 +38,8 @@
  *******************************************************************
  */
 
+#include "app.h"
+
 #include <kactioncollection.h>
 #include <kstandardaction.h>
 #include <kseparator.h>
@@ -61,8 +63,6 @@
 
 #include <cmath>
 #include <kglobal.h>
-
-#include "app.h"
 #include "prefs.h"
 #include "ui_settings.h"
 
@@ -296,7 +296,7 @@ void App::updateScore()
 		 QString().sprintf("%02d", t / 3600 ),
 		 QString().sprintf("%02d", (t / 60) % 60 ),
 		 QString().sprintf("%02d", t % 60 ),
-		 board->isPaused()?i18n("(Paused) "):QString::null);
+		 board->isPaused()?i18n("(Paused) "):QString());
 
 	statusBar()->changeItem(s, SBI_TIME);
 
