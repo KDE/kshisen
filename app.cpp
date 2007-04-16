@@ -78,7 +78,7 @@ public:
     }
 };
 
-App::App(QWidget *parent) : KMainWindow(parent),
+App::App(QWidget *parent) : KXmlGuiWindow(parent),
    cheat(false)
 {
 	highscoreTable = new KHighscore(this);
@@ -730,7 +730,7 @@ void App::showSettings(){
     if(KConfigDialog::showDialog("settings"))
       return;
 
-     //Use the classes exposed by LibKmahjongg for our configuration dialog     
+     //Use the classes exposed by LibKmahjongg for our configuration dialog
     KMahjonggConfigDialog *dialog = new KMahjonggConfigDialog(this, "settings", Prefs::self());
     dialog->addPage(new Settings(0), i18n("General"), "package_settings");
     dialog->addTilesetPage();

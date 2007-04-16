@@ -44,7 +44,7 @@
 // Should this get the whole HAVE_SYS_TIME_H TIME_WITH_SYS_TIME treatment?
 #include <time.h>
 
-#include <kmainwindow.h>
+#include <kxmlguiwindow.h>
 #include "board.h"
 
 class KHighscore;
@@ -60,7 +60,7 @@ struct HighScore
 
 const signed HIGHSCORE_MAX = 10;
 
-class App : public KMainWindow
+class App : public KXmlGuiWindow
 {
 	Q_OBJECT
 
