@@ -170,6 +170,7 @@ public:
 	void makeHintMove();
 	void finish();
 	void dumpBoard() const;
+	void dumpBoard(const int*) const;
 #endif
 
 	int tilesLeft() const;
@@ -202,7 +203,7 @@ public slots:
 
 private slots:
 	void undrawConnection();
-	void gravity(int, bool);
+	bool gravity(int, bool);
 
 protected:
 	virtual QSize sizeHint() const;
@@ -235,6 +236,7 @@ private: // functions
 	void marked(int x, int y);
 	void madeMove(int x1, int y1, int x2, int y2);
 	void madeMoveWithSlide(int x1, int y1, int x2, int y2, Path& s);
+	void gravity(bool);
 
 private:
 	time_t starttime;
@@ -266,7 +268,8 @@ private:
 	bool _solvable_flag;
         bool _chineseStyle_flag;
         bool _tilesCanSlide_flag;
-	int grav_col_1, grav_col_2;
+	QList<int> grav_cols;
+	//int grav_col_1, grav_col_2;
 
 	int highlighted_tile;
 

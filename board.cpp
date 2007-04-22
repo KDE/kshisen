@@ -91,7 +91,7 @@ Board::Board(QWidget *parent) :
        _x_tiles(0), _y_tiles(0),
        _delay(125), paused(false),
        gravity_flag(true), _solvable_flag(true), _chineseStyle_flag(false), _tilesCanSlide_flag(false),
-	     grav_col_1(-1), grav_col_2(-1), highlighted_tile(-1), _paintConnection(false), _paintPossibleMoves(false)
+       highlighted_tile(-1), _paintConnection(false), _paintPossibleMoves(false)
 {
 	tileRemove1.first = -1;
 	// Randomize
@@ -217,8 +217,21 @@ int Board::getField(int x, int y) const
 	return field[y * x_tiles() + x];
 }
 
-void Board::gravity(int col, bool update)
+// check all columns and populate the affected
+// columns in grav_cols
+void Board::gravity(bool update)
 {
+	grav_cols.clear();
+	if(!gravity_flag) return;
+	for (int i=0;i<x_tiles();i++)
+		if (gravity(i, update))
+			grav_cols.append(i);
+}
+
+// return wheter the column col is affected by gravity
+bool Board::gravity(int col, bool update)
+{
+	bool affected=false;
 	if(gravity_flag)
 	{
 		int rptr = y_tiles()-1, wptr = y_tiles()-1;
@@ -235,6 +248,7 @@ void Board::gravity(int col, bool update)
 				{
 					setField(col, wptr, getField(col, rptr));
 					setField(col, rptr, EMPTY);
+					affected=true;
 					if(update)
 					{
 						updateField(col, rptr);
@@ -248,6 +262,7 @@ void Board::gravity(int col, bool update)
 			}
 		}
 	}
+	return affected;
 }
 
 void Board::mousePressEvent(QMouseEvent *e)
@@ -374,8 +389,11 @@ void Board::setSize(int x, int y)
 	emit changed();
 }
 
-void Board::resizeEvent(QResizeEvent*)
+void Board::resizeEvent(QResizeEvent* event)
 {
+	kDebug() << "[resizeEvent]" << endl;
+	if(event->spontaneous())
+		kDebug() << "[resizeEvent] spontaneous" << endl;
 	resizeBoard();
 	emit resized();
 }
@@ -402,7 +420,7 @@ QSize Board::unscaledSize()
 
 void Board::newGame()
 {
-	//kDebug() << "NewGame" << endl;
+	kDebug() << "NewGame" << endl;
 	int i, x, y;//, k; k is unused now
 
 	mark_x = -1;
@@ -531,7 +549,7 @@ void Board::newGame()
 		memcpy(oldfield, field, fsize);
                 max_attempts--;
 	}
-        	// debug, tell if make solvable failed
+	// debug, tell if make solvable failed
 	if (max_attempts == 0)
 	{
 		kDebug() << "NewGame make solvable failed" << endl;
@@ -844,6 +862,12 @@ void Board::performSlide(int x, int y, Path& s)
 void Board::performMove(PossibleMove& p)
 {
 	connection = p.path;
+	#ifdef DEBUGGING
+	// DEBUG undo, save board state
+	int fsize = x_tiles() * y_tiles() * sizeof(int);
+	int *saved1 = new int[x_tiles() * y_tiles()];
+	memcpy(saved1, field, fsize);
+	#endif
 	// if the tiles can slide, we have to update the slided tiles too
 	// and store the slide in a Move
 	if(p.hasSlide)
@@ -859,11 +883,66 @@ void Board::performMove(PossibleMove& p)
 	drawConnection(getDelay());
 	tileRemove1 = QPair<int, int>(mark_x, mark_y);
 	tileRemove2 = QPair<int, int>(p.path.last().x, p.path.last().y);
-	grav_col_1 = p.path.last().x;
-	grav_col_2 = mark_x;
 	mark_x = -1;
 	mark_y = -1;
 	possibleMoves.clear();
+	#ifdef DEBUGGING
+	// DEBUG undo, force gravity
+	undrawConnection();
+	// DEBUG undo, save board2 state
+	int *saved2 = new int[x_tiles() * y_tiles()];
+	int *saved3 = new int[x_tiles() * y_tiles()]; // after undo
+	int *saved4 = new int[x_tiles() * y_tiles()]; // after redo
+	memcpy(saved2, field, fsize);
+	// DEBUG undo, undo move
+	bool errorfound=false;
+	if (canUndo())
+	{
+		undo();
+		// DEBUG undo, compare to saved board state
+		for(int i=0;i<x_tiles() * y_tiles();i++)
+			if(saved1[i] != field[i])
+			{
+				kDebug() << "[DEBUG Undo 1], tile (" << i << ") was " << saved1[i] << " before more, it is " << field[i] << " after undo." << endl;
+				errorfound=true;
+			}
+		// DEBUG undo, save board state
+		memcpy(saved3, field, fsize);
+		// DEBUG undo, redo
+		if (canRedo())
+		{
+			redo();
+			undrawConnection();
+			// DEBUG undo, compare to saved board2 state
+			for(int i=0;i<x_tiles() * y_tiles();i++)
+				if(saved2[i] != field[i])
+				{
+					kDebug() << "[DEBUG Undo 2], tile (" << i << ") was " << saved2[i] << " after more, it is " << field[i] << " after redo." << endl;
+					errorfound=true;
+				}
+			// DEBUG undo, save board state
+			memcpy(saved4, field, fsize);
+		}
+	}
+	// dumpBoard on error
+	if(errorfound)
+	{
+		kDebug() << "[DEBUG] Before move" << endl;
+		dumpBoard(saved1);
+		kDebug() << "[DEBUG] After move" << endl;
+		dumpBoard(saved2);
+		kDebug() << "[DEBUG] Undo" << endl;
+		dumpBoard(saved3);
+		kDebug() << "[DEBUG] Redo" << endl;
+		dumpBoard(saved4);
+	}
+
+	// DEBUG undo, free saved boards
+	delete[] saved1;
+	delete[] saved2;
+	delete[] saved3;
+	delete[] saved4;
+	#endif
 }
 
 void Board::marked(int x, int y)
@@ -940,7 +1019,6 @@ void Board::marked(int x, int y)
 		}
 
 		// only one move possible, perform it
-
 		performMove(possibleMoves.first());
 
 		// game is over?
@@ -1361,13 +1439,15 @@ void Board::undrawConnection()
 		repaint();
 	}
 
-	if(grav_col_1 != -1 || grav_col_2 != -1)
+	/*if(grav_col_1 != -1 || grav_col_2 != -1)
 	{
 		gravity(grav_col_1, true);
 		gravity(grav_col_2, true);
 		grav_col_1 = -1;
 		grav_col_2 = -1;
-	}
+	}*/
+
+	gravity(true);
 
 	// is already undrawn?
 	if(connection.isEmpty())
@@ -1492,30 +1572,221 @@ void Board::undo()
 
 			// When both tiles reside in the same column, the order of undo is
 			// significant (we must undo the lower tile first).
+			// Also in that case there cannot be a slide
 			if(m->x1 == m->x2 && m->y1 < m->y2)
 			{
 				qSwap(m->x1, m->x2);
 				qSwap(m->y1, m->y2);
+				qSwap(m->tile1, m->tile2);
 			}
 
-			for(y = 0; y < m->y1; y++)
+			// if there is no slide, keep previous implementation: move both column up
+			if(!m->hasSlide)
 			{
-				setField(m->x1, y, getField(m->x1, y+1));
-				updateField(m->x1, y);
-			}
+				#ifdef DEBUGGING
+				kDebug() << "[undo] gravity from a no slide move" << endl;
+				#endif
+				// move tiles from the first column up
+				for(y = 0; y < m->y1; y++)
+				{
+					setField(m->x1, y, getField(m->x1, y+1));
+					updateField(m->x1, y);
+				}
 
-			for(y = 0; y < m->y2; y++)
+				// move tiles from the second column up
+				for(y = 0; y < m->y2; y++)
+				{
+					setField(m->x2, y, getField(m->x2, y+1));
+					updateField(m->x2, y);
+				}
+			}
+			// else check all tiles from the slide that may have fallen down
+			else
 			{
-				setField(m->x2, y, getField(m->x2, y+1));
-				updateField(m->x2, y);
+				#ifdef DEBUGGING
+				kDebug() << "[undo] gravity from slide s1(" << m->slide_x1 << "," << m->slide_y1 << ")=>s2(" << m->slide_x2 << "," << m->slide_y2 << ") matching (" << m->x1 << "," << m->y1 << ")=>(" << m->x2 << "," << m->y2 << ")" << endl;
+				#endif
+				// horizontal slide
+				// because tiles that slides horizontaly may fall down
+				// in columns different than the taken tiles columns
+				// we need to take them back up then undo the slide
+				if(m->slide_y1 == m->slide_y2)
+				{
+					#ifdef DEBUGGING
+					kDebug() << "[undo] gravity from horizontal slide" << endl;
+					#endif
+					// last slide tile went from slide_x1 -> slide_x2
+					// the number of slided tiles is n = abs(x1 - slide_x1)
+					int n = m->x1 - m->slide_x1;
+					if (n<0)
+						n = -n;
+					// distance slided is
+					int dx = m->slide_x2 - m->slide_x1;
+					if (dx<0)
+						dx=-dx;
+					#ifdef DEBUGGING
+					kDebug() << "[undo] n = " << n << endl;
+					#endif
+					// slided tiles may fall down after the slide
+					// so any tiles on top of the columns between
+					// slide_x2 -> slide_x2 +/- n (excluded) should go up to slide_y1
+					if(m->slide_x2 > m->slide_x1) // slide to the right
+					{
+						#ifdef DEBUGGING
+						kDebug() << "[undo] slide right" << endl;
+						#endif
+						for(int i = m->slide_x2; i > m->slide_x2 - n; i--)
+						{
+							// find top tile
+							int j;
+							for(j=0; j<y_tiles(); j++)
+								if(getField(i,j) != EMPTY)
+									break;
+
+							// ignore if the tile did not fall
+							if (j <= m->slide_y1)
+								continue;
+							#ifdef DEBUGGING
+							kDebug() << "[undo] moving (" << i << "," << j << ") up to (" << i << "," << m->slide_y1 << ")" << endl;
+							#endif
+							// put it back up
+							setField(i, m->slide_y1, getField(i,j));
+							setField(i,j,EMPTY);
+							updateField(i,j);
+							updateField(i, m->slide_y1);
+						}
+					}
+					else // slide to the left
+					{
+						#ifdef DEBUGGING
+						kDebug() << "[undo] slide left" << endl;
+						#endif
+						for(int i = m->slide_x2; i < m->slide_x2 + n; i++)
+						{
+							// find top tile
+							int j;
+							for(j=0; j<y_tiles(); j++)
+								if(getField(i,j) != EMPTY)
+									break;
+
+							// ignore if the tile did not fall
+							if (j <= m->slide_y1)
+								continue;
+							#ifdef DEBUGGING
+							kDebug() << "[undo] moving (" << i << "," << j << ") up to (" << i << "," << m->slide_y1 << ")" << endl;
+							#endif
+							// put it back up
+							setField(i, m->slide_y1, getField(i,j));
+							setField(i,j,EMPTY);
+							updateField(i,j);
+							updateField(i, m->slide_y1);
+						}
+					}
+					// move tiles from the second column up
+					#ifdef DEBUGGING
+					kDebug() << "[undo] moving up column x2 " << m->x2  << endl;
+					#endif
+					for(y = 0; y <= m->y2; y++)
+					{
+						#ifdef DEBUGGING
+						kDebug() << "[undo] moving up tile " << y+1 << endl;
+						#endif
+						setField(m->x2, y, getField(m->x2, y+1));
+						updateField(m->x2, y);
+					}
+					// and all columns that fell after the tiles slided between
+					// only if they were not replaced by a sliding tile !!
+					// x1 -> x1+dx should go up one
+					// if their height > slide_y1
+					// because they have fallen after the slide
+					if(m->slide_x2 > m->slide_x1) // slide to the right
+					{
+						if(m->slide_y1 > 0)
+						for(int i = m->x1+dx; i >= m->x1; i--)
+						{
+							#ifdef DEBUGGING
+							kDebug() << "[undo] moving up column " << i << " until " << m->slide_y1 << endl;
+							#endif
+							for(int j = 0; j < m->slide_y1; j++)
+							{
+								#ifdef DEBUGGING
+								kDebug() << "[undo] moving up tile " << j+1 << endl;
+								#endif
+								setField(i, j, getField(i, j+1));
+								updateField(i, j);
+							}
+							#ifdef DEBUGGING
+							kDebug() << "[undo] clearing last tile " << m->slide_y1 << endl;
+							#endif
+							setField(i, m->slide_y1, EMPTY);
+							updateField(i, m->slide_y1);
+						}
+					}
+					else // slide to the left
+					{
+						if(m->slide_y1 > 0)
+						for(int i = m->x1-dx; i <= m->x1; i++)
+						{
+							#ifdef DEBUGGING
+							kDebug() << "[undo] moving up column " << i << " until " << m->slide_y1 << endl;
+							#endif
+							for(int j = 0; j < m->slide_y1; j++)
+							{
+								#ifdef DEBUGGING
+								kDebug() << "[undo] moving up tile " << j+1 << endl;
+								#endif
+								setField(i, j, getField(i, j+1));
+								updateField(i, j);
+							}
+							#ifdef DEBUGGING
+							kDebug() << "[undo] clearing last tile " << m->slide_y1 << endl;
+							#endif
+							setField(i, m->slide_y1, EMPTY);
+							updateField(i, m->slide_y1);
+						}
+					}
+
+					// then undo the slide to put the tiles back to their original location
+					#ifdef DEBUGGING
+					kDebug() << "[undo] reversing slide" << endl;
+					#endif
+					reverseSlide(m->x1, m->y1, m->slide_x1, m->slide_y1, m->slide_x2, m->slide_y2);
+
+				}
+				// vertical slide, in fact nothing special is necessary
+				// the default implementation works because it only affects
+				// the two columns were tiles were taken
+				else
+				{
+					#ifdef DEBUGGING
+					kDebug() << "[undo] gravity from vertical slide" << endl;
+					#endif
+
+					// move tiles from the first column up
+					for(y = 0; y < m->y1; y++)
+					{
+						setField(m->x1, y, getField(m->x1, y+1));
+						updateField(m->x1, y);
+					}
+
+					// move tiles from the second column up
+					for(y = 0; y < m->y2; y++)
+					{
+						setField(m->x2, y, getField(m->x2, y+1));
+						updateField(m->x2, y);
+					}
+				}
 			}
 		}
-
-		// undo slide if any
-		if(m->hasSlide)
+		// no gravity
+		else
 		{
-			// perform the slide in reverse
-			reverseSlide(m->x1, m->y1, m->slide_x1, m->slide_y1, m->slide_x2, m->slide_y2);
+			// undo slide if any
+			if(m->hasSlide)
+			{
+				// perform the slide in reverse
+				reverseSlide(m->x1, m->y1, m->slide_x1, m->slide_y1, m->slide_x2, m->slide_y2);
+			}
 		}
 
 		// replace taken tiles
@@ -1548,8 +1819,7 @@ void Board::redo()
 		setField(m->x2, m->y2, EMPTY);
 		updateField(m->x1, m->y1);
 		updateField(m->x2, m->y2);
-		gravity(m->x1, true);
-		gravity(m->x2, true);
+		gravity(true);
 		_undo.append(m);
 		emit changed();
 	}
@@ -1583,7 +1853,8 @@ void Board::makeHintMove()
 
 void Board::finish()
 {
-	PossibleMoves p;
+	// broken ..
+	/*PossibleMoves p;
 	bool ready=false;
 
 	while(!ready && getHint_I(p))
@@ -1596,7 +1867,7 @@ void Board::finish()
 		marked(p.first().path.last().x,  p.first().path.last().y);
 		qApp->processEvents();
 		usleep(250*1000);
-	}
+	}*/
 }
 
 void Board::dumpBoard() const
@@ -1611,7 +1882,25 @@ void Board::dumpBoard() const
 			if(tile == EMPTY)
 				row += " --";
 			else
-				row += QString("%1").arg(getField(x, y), 3);
+				row += QString("%1").arg(tile, 3);
+		}
+		kDebug() << row << endl;
+	}
+}
+
+void Board::dumpBoard(const int* board) const
+{
+	kDebug() << "Board contents:" << endl;
+	for(int y = 0; y < y_tiles(); ++y)
+	{
+		QString row;
+		for(int x = 0; x < x_tiles(); ++x)
+		{
+			int tile = board[y * x_tiles() + x];
+			if(tile == EMPTY)
+				row += " --";
+			else
+				row += QString("%1").arg(tile, 3);
 		}
 		kDebug() << row << endl;
 	}
