@@ -958,6 +958,7 @@ void Board::marked(int x, int y)
 		undrawPossibleMoves();
 		possibleMoves.clear();
 		updateField(x, y);
+		emit selectATile();
 		return;
 	}
 
@@ -970,6 +971,7 @@ void Board::marked(int x, int y)
 		undrawPossibleMoves();
 		possibleMoves.clear();
 		updateField(x, y);
+		emit selectAMatchingTile();
 		return;
 	}
 	else if(possibleMoves.count() > 1) // if the click is on any of the current possible moves, make that move
@@ -982,6 +984,7 @@ void Board::marked(int x, int y)
 			if((*i).isInPath(x,y))
 			{
 				performMove(*i);
+				emit selectATile();
 				return;
 			}
 		}
@@ -994,7 +997,10 @@ void Board::marked(int x, int y)
 
 	// both field match
 	if(!tilesMatch(fld1, fld2))
+	{
+		emit tilesDontMatch();
 		return;
+	}
 
 	// trace and perform the move and get the list of possible moves
 	if(findPath(mark_x, mark_y, x, y, possibleMoves))
@@ -1014,19 +1020,21 @@ void Board::marked(int x, int y)
 			if(withSlide > 0)
 			{
 				drawPossibleMoves();
+				emit selectAMove();
 				return;
 			}
 		}
 
 		// only one move possible, perform it
 		performMove(possibleMoves.first());
-
+		emit selectATile();
 		// game is over?
 		// Must delay until after tiles fall to make this test
 		// See undrawConnection GP.
 	}
 	else
 	{
+		emit invalidMove();
 		connection.clear();
 	}
 }

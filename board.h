@@ -194,6 +194,11 @@ signals:
 	void changed();
 	void endOfGame();
 	void resized();
+	void invalidMove();
+	void tilesDontMatch();
+	void selectATile();
+	void selectAMove();
+	void selectAMatchingTile();
 
 public slots:
 	bool pause();

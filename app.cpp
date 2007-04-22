@@ -91,9 +91,10 @@ App::App(QWidget *parent) : KXmlGuiWindow(parent),
 	else
 		readOldHighscore();
 
+	statusBar()->insertItem(i18n("Select a tile"), SBI_GAMETIP);
 	statusBar()->insertItem("", SBI_TIME);
 	statusBar()->insertItem("", SBI_TILES);
-	statusBar()->insertFixedItem(i18n(" Cheat mode "), SBI_CHEAT);
+	statusBar()->insertItem(i18n(" Cheat mode "), SBI_CHEAT);
 	statusBar()->changeItem("", SBI_CHEAT);
 
 	initKAction();
@@ -106,6 +107,11 @@ App::App(QWidget *parent) : KXmlGuiWindow(parent),
 	setupGUI();
 
 	connect(board, SIGNAL(changed()), this, SLOT(enableItems()));
+	connect(board, SIGNAL(tilesDontMatch()), this, SLOT(notifyTilesDontMatch()));
+	connect(board, SIGNAL(invalidMove()), this, SLOT(notifyInvalidMove()));
+	connect(board, SIGNAL(selectATile()), this, SLOT(notifySelectATile()));
+	connect(board, SIGNAL(selectAMatchingTile()), this, SLOT(notifySelectAMatchingTile()));
+	connect(board, SIGNAL(selectAMove()), this, SLOT(notifySelectAMove()));
 
 	QTimer *t = new QTimer(this);
 	t->start(1000);
@@ -293,6 +299,31 @@ void App::slotEndOfGame()
 
 	resetCheatMode();
 	board->newGame();
+}
+
+void App::notifySelectATile()
+{
+	statusBar()->changeItem(i18n("Select a tile"), SBI_GAMETIP);
+}
+
+void App::notifySelectAMatchingTile()
+{
+	statusBar()->changeItem(i18n("Select a matching tile"), SBI_GAMETIP);
+}
+
+void App::notifySelectAMove()
+{
+	statusBar()->changeItem(i18n("Select the move you want by clicking on the blue line"), SBI_GAMETIP);
+}
+
+void App::notifyTilesDontMatch()
+{
+	statusBar()->changeItem(i18n("This tile doesn't match the one you selected"), SBI_GAMETIP);
+}
+
+void App::notifyInvalidMove()
+{
+	statusBar()->changeItem(i18n("You cannot make this move"), SBI_GAMETIP);
 }
 
 void App::updateScore()

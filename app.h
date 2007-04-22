@@ -73,6 +73,12 @@ private slots:
 	void updateScore();
 	void showSettings();
 
+	void notifyTilesDontMatch();
+	void notifyInvalidMove();
+	void notifySelectATile();
+	void notifySelectAMatchingTile();
+	void notifySelectAMove();
+
 	void newGame();
 	void quitGame();
 	void restartGame();
@@ -113,7 +119,7 @@ private:
 	KHighscore* highscoreTable;
 	bool cheat;
 
-	enum statusBarItems { SBI_TIME, SBI_TILES, SBI_CHEAT };
+	enum statusBarItems { SBI_GAMETIP=0, SBI_TIME, SBI_TILES, SBI_CHEAT };
 
 };
 
