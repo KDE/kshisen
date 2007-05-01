@@ -91,12 +91,7 @@ App::App(QWidget *parent) : KXmlGuiWindow(parent),
 	else
 		readOldHighscore();
 
-	statusBar()->insertItem(i18n("Select a tile"), SBI_GAMETIP);
-	statusBar()->insertItem("", SBI_TIME);
-	statusBar()->insertItem("", SBI_TILES);
-	statusBar()->insertItem(i18n(" Cheat mode "), SBI_CHEAT);
-	statusBar()->changeItem("", SBI_CHEAT);
-
+	setupStatusBar();
 	initKAction();
 
 	board = new Board(this);
@@ -122,6 +117,26 @@ App::App(QWidget *parent) : KXmlGuiWindow(parent),
 
 	updateScore();
 	enableItems();
+}
+
+void App::setupStatusBar()
+{
+    gameTipLabel= new QLabel(i18n("Select a tile"), statusBar());
+    gameTipLabel->setFrameStyle( QFrame::Panel | QFrame::Sunken );
+    statusBar()->addWidget(gameTipLabel, 1);
+
+    gameTimerLabel = new QLabel(i18n("Time: 0:00:00"), statusBar());
+    gameTimerLabel->setFrameStyle( QFrame::Panel | QFrame::Sunken );
+    statusBar()->addWidget(gameTimerLabel);
+
+    gameTilesLabel = new QLabel(i18n("Removed: 0/0"), statusBar());
+    gameTilesLabel->setFrameStyle( QFrame::Panel | QFrame::Sunken );
+    statusBar()->addWidget(gameTilesLabel);
+
+    gameCheatLabel = new QLabel(i18n("Cheat mode"), statusBar());
+    gameCheatLabel->setFrameStyle( QFrame::Panel | QFrame::Sunken );
+    statusBar()->addWidget(gameCheatLabel);
+    gameCheatLabel->hide();
 }
 
 void App::initKAction()
@@ -303,27 +318,27 @@ void App::slotEndOfGame()
 
 void App::notifySelectATile()
 {
-	statusBar()->changeItem(i18n("Select a tile"), SBI_GAMETIP);
+	gameTipLabel->setText(i18n("Select a tile"));
 }
 
 void App::notifySelectAMatchingTile()
 {
-	statusBar()->changeItem(i18n("Select a matching tile"), SBI_GAMETIP);
+	gameTipLabel->setText(i18n("Select a matching tile"));
 }
 
 void App::notifySelectAMove()
 {
-	statusBar()->changeItem(i18n("Select the move you want by clicking on the blue line"), SBI_GAMETIP);
+	gameTipLabel->setText(i18n("Select the move you want by clicking on the blue line"));
 }
 
 void App::notifyTilesDontMatch()
 {
-	statusBar()->changeItem(i18n("This tile doesn't match the one you selected"), SBI_GAMETIP);
+	gameTipLabel->setText(i18n("This tile didn't match the one you selected"));
 }
 
 void App::notifyInvalidMove()
 {
-	statusBar()->changeItem(i18n("You cannot make this move"), SBI_GAMETIP);
+	gameTipLabel->setText(i18n("You cannot make this move"));
 }
 
 void App::updateScore()
@@ -335,7 +350,8 @@ void App::updateScore()
 		 QString().sprintf("%02d", t % 60 ),
 		 board->isPaused()?i18n("(Paused) "):QString());
 
-	statusBar()->changeItem(s, SBI_TIME);
+	//statusBar()->changeItem(s, SBI_TIME);
+	gameTimerLabel->setText(s);
 
 	// Number of tiles
 	int tl = (board->x_tiles() * board->y_tiles());
@@ -343,7 +359,8 @@ void App::updateScore()
 		 QString().sprintf("%d", tl - board->tilesLeft()),
 		 QString().sprintf("%d", tl ));
 
-	statusBar()->changeItem(s, SBI_TILES);
+	//statusBar()->changeItem(s, SBI_TILES);
+	gameTilesLabel->setText(s);
 }
 
 void App::setCheatMode()
@@ -352,7 +369,7 @@ void App::setCheatMode()
 	if(!cheat)
 	{
 		cheat = true;
-		statusBar()->changeItem(i18n(" Cheat mode "), SBI_CHEAT);
+		gameCheatLabel->show();
 	}
 }
 
@@ -362,7 +379,7 @@ void App::resetCheatMode()
 	if(cheat)
 	{
 		cheat = false;
-		statusBar()->changeItem("", SBI_CHEAT);
+		gameCheatLabel->hide();
 	}
 }
 

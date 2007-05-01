@@ -48,6 +48,7 @@
 #include "board.h"
 
 class KHighscore;
+class QLabel;
 
 struct HighScore
 {
@@ -108,19 +109,21 @@ private:
 	bool isBetter(const HighScore &, const HighScore &);
 	void showHighscore(int focusitem = -1);
 
+	void setupStatusBar();
 	void initKAction();
 	void setCheatMode();
 	void resetCheatMode();
 
 private:
 	QString lastPlayerName;
+	QLabel *gameTipLabel;
+	QLabel *gameTimerLabel;
+	QLabel *gameTilesLabel;
+	QLabel *gameCheatLabel;
 	Board *board;
 	QVector<HighScore> highscore;
 	KHighscore* highscoreTable;
 	bool cheat;
-
-	enum statusBarItems { SBI_GAMETIP=0, SBI_TIME, SBI_TILES, SBI_CHEAT };
-
 };
 
 #endif
