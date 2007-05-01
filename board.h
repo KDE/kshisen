@@ -183,6 +183,8 @@ public:
 	void setSolvableFlag(bool);
 	bool gravityFlag() const;
 	void setGravityFlag(bool);
+	void setChineseStyleFlag(bool);
+	void setTilesCanSlideFlag(bool);
 
 	int x_tiles() const;
 	int y_tiles() const;

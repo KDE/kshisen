@@ -125,8 +125,8 @@ void Board::loadSettings(){
     }
 
     // special rule
-    _chineseStyle_flag = (Prefs::chineseStyle());
-    _tilesCanSlide_flag = (Prefs::tilesCanSlide());
+    setChineseStyleFlag(Prefs::chineseStyle());
+    setTilesCanSlideFlag(Prefs::tilesCanSlide());
     // need to load solvable before size
     // because setSize call newGame which uses
     // the solvable flag
@@ -2073,6 +2073,25 @@ void Board::setGravityFlag(bool b)
 		if(canUndo() || canRedo())
 			newGame();
 		gravity_flag = b;
+	}
+}
+
+void Board::setChineseStyleFlag(bool b)
+{
+	if( _chineseStyle_flag != b )
+	{
+		// we need to force a newGame because board generation is different
+		_chineseStyle_flag = b;
+		newGame();
+	}
+}
+
+void Board::setTilesCanSlideFlag(bool b)
+{
+	if( _tilesCanSlide_flag != b ){
+		if(canUndo() || canRedo())
+			newGame();
+		_tilesCanSlide_flag = b;
 	}
 }
 
