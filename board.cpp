@@ -228,7 +228,7 @@ void Board::gravity(bool update)
 			grav_cols.append(i);
 }
 
-// return wheter the column col is affected by gravity
+// return whether the column col is affected by gravity
 bool Board::gravity(int col, bool update)
 {
 	bool affected=false;

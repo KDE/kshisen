@@ -333,7 +333,7 @@ void App::notifySelectAMove()
 
 void App::notifyTilesDontMatch()
 {
-	gameTipLabel->setText(i18n("This tile didn't match the one you selected"));
+	gameTipLabel->setText(i18n("This tile did not match the one you selected"));
 }
 
 void App::notifyInvalidMove()
@@ -385,7 +385,7 @@ void App::resetCheatMode()
 
 QString App::getPlayerName()
 {
-	QDialog *dlg = new QDialog(this);
+	KDialog *dlg = new KDialog(this);
 	dlg->setObjectName( "Hall of Fame" );
 	dlg->setModal( true );
         QLabel  *l1  = new QLabel(i18n("You have made it into the \"Hall Of Fame\". Type in\nyour name so mankind will always remember\nyour cool rating."), dlg);
@@ -623,7 +623,7 @@ void App::writeHighscore()
 void App::showHighscore(int focusitem)
 {
 	// this may look a little bit confusing...
-	QDialog *dlg = new QDialog;
+	KDialog *dlg = new KDialog;
 	dlg->setObjectName( "hall_Of_fame" );
 	dlg->setModal( true );
 	dlg->setWindowTitle(i18n("Hall of Fame"));
