@@ -122,19 +122,15 @@ App::App(QWidget *parent) : KXmlGuiWindow(parent),
 void App::setupStatusBar()
 {
     gameTipLabel= new QLabel(i18n("Select a tile"), statusBar());
-    gameTipLabel->setFrameStyle( QFrame::Panel | QFrame::Sunken );
     statusBar()->addWidget(gameTipLabel, 1);
 
     gameTimerLabel = new QLabel(i18n("Time: 0:00:00"), statusBar());
-    gameTimerLabel->setFrameStyle( QFrame::Panel | QFrame::Sunken );
     statusBar()->addWidget(gameTimerLabel);
 
     gameTilesLabel = new QLabel(i18n("Removed: 0/0"), statusBar());
-    gameTilesLabel->setFrameStyle( QFrame::Panel | QFrame::Sunken );
     statusBar()->addWidget(gameTilesLabel);
 
     gameCheatLabel = new QLabel(i18n("Cheat mode"), statusBar());
-    gameCheatLabel->setFrameStyle( QFrame::Panel | QFrame::Sunken );
     statusBar()->addWidget(gameCheatLabel);
     gameCheatLabel->hide();
 }
