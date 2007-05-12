@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="kshisen" version="10">
+<kpartgui name="kshisen" version="11">
 <MenuBar>
   <Menu name="move"><!--
     <Action name="move_solvable"/>
@@ -7,6 +7,8 @@
   </Menu>
 </MenuBar>
 <ToolBar name="mainToolBar"><text>Main Toolbar</text>
+  <Action name="game_new"/>
+  <Seperator/>
   <Action name="move_undo"/>
   <Action name="move_redo"/>
   <Separator/>
