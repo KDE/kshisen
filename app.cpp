@@ -71,11 +71,11 @@
 class Settings : public QWidget, public Ui::Settings
 {
 public:
-    Settings(QWidget *parent)
-        : QWidget(parent)
-    {
-        setupUi(this);
-    }
+	Settings(QWidget *parent)
+		: QWidget(parent)
+	{
+		setupUi(this);
+	}
 };
 
 App::App(QWidget *parent) : KXmlGuiWindow(parent),
@@ -95,7 +95,7 @@ App::App(QWidget *parent) : KXmlGuiWindow(parent),
 	initKAction();
 
 	board = new Board(this);
-        board->setObjectName( "board" );
+	board->setObjectName( "board" );
 
 	setCentralWidget(board);
 
@@ -121,18 +121,18 @@ App::App(QWidget *parent) : KXmlGuiWindow(parent),
 
 void App::setupStatusBar()
 {
-    gameTipLabel= new QLabel(i18n("Select a tile"), statusBar());
-    statusBar()->addWidget(gameTipLabel, 1);
-
-    gameTimerLabel = new QLabel(i18n("Time: 0:00:00"), statusBar());
-    statusBar()->addWidget(gameTimerLabel);
-
-    gameTilesLabel = new QLabel(i18n("Removed: 0/0"), statusBar());
-    statusBar()->addWidget(gameTilesLabel);
-
-    gameCheatLabel = new QLabel(i18n("Cheat mode"), statusBar());
-    statusBar()->addWidget(gameCheatLabel);
-    gameCheatLabel->hide();
+	gameTipLabel= new QLabel(i18n("Select a tile"), statusBar());
+	statusBar()->addWidget(gameTipLabel, 1);
+	
+	gameTimerLabel = new QLabel(i18n("Time: 0:00:00"), statusBar());
+	statusBar()->addWidget(gameTimerLabel);
+	
+	gameTilesLabel = new QLabel(i18n("Removed: 0/0"), statusBar());
+	statusBar()->addWidget(gameTilesLabel);
+	
+	gameCheatLabel = new QLabel(i18n("Cheat mode"), statusBar());
+	statusBar()->addWidget(gameCheatLabel);
+	gameCheatLabel->hide();
 }
 
 void App::initKAction()
@@ -777,16 +777,16 @@ void App::keyBindings()
  * Show Settings dialog.
  */
 void App::showSettings(){
-    if(KConfigDialog::showDialog("settings"))
-      return;
-
-     //Use the classes exposed by LibKmahjongg for our configuration dialog
-    KMahjonggConfigDialog *dialog = new KMahjonggConfigDialog(this, "settings", Prefs::self());
-    dialog->addPage(new Settings(0), i18n("General"), "package_settings");
-    dialog->addTilesetPage();
-    dialog->addBackgroundPage();
-    connect(dialog, SIGNAL(settingsChanged(const QString &)), board, SLOT(loadSettings()));
-    dialog->show();
+	if(KConfigDialog::showDialog("settings"))
+		return;
+	
+	//Use the classes exposed by LibKmahjongg for our configuration dialog
+	KMahjonggConfigDialog *dialog = new KMahjonggConfigDialog(this, "settings", Prefs::self());
+	dialog->addPage(new Settings(0), i18n("General"), "package_settings");
+	dialog->addTilesetPage();
+	dialog->addBackgroundPage();
+	connect(dialog, SIGNAL(settingsChanged(const QString &)), board, SLOT(loadSettings()));
+	dialog->show();
 }
 
 #include "app.moc"
