@@ -61,7 +61,7 @@ int main(int argc, char **argv)
 		"(c) 1997, Mario Weilguni");
 	aboutData.addAuthor("Dave Corrie", I18N_NOOP("Current Maintainer"), "kde@davecorrie.com");
 	aboutData.addAuthor("Mario Weilguni", I18N_NOOP("Original Author"), "mweilguni@sime.com");
-        aboutData.addCredit("Mauricio Piacentini", I18N_NOOP("KMahjonggLib integration for KDE4"), "mauricio@tabuleiro.com");
+	aboutData.addCredit("Mauricio Piacentini", I18N_NOOP("KMahjonggLib integration for KDE4"), "mauricio@tabuleiro.com");
 	aboutData.addCredit("Jason Lane", I18N_NOOP("Added 'tiles removed' counter\nTile smooth-scaling and window resizing"), "jglane@btopenworld.com");
 	aboutData.addCredit(0, I18N_NOOP("Thanks also to everyone who should be listed here but is not!"), 0);
 	KCmdLineArgs::init( argc, argv, &aboutData );
@@ -71,6 +71,6 @@ int main(int argc, char **argv)
 
 	App *app = new App();
 	app->show();
-        return a.exec();
+	return a.exec();
 }
 
