@@ -81,7 +81,6 @@ private slots:
 	void notifySelectAMove();
 
 	void newGame();
-	void quitGame();
 	void restartGame();
 	void isSolvable();
 	void pause();

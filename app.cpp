@@ -142,7 +142,7 @@ void App::initKAction()
 	KStandardGameAction::restart(this, SLOT(restartGame()), actionCollection());
 	KStandardGameAction::pause(this, SLOT(pause()), actionCollection());
 	KStandardGameAction::highscores(this, SLOT(hallOfFame()), actionCollection());
-	KStandardGameAction::quit(this, SLOT(quitGame()), actionCollection());
+	KStandardGameAction::quit(this, SLOT(close()), actionCollection());
 
 	// Move
 	KStandardGameAction::undo(this, SLOT(undo()), actionCollection());
@@ -170,11 +170,6 @@ void App::newGame()
 	board->newGame();
 	resetCheatMode();
 	enableItems();
-}
-
-void App::quitGame()
-{
-	qApp->quit();
 }
 
 void App::restartGame()
