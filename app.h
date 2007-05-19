@@ -109,7 +109,7 @@ private:
 	void showHighscore(int focusitem = -1);
 
 	void setupStatusBar();
-	void initKAction();
+	void setupActions();
 	void setCheatMode();
 	void resetCheatMode();
 

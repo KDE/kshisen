@@ -92,14 +92,12 @@ App::App(QWidget *parent) : KXmlGuiWindow(parent),
 		readOldHighscore();
 
 	setupStatusBar();
-	initKAction();
+	setupActions();
 
 	board = new Board(this);
 	board->setObjectName( "board" );
 
 	setCentralWidget(board);
-
-	setupGUI();
 
 	connect(board, SIGNAL(changed()), this, SLOT(enableItems()));
 	connect(board, SIGNAL(tilesDontMatch()), this, SLOT(notifyTilesDontMatch()));
@@ -135,7 +133,7 @@ void App::setupStatusBar()
 	gameCheatLabel->hide();
 }
 
-void App::initKAction()
+void App::setupActions()
 {
 	// Game
 	KStandardGameAction::gameNew(this, SLOT(newGame()), actionCollection());
@@ -158,6 +156,8 @@ void App::initKAction()
 
 	// Settings
 	KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
+
+	setupGUI();
 }
 
 void App::hallOfFame()
