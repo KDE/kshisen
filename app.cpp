@@ -192,8 +192,7 @@ void App::isSolvable()
 
 void App::pause()
 {
-	bool paused = board->pause();
-	lockMenus(paused);
+	lockMenus(board->pause());
 }
 
 void App::undo()
