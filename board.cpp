@@ -146,13 +146,13 @@ bool Board::loadTileset(const QString &path) {
 
   if (tiles.loadTileset(path)) {
     Prefs::setTileSet(path);
-    Prefs::writeConfig();
+    Prefs::self()->writeConfig();
     resizeBoard();
     return true;
   } else {
     if (tiles.loadDefault()) {
       Prefs::setTileSet(tiles.path());
-      Prefs::writeConfig();
+      Prefs::self()->writeConfig();
       resizeBoard();
       return false;
     } else {
@@ -165,13 +165,13 @@ bool Board::loadBackground( const QString& pszFileName )
 {
   if (background.load( pszFileName, width(), height())) {
     Prefs::setBackground(pszFileName);
-    Prefs::writeConfig();
+    Prefs::self()->writeConfig();
     resizeBoard();
     return true;
   } else {
     if (background.loadDefault()) {
       Prefs::setBackground(background.path());
-      Prefs::writeConfig();
+      Prefs::self()->writeConfig();
       resizeBoard();
       return false;
     } else {
