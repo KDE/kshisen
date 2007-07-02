@@ -56,14 +56,14 @@ static const char dummy[] = I18N_NOOP2("Menu title", "&Move");
 
 int main(int argc, char **argv)
 {
-	KAboutData aboutData( "kshisen", I18N_NOOP("Shisen-Sho"),
-		KSHISEN_VERSION, description, KAboutData::License_GPL,
-		"(c) 1997, Mario Weilguni");
-	aboutData.addAuthor("Dave Corrie", I18N_NOOP("Current Maintainer"), "kde@davecorrie.com");
-	aboutData.addAuthor("Mario Weilguni", I18N_NOOP("Original Author"), "mweilguni@sime.com");
-	aboutData.addCredit("Mauricio Piacentini", I18N_NOOP("KMahjonggLib integration for KDE4"), "mauricio@tabuleiro.com");
-	aboutData.addCredit("Jason Lane", I18N_NOOP("Added 'tiles removed' counter\nTile smooth-scaling and window resizing"), "jglane@btopenworld.com");
-	aboutData.addCredit(0, I18N_NOOP("Thanks also to everyone who should be listed here but is not!"), 0);
+	KAboutData aboutData( "kshisen", 0, ki18n("Shisen-Sho"),
+		KSHISEN_VERSION, ki18n(description), KAboutData::License_GPL,
+		ki18n("(c) 1997, Mario Weilguni"));
+	aboutData.addAuthor(ki18n("Dave Corrie"), ki18n("Current Maintainer"), "kde@davecorrie.com");
+	aboutData.addAuthor(ki18n("Mario Weilguni"), ki18n("Original Author"), "mweilguni@sime.com");
+	aboutData.addCredit(ki18n("Mauricio Piacentini"), ki18n("KMahjonggLib integration for KDE4"), "mauricio@tabuleiro.com");
+	aboutData.addCredit(ki18n("Jason Lane"), ki18n("Added 'tiles removed' counter\nTile smooth-scaling and window resizing"), "jglane@btopenworld.com");
+	aboutData.addCredit(KLocalizedString(), ki18n("Thanks also to everyone who should be listed here but is not!"));
 	KCmdLineArgs::init( argc, argv, &aboutData );
 
 	KApplication a;
