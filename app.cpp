@@ -613,21 +613,22 @@ void App::writeHighscore()
 void App::showHighscore(int focusitem)
 {
 	// this may look a little bit confusing...
-	KDialog *dlg = new KDialog;
-	dlg->setObjectName( "hall_Of_fame" );
-	dlg->setModal( true );
-	dlg->setWindowTitle(i18n("Hall of Fame"));
+	KDialog dlg;
+	dlg.setObjectName( "hall_Of_fame" );
+	dlg.setButtons( KDialog::Close );
+	dlg.setWindowTitle(i18n("Hall of Fame"));
 
-	QVBoxLayout *tl = new QVBoxLayout(dlg);
+	QWidget* dummy = new QWidget(&dlg);
+	dlg.setMainWidget(dummy);
+
+	QVBoxLayout *tl = new QVBoxLayout(dummy);
 	tl->setMargin( 10 );
 
-	QLabel *l = new QLabel(i18n("Hall of Fame"), dlg);
+	QLabel *l = new QLabel(i18n("Hall of Fame"), dummy);
 	QFont f = font();
 	f.setPointSize(24);
 	f.setBold(true);
 	l->setFont(f);
-	l->setFixedSize(l->sizeHint());
-	l->setFixedWidth(l->width() + 32);
 	l->setAlignment(Qt::AlignCenter);
 	tl->addWidget(l);
 
@@ -637,31 +638,26 @@ void App::showHighscore(int focusitem)
 	tl->addLayout(table, 1);
 
 	// add a separator line
-	KSeparator *sep = new KSeparator(dlg);
+	KSeparator *sep = new KSeparator(dummy);
 	table->addWidget(sep, 1, 0, 1, 5);
 
 	// add titles
 	f = font();
 	f.setBold(true);
-	l = new QLabel(i18n("Rank"), dlg);
+	l = new QLabel(i18n("Rank"), dummy);
 	l->setFont(f);
-	l->setMinimumSize(l->sizeHint());
 	table->addWidget(l, 0, 0);
-	l = new QLabel(i18n("Name"), dlg);
+	l = new QLabel(i18n("Name"), dummy);
 	l->setFont(f);
-	l->setMinimumSize(l->sizeHint());
 	table->addWidget(l, 0, 1);
-	l = new QLabel(i18n("Time"), dlg);
+	l = new QLabel(i18n("Time"), dummy);
 	l->setFont(f);
-	l->setMinimumSize(l->sizeHint());
 	table->addWidget(l, 0, 2);
-	l = new QLabel(i18n("Size"), dlg);
+	l = new QLabel(i18n("Size"), dummy);
 	l->setFont(f);
-	l->setMinimumSize(l->sizeHint());
 	table->addWidget(l, 0, 3);
-	l = new QLabel(i18n("Score"), dlg);
+	l = new QLabel(i18n("Score"), dummy);
 	l->setFont(f);
-	l->setMinimumSize(l->sizeHint().width()*3, l->sizeHint().height());
 	table->addWidget(l, 0, 4);
 
 	QString s;
@@ -676,13 +672,13 @@ void App::showHighscore(int focusitem)
 
 		// insert rank
 		s.sprintf("%d", i+1);
-		e[i][0] = new QLabel(s, dlg);
+		e[i][0] = new QLabel(s, dummy);
 
 		// insert name
 		if(i < highscore.size())
-			e[i][1] = new QLabel(hs.name, dlg);
+			e[i][1] = new QLabel(hs.name, dummy);
 		else
-			e[i][1] = new QLabel("", dlg);
+			e[i][1] = new QLabel("", dummy);
 
 		// insert time
 		QTime ti(0,0,0);
@@ -690,11 +686,11 @@ void App::showHighscore(int focusitem)
 		{
 			ti = ti.addSecs(hs.seconds);
 			s.sprintf("%02d:%02d:%02d", ti.hour(), ti.minute(), ti.second());
-			e[i][2] = new QLabel(s, dlg);
+			e[i][2] = new QLabel(s, dummy);
 		}
 		else
 		{
-			e[i][2] = new QLabel("", dlg);
+			e[i][2] = new QLabel("", dummy);
 		}
 
 		// insert size
@@ -703,7 +699,7 @@ void App::showHighscore(int focusitem)
 		else
 			s = "";
 
-		e[i][3] = new QLabel(s, dlg);
+		e[i][3] = new QLabel(s, dummy);
 
 		// insert score
 		if(i < highscore.size())
@@ -717,7 +713,7 @@ void App::showHighscore(int focusitem)
 			s = "";
 		}
 
-		e[i][4] = new QLabel(s, dlg);
+		e[i][4] = new QLabel(s, dummy);
 		e[i][4]->setAlignment(Qt::AlignRight);
 	}
 
@@ -728,13 +724,6 @@ void App::showHighscore(int focusitem)
 	{
 		for(j = 0; j < 5; j++)
 		{
-			e[i][j]->setMinimumHeight(e[i][j]->sizeHint().height());
-
-			if(j == 1)
-				e[i][j]->setMinimumWidth(qMax(e[i][j]->sizeHint().width(), 100));
-			else
-				e[i][j]->setMinimumWidth(qMax(e[i][j]->sizeHint().width(), 60));
-
 			if((int)i == focusitem)
 				e[i][j]->setFont(f);
 
@@ -742,23 +731,7 @@ void App::showHighscore(int focusitem)
 		}
 	}
 
-	QPushButton *b = new KPushButton(KStandardGuiItem::close(), dlg);
-
-	b->setFixedSize(b->sizeHint());
-
-	// connect the "Close"-button to done
-	connect(b, SIGNAL(clicked()), dlg, SLOT(accept()));
-	b->setDefault(true);
-	b->setFocus();
-
-	// make layout
-	tl->addSpacing(10);
-	tl->addWidget(b);
-	tl->activate();
-	tl->setSizeConstraint(QLayout::SetFixedSize);
-
-	dlg->exec();
-	delete dlg;
+	dlg.exec();
 }
 
 void App::keyBindings()
