@@ -22,7 +22,7 @@ install(TARGETS kshisen  DESTINATION ${BIN_INSTALL_DIR} )
 
 ########### install files ###############
 
-install( FILES kshisen.desktop  DESTINATION  ${XDG_APPS_DIR} )
+install( FILES kshisen.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
 install( FILES kshisen.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
 install( FILES kshisenui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kshisen )
 
