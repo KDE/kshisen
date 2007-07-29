@@ -375,47 +375,35 @@ void App::resetCheatMode()
 
 QString App::getPlayerName()
 {
-	KDialog *dlg = new KDialog(this);
-	dlg->setObjectName( "Hall of Fame" );
-	dlg->setModal( true );
-        QLabel  *l1  = new QLabel(i18n("You have made it into the \"Hall Of Fame\". Type in\nyour name so mankind will always remember\nyour cool rating."), dlg);
-	l1->setFixedSize(l1->sizeHint());
+	KDialog dlg(this);
+	dlg.setObjectName( "Hall of Fame" );
+	dlg.setButtons( KDialog::Ok );
 
-	QLabel *l2 = new QLabel(i18n("Your name:"), dlg);
-	l2->setFixedSize(l2->sizeHint());
+	QWidget* dummy = new QWidget( &dlg );
+	dlg.setMainWidget( dummy );
 
-	QLineEdit *e = new QLineEdit(dlg);
-	e->setText("XXXXXXXXXXXXXXXX");
-	e->setMinimumWidth(e->sizeHint().width());
-	e->setFixedHeight(e->sizeHint().height());
+        QLabel *l1 = new QLabel(i18n("You have made it into the \"Hall Of Fame\". Type in\nyour name so mankind will always remember\nyour cool rating."), dummy);
+
+	QLabel *l2 = new QLabel(i18n("Your name:"), dummy);
+
+	QLineEdit *e = new QLineEdit( dummy );
+	e->setMinimumWidth( e->fontMetrics().width( "XXXXXXXXXXXXXXXX" ) );
 	e->setText( lastPlayerName );
 	e->setFocus();
 
-	QPushButton *b = new KPushButton(KStandardGuiItem::ok(), dlg);
-	b->setDefault(true);
-	b->setFixedSize(b->sizeHint());
-
-	connect(b, SIGNAL(released()), dlg, SLOT(accept()));
-	connect(e, SIGNAL(returnPressed()), dlg, SLOT(accept()));
-
 	// create layout
-	QVBoxLayout *tl = new QVBoxLayout(dlg);
-	tl->setMargin( 10 );
-	QHBoxLayout *tl1 = new QHBoxLayout();
-	tl->addWidget(l1);
-	tl->addSpacing(5);
-	tl->addLayout(tl1);
+	QHBoxLayout *tl1 = new QHBoxLayout;
 	tl1->addWidget(l2);
 	tl1->addWidget(e);
-	tl->addSpacing(5);
-	tl->addWidget(b);
-	tl->activate();
-        tl->setSizeConstraint(QLayout::SetFixedSize);
+	QVBoxLayout *tl = new QVBoxLayout( dummy );
+	tl->setMargin( 10 );
+	tl->setSpacing( 5 );
+	tl->addWidget(l1);
+	tl->addLayout(tl1);
 
-	dlg->exec();
+	dlg.exec();
 
 	lastPlayerName = e->text();
-	delete dlg;
 
 	if(lastPlayerName.isEmpty())
 		return " ";
