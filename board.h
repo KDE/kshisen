@@ -88,16 +88,16 @@ public:
 
 	void Debug()
 	{
-		kDebug() << "PossibleMove " << endl;
+		kDebug() << "PossibleMove";
 		QList<Position>::iterator i;
 		for (i = path.begin(); i != path.end(); ++i)
-			kDebug() << "    Path: " << (*i).x << "," << (*i).y << endl;
+			kDebug() << "    Path:" << (*i).x << "," << (*i).y;
 
 		if (hasSlide)
 		{
-			kDebug() << "   hasSlide " << endl;
+			kDebug() << "   hasSlide";
 			for (i = slide.begin(); i != slide.end(); ++i)
-				kDebug() << "    Slide: " << (*i).x << "," << (*i).y << endl;
+				kDebug() << "    Slide:" << (*i).x << "," << (*i).y;
 		}
 	}
 
