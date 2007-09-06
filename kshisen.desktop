@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Exec=kshisen -caption "%c"
 Type=Application
-DocPath=kshisen/index.html
+X-DocPath=kshisen/index.html
 Name=Shisen-Sho
 Name[af]=Shisen-sho
 Name[be]=Ші-сен-сёе
