@@ -145,39 +145,43 @@ void Board::loadSettings(){
 bool Board::loadTileset(const QString &path) {
 
   if (tiles.loadTileset(path)) {
-    Prefs::setTileSet(path);
-    Prefs::self()->writeConfig();
-    resizeBoard();
+    if (tiles.loadGraphics()) {
+      Prefs::setTileSet(path);
+      Prefs::self()->writeConfig();
+      resizeBoard();
+    }
     return true;
-  } else {
-    if (tiles.loadDefault()) {
+  }
+  //Try default
+  if (tiles.loadDefault()) {
+    if (tiles.loadGraphics()) {
       Prefs::setTileSet(tiles.path());
       Prefs::self()->writeConfig();
       resizeBoard();
-      return false;
-    } else {
-      return false;
-    }
+    } 
   }
+  return false;
 }
 
 bool Board::loadBackground( const QString& pszFileName )
 {
   if (background.load( pszFileName, width(), height())) {
-    Prefs::setBackground(pszFileName);
-    Prefs::self()->writeConfig();
-    resizeBoard();
-    return true;
-  } else {
-    if (background.loadDefault()) {
-      Prefs::setBackground(background.path());
+    if (background.loadGraphics()) {
+      Prefs::setBackground(pszFileName);
       Prefs::self()->writeConfig();
       resizeBoard();
-      return false;
-    } else {
-      return false;
+      return true;
     }
   }
+//Try default
+  if (background.loadDefault()) {
+    if (background.loadGraphics()) {
+    Prefs::setBackground(background.path());
+    Prefs::self()->writeConfig();
+    resizeBoard();
+    }
+  }
+  return false;
 }
 
 int Board::x_tiles() const
