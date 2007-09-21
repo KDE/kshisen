@@ -405,7 +405,7 @@ Documentation Copyright 2000 &Dirk.Doerflinger;
 <title>Requirements</title>
 
 <para>
-In order to successfully compile &kshisen;, you need &kde; 3.x.
+In order to successfully compile &kshisen;, you need &kde; 4.x.
 All required libraries as well as &kshisen; itself can be found on
 &kde-ftp;.</para>
 </sect1>
