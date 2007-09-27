@@ -63,7 +63,7 @@
 <para>The aim of the game is to remove all the tiles from the board. Only two
 matching tiles can be removed at a time. Two tiles can only be removed if they
 can be connected with a maximum of three connected lines that do not cross any 
-other tile. Lines can behorizontal or vertical, but not diagonal.</para>
+other tile. Lines can be horizontal or vertical, but not diagonal.</para>
 
 <para>You don't have to draw the lines by yourself, the game does this for
 you. Just mark two matching tiles on the board, if they can be connected with a
