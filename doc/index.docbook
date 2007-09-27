@@ -27,8 +27,8 @@
 </authorgroup>
 
 
-<date>2006-06-17</date>
-<releaseinfo>1.5.1</releaseinfo>
+<date>2007-09-26</date>
+<releaseinfo>1.6.0</releaseinfo>
 
 <abstract>
 <para>&kshisen; is a game similar to Mahjongg for &kde;.</para>
@@ -48,10 +48,9 @@
 <chapter id="introduction">
 <title>Introduction</title>
 
-<para>&kshisen; is a single-player-game similar to Mahjongg and uses the same
-set of tiles as Mahjongg.</para> 
+<para>&kshisen; is a single player patience game, that uses the Mahjongg tiles.</para> 
 
-<para>The object of the game is to remove all tiles from the field.</para>
+<para>The object of the game is to remove all the tiles from the playfield.</para>
 
 </chapter>
 
@@ -61,10 +60,10 @@ set of tiles as Mahjongg.</para>
 <sect1 id="rules">
 <title>Rules</title>
 
-<para>The aim of the game is to remove all tiles from the board. Only two
+<para>The aim of the game is to remove all the tiles from the board. Only two
 matching tiles can be removed at a time. Two tiles can only be removed if they
-can be connected with a maximum of three connected lines. Lines can be
-horizontal or vertical, but not diagonal. </para>
+can be connected with a maximum of three connected lines that do not cross any 
+other tile. Lines can behorizontal or vertical, but not diagonal.</para>
 
 <para>You don't have to draw the lines by yourself, the game does this for
 you. Just mark two matching tiles on the board, if they can be connected with a
@@ -143,7 +142,7 @@ game.</para></listitem>
 <shortcut><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo>
 </shortcut>
 <guimenu>Game</guimenu><guimenuitem>Show
-Highscores</guimenuitem></menuchoice></term>
+High Scores...</guimenuitem></menuchoice></term>
 <listitem><para>Shows the (local) Top-Ten charts of &kshisen;.</para> </listitem>
 </varlistentry>
 
@@ -157,7 +156,7 @@ Highscores</guimenuitem></menuchoice></term>
 
 </variablelist>
 
-<para>Some of the menu items can also be controlled by keykoard shortcuts. 
+<para>Some of the menu items can also be controlled by keyboard shortcuts. 
 See <xref linkend="key-bindings"/> for a list.</para> 
 
 </sect1>
@@ -275,7 +274,7 @@ dialog</link> to change &kshisen; settings.
 <row><entry>New</entry><entry><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></entry></row>
 <row><entry>Restart Game</entry><entry><keycap>F5</keycap></entry></row>
 <row><entry>Pause</entry><entry><keycap>P</keycap></entry></row>
-<row><entry>Show Highscores</entry><entry><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></entry></row>
+<row><entry>Show High Scores..</entry><entry><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></entry></row>
 <row><entry>Quit</entry><entry><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></entry></row>
 <row><entry>Undo</entry><entry><keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo></entry></row>
 <row><entry>Redo</entry><entry><keycombo action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo></entry></row>
@@ -320,24 +319,38 @@ removed, all tiles lying above it will fall down one step.</para></listitem>
 </varlistentry>
 
 <varlistentry>
+<term><guilabel>Use Chinese style: any flower matches any flower, any season match any season</guilabel></term>
+<listitem><para>Use the traditional rules for matching the tiles. Previous
+version of &kshisen; used to allow only exact tiles matches, which is 
+inconsistent with Mah-jongg rules. It is recommended
+to keep this option checked.
+</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Tiles can slide, but you can connect only in 2 lines instead of 3</guilabel></term>
+<listitem><para>This option changes the rules to the point where it almost 
+becomes a completely different game. When it is active, you can only remove 
+the tiles if they can be connected by a line consiting of only two segments 
+instead of the customary three. However, you are allowed to slide the tiles 
+on the board, if the row or column where they are placed has some empty space.
+To make a sliding move, you have to click on the tile containing the column or 
+row that can slide, and then on the matching tile. If there are two possible 
+sliding moves, you will have to click on one of the two connecting lines to 
+chose your preferred move.
+</para></listitem>
+</varlistentry>
+
+<varlistentry>
 <term><guilabel>Board Difficulty</guilabel></term>
-<listitem><para>The slider controls the difficulty of the board. There are three
-options <guilabel>Easy</guilabel>, <guilabel>Medium</guilabel> and 
-<guilabel>Hard</guilabel>.</para></listitem>
+<listitem><para>The slider controls the difficulty of the board from 
+<guilabel>Easy</guilabel> to <guilabel>Hard</guilabel>.</para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><guilabel>Piece Removal Speed</guilabel></term>
 <listitem><para>Adjusting this slider alters the speed at which the pieces are 
 removed from the screen after a match has been made.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guilabel>Prefer Unscaled Tiles</guilabel></term>
-<listitem><para>Resizing the window causes the tiles on the board to be scaled to
-match the window size. When this option is checked, the window is resized to fit
-the tiles' natural size. You can still adjust the size of the window. Doing so
-causes this mode to be disengaged.</para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -352,10 +365,6 @@ the game will be.</para></listitem>
 <listitem><para>Opens &kshisen; help pages. (this document).</para></listitem></varlistentry>
 
 <varlistentry>
-<term><guibutton>Defaults</guibutton></term>
-<listitem><para>Reverts all settings to defaults.</para></listitem></varlistentry>
-
-<varlistentry>
 <term><guibutton>OK</guibutton></term>
 <listitem><para>Saves your changes and closes the dialog.</para></listitem></varlistentry>
 
@@ -368,16 +377,18 @@ the game will be.</para></listitem>
 <listitem><para>Cancels all your changes and closes the dialog.</para></listitem></varlistentry>
 
 </variablelist>
+<!-- Tiles and Background pages missing-->
 </chapter>
 
 <chapter id="credits">
 <title>Credits and License</title>
 
 <para>
-&kshisen; Copyright 1999 &Mario.Weilguni;
-&Mario.Weilguni.mail;
+&kshisen; Copyright 1997 &Mario.Weilguni; &Mario.Weilguni.mail;
 </para>
-
+<para>
+Copyright 2002-2004 Dave Corrie <kde@davecorrie.com>
+</para>
 
 <para>
 Documentation Copyright 2000 &Dirk.Doerflinger;
