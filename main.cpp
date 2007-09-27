@@ -68,6 +68,7 @@ int main(int argc, char **argv)
 
 	KApplication a;
 	KGlobal::locale()->insertCatalog("libkdegames");
+	KGlobal::locale()->insertCatalog("libkmahjongg");
 
 	App *app = new App();
 	app->show();
