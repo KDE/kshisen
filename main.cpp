@@ -63,7 +63,7 @@ int main(int argc, char **argv)
 	aboutData.addAuthor(ki18n("Mario Weilguni"), ki18n("Original Author"), "mweilguni@sime.com");
 	aboutData.addCredit(ki18n("Mauricio Piacentini"), ki18n("KMahjonggLib integration for KDE4"), "mauricio@tabuleiro.com");
 	aboutData.addCredit(ki18n("Jason Lane"), ki18n("Added 'tiles removed' counter\nTile smooth-scaling and window resizing"), "jglane@btopenworld.com");
-	aboutData.addCredit(KLocalizedString(), ki18n("Thanks also to everyone who should be listed here but is not!"));
+	aboutData.addCredit(ki18n("Thanks also to everyone who should be listed here but is not!"));
 	KCmdLineArgs::init( argc, argv, &aboutData );
 
 	KApplication a;
