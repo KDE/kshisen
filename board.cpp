@@ -38,6 +38,7 @@
  *******************************************************************
  */
 
+#define USE_UPDATE 1
 #include "board.h"
 
 #include <klocale.h>
@@ -625,7 +626,11 @@ void Board::updateField(int x, int y)
 	        tiles.width(),
 	        tiles.height());
 
+#ifdef USE_UPDATE
+	update(r);
+#else
 	repaint(r);
+#endif
 }
 
 void Board::paintEvent(QPaintEvent *e)
@@ -1432,9 +1437,13 @@ void Board::drawConnection(int timeout)
 	if(connection.isEmpty())
 		return;
 
+	int x1 = connection.first().x;
+	int y1 = connection.first().y;
+	int x2 = connection.last().x;
+	int y2 = connection.last().y;
 	// lighten the fields
-	updateField(connection.first().x, connection.first().y);
-	updateField(connection.last().x, connection.last().y);
+	updateField(x1, y1);
+	updateField(x2, y2);
 
 	_connectionTimeout = timeout;
 	_paintConnection = true;
@@ -1448,7 +1457,11 @@ void Board::undrawConnection()
 		setField(tileRemove1.first, tileRemove1.second, EMPTY);
 		setField(tileRemove2.first, tileRemove2.second, EMPTY);
 		tileRemove1.first = -1;
+#ifdef USE_UPDATE
+		update();
+#else
 		repaint();
+#endif
 	}
 
 	/*if(grav_col_1 != -1 || grav_col_2 != -1)
