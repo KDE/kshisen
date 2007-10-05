@@ -523,7 +523,7 @@ void App::readOldHighscore()
 	while ((i < (int)HIGHSCORE_MAX) && !eol)
 	{
 		s.sprintf("Highscore_%d", i);
-		if(conf->hasKey(s))
+		if(group.hasKey(s))
 		{
 			e = group.readEntry(s,QString());
 			highscore.resize(i+1);
