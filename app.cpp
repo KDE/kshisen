@@ -737,7 +737,7 @@ void App::showSettings(){
 	
 	//Use the classes exposed by LibKmahjongg for our configuration dialog
 	KMahjonggConfigDialog *dialog = new KMahjonggConfigDialog(this, "settings", Prefs::self());
-	dialog->addPage(new Settings(0), i18n("General"), "package_settings");
+	dialog->addPage(new Settings(0), i18n("General"), "games-config-options");
 	dialog->addTilesetPage();
 	dialog->addBackgroundPage();
 	connect(dialog, SIGNAL(settingsChanged(const QString &)), board, SLOT(loadSettings()));
