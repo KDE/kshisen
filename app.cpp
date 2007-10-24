@@ -530,7 +530,7 @@ void App::readOldHighscore()
 
 			HighScore hs;
 
-			QStringList e = group.readEntry(s,QStringList(), ' ');
+			QStringList e = group.readEntry(s, QString()).split(' ');
 			int nelem = e.count();
 			hs.x = e.at(0).toInt();
 			hs.y = e.at(1).toInt();
