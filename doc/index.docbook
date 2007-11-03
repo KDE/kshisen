@@ -1,115 +1,194 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
-  <!ENTITY kappname "&kshisen;">
-  <!ENTITY package "kdegames">
+  <!ENTITY kapp-name "&kshisen;">
+  <!ENTITY kappversion "1.6.0"><!--Applicaion version. Use this variable everywhere it's needed.-->
+  <!ENTITY docversion "1.0"><!--Document version. Use this variable everywhere it's needed.-->
+  <!ENTITY docupdate "2007-09-26"><!--Document version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames">  <!-- do not change this! -->
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
-  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
 ]>
-
-<book lang="&language;">
+ 
+<book lang="&language;"> <!-- do not change this! -->
 <bookinfo>
-<title>The &kshisen; Handbook</title>
-
+	<title>&kapp-name; Handbook</title> <!-- This is the title of the docbook. Live as is unless change is necessary.-->
+<!-- List of immidiate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
 <authorgroup>
+	<author>
+		<firstname>Dirk</firstname>
+		<surname>Doerflinger</surname>
+		<affiliation><address>&Dirk.Doerflinger.mail;</address></affiliation>
+	</author>
 <author>
-<firstname>Dirk</firstname>
-<surname>Doerflinger</surname>
-<affiliation>
-<address>&Dirk.Doerflinger.mail;</address>
-</affiliation>
+<firstname>Eugene</firstname><surname>Trounev</surname>
+<affiliation><address><email>eugene.trounev@gmail.com</email></address></affiliation>
 </author>
-<othercredit role="reviewer">
-<firstname>Frerich</firstname><surname>Raabe</surname>
-<contrib>Reviewer</contrib>
-<affiliation><address>&Frerich.Raabe.mail;</address></affiliation>
-</othercredit>
+	<othercredit role="reviewer">
+		<firstname>Frerich</firstname><surname>Raabe</surname>
+		<contrib>Reviewer</contrib>
+		<affiliation><address>&Frerich.Raabe.mail;</address></affiliation>
+	</othercredit>
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
-
-
-<date>2007-09-26</date>
-<releaseinfo>1.6.0</releaseinfo>
-
+ 
+<date>&docupdate;</date><!-- Date of (re)writing, ro update. Use the variable definitions within header to change this value.-->
+<releaseinfo>&docversion;</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
+ 
+<!--Short description of this document. Do not change unless necessary!-->
 <abstract>
-<para>&kshisen; is a game similar to Mahjongg for &kde;.</para>
+	<para>This documentation describes the game of &kapp-name; version &kappversion;</para>
 </abstract>
-
+ 
+<!--List of relevan keywords-->
 <keywordset>
-      <keyword>KDE</keyword>
-      <keyword>kdegames</keyword>
-      <keyword>kshisen</keyword>
-      <keyword>game</keyword>
-      <keyword>shisen-sho</keyword>
+	<keyword>KDE</keyword> <!-- do not change this! -->
+	<keyword>kdegames</keyword> <!-- do not change this! -->
+	<keyword>game</keyword> <!-- do not change this! -->
+	<keyword>Application Name</keyword><!--Application name goes here-->
+<!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword>arcade</keyword>
+	<keyword>board</keyword>
+	<keyword>mahjongg</keyword>
+	<keyword>tiles</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword>one player</keyword>
 </keywordset>
-
 </bookinfo>
-
-
-<chapter id="introduction">
-<title>Introduction</title>
-
-<para>&kshisen; is a single player patience game, that uses the Mahjongg tiles.</para> 
-
-<para>The object of the game is to remove all the tiles from the playfield.</para>
-
+<!--Content begins here: -->
+<chapter id="introduction"><title>Introduction</title> <!-- do not change this! -->
+	<note><title>Gametype:</title><para>Arcade, Board</para></note><!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note><title>Number of possible players:</title><para>One</para></note><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+ 
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para>
+	&kapp-name; is a solitaire like game played using the standard set of Mahjong tiles.
+	Unlike Mahjong however, &kapp-name; has only one layer of scrambled tiles.
+	You can remove matching pieces if they can be connected with a line with no more than two bents in it. In the same time the line must not cross any other tiles.
+	To win a game of Kshisen player has to remove all the tiles off the game board.
+	</para>
 </chapter>
-
-<chapter id="playing-kshisen">
-<title>Playing &kshisen;</title>
-
-<sect1 id="rules">
-<title>Rules</title>
-
-<para>The aim of the game is to remove all the tiles from the board. Only two
-matching tiles can be removed at a time. Two tiles can only be removed if they
-can be connected with a maximum of three connected lines that do not cross any 
-other tile. Lines can be horizontal or vertical, but not diagonal.</para>
-
-<para>You don't have to draw the lines by yourself, the game does this for
-you. Just mark two matching tiles on the board, if they can be connected with a
-maximum of three lines, the lines will be drawn and the tiles are
-removed. </para>
-
-<para>Remember that lines only may cross the empty border. If you are stuck, you
-can use the Hint feature to find two tiles which may be removed.  Clicking a
-tile with the &RMB; will show you all corresponding tiles, no matter if they are
-removable at the moment or not.</para>
-
-<para>The game is over when no moves are possible. This could be due to 
-clearing all the tiles from the field or reaching a point in the game 
-where no two matching tiles can be connected by three lines.  
-Some games are unsolvable, if you would like to avoid unsolvable 
-games uncheck the option <guilabel>Allow unsolvable
-games</guilabel> in the configuration dialog.</para>
-
-<para>The resulting score <quote>S</quote> is calculated using the
-following formula, assuming that <quote>n</quote> represents the
-number of tiles present when the game started and <quote>t</quote>
-standing for the time (in seconds) it took to clear the
-field:</para>
-
-<mediaobject><imageobject>
-<imagedata fileref="score-formula.png" format="PNG"/>
-</imageobject><textobject>
-<phrase>S=(n/t)*sqrt(n/84)/0.0014</phrase>
-</textobject></mediaobject>
-
-<para>If you played with the <guilabel>Gravity</guilabel> setting enabled, this score
-will additionally get multiplied by two.</para>
-</sect1>
+ 
+<chapter id="howto"><title>How to play</title> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note><title>Objective:</title><para>Remove all the tiles off the game board within the shortest time possible.</para></note><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+	<para>
+		&kapp-name; will load a default layout automaticly once you start the game and you can start playing right away.		
+	</para>
+	<note><title>Note:</title><para>The game timer will not start until you make the first move.</para></note>
+	<para>
+		You should carefully study the tiles lied out on the game board and find two tiles matching exactly. When you have found such a pair use your mouse to select these.
+	</para>
+	<note><title>Note:</title><para> Bear in mind that you can only select the tiles which have either of their vertical sides open.</para></note>
+	<para>
+		Once you select a right pair of tiles they will vanish off the game board.
+		However, even if the tiles you select appear as open they will only be removed off the board if they can be connected with a line having no more than two bents and not crossing any other tiles (the line can not be diagonal).
+	</para>
+	<para>
+		Find as many matches as possible to remove all the tiles from the game board.
+	</para>
 </chapter>
-
-<chapter id="menu-reference">
-<title>Menu Reference</title>
-
-<sect1 id="game-menu">
+ 
+<chapter id="rules_and_tips"><title>Game Rules, Strategies and Tips</title> <!-- do not change this! -->
+	<sect1 id="rules">
+		<title>Rules</title>
+		<para>
+			Standard Mahjong set of tiles includes:
+			<informaltable>
+				<tgroup cols="3">
+				<tbody>
+					<row><entry>Group name</entry><entry>Tile name</entry><entry>Quantity in a set</entry></row>
+					<row><entry>Dots</entry><entry></entry><entry></entry></row>
+					<row><entry></entry><entry>1 of Dots</entry><entry>2</entry></row>
+					<row><entry></entry><entry>2 of Dots</entry><entry>2</entry></row>
+					<row><entry></entry><entry>3 of Dots</entry><entry>2</entry></row>
+					<row><entry></entry><entry>4 of Dots</entry><entry>2</entry></row>
+					<row><entry></entry><entry>5 of Dots</entry><entry>2</entry></row>
+					<row><entry></entry><entry>6 of Dots</entry><entry>2</entry></row>
+					<row><entry></entry><entry>7 of Dots</entry><entry>2</entry></row>
+					<row><entry></entry><entry>8 of Dots</entry><entry>2</entry></row>
+					<row><entry></entry><entry>9 of Dots</entry><entry>2</entry></row>
+					<row><entry>Bamboos</entry><entry></entry><entry></entry></row>
+					<row><entry></entry><entry>1 of Bamboos</entry><entry>2</entry></row>
+					<row><entry></entry><entry>2 of Bamboos</entry><entry>2</entry></row>
+					<row><entry></entry><entry>3 of Bamboos</entry><entry>2</entry></row>
+					<row><entry></entry><entry>4 of Bamboos</entry><entry>2</entry></row>
+					<row><entry></entry><entry>5 of Bamboos</entry><entry>2</entry></row>
+					<row><entry></entry><entry>6 of Bamboos</entry><entry>2</entry></row>
+					<row><entry></entry><entry>7 of Bamboos</entry><entry>2</entry></row>
+					<row><entry></entry><entry>8 of Bamboos</entry><entry>2</entry></row>
+					<row><entry></entry><entry>9 of Bamboos</entry><entry>2</entry></row>
+					<row><entry>Characters</entry><entry></entry><entry></entry></row>
+					<row><entry></entry><entry>1 of Characters</entry><entry>2</entry></row>
+					<row><entry></entry><entry>2 of Characters</entry><entry>2</entry></row>
+					<row><entry></entry><entry>3 of Characters</entry><entry>2</entry></row>
+					<row><entry></entry><entry>4 of Characters</entry><entry>2</entry></row>
+					<row><entry></entry><entry>5 of Characters</entry><entry>2</entry></row>
+					<row><entry></entry><entry>6 of Characters</entry><entry>2</entry></row>
+					<row><entry></entry><entry>7 of Characters</entry><entry>2</entry></row>
+					<row><entry></entry><entry>8 of Characters</entry><entry>2</entry></row>
+					<row><entry></entry><entry>9 of Characters</entry><entry>2</entry></row>
+					<row><entry>Winds</entry><entry></entry><entry></entry></row>
+					<row><entry></entry><entry>East Wind</entry><entry>2</entry></row>
+					<row><entry></entry><entry>South Wind</entry><entry>2</entry></row>
+					<row><entry></entry><entry>West Wind</entry><entry>2</entry></row>
+					<row><entry></entry><entry>North Wind</entry><entry>2</entry></row>
+					<row><entry>Dragons</entry><entry></entry><entry></entry></row>
+					<row><entry></entry><entry>Red Dragon</entry><entry>2</entry></row>
+					<row><entry></entry><entry>Green Dragon</entry><entry>2</entry></row>
+					<row><entry></entry><entry>White Dragon</entry><entry>2</entry></row>
+					<row><entry>Flowers</entry><entry></entry><entry></entry></row>
+					<row><entry></entry><entry>Plum (1)</entry><entry>1</entry></row>
+					<row><entry></entry><entry>Lily (2)</entry><entry>1</entry></row>
+					<row><entry></entry><entry>Chrysanthemum (3)</entry><entry>1</entry></row>
+					<row><entry></entry><entry>Bamboo (4)</entry><entry>1</entry></row>
+					<row><entry>Seasons</entry><entry></entry><entry></entry></row>
+					<row><entry></entry><entry>Spring (1)</entry><entry>1</entry></row>
+					<row><entry></entry><entry>Summer (2)</entry><entry>1</entry></row>
+					<row><entry></entry><entry>Autumn (3)</entry><entry>1</entry></row>
+					<row><entry></entry><entry>Winter (4)</entry><entry>1</entry></row>
+				</tbody>
+				</tgroup>
+			</informaltable>
+		</para>
+		<itemizedlist>
+			<listitem><para>Only the 'open' tiles can be selected.</para></listitem>
+			<listitem><para>Only two 'open' and matching tiles can be selected at a time.</para></listitem>
+			<listitem><para>'Open' tile is the tile which has one of the tile's vertical sides open, meaning that no other tiles are located immediately next to it.</para></listitem>
+			<listitem><para>'Open' tiles can be removed from the game board only when they match.</para></listitem>
+			<listitem><para>Matching tiles are such tiles where the face pictograms match exactly.</para></listitem>
+		</itemizedlist>
+		<note><title>Note:</title><para>There are exceptions to this rule! In the traditional game of Mahjong each tile has a matching one except for the 'Flowers' and 'Seasons' tiles. </para></note>
+		<itemizedlist>
+			<listitem><para>The 'Flowers' tiles have no doubles in the set and can be matched directly to each-other.</para></listitem>
+			<listitem><para>The 'Seasons' tiles have no doubles in the set and can be matched directly to each-other.  </para></listitem>
+			<listitem><para>Tiles can only be removed if they can be connected with a maximum of three connected lines that do not cross any  other tile. Lines can be horizontal or vertical, but not diagonal.</para></listitem>
+		</itemizedlist>
+		<note><title>Note:</title><para>You don't have to draw the lines by yourself, the game does this for
+you. Just mark two matching tiles on the board, if they can be connected by a line with no more then two bends, the line is drawn and the tiles are removed.</para></note>
+		<itemizedlist>
+			<listitem><para>Lines may only cross the empty border.</para></listitem>
+			<listitem><para>Some games are unsolvable. If you would like to avoid unsolvable games uncheck the option <guilabel>Allow unsolvable games</guilabel> in the configuration dialog.</para></listitem>
+			<listitem><para>The scores are awarded for the quantity of the tiles removed within the time of completion.</para></listitem>
+			<listitem><para>If you played with the <guilabel>Gravity</guilabel> setting enabled, the score will be doubled.</para></listitem>
+			<listitem><para>To be eligible for a place amongst the high scores player has to complete a game instance within the shortest period of time possible.</para></listitem>
+		</itemizedlist>
+		<note><title>Note:</title><para>If the player uses 'cheat' feature his/here record will not be considered as a high score.</para></note>
+	</sect1>
+</chapter>
+ 
+ 
+<chapter id="interface"><title>Interface Overview</title> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist> and <varlistentry>. Split the chapter into sections using <sect1(2,3)> for better viewing.-->
+ <sect1 id="game-menu">
 <title>The <guimenu>Game</guimenu> Menu</title>
 
 <para>The <guimenu>Game</guimenu> menu lets you control the status of the
 current game:</para>
 
 <variablelist>
-<varlistentry>
+<varlistentry id="game-menu-new">
 <term><menuchoice>
 <shortcut><keycombo action="simul">&Ctrl;
 <keycap>N</keycap></keycombo></shortcut>
@@ -118,7 +197,7 @@ current game:</para>
 session with new tiles. </para></listitem>
 </varlistentry>
 
-<varlistentry>
+<varlistentry id="game-menu-restart">
 <term><menuchoice>
 <shortcut><keycombo><keycap>F5</keycap></keycombo></shortcut>
 <guimenu>Game</guimenu><guimenuitem>Restart
@@ -127,7 +206,7 @@ Game</guimenuitem></menuchoice></term>
 tiles.</action></para></listitem>
 </varlistentry>
 
-<varlistentry>
+<varlistentry id="game-menu-pause">
 <term><menuchoice>
 <shortcut><keycombo><keycap>P</keycap></keycombo></shortcut>
 <guimenu>Game</guimenu>
@@ -137,13 +216,13 @@ which affects the scoring. The menu entry is also used for resuming the
 game.</para></listitem>
 </varlistentry>
 
-<varlistentry>
+<varlistentry id="game-menu-highscores">
 <term><menuchoice>
 <shortcut><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo>
 </shortcut>
 <guimenu>Game</guimenu><guimenuitem>Show
 High Scores...</guimenuitem></menuchoice></term>
-<listitem><para>Shows the (local) Top-Ten charts of &kshisen;.</para> </listitem>
+<listitem><para>Shows the (local) Top-Ten charts of &kapp-name;.</para> </listitem>
 </varlistentry>
 
 <varlistentry>
@@ -151,7 +230,7 @@ High Scores...</guimenuitem></menuchoice></term>
 <shortcut><keycombo action="simul">&Ctrl;
 <keycap>Q</keycap></keycombo></shortcut>
 <guimenu>Game</guimenu><guimenuitem>Quit</guimenuitem></menuchoice></term>
-<listitem><para><action>Quits</action> &kshisen;. </para></listitem>
+<listitem><para><action>Quits</action> &kapp-name;. </para></listitem>
 </varlistentry>
 
 </variablelist>
@@ -164,7 +243,7 @@ See <xref linkend="key-bindings"/> for a list.</para>
 <sect1 id="move-menu">
 <title>The <guimenu>Move</guimenu> Menu</title>
 
-<variablelist>
+<variablelist id="move-menu-undo">
 <varlistentry>
 <term><menuchoice> <shortcut><keycombo
 action="simul">&Ctrl;<keycap>Z</keycap></keycombo></shortcut>
@@ -174,7 +253,7 @@ action="simul">&Ctrl;<keycap>Z</keycap></keycombo></shortcut>
 <guibutton>Undo</guibutton> button in the toolbar.</para></listitem>
 </varlistentry>
 
-<varlistentry>
+<varlistentry id="move-menu-redo">
 <term><menuchoice><shortcut><keycombo
 action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo></shortcut> 
 <guimenu>Move</guimenu>
@@ -183,7 +262,7 @@ action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo></shortcut>
 <guibutton>Redo</guibutton> button in the toolbar.</para></listitem>
 </varlistentry>
 
-<varlistentry>
+<varlistentry id="move-menu-hint">
 <term><menuchoice>
 <shortcut><keycombo><keycap>H</keycap></keycombo></shortcut>
 <guimenu>Move</guimenu>
@@ -233,7 +312,7 @@ Toggle on and off the display of the status bar.
 </para></listitem>
 </varlistentry>
 
-<varlistentry>
+<varlistentry id="settings-menu-toolbar">
 <term><menuchoice>
 <guimenu>Settings</guimenu>
 <guimenuitem>Configure Toolbars...</guimenuitem>
@@ -241,65 +320,104 @@ Toggle on and off the display of the status bar.
 <listitem><para>Displays a &kde; standard dialog where you can configure the toolbar icons.</para></listitem>
 </varlistentry>
 
-<varlistentry>
+<varlistentry id="game-settings-settings">
 <term><menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Configure &kshisen;...</guimenuitem>
+<guimenuitem>Configure &kapp-name;...</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>Opens the <link linkend="configuration">configuration
-dialog</link> to change &kshisen; settings.
+dialog</link> to change &kapp-name; settings.
 </para></listitem>
 </varlistentry>
 
 </variablelist>
 </sect1>
-
-<sect1 id="helpmenu">
-<title>The <guimenu>Help</guimenu> Menu</title>
-
+<sect1 id="help"><!--This is a standard Help menubar entry. Only change if needed.-->
+<title>The <guimenuitem>Help</guimenuitem> Menu</title>
 &help.menu.documentation;
-
-</sect1>
-
-<sect1 id="key-bindings">
-<title>Shortcuts</title>
-
-<para>Default shortcuts are:
-</para>
-
-<informaltable>
-<tgroup cols="2">
-<tbody>
-<row><entry>New</entry><entry><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></entry></row>
-<row><entry>Restart Game</entry><entry><keycap>F5</keycap></entry></row>
-<row><entry>Pause</entry><entry><keycap>P</keycap></entry></row>
-<row><entry>Show High Scores..</entry><entry><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></entry></row>
-<row><entry>Quit</entry><entry><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></entry></row>
-<row><entry>Undo</entry><entry><keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo></entry></row>
-<row><entry>Redo</entry><entry><keycombo action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo></entry></row>
-<row><entry>Hint</entry><entry><keycap>H</keycap></entry></row>
-<row><entry>&kshisen; Handbook</entry><entry><keycap>F1</keycap></entry></row>
-<row><entry>What's This</entry><entry><keycombo action="simul">&Ctrl;&Shift;<keycap>F1</keycap></keycombo></entry></row>
-</tbody>
-</tgroup>
-</informaltable>
-
 </sect1>
 </chapter>
-
-<chapter id="configuration">
-<title>Configuration</title>
-
+ 
+ 
+<chapter id="faq"><title>Frequently asked questions</title> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset> <qandaentry> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+	<qandaentry>
+		<question><para>Who made this game?</para></question>
+		 <answer><para>The kdegames team. You can find their website here.</para></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question><para>Where can I get cheatcodes? </para></question>
+		 <answer><para>You can't get cheatcodes for KDE games.</para></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question><para>How do I start a new game? </para></question>
+		 <answer><para>&kapp-name; will load a default layout automaticly one once you start the application and you can start playing right away.</para></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question><para>Can I start a totaly new game? </para></question>
+		 <answer><para>Yes. To start a new game you can either use a <link linkend="game-menu-new">shortcut key</link>, or a <link linkend="game-menu-new">menubar</link> option. </para></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question><para>I did something very wrong! Can I restart the game? </para></question>
+		 <answer><para>Yes. To restart the current game you can either use a <link linkend="game-menu-restart">shortcut key</link>, or a <link linkend="game-menu-restart">menubar</link> option.</para></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question><para>How do I pause the game? </para></question>
+		 <answer><para>To pause the current game you may either use the <link linkend="game-menu-pause">toolbar</link>, a <link linkend="game-menu-pause">shortcut key</link>, or a <link linkend="game-menu-pause">menubar</link> option.</para></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question><para>I want to change the way this game looks. Can I? </para></question>
+		 <answer><para>Yes. To change the way &kapp-name; looks use the <link linkend="game-settings-settings">menubar</link> to open the <link linkend="configuration">configuration utility</link>.</para></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question><para>I have made a mistake. Can I undo? </para></question>
+		 <answer><para>Yes. To undo your move you can either use a <link linkend="move-menu-undo">shortcut key</link>, or a <link linkend="move-menu-undo">menubar</link> option.</para></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question><para>I have mistakenly undone a good move, can I redo it?</para></question>
+		 <answer><para>Yes. To Redo your move you can either use a <link linkend="move-menu-redo">shortcut key</link>, or a <link linkend="move-menu-redo">menubar</link> option.</para></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question><para>Can I use keyboard? </para></question>
+		 <answer><para>No. This game does not feature a keyboard play mode.</para></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question><para>I can't figure out what to do here! Are there hints? </para></question>
+		 <answer><para>Yes. To use &kapp-name; hint feature can either use a <link linkend="move-menu-hint">shortcut key</link>, or a <link linkend="move-menu-hint">menubar</link> option.</para></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question><para>I have to quit the game now, but I'm not finished yet. Can I save my progress?</para></question>
+		  <answer><para>No. This game does not feature a 'Save' option.</para></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question><para>Where are the highscores?</para></question>
+		 <answer><para>To open the highscores dialog you can either use a <link linkend="game-menu-highscores">shortcut key</link>, or a <link linkend="game-menu-highscores">menubar</link> option.</para></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question><para>I want to change the game configuration. Where do I go? </para></question>
+		 <answer><para>To open the <link linkend="configuration">configuration utility</link> use the <link linkend="game-settings-settings">menubar->Settings</link> menu.</para></answer><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+	</qandaentry>
+	<qandaentry>
+		 <question><para>I want to change the toolbar layout. What do I do?</para></question>
+		 <answer><para>To change the default toolbat layout use the <link linkend="settings-menu-toolbar">menubar->Settings->Configure Toolbars...</link> menu.</para></answer><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+	</qandaentry>
+</qandaset>
+</chapter>
+ 
+<chapter id="configuration"><title>Game Configuration</title> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
 <para>Selecting the <menuchoice><guimenu>Settings</guimenu>
-<guimenuitem>Configure &kshisen;...</guimenuitem></menuchoice> menu item will
+<guimenuitem>Configure &kapp-name;...</guimenuitem></menuchoice> menu item will
 open a configuration dialog which lets you alter the behavior of the game.</para>
 
 <screenshot>
-<screeninfo>&kshisen; configuration dialog</screeninfo>
+<screeninfo>&kapp-name; configuration dialog</screeninfo>
 <mediaobject>
 <imageobject><imagedata fileref="kshisen-configuration.png" format="PNG"/></imageobject>
-<textobject><phrase>&kshisen; configuration dialog</phrase></textobject>
+<textobject><phrase>&kapp-name; configuration dialog</phrase></textobject>
 </mediaobject>
 </screenshot>
 
@@ -321,7 +439,7 @@ removed, all tiles lying above it will fall down one step.</para></listitem>
 <varlistentry>
 <term><guilabel>Use Chinese style: any flower matches any flower, any season match any season</guilabel></term>
 <listitem><para>Use the traditional rules for matching the tiles. Previous
-version of &kshisen; used to allow only exact tiles matches, which is 
+version of &kapp-name; used to allow only exact tiles matches, which is 
 inconsistent with Mah-jongg rules. It is recommended
 to keep this option checked.
 </para></listitem>
@@ -362,7 +480,7 @@ the game will be.</para></listitem>
 
 <varlistentry>
 <term><guibutton>Help</guibutton></term>
-<listitem><para>Opens &kshisen; help pages. (this document).</para></listitem></varlistentry>
+<listitem><para>Opens &kapp-name; help pages. (this document).</para></listitem></varlistentry>
 
 <varlistentry>
 <term><guibutton>OK</guibutton></term>
@@ -377,14 +495,38 @@ the game will be.</para></listitem>
 <listitem><para>Cancels all your changes and closes the dialog.</para></listitem></varlistentry>
 
 </variablelist>
-<!-- Tiles and Background pages missing-->
+
+<sect1 id="key-bindings">
+<title>Default Key Bindings</title>
+
+<para>Default shortcuts are:
+</para>
+
+<informaltable>
+<tgroup cols="2">
+<tbody>
+<row><entry>New</entry><entry><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></entry></row>
+<row><entry>Restart Game</entry><entry><keycap>F5</keycap></entry></row>
+<row><entry>Pause</entry><entry><keycap>P</keycap></entry></row>
+<row><entry>Show High Scores..</entry><entry><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></entry></row>
+<row><entry>Quit</entry><entry><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></entry></row>
+<row><entry>Undo</entry><entry><keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo></entry></row>
+<row><entry>Redo</entry><entry><keycombo action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo></entry></row>
+<row><entry>Hint</entry><entry><keycap>H</keycap></entry></row>
+<row><entry>&kshisen; Handbook</entry><entry><keycap>F1</keycap></entry></row>
+<row><entry>What's This</entry><entry><keycombo action="simul">&Ctrl;&Shift;<keycap>F1</keycap></keycombo></entry></row>
+</tbody>
+</tgroup>
+</informaltable>
+
+</sect1>
 </chapter>
-
-<chapter id="credits">
-<title>Credits and License</title>
-
+ 
+<chapter id="credits"><title>Credits and License</title> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+ 
 <para>
-&kshisen; Copyright 1997 &Mario.Weilguni; &Mario.Weilguni.mail;
+&kapp-name; Copyright 1997 &Mario.Weilguni; &Mario.Weilguni.mail;
 </para>
 <para>
 Copyright 2002-2004 Dave Corrie kde@davecorrie.com
@@ -396,39 +538,44 @@ Documentation Copyright 2000 &Dirk.Doerflinger;
 </para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
-
+ 
+<!-- !!!do not change ANYTHING after this line!!!! -->
 &underFDL;
 &underGPL;
-
+ 
 </chapter>
-
+ 
+ 
 <appendix id="installation">
 <title>Installation</title>
-
-<sect1 id="getting-kshisen">
-<title>How to obtain &kshisen;</title>
-
+ 
 &install.intro.documentation;
-
-</sect1>
-
-<sect1 id="requirements">
-<title>Requirements</title>
-
-<para>
-In order to successfully compile &kshisen;, you need &kde; 4.x.
-All required libraries as well as &kshisen; itself can be found on
-&kde-ftp;.</para>
-</sect1>
-
-
-<sect1 id="compilation">
+ 
+ 
+<sect1 id="Compilation">
 <title>Compilation and Installation</title>
-
+ 
 &install.compile.documentation;
-
+ 
 </sect1>
 </appendix>
-
+ 
+&documentation.index; 
 </book>
-
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
