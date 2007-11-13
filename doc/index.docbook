@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+﻿<?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
   <!ENTITY kappname "&kshisen;">
   <!ENTITY kappversion "1.6.0"><!--Applicaion version. Use this variable everywhere it's needed.-->
@@ -177,8 +177,7 @@ you. Just mark two matching tiles on the board, if they can be connected by a li
 		<note><title>Note:</title><para>If the player uses 'cheat' feature his/here record will not be considered as a high score.</para></note>
 	</sect1>
 </chapter>
- 
- 
+  
 <chapter id="interface"><title>Interface Overview</title> <!-- do not change this! -->
 <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist> and <varlistentry>. Split the chapter into sections using <sect1(2,3)> for better viewing.-->
  <sect1 id="game-menu">
@@ -339,18 +338,17 @@ dialog</link> to change &kappname; settings.
 </sect1>
 </chapter>
  
- 
 <chapter id="faq"><title>Frequently asked questions</title> <!-- do not change this! -->
 <!--This chapter is for frequently asked questions. Please use <qandaset> <qandaentry> only!-->
 <qandaset>
 <!--Following is a standard list of FAQ questions.-->
 	<qandaentry>
 		<question><para>Who made this game?</para></question>
-		 <answer><para>The kdegames team. You can find their website here.</para></answer>
+		 <answer><para>The kdegames team. You can find their website <ulink url="http://games.kde.org">here</ulink>.</para></answer>
 	</qandaentry>
 	<qandaentry>
 		 <question><para>Where can I get cheatcodes? </para></question>
-		 <answer><para>You can't get cheatcodes for KDE games.</para></answer>
+		 <answer><para>You cannot get cheatcodes for &kde; games.</para></answer>
 	</qandaentry>
 	<qandaentry>
 		 <question><para>How do I start a new game? </para></question>
@@ -393,8 +391,8 @@ dialog</link> to change &kappname; settings.
 		  <answer><para>No. This game does not feature a 'Save' option.</para></answer>
 	</qandaentry>
 	<qandaentry>
-		 <question><para>Where are the highscores?</para></question>
-		 <answer><para>To open the highscores dialog you can either use a <link linkend="game-menu-highscores">shortcut key</link>, or a <link linkend="game-menu-highscores">menubar</link> option.</para></answer>
+		 <question><para>Where are the high scores?</para></question>
+		 <answer><para>To open the high scores dialog you can either use a <link linkend="game-menu-highscores">shortcut key</link>, or a <link linkend="game-menu-highscores">menubar</link> option.</para></answer>
 	</qandaentry>
 	<qandaentry>
 		 <question><para>I want to change the game configuration. Where do I go? </para></question>
@@ -544,8 +542,7 @@ Documentation Copyright 2000 &Dirk.Doerflinger;
 &underGPL;
  
 </chapter>
- 
- 
+  
 <appendix id="installation">
 <title>Installation</title>
  
