@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" ?>
+<?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
   <!ENTITY kappname "&kshisen;">
   <!ENTITY kappversion "1.6.0"><!--Applicaion version. Use this variable everywhere it's needed.-->
@@ -65,11 +65,11 @@
 	&kappname; is a solitaire like game played using the standard set of Mahjong tiles.
 	Unlike Mahjong however, &kappname; has only one layer of scrambled tiles.
 	You can remove matching pieces if they can be connected with a line with no more than two bents in it. In the same time the line must not cross any other tiles.
-	To win a game of Kshisen player has to remove all the tiles off the game board.
+	To win a game of Kshisen the player has to remove all the tiles off the game board.
 	</para>
 </chapter>
  
-<chapter id="howto"><title>How to play</title> <!-- do not change this! -->
+<chapter id="howto"><title>How to Play</title> <!-- do not change this! -->
 <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
 	<note><title>Objective:</title><para>Remove all the tiles off the game board within the shortest time possible.</para></note><!--Describe the objective of the game.-->
 <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
@@ -83,7 +83,7 @@
 	<note><title>Note:</title><para> Bear in mind that you can only select the tiles which have either of their vertical sides open.</para></note>
 	<para>
 		Once you select a right pair of tiles they will vanish off the game board.
-		However, even if the tiles you select appear as open they will only be removed off the board if they can be connected with a line having no more than two bents and not crossing any other tiles (the line can not be diagonal).
+		However, even if the tiles you select appear as open they will only be removed off the board if they can be connected with a line having no more than two bents and not crossing any other tiles (the line cannot be diagonal).
 	</para>
 	<para>
 		Find as many matches as possible to remove all the tiles from the game board.
@@ -383,11 +383,11 @@ dialog</link> to change &kappname; settings.
 		 <answer><para>No. This game does not feature a keyboard play mode.</para></answer>
 	</qandaentry>
 	<qandaentry>
-		 <question><para>I can't figure out what to do here! Are there hints? </para></question>
+		 <question><para>I cannot figure out what to do here! Are there hints? </para></question>
 		 <answer><para>Yes. To use &kappname; hint feature can either use a <link linkend="move-menu-hint">shortcut key</link>, or a <link linkend="move-menu-hint">menubar</link> option.</para></answer>
 	</qandaentry>
 	<qandaentry>
-		 <question><para>I have to quit the game now, but I'm not finished yet. Can I save my progress?</para></question>
+		 <question><para>I have to quit the game now, but I am not finished yet. Can I save my progress?</para></question>
 		  <answer><para>No. This game does not feature a 'Save' option.</para></answer>
 	</qandaentry>
 	<qandaentry>
@@ -400,7 +400,7 @@ dialog</link> to change &kappname; settings.
 	</qandaentry>
 	<qandaentry>
 		 <question><para>I want to change the toolbar layout. What do I do?</para></question>
-		 <answer><para>To change the default toolbat layout use the <link linkend="settings-menu-toolbar">menubar->Settings->Configure Toolbars...</link> menu.</para></answer><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+		 <answer><para>To change the default toolbat layout use the <link linkend="settings-menu-toolbar"><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Toolbars...</guimenuitem></menuchoice></link> option in the menubar.</para></answer><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
 	</qandaentry>
 </qandaset>
 </chapter>
