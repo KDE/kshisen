@@ -45,7 +45,7 @@
 	<keyword>KDE</keyword> <!-- do not change this! -->
 	<keyword>kdegames</keyword> <!-- do not change this! -->
 	<keyword>game</keyword> <!-- do not change this! -->
-	<keyword>Application Name</keyword><!--Application name goes here-->
+	<keyword>kshisen</keyword><!--Application name goes here-->
 <!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
 	<keyword>arcade</keyword>
 	<keyword>board</keyword>
@@ -333,7 +333,7 @@ dialog</link> to change &kappname; settings.
 </variablelist>
 </sect1>
 <sect1 id="help"><!--This is a standard Help menubar entry. Only change if needed.-->
-<title>The <guimenuitem>Help</guimenuitem> Menu</title>
+<title>The <guimenu>Help</guimenu> Menu</title>
 &help.menu.documentation;
 </sect1>
 </chapter>
