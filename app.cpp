@@ -57,7 +57,6 @@
 #include <KStandardGuiItem>
 #include <kconfigdialog.h>
 
-#include <QLayout>
 #include <QTimer>
 #include <QLineEdit>
 
