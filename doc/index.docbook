@@ -80,7 +80,6 @@
 	<para>
 		You should carefully study the tiles lied out on the game board and find two tiles matching exactly. When you have found such a pair use your mouse to select these.
 	</para>
-	<note><title>Note:</title><para> Bear in mind that you can only select the tiles which have either of their vertical sides open.</para></note>
 	<para>
 		Once you select a right pair of tiles they will vanish off the game board.
 		However, even if the tiles you select appear as open they will only be removed off the board if they can be connected with a line having no more than two bents and not crossing any other tiles (the line cannot be diagonal).
@@ -153,10 +152,6 @@
 			</informaltable>
 		</para>
 		<itemizedlist>
-			<listitem><para>Only the 'open' tiles can be selected.</para></listitem>
-			<listitem><para>Only two 'open' and matching tiles can be selected at a time.</para></listitem>
-			<listitem><para>'Open' tile is the tile which has one of the tile's vertical sides open, meaning that no other tiles are located immediately next to it.</para></listitem>
-			<listitem><para>'Open' tiles can be removed from the game board only when they match.</para></listitem>
 			<listitem><para>Matching tiles are such tiles where the face pictograms match exactly.</para></listitem>
 		</itemizedlist>
 		<note><title>Note:</title><para>There are exceptions to this rule! In the traditional game of Mahjong each tile has a matching one except for the 'Flowers' and 'Seasons' tiles. </para></note>
