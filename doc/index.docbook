@@ -64,7 +64,9 @@
 	<para>
 	&kappname; is a solitaire like game played using the standard set of Mahjong tiles.
 	Unlike Mahjong however, &kappname; has only one layer of scrambled tiles.
-	You can remove matching pieces if they can be connected with a line with no more than two bents in it. In the same time the line must not cross any other tiles.
+	You can remove matching pieces if they can be connected with a line
+	with no more than two bends in it. At the same time, the line must not
+	cross any other tiles.
 	To win a game of Kshisen the player has to remove all the tiles off the game board.
 	</para>
 </chapter>
@@ -398,7 +400,7 @@ dialog</link> to change &kappname; settings.
 	</qandaentry>
 	<qandaentry>
 		 <question><para>I want to change the toolbar layout. What do I do?</para></question>
-		 <answer><para>To change the default toolbat layout use the <link linkend="settings-menu-toolbar"><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Toolbars...</guimenuitem></menuchoice></link> option in the menubar.</para></answer><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+		 <answer><para>To change the default toolbar layout use the <link linkend="settings-menu-toolbar"><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Toolbars...</guimenuitem></menuchoice></link> option in the menubar.</para></answer><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
 	</qandaentry>
 </qandaset>
 </chapter>
