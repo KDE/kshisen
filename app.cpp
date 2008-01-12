@@ -739,6 +739,7 @@ void App::showSettings(){
 	dialog->addPage(new Settings(0), i18n("General"), "games-config-options");
 	dialog->addTilesetPage();
 	dialog->addBackgroundPage();
+        dialog->setHelp(QString(),"kshisen");
 	connect(dialog, SIGNAL(settingsChanged(const QString &)), board, SLOT(loadSettings()));
 	dialog->show();
 }
