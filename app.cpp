@@ -98,6 +98,8 @@ App::App(QWidget *parent) : KXmlGuiWindow(parent),
 
 	setCentralWidget(board);
 
+	setupGUI();
+
 	connect(board, SIGNAL(changed()), this, SLOT(enableItems()));
 	connect(board, SIGNAL(tilesDontMatch()), this, SLOT(notifyTilesDontMatch()));
 	connect(board, SIGNAL(invalidMove()), this, SLOT(notifyInvalidMove()));
@@ -155,8 +157,6 @@ void App::setupActions()
 
 	// Settings
 	KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
-
-	setupGUI();
 }
 
 void App::hallOfFame()
