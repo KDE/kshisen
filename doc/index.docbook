@@ -67,7 +67,7 @@
 	You can remove matching pieces if they can be connected with a line
 	with no more than two bends in it. At the same time, the line must not
 	cross any other tiles.
-	To win a game of Kshisen the player has to remove all the tiles off the game board.
+	To win a game of &kappname; the player has to remove all the tiles off the game board.
 	</para>
 </chapter>
  
@@ -352,11 +352,7 @@ dialog</link> to change &kappname; settings.
 	</qandaentry>
 	<qandaentry>
 		 <question><para>How do I start a new game?</para></question>
-		 <answer><para>&kappname; will load a default layout automaticly one once you start the application and you can start playing right away.</para></answer>
-	</qandaentry>
-	<qandaentry>
-		 <question><para>Can I start a totaly new game?</para></question>
-		 <answer><para>Yes. To start a new game you can either use a <link linkend="game-menu-new">shortcut key</link>, or a <link linkend="game-menu-new">menubar</link> option. </para></answer>
+		   <answer><para>You can start a new game using the <guibutton>New</guibutton> button on the toolbar, the <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> menu entry on the menubar or using the default shortcut <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>.</para></answer>
 	</qandaentry>
 	<qandaentry>
 		 <question><para>I did something very wrong! Can I restart the game?</para></question>
@@ -396,7 +392,7 @@ dialog</link> to change &kappname; settings.
 	</qandaentry>
 	<qandaentry>
 		 <question><para>I want to change the game configuration. Where do I go?</para></question>
-		 <answer><para>To open the <link linkend="configuration">configuration utility</link> use the <link linkend="game-settings-settings">menubar->Settings</link> menu.</para></answer><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+		 <answer><para>To open the <link linkend="configuration">configuration utility</link> use <link linkend="game-settings-settings"><guimenu>Settings</guimenu></link> in the menubar.</para></answer><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
 	</qandaentry>
 	<qandaentry>
 		 <question><para>I want to change the toolbar layout. What do I do?</para></question>
@@ -438,7 +434,7 @@ removed, all tiles lying above it will fall down one step.</para></listitem>
 <term><guilabel>Use Chinese style: any flower matches any flower, any season match any season</guilabel></term>
 <listitem><para>Use the traditional rules for matching the tiles. Previous
 version of &kappname; used to allow only exact tiles matches, which is 
-inconsistent with Mah-jongg rules. It is recommended
+inconsistent with Mahjongg rules. It is recommended
 to keep this option checked.
 </para></listitem>
 </varlistentry>
