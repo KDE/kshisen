@@ -58,7 +58,7 @@ int main(int argc, char **argv)
 {
 	KAboutData aboutData( "kshisen", 0, ki18n("Shisen-Sho"),
 		KSHISEN_VERSION, ki18n(description), KAboutData::License_GPL,
-		ki18n("(c) 1997, Mario Weilguni"));
+		ki18n("(c) 1997, Mario Weilguni"), KLocalizedString(), "http://games.kde.org/kshisen" );
 	aboutData.addAuthor(ki18n("Dave Corrie"), ki18n("Current Maintainer"), "kde@davecorrie.com");
 	aboutData.addAuthor(ki18n("Mario Weilguni"), ki18n("Original Author"), "mweilguni@sime.com");
 	aboutData.addCredit(ki18n("Mauricio Piacentini"), ki18n("KMahjonggLib integration for KDE4"), "mauricio@tabuleiro.com");
