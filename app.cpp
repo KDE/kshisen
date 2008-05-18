@@ -58,7 +58,7 @@
 #include <kconfigdialog.h>
 
 #include <QTimer>
-#include <QLineEdit>
+#include <KLineEdit>
 
 #include <cmath>
 #include <kglobal.h>
@@ -385,7 +385,7 @@ QString App::getPlayerName()
 
 	QLabel *l2 = new QLabel(i18n("Your name:"), dummy);
 
-	QLineEdit *e = new QLineEdit( dummy );
+	KLineEdit *e = new KLineEdit( dummy );
 	e->setMinimumWidth( e->fontMetrics().width( "XXXXXXXXXXXXXXXX" ) );
 	e->setText( lastPlayerName );
 	e->setFocus();
