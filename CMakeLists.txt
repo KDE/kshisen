@@ -18,7 +18,7 @@ kde4_add_executable(kshisen ${kshisen_SRCS})
 
 target_link_libraries(kshisen  ${KDE4_KDEUI_LIBS} kdegames kmahjongglib )
 
-install(TARGETS kshisen  DESTINATION ${BIN_INSTALL_DIR} )
+install(TARGETS kshisen  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 
 ########### install files ###############
