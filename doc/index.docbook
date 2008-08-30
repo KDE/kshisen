@@ -11,7 +11,7 @@
  
 <book lang="&language;"> <!-- do not change this! -->
 <bookinfo>
-	<title>The "&kappname;" Handbook</title> <!-- This is the title of the docbook. Live as is unless change is necessary.-->
+	<title>The &kappname; Handbook</title> <!-- This is the title of the docbook. Live as is unless change is necessary.-->
 <!-- List of immidiate authors begins here. -->
 <!--INPORTANT! - All other contributors: [to be determined] -->
 <authorgroup>
@@ -37,7 +37,7 @@
  
 <!--Short description of this document. Do not change unless necessary!-->
 <abstract>
-	<para>This documentation describes the game of "&kappname;" version &kappversion;</para>
+	<para>This documentation describes the game of &kappname; version &kappversion;</para>
 </abstract>
  
 <!--List of relevan keywords-->
@@ -62,12 +62,12 @@
  
 <!--Short game description starts here. 3-4 sentences (paragraphs)-->
 	<para>
-	"&kappname;" is a solitaire like game played using the standard set of Mahjong tiles.
-	Unlike Mahjong however, "&kappname;" has only one layer of scrambled tiles.
+	&kappname; is a solitaire like game played using the standard set of Mahjong tiles.
+	Unlike Mahjong however, &kappname; has only one layer of scrambled tiles.
 	You can remove matching pieces if they can be connected with a line
 	with no more than two bends in it. At the same time, the line must not
 	cross any other tiles.
-	To win a game of "&kappname;" the player has to remove all the tiles off the game board.
+	To win a game of &kappname; the player has to remove all the tiles off the game board.
 	</para>
 </chapter>
  
@@ -76,7 +76,7 @@
 	<note><title>Objective:</title><para>Remove all the tiles off the game board within the shortest time possible.</para></note><!--Describe the objective of the game.-->
 <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
 	<para>
-		"&kappname;" will load a default layout automaticly once you start the game and you can start playing right away.		
+		&kappname; will load a default layout automaticly once you start the game and you can start playing right away.		
 	</para>
 	<note><title>Note:</title><para>The game timer will not start until you make the first move.</para></note>
 	<para>
@@ -221,7 +221,7 @@ game.</para></listitem>
 </shortcut>
 <guimenu>Game</guimenu><guimenuitem>Show
 High Scores...</guimenuitem></menuchoice></term>
-<listitem><para>Shows the (local) Top-Ten charts of "&kappname;".</para> </listitem>
+<listitem><para>Shows the (local) Top-Ten charts of &kappname;.</para> </listitem>
 </varlistentry>
 
 <varlistentry>
@@ -229,7 +229,7 @@ High Scores...</guimenuitem></menuchoice></term>
 <shortcut><keycombo action="simul">&Ctrl;
 <keycap>Q</keycap></keycombo></shortcut>
 <guimenu>Game</guimenu><guimenuitem>Quit</guimenuitem></menuchoice></term>
-<listitem><para><action>Quits</action> "&kappname;". </para></listitem>
+<listitem><para><action>Quits</action> &kappname;. </para></listitem>
 </varlistentry>
 
 </variablelist>
@@ -322,11 +322,11 @@ Toggle on and off the display of the status bar.
 <varlistentry id="game-settings-settings">
 <term><menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Configure "&kappname;"...</guimenuitem>
+<guimenuitem>Configure &kappname;...</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>Opens the <link linkend="configuration">configuration
-dialog</link> to change "&kappname;" settings.
+dialog</link> to change &kappname; settings.
 </para></listitem>
 </varlistentry>
 
@@ -364,7 +364,7 @@ dialog</link> to change "&kappname;" settings.
 	</qandaentry>
 	<qandaentry>
 		 <question><para>I want to change the way this game looks. Can I?</para></question>
-		 <answer><para>Yes. To change the way "&kappname;" looks use the <link linkend="game-settings-settings">menubar</link> to open the <link linkend="configuration">configuration utility</link>.</para></answer>
+		 <answer><para>Yes. To change the way &kappname; looks use the <link linkend="game-settings-settings">menubar</link> to open the <link linkend="configuration">configuration utility</link>.</para></answer>
 	</qandaentry>
 	<qandaentry>
 		 <question><para>I have made a mistake. Can I undo?</para></question>
@@ -380,7 +380,7 @@ dialog</link> to change "&kappname;" settings.
 	</qandaentry>
 	<qandaentry>
 		 <question><para>I cannot figure out what to do here! Are there hints?</para></question>
-		 <answer><para>Yes. To use "&kappname;" hint feature can either use a <link linkend="move-menu-hint">shortcut key</link>, or a <link linkend="move-menu-hint">menubar</link> option.</para></answer>
+		 <answer><para>Yes. To use &kappname; hint feature can either use a <link linkend="move-menu-hint">shortcut key</link>, or a <link linkend="move-menu-hint">menubar</link> option.</para></answer>
 	</qandaentry>
 	<qandaentry>
 		 <question><para>I have to quit the game now, but I am not finished yet. Can I save my progress?</para></question>
@@ -404,14 +404,14 @@ dialog</link> to change "&kappname;" settings.
 <chapter id="configuration"><title>Game Configuration</title> <!-- do not change this! -->
 <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
 <para>Selecting the <menuchoice><guimenu>Settings</guimenu>
-<guimenuitem>Configure "&kappname;"...</guimenuitem></menuchoice> menu item will
+<guimenuitem>Configure &kappname;...</guimenuitem></menuchoice> menu item will
 open a configuration dialog which lets you alter the behavior of the game.</para>
 
 <screenshot>
-<screeninfo>"&kappname;" configuration dialog</screeninfo>
+<screeninfo>&kappname; configuration dialog</screeninfo>
 <mediaobject>
 <imageobject><imagedata fileref="kshisen-configuration.png" format="PNG"/></imageobject>
-<textobject><phrase>"&kappname;" configuration dialog</phrase></textobject>
+<textobject><phrase>&kappname; configuration dialog</phrase></textobject>
 </mediaobject>
 </screenshot>
 
@@ -433,7 +433,7 @@ removed, all tiles lying above it will fall down one step.</para></listitem>
 <varlistentry>
 <term><guilabel>Use Chinese style: any flower matches any flower, any season match any season</guilabel></term>
 <listitem><para>Use the traditional rules for matching the tiles. Previous
-version of "&kappname;" used to allow only exact tiles matches, which is 
+version of &kappname; used to allow only exact tiles matches, which is 
 inconsistent with Mahjongg rules. It is recommended
 to keep this option checked.
 </para></listitem>
@@ -474,7 +474,7 @@ the game will be.</para></listitem>
 
 <varlistentry>
 <term><guibutton>Help</guibutton></term>
-<listitem><para>Opens "&kappname;" help pages (this document).</para></listitem></varlistentry>
+<listitem><para>Opens &kappname; help pages (this document).</para></listitem></varlistentry>
 
 <varlistentry>
 <term><guibutton>OK</guibutton></term>
@@ -507,7 +507,7 @@ the game will be.</para></listitem>
 <row><entry>Undo</entry><entry><keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo></entry></row>
 <row><entry>Redo</entry><entry><keycombo action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo></entry></row>
 <row><entry>Hint</entry><entry><keycap>H</keycap></entry></row>
-<row><entry>"&kappname;" Handbook</entry><entry><keycap>F1</keycap></entry></row>
+<row><entry>&kappname; Handbook</entry><entry><keycap>F1</keycap></entry></row>
 <row><entry>What's This</entry><entry><keycombo action="simul">&Ctrl;&Shift;<keycap>F1</keycap></keycombo></entry></row>
 </tbody>
 </tgroup>
@@ -520,7 +520,7 @@ the game will be.</para></listitem>
 <!--This chapter is for credits and licenses.-->
  
 <para>
-"&kappname;" Copyright 1997 &Mario.Weilguni; &Mario.Weilguni.mail;
+&kappname; Copyright 1997 &Mario.Weilguni; &Mario.Weilguni.mail;
 </para>
 <para>
 Copyright 2002-2004 Dave Corrie kde@davecorrie.com
