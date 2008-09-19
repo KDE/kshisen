@@ -84,12 +84,12 @@ public:
 	PossibleMove(Path& p, Path& s) :
 		path(p), hasSlide(true), slide(s) { }
 
-	bool isInPath(int x, int y);
+	bool isInPath(int x, int y) const;
 
-	void Debug()
+	void Debug() const
 	{
 		kDebug() << "PossibleMove";
-		QList<Position>::iterator i;
+		QList<Position>::const_iterator i;
 		for (i = path.begin(); i != path.end(); ++i)
 			kDebug() << "    Path:" << (*i).x << "," << (*i).y;
 

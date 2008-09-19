@@ -60,13 +60,13 @@ static int size_x[6] = {14, 16, 18, 24, 26, 30};
 static int size_y[6] = { 6, 9, 8, 12, 14, 16};
 static int DELAY[5] = {1000, 750, 500, 250, 125};
 
-bool PossibleMove::isInPath(int x, int y)
+bool PossibleMove::isInPath(int x, int y) const
 {
 	if (x == path.last().x && y == path.last().y)
 		return false;
 	kDebug() << "isInPath:" << x << "," << y;
 	Debug();
-	QList<Position>::iterator j;
+	QList<Position>::const_iterator j;
 	// a path has at least 2 positions
 	j = path.begin();
 	int path_x = (*j).x;
