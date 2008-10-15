@@ -166,7 +166,7 @@
 			<listitem><para>Tiles can only be removed if they can be connected with a maximum of three connected lines that do not cross any  other tile. Lines can be horizontal or vertical, but not diagonal.</para></listitem>
 		</itemizedlist>
 		<note><title>Note:</title><para>You don't have to draw the lines by yourself, the game does this for
-you. Just mark two matching tiles on the board, if they can be connected by a line with no more then two bends, the line is drawn and the tiles are removed.</para></note>
+you. Just mark two matching tiles on the board, if they can be connected by a line with no more than two bends, the line is drawn and the tiles are removed.</para></note>
 		<itemizedlist>
 			<listitem><para>Lines may only cross the empty border.</para></listitem>
 			<listitem><para>Some games are unsolvable. If you would like to avoid unsolvable games uncheck the option <guilabel>Allow unsolvable games</guilabel> in the configuration dialog.</para></listitem>
