@@ -502,7 +502,7 @@ the game will be.</para></listitem>
 <row><entry>New</entry><entry><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></entry></row>
 <row><entry>Restart Game</entry><entry><keycap>F5</keycap></entry></row>
 <row><entry>Pause</entry><entry><keycap>P</keycap></entry></row>
-<row><entry>Show High Scores...</entry><entry><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></entry></row>
+<row><entry>Show High Scores</entry><entry><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></entry></row>
 <row><entry>Quit</entry><entry><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></entry></row>
 <row><entry>Undo</entry><entry><keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo></entry></row>
 <row><entry>Redo</entry><entry><keycombo action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo></entry></row>
