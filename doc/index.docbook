@@ -220,7 +220,7 @@ game.</para></listitem>
 <shortcut><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo>
 </shortcut>
 <guimenu>Game</guimenu><guimenuitem>Show
-High Scores...</guimenuitem></menuchoice></term>
+High Scores</guimenuitem></menuchoice></term>
 <listitem><para>Shows the (local) Top-Ten charts of &kappname;.</para> </listitem>
 </varlistentry>
 
