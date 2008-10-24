@@ -453,8 +453,8 @@ void Board::newGame()
 	 */
 	for(y = 0; y < y_tiles(); ++y)
 	{
- 		for(x = 0; x < x_tiles(); ++x)
- 		{
+		for(x = 0; x < x_tiles(); ++x)
+		{
 			// do not duplicate flowers or seasons
 			if ( !_chineseStyle_flag || !((cur_tile >= SEASONS_START && cur_tile <= (SEASONS_START+3)) || (cur_tile >= FLOWERS_START && cur_tile <= (FLOWERS_START+3))) )
 			{
@@ -472,7 +472,7 @@ void Board::newGame()
 			}
 			if(cur_tile > Board::nTiles)
 				cur_tile = 1;
-                }
+		}
 	}
 
 	if(getShuffle() == 0)
