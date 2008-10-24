@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
   <!ENTITY kappname "&kshisen;">
-  <!ENTITY kappversion "1.6.0"><!--Applicaion version. Use this variable everywhere it's needed.-->
+  <!ENTITY kappversion "1.6.0"><!--Application version. Use this variable everywhere it's needed.-->
   <!ENTITY docversion "1.0"><!--Document version. Use this variable everywhere it's needed.-->
   <!ENTITY docupdate "2007-09-26"><!--Document version. Use this variable everywhere it's needed.-->
   <!ENTITY package "kdegames">  <!-- do not change this! -->
@@ -40,7 +40,7 @@
 	<para>This documentation describes the game of &kappname; version &kappversion;</para>
 </abstract>
  
-<!--List of relevan keywords-->
+<!--List of relevant keywords-->
 <keywordset>
 	<keyword>KDE</keyword> <!-- do not change this! -->
 	<keyword>kdegames</keyword> <!-- do not change this! -->
@@ -84,7 +84,7 @@
 	</para>
 	<para>
 		Once you select a right pair of tiles they will vanish off the game board.
-		However, even if the tiles you select appear as open they will only be removed off the board if they can be connected with a line having no more than two bents and not crossing any other tiles (the line cannot be diagonal).
+		However, even if the tiles you select appear as open they will only be removed off the board if they can be connected with a line having no more than two bends and not crossing any other tiles (the line cannot be diagonal).
 	</para>
 	<para>
 		Find as many matches as possible to remove all the tiles from the game board.
@@ -443,7 +443,7 @@ to keep this option checked.
 <term><guilabel>Tiles can slide, but you can connect only in 2 lines instead of 3</guilabel></term>
 <listitem><para>This option changes the rules to the point where it almost 
 becomes a completely different game. When it is active, you can only remove 
-the tiles if they can be connected by a line consiting of only two segments 
+the tiles if they can be connected by a line consisting of only two segments 
 instead of the customary three. However, you are allowed to slide the tiles 
 on the board, if the row or column where they are placed has some empty space.
 To make a sliding move, you have to click on the tile containing the column or 
