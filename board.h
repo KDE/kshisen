@@ -142,7 +142,7 @@ public:
 	Board(QWidget *parent = 0);
 	~Board();
 
-        static const int nTiles = 42;
+	static const int nTiles = 42;
 
 	virtual void paintEvent(QPaintEvent *);
 	virtual void mousePressEvent(QMouseEvent *);
@@ -205,9 +205,9 @@ signals:
 
 public slots:
 	bool pause();
-        void loadSettings();
-        bool loadTileset    ( const QString & );
-        bool loadBackground ( const QString & );
+	void loadSettings();
+	bool loadTileset    ( const QString & );
+	bool loadBackground ( const QString & );
 
 private slots:
 	void undrawConnection();
@@ -222,13 +222,13 @@ private: // functions
 	int xOffset() ;
 	int yOffset() ;
 
-        int lineWidth();
+	int lineWidth();
 
 	void setField(int x, int y, int value);
 	int getField(int x, int y) const;
 	void updateField(int, int);
 	void clearHighlight();
-        bool tilesMatch(int tile1, int tile2) const;
+	bool tilesMatch(int tile1, int tile2) const;
 	bool canMakePath(int x1, int y1, int x2, int y2) const;
 	bool canSlideTiles(int x1, int y1, int x2, int y2, Path& p) const;
 	int findPath(int x1, int y1, int x2, int y2, PossibleMoves& p) const;
@@ -251,7 +251,7 @@ private:
 	time_t time_for_game;
 
 	KMahjonggTileset tiles;
-        KMahjonggBackground background;
+	KMahjonggBackground background;
 
 	KRandomSequence random;
 
@@ -274,8 +274,8 @@ private:
 
 	bool gravity_flag;
 	bool _solvable_flag;
-        bool _chineseStyle_flag;
-        bool _tilesCanSlide_flag;
+	bool _chineseStyle_flag;
+	bool _tilesCanSlide_flag;
 	QList<int> grav_cols;
 	//int grav_col_1, grav_col_2;
 

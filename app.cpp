@@ -382,7 +382,7 @@ QString App::getPlayerName()
 	QWidget* dummy = new QWidget( &dlg );
 	dlg.setMainWidget( dummy );
 
-        QLabel *l1 = new QLabel(i18n("You have made it into the \"Hall Of Fame\". Type in\nyour name so mankind will always remember\nyour cool rating."), dummy);
+	QLabel *l1 = new QLabel(i18n("You have made it into the \"Hall Of Fame\". Type in\nyour name so mankind will always remember\nyour cool rating."), dummy);
 
 	QLabel *l2 = new QLabel(i18n("Your name:"), dummy);
 
@@ -734,13 +734,13 @@ void App::keyBindings()
 void App::showSettings(){
 	if(KConfigDialog::showDialog("settings"))
 		return;
-	
+
 	//Use the classes exposed by LibKmahjongg for our configuration dialog
 	KMahjonggConfigDialog *dialog = new KMahjonggConfigDialog(this, "settings", Prefs::self());
 	dialog->addPage(new Settings(0), i18n("General"), "games-config-options");
 	dialog->addTilesetPage();
 	dialog->addBackgroundPage();
-        dialog->setHelp(QString(),"kshisen");
+	dialog->setHelp(QString(),"kshisen");
 	connect(dialog, SIGNAL(settingsChanged(const QString &)), board, SLOT(loadSettings()));
 	dialog->show();
 }

@@ -50,11 +50,11 @@
 #include <QTimer>
 #include "prefs.h"
 
-#define EMPTY		0
-#define DEFAULTDELAY	500
+#define EMPTY				0
+#define DEFAULTDELAY		500
 #define DEFAULTSHUFFLE	4
-#define SEASONS_START   28
-#define FLOWERS_START   39
+#define SEASONS_START	28
+#define FLOWERS_START	39
 
 static int size_x[6] = {14, 16, 18, 24, 26, 30};
 static int size_y[6] = { 6, 9, 8, 12, 14, 16};
@@ -88,11 +88,11 @@ bool PossibleMove::isInPath(int x, int y) const
 }
 
 Board::Board(QWidget *parent) :
-       QWidget(parent), field(0),
-       _x_tiles(0), _y_tiles(0),
-       _delay(125), paused(false),
-       gravity_flag(true), _solvable_flag(true), _chineseStyle_flag(false), _tilesCanSlide_flag(false),
-       highlighted_tile(-1), _paintConnection(false), _paintPossibleMoves(false)
+	QWidget(parent), field(0),
+	_x_tiles(0), _y_tiles(0),
+	_delay(125), paused(false),
+	gravity_flag(true), _solvable_flag(true), _chineseStyle_flag(false), _tilesCanSlide_flag(false),
+	highlighted_tile(-1), _paintConnection(false), _paintPossibleMoves(false)
 {
 	tileRemove1.first = -1;
 	// Randomize
@@ -103,9 +103,9 @@ Board::Board(QWidget *parent) :
 
 	setDelay(DEFAULTDELAY);
 
-        QPalette palette;
-        palette.setBrush( backgroundRole(), background.getBackground() );
-        setPalette( palette );
+	QPalette palette;
+	palette.setBrush( backgroundRole(), background.getBackground() );
+	setPalette( palette );
 
 	loadSettings();
 }
@@ -115,74 +115,75 @@ Board::~Board()
 	delete [] field;
 }
 
-void Board::loadSettings(){
-    if (!loadTileset(Prefs::tileSet())){
-      qDebug() << "An error occurred when loading the tileset" << Prefs::tileSet() <<"KShisen will continue with the default tileset.";
-    }
+void Board::loadSettings()
+{
+	if (!loadTileset(Prefs::tileSet())){
+		qDebug() << "An error occurred when loading the tileset" << Prefs::tileSet() <<"KShisen will continue with the default tileset.";
+	}
 
-    // Load background
-    if( ! loadBackground(Prefs::background())){
-      qDebug() << "An error occurred when loading the background" << Prefs::background() <<"KShisen will continue with the default background.";
-    }
+	// Load background
+	if( ! loadBackground(Prefs::background())){
+		qDebug() << "An error occurred when loading the background" << Prefs::background() <<"KShisen will continue with the default background.";
+	}
 
-    // special rule
-    setChineseStyleFlag(Prefs::chineseStyle());
-    setTilesCanSlideFlag(Prefs::tilesCanSlide());
-    // need to load solvable before size
-    // because setSize call newGame which uses
-    // the solvable flag
-    // same with shuffle
-    setSolvableFlag(Prefs::solvable());
-    //setShuffle(Prefs::level() * 4 + 1);
-    // actually there is no need to call setShuffle
-    // and setShuffle will call newGame
-    _shuffle = Prefs::level() * 4 + 1;
-    int index = Prefs::size();
-    setSize(size_x[index], size_y[index]);
-    setGravityFlag(Prefs::gravity());
-    setDelay(DELAY[Prefs::speed()]);
+	// special rule
+	setChineseStyleFlag(Prefs::chineseStyle());
+	setTilesCanSlideFlag(Prefs::tilesCanSlide());
+	// need to load solvable before size
+	// because setSize call newGame which uses
+	// the solvable flag
+	// same with shuffle
+	setSolvableFlag(Prefs::solvable());
+	//setShuffle(Prefs::level() * 4 + 1);
+	// actually there is no need to call setShuffle
+	// and setShuffle will call newGame
+	_shuffle = Prefs::level() * 4 + 1;
+	int index = Prefs::size();
+	setSize(size_x[index], size_y[index]);
+	setGravityFlag(Prefs::gravity());
+	setDelay(DELAY[Prefs::speed()]);
 }
 
-bool Board::loadTileset(const QString &path) {
-
-  if (tiles.loadTileset(path)) {
-    if (tiles.loadGraphics()) {
-      Prefs::setTileSet(path);
-      Prefs::self()->writeConfig();
-      resizeBoard();
-    }
-    return true;
-  }
-  //Try default
-  if (tiles.loadDefault()) {
-    if (tiles.loadGraphics()) {
-      Prefs::setTileSet(tiles.path());
-      Prefs::self()->writeConfig();
-      resizeBoard();
-    } 
-  }
-  return false;
+bool Board::loadTileset(const QString &path)
+{
+	if (tiles.loadTileset(path)) {
+		if (tiles.loadGraphics()) {
+			Prefs::setTileSet(path);
+			Prefs::self()->writeConfig();
+			resizeBoard();
+		}
+		return true;
+	}
+	//Try default
+	if (tiles.loadDefault()) {
+		if (tiles.loadGraphics()) {
+			Prefs::setTileSet(tiles.path());
+			Prefs::self()->writeConfig();
+			resizeBoard();
+		} 
+	}
+	return false;
 }
 
 bool Board::loadBackground( const QString& pszFileName )
 {
-  if (background.load( pszFileName, width(), height())) {
-    if (background.loadGraphics()) {
-      Prefs::setBackground(pszFileName);
-      Prefs::self()->writeConfig();
-      resizeBoard();
-      return true;
-    }
-  }
-//Try default
-  if (background.loadDefault()) {
-    if (background.loadGraphics()) {
-    Prefs::setBackground(background.path());
-    Prefs::self()->writeConfig();
-    resizeBoard();
-    }
-  }
-  return false;
+	if (background.load( pszFileName, width(), height())) {
+		if (background.loadGraphics()) {
+			Prefs::setBackground(pszFileName);
+			Prefs::self()->writeConfig();
+			resizeBoard();
+			return true;
+		}
+	}
+	//Try default
+	if (background.loadDefault()) {
+		if (background.loadGraphics()) {
+			Prefs::setBackground(background.path());
+			Prefs::self()->writeConfig();
+			resizeBoard();
+		}
+	}
+	return false;
 }
 
 int Board::x_tiles() const
@@ -353,13 +354,13 @@ void Board::mousePressEvent(QMouseEvent *e)
 // the coordinates of the top-left corner of the board.
 int Board::xOffset()
 {
-        int tw = tiles.qWidth() * 2;
+	int tw = tiles.qWidth() * 2;
 	return (width() - (tw * x_tiles())) / 2;
 }
 
 int Board::yOffset()
 {
-        int th = tiles.qHeight() * 2;
+	int th = tiles.qHeight() * 2;
 	return (height() - (th * y_tiles())) / 2;
 }
 
@@ -406,14 +407,14 @@ void Board::resizeEvent(QResizeEvent* event)
 void Board::resizeBoard()
 {
 	// calculate tile size required to fit all tiles in the window
-        QSize newsize = tiles.preferredTileSize(QSize(width(),height()), x_tiles(), y_tiles());
-        tiles.reloadTileset(newsize);
-        //recalculate bg, if needed
-        background.sizeChanged(width(), height());
-        //reload our bg brush, using the cache in libkmahjongg if possible
-        QPalette palette;
-        palette.setBrush( backgroundRole(), background.getBackground() );
-        setPalette( palette );
+	QSize newsize = tiles.preferredTileSize(QSize(width(),height()), x_tiles(), y_tiles());
+	tiles.reloadTileset(newsize);
+	//recalculate bg, if needed
+	background.sizeChanged(width(), height());
+	//reload our bg brush, using the cache in libkmahjongg if possible
+	QPalette palette;
+	palette.setBrush( backgroundRole(), background.getBackground() );
+	setPalette( palette );
 }
 
 QSize Board::unscaledSize()
@@ -432,8 +433,8 @@ void Board::newGame()
 	mark_y = -1;
 	highlighted_tile = -1; // will clear previous highlight
 
-        qDeleteAll(_undo);
-        qDeleteAll(_redo);
+	qDeleteAll(_undo);
+	qDeleteAll(_redo);
 	_undo.clear();
 	_redo.clear();
 	connection.clear();
@@ -552,7 +553,7 @@ void Board::newGame()
 
 		// remember field
 		memcpy(oldfield, field, fsize);
-                max_attempts--;
+		max_attempts--;
 	}
 	// debug, tell if make solvable failed
 	if (max_attempts == 0)
@@ -622,9 +623,9 @@ bool Board::isTileHighlighted(int x, int y) const
 void Board::updateField(int x, int y)
 {
 	QRect r(xOffset() + x * tiles.qWidth() * 2,
-	        yOffset() + y * tiles.qHeight() * 2,
-	        tiles.width(),
-	        tiles.height());
+			yOffset() + y * tiles.qHeight() * 2,
+			tiles.width(),
+			tiles.height());
 
 #ifdef USE_UPDATE
 	update(r);
@@ -670,8 +671,8 @@ void Board::paintEvent(QPaintEvent *e)
 					else
 						p.drawPixmap(xpos, ypos, tiles.unselectedTile(1));
 
-                                        //draw face
-                                        p.drawPixmap(xpos, ypos, tiles.tileface(tile-1));
+					//draw face
+					p.drawPixmap(xpos, ypos, tiles.tileface(tile-1));
 				}
 			}
 		}
@@ -1230,7 +1231,7 @@ bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path& p) const
 			//kDebug() << "canSlideTiles distance=" << distance << "free=" << (start_free - end_free);
 			if(distance <= (start_free - end_free))
 			{
-    				// first position of the last slided tile
+				// first position of the last slided tile
 				p.append(Position(start_free+1, y1));
 				// final position of the last slided tile
 				p.append(Position(start_free+1-distance, y1));
@@ -2043,7 +2044,7 @@ bool Board::solvable(bool norestore)
 		kFatal( !tilesMatch(getField(p.first().path.first().x, p.first().path.first().y), getField(p.first().path.last().x, p.first().path.last().y)))
 			<< "Removing unmatched tiles: (" << p.first().path.first().x << "," << p.first().path.first().y << ") => "
 			<< getField(p.first().path.first().x, p.first().path.first().y) << " (" << p.first().path.last().x << "," << p.first().path.last().y << ") => "
-            << getField(p.first().path.last().x, p.first().path.last().y);
+			<< getField(p.first().path.last().x, p.first().path.last().y);
 		setField(p.first().path.first().x, p.first().path.first().y, EMPTY);
 		setField(p.first().path.last().x, p.first().path.last().y, EMPTY);
 		//if(gravityFlag())
