@@ -433,10 +433,8 @@ void Board::newGame()
 	mark_y = -1;
 	highlighted_tile = -1; // will clear previous highlight
 
-	qDeleteAll(_undo);
-	qDeleteAll(_redo);
-	_undo.clear();
-	_redo.clear();
+	resetUndo();
+	resetRedo();
 	connection.clear();
 	possibleMoves.clear();
 
@@ -2136,6 +2134,18 @@ QSize Board::sizeHint() const
 void Board::resetTimer()
 {
 	starttime = time((time_t *)0);
+}
+
+void Board::resetUndo()
+{
+	qDeleteAll(_undo);
+	_undo.clear();
+}
+
+void Board::resetRedo()
+{
+	qDeleteAll(_redo);
+	_redo.clear();
 }
 
 #include "board.moc"

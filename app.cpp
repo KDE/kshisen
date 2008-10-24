@@ -177,9 +177,10 @@ void App::restartGame()
 	while(board->canUndo())
 		board->undo();
 	board->setUpdatesEnabled(true);
+	board->resetRedo();
 	board->update();
-	enableItems();
 	board->resetTimer();
+	enableItems();
 }
 
 void App::isSolvable()
