@@ -9,7 +9,7 @@
 </MenuBar>
 <ToolBar name="mainToolBar"><text>Main Toolbar</text>
   <Action name="game_new"/>
-  <Seperator/>
+  <Separator/>
   <Action name="move_undo"/>
   <Action name="move_redo"/>
   <Separator/>
