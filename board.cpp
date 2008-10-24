@@ -432,10 +432,8 @@ void Board::newGame()
 	mark_y = -1;
 	highlighted_tile = -1; // will clear previous highlight
 
-        qDeleteAll(_undo);
-        qDeleteAll(_redo);
-	_undo.clear();
-	_redo.clear();
+	resetUndo();
+	resetRedo();
 	connection.clear();
 	possibleMoves.clear();
 
@@ -452,8 +450,8 @@ void Board::newGame()
 	 */
 	for(y = 0; y < y_tiles(); ++y)
 	{
- 		for(x = 0; x < x_tiles(); ++x)
- 		{
+		for(x = 0; x < x_tiles(); ++x)
+		{
 			// do not duplicate flowers or seasons
 			if ( !_chineseStyle_flag || !((cur_tile >= SEASONS_START && cur_tile <= (SEASONS_START+3)) || (cur_tile >= FLOWERS_START && cur_tile <= (FLOWERS_START+3))) )
 			{
@@ -471,7 +469,7 @@ void Board::newGame()
 			}
 			if(cur_tile > Board::nTiles)
 				cur_tile = 1;
-                }
+		}
 	}
 
 	if(getShuffle() == 0)
@@ -2135,6 +2133,18 @@ QSize Board::sizeHint() const
 void Board::resetTimer()
 {
 	starttime = time((time_t *)0);
+}
+
+void Board::resetUndo()
+{
+	qDeleteAll(_undo);
+	_undo.clear();
+}
+
+void Board::resetRedo()
+{
+	qDeleteAll(_redo);
+	_redo.clear();
 }
 
 #include "board.moc"

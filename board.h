@@ -191,6 +191,8 @@ public:
 
 	bool isPaused() const { return paused; }
 	void resetTimer();
+	void resetUndo();
+	void resetRedo();
 
 signals:
 	void markMatched();
