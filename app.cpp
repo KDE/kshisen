@@ -179,6 +179,7 @@ void App::restartGame()
 	board->setUpdatesEnabled(true);
 	board->update();
 	enableItems();
+	board->resetTimer();
 }
 
 void App::isSolvable()

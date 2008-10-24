@@ -99,7 +99,7 @@ Board::Board(QWidget *parent) :
 	setShuffle(DEFAULTSHUFFLE);
 
 	random.setSeed(0);
-	starttime = time((time_t *)0);
+	resetTimer();
 
 	setDelay(DEFAULTDELAY);
 
@@ -477,7 +477,7 @@ void Board::newGame()
 	if(getShuffle() == 0)
 	{
 		update();
-		starttime = time((time_t *)0);
+		resetTimer();
 		emit changed();
 		return;
 	}
@@ -500,7 +500,7 @@ void Board::newGame()
 	if(!_solvable_flag)
 	{
 		update();
-		starttime = time((time_t *)0);
+		resetTimer();
 		emit changed();
 		return;
 	}
@@ -568,7 +568,7 @@ void Board::newGame()
 	delete [] oldfield;
 
 	update();
-	starttime = time((time_t *)0);
+	resetTimer();
 	emit changed();
 }
 
@@ -2130,6 +2130,11 @@ QSize Board::sizeHint() const
 	if (dpi < 75)
 	   dpi = 75;
 	return QSize(9*dpi,7*dpi);
+}
+
+void Board::resetTimer()
+{
+	starttime = time((time_t *)0);
 }
 
 #include "board.moc"
