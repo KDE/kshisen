@@ -190,6 +190,7 @@ public:
 	int y_tiles() const;
 
 	bool isPaused() const { return paused; }
+	void resetTimer();
 
 signals:
 	void markMatched();
