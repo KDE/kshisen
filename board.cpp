@@ -1484,8 +1484,8 @@ void Board::undrawConnection()
 	_paintConnection = false;
 
 	// Path.size() will always be >= 2
-	Path::const_iterator pathEnd = oldConnection.end();
-	Path::const_iterator pt1 = oldConnection.begin();
+	Path::const_iterator pathEnd = oldConnection.constEnd();
+	Path::const_iterator pt1 = oldConnection.constBegin();
 	Path::const_iterator pt2 = pt1;
 	++pt2;
 	while(pt2 != pathEnd)

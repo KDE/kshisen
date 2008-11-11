@@ -231,8 +231,8 @@ void App::lockMenus(bool lock)
 	// provides a good visual hint to the user, that they need to unpause to continue.
 	KMenu* help = findChild<KMenu*>("help" );
 	QList<QAction*> actions = actionCollection()->actions();
-	QList<QAction*>::const_iterator actionIter = actions.begin();
-	QList<QAction*>::const_iterator actionIterEnd = actions.end();
+	QList<QAction*>::const_iterator actionIter = actions.constBegin();
+	QList<QAction*>::const_iterator actionIterEnd = actions.constEnd();
 
 	while(actionIter != actionIterEnd)
 	{
