@@ -649,8 +649,8 @@ void Board::paintEvent(QPaintEvent *e)
 	{
 		int w = tiles.width();
 		int h = tiles.height();
-                int fw = tiles.qWidth() * 2;
-                int fh = tiles.qHeight() * 2;
+		int fw = tiles.qWidth() * 2;
+		int fh = tiles.qHeight() * 2;
 		for(int i = 0; i < x_tiles(); i++)
 		{
 			for(int j = 0; j < y_tiles(); j++)
@@ -2127,7 +2127,7 @@ QSize Board::sizeHint() const
 {
 	int dpi = logicalDpiX();
 	if (dpi < 75)
-	   dpi = 75;
+		dpi = 75;
 	return QSize(9*dpi,7*dpi);
 }
 
