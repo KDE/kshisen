@@ -47,5 +47,5 @@
 // MICRO numbers >= 90 are used for development milestones in HEAD.
 
 #ifndef KSHISEN_VERSION
-#define KSHISEN_VERSION	"1.6.0"
+#define KSHISEN_VERSION	"1.6.1"
 #endif // KSHISEN_VERSION
