@@ -78,7 +78,6 @@
 	<para>
 		&kappname; will load a default layout automatically once you start the game and you can start playing right away.
 	</para>
-	<note><title>Note:</title><para>The game timer will not start until you make the first move.</para></note>
 	<para>
 		You should carefully study the tiles lied out on the game board and find two tiles matching exactly. When you have found such a pair use your mouse to select these.
 	</para>
@@ -170,7 +169,7 @@ you. Just mark two matching tiles on the board, if they can be connected by a li
 		<itemizedlist>
 			<listitem><para>Lines may only cross the empty border.</para></listitem>
 			<listitem><para>Some games are unsolvable. If you would like to avoid unsolvable games uncheck the option <guilabel>Allow unsolvable games</guilabel> in the configuration dialog.</para></listitem>
-			<listitem><para>The scores are awarded for the quantity of the tiles removed within the time of completion.</para></listitem>
+			<listitem><para>The scores are awarded for the time the player needs to remove all the tiles from the game board. Games with more tiles give more scores.</para></listitem>
 			<listitem><para>If you played with the <guilabel>Gravity</guilabel> setting enabled, the score will be doubled.</para></listitem>
 			<listitem><para>To be eligible for a place amongst the high scores player has to complete a game instance within the shortest period of time possible.</para></listitem>
 		</itemizedlist>
