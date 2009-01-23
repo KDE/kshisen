@@ -85,10 +85,11 @@ App::App(QWidget *parent) : KXmlGuiWindow(parent),
     // TODO?
     // Would it make sense long term to have a kconfig update rather then
     // havin both formats supported in the code?
-    if(highscoreTable->hasTable())
+    if( highscoreTable->hasTable() ) {
         readHighscore();
-    else
+    } else {
         readOldHighscore();
+    }
 
     setupStatusBar();
     setupActions();
@@ -174,8 +175,9 @@ void App::newGame()
 void App::restartGame()
 {
     board->setUpdatesEnabled(false);
-    while(board->canUndo())
+    while( board->canUndo() ) {
         board->undo();
+    }
     board->setUpdatesEnabled(true);
     board->resetRedo();
     board->update();
@@ -185,10 +187,11 @@ void App::restartGame()
 
 void App::isSolvable()
 {
-    if(board->solvable())
+    if( board->solvable() ) {
         KMessageBox::information(this, i18n("This game is solvable."));
-    else
+    } else {
         KMessageBox::information(this, i18n("This game is NOT solvable."));
+    }
 }
 
 void App::pause()
@@ -198,8 +201,7 @@ void App::pause()
 
 void App::undo()
 {
-    if(board->canUndo())
-    {
+    if( board->canUndo() ) {
         board->undo();
         setCheatMode();
         enableItems();
@@ -208,8 +210,9 @@ void App::undo()
 
 void App::redo()
 {
-    if(board->canRedo())
+    if( board->canRedo() ) {
         board->redo();
+    }
     enableItems();
 }
 
@@ -234,11 +237,11 @@ void App::lockMenus(bool lock)
     QList<QAction*>::const_iterator actionIter = actions.constBegin();
     QList<QAction*>::const_iterator actionIterEnd = actions.constEnd();
 
-    while(actionIter != actionIterEnd)
-    {
+    while( actionIter != actionIterEnd ) {
         QAction* a = *actionIter;
-        if(!a->associatedWidgets().contains(help))
+        if( !a->associatedWidgets().contains(help) ) {
             a->setEnabled(!lock);
+        }
         ++actionIter;
     }
 
@@ -250,8 +253,7 @@ void App::lockMenus(bool lock)
 
 void App::enableItems()
 {
-    if(!board->isPaused())
-    {
+    if( !board->isPaused() ) {
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Undo))->setEnabled(board->canUndo());
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Redo))->setEnabled(board->canRedo());
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Restart))->setEnabled(board->canUndo());
@@ -260,12 +262,9 @@ void App::enableItems()
 
 void App::slotEndOfGame()
 {
-    if(board->tilesLeft() > 0)
-    {
+    if( board->tilesLeft() > 0 ) {
         KMessageBox::information(this, i18n("No more moves possible!"), i18n("End of Game"));
-    }
-    else
-    {
+    } else {
         // create highscore entry
         HighScore hs;
         hs.seconds = board->getTimeForGame();
@@ -275,27 +274,24 @@ void App::slotEndOfGame()
 
         // check if we made it into Top10
         bool isHighscore = false;
-        if(highscore.size() < HIGHSCORE_MAX)
+        if( highscore.size() < HIGHSCORE_MAX ) {
             isHighscore = true;
-        else if(isBetter(hs, highscore[HIGHSCORE_MAX-1]))
+        } else if( isBetter(hs, highscore[HIGHSCORE_MAX-1]) ) {
             isHighscore = true;
+        }
 
-        if(isHighscore && !cheat)
-        {
+        if( isHighscore && !cheat ) {
             hs.name = getPlayerName();
             hs.date = time((time_t*)0);
             int rank = insertHighscore(hs);
             showHighscore(rank);
-        }
-        else
-        {
+        } else {
             QString s = i18n("Congratulations! You made it in %1:%2:%3",
                     QString().sprintf("%02d", board->getTimeForGame()/3600),
                     QString().sprintf("%02d", (board->getTimeForGame() / 60) % 60),
                     QString().sprintf("%02d", board->getTimeForGame() % 60));
 
-            if(isHighscore) // player would have been in the hisghscores if he did not cheat
-            {
+            if( isHighscore ) { // player would have been in the hisghscores if he did not cheat
                 s += '\n' + i18n("You could have been in the higscores if you did not use Undo or Hint. Try without them next time.");
             }
 
@@ -357,8 +353,7 @@ void App::updateScore()
 void App::setCheatMode()
 {
     // set the cheat mode if not set
-    if(!cheat)
-    {
+    if( !cheat ) {
         cheat = true;
         gameCheatLabel->show();
     }
@@ -367,8 +362,7 @@ void App::setCheatMode()
 void App::resetCheatMode()
 {
     // reset cheat mode if set
-    if(cheat)
-    {
+    if( cheat ) {
         cheat = false;
         gameCheatLabel->hide();
     }
@@ -406,8 +400,9 @@ QString App::getPlayerName()
 
     lastPlayerName = e->text();
 
-    if(lastPlayerName.isEmpty())
+    if( lastPlayerName.isEmpty() ) {
         return " ";
+    }
     return lastPlayerName;
 }
 
@@ -419,52 +414,45 @@ int App::getScore(const HighScore &hs)
     double sizebonus = std::sqrt(ntiles/(double)(14.0 * 6.0));
     double points = tilespersec / 0.14 * 100.0;
 
-    if(hs.gravity)
+    if( hs.gravity ) {
         return (int)(2.0 * points * sizebonus);
-    else
+    } else {
         return (int)(points * sizebonus);
+    }
 }
 
 bool App::isBetter(const HighScore &hs, const HighScore &than)
 {
-    if(getScore(hs) > getScore(than))
+    if( getScore(hs) > getScore(than) ) {
         return true;
-    else
+    } else {
         return false;
+    }
 }
 
 int App::insertHighscore(const HighScore &hs)
 {
     int i;
 
-    if(highscore.size() == 0)
-    {
+    if( highscore.size() == 0 ) {
         highscore.resize(1);
         highscore[0] = hs;
         writeHighscore();
         return 0;
-    }
-    else
-    {
+    } else {
         HighScore last = highscore[highscore.size() - 1];
-        if(isBetter(hs, last) || (highscore.size() < HIGHSCORE_MAX))
-        {
-            if(highscore.size() == HIGHSCORE_MAX)
-            {
+        if( isBetter(hs, last) || (highscore.size() < HIGHSCORE_MAX) ) {
+            if( highscore.size() == HIGHSCORE_MAX ) {
                 highscore[HIGHSCORE_MAX - 1] = hs;
-            }
-            else
-            {
+            } else {
                 highscore.resize(highscore.size()+1);
                 highscore[highscore.size() - 1] = hs;
             }
 
             // sort in new entry
             int bestsofar = highscore.size() - 1;
-            for(i = highscore.size() - 1; i > 0; i--)
-            {
-                if(isBetter(highscore[i], highscore[i-1]))
-                {
+            for( i = highscore.size() - 1; i > 0; i-- ) {
+                if( isBetter(highscore[i], highscore[i-1]) ) {
                     // swap entries
                     HighScore temp = highscore[i-1];
                     highscore[i-1] = highscore[i];
@@ -492,8 +480,7 @@ void App::readHighscore()
 
     highscore.resize(0);
 
-    for (int i = 0; i < hi_x.count(); i++)
-    {
+    for( int i = 0; i < hi_x.count(); i++ ) {
         highscore.resize(i+1);
 
         HighScore hs;
@@ -521,11 +508,9 @@ void App::readOldHighscore()
     i = 0;
     bool eol = false;
     KConfigGroup group = conf->group("Hall of Fame");
-    while ((i < (int)HIGHSCORE_MAX) && !eol)
-    {
+    while( (i < (int)HIGHSCORE_MAX) && !eol ) {
         s.sprintf("Highscore_%d", i);
-        if(group.hasKey(s))
-        {
+        if( group.hasKey(s) ) {
             e = group.readEntry(s,QString());
             highscore.resize(i+1);
 
@@ -538,21 +523,16 @@ void App::readOldHighscore()
             hs.seconds = e.at(2).toInt();
             hs.date = e.at(3).toInt();
 
-            if(nelem == 4) // old version <= 1.1
-            {
+            if( nelem == 4 ) { // old version <= 1.1
                 hs.gravity = 0;
                 hs.name = e.at(4);
-            }
-            else
-            {
+            } else {
                 hs.gravity = e.at(4).toInt();
                 hs.name = e.at(5);
             }
 
             highscore[i] = hs;
-        }
-        else
-        {
+        } else {
             eol = true;
         }
         i++;
@@ -580,8 +560,7 @@ void App::writeHighscore()
 {
     int i;
     QStringList hi_x, hi_y, hi_sec, hi_date, hi_grav, hi_name;
-    for(i = 0; i < (int)highscore.size(); i++)
-    {
+    for( i = 0; i < (int)highscore.size(); i++ ) {
         HighScore hs = highscore[i];
         hi_x.append(QString::number(hs.x));
         hi_y.append(QString::number(hs.y));
@@ -653,52 +632,48 @@ void App::showHighscore(int focusitem)
     QLabel *e[10][5];
     signed i, j;
 
-    for(i = 0; i < 10; i++)
-    {
+    for( i = 0; i < 10; i++ ) {
         HighScore hs;
-        if(i < highscore.size())
+        if( i < highscore.size() ) {
             hs = highscore[i];
+        }
 
         // insert rank
         s.sprintf("%d", i+1);
         e[i][0] = new QLabel(s, dummy);
 
         // insert name
-        if(i < highscore.size())
+        if( i < highscore.size() ) {
             e[i][1] = new QLabel(hs.name, dummy);
-        else
+        } else {
             e[i][1] = new QLabel("", dummy);
+        }
 
         // insert time
         QTime ti(0,0,0);
-        if(i < highscore.size())
-        {
+        if( i < highscore.size() ) {
             ti = ti.addSecs(hs.seconds);
             s.sprintf("%02d:%02d:%02d", ti.hour(), ti.minute(), ti.second());
             e[i][2] = new QLabel(s, dummy);
-        }
-        else
-        {
+        } else {
             e[i][2] = new QLabel("", dummy);
         }
 
         // insert size
-        if(i < highscore.size())
+        if( i < highscore.size() ) {
             s.sprintf("%d x %d", hs.x, hs.y);
-        else
+        } else {
             s = "";
+        }
 
         e[i][3] = new QLabel(s, dummy);
 
         // insert score
-        if(i < highscore.size())
-        {
+        if( i < highscore.size() ) {
             s = QString("%1 %2")
                 .arg(getScore(hs))
                 .arg(hs.gravity ? i18n("(gravity)") : QString(""));
-        }
-        else
-        {
+        } else {
             s = "";
         }
 
@@ -709,13 +684,11 @@ void App::showHighscore(int focusitem)
     f = font();
     f.setBold(true);
     f.setItalic(true);
-    for(i = 0; i < 10; i++)
-    {
-        for(j = 0; j < 5; j++)
-        {
-            if((int)i == focusitem)
+    for( i = 0; i < 10; i++ ) {
+        for( j = 0; j < 5; j++ ) {
+            if( (int)i == focusitem ) {
                 e[i][j]->setFont(f);
-
+            }
             table->addWidget(e[i][j], i+2, j, Qt::AlignCenter);
         }
     }
@@ -733,8 +706,9 @@ void App::keyBindings()
  * Show Settings dialog.
  */
 void App::showSettings(){
-    if(KConfigDialog::showDialog("settings"))
+    if( KConfigDialog::showDialog("settings") ) {
         return;
+    }
 
     //Use the classes exposed by LibKmahjongg for our configuration dialog
     KMahjonggConfigDialog *dialog = new KMahjonggConfigDialog(this, "settings", Prefs::self());
