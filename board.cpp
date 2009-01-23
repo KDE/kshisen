@@ -2149,3 +2149,6 @@ void Board::resetRedo()
 }
 
 #include "board.moc"
+
+// vim: expandtab:tabstop=4:shiftwidth=4
+// kate: space-indent on; indent-width 4
