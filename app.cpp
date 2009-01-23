@@ -371,28 +371,28 @@ void App::resetCheatMode()
 QString App::getPlayerName()
 {
     KDialog dlg(this);
-    dlg.setObjectName( "Hall of Fame" );
-    dlg.setButtons( KDialog::Ok );
+    dlg.setObjectName("Hall of Fame");
+    dlg.setButtons(KDialog::Ok);
 
-    QWidget* dummy = new QWidget( &dlg );
-    dlg.setMainWidget( dummy );
+    QWidget* dummy = new QWidget(&dlg);
+    dlg.setMainWidget(dummy);
 
     QLabel *l1 = new QLabel(i18n("You have made it into the \"Hall Of Fame\". Type in\nyour name so mankind will always remember\nyour cool rating."), dummy);
 
     QLabel *l2 = new QLabel(i18n("Your name:"), dummy);
 
-    KLineEdit *e = new KLineEdit( dummy );
-    e->setMinimumWidth( e->fontMetrics().width( "XXXXXXXXXXXXXXXX" ) );
-    e->setText( m_lastPlayerName );
+    KLineEdit *e = new KLineEdit(dummy);
+    e->setMinimumWidth(e->fontMetrics().width("XXXXXXXXXXXXXXXX"));
+    e->setText(m_lastPlayerName);
     e->setFocus();
 
     // create layout
     QHBoxLayout *tl1 = new QHBoxLayout;
     tl1->addWidget(l2);
     tl1->addWidget(e);
-    QVBoxLayout *tl = new QVBoxLayout( dummy );
-    tl->setMargin( 10 );
-    tl->setSpacing( 5 );
+    QVBoxLayout *tl = new QVBoxLayout(dummy);
+    tl->setMargin(10);
+    tl->setSpacing(5);
     tl->addWidget(l1);
     tl->addLayout(tl1);
 
