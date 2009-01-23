@@ -149,7 +149,7 @@ void App::setupActions()
     KStandardGameAction::redo(this, SLOT(redo()), actionCollection());
     KStandardGameAction::hint(this, SLOT(hint()), actionCollection());
     //new KAction(i18n("Is Game Solvable?"), 0, this,
-    //	SLOT(isSolvable()), actionCollection(), "move_solvable");
+    //  SLOT(isSolvable()), actionCollection(), "move_solvable");
 
 #ifdef DEBUGGING
     // broken ..
@@ -538,17 +538,17 @@ void App::readOldHighscore()
         i++;
     }
 
-    //	// freshly installed, add my own highscore
-    //	if(m_highscore.size() == 0)
-    //	{
-    //		HighScore hs;
-    //		hs.x = 28;
-    //		hs.y = 16;
-    //		hs.seconds = 367;
-    //		hs.name = "Mario";
-    //		m_highscore.resize(1);
-    //		m_highscore[0] = hs;
-    //	}
+    //  // freshly installed, add my own highscore
+    //  if(m_highscore.size() == 0)
+    //  {
+    //      HighScore hs;
+    //      hs.x = 28;
+    //      hs.y = 16;
+    //      hs.seconds = 367;
+    //      hs.name = "Mario";
+    //      m_highscore.resize(1);
+    //      m_highscore[0] = hs;
+    //  }
 
     // write in new KHighscore format
     writeHighscore();

@@ -493,7 +493,7 @@ void Board::newGame()
 
     int fsize = x_tiles() * y_tiles() * sizeof(int);
     int *oldfield = new int[x_tiles() * y_tiles()];
-    memcpy(oldfield, m_field, fsize);			// save field
+    memcpy(oldfield, m_field, fsize);   // save field
     int *tiles = new int[x_tiles() * y_tiles()];
     int *pos = new int[x_tiles() * y_tiles()];
     //jwickers: in case the game cannot make the game solvable we do not want to run an infinite loop
