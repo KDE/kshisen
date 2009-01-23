@@ -373,6 +373,7 @@ QString App::getPlayerName()
     KDialog dlg(this);
     dlg.setObjectName("Hall of Fame");
     dlg.setButtons(KDialog::Ok);
+    dlg.setWindowTitle(i18n("Enter your Name"));
 
     QWidget* dummy = new QWidget(&dlg);
     dlg.setMainWidget(dummy);
