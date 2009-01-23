@@ -189,7 +189,7 @@ class Board : public QWidget
         int x_tiles() const;
         int y_tiles() const;
 
-        bool isPaused() const { return paused; }
+        bool isPaused() const { return m_isPaused; }
         void resetTimer();
         void resetUndo();
         void resetRedo();
@@ -249,44 +249,44 @@ class Board : public QWidget
         void gravity(bool);
 
     private:
-        time_t starttime;
-        time_t time_for_game;
+        time_t m_startTime;
+        time_t m_timeForGame;
 
-        KMahjonggTileset tiles;
-        KMahjonggBackground background;
+        KMahjonggTileset m_tiles;
+        KMahjonggBackground m_background;
 
-        KRandomSequence random;
+        KRandomSequence m_random;
 
-        QList<Move*> _undo;
-        QList<Move*> _redo;
+        QList<Move*> m_undo;
+        QList<Move*> m_redo;
 
-        int undraw_timer_id;
-        int mark_x;
-        int mark_y;
-        Path connection;
-        PossibleMoves possibleMoves;
-        int *field;
-        int _x_tiles;
-        int _y_tiles;
-        int _delay;
-        int _shuffle;
+        // int undraw_timer_id; // not used?
+        int m_markX;
+        int m_markY;
+        Path m_connection;
+        PossibleMoves m_possibleMoves;
+        int *m_field;
+        int m_xTiles;
+        int m_yTiles;
+        int m_delay;
+        int m_shuffle;
 
-        bool paused;
-        time_t pause_start;
+        bool m_isPaused;
+        time_t m_pauseStart;
 
-        bool gravity_flag;
-        bool _solvable_flag;
-        bool _chineseStyle_flag;
-        bool _tilesCanSlide_flag;
-        QList<int> grav_cols;
+        bool m_gravityFlag;
+        bool m_solvableFlag;
+        bool m_chineseStyleFlag;
+        bool m_tilesCanSlideFlag;
+        QList<int> m_gravCols;
         //int grav_col_1, grav_col_2;
 
-        int highlighted_tile;
+        int m_highlightedTile;
 
-        int _connectionTimeout;
-        bool _paintConnection;
-        bool _paintPossibleMoves;
-        QPair<int, int> tileRemove1, tileRemove2;
+        int m_connectionTimeout;
+        bool m_paintConnection;
+        bool m_paintPossibleMoves;
+        QPair<int, int> m_tileRemove1, m_tileRemove2;
 };
 
 #endif // BOARD_H

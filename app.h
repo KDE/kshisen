@@ -114,15 +114,15 @@ class App : public KXmlGuiWindow
         void resetCheatMode();
 
     private:
-        QString lastPlayerName;
-        QLabel *gameTipLabel;
-        QLabel *gameTimerLabel;
-        QLabel *gameTilesLabel;
-        QLabel *gameCheatLabel;
-        Board *board;
-        QVector<HighScore> highscore;
-        KHighscore* highscoreTable;
-        bool cheat;
+        QString m_lastPlayerName;
+        QLabel *m_gameTipLabel;
+        QLabel *m_gameTimerLabel;
+        QLabel *m_gameTilesLabel;
+        QLabel *m_gameCheatLabel;
+        Board *m_board;
+        QVector<HighScore> m_highscore;
+        KHighscore* m_highscoreTable;
+        bool m_cheat;
 };
 
 #endif // APP_H

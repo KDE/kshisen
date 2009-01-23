@@ -78,14 +78,14 @@ class Settings : public QWidget, public Ui::Settings
 };
 
 App::App(QWidget *parent) : KXmlGuiWindow(parent),
-    cheat(false)
+    m_cheat(false)
 {
-    highscoreTable = new KHighscore(this);
+    m_highscoreTable = new KHighscore(this);
 
     // TODO?
     // Would it make sense long term to have a kconfig update rather then
     // havin both formats supported in the code?
-    if( highscoreTable->hasTable() ) {
+    if( m_highscoreTable->hasTable() ) {
         readHighscore();
     } else {
         readOldHighscore();
@@ -94,24 +94,24 @@ App::App(QWidget *parent) : KXmlGuiWindow(parent),
     setupStatusBar();
     setupActions();
 
-    board = new Board(this);
-    board->setObjectName( "board" );
+    m_board = new Board(this);
+    m_board->setObjectName( "board" );
 
-    setCentralWidget(board);
+    setCentralWidget(m_board);
 
     setupGUI();
 
-    connect(board, SIGNAL(changed()), this, SLOT(enableItems()));
-    connect(board, SIGNAL(tilesDontMatch()), this, SLOT(notifyTilesDontMatch()));
-    connect(board, SIGNAL(invalidMove()), this, SLOT(notifyInvalidMove()));
-    connect(board, SIGNAL(selectATile()), this, SLOT(notifySelectATile()));
-    connect(board, SIGNAL(selectAMatchingTile()), this, SLOT(notifySelectAMatchingTile()));
-    connect(board, SIGNAL(selectAMove()), this, SLOT(notifySelectAMove()));
+    connect(m_board, SIGNAL(changed()), this, SLOT(enableItems()));
+    connect(m_board, SIGNAL(tilesDontMatch()), this, SLOT(notifyTilesDontMatch()));
+    connect(m_board, SIGNAL(invalidMove()), this, SLOT(notifyInvalidMove()));
+    connect(m_board, SIGNAL(selectATile()), this, SLOT(notifySelectATile()));
+    connect(m_board, SIGNAL(selectAMatchingTile()), this, SLOT(notifySelectAMatchingTile()));
+    connect(m_board, SIGNAL(selectAMove()), this, SLOT(notifySelectAMove()));
 
     QTimer *t = new QTimer(this);
     t->start(1000);
     connect(t, SIGNAL(timeout()), this, SLOT(updateScore()));
-    connect(board, SIGNAL(endOfGame()), this, SLOT(slotEndOfGame()));
+    connect(m_board, SIGNAL(endOfGame()), this, SLOT(slotEndOfGame()));
 
     qApp->processEvents();
 
@@ -121,18 +121,18 @@ App::App(QWidget *parent) : KXmlGuiWindow(parent),
 
 void App::setupStatusBar()
 {
-    gameTipLabel= new QLabel(i18n("Select a tile"), statusBar());
-    statusBar()->addWidget(gameTipLabel, 1);
+    m_gameTipLabel= new QLabel(i18n("Select a tile"), statusBar());
+    statusBar()->addWidget(m_gameTipLabel, 1);
 
-    gameTimerLabel = new QLabel(i18n("Time: 0:00:00"), statusBar());
-    statusBar()->addWidget(gameTimerLabel);
+    m_gameTimerLabel = new QLabel(i18n("Time: 0:00:00"), statusBar());
+    statusBar()->addWidget(m_gameTimerLabel);
 
-    gameTilesLabel = new QLabel(i18n("Removed: 0/0"), statusBar());
-    statusBar()->addWidget(gameTilesLabel);
+    m_gameTilesLabel = new QLabel(i18n("Removed: 0/0"), statusBar());
+    statusBar()->addWidget(m_gameTilesLabel);
 
-    gameCheatLabel = new QLabel(i18n("Cheat mode"), statusBar());
-    statusBar()->addWidget(gameCheatLabel);
-    gameCheatLabel->hide();
+    m_gameCheatLabel = new QLabel(i18n("Cheat mode"), statusBar());
+    statusBar()->addWidget(m_gameCheatLabel);
+    m_gameCheatLabel->hide();
 }
 
 void App::setupActions()
@@ -167,27 +167,27 @@ void App::hallOfFame()
 
 void App::newGame()
 {
-    board->newGame();
+    m_board->newGame();
     resetCheatMode();
     enableItems();
 }
 
 void App::restartGame()
 {
-    board->setUpdatesEnabled(false);
-    while( board->canUndo() ) {
-        board->undo();
+    m_board->setUpdatesEnabled(false);
+    while( m_board->canUndo() ) {
+        m_board->undo();
     }
-    board->setUpdatesEnabled(true);
-    board->resetRedo();
-    board->update();
-    board->resetTimer();
+    m_board->setUpdatesEnabled(true);
+    m_board->resetRedo();
+    m_board->update();
+    m_board->resetTimer();
     enableItems();
 }
 
 void App::isSolvable()
 {
-    if( board->solvable() ) {
+    if( m_board->solvable() ) {
         KMessageBox::information(this, i18n("This game is solvable."));
     } else {
         KMessageBox::information(this, i18n("This game is NOT solvable."));
@@ -196,13 +196,13 @@ void App::isSolvable()
 
 void App::pause()
 {
-    lockMenus(board->pause());
+    lockMenus(m_board->pause());
 }
 
 void App::undo()
 {
-    if( board->canUndo() ) {
-        board->undo();
+    if( m_board->canUndo() ) {
+        m_board->undo();
         setCheatMode();
         enableItems();
     }
@@ -210,8 +210,8 @@ void App::undo()
 
 void App::redo()
 {
-    if( board->canRedo() ) {
-        board->redo();
+    if( m_board->canRedo() ) {
+        m_board->redo();
     }
     enableItems();
 }
@@ -219,9 +219,9 @@ void App::redo()
 void App::hint()
 {
 #ifdef DEBUGGING
-    board->makeHintMove();
+    m_board->makeHintMove();
 #else
-    board->showHint();
+    m_board->showHint();
     setCheatMode();
 #endif
     enableItems();
@@ -253,43 +253,43 @@ void App::lockMenus(bool lock)
 
 void App::enableItems()
 {
-    if( !board->isPaused() ) {
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Undo))->setEnabled(board->canUndo());
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Redo))->setEnabled(board->canRedo());
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Restart))->setEnabled(board->canUndo());
+    if( !m_board->isPaused() ) {
+        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Undo))->setEnabled(m_board->canUndo());
+        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Redo))->setEnabled(m_board->canRedo());
+        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Restart))->setEnabled(m_board->canUndo());
     }
 }
 
 void App::slotEndOfGame()
 {
-    if( board->tilesLeft() > 0 ) {
+    if( m_board->tilesLeft() > 0 ) {
         KMessageBox::information(this, i18n("No more moves possible!"), i18n("End of Game"));
     } else {
         // create highscore entry
         HighScore hs;
-        hs.seconds = board->getTimeForGame();
-        hs.x = board->x_tiles();
-        hs.y = board->y_tiles();
-        hs.gravity = (int)board->gravityFlag();
+        hs.seconds = m_board->getTimeForGame();
+        hs.x = m_board->x_tiles();
+        hs.y = m_board->y_tiles();
+        hs.gravity = (int)m_board->gravityFlag();
 
         // check if we made it into Top10
         bool isHighscore = false;
-        if( highscore.size() < HIGHSCORE_MAX ) {
+        if( m_highscore.size() < HIGHSCORE_MAX ) {
             isHighscore = true;
-        } else if( isBetter(hs, highscore[HIGHSCORE_MAX-1]) ) {
+        } else if( isBetter(hs, m_highscore[HIGHSCORE_MAX-1]) ) {
             isHighscore = true;
         }
 
-        if( isHighscore && !cheat ) {
+        if( isHighscore && !m_cheat ) {
             hs.name = getPlayerName();
             hs.date = time((time_t*)0);
             int rank = insertHighscore(hs);
             showHighscore(rank);
         } else {
             QString s = i18n("Congratulations! You made it in %1:%2:%3",
-                    QString().sprintf("%02d", board->getTimeForGame()/3600),
-                    QString().sprintf("%02d", (board->getTimeForGame() / 60) % 60),
-                    QString().sprintf("%02d", board->getTimeForGame() % 60));
+                    QString().sprintf("%02d", m_board->getTimeForGame()/3600),
+                    QString().sprintf("%02d", (m_board->getTimeForGame() / 60) % 60),
+                    QString().sprintf("%02d", m_board->getTimeForGame() % 60));
 
             if( isHighscore ) { // player would have been in the hisghscores if he did not cheat
                 s += '\n' + i18n("You could have been in the higscores if you did not use Undo or Hint. Try without them next time.");
@@ -300,71 +300,71 @@ void App::slotEndOfGame()
     }
 
     resetCheatMode();
-    board->newGame();
+    m_board->newGame();
 }
 
 void App::notifySelectATile()
 {
-    gameTipLabel->setText(i18n("Select a tile"));
+    m_gameTipLabel->setText(i18n("Select a tile"));
 }
 
 void App::notifySelectAMatchingTile()
 {
-    gameTipLabel->setText(i18n("Select a matching tile"));
+    m_gameTipLabel->setText(i18n("Select a matching tile"));
 }
 
 void App::notifySelectAMove()
 {
-    gameTipLabel->setText(i18n("Select the move you want by clicking on the blue line"));
+    m_gameTipLabel->setText(i18n("Select the move you want by clicking on the blue line"));
 }
 
 void App::notifyTilesDontMatch()
 {
-    gameTipLabel->setText(i18n("This tile did not match the one you selected"));
+    m_gameTipLabel->setText(i18n("This tile did not match the one you selected"));
 }
 
 void App::notifyInvalidMove()
 {
-    gameTipLabel->setText(i18n("You cannot make this move"));
+    m_gameTipLabel->setText(i18n("You cannot make this move"));
 }
 
 void App::updateScore()
 {
-    int t = board->getTimeForGame();
+    int t = m_board->getTimeForGame();
     QString s = i18n(" Your time: %1:%2:%3 %4",
             QString().sprintf("%02d", t / 3600 ),
             QString().sprintf("%02d", (t / 60) % 60 ),
             QString().sprintf("%02d", t % 60 ),
-            board->isPaused()?i18n("(Paused) "):QString());
+            m_board->isPaused()?i18n("(Paused) "):QString());
 
     //statusBar()->changeItem(s, SBI_TIME);
-    gameTimerLabel->setText(s);
+    m_gameTimerLabel->setText(s);
 
     // Number of tiles
-    int tl = (board->x_tiles() * board->y_tiles());
+    int tl = (m_board->x_tiles() * m_board->y_tiles());
     s = i18n(" Removed: %1/%2 ",
-            QString().sprintf("%d", tl - board->tilesLeft()),
+            QString().sprintf("%d", tl - m_board->tilesLeft()),
             QString().sprintf("%d", tl ));
 
     //statusBar()->changeItem(s, SBI_TILES);
-    gameTilesLabel->setText(s);
+    m_gameTilesLabel->setText(s);
 }
 
 void App::setCheatMode()
 {
     // set the cheat mode if not set
-    if( !cheat ) {
-        cheat = true;
-        gameCheatLabel->show();
+    if( !m_cheat ) {
+        m_cheat = true;
+        m_gameCheatLabel->show();
     }
 }
 
 void App::resetCheatMode()
 {
     // reset cheat mode if set
-    if( cheat ) {
-        cheat = false;
-        gameCheatLabel->hide();
+    if( m_cheat ) {
+        m_cheat = false;
+        m_gameCheatLabel->hide();
     }
 }
 
@@ -383,7 +383,7 @@ QString App::getPlayerName()
 
     KLineEdit *e = new KLineEdit( dummy );
     e->setMinimumWidth( e->fontMetrics().width( "XXXXXXXXXXXXXXXX" ) );
-    e->setText( lastPlayerName );
+    e->setText( m_lastPlayerName );
     e->setFocus();
 
     // create layout
@@ -398,12 +398,12 @@ QString App::getPlayerName()
 
     dlg.exec();
 
-    lastPlayerName = e->text();
+    m_lastPlayerName = e->text();
 
-    if( lastPlayerName.isEmpty() ) {
+    if( m_lastPlayerName.isEmpty() ) {
         return " ";
     }
-    return lastPlayerName;
+    return m_lastPlayerName;
 }
 
 int App::getScore(const HighScore &hs)
@@ -434,29 +434,29 @@ int App::insertHighscore(const HighScore &hs)
 {
     int i;
 
-    if( highscore.size() == 0 ) {
-        highscore.resize(1);
-        highscore[0] = hs;
+    if( m_highscore.size() == 0 ) {
+        m_highscore.resize(1);
+        m_highscore[0] = hs;
         writeHighscore();
         return 0;
     } else {
-        HighScore last = highscore[highscore.size() - 1];
-        if( isBetter(hs, last) || (highscore.size() < HIGHSCORE_MAX) ) {
-            if( highscore.size() == HIGHSCORE_MAX ) {
-                highscore[HIGHSCORE_MAX - 1] = hs;
+        HighScore last = m_highscore[m_highscore.size() - 1];
+        if( isBetter(hs, last) || (m_highscore.size() < HIGHSCORE_MAX) ) {
+            if( m_highscore.size() == HIGHSCORE_MAX ) {
+                m_highscore[HIGHSCORE_MAX - 1] = hs;
             } else {
-                highscore.resize(highscore.size()+1);
-                highscore[highscore.size() - 1] = hs;
+                m_highscore.resize(m_highscore.size()+1);
+                m_highscore[m_highscore.size() - 1] = hs;
             }
 
             // sort in new entry
-            int bestsofar = highscore.size() - 1;
-            for( i = highscore.size() - 1; i > 0; i-- ) {
-                if( isBetter(highscore[i], highscore[i-1]) ) {
+            int bestsofar = m_highscore.size() - 1;
+            for( i = m_highscore.size() - 1; i > 0; i-- ) {
+                if( isBetter(m_highscore[i], m_highscore[i-1]) ) {
                     // swap entries
-                    HighScore temp = highscore[i-1];
-                    highscore[i-1] = highscore[i];
-                    highscore[i] = temp;
+                    HighScore temp = m_highscore[i-1];
+                    m_highscore[i-1] = m_highscore[i];
+                    m_highscore[i] = temp;
                     bestsofar = i - 1;
                 }
             }
@@ -471,17 +471,17 @@ int App::insertHighscore(const HighScore &hs)
 void App::readHighscore()
 {
     QStringList hi_x, hi_y, hi_sec, hi_date, hi_grav, hi_name;
-    hi_x = highscoreTable->readList("x", HIGHSCORE_MAX);
-    hi_y = highscoreTable->readList("y", HIGHSCORE_MAX);
-    hi_sec = highscoreTable->readList("seconds", HIGHSCORE_MAX);
-    hi_date = highscoreTable->readList("date", HIGHSCORE_MAX);
-    hi_grav = highscoreTable->readList("gravity", HIGHSCORE_MAX);
-    hi_name = highscoreTable->readList("name", HIGHSCORE_MAX);
+    hi_x = m_highscoreTable->readList("x", HIGHSCORE_MAX);
+    hi_y = m_highscoreTable->readList("y", HIGHSCORE_MAX);
+    hi_sec = m_highscoreTable->readList("seconds", HIGHSCORE_MAX);
+    hi_date = m_highscoreTable->readList("date", HIGHSCORE_MAX);
+    hi_grav = m_highscoreTable->readList("gravity", HIGHSCORE_MAX);
+    hi_name = m_highscoreTable->readList("name", HIGHSCORE_MAX);
 
-    highscore.resize(0);
+    m_highscore.resize(0);
 
     for( int i = 0; i < hi_x.count(); i++ ) {
-        highscore.resize(i+1);
+        m_highscore.resize(i+1);
 
         HighScore hs;
 
@@ -493,7 +493,7 @@ void App::readHighscore()
         hs.gravity = hi_grav[i].toInt();
         hs.name = hi_name[i];
 
-        highscore[i] = hs;
+        m_highscore[i] = hs;
     }
 }
 
@@ -504,7 +504,7 @@ void App::readOldHighscore()
     QString s, e;
     KSharedConfig::Ptr conf = KGlobal::config();
 
-    highscore.resize(0);
+    m_highscore.resize(0);
     i = 0;
     bool eol = false;
     KConfigGroup group = conf->group("Hall of Fame");
@@ -512,7 +512,7 @@ void App::readOldHighscore()
         s.sprintf("Highscore_%d", i);
         if( group.hasKey(s) ) {
             e = group.readEntry(s,QString());
-            highscore.resize(i+1);
+            m_highscore.resize(i+1);
 
             HighScore hs;
 
@@ -531,7 +531,7 @@ void App::readOldHighscore()
                 hs.name = e.at(5);
             }
 
-            highscore[i] = hs;
+            m_highscore[i] = hs;
         } else {
             eol = true;
         }
@@ -539,15 +539,15 @@ void App::readOldHighscore()
     }
 
     //	// freshly installed, add my own highscore
-    //	if(highscore.size() == 0)
+    //	if(m_highscore.size() == 0)
     //	{
     //		HighScore hs;
     //		hs.x = 28;
     //		hs.y = 16;
     //		hs.seconds = 367;
     //		hs.name = "Mario";
-    //		highscore.resize(1);
-    //		highscore[0] = hs;
+    //		m_highscore.resize(1);
+    //		m_highscore[0] = hs;
     //	}
 
     // write in new KHighscore format
@@ -560,8 +560,8 @@ void App::writeHighscore()
 {
     int i;
     QStringList hi_x, hi_y, hi_sec, hi_date, hi_grav, hi_name;
-    for( i = 0; i < (int)highscore.size(); i++ ) {
-        HighScore hs = highscore[i];
+    for( i = 0; i < (int)m_highscore.size(); i++ ) {
+        HighScore hs = m_highscore[i];
         hi_x.append(QString::number(hs.x));
         hi_y.append(QString::number(hs.y));
         hi_sec.append(QString::number(hs.seconds));
@@ -569,13 +569,13 @@ void App::writeHighscore()
         hi_grav.append(QString::number(hs.gravity));
         hi_name.append(hs.name);
     }
-    highscoreTable->writeList("x", hi_x);
-    highscoreTable->writeList("y", hi_y);
-    highscoreTable->writeList("seconds", hi_sec);
-    highscoreTable->writeList("date", hi_date);
-    highscoreTable->writeList("gravity", hi_grav);
-    highscoreTable->writeList("name", hi_name);
-    highscoreTable->writeAndUnlock();
+    m_highscoreTable->writeList("x", hi_x);
+    m_highscoreTable->writeList("y", hi_y);
+    m_highscoreTable->writeList("seconds", hi_sec);
+    m_highscoreTable->writeList("date", hi_date);
+    m_highscoreTable->writeList("gravity", hi_grav);
+    m_highscoreTable->writeList("name", hi_name);
+    m_highscoreTable->writeAndUnlock();
 }
 
 void App::showHighscore(int focusitem)
@@ -634,8 +634,8 @@ void App::showHighscore(int focusitem)
 
     for( i = 0; i < 10; i++ ) {
         HighScore hs;
-        if( i < highscore.size() ) {
-            hs = highscore[i];
+        if( i < m_highscore.size() ) {
+            hs = m_highscore[i];
         }
 
         // insert rank
@@ -643,7 +643,7 @@ void App::showHighscore(int focusitem)
         e[i][0] = new QLabel(s, dummy);
 
         // insert name
-        if( i < highscore.size() ) {
+        if( i < m_highscore.size() ) {
             e[i][1] = new QLabel(hs.name, dummy);
         } else {
             e[i][1] = new QLabel("", dummy);
@@ -651,7 +651,7 @@ void App::showHighscore(int focusitem)
 
         // insert time
         QTime ti(0,0,0);
-        if( i < highscore.size() ) {
+        if( i < m_highscore.size() ) {
             ti = ti.addSecs(hs.seconds);
             s.sprintf("%02d:%02d:%02d", ti.hour(), ti.minute(), ti.second());
             e[i][2] = new QLabel(s, dummy);
@@ -660,7 +660,7 @@ void App::showHighscore(int focusitem)
         }
 
         // insert size
-        if( i < highscore.size() ) {
+        if( i < m_highscore.size() ) {
             s.sprintf("%d x %d", hs.x, hs.y);
         } else {
             s = "";
@@ -669,7 +669,7 @@ void App::showHighscore(int focusitem)
         e[i][3] = new QLabel(s, dummy);
 
         // insert score
-        if( i < highscore.size() ) {
+        if( i < m_highscore.size() ) {
             s = QString("%1 %2")
                 .arg(getScore(hs))
                 .arg(hs.gravity ? i18n("(gravity)") : QString(""));
@@ -716,7 +716,7 @@ void App::showSettings(){
     dialog->addTilesetPage();
     dialog->addBackgroundPage();
     dialog->setHelp(QString(),"kshisen");
-    connect(dialog, SIGNAL(settingsChanged(const QString &)), board, SLOT(loadSettings()));
+    connect(dialog, SIGNAL(settingsChanged(const QString &)), m_board, SLOT(loadSettings()));
     dialog->show();
 }
 
