@@ -244,8 +244,8 @@ bool Board::gravity(int col, bool update)
         int rptr = y_tiles() - 1, wptr = y_tiles() - 1;
         while (rptr >= 0) {
             if (getField(col, wptr) != EMPTY) {
-                rptr--;
-                wptr--;
+                --rptr;
+                --wptr;
             } else {
                 if (getField(col, rptr) != EMPTY) {
                     setField(col, wptr, getField(col, rptr));
@@ -255,10 +255,10 @@ bool Board::gravity(int col, bool update)
                         updateField(col, rptr);
                         updateField(col, wptr);
                     }
-                    wptr--;
-                    rptr--;
+                    --wptr;
+                    --rptr;
                 } else {
-                    rptr--;
+                    --rptr;
                 }
             }
         }
@@ -525,7 +525,7 @@ void Board::newGame()
             // truncate list
             tiles[r1] = tiles[num_tiles-1];
             pos[r2] = pos[num_tiles-1];
-            num_tiles--;
+            --num_tiles;
 
             // put this tile on the new position
             m_field[apos] = tile;
@@ -533,7 +533,7 @@ void Board::newGame()
 
         // remember field
         memcpy(oldfield, m_field, fsize);
-        max_attempts--;
+        --max_attempts;
     }
     // debug, tell if make solvable failed
     if (max_attempts == 0) {
@@ -726,7 +726,7 @@ void Board::reverseSlide(int x, int y, int s_x1, int s_y1, int s_x2, int s_y2)
                 updateField(x, i + dy);
             }
         } else {
-            for (int i = y - 1; i >= s_y2; i--) {
+            for (int i = y - 1; i >= s_y2; --i) {
                 current_tile = getField(x, i);
                 if (current_tile == EMPTY) {
                     continue;
@@ -750,7 +750,7 @@ void Board::reverseSlide(int x, int y, int s_x1, int s_y1, int s_x2, int s_y2)
                 updateField(i + dx, y);
             }
         } else {
-            for (int i = x - 1; i >= s_x2; i--) {
+            for (int i = x - 1; i >= s_x2; --i) {
                 current_tile = getField(i, y);
                 if (current_tile == EMPTY) {
                     continue;
@@ -1040,7 +1040,7 @@ bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path& p) const
             int start_free = -1;
             int end_free = -1;
             // find first tile empty
-            for (int i = y1 - 1; i >= 0; i--) {
+            for (int i = y1 - 1; i >= 0; --i) {
                 if (getField(x1, i) == EMPTY) {
                     start_free = i;
                     break;
@@ -1053,7 +1053,7 @@ bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path& p) const
                 return false;
             }
             // find last tile empty
-            for (int i = start_free - 1; i >= 0; i--) {
+            for (int i = start_free - 1; i >= 0; --i) {
                 if (getField(x1, i) != EMPTY) {
                     end_free = i;
                     break;
@@ -1122,7 +1122,7 @@ bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path& p) const
             int start_free = -1;
             int end_free = -1;
             // find first tile empty
-            for (int i = x1 - 1; i >= 0; i--) {
+            for (int i = x1 - 1; i >= 0; --i) {
                 if (getField(i, y1) == EMPTY) {
                     start_free = i;
                     break;
@@ -1135,7 +1135,7 @@ bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path& p) const
                 return false;
             }
             // find last tile empty
-            for (int i = start_free - 1; i >= 0; i--) {
+            for (int i = start_free - 1; i >= 0; --i) {
                 if (getField(i, y1) != EMPTY) {
                     end_free = i;
                     break;

@@ -451,7 +451,7 @@ int App::insertHighscore(const HighScore &hs)
 
             // sort in new entry
             int bestsofar = m_highscore.size() - 1;
-            for (i = m_highscore.size() - 1; i > 0; i--) {
+            for (i = m_highscore.size() - 1; i > 0; --i) {
                 if (isBetter(m_highscore[i], m_highscore[i-1])) {
                     // swap entries
                     HighScore temp = m_highscore[i-1];
