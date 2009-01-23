@@ -480,7 +480,7 @@ void App::readHighscore()
 
     m_highscore.resize(0);
 
-    for (int i = 0; i < hi_x.count(); i++) {
+    for (int i = 0; i < hi_x.count(); ++i) {
         m_highscore.resize(i + 1);
 
         HighScore hs;
@@ -535,7 +535,7 @@ void App::readOldHighscore()
         } else {
             eol = true;
         }
-        i++;
+        ++i;
     }
 
     //  // freshly installed, add my own highscore
@@ -560,7 +560,7 @@ void App::writeHighscore()
 {
     int i;
     QStringList hi_x, hi_y, hi_sec, hi_date, hi_grav, hi_name;
-    for (i = 0; i < (int)m_highscore.size(); i++) {
+    for (i = 0; i < (int)m_highscore.size(); ++i) {
         HighScore hs = m_highscore[i];
         hi_x.append(QString::number(hs.x));
         hi_y.append(QString::number(hs.y));
@@ -632,7 +632,7 @@ void App::showHighscore(int focusitem)
     QLabel *e[10][5];
     signed i, j;
 
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 10; ++i) {
         HighScore hs;
         if (i < m_highscore.size()) {
             hs = m_highscore[i];
@@ -684,8 +684,8 @@ void App::showHighscore(int focusitem)
     f = font();
     f.setBold(true);
     f.setItalic(true);
-    for (i = 0; i < 10; i++) {
-        for (j = 0; j < 5; j++) {
+    for (i = 0; i < 10; ++i) {
+        for (j = 0; j < 5; ++j) {
             if ((int)i == focusitem) {
                 e[i][j]->setFont(f);
             }
