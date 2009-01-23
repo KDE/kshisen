@@ -40,8 +40,8 @@
 
 // KMahjonggLib integration and SVG support for KDE 4: Mauricio Piacentini <mauricio@tabuleiro.com>
 
-#ifndef __BOARD__H__
-#define __BOARD__H__
+#ifndef BOARD_H
+#define BOARD_H
 
 // Should this get the whole HAVE_SYS_TIME_H TIME_WITH_SYS_TIME treatment?
 #include <time.h>
@@ -289,4 +289,4 @@ class Board : public QWidget
         QPair<int, int> tileRemove1, tileRemove2;
 };
 
-#endif
+#endif // BOARD_H

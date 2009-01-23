@@ -38,8 +38,8 @@
  */
 
 
-#ifndef __APP__H__
-#define __APP__H__
+#ifndef APP_H
+#define APP_H
 
 // Should this get the whole HAVE_SYS_TIME_H TIME_WITH_SYS_TIME treatment?
 #include <time.h>
@@ -125,4 +125,4 @@ class App : public KXmlGuiWindow
         bool cheat;
 };
 
-#endif
+#endif // APP_H
