@@ -229,7 +229,7 @@ void Board::gravity(bool update)
     if (!m_gravityFlag) {
         return;
     }
-    for (int i = 0;i < x_tiles();i++) {
+    for (int i = 0; i < x_tiles(); i++) {
         if (gravity(i, update)) {
             m_gravCols.append(i);
         }
@@ -859,7 +859,7 @@ void Board::performMove(PossibleMove& p)
     if (canUndo()) {
         undo();
         // DEBUG undo, compare to saved board state
-        for (int i = 0;i < x_tiles() * y_tiles();i++) {
+        for (int i = 0; i < x_tiles() * y_tiles(); i++) {
             if (saved1[i] != m_field[i]) {
                 kDebug() << "[DEBUG Undo 1], tile (" << i << ") was" << saved1[i] << "before more, it is" << m_field[i] << "after undo.";
                 errorfound = true;
@@ -872,7 +872,7 @@ void Board::performMove(PossibleMove& p)
             redo();
             undrawConnection();
             // DEBUG undo, compare to saved board2 state
-            for (int i = 0;i < x_tiles() * y_tiles();i++) {
+            for (int i = 0; i < x_tiles() * y_tiles(); i++) {
                 if (saved2[i] != m_field[i]) {
                     kDebug() << "[DEBUG Undo 2], tile (" << i << ") was" << saved2[i] << "after more, it is" << m_field[i] << "after redo.";
                     errorfound = true;
