@@ -1286,7 +1286,7 @@ int Board::findSimplePath(int x1, int y1, int x2, int y2, PossibleMoves& p) cons
         }
     }
 
-    // Even is tiles can slide, a path could still be done without sliding
+    // Even if tiles can slide, a path could still be done without sliding
 
     // Find path of 2 segments (route A)
     if (getField(x2, y1) == EMPTY && canMakePath(x1, y1, x2, y1) &&
