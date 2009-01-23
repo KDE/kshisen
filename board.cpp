@@ -70,18 +70,18 @@ bool PossibleMove::isInPath(int x, int y) const
     QList<Position>::const_iterator j;
     // a path has at least 2 positions
     j = path.begin();
-    int path_x = (*j).x;
-    int path_y = (*j).y;
+    int path_x = j->x;
+    int path_y = j->y;
     j++;
     for (; j != path.end(); ++j) {
         // to fix
-        if ((x == (*j).x && ((y > path_y && y <= (*j).y) || (y < path_y && y >= (*j).y)))
-                || (y == (*j).y && ((x > path_x && x <= (*j).x) || (x < path_x && x >= (*j).x)))) {
-            kDebug() << "isInPath:" << x << "," << y << "found in path" << path_x << "," << path_y << " => " << (*j).x << "," << (*j).y;
+        if ((x == j->x && ((y > path_y && y <= j->y) || (y < path_y && y >= j->y)))
+                || (y == j->y && ((x > path_x && x <= j->x) || (x < path_x && x >= j->x)))) {
+            kDebug() << "isInPath:" << x << "," << y << "found in path" << path_x << "," << path_y << " => " << j->x << "," << j->y;
             return true;
         }
-        path_x = (*j).x;
-        path_y = (*j).y;
+        path_x = j->x;
+        path_y = j->y;
     }
     return false;
 }
@@ -671,7 +671,7 @@ void Board::paintEvent(QPaintEvent *e)
         Path::const_iterator pt2 = pt1;
         ++pt2;
         while (pt2 != pathEnd) {
-            p.drawLine(midCoord((*pt1).x, (*pt1).y), midCoord((*pt2).x, (*pt2).y));
+            p.drawLine(midCoord(pt1->x, pt1->y), midCoord(pt2->x, pt2->y));
             ++pt1;
             ++pt2;
         }
@@ -684,12 +684,12 @@ void Board::paintEvent(QPaintEvent *e)
         QList<PossibleMove>::iterator i;
         for (i = m_possibleMoves.begin(); i != m_possibleMoves.end(); ++i) {
             // Path.size() will always be >= 2
-            Path::const_iterator pathEnd = (*i).path.constEnd();
-            Path::const_iterator pt1 = (*i).path.constBegin();
+            Path::const_iterator pathEnd = i->path.constEnd();
+            Path::const_iterator pt1 = i->path.constBegin();
             Path::const_iterator pt2 = pt1;
             ++pt2;
             while (pt2 != pathEnd) {
-                p.drawLine(midCoord((*pt1).x, (*pt1).y), midCoord((*pt2).x, (*pt2).y));
+                p.drawLine(midCoord(pt1->x, pt1->y), midCoord(pt2->x, pt2->y));
                 ++pt1;
                 ++pt2;
             }
@@ -934,7 +934,7 @@ void Board::marked(int x, int y)
         QList<PossibleMove>::iterator i;
 
         for (i = m_possibleMoves.begin(); i != m_possibleMoves.end(); ++i) {
-            if ((*i).isInPath(x, y)) {
+            if (i->isInPath(x, y)) {
                 performMove(*i);
                 emit selectATile();
                 return;
@@ -961,8 +961,8 @@ void Board::marked(int x, int y)
             QList<PossibleMove>::iterator i;
             int withSlide = 0;
             for (i = m_possibleMoves.begin(); i != m_possibleMoves.end(); ++i) {
-                (*i).Debug();
-                if ((*i).hasSlide) {
+                i->Debug();
+                if (i->hasSlide) {
                     withSlide++;
                 }
             }
