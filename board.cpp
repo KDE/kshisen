@@ -1408,7 +1408,7 @@ void Board::undrawConnection()
     PossibleMoves dummyPossibleMoves;
     // game is over?
     if (!getHint_I(dummyPossibleMoves)) {
-        m_timeForGame = (int)difftime(time((time_t)0), m_startTime);
+        m_timeForGame = static_cast<int>(difftime(time(static_cast<time_t>(0)), m_startTime));
         emit endOfGame();
     }
 }
@@ -1878,7 +1878,7 @@ int Board::tilesLeft() const
 
 int Board::getCurrentTime() const
 {
-    return (int)difftime(time((time_t *)0), m_startTime);
+    return static_cast<int>(difftime(time(static_cast<time_t *>(0)), m_startTime));
 }
 
 int Board::getTimeForGame() const
@@ -1887,9 +1887,9 @@ int Board::getTimeForGame() const
         return m_timeForGame;
     } else {
         if (m_isPaused) {
-            return (int)difftime(m_pauseStart, m_startTime);
+            return static_cast<int>(difftime(m_pauseStart, m_startTime));
         } else {
-            return (int)difftime(time((time_t *)0), m_startTime);
+            return static_cast<int>(difftime(time(static_cast<time_t *>(0)), m_startTime));
         }
     }
 }
@@ -1981,9 +1981,9 @@ bool Board::pause()
 {
     m_isPaused = !m_isPaused;
     if (m_isPaused) {
-        m_pauseStart = time((time_t *)0);
+        m_pauseStart = time(static_cast<time_t *>(0));
     } else {
-        m_startTime += (time_t)difftime(time((time_t *)0), m_pauseStart);
+        m_startTime += static_cast<time_t>(difftime(time(static_cast<time_t *>(0)), m_pauseStart));
     }
     update();
 
@@ -2001,7 +2001,7 @@ QSize Board::sizeHint() const
 
 void Board::resetTimer()
 {
-    m_startTime = time((time_t *)0);
+    m_startTime = time(static_cast<time_t *>(0));
 }
 
 void Board::resetUndo()

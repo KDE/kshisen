@@ -409,15 +409,15 @@ QString App::getPlayerName()
 int App::getScore(const HighScore &hs)
 {
     double ntiles = hs.x * hs.y;
-    double tilespersec = ntiles / (double)hs.seconds;
+    double tilespersec = ntiles / static_cast<double>(hs.seconds);
 
-    double sizebonus = std::sqrt(ntiles / (double)(14.0 * 6.0));
+    double sizebonus = std::sqrt(ntiles / static_cast<double>(14.0 * 6.0));
     double points = tilespersec / 0.14 * 100.0;
 
     if (hs.gravity) {
-        return (int)(2.0 * points * sizebonus);
+        return static_cast<int>(2.0 * points * sizebonus);
     } else {
-        return (int)(points * sizebonus);
+        return static_cast<int>(points * sizebonus);
     }
 }
 
@@ -508,7 +508,7 @@ void App::readOldHighscore()
     i = 0;
     bool eol = false;
     KConfigGroup group = conf->group("Hall of Fame");
-    while ((i < (int)HIGHSCORE_MAX) && !eol) {
+    while ((i < static_cast<int>(HIGHSCORE_MAX)) && !eol) {
         s.sprintf("Highscore_%d", i);
         if (group.hasKey(s)) {
             e = group.readEntry(s, QString());
@@ -560,7 +560,7 @@ void App::writeHighscore()
 {
     int i;
     QStringList hi_x, hi_y, hi_sec, hi_date, hi_grav, hi_name;
-    for (i = 0; i < (int)m_highscore.size(); ++i) {
+    for (i = 0; i < static_cast<int>(m_highscore.size()); ++i) {
         HighScore hs = m_highscore[i];
         hi_x.append(QString::number(hs.x));
         hi_y.append(QString::number(hs.y));
@@ -686,7 +686,7 @@ void App::showHighscore(int focusitem)
     f.setItalic(true);
     for (i = 0; i < 10; ++i) {
         for (j = 0; j < 5; ++j) {
-            if ((int)i == focusitem) {
+            if (static_cast<int>(i) == focusitem) {
                 e[i][j]->setFont(f);
             }
             table->addWidget(e[i][j], i + 2, j, Qt::AlignCenter);
