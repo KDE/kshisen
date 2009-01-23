@@ -2060,7 +2060,7 @@ bool Board::solvable(bool norestore)
         delete [] oldfield;
     }
 
-    return (bool)(left == 0);
+    return left == 0;
 }
 
 bool Board::getSolvableFlag() const
