@@ -52,77 +52,77 @@ class QLabel;
 
 struct HighScore
 {
-	QString name;
-	int seconds;
-	int x, y;
-	time_t date;
-	int gravity;
+    QString name;
+    int seconds;
+    int x, y;
+    time_t date;
+    int gravity;
 };
 
 const signed HIGHSCORE_MAX = 10;
 
 class App : public KXmlGuiWindow
 {
-	Q_OBJECT
+    Q_OBJECT
 
-public:
-	explicit App(QWidget *parent = 0);
+    public:
+        explicit App(QWidget *parent = 0);
 
-private slots:
-	void slotEndOfGame();
-	void enableItems();
-	void updateScore();
-	void showSettings();
+    private slots:
+        void slotEndOfGame();
+        void enableItems();
+        void updateScore();
+        void showSettings();
 
-	void notifyTilesDontMatch();
-	void notifyInvalidMove();
-	void notifySelectATile();
-	void notifySelectAMatchingTile();
-	void notifySelectAMove();
+        void notifyTilesDontMatch();
+        void notifyInvalidMove();
+        void notifySelectATile();
+        void notifySelectAMatchingTile();
+        void notifySelectAMove();
 
-	void newGame();
-	void restartGame();
-	void isSolvable();
-	void pause();
-	void undo();
-	void redo();
-	void hint();
-	void hallOfFame();
-	void keyBindings();
+        void newGame();
+        void restartGame();
+        void isSolvable();
+        void pause();
+        void undo();
+        void redo();
+        void hint();
+        void hallOfFame();
+        void keyBindings();
 
-private:
-	void lockMenus(bool);
-	QString getPlayerName();
+    private:
+        void lockMenus(bool);
+        QString getPlayerName();
 
-	/**
-	 * Read the old (pre- @ref KHighscore) highscore table.
-	 *
-	 * This reads the config file first, then saves it in the new format and
-	 * re-reads it again as a KHighscore table.
-	 **/
-	void readOldHighscore();
-	void readHighscore();
-	void writeHighscore();
-	int insertHighscore(const HighScore &);
-	int getScore(const HighScore &);
-	bool isBetter(const HighScore &, const HighScore &);
-	void showHighscore(int focusitem = -1);
+        /**
+         * Read the old (pre- @ref KHighscore) highscore table.
+         *
+         * This reads the config file first, then saves it in the new format and
+         * re-reads it again as a KHighscore table.
+         **/
+        void readOldHighscore();
+        void readHighscore();
+        void writeHighscore();
+        int insertHighscore(const HighScore &);
+        int getScore(const HighScore &);
+        bool isBetter(const HighScore &, const HighScore &);
+        void showHighscore(int focusitem = -1);
 
-	void setupStatusBar();
-	void setupActions();
-	void setCheatMode();
-	void resetCheatMode();
+        void setupStatusBar();
+        void setupActions();
+        void setCheatMode();
+        void resetCheatMode();
 
-private:
-	QString lastPlayerName;
-	QLabel *gameTipLabel;
-	QLabel *gameTimerLabel;
-	QLabel *gameTilesLabel;
-	QLabel *gameCheatLabel;
-	Board *board;
-	QVector<HighScore> highscore;
-	KHighscore* highscoreTable;
-	bool cheat;
+    private:
+        QString lastPlayerName;
+        QLabel *gameTipLabel;
+        QLabel *gameTimerLabel;
+        QLabel *gameTilesLabel;
+        QLabel *gameCheatLabel;
+        Board *board;
+        QVector<HighScore> highscore;
+        KHighscore* highscoreTable;
+        bool cheat;
 };
 
 #endif
