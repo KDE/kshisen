@@ -107,7 +107,7 @@ class PossibleMove
 };
 
 /*
- * A list of possible moves the user have to chose between
+ * A list of possible moves the user have to choose between
  */
 typedef QList<PossibleMove> PossibleMoves;
 
