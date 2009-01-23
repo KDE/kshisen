@@ -1816,8 +1816,8 @@ bool Board::getHint_I(PossibleMoves& p) const
 {
     //dumpBoard();
     short done[Board::nTiles];
-    for (short index = 0; index < Board::nTiles; ++index) {
-        done[index] = 0;
+    for (short i = 0; i < Board::nTiles; ++i) {
+        done[i] = 0;
     }
 
     for (int x = 0; x < x_tiles(); ++x) {
@@ -1848,10 +1848,10 @@ bool Board::getHint_I(PossibleMoves& p) const
     return false;
 }
 
-void Board::setShuffle(int newvalue)
+void Board::setShuffle(int newValue)
 {
-    if (newvalue != m_shuffle) {
-        m_shuffle = newvalue;
+    if (newValue != m_shuffle) {
+        m_shuffle = newValue;
         newGame();
     }
 }
@@ -1894,11 +1894,11 @@ int Board::getTimeForGame() const
     }
 }
 
-bool Board::solvable(bool norestore)
+bool Board::solvable(bool noRestore)
 {
     int *oldfield = 0;
 
-    if (!norestore) {
+    if (!noRestore) {
         oldfield = new int [x_tiles() * y_tiles()];
         memcpy(oldfield, m_field, x_tiles() * y_tiles() * sizeof(int));
     }
@@ -1920,7 +1920,7 @@ bool Board::solvable(bool norestore)
 
     int left = tilesLeft();
 
-    if (!norestore) {
+    if (!noRestore) {
         memcpy(m_field, oldfield, x_tiles() * y_tiles() * sizeof(int));
         delete [] oldfield;
     }
@@ -1933,13 +1933,13 @@ bool Board::getSolvableFlag() const
     return m_solvableFlag;
 }
 
-void Board::setSolvableFlag(bool value)
+void Board::setSolvableFlag(bool b)
 {
-    if (value && !m_solvableFlag && !solvable()) {
-        m_solvableFlag = value;
+    if (b && !m_solvableFlag && !solvable()) {
+        m_solvableFlag = b;
         newGame();
     } else {
-        m_solvableFlag = value;
+        m_solvableFlag = b;
     }
 }
 
