@@ -71,9 +71,9 @@ typedef QList<Position> Path;
 
 /*
  * A PossibleMove is a connection Path between two tiles
- * and optionnally a slide Path.
+ * and optionally a slide Path.
  * Sometimes for a couple of tiles to match there may be multiple
- * possible moves for the user to chose between.
+ * possible moves for the player to choose between.
  */
 class PossibleMove
 {
@@ -104,7 +104,7 @@ public:
 };
 
 /*
- * A list of possible moves the user have to choose between
+ * A list of possible moves the player has to choose between
  */
 typedef QList<PossibleMove> PossibleMoves;
 
@@ -155,7 +155,7 @@ public:
 
     void setSize(int x, int y);
     void resizeBoard();
-    QSize unscaledSize() ;
+    QSize unscaledSize();
     void newGame();
     void setShuffle(int);
     int  getShuffle() const;
@@ -174,7 +174,7 @@ public:
     int getCurrentTime() const;
     int getTimeForGame() const;
 
-    bool solvable(bool norestore = false);
+    bool solvable(bool noRestore = false);
 
     bool getSolvableFlag() const;
     void setSolvableFlag(bool);
