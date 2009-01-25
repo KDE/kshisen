@@ -268,6 +268,9 @@ bool Board::gravity(int col, bool update)
 
 void Board::mousePressEvent(QMouseEvent *e)
 {
+    if(m_isPaused) {
+        return;
+    }
     // Calculate field position
     int pos_x = (e->pos().x() - xOffset()) / (m_tiles.qWidth() * 2);
     int pos_y = (e->pos().y() - yOffset()) / (m_tiles.qHeight() * 2);
