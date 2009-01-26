@@ -1,3 +1,48 @@
+Changes in 1.6.2:
+ * add window title to Player name dialog
+ * fix typo in cheat notification dialog
+ * fix game to be playable in pause mode
+
+ * some changes in coding style and naming schema to be more close to the
+   kdelibs style
+
+Changes in 1.6.1:
+ * Remove "prefer unscaled tiles" option, as it is meaningless with SVG
+   tilesets.
+ * Use shared KMahjonggBackground class from libkmahjongg.
+ * Fix crash when repeatedly requesting hints. (bug:139070)
+ * KConfigGroup API porting
+ * KShisen now has configurable backgrounds and tilesets, shared with
+   KMahjongg!
+ * Implements the chinese style match for flowers and seasons, consistent
+   with Kmahjongg and the more traditional game rules.
+ * new KHighScore API
+ * started implemented the "tiles can slide" rule
+ * The user is now asked how to perform a move if there are multiple ways for
+   the requested tiles.
+ * Change label for the settings for the Tile can slide rule.
+ * Little rewrite of the Gravity code.
+ * Notify the user when he made at time good enough to be recorded in the
+   highscores if he didn't cheated using Hint or Undo. (bug:139915)
+ * Added some user notice and feedback in the status bar (bug:121808)
+ * Fixed statusbar layout issue by switching from insertItem to addWidget
+ * The game now restarts on changing the options Chinese Style
+   and if started playing on change of the Tiles Can Slide option.
+ * Remove frames around status bar items.
+ * Add 'New' button to toolbar
+ * showHighscore(): fixed wrong usage of KDialog
+ * getPlayerName(): fixed wrong usage of KDialog
+ * Conditionally use update instead of repaint when drawing the board. This
+   speeds up substantially the tile selection with old hardware.
+ * Use games-config-* icon for configuration pane
+ * Added sounds to some of the games. More sounds to come.
+ * "Game -> Restart Game" resets the game timer now (bug:144476)
+ * also clear the redo history when resetting the current game
+
+
+Many changes due to KDE3 -> KDE4 porting efforts went into 1.6.0
+
+
 2004-05-14  Benjamin Meyer (v.1.5.1)
   * Moved settings into a KConfigXT dialog.
 
