@@ -296,7 +296,7 @@ void App::slotEndOfGame()
 
 			if(isHighscore) // player would have been in the hisghscores if he did not cheat
 			{
-				s += '\n' + i18n("You could have been in the higscores if you did not use Undo or Hint. Try without them next time.");
+				s += '\n' + i18n("You could have been in the highscores if you did not use Undo or Hint. Try without them next time.");
 			}
 
 			KMessageBox::information(this, s, i18n("End of Game"));
