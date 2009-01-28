@@ -273,7 +273,7 @@ bool Board::gravity(int col, bool update)
 
 void Board::mousePressEvent(QMouseEvent *e)
 {
-	if(m_isPaused) {
+	if (paused) {
 		return;
 	}
 	// Calculate field position
