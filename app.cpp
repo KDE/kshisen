@@ -82,8 +82,8 @@ App::App(QWidget *parent) : KXmlGuiWindow(parent),
     m_highscoreTable = new KHighscore(this);
 
     // TODO?
-    // Would it make sense long term to have a kconfig update rather then
-    // havin both formats supported in the code?
+    // Would it make sense long term to have a kconfig update rather than
+    // having both formats supported in the code?
     if (m_highscoreTable->hasTable()) {
         readHighscore();
     } else {
