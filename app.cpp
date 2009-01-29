@@ -267,8 +267,8 @@ void App::slotEndOfGame()
         // create highscore entry
         HighScore hs;
         hs.seconds = m_board->getTimeForGame();
-        hs.x = m_board->x_tiles();
-        hs.y = m_board->y_tiles();
+        hs.x = m_board->xTiles();
+        hs.y = m_board->yTiles();
         hs.gravity = (int)m_board->gravityFlag();
 
         // check if we made it into Top10
@@ -340,7 +340,7 @@ void App::updateScore()
     m_gameTimerLabel->setText(s);
 
     // Number of tiles
-    int tl = (m_board->x_tiles() * m_board->y_tiles());
+    int tl = (m_board->xTiles() * m_board->yTiles());
     s = i18n(" Removed: %1/%2 ",
              QString().sprintf("%d", tl - m_board->tilesLeft()),
              QString().sprintf("%d", tl));

@@ -183,8 +183,8 @@ public:
     void setChineseStyleFlag(bool);
     void setTilesCanSlideFlag(bool);
 
-    int x_tiles() const;
-    int y_tiles() const;
+    int xTiles() const;
+    int yTiles() const;
 
     bool isPaused() const {
         return m_isPaused;
