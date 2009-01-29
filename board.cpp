@@ -342,13 +342,13 @@ void Board::mousePressEvent(QMouseEvent *e)
 
 // The board is centred inside the main playing area. xOffset/yOffset provide
 // the coordinates of the top-left corner of the board.
-int Board::xOffset()
+int Board::xOffset() const
 {
     int tw = m_tiles.qWidth() * 2;
     return (width() - (tw * xTiles())) / 2;
 }
 
-int Board::yOffset()
+int Board::yOffset() const
 {
     int th = m_tiles.qHeight() * 2;
     return (height() - (th * yTiles())) / 2;

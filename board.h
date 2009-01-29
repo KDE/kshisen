@@ -220,8 +220,8 @@ protected:
 private: // functions
     void initBoard();
 
-    int xOffset() ;
-    int yOffset() ;
+    int xOffset() const;
+    int yOffset() const;
 
     int lineWidth();
 
