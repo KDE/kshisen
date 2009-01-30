@@ -192,6 +192,8 @@ public:
     void resetTimer();
     void resetUndo();
     void resetRedo();
+    void gameOver();
+    bool isOver() const;
 
 signals:
     void markMatched();
@@ -271,6 +273,7 @@ private:
     int m_shuffle;
 
     bool m_isPaused;
+    bool m_isOver;
     time_t m_pauseStart;
 
     bool m_gravityFlag;

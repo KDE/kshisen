@@ -89,7 +89,7 @@ bool PossibleMove::isInPath(int x, int y) const
 Board::Board(QWidget *parent) :
         QWidget(parent), m_field(0),
         m_xTiles(0), m_yTiles(0),
-        m_delay(125), m_isPaused(false),
+        m_delay(125), m_isPaused(false), m_isOver(false),
         m_gravityFlag(true), m_solvableFlag(true), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
         m_highlightedTile(-1), m_paintConnection(false), m_paintPossibleMoves(false)
 {
@@ -268,7 +268,11 @@ bool Board::gravity(int col, bool update)
 
 void Board::mousePressEvent(QMouseEvent *e)
 {
-    if(m_isPaused) {
+    if (m_isOver) {
+        newGame();
+        return;
+    }
+    if (m_isPaused) {
         return;
     }
     // Calculate field position
@@ -423,6 +427,8 @@ void Board::newGame()
 {
     kDebug() << "NewGame";
     int i, x, y;//, k; k is unused now
+
+    m_isOver = false;
 
     m_markX = -1;
     m_markY = -1;
@@ -632,6 +638,9 @@ void Board::paintEvent(QPaintEvent *e)
     if (m_isPaused) {
         p.setFont(KGlobalSettings::largeFont());
         p.drawText(rect(), Qt::AlignCenter, i18n("Game Paused"));
+    } else if (m_isOver) {
+        p.setFont(KGlobalSettings::largeFont());
+        p.drawText(rect(), Qt::AlignCenter, i18n("Game Over\nKlick to start a new game."));
     } else {
         int w = m_tiles.width();
         int h = m_tiles.height();
@@ -2017,6 +2026,18 @@ void Board::resetRedo()
 {
     qDeleteAll(m_redo);
     m_redo.clear();
+}
+
+void Board::gameOver()
+{
+    m_isOver = true;
+    emit changed();
+    update();
+}
+
+bool Board::isOver() const
+{
+    return m_isOver;
 }
 
 #include "board.moc"

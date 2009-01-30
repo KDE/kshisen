@@ -69,7 +69,7 @@ public:
 
 private slots:
     void slotEndOfGame();
-    void enableItems();
+    void updateItems();
     void updateScore();
     void showSettings(); // const?
 
@@ -90,7 +90,6 @@ private slots:
     void keyBindings();
 
 private:
-    void lockMenus(bool);
     QString getPlayerName();
 
     /**

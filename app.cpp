@@ -100,7 +100,7 @@ App::App(QWidget *parent) : KXmlGuiWindow(parent),
 
     setupGUI();
 
-    connect(m_board, SIGNAL(changed()), this, SLOT(enableItems()));
+    connect(m_board, SIGNAL(changed()), this, SLOT(updateItems()));
     connect(m_board, SIGNAL(tilesDontMatch()), this, SLOT(notifyTilesDontMatch()));
     connect(m_board, SIGNAL(invalidMove()), this, SLOT(notifyInvalidMove()));
     connect(m_board, SIGNAL(selectATile()), this, SLOT(notifySelectATile()));
@@ -115,7 +115,7 @@ App::App(QWidget *parent) : KXmlGuiWindow(parent),
     qApp->processEvents();
 
     updateScore();
-    enableItems();
+    updateItems();
 }
 
 void App::setupStatusBar()
@@ -168,7 +168,7 @@ void App::newGame()
 {
     m_board->newGame();
     resetCheatMode();
-    enableItems();
+    updateItems();
 }
 
 void App::restartGame()
@@ -181,7 +181,7 @@ void App::restartGame()
     m_board->resetRedo();
     m_board->update();
     m_board->resetTimer();
-    enableItems();
+    updateItems();
 }
 
 //void App::isSolvable()
@@ -195,7 +195,8 @@ void App::restartGame()
 
 void App::pause()
 {
-    lockMenus(m_board->pause());
+    m_board->pause();
+    updateItems();
 }
 
 void App::undo()
@@ -203,7 +204,7 @@ void App::undo()
     if (m_board->canUndo()) {
         m_board->undo();
         setCheatMode();
-        enableItems();
+        updateItems();
     }
 }
 
@@ -212,7 +213,7 @@ void App::redo()
     if (m_board->canRedo()) {
         m_board->redo();
     }
-    enableItems();
+    updateItems();
 }
 
 void App::hint()
@@ -223,39 +224,26 @@ void App::hint()
     m_board->showHint();
     setCheatMode();
 #endif
-    enableItems();
+    updateItems();
 }
 
-void App::lockMenus(bool lock)
+void App::updateItems()
 {
-    // Disable all actions apart from (un)pause, quit and those that are help-related.
-    // (Only undo/redo and hint actually *need* to be disabled, but disabling everything
-    // provides a good visual hint to the user, that they need to unpause to continue.
-    KMenu* help = findChild<KMenu*>("help");
-    QList<QAction*> actions = actionCollection()->actions();
-    QList<QAction*>::const_iterator actionIter = actions.constBegin();
-    QList<QAction*>::const_iterator actionIterEnd = actions.constEnd();
-
-    while (actionIter != actionIterEnd) {
-        QAction* a = *actionIter;
-        if (!a->associatedWidgets().contains(help)) {
-            a->setEnabled(!lock);
-        }
-        ++actionIter;
-    }
-
-    actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Pause))->setEnabled(true);
-    actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Quit))->setEnabled(true);
-
-    enableItems();
-}
-
-void App::enableItems()
-{
-    if (!m_board->isPaused()) {
+    if (m_board->isOver()) {
+        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Undo))->setEnabled(false);
+        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Redo))->setEnabled(false);
+        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Pause))->setEnabled(false);
+        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Hint))->setEnabled(false);
+    } else if (m_board->isPaused()) {
+        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Undo))->setEnabled(false);
+        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Redo))->setEnabled(false);
+        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Restart))->setEnabled(false);
+        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Hint))->setEnabled(false);
+    } else {
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Undo))->setEnabled(m_board->canUndo());
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Redo))->setEnabled(m_board->canRedo());
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Restart))->setEnabled(m_board->canUndo());
+        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Hint))->setEnabled(true);
     }
 }
 
@@ -264,6 +252,8 @@ void App::slotEndOfGame()
     if (m_board->tilesLeft() > 0) {
         KMessageBox::information(this, i18n("No more moves possible!"), i18n("End of Game"));
     } else {
+        m_board->gameOver();
+        updateItems();
         // create highscore entry
         HighScore hs;
         hs.seconds = m_board->getTimeForGame();
@@ -299,7 +289,6 @@ void App::slotEndOfGame()
     }
 
     resetCheatMode();
-    m_board->newGame();
 }
 
 void App::notifySelectATile()
