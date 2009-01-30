@@ -285,7 +285,8 @@ private:
     int m_connectionTimeout;
     bool m_paintConnection;
     bool m_paintPossibleMoves;
-    QPair<int, int> m_tileRemove1, m_tileRemove2;
+    QPair<int, int> m_tileRemove1;
+    QPair<int, int> m_tileRemove2;
 };
 
 #endif // BOARD_H

@@ -184,14 +184,14 @@ void App::restartGame()
     enableItems();
 }
 
-void App::isSolvable()
-{
-    if (m_board->solvable()) {
-        KMessageBox::information(this, i18n("This game is solvable."));
-    } else {
-        KMessageBox::information(this, i18n("This game is NOT solvable."));
-    }
-}
+//void App::isSolvable()
+//{
+//    if (m_board->solvable()) {
+//        KMessageBox::information(this, i18n("This game is solvable."));
+//    } else {
+//        KMessageBox::information(this, i18n("This game is NOT solvable."));
+//    }
+//}
 
 void App::pause()
 {

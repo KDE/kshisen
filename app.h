@@ -81,7 +81,7 @@ private slots:
 
     void newGame();
     void restartGame();
-    void isSolvable();
+    // void isSolvable(); // currently not used
     void pause();
     void undo();
     void redo();
