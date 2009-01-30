@@ -272,64 +272,64 @@ void Board::mousePressEvent(QMouseEvent *e)
         return;
     }
     // Calculate field position
-    int pos_x = (e->pos().x() - xOffset()) / (m_tiles.qWidth() * 2);
-    int pos_y = (e->pos().y() - yOffset()) / (m_tiles.qHeight() * 2);
+    int posX = (e->pos().x() - xOffset()) / (m_tiles.qWidth() * 2);
+    int posY = (e->pos().y() - yOffset()) / (m_tiles.qHeight() * 2);
 
     if (e->pos().x() < xOffset() || e->pos().y() < yOffset() ||
-            pos_x >= xTiles() || pos_y >= yTiles()) {
-        pos_x = -1;
-        pos_y = -1;
+            posX >= xTiles() || posY >= yTiles()) {
+        posX = -1;
+        posY = -1;
     }
 
     // Mark tile
     if (e->button() == Qt::LeftButton) {
         clearHighlight();
 
-        if (pos_x != -1) {
-            marked(pos_x, pos_y);
+        if (posX != -1) {
+            marked(posX, posY);
         }
     }
 
     // Assist by highlighting all tiles of same type
     if (e->button() == Qt::RightButton) {
-        int clicked_tile = getField(pos_x, pos_y);
+        int clickedTile = getField(posX, posY);
 
         // Clear marked tile
-        if (m_markX != -1 && getField(m_markX, m_markY) != clicked_tile) {
+        if (m_markX != -1 && getField(m_markX, m_markY) != clickedTile) {
             // We need to set m_markX and m_markY to -1 before calling
             // updateField() to ensure the tile is redrawn as unmarked.
-            int oldmarkx = m_markX;
-            int oldmarky = m_markY;
+            int oldMarkX = m_markX;
+            int oldMarkY = m_markY;
             m_markX = -1;
             m_markY = -1;
-            updateField(oldmarkx, oldmarky);
+            updateField(oldMarkX, oldMarkY);
         } else {
             m_markX = -1;
             m_markY = -1;
         }
 
         // Perform highlighting
-        if (clicked_tile != m_highlightedTile) {
+        if (clickedTile != m_highlightedTile) {
             int oldHighlighted = m_highlightedTile;
-            m_highlightedTile = clicked_tile;
+            m_highlightedTile = clickedTile;
             for (int i = 0; i < xTiles(); ++i) {
                 for (int j = 0; j < yTiles(); ++j) {
-                    const int field_tile = getField(i, j);
-                    if (field_tile != EMPTY) {
-                        if (field_tile == oldHighlighted) {
+                    const int fieldTile = getField(i, j);
+                    if (fieldTile != EMPTY) {
+                        if (fieldTile == oldHighlighted) {
                             updateField(i, j);
-                        } else if (field_tile == clicked_tile) {
+                        } else if (fieldTile == clickedTile) {
                             updateField(i, j);
                         } else if (m_chineseStyleFlag) {
-                            if (clicked_tile >= SEASONS_START && clicked_tile <= (SEASONS_START + 3) && field_tile >= SEASONS_START && field_tile <= (SEASONS_START + 3)) {
+                            if (clickedTile >= SEASONS_START && clickedTile <= (SEASONS_START + 3) && fieldTile >= SEASONS_START && fieldTile <= (SEASONS_START + 3)) {
                                 updateField(i, j);
-                            } else if (clicked_tile >= FLOWERS_START && clicked_tile <= (FLOWERS_START + 3) && field_tile >= FLOWERS_START && field_tile <= (FLOWERS_START + 3)) {
+                            } else if (clickedTile >= FLOWERS_START && clickedTile <= (FLOWERS_START + 3) && fieldTile >= FLOWERS_START && fieldTile <= (FLOWERS_START + 3)) {
                                 updateField(i, j);
                             }
                             // oldHighlighted
-                            if (oldHighlighted >= SEASONS_START && oldHighlighted <= (SEASONS_START + 3) && field_tile >= SEASONS_START && field_tile <= (SEASONS_START + 3)) {
+                            if (oldHighlighted >= SEASONS_START && oldHighlighted <= (SEASONS_START + 3) && fieldTile >= SEASONS_START && fieldTile <= (SEASONS_START + 3)) {
                                 updateField(i, j);
-                            } else if (oldHighlighted >= FLOWERS_START && oldHighlighted <= (FLOWERS_START + 3) && field_tile >= FLOWERS_START && field_tile <= (FLOWERS_START + 3)) {
+                            } else if (oldHighlighted >= FLOWERS_START && oldHighlighted <= (FLOWERS_START + 3) && fieldTile >= FLOWERS_START && fieldTile <= (FLOWERS_START + 3)) {
                                 updateField(i, j);
                             }
                         }
