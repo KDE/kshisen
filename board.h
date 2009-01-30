@@ -155,7 +155,7 @@ public:
 
     void setSize(int x, int y);
     void resizeBoard();
-    QSize unscaledSize();
+    QSize unscaledSize(); // const?
     void newGame();
     void setShuffle(int);
     int  getShuffle() const;
@@ -174,7 +174,7 @@ public:
     int getCurrentTime() const;
     int getTimeForGame() const;
 
-    bool solvable(bool noRestore = false);
+    bool solvable(bool noRestore = false); // const?
 
     bool getSolvableFlag() const;
     void setSolvableFlag(bool);
@@ -205,7 +205,7 @@ signals:
     void selectAMatchingTile();
 
 public slots:
-    bool pause();
+    bool pause(); // make void and use isPaused() for checking?
     void loadSettings();
     bool loadTileset(const QString &);
     bool loadBackground(const QString &);
@@ -223,7 +223,7 @@ private: // functions
     int xOffset() const;
     int yOffset() const;
 
-    int lineWidth();
+    int lineWidth(); // const?
 
     void setField(int x, int y, int value);
     int getField(int x, int y) const;
@@ -241,7 +241,7 @@ private: // functions
     void drawConnection(int timeout);
     void drawPossibleMoves();
     void undrawPossibleMoves();
-    QPoint midCoord(int x, int y);
+    QPoint midCoord(int x, int y); // const?
     void marked(int x, int y);
     void madeMove(int x1, int y1, int x2, int y2);
     void madeMoveWithSlide(int x1, int y1, int x2, int y2, Path& s);

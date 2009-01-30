@@ -71,7 +71,7 @@ private slots:
     void slotEndOfGame();
     void enableItems();
     void updateScore();
-    void showSettings();
+    void showSettings(); // const?
 
     void notifyTilesDontMatch();
     void notifyInvalidMove();
@@ -86,7 +86,7 @@ private slots:
     void undo();
     void redo();
     void hint();
-    void hallOfFame();
+    void hallOfFame(); // const?
     void keyBindings();
 
 private:
@@ -99,13 +99,13 @@ private:
      * This reads the config file first, then saves it in the new format and
      * re-reads it again as a KHighscore table.
      **/
-    void readOldHighscore();
-    void readHighscore();
+    void readOldHighscore(); // still needed?
+    void readHighscore(); // const?
     void writeHighscore();
     int insertHighscore(const HighScore &);
-    int getScore(const HighScore &);
-    bool isBetter(const HighScore &, const HighScore &);
-    void showHighscore(int focusitem = -1);
+    int getScore(const HighScore &); // const?
+    bool isBetter(const HighScore &, const HighScore &); // const?
+    void showHighscore(int focusitem = -1); // const?
 
     void setupStatusBar();
     void setupActions();
