@@ -57,8 +57,8 @@
 // Should this get the whole HAVE_SYS_TIME_H TIME_WITH_SYS_TIME treatment?
 #include <ctime>
 
-/*
- * A couple of int to store a position on the board (x,y)
+/**
+ * @brief Struct holding a position on the board (x,y)
  */
 struct Position {
     Position() : x(0), y(0) { }
@@ -67,12 +67,14 @@ struct Position {
     int y;
 };
 
-/*
+/**
  * A list of positions (at least 2) makes a Path
  */
 typedef QList<Position> Path;
 
-/*
+/**
+ * @brief Class holding a possible move and its functions
+ *
  * A PossibleMove is a connection Path between two tiles
  * and optionally a slide Path.
  * Sometimes for a couple of tiles to match there may be multiple
@@ -101,20 +103,24 @@ public:
         }
     }
 
-    Path path;     // path used to connect the two tiles
-    bool hasSlide; // flag set if the move requires a slide
-    Path slide;    // path representing the movement of the last sliding tile
+    /// path used to connect the two tiles
+    Path path;
+    /// flag set if the move requires a slide
+    bool hasSlide;
+    /// path representing the movement of the last sliding tile
+    Path slide;
 };
 
-/*
+/**
  * A list of possible moves the player has to choose between
  */
 typedef QList<PossibleMove> PossibleMoves;
 
 
-/*
- * Stores a Move made by the player on the board, contains all the information
- * needed to undo or redo the Move
+/**
+ * @brief Class holding a move on the board made by the player
+ *
+ * Contains all the information needed to undo or redo the move.
  */
 class Move
 {
@@ -126,14 +132,24 @@ public:
     Move(int _x1, int _y1, int _x2, int _y2, int _tile1, int _tile2, int _slide_x1, int _slide_y1, int _slide_x2, int _slide_y2) :
             x1(_x1), y1(_y1), x2(_x2), y2(_y2), tile1(_tile1), tile2(_tile2), hasSlide(true), slide_x1(_slide_x1), slide_y1(_slide_y1), slide_x2(_slide_x2), slide_y2(_slide_y2) { }
 
-    int x1, y1, x2, y2; // coordinates of the two tiles that matched
-    int tile1;  // type of tile at first set of coordinates
-    int tile2;  // type of tile at second set of coordinates
-    bool hasSlide; // if we performed a slide during the move
-    int slide_x1, slide_y1; // original coordinates of the last slided tile
-    int slide_x2, slide_y2; // final coordinates of the last slided tile
+    /// coordinates of the two tiles that matched
+    int x1, y1, x2, y2;
+    /// type of tile at first set of coordinates
+    int tile1;
+    /// type of tile at second set of coordinates
+    int tile2;
+    /// if we performed a slide during the move
+    bool hasSlide;
+    /// original coordinates of the last slided tile
+    int slide_x1, slide_y1;
+    /// final coordinates of the last slided tile
+    int slide_x2, slide_y2;
 };
 
+
+/**
+ * @brief Class holding the game board and its functions.
+ */
 class Board : public QWidget
 {
     Q_OBJECT

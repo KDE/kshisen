@@ -68,6 +68,9 @@
 #include <cmath>
 
 
+/**
+ * @brief Class holding the settings dialog and its functions
+ */
 class Settings : public QWidget, public Ui::Settings
 {
 public:
@@ -85,6 +88,7 @@ App::App(QWidget *parent) : KXmlGuiWindow(parent),
     // TODO?
     // Would it make sense long term to have a kconfig update rather than
     // having both formats supported in the code?
+    // schwarzer: evaluate whether readOldHighscore is still usefull.
     if (m_highscoreTable->hasTable()) {
         readHighscore();
     } else {
@@ -119,6 +123,14 @@ App::App(QWidget *parent) : KXmlGuiWindow(parent),
     updateItems();
 }
 
+
+/**
+ * There are four areas in the status bar:
+ * - game tip
+ * - timer
+ * - tile count
+ * - cheat mode
+ */
 void App::setupStatusBar()
 {
     m_gameTipLabel = new QLabel(i18n("Select a tile"), statusBar());
@@ -160,11 +172,17 @@ void App::setupActions()
     KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
 }
 
+/**
+ * This shows the highscore table without any entry highlighted.
+ */
 void App::hallOfFame()
 {
     showHighscore();
 }
 
+/**
+ * Flags set in the previously played game should be reset.
+ */
 void App::newGame()
 {
     m_board->newGame();
@@ -172,6 +190,12 @@ void App::newGame()
     updateItems();
 }
 
+/**
+ * Currently this is done by undoing all moves done by the user as yet and
+ * resetting the move history and the timer.
+ * This might change over time. However, just make sure, the user gets his
+ * currently played game as if it was started by the New Game action.
+ */
 void App::restartGame()
 {
     m_board->setUpdatesEnabled(false);
@@ -194,12 +218,20 @@ void App::restartGame()
 //    }
 //}
 
+/**
+ * If the game is paused, do not show the board and disable actions like undo
+ * and such.
+ */
 void App::pause()
 {
     m_board->pause();
     updateItems();
 }
 
+/**
+ * The Undo action should set the cheat flag, so the user cannot end up in
+ * the highscore dialog by making bad decisions. :)
+ */
 void App::undo()
 {
     if (m_board->canUndo()) {
@@ -217,6 +249,10 @@ void App::redo()
     updateItems();
 }
 
+/**
+ * The Hint action should set the cheat flag, so the user cannot end up in
+ * the highscore dialog by having been told what to do. :)
+ */
 void App::hint()
 {
 #ifdef DEBUGGING
@@ -228,6 +264,10 @@ void App::hint()
     updateItems();
 }
 
+/**
+ * According to the current state of the game (game over, pause ...) some
+ * actions might better be disabled. This is the place to do so.
+ */
 void App::updateItems()
 {
     if (m_board->isOver()) {
@@ -281,7 +321,7 @@ void App::slotEndOfGame()
                              QString().sprintf("%02d", (m_board->getTimeForGame() / 60) % 60),
                              QString().sprintf("%02d", m_board->getTimeForGame() % 60));
 
-            if (isHighscore) {  // player would have been in the hisghscores if he did not cheat
+            if (isHighscore) {  // player would have been in the highscores if he did not cheat
                 s += '\n' + i18n("You could have been in the highscores if you did not use Undo or Hint. Try without them next time.");
             }
 
@@ -487,6 +527,10 @@ void App::readHighscore()
     }
 }
 
+/**
+ * This reads the config file first, then saves it in the new format and
+ * re-reads it again as a KHighscore table.
+ */
 void App::readOldHighscore()
 {
     // this is for before-KHighscore-highscores
@@ -692,9 +736,6 @@ void App::keyBindings()
 
 }
 
-/**
- * Show Settings dialog.
- */
 void App::showSettings()
 {
     if (KConfigDialog::showDialog("settings")) {

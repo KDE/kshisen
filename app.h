@@ -51,6 +51,9 @@
 class KHighscore;
 class QLabel;
 
+/**
+ * @brief Struct holding an item for the highscore list
+ */
 struct HighScore {
     QString name;
     int seconds;
@@ -61,6 +64,9 @@ struct HighScore {
 
 const signed HIGHSCORE_MAX = 10;
 
+/**
+ * @brief Class holding the application and its functions
+ */
 class App : public KXmlGuiWindow
 {
     Q_OBJECT
@@ -70,8 +76,11 @@ public:
 
 private slots:
     void slotEndOfGame();
+
+    /// Updates actions, to enable and disable them where needed
     void updateItems();
     void updateScore();
+    /// Shows the settings dialog
     void showSettings(); // const?
 
     void notifyTilesDontMatch();
@@ -80,36 +89,45 @@ private slots:
     void notifySelectAMatchingTile();
     void notifySelectAMove();
 
+    /// Starts a new game
     void newGame();
+    /// Restarts the current game
     void restartGame();
     // void isSolvable(); // currently not used
+    /// Pauses the game
     void pause();
+    /// Undoes one move
     void undo();
+    /// Redoes an undone move
     void redo();
+    /// Shows a hint and sets cheat flag
     void hint();
+    /// Calls showHighscore without arguments
     void hallOfFame(); // const?
     void keyBindings();
 
 private:
+    /// Returns a previously entered player name
     QString getPlayerName();
 
-    /**
-     * Read the old (pre- @ref KHighscore) highscore table.
-     *
-     * This reads the config file first, then saves it in the new format and
-     * re-reads it again as a KHighscore table.
-     **/
+    /// Reads the old (pre- @ref KHighscore) highscore table
     void readOldHighscore(); // still needed?
     void readHighscore(); // const?
     void writeHighscore();
     int insertHighscore(const HighScore &);
     int getScore(const HighScore &); // const?
+    /// Compares the two given scores
     bool isBetter(const HighScore &, const HighScore &); // const?
+    /// Shows the highscore table
     void showHighscore(int focusitem = -1); // const?
 
+    /// Sets up the status bar areas
     void setupStatusBar();
+    /// Sets up the needed actions and adds them to the action collection
     void setupActions();
+    /// Sets the cheat mode
     void setCheatMode();
+    /// Resets the cheat mode \todo see, if this can be removed in favour of setCheatMode(false) or something
     void resetCheatMode();
 
 private:
