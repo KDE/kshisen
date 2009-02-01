@@ -43,16 +43,19 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-// Should this get the whole HAVE_SYS_TIME_H TIME_WITH_SYS_TIME treatment?
-#include <time.h>
+#include "debug.h"
 
-#include <krandomsequence.h>
 #include <QList>
 #include <QWidget>
+
 #include <kdebug.h>
-#include "kmahjonggtileset.h"
-#include "kmahjonggbackground.h"
-#include "debug.h"
+#include <krandomsequence.h>
+
+#include <kmahjonggtileset.h>
+#include <kmahjonggbackground.h>
+
+// Should this get the whole HAVE_SYS_TIME_H TIME_WITH_SYS_TIME treatment?
+#include <ctime>
 
 /*
  * A couple of int to store a position on the board (x,y)

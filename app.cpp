@@ -39,33 +39,34 @@
  */
 
 #include "app.h"
-
-#include <kactioncollection.h>
-#include <kstandardaction.h>
-#include <kseparator.h>
-#include <kmessagebox.h>
-#include <kconfig.h>
-#include <kaction.h>
-#include <kstandardgameaction.h>
-#include <khighscore.h>
-#include <kdebug.h>
-#include <kshortcutsdialog.h>
-#include <kmenu.h>
-#include <kstatusbar.h>
-#include <klocale.h>
-#include <kpushbutton.h>
-#include <KStandardGuiItem>
-#include <kconfigdialog.h>
-
-#include <QTimer>
-#include <KLineEdit>
-
-#include <cmath>
-#include <kglobal.h>
 #include "prefs.h"
 #include "ui_settings.h"
 
+#include <QTimer>
+
+#include <kaction.h>
+#include <kactioncollection.h>
+#include <kconfig.h>
+#include <kconfigdialog.h>
+#include <kdebug.h>
+#include <kglobal.h>
+#include <khighscore.h>
+#include <klineedit.h>
+#include <klocale.h>
+#include <kmenu.h>
+#include <kmessagebox.h>
+#include <kpushbutton.h>
+#include <kstandardaction.h>
+#include <kseparator.h>
+#include <kshortcutsdialog.h>
+#include <kstatusbar.h>
+#include <kstandardguiitem.h>
+
 #include <kmahjonggconfigdialog.h>
+#include <kstandardgameaction.h>
+
+#include <cmath>
+
 
 class Settings : public QWidget, public Ui::Settings
 {

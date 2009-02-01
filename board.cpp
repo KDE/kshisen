@@ -38,17 +38,18 @@
  *******************************************************************
  */
 
-#define USE_UPDATE 1
 #include "board.h"
-
-#include <klocale.h>
-#include <kstandarddirs.h>
-#include <kglobalsettings.h>
+#include "prefs.h"
 
 #include <QMouseEvent>
 #include <QPainter>
 #include <QTimer>
-#include "prefs.h"
+
+#include <kglobalsettings.h>
+#include <klocale.h>
+#include <kstandarddirs.h>
+
+#define USE_UPDATE 1
 
 #define EMPTY           0
 #define DEFAULTDELAY    500
