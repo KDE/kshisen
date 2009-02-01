@@ -180,6 +180,7 @@ void App::restartGame()
 	board->resetRedo();
 	board->update();
 	board->resetTimer();
+	resetCheatMode();
 	enableItems();
 }
 
