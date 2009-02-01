@@ -126,9 +126,7 @@ private:
     /// Sets up the needed actions and adds them to the action collection
     void setupActions();
     /// Sets the cheat mode
-    void setCheatMode();
-    /// Resets the cheat mode \todo see, if this can be removed in favour of setCheatMode(false) or something
-    void resetCheatMode();
+    void setCheatMode(bool b = true);
 
 private:
     QString m_lastPlayerName;

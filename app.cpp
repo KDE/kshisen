@@ -186,7 +186,7 @@ void App::hallOfFame()
 void App::newGame()
 {
     m_board->newGame();
-    resetCheatMode();
+    setCheatMode(false);
     updateItems();
 }
 
@@ -330,8 +330,6 @@ void App::slotEndOfGame()
             KMessageBox::information(this, s, i18n("End of Game"));
         }
     }
-
-    resetCheatMode();
 }
 
 void App::notifySelectATile()
@@ -381,23 +379,15 @@ void App::updateScore()
     m_gameTilesLabel->setText(s);
 }
 
-void App::setCheatMode()
+void App::setCheatMode(bool b)
 {
-    // set the cheat mode if not set
-    if (!m_cheat) {
-        m_cheat = true;
-        m_gameCheatLabel->show();
+    if (m_cheat == b) {
+        return;
     }
+    m_cheat = b;
+    m_gameCheatLabel->setVisible(b);
 }
 
-void App::resetCheatMode()
-{
-    // reset cheat mode if set
-    if (m_cheat) {
-        m_cheat = false;
-        m_gameCheatLabel->hide();
-    }
-}
 
 QString App::getPlayerName()
 {
