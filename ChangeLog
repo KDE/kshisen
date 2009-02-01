@@ -1,7 +1,8 @@
-Changes in 1.6.2:
+Changes since 1.6.1:
  * add window title to Player name dialog
  * fix typo in cheat notification dialog
  * fix game to be playable in pause mode
+ * add Game Over screen to not start the next game without user interaction
 
  * some changes in coding style and naming schema to be more close to the
    kdelibs style
