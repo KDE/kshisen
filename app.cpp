@@ -206,6 +206,7 @@ void App::restartGame()
     m_board->resetRedo();
     m_board->update();
     m_board->resetTimer();
+    setCheatMode(false);
     updateItems();
 }
 
