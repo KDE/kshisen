@@ -63,8 +63,8 @@
 struct Position {
     Position() : x(0), y(0) { }
     Position(int _x, int _y) : x(_x), y(_y) { }
-    int x;
-    int y;
+    int x; ///< x position */
+    int y; ///< y position */
 };
 
 /**
@@ -103,12 +103,9 @@ public:
         }
     }
 
-    /// path used to connect the two tiles
-    Path path;
-    /// flag set if the move requires a slide
-    bool hasSlide;
-    /// path representing the movement of the last sliding tile
-    Path slide;
+    Path path; ///< path used to connect the two tiles
+    bool hasSlide; ///< flag set if the move requires a slide
+    Path slide; ///< path representing the movement of the last sliding tile
 };
 
 /**
@@ -132,18 +129,12 @@ public:
     Move(int _x1, int _y1, int _x2, int _y2, int _tile1, int _tile2, int _slide_x1, int _slide_y1, int _slide_x2, int _slide_y2) :
             x1(_x1), y1(_y1), x2(_x2), y2(_y2), tile1(_tile1), tile2(_tile2), hasSlide(true), slide_x1(_slide_x1), slide_y1(_slide_y1), slide_x2(_slide_x2), slide_y2(_slide_y2) { }
 
-    /// coordinates of the two tiles that matched
-    int x1, y1, x2, y2;
-    /// type of tile at first set of coordinates
-    int tile1;
-    /// type of tile at second set of coordinates
-    int tile2;
-    /// if we performed a slide during the move
-    bool hasSlide;
-    /// original coordinates of the last slided tile
-    int slide_x1, slide_y1;
-    /// final coordinates of the last slided tile
-    int slide_x2, slide_y2;
+    int x1, y1, x2, y2; ///< coordinates of the two tiles that matched
+    int tile1; ///< type of tile at first set of coordinates
+    int tile2; ///< type of tile at second set of coordinates
+    bool hasSlide; ///< if we performed a slide during the move
+    int slide_x1, slide_y1; ///< original coordinates of the last slided tile
+    int slide_x2, slide_y2; ///< final coordinates of the last slided tile
 };
 
 
@@ -167,10 +158,14 @@ public:
     void setDelay(int);
     int  getDelay() const;
 
+    /// Returns if undo step is available
     bool canUndo() const;
+    /// Returns if redo step is available
     bool canRedo() const;
-    void redo();
+    /// Undoes one step
     void undo();
+    /// Redoes one step
+    void redo();
 
     void setSize(int x, int y);
     void resizeBoard();
@@ -189,6 +184,7 @@ public:
     void dumpBoard(const int*) const;
 #endif
 
+    /// Returns the number of tiles left on the board
     int tilesLeft() const;
     int getCurrentTime() const;
     int getTimeForGame() const;
@@ -205,13 +201,18 @@ public:
     int xTiles() const;
     int yTiles() const;
 
+    /// Returns whether the game is in pause mode
     bool isPaused() const {
         return m_isPaused;
     }
+    /// Resets the game timer
     void resetTimer();
+    /// Resets the undo history
     void resetUndo();
+    /// Resets the redo history
     void resetRedo();
     void gameOver();
+    /// Returns whether the game is over
     bool isOver() const;
 
 signals:
@@ -277,28 +278,28 @@ private:
 
     KRandomSequence m_random;
 
-    QList<Move*> m_undo;
-    QList<Move*> m_redo;
+    QList<Move*> m_undo; ///< Undo history
+    QList<Move*> m_redo; ///< Redo history
 
     // int undraw_timer_id; // not used?
     int m_markX;
     int m_markY;
     Path m_connection;
     PossibleMoves m_possibleMoves;
-    int *m_field;
+    int *m_field; ///< Matrix pointer holding the game board grid
     int m_xTiles;
     int m_yTiles;
     int m_delay;
     int m_shuffle;
 
-    bool m_isPaused;
-    bool m_isOver;
+    bool m_isPaused; ///< Whether game is paused
+    bool m_isOver; ///< Whether game is over
     time_t m_pauseStart;
 
-    bool m_gravityFlag;
-    bool m_solvableFlag;
-    bool m_chineseStyleFlag;
-    bool m_tilesCanSlideFlag;
+    bool m_gravityFlag; ///< Whether gravity flag is set
+    bool m_solvableFlag; ///< Whether solvable flag is set
+    bool m_chineseStyleFlag; ///< Whether Chinese style flag is set
+    bool m_tilesCanSlideFlag; ///< Whether tiles can slide flag is set
     QList<int> m_gravCols;
     //int grav_col_1, grav_col_2;
 

@@ -55,11 +55,11 @@ class QLabel;
  * @brief Struct holding an item for the highscore list
  */
 struct HighScore {
-    QString name;
-    int seconds;
-    int x, y;
+    QString name; ///< The player's name
+    int seconds; ///< Time the player needed
+    int x, y; ///< Size of the played game board
     time_t date;
-    int gravity;
+    int gravity; ///< Whether gravity was enabled
 };
 
 const signed HIGHSCORE_MAX = 10;
@@ -114,6 +114,7 @@ private:
     void readOldHighscore(); // still needed?
     void readHighscore(); // const?
     void writeHighscore();
+    /// Inserts given highscore entry to the list
     int insertHighscore(const HighScore &);
     int getScore(const HighScore &); // const?
     /// Compares the two given scores
@@ -129,15 +130,15 @@ private:
     void setCheatMode(bool b = true);
 
 private:
-    QString m_lastPlayerName;
-    QLabel *m_gameTipLabel;
-    QLabel *m_gameTimerLabel;
-    QLabel *m_gameTilesLabel;
-    QLabel *m_gameCheatLabel;
-    Board *m_board;
-    QVector<HighScore> m_highscore;
+    QString m_lastPlayerName; ///< Holds the afore entered player name
+    QLabel *m_gameTipLabel; ///< Status bar area for game tips
+    QLabel *m_gameTimerLabel; ///< Status bar area for the timer
+    QLabel *m_gameTilesLabel; ///< Status bar area for the tile counter
+    QLabel *m_gameCheatLabel; ///< Status bar area for the cheat mode
+    Board *m_board; ///< Holds the game board
+    QVector<HighScore> m_highscore; ///< List of highscore entries
     KHighscore* m_highscoreTable;
-    bool m_cheat;
+    bool m_cheat; ///< Whether the cheat mode is set
 };
 
 #endif // APP_H
