@@ -454,8 +454,6 @@ bool App::isBetter(const HighScore &hs, const HighScore &than)
 
 int App::insertHighscore(const HighScore &hs)
 {
-    int i;
-
     if (m_highscore.size() == 0) {
         m_highscore.resize(1);
         m_highscore[0] = hs;
@@ -473,7 +471,7 @@ int App::insertHighscore(const HighScore &hs)
 
             // sort in new entry
             int bestsofar = m_highscore.size() - 1;
-            for (i = m_highscore.size() - 1; i > 0; --i) {
+            for (int i = m_highscore.size() - 1; i > 0; --i) {
                 if (isBetter(m_highscore[i], m_highscore[i-1])) {
                     // swap entries
                     HighScore temp = m_highscore[i-1];
@@ -526,12 +524,11 @@ void App::readHighscore()
 void App::readOldHighscore()
 {
     // this is for before-KHighscore-highscores
-    int i;
     QString s, e;
     KSharedConfig::Ptr conf = KGlobal::config();
 
     m_highscore.resize(0);
-    i = 0;
+    int i = 0;
     bool eol = false;
     KConfigGroup group = conf->group("Hall of Fame");
     while ((i < static_cast<int>(HIGHSCORE_MAX)) && !eol) {
@@ -584,9 +581,8 @@ void App::readOldHighscore()
 
 void App::writeHighscore()
 {
-    int i;
     QStringList hi_x, hi_y, hi_sec, hi_date, hi_grav, hi_name;
-    for (i = 0; i < static_cast<int>(m_highscore.size()); ++i) {
+    for (int i = 0; i < m_highscore.size(); ++i) {
         HighScore hs = m_highscore[i];
         hi_x.append(QString::number(hs.x));
         hi_y.append(QString::number(hs.y));
@@ -656,9 +652,8 @@ void App::showHighscore(int focusitem)
 
     QString s;
     QLabel *e[10][5];
-    signed i, j;
 
-    for (i = 0; i < 10; ++i) {
+    for (int i = 0; i < 10; ++i) {
         HighScore hs;
         if (i < m_highscore.size()) {
             hs = m_highscore[i];
@@ -710,9 +705,9 @@ void App::showHighscore(int focusitem)
     f = font();
     f.setBold(true);
     f.setItalic(true);
-    for (i = 0; i < 10; ++i) {
-        for (j = 0; j < 5; ++j) {
-            if (static_cast<int>(i) == focusitem) {
+    for (int i = 0; i < 10; ++i) {
+        for (int j = 0; j < 5; ++j) {
+            if (i == focusitem) {
                 e[i][j]->setFont(f);
             }
             table->addWidget(e[i][j], i + 2, j, Qt::AlignCenter);
