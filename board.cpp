@@ -867,14 +867,14 @@ void Board::performMove(PossibleMove& p)
     int *saved4 = new int[xTiles() * yTiles()]; // after redo
     memcpy(saved2, m_field, fsize);
     // DEBUG undo, undo move
-    bool errorfound = false;
+    bool errorFound = false;
     if (canUndo()) {
         undo();
         // DEBUG undo, compare to saved board state
         for (int i = 0; i < xTiles() * yTiles(); ++i) {
             if (saved1[i] != m_field[i]) {
                 kDebug() << "[DEBUG Undo 1], tile (" << i << ") was" << saved1[i] << "before more, it is" << m_field[i] << "after undo.";
-                errorfound = true;
+                errorFound = true;
             }
         }
         // DEBUG undo, save board state
@@ -887,7 +887,7 @@ void Board::performMove(PossibleMove& p)
             for (int i = 0; i < xTiles() * yTiles(); ++i) {
                 if (saved2[i] != m_field[i]) {
                     kDebug() << "[DEBUG Undo 2], tile (" << i << ") was" << saved2[i] << "after more, it is" << m_field[i] << "after redo.";
-                    errorfound = true;
+                    errorFound = true;
                 }
             }
             // DEBUG undo, save board state
@@ -895,7 +895,7 @@ void Board::performMove(PossibleMove& p)
         }
     }
     // dumpBoard on error
-    if (errorfound) {
+    if (errorFound) {
         kDebug() << "[DEBUG] Before move";
         dumpBoard(saved1);
         kDebug() << "[DEBUG] After move";
