@@ -427,7 +427,6 @@ QSize Board::unscaledSize()
 void Board::newGame()
 {
     kDebug() << "NewGame";
-    int i, x, y;//, k; k is unused now
 
     m_isOver = false;
 
@@ -451,8 +450,8 @@ void Board::newGame()
      *  the only ones numbered)
      * That uses the chineseStyle flag
      */
-    for (y = 0; y < yTiles(); ++y) {
-        for (x = 0; x < xTiles(); ++x) {
+    for (int y = 0; y < yTiles(); ++y) {
+        for (int x = 0; x < xTiles(); ++x) {
             // do not duplicate flowers or seasons
             if (!m_chineseStyleFlag || !((cur_tile >= SEASONS_START && cur_tile <= (SEASONS_START + 3)) || (cur_tile >= FLOWERS_START && cur_tile <= (FLOWERS_START + 3)))) {
                 setField(x, y, cur_tile);
@@ -480,7 +479,7 @@ void Board::newGame()
     // shuffle the field
     int tx = xTiles();
     int ty = yTiles();
-    for (i = 0; i < xTiles() * yTiles() * getShuffle(); ++i) {
+    for (int i = 0; i < xTiles() * yTiles() * getShuffle(); ++i) {
         int x1 = m_random.getLong(tx);
         int y1 = m_random.getLong(ty);
         int x2 = m_random.getLong(tx);
@@ -513,7 +512,7 @@ void Board::newGame()
 
         // generate a list of free tiles and positions
         int num_tiles = 0;
-        for (i = 0; i < xTiles() * yTiles(); ++i) {
+        for (int i = 0; i < xTiles() * yTiles(); ++i) {
             if (m_field[i] != EMPTY) {
                 pos[num_tiles] = i;
                 tiles[num_tiles] = m_field[i];
@@ -944,9 +943,8 @@ void Board::marked(int x, int y)
         return;
     } else if (m_possibleMoves.count() > 1) {  // if the click is on any of the current possible moves, make that move
         //kDebug() << "marked: there may be a move to be selected";
-        QList<PossibleMove>::iterator i;
 
-        for (i = m_possibleMoves.begin(); i != m_possibleMoves.end(); ++i) {
+        for (QList<PossibleMove>::iterator i = m_possibleMoves.begin(); i != m_possibleMoves.end(); ++i) {
             if (i->isInPath(x, y)) {
                 performMove(*i);
                 emit selectATile();
@@ -971,9 +969,8 @@ void Board::marked(int x, int y)
     if (findPath(m_markX, m_markY, x, y, m_possibleMoves)) {
         if (m_possibleMoves.count() > 1) {
             //kDebug() << "marked: there was" << m_possibleMoves.count() << "moves possible for this";
-            QList<PossibleMove>::iterator i;
             int withSlide = 0;
-            for (i = m_possibleMoves.begin(); i != m_possibleMoves.end(); ++i) {
+            for (QList<PossibleMove>::iterator i = m_possibleMoves.begin(); i != m_possibleMoves.end(); ++i) {
                 i->Debug();
                 if (i->hasSlide) {
                     ++withSlide;
@@ -1786,8 +1783,7 @@ void Board::dumpBoard() const
     for (int y = 0; y < yTiles(); ++y) {
         QString row;
         for (int x = 0; x < xTiles(); ++x) {
-            int tile = getField(x, y);
-            if (tile == EMPTY) {
+            if (getField(x, y) == EMPTY) {
                 row += " --";
             } else {
                 row += QString("%1").arg(tile, 3);
@@ -1803,8 +1799,7 @@ void Board::dumpBoard(const int* board) const
     for (int y = 0; y < yTiles(); ++y) {
         QString row;
         for (int x = 0; x < xTiles(); ++x) {
-            int tile = board[y * xTiles() + x];
-            if (tile == EMPTY) {
+            if (board[y * xTiles() + x] == EMPTY) {
                 row += " --";
             } else {
                 row += QString("%1").arg(tile, 3);
