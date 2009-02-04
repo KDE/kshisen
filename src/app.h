@@ -127,7 +127,7 @@ private:
     /// Sets up the needed actions and adds them to the action collection
     void setupActions();
     /// Sets the cheat mode
-    void setCheatMode(bool b = true);
+    void setCheatModeEnabled(bool enabled);
 
 private:
     QString m_lastPlayerName; ///< Holds the afore entered player name

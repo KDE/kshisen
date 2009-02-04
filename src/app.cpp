@@ -186,7 +186,7 @@ void App::hallOfFame()
 void App::newGame()
 {
     m_board->newGame();
-    setCheatMode(false);
+    setCheatModeEnabled(false);
     updateItems();
 }
 
@@ -206,7 +206,7 @@ void App::restartGame()
     m_board->resetRedo();
     m_board->update();
     m_board->resetTimer();
-    setCheatMode(false);
+    setCheatModeEnabled(false);
     updateItems();
 }
 
@@ -237,7 +237,7 @@ void App::undo()
 {
     if (m_board->canUndo()) {
         m_board->undo();
-        setCheatMode();
+        setCheatModeEnabled(true);
         updateItems();
     }
 }
@@ -260,7 +260,7 @@ void App::hint()
     m_board->makeHintMove();
 #else
     m_board->showHint();
-    setCheatMode();
+    setCheatModeEnabled(true);
 #endif
     updateItems();
 }
@@ -379,13 +379,13 @@ void App::updateScore()
     m_gameTilesLabel->setText(s);
 }
 
-void App::setCheatMode(bool b)
+void App::setCheatModeEnabled(bool enabled)
 {
-    if (m_cheat == b) {
+    if (m_cheat == enabled) {
         return;
     }
-    m_cheat = b;
-    m_gameCheatLabel->setVisible(b);
+    m_cheat = enabled;
+    m_gameCheatLabel->setVisible(enabled);
 }
 
 
