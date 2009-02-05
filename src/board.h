@@ -228,8 +228,11 @@ signals:
 
 public slots:
     bool pause(); // make void and use isPaused() for checking?
+    /// Loads the game settings
     void loadSettings();
+    /// Loads the given tileset
     bool loadTileset(const QString &);
+    /// Loads the given background
     bool loadBackground(const QString &);
 
 private slots:
