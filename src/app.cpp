@@ -42,7 +42,8 @@
 #include "prefs.h"
 #include "ui_settings.h"
 
-#include <QTimer>
+#include <kmahjonggconfigdialog.h>
+#include <kstandardgameaction.h>
 
 #include <kaction.h>
 #include <kactioncollection.h>
@@ -56,14 +57,14 @@
 #include <kmenu.h>
 #include <kmessagebox.h>
 #include <kpushbutton.h>
-#include <kstandardaction.h>
 #include <kseparator.h>
 #include <kshortcutsdialog.h>
-#include <kstatusbar.h>
+#include <kstandardaction.h>
+#include <kstandarddirs.h>
 #include <kstandardguiitem.h>
+#include <kstatusbar.h>
 
-#include <kmahjonggconfigdialog.h>
-#include <kstandardgameaction.h>
+#include <QTimer>
 
 #include <cmath>
 
