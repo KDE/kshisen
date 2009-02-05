@@ -302,7 +302,7 @@ void App::slotEndOfGame()
         hs.seconds = m_board->getTimeForGame();
         hs.x = m_board->xTiles();
         hs.y = m_board->yTiles();
-        hs.gravity = (int)m_board->gravityFlag();
+        hs.gravity = static_cast<int>(m_board->gravityFlag());
 
         // check if we made it into Top10
         bool isHighscore = false;
