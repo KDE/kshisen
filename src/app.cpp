@@ -88,7 +88,7 @@ App::App(QWidget *parent) : KXmlGuiWindow(parent),
     // TODO?
     // Would it make sense long term to have a kconfig update rather than
     // having both formats supported in the code?
-    // schwarzer: evaluate whether readOldHighscore is still usefull.
+    // schwarzer: evaluate whether readOldHighscore is still useful.
     if (m_highscoreTable->hasTable()) {
         readHighscore();
     } else {
