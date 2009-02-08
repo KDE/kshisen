@@ -289,7 +289,6 @@ private:
     QList<Move*> m_undo; ///< Undo history
     QList<Move*> m_redo; ///< Redo history
 
-    // int undraw_timer_id; // not used?
     int m_markX;
     int m_markY;
     Path m_connection;
@@ -309,7 +308,6 @@ private:
     bool m_chineseStyleFlag; ///< Whether Chinese style flag is set
     bool m_tilesCanSlideFlag; ///< Whether tiles can slide flag is set
     QList<int> m_gravCols;
-    //int grav_col_1, grav_col_2;
 
     int m_highlightedTile;
 
