@@ -3,6 +3,10 @@ Changes since 1.6.1:
  * fix typo in cheat notification dialog
  * fix game to be playable in pause mode
  * add Game Over screen to not start the next game without user interaction
+ * rework pause mode
+ *  - game is now paused if the board loses focus (e.g. if a menu is opened
+ *    or the application itself loses focus)
+ *  - game can now be resumed by clicking on the board
 
  * some changes in coding style and naming schema to be more close to the
    kdelibs style
