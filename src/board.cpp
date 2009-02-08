@@ -108,12 +108,19 @@ Board::Board(QWidget *parent) :
     setPalette(palette);
 
     loadSettings();
+    setFocus(Qt::ShortcutFocusReason);
 }
 
 Board::~Board()
 {
     delete [] m_field;
 }
+
+void Board::focusOutEvent(QFocusEvent *)
+{
+    pause();
+}
+
 
 void Board::loadSettings()
 {
