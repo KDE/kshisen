@@ -324,7 +324,7 @@ void App::slotEndOfGame()
 
         if (isHighscore && !m_cheat) {
             hs.name = getPlayerName();
-            hs.date = time(static_cast<time_t*>(0));
+            hs.date = time(NULL);
             int rank = insertHighscore(hs);
             showHighscore(rank);
         } else {
