@@ -231,7 +231,8 @@ signals:
     void selectAMatchingTile();
 
 public slots:
-    bool pause(); // make void and use isPaused() for checking?
+    /// Controls the pause mode
+    void setPauseEnabled(bool enabled);
     /// Loads the game settings
     void loadSettings();
     /// Loads the given tileset

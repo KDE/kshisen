@@ -153,7 +153,7 @@ void App::setupActions()
     // Game
     KStandardGameAction::gameNew(this, SLOT(newGame()), actionCollection());
     KStandardGameAction::restart(this, SLOT(restartGame()), actionCollection());
-    KStandardGameAction::pause(this, SLOT(pause()), actionCollection());
+    KStandardGameAction::pause(this, SLOT(togglePause()), actionCollection());
     KStandardGameAction::highscores(this, SLOT(hallOfFame()), actionCollection());
     KStandardGameAction::quit(this, SLOT(close()), actionCollection());
 
@@ -175,6 +175,7 @@ void App::setupActions()
 
 /**
  * This shows the highscore table without any entry highlighted.
+ * \todo: get rid of this and make showHighscore() a slot?
  */
 void App::hallOfFame()
 {
@@ -188,6 +189,7 @@ void App::newGame()
 {
     m_board->newGame();
     setCheatModeEnabled(false);
+    setPauseEnabled(false);
     updateItems();
 }
 
@@ -220,13 +222,18 @@ void App::restartGame()
 //    }
 //}
 
+void App::togglePause()
+{
+    m_board->setPauseEnabled(!m_board->isPaused());
+}
+
 /**
  * If the game is paused, do not show the board and disable actions like undo
  * and such.
  */
-void App::pause()
+void App::setPauseEnabled(bool enabled)
 {
-    m_board->pause();
+    m_board->setPauseEnabled(enabled);
     updateItems();
 }
 
@@ -282,21 +289,23 @@ void App::updateItems()
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Redo))->setEnabled(false);
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Restart))->setEnabled(false);
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Hint))->setEnabled(false);
+        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Pause))->setChecked(true);
     } else {
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Undo))->setEnabled(m_board->canUndo());
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Redo))->setEnabled(m_board->canRedo());
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Restart))->setEnabled(m_board->canUndo());
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Pause))->setEnabled(true);
+        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Pause))->setChecked(false);
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Hint))->setEnabled(true);
     }
 }
 
 void App::slotEndOfGame()
 {
+    m_board->gameOver();
     if (m_board->tilesLeft() > 0) {
         KMessageBox::information(this, i18n("No more moves possible!"), i18n("End of Game"));
     } else {
-        m_board->gameOver();
         updateItems();
         // create highscore entry
         HighScore hs;

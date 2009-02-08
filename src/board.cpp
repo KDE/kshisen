@@ -118,8 +118,8 @@ Board::~Board()
 
 void Board::focusOutEvent(QFocusEvent *)
 {
-    if (!m_isPaused) {
-        pause();
+    if (!m_isPaused && !m_isOver) {
+        setPauseEnabled(true);
     }
 }
 
@@ -283,6 +283,7 @@ void Board::mousePressEvent(QMouseEvent *e)
         return;
     }
     if (m_isPaused) {
+        setPauseEnabled(false);
         return;
     }
     // Calculate field position
@@ -646,7 +647,7 @@ void Board::paintEvent(QPaintEvent *e)
 
     if (m_isPaused) {
         p.setFont(KGlobalSettings::largeFont());
-        p.drawText(rect(), Qt::AlignCenter, i18n("Game Paused"));
+        p.drawText(rect(), Qt::AlignCenter, i18n("Game Paused\nClick to resume game."));
     } else if (m_isOver) {
         p.setFont(KGlobalSettings::largeFont());
         p.drawText(rect(), Qt::AlignCenter, i18n("Game Over\nClick to start a new game."));
@@ -1997,17 +1998,16 @@ void Board::setTilesCanSlideFlag(bool b)
     }
 }
 
-bool Board::pause()
+void Board::setPauseEnabled(bool enabled)
 {
-    m_isPaused = !m_isPaused;
+    m_isPaused = enabled;
     if (m_isPaused) {
         m_pauseStart = time(static_cast<time_t *>(0));
     } else {
         m_startTime += static_cast<time_t>(difftime(time(static_cast<time_t *>(0)), m_pauseStart));
     }
     update();
-
-    return m_isPaused;
+    emit changed();
 }
 
 QSize Board::sizeHint() const

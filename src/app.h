@@ -94,8 +94,10 @@ private slots:
     /// Restarts the current game
     void restartGame();
     // void isSolvable(); // currently not used
-    /// Pauses the game
-    void pause();
+    /// Toggles the pause mode
+    void togglePause();
+    /// Controls the pause mode
+    void setPauseEnabled(bool enable);
     /// Undoes one move
     void undo();
     /// Redoes an undone move
