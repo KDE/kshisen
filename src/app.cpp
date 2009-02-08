@@ -376,7 +376,6 @@ void App::updateScore()
                      QString().sprintf("%02d", t % 60),
                      m_board->isPaused() ? i18n("(Paused) ") : QString());
 
-    //statusBar()->changeItem(s, SBI_TIME);
     m_gameTimerLabel->setText(s);
 
     // Number of tiles
