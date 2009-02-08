@@ -93,13 +93,15 @@ public:
     void Debug() const {
         kDebug() << "PossibleMove";
         QList<Position>::const_iterator i;
-        for (i = path.begin(); i != path.end(); ++i)
+        for (i = path.begin(); i != path.end(); ++i) {
             kDebug() << "    Path:" << i->x << "," << i->y;
+        }
 
         if (hasSlide) {
             kDebug() << "   hasSlide";
-            for (i = slide.begin(); i != slide.end(); ++i)
+            for (i = slide.begin(); i != slide.end(); ++i) {
                 kDebug() << "    Slide:" << i->x << "," << i->y;
+            }
         }
     }
 
