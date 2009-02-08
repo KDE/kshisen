@@ -118,7 +118,9 @@ Board::~Board()
 
 void Board::focusOutEvent(QFocusEvent *)
 {
-    pause();
+    if (!m_isPaused) {
+        pause();
+    }
 }
 
 
