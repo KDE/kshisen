@@ -153,7 +153,7 @@ public:
 
     virtual void paintEvent(QPaintEvent *);
     virtual void mousePressEvent(QMouseEvent *);
-    virtual void resizeEvent(QResizeEvent*);
+    virtual void resizeEvent(QResizeEvent *);
     virtual void focusOutEvent(QFocusEvent *);
 
     void setDelay(int);
@@ -182,7 +182,7 @@ public:
     void makeHintMove();
     void finish();
     void dumpBoard() const;
-    void dumpBoard(const int*) const;
+    void dumpBoard(const int *) const;
 #endif
 
     /// Returns the number of tiles left on the board
