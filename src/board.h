@@ -46,6 +46,7 @@
 #include "debug.h"
 
 #include <QList>
+#include <QSize>
 #include <QWidget>
 
 #include <kdebug.h>
@@ -172,7 +173,7 @@ public:
 
     void setSize(int x, int y);
     void resizeBoard();
-    QSize unscaledSize(); // const?
+    QSize unscaledSize() const;
     void newGame();
     void setShuffle(int);
     int  getShuffle() const;
@@ -251,7 +252,8 @@ private: // functions
     int xOffset() const;
     int yOffset() const;
 
-    int lineWidth(); // const?
+    /// Returns the line width to use
+    int lineWidth() const;
 
     void setField(int x, int y, int value);
     int getField(int x, int y) const;
@@ -269,7 +271,7 @@ private: // functions
     void drawConnection(int timeout);
     void drawPossibleMoves();
     void undrawPossibleMoves();
-    QPoint midCoord(int x, int y); // const?
+    QPoint midCoord(int x, int y) const;
     void marked(int x, int y);
     void madeMove(int x1, int y1, int x2, int y2);
     void madeMoveWithSlide(int x1, int y1, int x2, int y2, Path& s);

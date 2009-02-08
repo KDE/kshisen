@@ -426,7 +426,7 @@ void Board::resizeBoard()
     setPalette(palette);
 }
 
-QSize Board::unscaledSize()
+QSize Board::unscaledSize() const
 {
     int w = m_tiles.qWidth() * 2 * xTiles() + m_tiles.width();
     int h = m_tiles.qHeight() * 2 * yTiles() + m_tiles.width();
@@ -1432,7 +1432,7 @@ void Board::undrawConnection()
     }
 }
 
-QPoint Board::midCoord(int x, int y)
+QPoint Board::midCoord(int x, int y) const
 {
     QPoint p;
     int w = m_tiles.qWidth() * 2;
@@ -1819,7 +1819,10 @@ void Board::dumpBoard(const int* board) const
 }
 #endif
 
-int Board::lineWidth()
+/**
+ * The line width should be relative to the tile size, however, if the tile size is too small, keep a minimum line width.
+ */
+int Board::lineWidth() const
 {
     int width = qRound(m_tiles.height() / 10.0);
     if (width < 3) {
