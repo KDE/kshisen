@@ -160,7 +160,7 @@ public:
     virtual void focusOutEvent(QFocusEvent *);
 
     void setDelay(int);
-    int  getDelay() const;
+    int  delay() const;
 
     /// Returns if undo step is available
     bool canUndo() const;
@@ -176,10 +176,10 @@ public:
     QSize unscaledSize() const;
     void newGame();
     void setShuffle(int);
-    int  getShuffle() const;
+    int  shuffle() const;
 
     void showHint();
-    bool getHint_I(PossibleMoves& p) const;
+    bool hint_I(PossibleMoves& p) const;
 
 #ifdef DEBUGGING
     void makeHintMove();
@@ -190,12 +190,12 @@ public:
 
     /// Returns the number of tiles left on the board
     int tilesLeft() const;
-    int getCurrentTime() const;
-    int getTimeForGame() const;
+    int currentTime() const;
+    int timeForGame() const;
 
     bool solvable(bool noRestore = false); // const?
 
-    bool getSolvableFlag() const;
+    bool solvableFlag() const;
     void setSolvableFlag(bool);
     bool gravityFlag() const;
     void setGravityFlag(bool);
@@ -257,7 +257,7 @@ private: // functions
     int lineWidth() const;
 
     void setField(int x, int y, int value);
-    int getField(int x, int y) const;
+    int field(int x, int y) const;
     void updateField(int, int);
     void clearHighlight();
     bool tilesMatch(int tile1, int tile2) const;

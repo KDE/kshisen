@@ -323,7 +323,7 @@ void App::slotEndOfGame()
         }
 
         if (isHighscore && !m_cheat) {
-            hs.name = getPlayerName();
+            hs.name = playerName();
             hs.date = time(NULL);
             int rank = insertHighscore(hs);
             showHighscore(rank);
@@ -398,7 +398,7 @@ void App::setCheatModeEnabled(bool enabled)
 }
 
 
-QString App::getPlayerName()
+QString App::playerName()
 {
     KDialog dlg(this);
     dlg.setObjectName("Hall of Fame");
@@ -437,7 +437,7 @@ QString App::getPlayerName()
     return m_lastPlayerName;
 }
 
-int App::getScore(const HighScore &hs)
+int App::score(const HighScore &hs)
 {
     double ntiles = hs.x * hs.y;
     double tilespersec = ntiles / static_cast<double>(hs.seconds);
@@ -454,7 +454,7 @@ int App::getScore(const HighScore &hs)
 
 bool App::isBetter(const HighScore &hs, const HighScore &than)
 {
-    if (getScore(hs) > getScore(than)) {
+    if (score(hs) > score(than)) {
         return true;
     } else {
         return false;
@@ -701,7 +701,7 @@ void App::showHighscore(int focusitem)
         // insert score
         if (i < m_highscore.size()) {
             s = QString("%1 %2")
-                .arg(getScore(hs))
+                .arg(score(hs))
                 .arg(hs.gravity ? i18n("(gravity)") : QString(""));
         } else {
             s = "";
