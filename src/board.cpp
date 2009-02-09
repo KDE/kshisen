@@ -59,7 +59,7 @@
 
 static int sizeX[6] = {14, 16, 18, 24, 26, 30};
 static int sizeY[6] = { 6,  9,  8, 12, 14, 16};
-static int delay[5] = {1000, 750, 500, 250, 125};
+static int s_delay[5] = {1000, 750, 500, 250, 125};
 
 bool PossibleMove::isInPath(int x, int y) const
 {
@@ -150,7 +150,7 @@ void Board::loadSettings()
     int index = Prefs::size();
     setSize(sizeX[index], sizeY[index]);
     setGravityFlag(Prefs::gravity());
-    setDelay(delay[Prefs::speed()]);
+    setDelay(s_delay[Prefs::speed()]);
 }
 
 bool Board::loadTileset(const QString &path)
