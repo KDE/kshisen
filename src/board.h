@@ -160,7 +160,7 @@ public:
     virtual void focusOutEvent(QFocusEvent *);
 
     void setDelay(int);
-    int  getDelay() const;
+    int  delay() const;
 
     /// Returns if undo step is available
     bool canUndo() const;
@@ -242,7 +242,8 @@ public slots:
 
 private slots:
     void undrawConnection();
-    bool gravity(int, bool);
+    /// Returns whether the given column is affected by gravity
+    bool gravity(int column, bool update);
 
 protected:
     virtual QSize sizeHint() const;
@@ -264,6 +265,7 @@ private: // functions
     bool canMakePath(int x1, int y1, int x2, int y2) const;
     bool canSlideTiles(int x1, int y1, int x2, int y2, Path& p) const;
     int findPath(int x1, int y1, int x2, int y2, PossibleMoves& p) const;
+    /// Find a path of 1 or 2 segments between tiles.
     int findSimplePath(int x1, int y1, int x2, int y2, PossibleMoves& p) const;
     void performMove(PossibleMove& p);
     void performSlide(int x, int y, Path& s);
@@ -276,7 +278,8 @@ private: // functions
     void marked(int x, int y);
     void madeMove(int x1, int y1, int x2, int y2);
     void madeMoveWithSlide(int x1, int y1, int x2, int y2, Path& s);
-    void gravity(bool);
+    /// Checks all columns and populate the affected columns in m_gravCols
+    void gravity(bool update);
 
 private:
     time_t m_startTime;

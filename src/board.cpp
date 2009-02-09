@@ -231,8 +231,9 @@ int Board::field(int x, int y) const
     return m_field[y * xTiles() + x];
 }
 
-// check all columns and populate the affected
-// columns in m_gravCols
+/**
+ * @param update FIXME
+ */
 void Board::gravity(bool update)
 {
     m_gravCols.clear();
@@ -246,24 +247,28 @@ void Board::gravity(bool update)
     }
 }
 
-// return whether the column col is affected by gravity
-bool Board::gravity(int col, bool update)
+/**
+ * @param column The column to check
+ * @param update FIXME
+ */
+bool Board::gravity(int column, bool update)
 {
     bool affected = false;
     if (m_gravityFlag) {
-        int rptr = yTiles() - 1, wptr = yTiles() - 1;
+        int rptr = yTiles() - 1;
+        int wptr = yTiles() - 1;
         while (rptr >= 0) {
-            if (field(col, wptr) != EMPTY) {
+            if (field(column, wptr) != EMPTY) {
                 --rptr;
                 --wptr;
             } else {
-                if (field(col, rptr) != EMPTY) {
-                    setField(col, wptr, field(col, rptr));
-                    setField(col, rptr, EMPTY);
+                if (field(column, rptr) != EMPTY) {
+                    setField(column, wptr, field(column, rptr));
+                    setField(column, rptr, EMPTY);
                     affected = true;
                     if (update) {
-                        updateField(col, rptr);
-                        updateField(col, wptr);
+                        updateField(column, rptr);
+                        updateField(column, wptr);
                     }
                     --wptr;
                     --rptr;
@@ -862,7 +867,7 @@ void Board::performMove(PossibleMove& p)
         madeMove(m_markX, m_markY, p.path.last().x, p.path.last().y);
     }
     undrawPossibleMoves();
-    drawConnection(getDelay());
+    drawConnection(delay());
     m_tileRemove1 = QPair<int, int>(m_markX, m_markY);
     m_tileRemove2 = QPair<int, int>(p.path.last().x, p.path.last().y);
     m_markX = -1;
@@ -1222,19 +1227,19 @@ bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path& p) const
 // Can we make a path between two tiles (with 2 or 3 lines) ?
 // returns the number of possible paths
 // put all the paths found in p
-int Board::findPath(int x1, int y1, int x2, int y2, PossibleMoves& p) const
+int Board::findPath(int x1, int y1, int x2, int y2, PossibleMoves& possibleMoves) const
 {
-    p.clear();
+    possibleMoves.clear();
 
-    int n_path = 0;
-    int n_simple_path = 0;
+    int numberOfPaths = 0;
+    int simplePath = 0;
 
     // first find the simple paths
-    n_path = findSimplePath(x1, y1, x2, y2, p);
+    numberOfPaths = findSimplePath(x1, y1, x2, y2, possibleMoves);
 
     // if the tiles can slide, 2 lines max is allowed
     if (m_tilesCanSlideFlag) {
-        return n_path;
+        return numberOfPaths;
     }
 
     // Find paths of 3 segments
@@ -1242,35 +1247,39 @@ int Board::findPath(int x1, int y1, int x2, int y2, PossibleMoves& p) const
     const int dy[4] = { 0, 1, 0, -1 };
 
     for (int i = 0; i < 4; ++i) {
-        int newx = x1 + dx[i];
-        int newy = y1 + dy[i];
-        while (newx >= -1 && newx <= xTiles() &&
-                newy >= -1 && newy <= yTiles() &&
-                field(newx, newy) == EMPTY) {
-            if ((n_simple_path = findSimplePath(newx, newy, x2, y2, p))) {
-                p.last().path.prepend(Position(x1, y1));
-                n_path += n_simple_path;
+        int newX = x1 + dx[i];
+        int newY = y1 + dy[i];
+        while (newX >= -1 && newX <= xTiles() &&
+                newY >= -1 && newY <= yTiles() &&
+                field(newX, newY) == EMPTY) {
+            if ((simplePath = findSimplePath(newX, newY, x2, y2, possibleMoves))) {
+                possibleMoves.last().path.prepend(Position(x1, y1));
+                numberOfPaths += simplePath;
             }
-            newx += dx[i];
-            newy += dy[i];
+            newX += dx[i];
+            newY += dy[i];
         }
     }
-    return n_path;
+    return numberOfPaths;
 }
 
-// Find a path of 1 or 2 segments between tiles.
-// Returns the number of paths found
-// and all the possible moves in p
-int Board::findSimplePath(int x1, int y1, int x2, int y2, PossibleMoves& p) const
+/**
+ * @param x1 x coordinate of the first tile
+ * @param y1 y coordinate of the first tile
+ * @param x2 x coordinate of the second tile
+ * @param y2 y coordinate of the second tile
+ * @return The number of paths found and all the possible moves in possibleMoves
+ */
+int Board::findSimplePath(int x1, int y1, int x2, int y2, PossibleMoves& possibleMoves) const
 {
-    int n_path = 0;
-    Path _p;
+    int numberOfPaths = 0;
+    Path path;
     // Find direct line (path of 1 segment)
     if (canMakePath(x1, y1, x2, y2)) {
-        _p.append(Position(x1, y1));
-        _p.append(Position(x2, y2));
-        p.append(PossibleMove(_p));
-        ++n_path;
+        path.append(Position(x1, y1));
+        path.append(Position(x2, y2));
+        possibleMoves.append(PossibleMove(path));
+        ++numberOfPaths;
     }
 
     // If the tiles are in the same row or column, then a
@@ -1278,31 +1287,31 @@ int Board::findSimplePath(int x1, int y1, int x2, int y2, PossibleMoves& p) cons
     // That is, canMakePath should have returned true above if
     // that was possible
     if (x1 == x2 || y1 == y2) {
-        return n_path;
+        return numberOfPaths;
     }
 
     // I isolate the special code when tiles can slide even if it duplicates code for now
     // Can we make a path sliding tiles ?, the slide move is always first, then a normal path
     if (m_tilesCanSlideFlag) {
-        Path _s;
+        Path slidePath;
         // Find path of 2 segments (route A)
-        if (canSlideTiles(x1, y1, x2, y1, _s) && canMakePath(x2, y1, x2, y2)) {
-            _p.clear();
-            _p.append(Position(x1, y1));
-            _p.append(Position(x2, y1));
-            _p.append(Position(x2, y2));
-            p.append(PossibleMove(_p, _s));
-            ++n_path;
+        if (canSlideTiles(x1, y1, x2, y1, slidePath) && canMakePath(x2, y1, x2, y2)) {
+            path.clear();
+            path.append(Position(x1, y1));
+            path.append(Position(x2, y1));
+            path.append(Position(x2, y2));
+            possibleMoves.append(PossibleMove(path, slidePath));
+            ++numberOfPaths;
         }
 
         // Find path of 2 segments (route B)
-        if (canSlideTiles(x1, y1, x1, y2, _s) && canMakePath(x1, y2, x2, y2)) {
-            _p.clear();
-            _p.append(Position(x1, y1));
-            _p.append(Position(x1, y2));
-            _p.append(Position(x2, y2));
-            p.append(PossibleMove(_p, _s));
-            ++n_path;
+        if (canSlideTiles(x1, y1, x1, y2, slidePath) && canMakePath(x1, y2, x2, y2)) {
+            path.clear();
+            path.append(Position(x1, y1));
+            path.append(Position(x1, y2));
+            path.append(Position(x2, y2));
+            possibleMoves.append(PossibleMove(path, slidePath));
+            ++numberOfPaths;
         }
     }
 
@@ -1311,26 +1320,26 @@ int Board::findSimplePath(int x1, int y1, int x2, int y2, PossibleMoves& p) cons
     // Find path of 2 segments (route A)
     if (field(x2, y1) == EMPTY && canMakePath(x1, y1, x2, y1) &&
             canMakePath(x2, y1, x2, y2)) {
-        _p.clear();
-        _p.append(Position(x1, y1));
-        _p.append(Position(x2, y1));
-        _p.append(Position(x2, y2));
-        p.append(PossibleMove(_p));
-        ++n_path;
+        path.clear();
+        path.append(Position(x1, y1));
+        path.append(Position(x2, y1));
+        path.append(Position(x2, y2));
+        possibleMoves.append(PossibleMove(path));
+        ++numberOfPaths;
     }
 
     // Find path of 2 segments (route B)
     if (field(x1, y2) == EMPTY && canMakePath(x1, y1, x1, y2) &&
             canMakePath(x1, y2, x2, y2)) {
-        _p.clear();
-        _p.append(Position(x1, y1));
-        _p.append(Position(x1, y2));
-        _p.append(Position(x2, y2));
-        p.append(PossibleMove(_p));
-        ++n_path;
+        path.clear();
+        path.append(Position(x1, y1));
+        path.append(Position(x1, y2));
+        path.append(Position(x2, y2));
+        possibleMoves.append(PossibleMove(path));
+        ++numberOfPaths;
     }
 
-    return n_path;
+    return numberOfPaths;
 }
 
 void Board::drawPossibleMoves()
@@ -1458,12 +1467,12 @@ QPoint Board::midCoord(int x, int y) const
     return p;
 }
 
-void Board::setDelay(int newvalue)
+void Board::setDelay(int newValue)
 {
-    m_delay = newvalue;
+    m_delay = newValue;
 }
 
-int Board::getDelay() const
+int Board::delay() const
 {
     return m_delay;
 }
