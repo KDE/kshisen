@@ -309,7 +309,7 @@ void App::slotEndOfGame()
         updateItems();
         // create highscore entry
         HighScore hs;
-        hs.seconds = m_board->getTimeForGame();
+        hs.seconds = m_board->timeForGame();
         hs.x = m_board->xTiles();
         hs.y = m_board->yTiles();
         hs.gravity = static_cast<int>(m_board->gravityFlag());
@@ -323,15 +323,15 @@ void App::slotEndOfGame()
         }
 
         if (isHighscore && !m_cheat) {
-            hs.name = getPlayerName();
+            hs.name = playerName();
             hs.date = time(NULL);
             int rank = insertHighscore(hs);
             showHighscore(rank);
         } else {
             QString s = i18n("Congratulations! You made it in %1:%2:%3",
-                             QString().sprintf("%02d", m_board->getTimeForGame() / 3600),
-                             QString().sprintf("%02d", (m_board->getTimeForGame() / 60) % 60),
-                             QString().sprintf("%02d", m_board->getTimeForGame() % 60));
+                             QString().sprintf("%02d", m_board->timeForGame() / 3600),
+                             QString().sprintf("%02d", (m_board->timeForGame() / 60) % 60),
+                             QString().sprintf("%02d", m_board->timeForGame() % 60));
 
             if (isHighscore) {  // player would have been in the highscores if he did not cheat
                 s += '\n' + i18n("You could have been in the highscores if you did not use Undo or Hint. Try without them next time.");
@@ -369,7 +369,7 @@ void App::notifyInvalidMove()
 
 void App::updateScore()
 {
-    int t = m_board->getTimeForGame();
+    int t = m_board->timeForGame();
     QString s = i18n(" Your time: %1:%2:%3 %4",
                      QString().sprintf("%02d", t / 3600),
                      QString().sprintf("%02d", (t / 60) % 60),
@@ -398,7 +398,7 @@ void App::setCheatModeEnabled(bool enabled)
 }
 
 
-QString App::getPlayerName()
+QString App::playerName()
 {
     KDialog dlg(this);
     dlg.setObjectName("Hall of Fame");
@@ -437,7 +437,7 @@ QString App::getPlayerName()
     return m_lastPlayerName;
 }
 
-int App::getScore(const HighScore &hs)
+int App::score(const HighScore &hs)
 {
     double ntiles = hs.x * hs.y;
     double tilespersec = ntiles / static_cast<double>(hs.seconds);
@@ -454,7 +454,7 @@ int App::getScore(const HighScore &hs)
 
 bool App::isBetter(const HighScore &hs, const HighScore &than)
 {
-    if (getScore(hs) > getScore(than)) {
+    if (score(hs) > score(than)) {
         return true;
     } else {
         return false;
@@ -701,7 +701,7 @@ void App::showHighscore(int focusitem)
         // insert score
         if (i < m_highscore.size()) {
             s = QString("%1 %2")
-                .arg(getScore(hs))
+                .arg(score(hs))
                 .arg(hs.gravity ? i18n("(gravity)") : QString(""));
         } else {
             s = "";
