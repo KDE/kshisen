@@ -110,7 +110,7 @@ private slots:
 
 private:
     /// Returns a previously entered player name
-    QString playerName();
+    QString getPlayerName();
 
     /// Reads the old (pre- @ref KHighscore) highscore table
     void readOldHighscore(); // still needed?
@@ -118,7 +118,7 @@ private:
     void writeHighscore();
     /// Inserts given highscore entry to the list
     int insertHighscore(const HighScore &);
-    int score(const HighScore &); // const?
+    int getScore(const HighScore &); // const?
     /// Compares the two given scores
     bool isBetter(const HighScore &, const HighScore &); // const?
     /// Shows the highscore table
