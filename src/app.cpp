@@ -458,19 +458,19 @@ int App::insertHighscore(const HighScore &hs)
             }
 
             // sort in new entry
-            int bestsofar = m_highscore.size() - 1;
+            int bestSoFar = m_highscore.size() - 1;
             for (int i = m_highscore.size() - 1; i > 0; --i) {
                 if (isBetter(m_highscore[i], m_highscore[i-1])) {
                     // swap entries
                     HighScore temp = m_highscore[i-1];
                     m_highscore[i-1] = m_highscore[i];
                     m_highscore[i] = temp;
-                    bestsofar = i - 1;
+                    bestSoFar = i - 1;
                 }
             }
 
             writeHighscore();
-            return bestsofar;
+            return bestSoFar;
         }
     }
     return -1;
