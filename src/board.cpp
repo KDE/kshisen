@@ -51,11 +51,11 @@ bool PossibleMove::isInPath(int x, int y) const
     Debug();
     QList<Position>::const_iterator iter;
     // a path has at least 2 positions
-    iter = m_path.begin();
+    iter = m_path.constBegin();
     int pathX = iter->x;
     int pathY = iter->y;
     ++iter;
-    for (; iter != m_path.end(); ++iter) {
+    for (; iter != m_path.constEnd(); ++iter) {
         // to fix
         if ((x == iter->x && ((y > pathY && y <= iter->y) || (y < pathY && y >= iter->y)))
                 || (y == iter->y && ((x > pathX && x <= iter->x) || (x < pathX && x >= iter->x)))) {
@@ -1858,7 +1858,7 @@ bool Board::hint_I(PossibleMoves &possibleMoves) const
                             if (tilesMatch(field(xx, yy), tile)) {
                                 if (findPath(x, y, xx, yy, possibleMoves)) {
                                     //kDebug() << "path.size() ==" << p.size();
-                                    //for(Path::const_iterator i = p.begin(); i != p.end(); ++i)
+                                    //for(Path::const_iterator i = p.constBegin(); i != p.constEnd(); ++i)
                                     //    kDebug() << "pathEntry: (" << i->x << "," << i->y
                                     //        << ") => " << getField(i->x, i->y);
                                     return true;
