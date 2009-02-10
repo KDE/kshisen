@@ -108,7 +108,7 @@ Board::Board(QWidget *parent) :
     setPalette(palette);
 
     loadSettings();
-    setFocus(Qt::ShortcutFocusReason);
+    setFocus();
 }
 
 Board::~Board()
