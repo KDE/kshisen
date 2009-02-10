@@ -984,7 +984,7 @@ void Board::marked(int x, int y)
         if (m_possibleMoves.count() > 1) {
             //kDebug() << "marked: there was" << m_possibleMoves.count() << "moves possible for this";
             int withSlide = 0;
-            for (QList<PossibleMove>::iterator i = m_possibleMoves.begin(); i != m_possibleMoves.end(); ++i) {
+            for (QList<PossibleMove>::const_iterator i = m_possibleMoves.begin(); i != m_possibleMoves.end(); ++i) {
                 i->Debug();
                 if (i->hasSlide) {
                     ++withSlide;
