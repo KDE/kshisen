@@ -444,6 +444,7 @@ void Board::newGame()
     kDebug() << "NewGame";
 
     m_isOver = false;
+    m_isPaused = false;
 
     m_markX = -1;
     m_markY = -1;
