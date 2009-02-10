@@ -64,8 +64,8 @@
 struct Position {
     Position() : x(0), y(0) { }
     Position(int _x, int _y) : x(_x), y(_y) { }
-    int x; ///< x position */
-    int y; ///< y position */
+    int x; ///< x position
+    int y; ///< y position
 };
 
 /**
@@ -84,31 +84,31 @@ typedef QList<Position> Path;
 class PossibleMove
 {
 public:
-    PossibleMove(Path& p) :
-            path(p), hasSlide(false) { }
-    PossibleMove(Path& p, Path& s) :
-            path(p), hasSlide(true), slide(s) { }
+    PossibleMove(Path &path) :
+            m_path(path), m_hasSlide(false) { }
+    PossibleMove(Path &path, Path &slide) :
+            m_path(path), m_hasSlide(true), m_slide(slide) { }
 
     bool isInPath(int x, int y) const;
 
     void Debug() const {
         kDebug() << "PossibleMove";
-        QList<Position>::const_iterator i;
-        for (i = path.begin(); i != path.end(); ++i) {
-            kDebug() << "    Path:" << i->x << "," << i->y;
+        QList<Position>::const_iterator iter;
+        for (iter = m_path.begin(); iter != m_path.end(); ++iter) {
+            kDebug() << "    Path:" << iter->x << "," << iter->y;
         }
 
-        if (hasSlide) {
+        if (m_hasSlide) {
             kDebug() << "   hasSlide";
-            for (i = slide.begin(); i != slide.end(); ++i) {
-                kDebug() << "    Slide:" << i->x << "," << i->y;
+            for (iter = m_slide.begin(); iter != m_slide.end(); ++iter) {
+                kDebug() << "    Slide:" << iter->x << "," << iter->y;
             }
         }
     }
 
-    Path path; ///< path used to connect the two tiles
-    bool hasSlide; ///< flag set if the move requires a slide
-    Path slide; ///< path representing the movement of the last sliding tile
+    Path m_path; ///< path used to connect the two tiles
+    bool m_hasSlide; ///< flag set if the move requires a slide
+    Path m_slide; ///< path representing the movement of the last sliding tile
 };
 
 /**
@@ -120,24 +120,26 @@ typedef QList<PossibleMove> PossibleMoves;
 /**
  * @brief Class holding a move on the board made by the player
  *
- * Contains all the information needed to undo or redo the move.
+ * Contains all the information needed to undo or redo a move.
  */
 class Move
 {
 public:
-    Move(int _x1, int _y1, int _x2, int _y2, int _tile) :
-            x1(_x1), y1(_y1), x2(_x2), y2(_y2), tile1(_tile), tile2(_tile), hasSlide(false), slide_x1(-1), slide_y1(-1), slide_x2(-1), slide_y2(-1) { }
-    Move(int _x1, int _y1, int _x2, int _y2, int _tile1, int _tile2) :
-            x1(_x1), y1(_y1), x2(_x2), y2(_y2), tile1(_tile1), tile2(_tile2), hasSlide(false), slide_x1(-1), slide_y1(-1), slide_x2(-1), slide_y2(-1) { }
-    Move(int _x1, int _y1, int _x2, int _y2, int _tile1, int _tile2, int _slide_x1, int _slide_y1, int _slide_x2, int _slide_y2) :
-            x1(_x1), y1(_y1), x2(_x2), y2(_y2), tile1(_tile1), tile2(_tile2), hasSlide(true), slide_x1(_slide_x1), slide_y1(_slide_y1), slide_x2(_slide_x2), slide_y2(_slide_y2) { }
+    Move(int x1, int y1, int x2, int y2, int tile) :
+            m_x1(x1), m_y1(y1), m_x2(x2), m_y2(y2), m_tile1(tile), m_tile2(tile), m_hasSlide(false), m_slideX1(-1), m_slideY1(-1), m_slideX2(-1), m_slideY2(-1) { }
+    Move(int x1, int y1, int x2, int y2, int tile1, int tile2) :
+            m_x1(x1), m_y1(y1), m_x2(x2), m_y2(y2), m_tile1(tile1), m_tile2(tile2), m_hasSlide(false), m_slideX1(-1), m_slideY1(-1), m_slideX2(-1), m_slideY2(-1) { }
+    Move(int x1, int y1, int x2, int y2, int tile1, int tile2, int slideX1, int slideY1, int slideX2, int slideY2) :
+            m_x1(x1), m_y1(y1), m_x2(x2), m_y2(y2), m_tile1(tile1), m_tile2(tile2), m_hasSlide(true), m_slideX1(slideX1), m_slideY1(slideY1), m_slideX2(slideX2), m_slideY2(slideY2) { }
 
-    int x1, y1, x2, y2; ///< coordinates of the two tiles that matched
-    int tile1; ///< type of tile at first set of coordinates
-    int tile2; ///< type of tile at second set of coordinates
-    bool hasSlide; ///< if we performed a slide during the move
-    int slide_x1, slide_y1; ///< original coordinates of the last slided tile
-    int slide_x2, slide_y2; ///< final coordinates of the last slided tile
+    int m_x1, m_y1, m_x2, m_y2; ///< coordinates of the two tiles that matched
+    int m_tile1; ///< type of tile at first set of coordinates
+    int m_tile2; ///< type of tile at second set of coordinates
+    bool m_hasSlide; ///< if we performed a slide during the move
+    int m_slideX1; ///< original x coordinate of the last slided tile
+    int m_slideY1; ///< original y coordinate of the last slided tile
+    int m_slideX2; ///< final x coordinate of the last slided tile
+    int m_slideY2; ///< final y coordinate of the last slided tile
 };
 
 
@@ -154,10 +156,10 @@ public:
 
     static const int nTiles = 42;
 
-    virtual void paintEvent(QPaintEvent *);
-    virtual void mousePressEvent(QMouseEvent *);
-    virtual void resizeEvent(QResizeEvent *);
-    virtual void focusOutEvent(QFocusEvent *);
+    virtual void paintEvent(QPaintEvent *e);
+    virtual void mousePressEvent(QMouseEvent *e);
+    virtual void resizeEvent(QResizeEvent *e);
+    virtual void focusOutEvent(QFocusEvent *e);
 
     void setDelay(int);
     int  delay() const;
@@ -179,7 +181,7 @@ public:
     int  shuffle() const;
 
     void showHint();
-    bool hint_I(PossibleMoves& p) const;
+    bool hint_I(PossibleMoves &possibleMoves) const;
 
 #ifdef DEBUGGING
     void makeHintMove();
@@ -196,11 +198,11 @@ public:
     bool solvable(bool noRestore = false); // const?
 
     bool solvableFlag() const;
-    void setSolvableFlag(bool);
+    void setSolvableFlag(bool b);
     bool gravityFlag() const;
-    void setGravityFlag(bool);
-    void setChineseStyleFlag(bool);
-    void setTilesCanSlideFlag(bool);
+    void setGravityFlag(bool b);
+    void setChineseStyleFlag(bool b);
+    void setTilesCanSlideFlag(bool b);
 
     int xTiles() const;
     int yTiles() const;
@@ -262,14 +264,17 @@ private: // functions
     void updateField(int, int);
     void clearHighlight();
     bool tilesMatch(int tile1, int tile2) const;
+    /// Checks if a path between two tiles can be made with a single line
     bool canMakePath(int x1, int y1, int x2, int y2) const;
-    bool canSlideTiles(int x1, int y1, int x2, int y2, Path& p) const;
-    int findPath(int x1, int y1, int x2, int y2, PossibleMoves& p) const;
+    /// Checks if the tile at (x1,y1) can be slid to (x2,y2)
+    bool canSlideTiles(int x1, int y1, int x2, int y2, Path &path) const;
+    /// Checks if a path between two tiles can be made with 2 or 3 lines
+    int findPath(int x1, int y1, int x2, int y2, PossibleMoves &possibleMoves) const;
     /// Find a path of 1 or 2 segments between tiles.
-    int findSimplePath(int x1, int y1, int x2, int y2, PossibleMoves& p) const;
-    void performMove(PossibleMove& p);
+    int findSimplePath(int x1, int y1, int x2, int y2, PossibleMoves &possibleMoves) const;
+    void performMove(PossibleMove &possibleMoves);
     void performSlide(int x, int y, Path& s);
-    void reverseSlide(int x, int y, int s_x1, int s_y1, int s_x2, int s_y2);
+    void reverseSlide(int x, int y, int slideX1, int slideY1, int slideX2, int slideY2);
     bool isTileHighlighted(int x, int y) const;
     void drawConnection(int timeout);
     void drawPossibleMoves();
@@ -277,7 +282,7 @@ private: // functions
     QPoint midCoord(int x, int y) const;
     void marked(int x, int y);
     void madeMove(int x1, int y1, int x2, int y2);
-    void madeMoveWithSlide(int x1, int y1, int x2, int y2, Path& s);
+    void madeMoveWithSlide(int x1, int y1, int x2, int y2, Path &slide);
     /// Checks all columns and populate the affected columns in m_gravCols
     void gravity(bool update);
 
