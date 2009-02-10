@@ -6,9 +6,13 @@ set( kshisen_SRCS
      main.cpp
      board.cpp
      app.cpp
-   )
+     playernamedlg.cpp
+     )
 
-kde4_add_ui_files( kshisen_SRCS settings.ui )
+kde4_add_ui_files( kshisen_SRCS
+    settings.ui
+    playernamedlgwidget.ui
+    )
 
 kde4_add_kcfg_files( kshisen_SRCS prefs.kcfgc )
 

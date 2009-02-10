@@ -7,6 +7,11 @@ Changes since 1.6.1:
  *  - game is now paused if the board loses focus (e.g. if a menu is opened
  *    or the application itself loses focus)
  *  - game can now be resumed by clicking on the board
+ * rework player name dialog
+ *  - use ui file for the dialog widget
+ *  - OK button disabled until user enters something, preventing the
+ *    highscore list to be filled with empty names
+ *  - player can cancel if he does not want to be added to the list
 
  * some changes in coding style and naming schema to be more close to the
    kdelibs style

@@ -39,6 +39,7 @@
  */
 
 #include "app.h"
+#include "playernamedlg.h"
 #include "prefs.h"
 #include "ui_settings.h"
 
@@ -323,10 +324,13 @@ void App::slotEndOfGame()
         }
 
         if (isHighscore && !m_cheat) {
-            hs.name = playerName();
-            hs.date = time(NULL);
-            int rank = insertHighscore(hs);
-            showHighscore(rank);
+            // Show a dialog to receive the player's name
+            if (receivePlayerName()) {
+                hs.name = m_lastPlayerName;
+                hs.date = time(NULL);
+                int rank = insertHighscore(hs);
+                showHighscore(rank);
+            }
         } else {
             QString s = i18n("Congratulations! You made it in %1:%2:%3",
                              QString().sprintf("%02d", m_board->timeForGame() / 3600),
@@ -397,44 +401,19 @@ void App::setCheatModeEnabled(bool enabled)
     m_gameCheatLabel->setVisible(enabled);
 }
 
-
-QString App::playerName()
+/**
+ * @returns True if the player entered a name and pressed OK, False if the player pressed Cancel
+ */
+bool App::receivePlayerName()
 {
-    KDialog dlg(this);
-    dlg.setObjectName("Hall of Fame");
-    dlg.setButtons(KDialog::Ok);
-    dlg.setWindowTitle(i18n("Enter your Name"));
-
-    QWidget* dummy = new QWidget(&dlg);
-    dlg.setMainWidget(dummy);
-
-    QLabel *l1 = new QLabel(i18n("You have made it into the \"Hall Of Fame\". Type in\nyour name so mankind will always remember\nyour cool rating."), dummy);
-
-    QLabel *l2 = new QLabel(i18n("Your name:"), dummy);
-
-    KLineEdit *e = new KLineEdit(dummy);
-    e->setMinimumWidth(e->fontMetrics().width("XXXXXXXXXXXXXXXX"));
-    e->setText(m_lastPlayerName);
-    e->setFocus();
-
-    // create layout
-    QHBoxLayout *tl1 = new QHBoxLayout;
-    tl1->addWidget(l2);
-    tl1->addWidget(e);
-    QVBoxLayout *tl = new QVBoxLayout(dummy);
-    tl->setMargin(10);
-    tl->setSpacing(5);
-    tl->addWidget(l1);
-    tl->addLayout(tl1);
-
-    dlg.exec();
-
-    m_lastPlayerName = e->text();
-
-    if (m_lastPlayerName.isEmpty()) {
-        return " ";
+    PlayerNameDlg dlg;
+    dlg.setPlayerName(m_lastPlayerName);
+    if (dlg.exec() == QDialog::Accepted) {
+        kDebug() << "OK pressed";
+        m_lastPlayerName = dlg.playerName();
+        return true;
     }
-    return m_lastPlayerName;
+    return false;
 }
 
 int App::score(const HighScore &hs)

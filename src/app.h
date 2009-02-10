@@ -109,8 +109,8 @@ private slots:
     void keyBindings();
 
 private:
-    /// Returns a previously entered player name
-    QString playerName();
+    /// Shows a dialog to receive the player's name
+    bool receivePlayerName();
 
     /// Reads the old (pre- @ref KHighscore) highscore table
     void readOldHighscore(); // still needed?
