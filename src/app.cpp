@@ -71,12 +71,7 @@ App::App(QWidget *parent) : KXmlGuiWindow(parent),
     // TODO?
     // Would it make sense long term to have a kconfig update rather than
     // having both formats supported in the code?
-    // schwarzer: evaluate whether readOldHighscore is still useful.
-    if (m_highscoreTable->hasTable()) {
-        readHighscore();
-    } else {
-        readOldHighscore();
-    }
+    readHighscore();
 
     setupStatusBar();
     setupActions();
@@ -486,67 +481,6 @@ void App::readHighscore()
     }
 }
 
-/**
- * This reads the config file first, then saves it in the new format and
- * re-reads it again as a KHighscore table.
- */
-void App::readOldHighscore()
-{
-    // this is for before-KHighscore-highscores
-    QString s, e;
-    KSharedConfig::Ptr conf = KGlobal::config();
-
-    m_highscore.resize(0);
-    int i = 0;
-    bool eol = false;
-    KConfigGroup group = conf->group("Hall of Fame");
-    while ((i < static_cast<int>(HIGHSCORE_MAX)) && !eol) {
-        s.sprintf("Highscore_%d", i);
-        if (group.hasKey(s)) {
-            e = group.readEntry(s, QString());
-            m_highscore.resize(i + 1);
-
-            HighScore hs;
-
-            QStringList e = group.readEntry(s, QString()).split(' ');
-            int nelem = e.count();
-            hs.x = e.at(0).toInt();
-            hs.y = e.at(1).toInt();
-            hs.seconds = e.at(2).toInt();
-            hs.date = e.at(3).toInt();
-
-            if (nelem == 4) {  // old version <= 1.1
-                hs.gravity = 0;
-                hs.name = e.at(4);
-            } else {
-                hs.gravity = e.at(4).toInt();
-                hs.name = e.at(5);
-            }
-
-            m_highscore[i] = hs;
-        } else {
-            eol = true;
-        }
-        ++i;
-    }
-
-    //  // freshly installed, add my own highscore
-    //  if(m_highscore.size() == 0)
-    //  {
-    //      HighScore hs;
-    //      hs.x = 28;
-    //      hs.y = 16;
-    //      hs.seconds = 367;
-    //      hs.name = "Mario";
-    //      m_highscore.resize(1);
-    //      m_highscore[0] = hs;
-    //  }
-
-    // write in new KHighscore format
-    writeHighscore();
-    // read form KHighscore format
-    readHighscore();
-}
 
 void App::writeHighscore()
 {

@@ -92,8 +92,6 @@ private:
     /// Shows a dialog to receive the player's name
     bool receivePlayerName();
 
-    /// Reads the old (pre- @ref KHighscore) highscore table
-    void readOldHighscore(); // still needed?
     void readHighscore(); // const?
     void writeHighscore();
     /// Inserts given highscore entry to the list
