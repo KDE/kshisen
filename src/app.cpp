@@ -220,18 +220,20 @@ void App::setPauseEnabled(bool enabled)
  */
 void App::undo()
 {
-    if (m_board->canUndo()) {
-        m_board->undo();
-        setCheatModeEnabled(true);
-        updateItems();
+    if (!m_board->canUndo()) {
+        return;
     }
+    m_board->undo();
+    setCheatModeEnabled(true);
+    updateItems();
 }
 
 void App::redo()
 {
-    if (m_board->canRedo()) {
-        m_board->redo();
+    if (!m_board->canRedo()) {
+        return;
     }
+    m_board->redo();
     updateItems();
 }
 
