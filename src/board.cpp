@@ -1,9 +1,9 @@
 /***************************************************************************
  *   KShisen - A japanese game similar to mahjongg                         *
- *   Copyright (C) 1997   Mario Weilguni <mweilguni@sime.com>              *
- *   Copyright (C) 2002-2004  Dave Corrie <kde@davecorrie.com>             *
- *   Copyright (C) 2007  Mauricio Piacentini <mauricio@tabuleiro.com>      *
- *   Copyright (C) 2009  Frederik Schwarzer <schwarzerf@gmail.com>         *
+ *   Copyright 1997   Mario Weilguni <mweilguni@sime.com>                  *
+ *   Copyright 2002-2004  Dave Corrie <kde@davecorrie.com>                 *
+ *   Copyright 2007  Mauricio Piacentini <mauricio@tabuleiro.com>          *
+ *   Copyright 2009  Frederik Schwarzer <schwarzerf@gmail.com>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *

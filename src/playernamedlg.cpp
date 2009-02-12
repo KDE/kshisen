@@ -1,6 +1,6 @@
 /***************************************************************************
  *   KShisen - A japanese game similar to mahjongg                         *
- *   Copyright (C) 2009  Frederik Schwarzer <schwarzerf@gmail.com>         *
+ *   Copyright 2009  Frederik Schwarzer <schwarzerf@gmail.com>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
