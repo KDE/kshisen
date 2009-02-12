@@ -47,7 +47,7 @@ PlayerNameDlg::PlayerNameDlg(QWidget *parent) : KDialog(parent)
     setCaption(i18n("Enter your Name"));
     setButtons(KDialog::Ok|KDialog::Cancel);
     ui = new PlayerNameDlgWidget(this);
-    setMainWidget( ui );
+    setMainWidget(ui);
     showButtonSeparator(true);
     enableButtonOk(false);
     ui->nameLineEdit->setFocus();
