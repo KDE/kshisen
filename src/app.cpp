@@ -271,11 +271,16 @@ void App::slotEndOfGame()
         KMessageBox::information(this, i18n("No more moves possible!"), i18n("End of Game"));
     } else {
         m_board->gameOver();
+        QString timeString = i18nc("time string: hh:mm:ss", "%1:%2:%3",
+                                    QString().sprintf("%02d", m_board->timeForGame() / 3600),
+                                    QString().sprintf("%02d", (m_board->timeForGame() / 60) % 60),
+                                    QString().sprintf("%02d", m_board->timeForGame() % 60));
         KScoreDialog::FieldInfo scoreInfo;
         scoreInfo[KScoreDialog::Score].setNum(score(m_board->xTiles(), m_board->yTiles(), m_board->timeForGame(), m_board->gravityFlag()));
-        scoreInfo[KScoreDialog::Time] = m_board->timeForGame();
+        scoreInfo[KScoreDialog::Time] = timeString;
 
         KScoreDialog scoreDialog(KScoreDialog::Name | KScoreDialog::Time | KScoreDialog::Score, this);
+        scoreDialog.setConfigGroup(QString("%1x%2").arg(sizeX[Prefs::size()]).arg(sizeY[Prefs::size()]));
 
         bool madeIt = static_cast<bool>(scoreDialog.addScore(scoreInfo));
         QString message;
@@ -288,10 +293,7 @@ void App::slotEndOfGame()
             scoreDialog.setComment(message);
             scoreDialog.exec();
         } else {
-            message += i18n("\nYou made it in %1:%2:%3",
-                           QString().sprintf("%02d", m_board->timeForGame() / 3600),
-                           QString().sprintf("%02d", (m_board->timeForGame() / 60) % 60),
-                           QString().sprintf("%02d", m_board->timeForGame() % 60));
+            message += i18nc("%1 - time string like hh:mm:ss", "\nYou made it in %1").arg(timeString);
             KMessageBox::information(this, message, i18n("End of Game"));
         }
     }

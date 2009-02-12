@@ -38,8 +38,6 @@
 #define SEASONS_START   28
 #define FLOWERS_START   39
 
-static int sizeX[6] = {14, 16, 18, 24, 26, 30};
-static int sizeY[6] = { 6,  9,  8, 12, 14, 16};
 static int s_delay[5] = {1000, 750, 500, 250, 125};
 
 bool PossibleMove::isInPath(int x, int y) const

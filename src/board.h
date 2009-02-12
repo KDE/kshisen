@@ -39,6 +39,9 @@
 // Should this get the whole HAVE_SYS_TIME_H TIME_WITH_SYS_TIME treatment?
 #include <ctime>
 
+static int sizeX[6] = {14, 16, 18, 24, 26, 30};
+static int sizeY[6] = { 6,  9,  8, 12, 14, 16};
+
 /**
  * @brief Struct holding a position on the board (x,y)
  */
