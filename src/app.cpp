@@ -20,7 +20,6 @@
  ***************************************************************************/
 
 #include "app.h"
-#include "playernamedlg.h"
 #include "prefs.h"
 #include "ui_settings.h"
 
