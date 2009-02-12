@@ -2050,8 +2050,9 @@ void Board::gameStuck()
 void Board::gameOver()
 {
     m_isOver = true;
-    emit changed();
-    update();
+// schwarzer: skip for now and observe if it is needed at all
+//    emit changed();
+//    update();
 }
 
 bool Board::isOver() const
