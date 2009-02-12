@@ -1,0 +1,4 @@
+- represent gravity in highscore dialog
+- make sure the game board does not disappear if there are no more matching tiles found. The Player might want to undo some steps and try again.
+- disable undo and redo if game is over
+
