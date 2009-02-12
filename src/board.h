@@ -75,13 +75,13 @@ public:
     void Debug() const {
         kDebug() << "PossibleMove";
         QList<Position>::const_iterator iter;
-        for (iter = m_path.begin(); iter != m_path.end(); ++iter) {
+        for (iter = m_path.constBegin(); iter != m_path.constEnd(); ++iter) {
             kDebug() << "    Path:" << iter->x << "," << iter->y;
         }
 
         if (m_hasSlide) {
             kDebug() << "   hasSlide";
-            for (iter = m_slide.begin(); iter != m_slide.end(); ++iter) {
+            for (iter = m_slide.constBegin(); iter != m_slide.constEnd(); ++iter) {
                 kDebug() << "    Slide:" << iter->x << "," << iter->y;
             }
         }
