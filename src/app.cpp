@@ -25,6 +25,7 @@
 #include "ui_settings.h"
 
 #include <kmahjonggconfigdialog.h>
+#include <kscoredialog.h>
 #include <kstandardgameaction.h>
 
 #include <kaction.h>
@@ -33,7 +34,6 @@
 #include <kconfigdialog.h>
 #include <kdebug.h>
 #include <kglobal.h>
-#include <khighscore.h>
 #include <klineedit.h>
 #include <klocale.h>
 #include <kmenu.h>
@@ -63,16 +63,10 @@ public:
     }
 };
 
-App::App(QWidget *parent) : KXmlGuiWindow(parent),
+App::App(QWidget *parent) 
+        : KXmlGuiWindow(parent),
         m_cheat(false)
 {
-    m_highscoreTable = new KHighscore(this);
-
-    // TODO?
-    // Would it make sense long term to have a kconfig update rather than
-    // having both formats supported in the code?
-    readHighscore();
-
     setupStatusBar();
     setupActions();
 
@@ -131,7 +125,7 @@ void App::setupActions()
     KStandardGameAction::gameNew(this, SLOT(newGame()), actionCollection());
     KStandardGameAction::restart(this, SLOT(restartGame()), actionCollection());
     KStandardGameAction::pause(this, SLOT(togglePause()), actionCollection());
-    KStandardGameAction::highscores(this, SLOT(hallOfFame()), actionCollection());
+    KStandardGameAction::highscores(this, SLOT(showHighscores()), actionCollection());
     KStandardGameAction::quit(this, SLOT(close()), actionCollection());
 
     // Move
@@ -148,15 +142,6 @@ void App::setupActions()
 
     // Settings
     KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
-}
-
-/**
- * This shows the highscore table without any entry highlighted.
- * \todo: get rid of this and make showHighscore() a slot?
- */
-void App::hallOfFame()
-{
-    showHighscore();
 }
 
 /**
@@ -281,46 +266,70 @@ void App::updateItems()
 
 void App::slotEndOfGame()
 {
-    m_board->gameOver();
     if (m_board->tilesLeft() > 0) {
+        m_board->gameStuck();
         KMessageBox::information(this, i18n("No more moves possible!"), i18n("End of Game"));
     } else {
-        updateItems();
-        // create highscore entry
-        HighScore hs;
-        hs.seconds = m_board->timeForGame();
-        hs.x = m_board->xTiles();
-        hs.y = m_board->yTiles();
-        hs.gravity = static_cast<int>(m_board->gravityFlag());
+        m_board->gameOver();
+        KScoreDialog::FieldInfo scoreInfo;
+        scoreInfo[KScoreDialog::Score].setNum(score(m_board->xTiles(), m_board->yTiles(), m_board->timeForGame(), m_board->gravityFlag()));
+        scoreInfo[KScoreDialog::Time] = m_board->timeForGame();
 
-        // check if we made it into Top10
-        bool isHighscore = false;
-        if (m_highscore.size() < HIGHSCORE_MAX) {
-            isHighscore = true;
-        } else if (isBetter(hs, m_highscore[HIGHSCORE_MAX-1])) {
-            isHighscore = true;
-        }
+        KScoreDialog scoreDialog(KScoreDialog::Name | KScoreDialog::Time | KScoreDialog::Score, this);
 
-        if (isHighscore && !m_cheat) {
-            // Show a dialog to receive the player's name
-            if (receivePlayerName()) {
-                hs.name = m_lastPlayerName;
-                hs.date = time(NULL);
-                int rank = insertHighscore(hs);
-                showHighscore(rank);
+        bool madeIt = static_cast<bool>(scoreDialog.addScore(scoreInfo));
+        QString message;
+
+        message = i18n("Congratulation!");
+        if (madeIt) {
+            if (m_cheat) {
+                message += i18n("\nYou could have been in the highscores\nif you did not use Undo or Hint.\nTry without them next time.");
             }
+            scoreDialog.setComment(message);
+            scoreDialog.exec();
         } else {
-            QString s = i18n("Congratulations! You made it in %1:%2:%3",
-                             QString().sprintf("%02d", m_board->timeForGame() / 3600),
-                             QString().sprintf("%02d", (m_board->timeForGame() / 60) % 60),
-                             QString().sprintf("%02d", m_board->timeForGame() % 60));
-
-            if (isHighscore) {  // player would have been in the highscores if he did not cheat
-                s += '\n' + i18n("You could have been in the highscores if you did not use Undo or Hint. Try without them next time.");
-            }
-
-            KMessageBox::information(this, s, i18n("End of Game"));
+            message += i18n("\nYou made it in %1:%2:%3",
+                           QString().sprintf("%02d", m_board->timeForGame() / 3600),
+                           QString().sprintf("%02d", (m_board->timeForGame() / 60) % 60),
+                           QString().sprintf("%02d", m_board->timeForGame() % 60));
+            KMessageBox::information(this, message, i18n("End of Game"));
         }
+    }
+    updateItems();
+}
+
+void App::updateScore() // TODO: rename
+{
+    int time = m_board->timeForGame();
+    QString message = i18n("Your time: %1:%2:%3 %4",
+                      QString().sprintf("%02d", time / 3600),
+                      QString().sprintf("%02d", (time / 60) % 60),
+                      QString().sprintf("%02d", time % 60),
+                      m_board->isPaused() ? i18n("(Paused) ") : QString());
+
+    m_gameTimerLabel->setText(message);
+
+    // Number of tiles
+    int tilesLeft = (m_board->xTiles() * m_board->yTiles());
+    message = i18n("Removed: %1/%2 ",
+              QString().sprintf("%d", tilesLeft - m_board->tilesLeft()),
+              QString().sprintf("%d", tilesLeft));
+
+    m_gameTilesLabel->setText(message);
+}
+
+int App::score(int x, int y, int seconds, bool gravity) const
+{
+    double ntiles = x * y;
+    double tilespersec = ntiles / static_cast<double>(seconds);
+
+    double sizebonus = std::sqrt(ntiles / static_cast<double>(14.0 * 6.0));
+    double points = tilespersec / 0.14 * 100.0;
+
+    if (gravity) {
+        return static_cast<int>(2.0 * points * sizebonus);
+    } else {
+        return static_cast<int>(points * sizebonus);
     }
 }
 
@@ -349,27 +358,6 @@ void App::notifyInvalidMove()
     m_gameTipLabel->setText(i18n("You cannot make this move"));
 }
 
-void App::updateScore()
-{
-    int t = m_board->timeForGame();
-    QString s = i18n(" Your time: %1:%2:%3 %4",
-                     QString().sprintf("%02d", t / 3600),
-                     QString().sprintf("%02d", (t / 60) % 60),
-                     QString().sprintf("%02d", t % 60),
-                     m_board->isPaused() ? i18n("(Paused) ") : QString());
-
-    m_gameTimerLabel->setText(s);
-
-    // Number of tiles
-    int tl = (m_board->xTiles() * m_board->yTiles());
-    s = i18n(" Removed: %1/%2 ",
-             QString().sprintf("%d", tl - m_board->tilesLeft()),
-             QString().sprintf("%d", tl));
-
-    //statusBar()->changeItem(s, SBI_TILES);
-    m_gameTilesLabel->setText(s);
-}
-
 void App::setCheatModeEnabled(bool enabled)
 {
     if (m_cheat == enabled) {
@@ -379,247 +367,10 @@ void App::setCheatModeEnabled(bool enabled)
     m_gameCheatLabel->setVisible(enabled);
 }
 
-/**
- * @returns True if the player entered a name and pressed OK, False if the player pressed Cancel
- */
-bool App::receivePlayerName()
+void App::showHighscores()
 {
-    PlayerNameDlg dlg;
-    dlg.setPlayerName(m_lastPlayerName);
-    if (dlg.exec() == QDialog::Accepted) {
-        kDebug() << "OK pressed";
-        m_lastPlayerName = dlg.playerName();
-        return true;
-    }
-    return false;
-}
-
-int App::score(const HighScore &hs)
-{
-    double ntiles = hs.x * hs.y;
-    double tilespersec = ntiles / static_cast<double>(hs.seconds);
-
-    double sizebonus = std::sqrt(ntiles / static_cast<double>(14.0 * 6.0));
-    double points = tilespersec / 0.14 * 100.0;
-
-    if (hs.gravity) {
-        return static_cast<int>(2.0 * points * sizebonus);
-    } else {
-        return static_cast<int>(points * sizebonus);
-    }
-}
-
-bool App::isBetter(const HighScore &hs, const HighScore &than)
-{
-    if (score(hs) > score(than)) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-int App::insertHighscore(const HighScore &hs)
-{
-    if (m_highscore.size() == 0) {
-        m_highscore.resize(1);
-        m_highscore[0] = hs;
-        writeHighscore();
-        return 0;
-    } else {
-        HighScore last = m_highscore[m_highscore.size() - 1];
-        if (isBetter(hs, last) || (m_highscore.size() < HIGHSCORE_MAX)) {
-            if (m_highscore.size() == HIGHSCORE_MAX) {
-                m_highscore[HIGHSCORE_MAX - 1] = hs;
-            } else {
-                m_highscore.resize(m_highscore.size() + 1);
-                m_highscore[m_highscore.size() - 1] = hs;
-            }
-
-            // sort in new entry
-            int bestSoFar = m_highscore.size() - 1;
-            for (int i = m_highscore.size() - 1; i > 0; --i) {
-                if (isBetter(m_highscore[i], m_highscore[i-1])) {
-                    // swap entries
-                    HighScore temp = m_highscore[i-1];
-                    m_highscore[i-1] = m_highscore[i];
-                    m_highscore[i] = temp;
-                    bestSoFar = i - 1;
-                }
-            }
-
-            writeHighscore();
-            return bestSoFar;
-        }
-    }
-    return -1;
-}
-
-void App::readHighscore()
-{
-    QStringList hi_x, hi_y, hi_sec, hi_date, hi_grav, hi_name;
-    hi_x = m_highscoreTable->readList("x", HIGHSCORE_MAX);
-    hi_y = m_highscoreTable->readList("y", HIGHSCORE_MAX);
-    hi_sec = m_highscoreTable->readList("seconds", HIGHSCORE_MAX);
-    hi_date = m_highscoreTable->readList("date", HIGHSCORE_MAX);
-    hi_grav = m_highscoreTable->readList("gravity", HIGHSCORE_MAX);
-    hi_name = m_highscoreTable->readList("name", HIGHSCORE_MAX);
-
-    m_highscore.resize(0);
-
-    for (int i = 0; i < hi_x.count(); ++i) {
-        m_highscore.resize(i + 1);
-
-        HighScore hs;
-
-        hs.x = hi_x[i].toInt();
-        hs.y = hi_y[i].toInt();
-        hs.seconds = hi_sec[i].toInt();
-        hs.date = hi_date[i].toInt();
-        hs.date = hi_date[i].toInt();
-        hs.gravity = hi_grav[i].toInt();
-        hs.name = hi_name[i];
-
-        m_highscore[i] = hs;
-    }
-}
-
-
-void App::writeHighscore()
-{
-    QStringList hi_x, hi_y, hi_sec, hi_date, hi_grav, hi_name;
-    for (int i = 0; i < m_highscore.size(); ++i) {
-        HighScore hs = m_highscore[i];
-        hi_x.append(QString::number(hs.x));
-        hi_y.append(QString::number(hs.y));
-        hi_sec.append(QString::number(hs.seconds));
-        hi_date.append(QString::number(hs.date));
-        hi_grav.append(QString::number(hs.gravity));
-        hi_name.append(hs.name);
-    }
-    m_highscoreTable->writeList("x", hi_x);
-    m_highscoreTable->writeList("y", hi_y);
-    m_highscoreTable->writeList("seconds", hi_sec);
-    m_highscoreTable->writeList("date", hi_date);
-    m_highscoreTable->writeList("gravity", hi_grav);
-    m_highscoreTable->writeList("name", hi_name);
-    m_highscoreTable->writeAndUnlock();
-}
-
-void App::showHighscore(int focusitem)
-{
-    // this may look a little bit confusing...
-    KDialog dlg;
-    dlg.setObjectName("hall_Of_fame");
-    dlg.setButtons(KDialog::Close);
-    dlg.setWindowTitle(i18n("Hall of Fame"));
-
-    QWidget* dummy = new QWidget(&dlg);
-    dlg.setMainWidget(dummy);
-
-    QVBoxLayout *tl = new QVBoxLayout(dummy);
-    tl->setMargin(10);
-
-    QLabel *l = new QLabel(i18n("Hall of Fame"), dummy);
-    QFont f = font();
-    f.setPointSize(24);
-    f.setBold(true);
-    l->setFont(f);
-    l->setAlignment(Qt::AlignCenter);
-    tl->addWidget(l);
-
-    // insert highscores in a gridlayout
-    QGridLayout *table = new QGridLayout;
-    tl->setSpacing(5);
-    tl->addLayout(table, 1);
-
-    // add a separator line
-    KSeparator *sep = new KSeparator(dummy);
-    table->addWidget(sep, 1, 0, 1, 5);
-
-    // add titles
-    f = font();
-    f.setBold(true);
-    l = new QLabel(i18n("Rank"), dummy);
-    l->setFont(f);
-    table->addWidget(l, 0, 0);
-    l = new QLabel(i18n("Name"), dummy);
-    l->setFont(f);
-    table->addWidget(l, 0, 1);
-    l = new QLabel(i18n("Time"), dummy);
-    l->setFont(f);
-    table->addWidget(l, 0, 2);
-    l = new QLabel(i18n("Size"), dummy);
-    l->setFont(f);
-    table->addWidget(l, 0, 3);
-    l = new QLabel(i18n("Score"), dummy);
-    l->setFont(f);
-    table->addWidget(l, 0, 4);
-
-    QString s;
-    QLabel *e[10][5];
-
-    for (int i = 0; i < 10; ++i) {
-        HighScore hs;
-        if (i < m_highscore.size()) {
-            hs = m_highscore[i];
-        }
-
-        // insert rank
-        s.sprintf("%d", i + 1);
-        e[i][0] = new QLabel(s, dummy);
-
-        // insert name
-        if (i < m_highscore.size()) {
-            e[i][1] = new QLabel(hs.name, dummy);
-        } else {
-            e[i][1] = new QLabel("", dummy);
-        }
-
-        // insert time
-        QTime ti(0, 0, 0);
-        if (i < m_highscore.size()) {
-            ti = ti.addSecs(hs.seconds);
-            s.sprintf("%02d:%02d:%02d", ti.hour(), ti.minute(), ti.second());
-            e[i][2] = new QLabel(s, dummy);
-        } else {
-            e[i][2] = new QLabel("", dummy);
-        }
-
-        // insert size
-        if (i < m_highscore.size()) {
-            s.sprintf("%d x %d", hs.x, hs.y);
-        } else {
-            s = "";
-        }
-
-        e[i][3] = new QLabel(s, dummy);
-
-        // insert score
-        if (i < m_highscore.size()) {
-            s = QString("%1 %2")
-                .arg(score(hs))
-                .arg(hs.gravity ? i18n("(gravity)") : QString(""));
-        } else {
-            s = "";
-        }
-
-        e[i][4] = new QLabel(s, dummy);
-        e[i][4]->setAlignment(Qt::AlignRight);
-    }
-
-    f = font();
-    f.setBold(true);
-    f.setItalic(true);
-    for (int i = 0; i < 10; ++i) {
-        for (int j = 0; j < 5; ++j) {
-            if (i == focusitem) {
-                e[i][j]->setFont(f);
-            }
-            table->addWidget(e[i][j], i + 2, j, Qt::AlignCenter);
-        }
-    }
-
-    dlg.exec();
+    KScoreDialog scoreDialog(KScoreDialog::Name | KScoreDialog::Time, this);
+    scoreDialog.exec();
 }
 
 void App::keyBindings()

@@ -198,6 +198,7 @@ public:
     void resetUndo();
     /// Resets the redo history
     void resetRedo();
+    void gameStuck();
     void gameOver();
     /// Returns whether the game is over
     bool isOver() const;
@@ -290,6 +291,7 @@ private:
     int m_shuffle;
 
     bool m_isPaused; ///< Whether game is paused
+    bool m_isStuck; ///< Whether game has no more matching tiles
     bool m_isOver; ///< Whether game is over
     time_t m_pauseStart;
 

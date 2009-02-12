@@ -2042,6 +2042,11 @@ void Board::resetRedo()
     m_redo.clear();
 }
 
+void Board::gameStuck()
+{
+    m_isStuck = true;
+}
+
 void Board::gameOver()
 {
     m_isOver = true;

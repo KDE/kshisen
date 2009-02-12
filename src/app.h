@@ -28,21 +28,7 @@
 // Should this get the whole HAVE_SYS_TIME_H TIME_WITH_SYS_TIME treatment?
 #include <ctime>
 
-class KHighscore;
 class QLabel;
-
-/**
- * @brief Struct holding an item for the highscore list
- */
-struct HighScore {
-    QString name; ///< The player's name
-    int seconds; ///< Time the player needed
-    int x, y; ///< Size of the played game board
-    time_t date;
-    int gravity; ///< Whether gravity was enabled
-};
-
-const signed HIGHSCORE_MAX = 10;
 
 /**
  * @brief Class holding the application and its functions
@@ -59,7 +45,7 @@ private slots:
 
     /// Updates actions, to enable and disable them where needed
     void updateItems();
-    void updateScore();
+    void updateScore(); // TODO: rename
     /// Shows the settings dialog
     void showSettings(); // const?
 
@@ -85,23 +71,13 @@ private slots:
     /// Shows a hint and sets cheat flag
     void hint();
     /// Calls showHighscore without arguments
-    void hallOfFame(); // const?
     void keyBindings();
+    /// Shows the highscore table
+    void showHighscores(); // const?
 
 private:
-    /// Shows a dialog to receive the player's name
-    bool receivePlayerName();
-
-    void readHighscore(); // const?
-    void writeHighscore();
-    /// Inserts given highscore entry to the list
-    int insertHighscore(const HighScore &);
-    int score(const HighScore &); // const?
-    /// Compares the two given scores
-    bool isBetter(const HighScore &, const HighScore &); // const?
-    /// Shows the highscore table
-    void showHighscore(int focusitem = -1); // const?
-
+    /// Calculates the scores
+    int score(int x, int y, int seconds, bool gravity) const;
     /// Sets up the status bar areas
     void setupStatusBar();
     /// Sets up the needed actions and adds them to the action collection
@@ -110,14 +86,11 @@ private:
     void setCheatModeEnabled(bool enabled);
 
 private:
-    QString m_lastPlayerName; ///< Holds the afore entered player name
     QLabel *m_gameTipLabel; ///< Status bar area for game tips
     QLabel *m_gameTimerLabel; ///< Status bar area for the timer
     QLabel *m_gameTilesLabel; ///< Status bar area for the tile counter
     QLabel *m_gameCheatLabel; ///< Status bar area for the cheat mode
     Board *m_board; ///< Holds the game board
-    QVector<HighScore> m_highscore; ///< List of highscore entries
-    KHighscore* m_highscoreTable;
     bool m_cheat; ///< Whether the cheat mode is set
 };
 
