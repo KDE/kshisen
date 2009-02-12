@@ -8,6 +8,7 @@ Changes since 1.6.1:
  *    or the application itself loses focus)
  *  - game can now be resumed by clicking on the board
  * port to KScoreDialog
+ *  - there is now one highscore section for board size
 
  * some changes in coding style and naming schema to be more close to the
    kdelibs style
