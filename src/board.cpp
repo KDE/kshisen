@@ -97,7 +97,7 @@ Board::~Board()
 
 void Board::focusOutEvent(QFocusEvent *)
 {
-    if (!m_isPaused && !m_isOver) {
+    if (!m_isPaused && !m_isOver && !m_isStuck) {
         setPauseEnabled(true);
     }
 }
