@@ -279,6 +279,10 @@ void App::slotEndOfGame()
         scoreInfo[KScoreDialog::Time] = timeString;
 
         KScoreDialog scoreDialog(KScoreDialog::Name | KScoreDialog::Time | KScoreDialog::Score, this);
+        scoreDialog.addField(KScoreDialog::Custom1, i18n("Gravity"), "gravity");
+        if (m_board->gravityFlag()) {
+            scoreInfo[KScoreDialog::Custom1] = i18n("(gravity)");
+        }
         scoreDialog.setConfigGroup(QString("%1x%2").arg(sizeX[Prefs::size()]).arg(sizeY[Prefs::size()]));
 
         bool madeIt = static_cast<bool>(scoreDialog.addScore(scoreInfo));
