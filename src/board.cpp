@@ -845,7 +845,7 @@ void Board::performMove(PossibleMove &possibleMoves)
     } else {
         madeMove(m_markX, m_markY, possibleMoves.m_path.last().x, possibleMoves.m_path.last().y);
     }
-    undrawPossibleMoves();
+    drawPossibleMoves(false);
     drawConnection(delay());
     m_tileRemove1 = QPair<int, int>(m_markX, m_markY);
     m_tileRemove2 = QPair<int, int>(possibleMoves.m_path.last().x, possibleMoves.m_path.last().y);
@@ -917,7 +917,7 @@ void Board::marked(int x, int y)
         // unmark the piece
         m_markX = -1;
         m_markY = -1;
-        undrawPossibleMoves();
+        drawPossibleMoves(false);
         m_possibleMoves.clear();
         updateField(x, y);
         emit selectATile();
@@ -930,7 +930,7 @@ void Board::marked(int x, int y)
         }
         m_markX = x;
         m_markY = y;
-        undrawPossibleMoves();
+        drawPossibleMoves(false);
         m_possibleMoves.clear();
         updateField(x, y);
         emit selectAMatchingTile();
@@ -972,7 +972,7 @@ void Board::marked(int x, int y)
             }
             // if all moves have no slide, it doesn't matter
             if (withSlide > 0) {
-                drawPossibleMoves();
+                drawPossibleMoves(true);
                 emit selectAMove();
                 return;
             }
@@ -1337,23 +1337,13 @@ int Board::findSimplePath(int x1, int y1, int x2, int y2, PossibleMoves &possibl
     return numberOfPaths;
 }
 
-void Board::drawPossibleMoves()
+void Board::drawPossibleMoves(bool b)
 {
     if (m_possibleMoves.isEmpty()) {
         return;
     }
 
-    m_paintPossibleMoves = true;
-    update();
-}
-
-void Board::undrawPossibleMoves()
-{
-    if (m_possibleMoves.isEmpty()) {
-        return;
-    }
-
-    m_paintPossibleMoves = false;
+    m_paintPossibleMoves = b;
     update();
 }
 

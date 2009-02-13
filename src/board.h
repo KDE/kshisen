@@ -262,8 +262,7 @@ private: // functions
     void reverseSlide(int x, int y, int slideX1, int slideY1, int slideX2, int slideY2);
     bool isTileHighlighted(int x, int y) const;
     void drawConnection(int timeout);
-    void drawPossibleMoves();
-    void undrawPossibleMoves();
+    void drawPossibleMoves(bool b);
     QPoint midCoord(int x, int y) const;
     void marked(int x, int y);
     void madeMove(int x1, int y1, int x2, int y2);
