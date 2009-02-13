@@ -168,9 +168,11 @@ void App::restartGame()
     }
     m_board->setUpdatesEnabled(true);
     m_board->resetRedo();
-    m_board->update();
     m_board->resetTimer();
     setCheatModeEnabled(false);
+    m_board->setGameOverEnabled(false);
+    m_board->setGameStuckEnabled(false);
+    m_board->update();
     updateItems();
 }
 
@@ -245,6 +247,7 @@ void App::updateItems()
     if (m_board->isOver()) {
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Undo))->setEnabled(false);
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Redo))->setEnabled(false);
+        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Restart))->setEnabled(false);
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Pause))->setEnabled(false);
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Hint))->setEnabled(false);
     } else if (m_board->isPaused()) {
@@ -266,10 +269,10 @@ void App::updateItems()
 void App::slotEndOfGame()
 {
     if (m_board->tilesLeft() > 0) {
-        m_board->gameStuck();
+        m_board->setGameStuckEnabled(true);
         KMessageBox::information(this, i18n("No more moves possible!"), i18n("End of Game"));
     } else {
-        m_board->gameOver();
+        m_board->setGameOverEnabled(true);
         QString timeString = i18nc("time string: hh:mm:ss", "%1:%2:%3",
                                     QString().sprintf("%02d", m_board->timeForGame() / 3600),
                                     QString().sprintf("%02d", (m_board->timeForGame() / 60) % 60),

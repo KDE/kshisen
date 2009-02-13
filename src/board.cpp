@@ -2010,8 +2010,8 @@ void Board::setPauseEnabled(bool enabled)
     } else {
         m_startTime += static_cast<time_t>(difftime(time(NULL), m_pauseStart));
     }
-    update();
     emit changed();
+    update();
 }
 
 QSize Board::sizeHint() const
@@ -2040,22 +2040,46 @@ void Board::resetRedo()
     m_redo.clear();
 }
 
-void Board::gameStuck()
+void Board::setGameStuckEnabled(bool enabled)
 {
-    m_isStuck = true;
+    if (m_isStuck != enabled) {
+        m_isStuck = enabled;
+        emit changed();
+        update();
+    }
 }
 
-void Board::gameOver()
+void Board::setGameOverEnabled(bool enabled)
 {
-    m_isOver = true;
-// schwarzer: skip for now and observe if it is needed at all
-//    emit changed();
-//    update();
+    if (m_isOver != enabled) {
+        m_isOver = true;
+        emit changed();
+        update();
+    }
 }
 
+/**
+ * @return True if game is over, False if game is not over
+ */
 bool Board::isOver() const
 {
     return m_isOver;
+}
+
+/**
+ * @return True if game is paused, False if game is not paused
+ */
+bool Board::isPaused() const
+{
+    return m_isPaused;
+}
+
+/**
+ * @return True if there are no matching tiles left, False if there are matching tiles left
+ */
+bool Board::isStuck() const
+{
+    return m_isStuck;
 }
 
 #include "board.moc"

@@ -191,20 +191,20 @@ public:
     int xTiles() const;
     int yTiles() const;
 
-    /// Returns whether the game is in pause mode
-    bool isPaused() const {
-        return m_isPaused;
-    }
     /// Resets the game timer
     void resetTimer();
     /// Resets the undo history
     void resetUndo();
     /// Resets the redo history
     void resetRedo();
-    void gameStuck();
-    void gameOver();
+    void setGameStuckEnabled(bool enabled);
+    void setGameOverEnabled(bool enabled);
     /// Returns whether the game is over
     bool isOver() const;
+    /// Returns whether the game is in pause mode
+    bool isPaused() const;
+    /// Returns whether there are still matching tiles left
+    bool isStuck() const;
 
 signals:
     void markMatched();
