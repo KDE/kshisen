@@ -335,7 +335,7 @@ int App::score(int x, int y, int seconds, bool gravity) const
     double points = tilespersec / 0.14 * 100.0;
 
     if (gravity) {
-        return static_cast<int>(1.8 * points * sizebonus);
+        return static_cast<int>(2.0 * points * sizebonus);
     } else {
         return static_cast<int>(points * sizebonus);
     }
