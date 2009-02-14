@@ -125,8 +125,7 @@ void Board::loadSettings()
     // actually there is no need to call setShuffle
     // and setShuffle will call newGame
     m_shuffle = Prefs::level() * 4 + 1;
-    int index = Prefs::size();
-    setSize(sizeX[index], sizeY[index]);
+    setSize(sizeX[Prefs::size()], sizeY[Prefs::size()]);
     setGravityFlag(Prefs::gravity());
     setDelay(s_delay[Prefs::speed()]);
 }
