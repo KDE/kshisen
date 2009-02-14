@@ -33,7 +33,6 @@
 #define USE_UPDATE 1
 
 #define EMPTY           0
-#define DEFAULTDELAY    500
 #define DEFAULTSHUFFLE  4
 #define SEASONS_START   28
 #define FLOWERS_START   39
@@ -79,8 +78,6 @@ Board::Board(QWidget *parent) :
 
     m_random.setSeed(0);
     resetTimer();
-
-    setDelay(DEFAULTDELAY);
 
     QPalette palette;
     palette.setBrush(backgroundRole(), m_background.getBackground());
