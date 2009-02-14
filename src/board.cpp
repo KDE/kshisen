@@ -71,7 +71,6 @@ Board::Board(QWidget *parent)
     m_xTiles(0), m_yTiles(0),
     m_delay(125), m_shuffle(0),
     m_isPaused(false), m_isStuck(false), m_isOver(false),
-    m_pauseStart(0),
     m_gravityFlag(true), m_solvableFlag(true), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
     m_highlightedTile(-1), m_connectionTimeout(0),
     m_paintConnection(false), m_paintPossibleMoves(false)
@@ -1420,7 +1419,7 @@ void Board::undrawConnection()
     PossibleMoves dummyPossibleMoves;
     // game is over?
     if (!hint_I(dummyPossibleMoves)) {
-        m_timeForGame = currentTime();
+        m_gameClock.pause();
         emit endOfGame();
     }
 }
@@ -1891,20 +1890,7 @@ int Board::tilesLeft() const
 
 int Board::currentTime() const
 {
-    return static_cast<int>(difftime(time(NULL), m_startTime));
-}
-
-int Board::timeForGame() const
-{
-    if (tilesLeft() == 0) {
-        return m_timeForGame;
-    } else {
-        if (m_isPaused) {
-            return static_cast<int>(difftime(m_pauseStart, m_startTime));
-        } else {
-            return currentTime();
-        }
-    }
+    return m_gameClock.seconds();
 }
 
 bool Board::solvable(bool noRestore)
@@ -1961,42 +1947,49 @@ bool Board::gravityFlag() const
     return m_gravityFlag;
 }
 
-void Board::setGravityFlag(bool b)
+void Board::setGravityFlag(bool enabled)
 {
-    if (m_gravityFlag != b) {
-        if (canUndo() || canRedo()) {
-            newGame();
-        }
-        m_gravityFlag = b;
+    if (m_gravityFlag == enabled) {
+        return;
     }
-}
-
-void Board::setChineseStyleFlag(bool b)
-{
-    if (m_chineseStyleFlag != b) {
-        // we need to force a newGame because board generation is different
-        m_chineseStyleFlag = b;
+    m_gravityFlag = enabled;
+    // start a new game if the player is in the middle of a game
+    if (canUndo() || canRedo()) {
         newGame();
     }
 }
 
-void Board::setTilesCanSlideFlag(bool b)
+void Board::setChineseStyleFlag(bool enabled)
 {
-    if (m_tilesCanSlideFlag != b) {
-        if (canUndo() || canRedo()) {
-            newGame();
-        }
-        m_tilesCanSlideFlag = b;
+    if (m_chineseStyleFlag == enabled) {
+        return;
+    }
+    m_chineseStyleFlag = enabled;
+    // we need to force a newGame() because board generation is different
+    newGame();
+}
+
+void Board::setTilesCanSlideFlag(bool enabled)
+{
+    if (m_tilesCanSlideFlag == enabled) {
+        return;
+    }
+    m_tilesCanSlideFlag = enabled;
+    if (canUndo() || canRedo()) {
+        newGame();
     }
 }
 
 void Board::setPauseEnabled(bool enabled)
 {
+    if (m_isPaused == enabled) {
+        return;
+    }
     m_isPaused = enabled;
     if (m_isPaused) {
-        m_pauseStart = time(NULL);
+        m_gameClock.pause();
     } else {
-        m_startTime += static_cast<time_t>(difftime(time(NULL), m_pauseStart));
+        m_gameClock.resume();
     }
     emit changed();
     update();

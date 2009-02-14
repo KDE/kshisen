@@ -26,6 +26,7 @@
 
 #include "debug.h"
 
+#include <kgameclock.h>
 #include <kmahjonggtileset.h>
 #include <kmahjonggbackground.h>
 
@@ -271,8 +272,7 @@ private: // functions
     void gravity(bool update);
 
 private:
-    time_t m_startTime;
-    time_t m_timeForGame;
+    KGameClock m_gameClock;
 
     KMahjonggTileset m_tiles;
     KMahjonggBackground m_background;

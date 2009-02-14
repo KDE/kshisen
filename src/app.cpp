@@ -279,11 +279,11 @@ void App::slotEndOfGame()
     } else {
         m_board->setGameOverEnabled(true);
         QString timeString = i18nc("time string: hh:mm:ss", "%1:%2:%3",
-                                    QString().sprintf("%02d", m_board->timeForGame() / 3600),
-                                    QString().sprintf("%02d", (m_board->timeForGame() / 60) % 60),
-                                    QString().sprintf("%02d", m_board->timeForGame() % 60));
+                                    QString().sprintf("%02d", m_board->currentTime() / 3600),
+                                    QString().sprintf("%02d", (m_board->currentTime() / 60) % 60),
+                                    QString().sprintf("%02d", m_board->currentTime() % 60));
         KScoreDialog::FieldInfo scoreInfo;
-        scoreInfo[KScoreDialog::Score].setNum(score(m_board->xTiles(), m_board->yTiles(), m_board->timeForGame(), m_board->gravityFlag()));
+        scoreInfo[KScoreDialog::Score].setNum(score(m_board->xTiles(), m_board->yTiles(), m_board->currentTime(), m_board->gravityFlag()));
         scoreInfo[KScoreDialog::Time] = timeString;
 
         KScoreDialog scoreDialog(KScoreDialog::Name | KScoreDialog::Time | KScoreDialog::Score, this);
@@ -315,20 +315,19 @@ void App::slotEndOfGame()
 
 void App::updateScore() // TODO: rename
 {
-    int time = m_board->timeForGame();
+    int currentTime = m_board->currentTime();
     QString message = i18n("Your time: %1:%2:%3 %4",
-                      QString().sprintf("%02d", time / 3600),
-                      QString().sprintf("%02d", (time / 60) % 60),
-                      QString().sprintf("%02d", time % 60),
-                      m_board->isPaused() ? i18n("(Paused) ") : QString());
+                            QString().sprintf("%02d", currentTime / 3600),
+                            QString().sprintf("%02d", (currentTime / 60) % 60),
+                            QString().sprintf("%02d", currentTime % 60),
+                            m_board->isPaused() ? i18n("(Paused) ") : QString());
 
     m_gameTimerLabel->setText(message);
 
-    // Number of tiles
-    int tilesLeft = (m_board->xTiles() * m_board->yTiles());
+    int numberOfTiles = (m_board->xTiles() * m_board->yTiles());
     message = i18n("Removed: %1/%2 ",
-              QString().sprintf("%d", tilesLeft - m_board->tilesLeft()),
-              QString().sprintf("%d", tilesLeft));
+                    QString().sprintf("%d", numberOfTiles - m_board->tilesLeft()),
+                    QString().sprintf("%d", numberOfTiles));
 
     m_gameTilesLabel->setText(message);
 }
