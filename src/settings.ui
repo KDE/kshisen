@@ -167,10 +167,10 @@
    <item>
     <widget class="QGroupBox" name="size_groupBox" >
      <property name="whatsThis" >
-      <string>&lt;b>Tile Size&lt;/b>&lt;p>This slider allows you to change the number of tiles on the board. The more tiles you have, the harder (and longer) the game will be.&lt;/p></string>
+      <string>&lt;b>Board Size&lt;/b>&lt;p>This slider allows you to change the number of tiles on the board. The more tiles you have, the harder (and longer) the game will be.&lt;/p></string>
      </property>
      <property name="title" >
-      <string>Tile Size</string>
+      <string>Board Size</string>
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >
