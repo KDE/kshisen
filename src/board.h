@@ -180,6 +180,7 @@ public:
     int currentTime() const;
     int timeForGame() const;
 
+    /// Returns whether the current game is solvable
     bool solvable(bool noRestore = false); // const?
 
     bool solvableFlag() const;

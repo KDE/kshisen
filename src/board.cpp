@@ -1451,6 +1451,9 @@ QPoint Board::midCoord(int x, int y) const
 
 void Board::setDelay(int newValue)
 {
+    if (m_delay == newValue) {
+        return;
+    }
     m_delay = newValue;
 }
 
@@ -1862,10 +1865,11 @@ bool Board::hint_I(PossibleMoves &possibleMoves) const
 
 void Board::setShuffle(int newValue)
 {
-    if (newValue != m_shuffle) {
-        m_shuffle = newValue;
-        newGame();
+    if (m_shuffle == newValue) {
+        return;
     }
+    m_shuffle = newValue;
+    newGame();
 }
 
 int Board::shuffle() const
@@ -1932,13 +1936,15 @@ bool Board::solvableFlag() const
     return m_solvableFlag;
 }
 
-void Board::setSolvableFlag(bool b)
+void Board::setSolvableFlag(bool enabled)
 {
-    if (b && !m_solvableFlag && !solvable()) {
-        m_solvableFlag = b;
+    if (m_solvableFlag == enabled) {
+        return;
+    }
+    m_solvableFlag = enabled;
+    // if the solvable flag was set and the current game is not solvable, start a new game
+    if (m_solvableFlag && !solvable()) {
         newGame();
-    } else {
-        m_solvableFlag = b;
     }
 }
 
@@ -2006,37 +2012,45 @@ QSize Board::sizeHint() const
 
 void Board::resetTimer()
 {
-    m_startTime = time(NULL);
+    m_gameClock.restart();
 }
 
 void Board::resetUndo()
 {
+    if (!canUndo()) {
+        return;
+    }
     qDeleteAll(m_undo);
     m_undo.clear();
 }
 
 void Board::resetRedo()
 {
+    if (!canRedo()) {
+        return;
+    }
     qDeleteAll(m_redo);
     m_redo.clear();
 }
 
 void Board::setGameStuckEnabled(bool enabled)
 {
-    if (m_isStuck != enabled) {
-        m_isStuck = enabled;
-        emit changed();
-        update();
+    if (m_isStuck == enabled) {
+        return;
     }
+    m_isStuck = enabled;
+    emit changed();
+    update();
 }
 
 void Board::setGameOverEnabled(bool enabled)
 {
-    if (m_isOver != enabled) {
-        m_isOver = enabled;
-        emit changed();
-        update();
+    if (m_isOver == enabled) {
+        return;
     }
+    m_isOver = enabled;
+    emit changed();
+    update();
 }
 
 /**
