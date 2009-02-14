@@ -289,7 +289,9 @@ void App::slotEndOfGame()
         KScoreDialog scoreDialog(KScoreDialog::Name | KScoreDialog::Time | KScoreDialog::Score, this);
         scoreDialog.addField(KScoreDialog::Custom1, i18n("Gravity"), "gravity");
         if (m_board->gravityFlag()) {
-            scoreInfo[KScoreDialog::Custom1] = i18n("(gravity)");
+            scoreInfo[KScoreDialog::Custom1] = i18n("Yes");
+        } else {
+            scoreInfo[KScoreDialog::Custom1] = i18n("No");
         }
         scoreDialog.setConfigGroup(QString("%1x%2").arg(sizeX[Prefs::size()]).arg(sizeY[Prefs::size()]));
 
