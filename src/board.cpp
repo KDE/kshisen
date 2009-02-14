@@ -33,7 +33,6 @@
 #define USE_UPDATE 1
 
 #define EMPTY           0
-#define DEFAULTSHUFFLE  4
 #define SEASONS_START   28
 #define FLOWERS_START   39
 
@@ -73,8 +72,6 @@ Board::Board(QWidget *parent) :
         m_highlightedTile(-1), m_paintConnection(false), m_paintPossibleMoves(false)
 {
     m_tileRemove1.first = -1;
-    // Randomize
-    setShuffle(DEFAULTSHUFFLE);
 
     m_random.setSeed(0);
     resetTimer();
