@@ -2040,7 +2040,7 @@ void Board::setGameStuckEnabled(bool enabled)
 void Board::setGameOverEnabled(bool enabled)
 {
     if (m_isOver != enabled) {
-        m_isOver = true;
+        m_isOver = enabled;
         emit changed();
         update();
     }
