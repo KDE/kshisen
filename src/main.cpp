@@ -18,14 +18,20 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
+#include "app.h"
+
 #include <kapplication.h>
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
 #include <klocale.h>
 #include <kglobal.h>
 
-#include "version.h"
-#include "app.h"
+// Version numbers are of the form: MAJOR.MINOR.MICRO
+// The MAJOR number should only be incremented when really major changes occur.
+// The MINOR number is increased for every branch of KDE from trunk (i.e. KDE 4.1, KDE 4.2 etc).
+// The MICRO version is increased for every bugfix release if there were changes.
+// MICRO numbers >= 50 are used for development milestones in trunk.
+#define KSHISEN_VERSION "1.6.50"
 
 static const char description[] = I18N_NOOP("A KDE game similar to Mahjongg");
 
