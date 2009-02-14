@@ -22,13 +22,13 @@
 #include "board.h"
 #include "prefs.h"
 
-#include <QMouseEvent>
-#include <QPainter>
-#include <QTimer>
-
 #include <kglobalsettings.h>
 #include <klocale.h>
 #include <kstandarddirs.h>
+
+#include <QMouseEvent>
+#include <QPainter>
+#include <QTimer>
 
 #define USE_UPDATE 1
 

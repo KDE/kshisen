@@ -26,15 +26,15 @@
 
 #include "debug.h"
 
-#include <QList>
-#include <QSize>
-#include <QWidget>
+#include <kmahjonggtileset.h>
+#include <kmahjonggbackground.h>
 
 #include <kdebug.h>
 #include <krandomsequence.h>
 
-#include <kmahjonggtileset.h>
-#include <kmahjonggbackground.h>
+#include <QList>
+#include <QSize>
+#include <QWidget>
 
 // Should this get the whole HAVE_SYS_TIME_H TIME_WITH_SYS_TIME treatment?
 #include <ctime>
