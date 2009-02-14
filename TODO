@@ -1,3 +1,4 @@
 - represent gravity in show highscore action
 - disable undo and redo if game is over
+- new game breaks game timer
 
