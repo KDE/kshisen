@@ -62,9 +62,14 @@ public:
     }
 };
 
-App::App(QWidget *parent) 
-        : KXmlGuiWindow(parent),
-        m_cheat(false)
+App::App(QWidget *parent)
+  : KXmlGuiWindow(parent),
+    m_gameTipLabel(0),
+    m_gameTimerLabel(0),
+    m_gameTilesLabel(0),
+    m_gameCheatLabel(0),
+    m_board(0),
+    m_cheat(false)
 {
     setupStatusBar();
     setupActions();
