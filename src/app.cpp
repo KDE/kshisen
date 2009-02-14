@@ -392,7 +392,6 @@ void App::showHighscores()
 void App::keyBindings()
 {
     KShortcutsDialog::configure(actionCollection(), KShortcutsEditor::LetterShortcutsAllowed, this);
-
 }
 
 void App::showSettings()
