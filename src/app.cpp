@@ -385,6 +385,7 @@ void App::setCheatModeEnabled(bool enabled)
 void App::showHighscores()
 {
     KScoreDialog scoreDialog(KScoreDialog::Name | KScoreDialog::Time, this);
+    scoreDialog.addField(KScoreDialog::Custom1, i18n("Gravity"), "gravity");
     scoreDialog.exec();
 }
 
