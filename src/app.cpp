@@ -252,7 +252,6 @@ void App::updateItems()
     if (m_board->isOver()) {
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Undo))->setEnabled(false);
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Redo))->setEnabled(false);
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Restart))->setEnabled(false);
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Pause))->setEnabled(false);
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Hint))->setEnabled(false);
     } else if (m_board->isPaused()) {
