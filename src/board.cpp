@@ -1885,6 +1885,7 @@ int Board::tilesLeft() const
     for (int i = 0; i < xTiles(); ++i) {
         for (int j = 0; j < yTiles(); ++j) {
             if (field(i, j) != EMPTY) {
+                //kDebug() << i << j << field(i, j);
                 ++left;
             }
         }

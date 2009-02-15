@@ -45,7 +45,10 @@ private slots:
 
     /// Updates actions, to enable and disable them where needed
     void updateItems();
-    void updateScore(); // TODO: rename
+    /// Updated the time display in the status bar
+    void updateTimeDisplay();
+    /// Updates the tiles removed display in the status bar
+    void updateTileDisplay();
     /// Shows the settings dialog
     void showSettings(); // const?
 

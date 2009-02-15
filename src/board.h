@@ -177,8 +177,8 @@ public:
 
     /// Returns the number of tiles left on the board
     int tilesLeft() const;
+    /// Returns the current game time in seconds
     int currentTime() const;
-    int timeForGame() const;
 
     /// Returns whether the current game is solvable
     bool solvable(bool noRestore = false); // const?
@@ -199,7 +199,9 @@ public:
     void resetUndo();
     /// Resets the redo history
     void resetRedo();
+    /// Sets whether there are no matching tiles left
     void setGameStuckEnabled(bool enabled);
+    /// Sets whether the game is over
     void setGameOverEnabled(bool enabled);
     /// Returns whether the game is over
     bool isOver() const;
@@ -209,7 +211,7 @@ public:
     bool isStuck() const;
 
 signals:
-    void markMatched();
+    void markMatched(); // unused?
     void changed();
     void endOfGame();
     void resized();

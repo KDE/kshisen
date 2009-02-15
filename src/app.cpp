@@ -88,14 +88,17 @@ App::App(QWidget *parent)
     connect(m_board, SIGNAL(selectAMatchingTile()), this, SLOT(notifySelectAMatchingTile()));
     connect(m_board, SIGNAL(selectAMove()), this, SLOT(notifySelectAMove()));
 
-    QTimer *t = new QTimer(this);
-    t->start(1000);
-    connect(t, SIGNAL(timeout()), this, SLOT(updateScore()));
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(updateTimeDisplay()));
+    timer->start(1000);
+
+    connect(m_board, SIGNAL(changed()), this, SLOT(updateTileDisplay()));
+
     connect(m_board, SIGNAL(endOfGame()), this, SLOT(slotEndOfGame()));
 
     qApp->processEvents();
 
-    updateScore();
+    updateTimeDisplay();
     updateItems();
 }
 
@@ -312,7 +315,7 @@ void App::slotEndOfGame()
     updateItems();
 }
 
-void App::updateScore() // TODO: rename
+void App::updateTimeDisplay()
 {
     int currentTime = m_board->currentTime();
     QString message = i18n("Your time: %1:%2:%3 %4",
@@ -322,9 +325,15 @@ void App::updateScore() // TODO: rename
                             m_board->isPaused() ? i18n("(Paused) ") : QString());
 
     m_gameTimerLabel->setText(message);
+    // temporary hack until I find out why m_board->tilesLeft() in updateTileDisplay() counts the previous state of the board, not the current
+    updateTileDisplay();
+}
 
+void App::updateTileDisplay()
+{
+    kDebug() << "updateTileDisplay()" << m_board->tilesLeft();
     int numberOfTiles = (m_board->xTiles() * m_board->yTiles());
-    message = i18n("Removed: %1/%2 ",
+    QString message = i18n("Removed: %1/%2 ",
                     QString().sprintf("%d", numberOfTiles - m_board->tilesLeft()),
                     QString().sprintf("%d", numberOfTiles));
 
