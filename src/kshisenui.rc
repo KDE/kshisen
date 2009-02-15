@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<gui name="kshisen" version="11">
+<?xml version="1.0" encoding="UTF-8"?>
+<gui name="kshisen" version="12"
+     xmlns="http://www.kde.org/standards/kxmlgui/1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.kde.org/standards/kxmlgui/1.0
+                         http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd" >
 <MenuBar>
-  <Menu name="move"><!--
-    <Action name="move_solvable"/>
-    <Action name="move_finish"/>-->
+  <Menu name="move">
   </Menu>
 </MenuBar>
 <ToolBar name="mainToolBar"><text>Main Toolbar</text>
@@ -15,5 +16,4 @@
   <Separator/>
   <Action name="game_pause"/>
 </ToolBar>
-<StatusBar/>
 </gui>

@@ -115,14 +115,9 @@ void Board::loadSettings()
     // special rule
     setChineseStyleFlag(Prefs::chineseStyle());
     setTilesCanSlideFlag(Prefs::tilesCanSlide());
-    // need to load solvable before size
-    // because setSize call newGame which uses
-    // the solvable flag
-    // same with shuffle
+    // Need to load solvable before size because setSize calls newGame which
+    // uses the solvable flag. Same with shuffle.
     setSolvableFlag(Prefs::solvable());
-    //setShuffle(Prefs::level() * 4 + 1);
-    // actually there is no need to call setShuffle
-    // and setShuffle will call newGame
     m_shuffle = Prefs::level() * 4 + 1;
     setSize(sizeX[Prefs::size()], sizeY[Prefs::size()]);
     setGravityFlag(Prefs::gravity());
@@ -336,8 +331,10 @@ void Board::mousePressEvent(QMouseEvent *e)
     }
 }
 
-// The board is centred inside the main playing area. xOffset/yOffset provide
-// the coordinates of the top-left corner of the board.
+/**
+ * The board is centred inside the main playing area. xOffset/yOffset provide
+ * the coordinates of the top-left corner of the board.
+ */
 int Board::xOffset() const
 {
     int tw = m_tiles.qWidth() * 2;
@@ -371,8 +368,6 @@ void Board::setSize(int x, int y)
 
     // set the minimum size of the scalable window
     const double MINIMUM_SCALE = 0.2;
-    //int w = qRound(m_tiles.unscaledTileWidth() * MINIMUM_SCALE) * xTiles();
-    //int h = qRound(m_tiles.unscaledTileHeight() * MINIMUM_SCALE) * yTiles();
     int w = qRound(m_tiles.qWidth() * 2.0 * MINIMUM_SCALE) * xTiles();
     int h = qRound(m_tiles.qHeight() * 2.0 * MINIMUM_SCALE) * yTiles();
     w += m_tiles.width();
@@ -408,12 +403,6 @@ void Board::resizeBoard()
     setPalette(palette);
 }
 
-QSize Board::unscaledSize() const
-{
-    int w = m_tiles.qWidth() * 2 * xTiles() + m_tiles.width();
-    int h = m_tiles.qHeight() * 2 * yTiles() + m_tiles.width();
-    return QSize(w, h);
-}
 
 void Board::newGame()
 {
@@ -481,7 +470,7 @@ void Board::newGame()
         setField(x2, y2, t);
     }
 
-    // do not make solvable if m_solvableFlag is false
+    // do not ensure solvable if m_solvableFlag is false
     if (!m_solvableFlag) {
         update();
         resetTimer();
@@ -553,9 +542,8 @@ void Board::newGame()
     emit changed();
 }
 
-/*
- * Check that two tiles can match
- *  used for connecting them or highlighting tiles of the same group
+/**
+ * This is sed for connecting them and for highlighting tiles of the same group.
  */
 bool Board::tilesMatch(int tile1, int tile2) const
 {
@@ -1376,14 +1364,6 @@ void Board::undrawConnection()
 #endif
     }
 
-    /*if(grav_col_1 != -1 || grav_col_2 != -1)
-      {
-      gravity(grav_col_1, true);
-      gravity(grav_col_2, true);
-      grav_col_1 = -1;
-      grav_col_2 = -1;
-      }*/
-
     gravity(true);
 
     // is already undrawn?
@@ -1763,24 +1743,6 @@ void Board::makeHintMove()
     }
 }
 
-void Board::finish()
-{
-    // broken ..
-    /*PossibleMoves p;
-      bool ready=false;
-
-      while(!ready && getHint_I(p))
-      {
-      m_markX = -1;
-      m_markY = -1;
-      if(tilesLeft() == 2)
-      ready = true;
-      marked(p.first().path.first().x, p.first().path.first().y);
-      marked(p.first().path.last().x,  p.first().path.last().y);
-      qApp->processEvents();
-      usleep(250*1000);
-      }*/
-}
 
 void Board::dumpBoard() const
 {
@@ -1916,11 +1878,6 @@ bool Board::solvable(bool noRestore)
         << field(p.first().m_path.last().x, p.first().m_path.last().y);
         setField(p.first().m_path.first().x, p.first().m_path.first().y, EMPTY);
         setField(p.first().m_path.last().x, p.first().m_path.last().y, EMPTY);
-        //if(gravityFlag())
-        //{
-        //  gravity(p.first().x, false);
-        //  gravity(p.last().x, false);
-        //}
     }
 
     int left = tilesLeft();

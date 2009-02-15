@@ -160,7 +160,6 @@ public:
 
     void setSize(int x, int y);
     void resizeBoard();
-    QSize unscaledSize() const;
     void newGame();
     void setShuffle(int);
     int  shuffle() const;
@@ -252,6 +251,7 @@ private: // functions
     int field(int x, int y) const;
     void updateField(int, int);
     void clearHighlight();
+    /// Checks if two tiles can match
     bool tilesMatch(int tile1, int tile2) const;
     /// Checks if a path between two tiles can be made with a single line
     bool canMakePath(int x1, int y1, int x2, int y2) const;

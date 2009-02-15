@@ -71,34 +71,18 @@ App::App(QWidget *parent)
     m_board(0),
     m_cheat(false)
 {
-    setupStatusBar();
-    setupActions();
-
     m_board = new Board(this);
     m_board->setObjectName("board");
 
     setCentralWidget(m_board);
 
+    setupStatusBar();
+    setupActions();
     setupGUI();
 
-    connect(m_board, SIGNAL(changed()), this, SLOT(updateItems()));
-    connect(m_board, SIGNAL(tilesDontMatch()), this, SLOT(notifyTilesDontMatch()));
-    connect(m_board, SIGNAL(invalidMove()), this, SLOT(notifyInvalidMove()));
-    connect(m_board, SIGNAL(selectATile()), this, SLOT(notifySelectATile()));
-    connect(m_board, SIGNAL(selectAMatchingTile()), this, SLOT(notifySelectAMatchingTile()));
-    connect(m_board, SIGNAL(selectAMove()), this, SLOT(notifySelectAMove()));
+    //Does this even make sense here? (schwarzer)
+    //qApp->processEvents();
 
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(updateTimeDisplay()));
-    timer->start(1000);
-
-    connect(m_board, SIGNAL(changed()), this, SLOT(updateTileDisplay()));
-
-    connect(m_board, SIGNAL(endOfGame()), this, SLOT(slotEndOfGame()));
-
-    qApp->processEvents();
-
-    updateTimeDisplay();
     updateItems();
 }
 
@@ -139,16 +123,25 @@ void App::setupActions()
     KStandardGameAction::undo(this, SLOT(undo()), actionCollection());
     KStandardGameAction::redo(this, SLOT(redo()), actionCollection());
     KStandardGameAction::hint(this, SLOT(hint()), actionCollection());
-    //new KAction(i18n("Is Game Solvable?"), 0, this,
-    //  SLOT(isSolvable()), actionCollection(), "move_solvable");
-
-#ifdef DEBUGGING
-    // broken ..
-    //(void)new KAction(i18n("&Finish"), 0, board, SLOT(finish()), actionCollection(), "move_finish");
-#endif
 
     // Settings
     KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
+
+    connect(m_board, SIGNAL(changed()), this, SLOT(updateItems()));
+    connect(m_board, SIGNAL(tilesDontMatch()), this, SLOT(notifyTilesDontMatch()));
+    connect(m_board, SIGNAL(invalidMove()), this, SLOT(notifyInvalidMove()));
+    connect(m_board, SIGNAL(selectATile()), this, SLOT(notifySelectATile()));
+    connect(m_board, SIGNAL(selectAMatchingTile()), this, SLOT(notifySelectAMatchingTile()));
+    connect(m_board, SIGNAL(selectAMove()), this, SLOT(notifySelectAMove()));
+
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(updateTimeDisplay()));
+    timer->start(1000);
+
+    connect(m_board, SIGNAL(changed()), this, SLOT(updateTileDisplay()));
+
+    connect(m_board, SIGNAL(endOfGame()), this, SLOT(slotEndOfGame()));
+
 }
 
 /**
@@ -184,14 +177,6 @@ void App::restartGame()
     updateItems();
 }
 
-//void App::isSolvable()
-//{
-//    if (m_board->solvable()) {
-//        KMessageBox::information(this, i18n("This game is solvable."));
-//    } else {
-//        KMessageBox::information(this, i18n("This game is NOT solvable."));
-//    }
-//}
 
 void App::togglePause()
 {
@@ -325,7 +310,7 @@ void App::updateTimeDisplay()
                             m_board->isPaused() ? i18n("(Paused) ") : QString());
 
     m_gameTimerLabel->setText(message);
-    // temporary hack until I find out why m_board->tilesLeft() in updateTileDisplay() counts the previous state of the board, not the current
+    // temporary hack until I find out why m_board->tilesLeft() in updateTileDisplay() counts the previous state of the board, not the current (schwarzer)
     updateTileDisplay();
 }
 
