@@ -275,6 +275,7 @@ void App::slotEndOfGame()
 
         KScoreDialog scoreDialog(KScoreDialog::Name | KScoreDialog::Time | KScoreDialog::Score, this);
         scoreDialog.addField(KScoreDialog::Custom1, i18n("Gravity"), "gravity");
+        // FIXME: This is bad, because the translated words are stored in the highscores and thus switching the language makes ugly things (shwarzer)
         if (m_board->gravityFlag()) {
             scoreInfo[KScoreDialog::Custom1] = i18n("Yes");
         } else {
@@ -282,19 +283,18 @@ void App::slotEndOfGame()
         }
         scoreDialog.setConfigGroup(QString("%1x%2").arg(sizeX[Prefs::size()]).arg(sizeY[Prefs::size()]));
 
-        bool madeIt = static_cast<bool>(scoreDialog.addScore(scoreInfo));
-        QString message;
-
-        message = i18n("Congratulation!");
-        if (madeIt) {
-            if (m_cheat) {
-                message += i18n("\nYou could have been in the highscores\nif you did not use Undo or Hint.\nTry without them next time.");
-            }
-            scoreDialog.setComment(message);
-            scoreDialog.exec();
-        } else {
-            message += i18nc("%1 - time string like hh:mm:ss", "\nYou made it in %1").arg(timeString);
+        if (m_cheat) {
+            QString message = i18n("\nYou could have been in the highscores\nif you did not use Undo or Hint.\nTry without them next time.");
             KMessageBox::information(this, message, i18n("End of Game"));
+        } else {
+            if (scoreDialog.addScore(scoreInfo)) {
+                QString message = i18n("Congratulation!\nYou made it into the hall of fame.");
+                scoreDialog.setComment(message);
+                scoreDialog.exec();
+            } else {
+                QString message = i18nc("%1 - time string like hh:mm:ss", "\nYou made it in %1").arg(timeString);
+                KMessageBox::information(this, message, i18n("End of Game"));
+            }
         }
     }
     updateItems();

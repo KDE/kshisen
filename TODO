@@ -1,1 +1,1 @@
-- highscore is added although cheatmode is enabled
+- the highscore dialog stores the status of the gravity flag l19n'ed. This looks ugls if the player switches the game's language.
