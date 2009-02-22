@@ -37,9 +37,6 @@
 #include <QSize>
 #include <QWidget>
 
-// Should this get the whole HAVE_SYS_TIME_H TIME_WITH_SYS_TIME treatment?
-#include <ctime>
-
 static int sizeX[6] = {14, 16, 18, 24, 26, 30};
 static int sizeY[6] = { 6,  9,  8, 12, 14, 16};
 
@@ -298,7 +295,6 @@ private:
     bool m_isPaused; ///< Whether game is paused
     bool m_isStuck; ///< Whether game has no more matching tiles
     bool m_isOver; ///< Whether game is over
-    time_t m_pauseStart;
 
     bool m_gravityFlag; ///< Whether gravity flag is set
     bool m_solvableFlag; ///< Whether solvable flag is set
