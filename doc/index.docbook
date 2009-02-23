@@ -44,7 +44,7 @@
       <keyword>kdegames</keyword> <!-- do not change this! -->
       <keyword>game</keyword> <!-- do not change this! -->
       <keyword>kshisen</keyword><!--Application name goes here-->
-      <!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+      <!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
       <keyword>arcade</keyword>
       <keyword>board</keyword>
       <keyword>mahjongg</keyword>
@@ -55,7 +55,7 @@
   </bookinfo>
   <!--Content begins here: -->
   <chapter id="introduction"><title>Introduction</title> <!-- do not change this! -->
-    <note><title>Gametype:</title><para>Arcade, Board</para></note><!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+    <note><title>Gametype:</title><para>Arcade, Board</para></note><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
     <note><title>Number of possible players:</title><para>One</para></note><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
 
     <!--Short game description starts here. 3-4 sentences (paragraphs)-->
