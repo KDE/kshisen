@@ -288,7 +288,7 @@ void App::slotEndOfGame()
             KMessageBox::information(this, message, i18n("End of Game"));
         } else {
             if (scoreDialog.addScore(scoreInfo)) {
-                QString message = i18n("Congratulation!\nYou made it into the hall of fame.");
+                QString message = i18n("Congratulations!\nYou made it into the hall of fame.");
                 scoreDialog.setComment(message);
                 scoreDialog.exec();
             } else {
