@@ -236,8 +236,6 @@ protected:
     virtual QSize sizeHint() const;
 
 private: // functions
-    void initBoard();
-
     int xOffset() const;
     int yOffset() const;
 
