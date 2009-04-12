@@ -35,11 +35,6 @@
 
 static const char description[] = I18N_NOOP("A KDE game similar to Mahjongg");
 
-// A hack to circumvent tricky i18n issue, not used later on in the code.
-// Both context and contents must be exactly the same as for the entry in
-// kdelibs/kdeui/ui_standards.rc
-static const char dummy[] = I18N_NOOP2("Menu title", "&Move");
-
 int main(int argc, char **argv)
 {
     KAboutData aboutData("kshisen", 0, ki18n("Shisen-Sho"),
