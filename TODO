@@ -1,4 +1,5 @@
 - the highscore dialog stores the status of the gravity flag l10n'ed. This looks ugls if the player switches the game's language.
+- change the way, scores are evaluated (e.g. make gravity x1.2 instead of x2.0 and add chinese style to the evaluation)
 - get rid of the static sizeX and sizeY arrays; use Qlist<QPair<>> instead (this makes it possible to be more dynamic if it comes to board sizes
 - handle the text drawn to canvas better. currently there is no dynamic line-breaking, thus it looks bad on smaller screens.
 - solve the copyright issue (about dialog)
