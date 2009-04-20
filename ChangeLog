@@ -1,7 +1,7 @@
-Changes since 1.6.1:
+Changes in 1.7.0:
  * add window title to Player name dialog
  * fix typo in cheat notification dialog
- * fix game to be playable in pause mode
+ * fix bug where game is playable in pause mode
  * add Game Over screen to not start the next game without user interaction
  * rework pause mode
  *  - game is now paused if the board loses focus (e.g. if a menu is opened
@@ -9,6 +9,7 @@ Changes since 1.6.1:
  *  - game can now be resumed by clicking on the board
  * port to KScoreDialog
  *  - there is now one highscore section for each board size
+ *  - the gravity option has its separate column now
  * port to KGameClock
 
  * some changes in coding style and naming schema to be more close to the
