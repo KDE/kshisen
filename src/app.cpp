@@ -275,7 +275,7 @@ void App::slotEndOfGame()
 
         KScoreDialog scoreDialog(KScoreDialog::Name | KScoreDialog::Time | KScoreDialog::Score, this);
         scoreDialog.addField(KScoreDialog::Custom1, i18n("Gravity"), "gravity");
-        // FIXME: This is bad, because the translated words are stored in the highscores and thus switching the language makes ugly things (shwarzer)
+        // FIXME: This is bad, because the translated words are stored in the highscores and thus switching the language makes ugly things (schwarzer)
         if (m_board->gravityFlag()) {
             scoreInfo[KScoreDialog::Custom1] = i18n("Yes");
         } else {
