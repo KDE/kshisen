@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>Settings</class>
- <widget class="QWidget" name="Settings" >
-  <property name="geometry" >
+ <widget class="QWidget" name="Settings">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,100 +10,100 @@
     <height>428</height>
    </rect>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="spacing" >
+  <layout class="QVBoxLayout">
+   <property name="spacing">
     <number>6</number>
    </property>
-   <property name="margin" >
+   <property name="margin">
     <number>9</number>
    </property>
    <item>
-    <widget class="QCheckBox" name="kcfg_Gravity" >
-     <property name="whatsThis" >
-      <string>&lt;b>Gravity&lt;/b>&lt;p>Checking this makes the game even harder: If a tile is removed, all tiles lying above it will fall down one step.&lt;/p></string>
+    <widget class="QCheckBox" name="kcfg_Gravity">
+     <property name="whatsThis">
+      <string>&lt;b&gt;Gravity&lt;/b&gt;&lt;p&gt;Checking this makes the game even harder: If a tile is removed, all tiles lying above it will fall down one step.&lt;/p&gt;</string>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Gravity</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QCheckBox" name="kcfg_Solvable" >
-     <property name="whatsThis" >
-      <string>&lt;b>Allow unsolvable games&lt;/b>&lt;p>If checked, you run the risk of being presented with games that are impossible to solve.&lt;/p>&lt;p>Note: Even if not checked, you will fail to complete a game if you remove the tiles in the wrong order!&lt;/p></string>
+    <widget class="QCheckBox" name="kcfg_Solvable">
+     <property name="whatsThis">
+      <string>&lt;b&gt;Allow unsolvable games&lt;/b&gt;&lt;p&gt;If checked, you run the risk of being presented with games that are impossible to solve.&lt;/p&gt;&lt;p&gt;Note: Even if not checked, you will fail to complete a game if you remove the tiles in the wrong order!&lt;/p&gt;</string>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Allow unsolvable games</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QCheckBox" name="kcfg_ChineseStyle" >
-     <property name="whatsThis" >
-      <string>&lt;b>Use Chinese style: any flower match any flower, any season match any season&lt;/b>&lt;p>Use the traditional rules for matching the tiles. Previous version of the game used to allow only exact tiles matches, which is inconsistent with Mah-jongg rules. It is recommended to keep this option checked.&lt;/p></string>
+    <widget class="QCheckBox" name="kcfg_ChineseStyle">
+     <property name="whatsThis">
+      <string>&lt;b&gt;Use Chinese style: any flower match any flower, any season match any season&lt;/b&gt;&lt;p&gt;Use the traditional rules for matching the tiles. Previous version of the game used to allow only exact tiles matches, which is inconsistent with Mah-jongg rules. It is recommended to keep this option checked.&lt;/p&gt;</string>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Use Chinese style: any flower match any flower, any season match any season</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QCheckBox" name="kcfg_TilesCanSlide" >
-     <property name="whatsThis" >
-      <string>&lt;b>Tiles can slide, but you can connect only in 2 lines instead of 3&lt;/b>&lt;p>This option changes the rules to the point where it almost becomes a completely different game. When it is active, you can only remove the tiles if they can be connected by a line consisting of only two segments instead of the customary three. However, you are allowed to slide the tiles on the board, if the row or column where they are placed has some empty space. To make a sliding move, you have to click on the tile containing the column or row that can slide, and then on the matching tile. If there are two possible sliding moves, you will have to click on one of the two connecting lines to choose your preferred move.&lt;/p></string>
+    <widget class="QCheckBox" name="kcfg_TilesCanSlide">
+     <property name="whatsThis">
+      <string>&lt;b&gt;Tiles can slide, but you can connect only in 2 lines instead of 3&lt;/b&gt;&lt;p&gt;This option changes the rules to the point where it almost becomes a completely different game. When it is active, you can only remove the tiles if they can be connected by a line consisting of only two segments instead of the customary three. However, you are allowed to slide the tiles on the board, if the row or column where they are placed has some empty space. To make a sliding move, you have to click on the tile containing the column or row that can slide, and then on the matching tile. If there are two possible sliding moves, you will have to click on one of the two connecting lines to choose your preferred move.&lt;/p&gt;</string>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Tiles can slide, but you can connect only in 2 lines instead of 3</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QGroupBox" name="difficulty_groupBox" >
-     <property name="whatsThis" >
-      <string>&lt;b>Board Difficulty&lt;/b>&lt;p>The slider controls the difficulty of the board from Easy to Hard.&lt;/p></string>
+    <widget class="QGroupBox" name="difficulty_groupBox">
+     <property name="whatsThis">
+      <string>&lt;b&gt;Board Difficulty&lt;/b&gt;&lt;p&gt;The slider controls the difficulty of the board from Easy to Hard.&lt;/p&gt;</string>
      </property>
-     <property name="title" >
+     <property name="title">
       <string>Board Difficulty</string>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
+     <layout class="QGridLayout">
+      <property name="margin">
        <number>5</number>
       </property>
-      <property name="spacing" >
+      <property name="spacing">
        <number>2</number>
       </property>
-      <item row="0" column="0" colspan="2" >
-       <widget class="QSlider" name="kcfg_Level" >
-        <property name="maximum" >
+      <item row="0" column="0" colspan="2">
+       <widget class="QSlider" name="kcfg_Level">
+        <property name="maximum">
          <number>2</number>
         </property>
-        <property name="pageStep" >
+        <property name="pageStep">
          <number>1</number>
         </property>
-        <property name="value" >
+        <property name="value">
          <number>1</number>
         </property>
-        <property name="orientation" >
+        <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
-        <property name="tickPosition" >
+        <property name="tickPosition">
          <enum>QSlider::TicksBelow</enum>
         </property>
        </widget>
       </item>
-      <item row="1" column="0" >
-       <widget class="QLabel" name="textLabel1" >
-        <property name="text" >
+      <item row="1" column="0">
+       <widget class="QLabel" name="textLabel1">
+        <property name="text">
          <string>Easy</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1" >
-       <widget class="QLabel" name="textLabel3" >
-        <property name="text" >
+      <item row="1" column="1">
+       <widget class="QLabel" name="textLabel3">
+        <property name="text">
          <string>Hard</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
@@ -111,52 +112,52 @@
     </widget>
    </item>
    <item>
-    <widget class="QGroupBox" name="speed_groupBox" >
-     <property name="whatsThis" >
-      <string>&lt;b>Piece Removal Speed&lt;/b>&lt;p>Adjusting this slider alters the speed at which the pieces are removed from the screen after a match has been made.&lt;/p></string>
+    <widget class="QGroupBox" name="speed_groupBox">
+     <property name="whatsThis">
+      <string>&lt;b&gt;Piece Removal Speed&lt;/b&gt;&lt;p&gt;Adjusting this slider alters the speed at which the pieces are removed from the screen after a match has been made.&lt;/p&gt;</string>
      </property>
-     <property name="title" >
+     <property name="title">
       <string>Piece Removal Speed</string>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
+     <layout class="QGridLayout">
+      <property name="margin">
        <number>5</number>
       </property>
-      <property name="spacing" >
+      <property name="spacing">
        <number>2</number>
       </property>
-      <item row="1" column="1" >
-       <widget class="QLabel" name="textLabel6" >
-        <property name="text" >
+      <item row="1" column="1">
+       <widget class="QLabel" name="textLabel6">
+        <property name="text">
          <string>Fast</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="1" column="0" >
-       <widget class="QLabel" name="textLabel4" >
-        <property name="text" >
+      <item row="1" column="0">
+       <widget class="QLabel" name="textLabel4">
+        <property name="text">
          <string>Slow</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="0" colspan="2" >
-       <widget class="QSlider" name="kcfg_Speed" >
-        <property name="maximum" >
+      <item row="0" column="0" colspan="2">
+       <widget class="QSlider" name="kcfg_Speed">
+        <property name="maximum">
          <number>4</number>
         </property>
-        <property name="pageStep" >
+        <property name="pageStep">
          <number>1</number>
         </property>
-        <property name="value" >
+        <property name="value">
          <number>2</number>
         </property>
-        <property name="orientation" >
+        <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
-        <property name="tickPosition" >
+        <property name="tickPosition">
          <enum>QSlider::TicksBelow</enum>
         </property>
        </widget>
@@ -165,95 +166,95 @@
     </widget>
    </item>
    <item>
-    <widget class="QGroupBox" name="size_groupBox" >
-     <property name="whatsThis" >
-      <string>&lt;b>Board Size&lt;/b>&lt;p>This slider allows you to change the number of tiles on the board. The more tiles you have, the harder (and longer) the game will be.&lt;/p></string>
+    <widget class="QGroupBox" name="size_groupBox">
+     <property name="whatsThis">
+      <string>&lt;b&gt;Board Size&lt;/b&gt;&lt;p&gt;This slider allows you to change the number of tiles on the board. The more tiles you have, the harder (and longer) the game will be.&lt;/p&gt;</string>
      </property>
-     <property name="title" >
+     <property name="title">
       <string>Board Size</string>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
+     <layout class="QGridLayout">
+      <property name="margin">
        <number>5</number>
       </property>
-      <property name="spacing" >
+      <property name="spacing">
        <number>2</number>
       </property>
-      <item row="1" column="5" >
-       <widget class="QLabel" name="textLabel12" >
-        <property name="text" >
+      <item row="1" column="5">
+       <widget class="QLabel" name="textLabel12">
+        <property name="text">
          <string>30x16</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="1" column="4" >
-       <widget class="QLabel" name="textLabel11" >
-        <property name="text" >
+      <item row="1" column="4">
+       <widget class="QLabel" name="textLabel11">
+        <property name="text">
          <string>26x14</string>
         </property>
-        <property name="alignment" >
-         <set>Qt::AlignCenter</set>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="1" column="3" >
-       <widget class="QLabel" name="textLabel10" >
-        <property name="text" >
+      <item row="1" column="3">
+       <widget class="QLabel" name="textLabel10">
+        <property name="text">
          <string>24x12</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
-      <item row="1" column="2" >
-       <widget class="QLabel" name="textLabel7" >
-        <property name="text" >
+      <item row="1" column="2">
+       <widget class="QLabel" name="textLabel7">
+        <property name="text">
          <string>18x8</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
-      <item row="1" column="1" >
-       <widget class="QLabel" name="textLabel9" >
-        <property name="text" >
+      <item row="1" column="1">
+       <widget class="QLabel" name="textLabel9">
+        <property name="text">
          <string>16x9</string>
         </property>
-        <property name="alignment" >
-         <set>Qt::AlignCenter</set>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="1" column="0" >
-       <widget class="QLabel" name="textLabel8" >
-        <property name="text" >
+      <item row="1" column="0">
+       <widget class="QLabel" name="textLabel8">
+        <property name="text">
          <string>14x6</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="0" colspan="6" >
-       <widget class="QSlider" name="kcfg_Size" >
-        <property name="minimum" >
+      <item row="0" column="0" colspan="6">
+       <widget class="QSlider" name="kcfg_Size">
+        <property name="minimum">
          <number>0</number>
         </property>
-        <property name="maximum" >
+        <property name="maximum">
          <number>5</number>
         </property>
-        <property name="pageStep" >
+        <property name="pageStep">
          <number>1</number>
         </property>
-        <property name="value" >
+        <property name="value">
          <number>2</number>
         </property>
-        <property name="orientation" >
+        <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
-        <property name="tickPosition" >
+        <property name="tickPosition">
          <enum>QSlider::TicksBelow</enum>
         </property>
        </widget>
@@ -263,13 +264,13 @@
    </item>
    <item>
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeType" >
+     <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" stdset="0" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>507</width>
        <height>31</height>
@@ -279,6 +280,6 @@
    </item>
   </layout>
  </widget>
-  <resources/>
+ <resources/>
  <connections/>
 </ui>
