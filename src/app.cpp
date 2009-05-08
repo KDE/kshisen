@@ -222,6 +222,11 @@ void App::redo()
  */
 void App::hint()
 {
+// The game pauses as soon as the player opens the menu to receive a hint.
+// This is an ugly hack to make the behaviour less crappy (although it still is).
+if (m_board->isPaused()) {
+    m_board->setPauseEnabled(false);
+}
 #ifdef DEBUGGING
     m_board->makeHintMove();
 #else
@@ -246,7 +251,6 @@ void App::updateItems()
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Undo))->setEnabled(false);
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Redo))->setEnabled(false);
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Restart))->setEnabled(false);
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Hint))->setEnabled(false);
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Pause))->setChecked(true);
     } else {
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Undo))->setEnabled(m_board->canUndo());
