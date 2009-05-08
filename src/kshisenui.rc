@@ -10,10 +10,7 @@
 </MenuBar>
 <ToolBar name="mainToolBar"><text>Main Toolbar</text>
   <Action name="game_new"/>
-  <Separator/>
   <Action name="move_undo"/>
-  <Action name="move_redo"/>
-  <Separator/>
   <Action name="game_pause"/>
 </ToolBar>
 </gui>
