@@ -1521,7 +1521,7 @@ void Board::undo()
             }
         } else { // else check all tiles from the slide that may have fallen down
 #ifdef DEBUGGING
-            kDebug() << "[undo] gravity from slide s1(" << move->slide_x1 << "," << move->slide_y1 << ")=>s2(" << move->slide_x2 << "," << move->slide_y2 << ") matching (" << move->x1 << "," << move->y1 << ")=>(" << move->x2 << "," << move->y2 << ")";
+            kDebug() << "[undo] gravity from slide s1(" << move->m_slideX1 << "," << move->m_slideY1 << ")=>s2(" << move->m_slideX2 << "," << move->m_slideY2 << ") matching (" << move->m_x1 << "," << move->m_y1 << ")=>(" << move->m_x2 << "," << move->m_y2 << ")";
 #endif
             // horizontal slide
             // because tiles that slides horizontaly may fall down
@@ -1566,7 +1566,7 @@ void Board::undo()
                             continue;
                         }
 #ifdef DEBUGGING
-                        kDebug() << "[undo] moving (" << i << "," << j << ") up to (" << i << "," << move->slide_y1 << ")";
+                        kDebug() << "[undo] moving (" << i << "," << j << ") up to (" << i << "," << move->m_slideY1 << ")";
 #endif
                         // put it back up
                         setField(i, move->m_slideY1, field(i, j));
@@ -1592,7 +1592,7 @@ void Board::undo()
                             continue;
                         }
 #ifdef DEBUGGING
-                        kDebug() << "[undo] moving (" << i << "," << j << ") up to (" << i << "," << move->slide_y1 << ")";
+                        kDebug() << "[undo] moving (" << i << "," << j << ") up to (" << i << "," << move->m_slideY1 << ")";
 #endif
                         // put it back up
                         setField(i, move->m_slideY1, field(i, j));
@@ -1603,7 +1603,7 @@ void Board::undo()
                 }
                 // move tiles from the second column up
 #ifdef DEBUGGING
-                kDebug() << "[undo] moving up column x2" << m->x2;
+                kDebug() << "[undo] moving up column x2" << move->m_x2;
 #endif
                 for (y = 0; y <= move->m_y2; ++y) {
 #ifdef DEBUGGING
@@ -1621,7 +1621,7 @@ void Board::undo()
                     if (move->m_slideY1 > 0) {
                         for (int i = move->m_x1 + dx; i >= move->m_x1; --i) {
 #ifdef DEBUGGING
-                            kDebug() << "[undo] moving up column" << i << "until" << move->slide_y1;
+                            kDebug() << "[undo] moving up column" << i << "until" << move->m_slideY1;
 #endif
                             for (int j = 0; j < move->m_slideY1; ++j) {
 #ifdef DEBUGGING
@@ -1631,7 +1631,7 @@ void Board::undo()
                                 updateField(i, j);
                             }
 #ifdef DEBUGGING
-                            kDebug() << "[undo] clearing last tile" << move->slide_y1;
+                            kDebug() << "[undo] clearing last tile" << move->m_slideY1;
 #endif
                             setField(i, move->m_slideY1, EMPTY);
                             updateField(i, move->m_slideY1);
@@ -1641,7 +1641,7 @@ void Board::undo()
                     if (move->m_slideY1 > 0) {
                         for (int i = move->m_x1 - dx; i <= move->m_x1; ++i) {
 #ifdef DEBUGGING
-                            kDebug() << "[undo] moving up column" << i << "until" << move->slide_y1;
+                            kDebug() << "[undo] moving up column" << i << "until" << move->m_slideY1;
 #endif
                             for (int j = 0; j < move->m_slideY1; ++j) {
 #ifdef DEBUGGING
@@ -1651,7 +1651,7 @@ void Board::undo()
                                 updateField(i, j);
                             }
 #ifdef DEBUGGING
-                            kDebug() << "[undo] clearing last tile" << move->slide_y1;
+                            kDebug() << "[undo] clearing last tile" << move->m_slideY1;
 #endif
                             setField(i, move->m_slideY1, EMPTY);
                             updateField(i, move->m_slideY1);
@@ -1743,11 +1743,11 @@ void Board::makeHintMove()
 {
     PossibleMoves possibleMoves;
 
-    if (getHint_I(p)) {
+    if (hint_I(possibleMoves)) {
         m_markX = -1;
         m_markY = -1;
-        marked(possibleMoves.first().path.first().x, possibleMoves.first().path.first().y);
-        marked(possibleMoves.first().path.last().x,  possibleMoves.first().path.last().y);
+        marked(possibleMoves.first().m_path.first().x, possibleMoves.first().m_path.first().y);
+        marked(possibleMoves.first().m_path.last().x, possibleMoves.first().m_path.last().y);
     }
 }
 
@@ -1758,7 +1758,8 @@ void Board::dumpBoard() const
     for (int y = 0; y < yTiles(); ++y) {
         QString row;
         for (int x = 0; x < xTiles(); ++x) {
-            if (getField(x, y) == EMPTY) {
+            int tile = field(x, y);
+            if (tile == EMPTY) {
                 row += " --";
             } else {
                 row += QString("%1").arg(tile, 3);
@@ -1774,7 +1775,8 @@ void Board::dumpBoard(const int *board) const
     for (int y = 0; y < yTiles(); ++y) {
         QString row;
         for (int x = 0; x < xTiles(); ++x) {
-            if (board[y * xTiles() + x] == EMPTY) {
+            int tile = board[y * xTiles() + x];
+            if (tile == EMPTY) {
                 row += " --";
             } else {
                 row += QString("%1").arg(tile, 3);
