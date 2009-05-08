@@ -311,6 +311,9 @@ void App::slotEndOfGame()
 
 void App::updateTimeDisplay()
 {
+    if (m_board->isPaused() || m_board->isStuck() || m_board->isOver()) {
+        return;
+    }
     int currentTime = m_board->currentTime();
     QString message = i18n("Your time: %1:%2:%3 %4",
                             QString().sprintf("%02d", currentTime / 3600),
