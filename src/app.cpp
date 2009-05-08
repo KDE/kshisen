@@ -204,6 +204,11 @@ void App::undo()
     }
     m_board->undo();
     setCheatModeEnabled(true);
+
+    // If the game is stuck (no matching tiles anymore), the player can decide
+    // to undo some steps and try a different approach.
+    m_board->setGameStuckEnabled(false);
+
     updateItems();
 }
 

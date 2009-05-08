@@ -1481,13 +1481,6 @@ void Board::undo()
         return;
     }
 
-    // If the game is stuck (no matching tiles anymore), the player can decide
-    // to undo some steps and try a different approach. That's why the clock
-    // should be resumed on undo.
-    if (m_isStuck) {
-        m_gameClock.resume();
-    }
-
     clearHighlight();
     undrawConnection();
     Move *move = m_undo.takeLast();
@@ -2008,6 +2001,11 @@ void Board::setGameStuckEnabled(bool enabled)
         return;
     }
     m_isStuck = enabled;
+    if (m_isStuck) {
+        m_gameClock.pause();
+    } else {
+        m_gameClock.resume();
+    }
     emit changed();
     update();
 }
