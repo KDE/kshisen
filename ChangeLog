@@ -1,20 +1,16 @@
 Changes in 1.7.0:
- * add window title to Player name dialog
  * fix typo in cheat notification dialog
- * fix bug where game is playable in pause mode
+ * fix bug where game was playable in pause mode
  * add Game Over screen to not start the next game without user interaction
- * rework pause mode
- *  - game is now paused if the board loses focus (e.g. if a menu is opened
- *    or the application itself loses focus)
- *  - game can now be resumed by clicking on the board
+ * game can now be resumed by clicking on the board
  * port to KScoreDialog
  *  - there is now one highscore section for each board size
  *  - the gravity option has its separate column now
- * port to KGameClock
+ * port to KGameClock to solve several issues
 
  * some changes in coding style and naming schema to be more close to the
    kdelibs style
- * some general refactorizing
+ * some general refactoring
 
 Changes in 1.6.1:
  * Remove "prefer unscaled tiles" option, as it is meaningless with SVG
