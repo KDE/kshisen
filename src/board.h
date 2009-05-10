@@ -141,7 +141,6 @@ public:
     virtual void paintEvent(QPaintEvent *e);
     virtual void mousePressEvent(QMouseEvent *e);
     virtual void resizeEvent(QResizeEvent *e);
-    virtual void focusOutEvent(QFocusEvent *e);
 
     void setDelay(int);
     int  delay() const;

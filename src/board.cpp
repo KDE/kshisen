@@ -85,21 +85,12 @@ Board::Board(QWidget *parent)
     setPalette(palette);
 
     loadSettings();
-    setFocus();
 }
 
 Board::~Board()
 {
     delete [] m_field;
 }
-
-void Board::focusOutEvent(QFocusEvent *)
-{
-    if (!m_isPaused && !m_isOver && !m_isStuck) {
-        setPauseEnabled(true);
-    }
-}
-
 
 void Board::loadSettings()
 {
