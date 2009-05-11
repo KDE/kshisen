@@ -198,12 +198,16 @@ public:
     void setGameStuckEnabled(bool enabled);
     /// Sets whether the game is over
     void setGameOverEnabled(bool enabled);
+    /// Sets whether the game is in cheat mode
+    void setCheatModeEnabled(bool enabled);
     /// Returns whether the game is over
     bool isOver() const;
     /// Returns whether the game is in pause mode
     bool isPaused() const;
     /// Returns whether there are still matching tiles left
     bool isStuck() const;
+    /// Returns whether player is in cheat mode
+    bool hasCheated() const;
 
 signals:
     void markMatched(); // unused?
@@ -215,6 +219,7 @@ signals:
     void selectATile();
     void selectAMove();
     void selectAMatchingTile();
+    void cheatStatusChanged();
 
 public slots:
     /// Controls the pause mode
@@ -292,6 +297,7 @@ private:
     bool m_isPaused; ///< Whether game is paused
     bool m_isStuck; ///< Whether game has no more matching tiles
     bool m_isOver; ///< Whether game is over
+    bool m_cheat; ///< Whether the cheat mode is set
 
     bool m_gravityFlag; ///< Whether gravity flag is set
     bool m_solvableFlag; ///< Whether solvable flag is set

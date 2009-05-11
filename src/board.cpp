@@ -70,7 +70,7 @@ Board::Board(QWidget *parent)
     m_field(0),
     m_xTiles(0), m_yTiles(0),
     m_delay(125), m_shuffle(0),
-    m_isPaused(false), m_isStuck(false), m_isOver(false),
+    m_isPaused(false), m_isStuck(false), m_isOver(false), m_cheat(false),
     m_gravityFlag(true), m_solvableFlag(true), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
     m_highlightedTile(-1), m_connectionTimeout(0),
     m_paintConnection(false), m_paintPossibleMoves(false)
@@ -401,6 +401,7 @@ void Board::newGame()
 
     m_isOver = false;
     m_isPaused = false;
+    setCheatModeEnabled(false);
 
     m_markX = -1;
     m_markY = -1;
@@ -2011,6 +2012,15 @@ void Board::setGameOverEnabled(bool enabled)
     update();
 }
 
+void Board::setCheatModeEnabled(bool enabled)
+{
+    if (m_cheat == enabled) {
+        return;
+    }
+    m_cheat = enabled;
+    emit cheatStatusChanged();
+}
+
 /**
  * @return True if game is over, False if game is not over
  */
@@ -2033,6 +2043,14 @@ bool Board::isPaused() const
 bool Board::isStuck() const
 {
     return m_isStuck;
+}
+
+/**
+* @return True if the player is in cheat mode, False if not
+*/
+bool Board::hasCheated() const
+{
+    return m_cheat;
 }
 
 #include "board.moc"

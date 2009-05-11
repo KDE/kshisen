@@ -68,8 +68,7 @@ App::App(QWidget *parent)
     m_gameTimerLabel(0),
     m_gameTilesLabel(0),
     m_gameCheatLabel(0),
-    m_board(0),
-    m_cheat(false)
+    m_board(0)
 {
     m_board = new Board(this);
     m_board->setObjectName("board");
@@ -127,6 +126,7 @@ void App::setupActions()
     // Settings
     KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
 
+    connect(m_board, SIGNAL(cheatStatusChanged()), this, SLOT(updateCheatDisplay()));
     connect(m_board, SIGNAL(changed()), this, SLOT(updateItems()));
     connect(m_board, SIGNAL(tilesDontMatch()), this, SLOT(notifyTilesDontMatch()));
     connect(m_board, SIGNAL(invalidMove()), this, SLOT(notifyInvalidMove()));
@@ -287,7 +287,7 @@ void App::slotEndOfGame()
         }
         scoreDialog.setConfigGroup(QString("%1x%2").arg(sizeX[Prefs::size()]).arg(sizeY[Prefs::size()]));
 
-        if (m_cheat) {
+        if (m_board->hasCheated()) {
             QString message = i18n("\nYou could have been in the highscores\nif you did not use Undo or Hint.\nTry without them next time.");
             KMessageBox::information(this, message, i18n("End of Game"));
         } else {
@@ -332,6 +332,11 @@ void App::updateTileDisplay()
     m_gameTilesLabel->setText(message);
 }
 
+void App::updateCheatDisplay()
+{
+    m_gameCheatLabel->setVisible(m_board->hasCheated());
+}
+
 int App::score(int x, int y, int seconds, bool gravity) const
 {
     double ntiles = x * y;
@@ -374,10 +379,7 @@ void App::notifyInvalidMove()
 
 void App::setCheatModeEnabled(bool enabled)
 {
-    if (m_cheat == enabled) {
-        return;
-    }
-    m_cheat = enabled;
+    m_board->setCheatModeEnabled(enabled);
     m_gameCheatLabel->setVisible(enabled);
 }
 

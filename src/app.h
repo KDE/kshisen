@@ -46,6 +46,8 @@ private slots:
     void updateTimeDisplay();
     /// Updates the tiles removed display in the status bar
     void updateTileDisplay();
+    /// Updates the cheat status display in the status bar
+    void updateCheatDisplay();
     /// Shows the settings dialog
     void showSettings(); // const?
 
@@ -91,7 +93,6 @@ private:
     QLabel *m_gameTilesLabel; ///< Status bar area for the tile counter
     QLabel *m_gameCheatLabel; ///< Status bar area for the cheat mode
     Board *m_board; ///< Holds the game board
-    bool m_cheat; ///< Whether the cheat mode is set
 };
 
 #endif // APP_H
