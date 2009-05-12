@@ -609,10 +609,10 @@ void Board::paintEvent(QPaintEvent *e)
 
     if (m_isPaused) {
         p.setFont(KGlobalSettings::largeFont());
-        p.drawText(rect(), Qt::AlignCenter, i18n("Game Paused\nClick to resume game."));
+        p.drawText(rect(), Qt::AlignCenter|Qt::TextWordWrap, i18n("Game Paused\nClick to resume game."));
     } else if (m_isOver) {
         p.setFont(KGlobalSettings::largeFont());
-        p.drawText(rect(), Qt::AlignCenter, i18n("Game Over\nClick to start a new game."));
+        p.drawText(rect(), Qt::AlignCenter|Qt::TextWordWrap, i18n("Game Over\nClick to start a new game."));
     } else {
         int w = m_tiles.width();
         int h = m_tiles.height();
