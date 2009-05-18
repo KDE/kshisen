@@ -296,7 +296,7 @@ void App::slotEndOfGame()
                 scoreDialog.setComment(message);
                 scoreDialog.exec();
             } else {
-                QString message = i18nc("%1 - time string like hh:mm:ss", "\nYou made it in %1").arg(timeString);
+                QString message = i18nc("%1 - time string like hh:mm:ss", "\nYou made it in %1", timeString);
                 KMessageBox::information(this, message, i18n("End of Game"));
             }
         }
