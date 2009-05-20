@@ -23,7 +23,9 @@
         <affiliation><address><email>eugene.trounev@gmail.com</email></address></affiliation>
       </author>
       <author>
-        &Frederik.Schwarzer; <affiliation><address>&Frederik.Schwarzer.mail;</address></affiliation>
+        <firstname>Frederik</firstname>
+        <surname>Schwarzer</surname>
+        <affiliation><address>&Frederik.Schwarzer.mail;</address></affiliation>
       </author>
       <othercredit role="reviewer">
         <firstname>Frerich</firstname><surname>Raabe</surname>
