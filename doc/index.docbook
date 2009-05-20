@@ -22,6 +22,9 @@
         <firstname>Eugene</firstname><surname>Trounev</surname>
         <affiliation><address><email>eugene.trounev@gmail.com</email></address></affiliation>
       </author>
+      <author>
+        &Frederik.Schwarzer; <affiliation><address>&Frederik.Schwarzer.mail;</address></affiliation>
+      </author>
       <othercredit role="reviewer">
         <firstname>Frerich</firstname><surname>Raabe</surname>
         <contrib>Reviewer</contrib>
