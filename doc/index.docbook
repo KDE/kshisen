@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
   <!ENTITY kappname "&kshisen;">
-  <!ENTITY kappversion "1.6.0">     <!--Application version. Use this variable everywhere it's needed.-->
+  <!ENTITY kappversion "1.7.0">     <!--Application version. Use this variable everywhere it's needed.-->
   <!ENTITY package "kdegames">      <!-- do not change this! -->
   <!ENTITY % English "INCLUDE" >    <!-- change language only here -->
   <!ENTITY % addindex "IGNORE">     <!-- do not change this! -->
@@ -47,7 +47,7 @@
       <!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
       <keyword>arcade</keyword>
       <keyword>board</keyword>
-      <keyword>mahjongg</keyword>
+      <keyword>mahjong</keyword>
       <keyword>tiles</keyword>
       <!--Number of possible players. It can be: One, Two,..., Multiplayer-->
       <keyword>one player</keyword>
@@ -60,28 +60,28 @@
 
     <!--Short game description starts here. 3-4 sentences (paragraphs)-->
     <para>
-      &kappname; is a solitaire like game played using the standard set of Mahjong tiles.
+      &kappname; is a solitaire-like game played using the standard set of Mahjong tiles.
       Unlike Mahjong however, &kappname; has only one layer of scrambled tiles.
       You can remove matching pieces if they can be connected with a line
-      with no more than two bends in it. At the same time, the line must not
+      with at most two bends in it. At the same time, the line must not
       cross any other tiles.
-      To win a game of &kappname; the player has to remove all the tiles off the game board.
+      To win a game of &kappname; the player has to remove all the tiles from the game board.
     </para>
   </chapter>
 
   <chapter id="howto"><title>How to Play</title> <!-- do not change this! -->
     <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
-    <note><title>Objective:</title><para>Remove all the tiles off the game board within the shortest time possible.</para></note><!--Describe the objective of the game.-->
+    <note><title>Objective:</title><para>Remove all the tiles from the game board within the shortest time possible.</para></note><!--Describe the objective of the game.-->
     <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
     <para>
       &kappname; will load a default layout automatically once you start the game and you can start playing right away.
     </para>
     <para>
-      You should carefully study the tiles lied out on the game board and find two tiles matching exactly. When you have found such a pair use your mouse to select these.
+      You should carefully study the tiles lied out on the game board and find two tiles matching exactly. When you have found such a pair use your mouse to select them.
     </para>
     <para>
-      Once you select a right pair of tiles they will vanish off the game board.
-      However, even if the tiles you select appear as open they will only be removed off the board if they can be connected with a line having no more than two bends and not crossing any other tiles (the line cannot be diagonal).
+      Once you select a matching pair of tiles they will vanish from the game board.
+      However, even if the tiles you select appear as open they will only be removed from the board if they can be connected with a line having at most two bends and not crossing any other tiles. Furthermore the line can only be drawn horizontally and vertically.
     </para>
     <para>
       Find as many matches as possible to remove all the tiles from the game board.
@@ -154,24 +154,26 @@
         <listitem><para>Matching tiles are such tiles where the face pictograms match exactly.</para></listitem>
       </itemizedlist>
       <note><title>Note:</title><para>There are exceptions to this
-          rule! In the traditional game of Mahjong each tile has
+          rule. In the traditional game of Mahjong each tile has
           a matching one except for the <quote>Flowers</quote>
-          and <quote>Seasons</quote> tiles.</para></note>
+          and <quote>Seasons</quote> tiles.</para>
+      </note>
       <itemizedlist>
-        <listitem><para>The <quote>Flowers</quote> tiles have no doubles in the set and can be matched directly to each-other.</para></listitem>
-        <listitem><para>The <quote>Seasons</quote> tiles have no doubles in the set and can be matched directly to each-other.  </para></listitem>
-        <listitem><para>Tiles can only be removed if they can be connected with a maximum of three connected lines that do not cross any  other tile. Lines can be horizontal or vertical, but not diagonal.</para></listitem>
+        <listitem><para>The <quote>Flowers</quote> tiles have no doubles in the set and can be matched directly to each other.</para></listitem>
+        <listitem><para>The <quote>Seasons</quote> tiles have no doubles in the set and can be matched directly to each other.</para></listitem>
+        <listitem><para>Tiles can only be removed if they can be connected with a maximum of three connected lines that do not cross any other tile. Lines can be horizontal or vertical, but not diagonal.</para></listitem>
       </itemizedlist>
-      <note><title>Note:</title><para>You don't have to draw the lines by yourself, the game does this for
-          you. Just mark two matching tiles on the board, if they can be connected by a line with no more than two bends, the line is drawn and the tiles are removed.</para></note>
+      <note><title>Note:</title><para>You do not have to draw the lines by yourself, the game does this for
+              you. Just mark two matching tiles on the board, if they can be connected by a line with at most two bends, the line is drawn and the tiles are removed.</para>
+      </note>
       <itemizedlist>
-        <listitem><para>Lines may only cross the empty border.</para></listitem>
+        <listitem><para>Lines may only cross empty areas of the board.</para></listitem>
         <listitem><para>Some games are unsolvable. If you would like to avoid unsolvable games uncheck the option <guilabel>Allow unsolvable games</guilabel> in the configuration dialog.</para></listitem>
         <listitem><para>The scores are awarded for the time the player needs to remove all the tiles from the game board. Games with more tiles give more scores.</para></listitem>
         <listitem><para>If you played with the <guilabel>Gravity</guilabel> setting enabled, the score will be doubled.</para></listitem>
         <listitem><para>To be eligible for a place amongst the high scores player has to complete a game instance within the shortest period of time possible.</para></listitem>
       </itemizedlist>
-      <note><title>Note:</title><para>If the player uses <quote>cheat</quote> feature his/her record will not be considered as a high score.</para></note>
+      <note><title>Note:</title><para>If the player uses the <quote>Cheat</quote> or <quote>Hint</quote> feature the record will not be considered as a high score.</para></note>
     </sect1>
   </chapter>
 
@@ -188,11 +190,11 @@
         <varlistentry id="game-menu-new">
           <term>
             <menuchoice>
-              <shortcut><keycombo action="simul">&Ctrl; <keycap>N</keycap></keycombo></shortcut>
+              <shortcut><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></shortcut>
               <guimenu>Game</guimenu><guimenuitem>New</guimenuitem>
             </menuchoice>
           </term>
-          <listitem><para><action>Finish the actual game</action> set and start a new session with new tiles.</para></listitem>
+          <listitem><para><action>Finishes the current game</action> and starts a new session with new tiles.</para></listitem>
         </varlistentry>
 
         <varlistentry id="game-menu-restart">
@@ -202,7 +204,7 @@
               <guimenu>Game</guimenu><guimenuitem>Restart Game</guimenuitem>
             </menuchoice>
           </term>
-          <listitem><para><action>Restart the current game with the same tiles.</action></para></listitem>
+          <listitem><para><action>Restarts the current game with the same tiles.</action></para></listitem>
         </varlistentry>
 
         <varlistentry id="game-menu-pause">
@@ -212,7 +214,7 @@
               <guimenu>Game</guimenu><guimenuitem>Pause</guimenuitem>
             </menuchoice>
           </term>
-          <listitem><para><action>Pauses the entire game</action>, especially the timer which affects the scoring. The menu entry is also used for resuming the game.</para></listitem>
+          <listitem><para><action>Pauses the game</action>, especially the timer which affects the scoring. The menu entry is also used for resuming the game.</para></listitem>
         </varlistentry>
 
         <varlistentry id="game-menu-highscores">
@@ -222,7 +224,7 @@
               <guimenu>Game</guimenu><guimenuitem>Show High Scores</guimenuitem>
             </menuchoice>
           </term>
-          <listitem><para>Shows the (local) Top-Ten charts of &kappname;.</para></listitem>
+          <listitem><para>Shows the top ten charts of &kappname;.</para></listitem>
         </varlistentry>
 
         <varlistentry>
@@ -255,7 +257,7 @@
               <guimenu>Move</guimenu><guimenuitem>Undo</guimenuitem>
             </menuchoice>
           </term>
-          <listitem><para><action>Undo the last step</action>. Same as the <guibutton>Undo</guibutton> button in the toolbar.</para></listitem>
+          <listitem><para><action>Undoes the last step</action>. Same as the <guibutton>Undo</guibutton> button in the toolbar.</para></listitem>
         </varlistentry>
 
         <varlistentry id="move-menu-redo">
@@ -265,7 +267,7 @@
               <guimenu>Move</guimenu><guimenuitem>Redo</guimenuitem>
             </menuchoice>
           </term>
-          <listitem><para><action>Redo the last step</action>. Same as the <guibutton>Redo</guibutton> button in the toolbar.</para></listitem>
+          <listitem><para><action>Redoes the last step</action>. Same as the <guibutton>Redo</guibutton> button in the toolbar.</para></listitem>
         </varlistentry>
 
         <varlistentry id="move-menu-hint">
@@ -275,7 +277,7 @@
               <guimenu>Move</guimenu><guimenuitem>Hint</guimenuitem>
             </menuchoice>
           </term>
-          <listitem><para><action>Show a tip</action>, which two tiles to remove next.</para></listitem>
+          <listitem><para><action>Shows a hint</action>, which two tiles to remove next.</para></listitem>
         </varlistentry>
 
       </variablelist>
@@ -292,7 +294,7 @@
               <guimenu>Settings</guimenu><guimenuitem>Show Toolbar</guimenuitem>
             </menuchoice>
           </term>
-          <listitem><para>Toggle on and off the display of the toolbar.</para></listitem>
+          <listitem><para>Toggles the display of the toolbar on and off.</para></listitem>
         </varlistentry>
 
         <varlistentry>
@@ -301,7 +303,7 @@
               <guimenu>Settings</guimenu><guimenuitem>Show Statusbar</guimenuitem>
             </menuchoice>
           </term>
-          <listitem><para>Toggle on and off the display of the status bar.</para></listitem>
+          <listitem><para>Toggles the display of the status bar on and off.</para></listitem>
         </varlistentry>
 
         <varlistentry>
@@ -310,7 +312,7 @@
               <guimenu>Settings</guimenu><guimenuitem>Configure Shortcuts...</guimenuitem>
             </menuchoice>
           </term>
-          <listitem><para><action>Open a dialog which lets you redefine all the keyboard shortcuts.</action></para></listitem>
+          <listitem><para><action>Opens a dialog which lets you redefine all the keyboard shortcuts.</action></para></listitem>
         </varlistentry>
 
         <varlistentry id="settings-menu-toolbar">
@@ -390,16 +392,16 @@
         <listitem><para>
             If checked, you run the risk of being presented with games that are
             impossible to solve. Note: Even when not checked, you will fail to
-            complete a game if you remove the tiles in the wrong order!
+            complete a game if you remove the tiles in the wrong order.
         </para></listitem>
       </varlistentry>
 
       <varlistentry>
-        <term><guilabel>Use Chinese style: any flower matches any flower, any season match any season</guilabel></term>
+        <term><guilabel>Use Chinese style: any flower match any flower, any season match any season</guilabel></term>
         <listitem><para>
             Use the traditional rules for matching the tiles. Previous
             version of &kappname; used to allow only exact tiles matches, which is
-            inconsistent with Mahjongg rules. It is recommended
+            inconsistent with Mahjong rules. It is recommended
             to keep this option checked.
         </para></listitem>
       </varlistentry>
@@ -422,7 +424,7 @@
       <varlistentry>
         <term><guilabel>Board Difficulty</guilabel></term>
         <listitem><para>
-            The slider controls the difficulty of the board from <guilabel>Easy</guilabel> to <guilabel>Hard</guilabel>.
+            The slider controls the difficulty of the board (i.e. how much the tiles are shuffled) from <guilabel>Easy</guilabel> to <guilabel>Hard</guilabel>.
         </para></listitem>
       </varlistentry>
 
@@ -434,9 +436,9 @@
       </varlistentry>
 
       <varlistentry>
-        <term><guilabel>Tile Size</guilabel></term>
+        <term><guilabel>Board Size</guilabel></term>
         <listitem><para>
-            This slider allows you to can change the number of tiles 
+            This slider allows you to can change the number of tiles
             on the board. The more tiles you have, the harder (and longer)
             the game will be.
         </para></listitem>
@@ -459,14 +461,14 @@
       <varlistentry>
         <term><guibutton>Apply</guibutton></term>
         <listitem><para>
-            Saves your changes but doesn't close the dialog.
+            Saves your changes but does not close the dialog.
         </para></listitem>
       </varlistentry>
 
       <varlistentry>
         <term><guibutton>Cancel</guibutton></term>
         <listitem><para>
-            Cancels all your changes and closes the dialog.
+            Discards all your changes and closes the dialog.
         </para></listitem>
       </varlistentry>
 
@@ -504,12 +506,17 @@
       &kappname; Copyright 1997 &Mario.Weilguni; &Mario.Weilguni.mail;
     </para>
     <para>
-      Copyright 2002-2004 Dave Corrie kde@davecorrie.com
+      &kappname; Copyright 2002-2004 Dave Corrie kde@davecorrie.com
+    </para>
+    <para>
+      &kappname; Copyright 2009 &Frederik.Schwarzer; &Frederik.Schwarzer.mail;
     </para>
 
     <para>
-      Documentation Copyright 2000 &Dirk.Doerflinger;
-      <email>ddoerflinger@gmx.net</email>
+      Documentation Copyright 2000 &Dirk.Doerflinger; <email>ddoerflinger@gmx.net</email>
+    </para>
+    <para>
+      Documentation Copyright 2009 &Frederik.Schwarzer; &Frederik.Schwarzer.mail;
     </para>
 
     <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
