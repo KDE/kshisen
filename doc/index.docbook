@@ -229,7 +229,7 @@
               <guimenu>Game</guimenu><guimenuitem>Show High Scores</guimenuitem>
             </menuchoice>
           </term>
-          <listitem><para>Shows the top ten charts of &kappname;.</para></listitem>
+          <listitem><para>Shows your top ten charts of &kappname;.</para></listitem>
         </varlistentry>
 
         <varlistentry>
