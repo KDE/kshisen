@@ -25,7 +25,7 @@
       <author>
         <firstname>Frederik</firstname>
         <surname>Schwarzer</surname>
-        <affiliation><address>&Frederik.Schwarzer.mail;</address></affiliation>
+        <affiliation><address><email>schwarzerf@gmail.com</email></address></affiliation>
       </author>
       <othercredit role="reviewer">
         <firstname>Frerich</firstname><surname>Raabe</surname>
@@ -514,14 +514,14 @@
       &kappname; Copyright 2002-2004 Dave Corrie kde@davecorrie.com
     </para>
     <para>
-      &kappname; Copyright 2009 &Frederik.Schwarzer; &Frederik.Schwarzer.mail;
+      &kappname; Copyright 2009 Frederik Schwarzer <email>schwarzerf@gmail.com</email>
     </para>
 
     <para>
       Documentation Copyright 2000 &Dirk.Doerflinger; <email>ddoerflinger@gmx.net</email>
     </para>
     <para>
-      Documentation Copyright 2009 &Frederik.Schwarzer; &Frederik.Schwarzer.mail;
+      Documentation Copyright 2009 Frederik Schwarzer <email>schwarzerf@gmail.com</email>
     </para>
 
     <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
