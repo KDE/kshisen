@@ -178,7 +178,7 @@
         <listitem><para>If you played with the <guilabel>Gravity</guilabel> setting enabled, the score will be doubled.</para></listitem>
         <listitem><para>To be eligible for a place amongst the high scores player has to complete a game instance within the shortest period of time possible.</para></listitem>
       </itemizedlist>
-      <note><title>Note:</title><para>If the player uses the <quote>Cheat</quote> or <quote>Hint</quote> feature the record will not be considered as a high score.</para></note>
+      <note><title>Note:</title><para>If the player uses the <quote>Undo</quote> or <quote>Hint</quote> feature the record will not be considered as a high score.</para></note>
     </sect1>
   </chapter>
 
