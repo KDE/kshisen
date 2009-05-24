@@ -646,7 +646,7 @@ void Board::paintEvent(QPaintEvent *e)
 	if(paused)
 	{
 		p.setFont(KGlobalSettings::largeFont());
-		p.drawText(rect(), Qt::AlignCenter, i18n("Game Paused"));
+		p.drawText(rect(), Qt::AlignCenter|Qt::TextWordWrap, i18n("Game Paused"));
 	}
 	else
 	{
