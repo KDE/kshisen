@@ -401,6 +401,7 @@ void Board::newGame()
 
     m_isOver = false;
     m_isPaused = false;
+    m_isStuck = false;
     setCheatModeEnabled(false);
 
     m_markX = -1;
