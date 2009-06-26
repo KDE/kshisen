@@ -309,6 +309,7 @@ void App::updateTimeDisplay()
     if (m_board->isPaused() || m_board->isStuck() || m_board->isOver()) {
         return;
     }
+    //kDebug() << "Time: " << m_board->currentTime();
     int currentTime = m_board->currentTime();
     QString message = i18n("Your time: %1:%2:%3 %4",
                             QString().sprintf("%02d", currentTime / 3600),
@@ -323,7 +324,7 @@ void App::updateTimeDisplay()
 
 void App::updateTileDisplay()
 {
-    kDebug() << "updateTileDisplay()" << m_board->tilesLeft();
+    //kDebug() << "Tiles: " << m_board->tilesLeft();
     int numberOfTiles = (m_board->xTiles() * m_board->yTiles());
     QString message = i18n("Removed: %1/%2 ",
                     QString().sprintf("%d", numberOfTiles - m_board->tilesLeft()),

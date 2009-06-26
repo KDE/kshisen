@@ -401,6 +401,7 @@ void Board::newGame()
 
     m_isOver = false;
     m_isPaused = false;
+    m_isStuck = false;
     setCheatModeEnabled(false);
 
     m_markX = -1;
@@ -1966,6 +1967,7 @@ QSize Board::sizeHint() const
 
 void Board::resetTimer()
 {
+    //kDebug() << "Restart timer";
     m_gameClock.restart();
 }
 
