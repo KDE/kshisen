@@ -258,6 +258,7 @@ void App::updateItems()
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Redo))->setEnabled(m_board->canRedo());
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Restart))->setEnabled(m_board->canUndo());
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Pause))->setEnabled(true);
+        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Pause))->setChecked(false);
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Hint))->setEnabled(true);
     }
 }
