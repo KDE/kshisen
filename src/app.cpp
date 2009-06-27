@@ -307,7 +307,7 @@ void App::slotEndOfGame()
 
 void App::updateTimeDisplay()
 {
-    if (m_board->isPaused() || m_board->isStuck() || m_board->isOver()) {
+    if (m_board->isStuck() || m_board->isOver()) {
         return;
     }
     int currentTime = m_board->currentTime();
