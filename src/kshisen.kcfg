@@ -25,6 +25,9 @@
     <entry name="Gravity" type="Bool">
       <default>true</default>
     </entry>
+    <entry name="Sounds" type="Bool">
+      <default>true</default>
+    </entry>
     <entry name="Speed" type="Int">
       <default>2</default>
       <min>0</min>

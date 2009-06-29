@@ -202,10 +202,16 @@ void Board::gravity(bool update)
     if (!m_gravityFlag) {
         return;
     }
+    bool fallingTiles = false;
     for (int i = 0; i < xTiles(); ++i) {
         if (gravity(i, update)) {
+            fallingTiles = true;
             m_gravCols.append(i);
         }
+    }
+    if (fallingTiles) {
+        kDebug() << "SOUND: emit";
+        emit playSound(KStandardDirs::locate("sound", "kshisen/tile-fall-tile.ogg"));
     }
 }
 

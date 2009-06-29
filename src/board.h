@@ -220,6 +220,7 @@ signals:
     void selectAMove();
     void selectAMatchingTile();
     void cheatStatusChanged();
+    void playSound(QString);
 
 public slots:
     /// Controls the pause mode

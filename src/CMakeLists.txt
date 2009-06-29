@@ -16,7 +16,7 @@ kde4_add_kcfg_files( kshisen_SRCS prefs.kcfgc )
 
 kde4_add_executable( kshisen ${kshisen_SRCS} )
 
-target_link_libraries( kshisen ${KDE4_KDEUI_LIBS} kdegames kmahjongglib )
+target_link_libraries( kshisen ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} kdegames kmahjongglib )
 
 install( TARGETS kshisen ${INSTALL_TARGETS_DEFAULT_ARGS} )
 

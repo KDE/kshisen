@@ -25,6 +25,8 @@
 
 #include <kxmlguiwindow.h>
 
+#include <phonon/mediaobject.h>
+
 class QLabel;
 
 /**
@@ -76,6 +78,9 @@ private slots:
     void keyBindings();
     /// Shows the highscore table
     void showHighscores(); // const?
+public slots:
+    /// Plays the given sound
+    void playSound(const QString &sound);
 
 private:
     /// Calculates the scores
@@ -86,6 +91,8 @@ private:
     void setupActions();
     /// Sets the cheat mode
     void setCheatModeEnabled(bool enabled);
+    /// Enables / disables sounds
+    void setSoundsEnabled(bool enabled);
 
 private:
     QLabel *m_gameTipLabel; ///< Status bar area for game tips
@@ -93,6 +100,7 @@ private:
     QLabel *m_gameTilesLabel; ///< Status bar area for the tile counter
     QLabel *m_gameCheatLabel; ///< Status bar area for the cheat mode
     Board *m_board; ///< Holds the game board
+    Phonon::MediaObject *m_media; ///< MediaObject to play sounds
 };
 
 #endif // APP_H
