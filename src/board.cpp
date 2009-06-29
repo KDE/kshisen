@@ -210,7 +210,6 @@ void Board::gravity(bool update)
         }
     }
     if (fallingTiles) {
-        kDebug() << "SOUND: emit";
         emit playSound(KStandardDirs::locate("sound", "kshisen/tile-fall-tile.ogg"));
     }
 }
@@ -907,6 +906,8 @@ void Board::marked(int x, int y)
 {
     // make sure that the previous connection is correctly undrawn
     undrawConnection(); // is this still needed? (schwarzer)
+
+    emit playSound(KStandardDirs::locate("sound", "kshisen/tile-touch.ogg"));
 
     if (x == m_markX && y == m_markY) {
         // unmark the piece
