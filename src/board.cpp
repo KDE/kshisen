@@ -906,7 +906,7 @@ void Board::performMove(PossibleMove &possibleMoves)
 void Board::marked(int x, int y)
 {
     // make sure that the previous connection is correctly undrawn
-    undrawConnection();
+    undrawConnection(); // is this still needed? (schwarzer)
 
     if (x == m_markX && y == m_markY) {
         // unmark the piece
@@ -1374,7 +1374,7 @@ void Board::undrawConnection()
 #endif
     }
 
-    gravity(true);
+    gravity(true); // why is this called here? (schwarzer)
 
     // is already undrawn?
     if (m_connection.isEmpty()) {

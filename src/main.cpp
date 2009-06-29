@@ -30,8 +30,8 @@
 // The MAJOR number should only be incremented when really major changes occur.
 // The MINOR number is increased for every branch of KDE from trunk (i.e. KDE 4.1, KDE 4.2 etc).
 // The MICRO version is increased for every bugfix release if there were changes.
-// MICRO numbers >= 50 are used for development milestones in trunk.
-#define KSHISEN_VERSION "1.6.56"
+// MICRO numbers >= 50 are used for development snapshots in trunk.
+#define KSHISEN_VERSION "1.7.50"
 
 static const char description[] = I18N_NOOP("A KDE game similar to Mahjongg");
 
