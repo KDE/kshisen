@@ -677,7 +677,7 @@ void Board::paintEvent(QPaintEvent *e)
     if (m_paintPossibleMoves) {
         p.setPen(QPen(QColor("blue"), lineWidth()));
         // paint all possible moves
-        for (QList<PossibleMove>::iterator iter = m_possibleMoves.begin(); iter != m_possibleMoves.end(); ++iter) {
+        for (QList<PossibleMove>::const_iterator iter = m_possibleMoves.constBegin(); iter != m_possibleMoves.constEnd(); ++iter) {
             // Path.size() will always be >= 2
             Path::const_iterator pathEnd = iter->m_path.constEnd();
             Path::const_iterator pt1 = iter->m_path.constBegin();
