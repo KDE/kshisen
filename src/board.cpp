@@ -608,12 +608,23 @@ void Board::paintEvent(QPaintEvent *e)
     QPainter p(&pm);
     p.translate(-ur.x(), -ur.y());   // use widget coordinate system
 
-    if (m_isPaused) {
-        p.setFont(KGlobalSettings::largeFont());
-        p.drawText(rect(), Qt::AlignCenter|Qt::TextWordWrap, i18n("Game Paused\nClick to resume game."));
-    } else if (m_isOver) {
-        p.setFont(KGlobalSettings::largeFont());
-        p.drawText(rect(), Qt::AlignCenter|Qt::TextWordWrap, i18n("Game Over\nClick to start a new game."));
+    if (m_isPaused || m_isOver) {
+        int boxWidth = width() * 0.7;
+        int boxHeight = height() * 0.8;
+        QRect contentsRect = QRect((width() - boxWidth) / 2, (height() - boxHeight) / 2, boxWidth, boxHeight);
+        QFont font;
+        int fontsize = 36;
+        font.setPointSize(fontsize);
+        p.setFont(font);
+        //     p.setPen(QPen(QColor("black")));
+        p.setBrush(QBrush(QColor(100, 100, 100, 150)));
+        p.drawRoundedRect(contentsRect, 10, 10);
+
+        if (m_isPaused) {
+            p.drawText(contentsRect, Qt::AlignCenter|Qt::TextWordWrap, i18n("Game Paused\nClick to resume game."));
+        } else if (m_isOver) {
+            p.drawText(contentsRect, Qt::AlignCenter|Qt::TextWordWrap, i18n("Game Over\nClick to start a new game."));
+        }
     } else {
         int w = m_tiles.width();
         int h = m_tiles.height();
