@@ -904,12 +904,15 @@ void Board::performMove(PossibleMove &possibleMoves)
 
 void Board::marked(int x, int y)
 {
+    if (field(x, y) == EMPTY) { // click on empty space on the board
+        return;
+    }
     // make sure that the previous connection is correctly undrawn
     undrawConnection(); // is this still needed? (schwarzer)
 
     emit playSound(KStandardDirs::locate("sound", "kshisen/tile-touch.ogg"));
 
-    if (x == m_markX && y == m_markY) {
+    if (x == m_markX && y == m_markY) { // the piece is already marked
         // unmark the piece
         m_markX = -1;
         m_markY = -1;
@@ -920,10 +923,7 @@ void Board::marked(int x, int y)
         return;
     }
 
-    if (m_markX == -1) {
-        if (field(x, y) == EMPTY) {
-            return;
-        }
+    if (m_markX == -1) { // nothing is selected so far
         m_markX = x;
         m_markY = y;
         drawPossibleMoves(false);
@@ -941,9 +941,6 @@ void Board::marked(int x, int y)
                 return;
             }
         }
-    }
-    if (field(x, y) == EMPTY) {
-        return;
     }
 
     int field1 = field(m_markX, m_markY);
