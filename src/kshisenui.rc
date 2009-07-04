@@ -5,7 +5,8 @@
      xsi:schemaLocation="http://www.kde.org/standards/kxmlgui/1.0
                          http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd" >
 <MenuBar>
-  <Menu name="move">
+  <Menu name="sound"><text>Sounds</text>
+    <Action name="sounds"/>
   </Menu>
 </MenuBar>
 <ToolBar name="mainToolBar"><text>Main Toolbar</text>

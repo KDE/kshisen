@@ -226,6 +226,8 @@ signals:
 public slots:
     /// Controls the pause mode
     void setPauseEnabled(bool enabled);
+    /// Enables / disables sounds
+    void setSoundsEnabled(bool enabled);
     /// Loads the game settings
     void loadSettings();
     /// Loads the given tileset
@@ -276,8 +278,6 @@ private: // functions
     void madeMoveWithSlide(int x1, int y1, int x2, int y2, Path &slide);
     /// Checks all columns and populate the affected columns in m_gravCols
     void gravity(bool update);
-    /// Enables / disables sounds
-    void setSoundsEnabled(bool enabled);
 
 private:
     KGameClock m_gameClock;

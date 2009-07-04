@@ -33,6 +33,7 @@
 #include <kconfigdialog.h>
 #include <kdebug.h>
 #include <kglobal.h>
+#include <kicon.h>
 #include <klineedit.h>
 #include <klocale.h>
 #include <kmenu.h>
@@ -44,6 +45,7 @@
 #include <kstandarddirs.h>
 #include <kstandardguiitem.h>
 #include <kstatusbar.h>
+#include <ktoggleaction.h>
 
 #include <QTimer>
 
@@ -122,6 +124,11 @@ void App::setupActions()
     KStandardGameAction::undo(this, SLOT(undo()), actionCollection());
     KStandardGameAction::redo(this, SLOT(redo()), actionCollection());
     KStandardGameAction::hint(this, SLOT(hint()), actionCollection());
+
+    KToggleAction *soundAction = new KToggleAction(KIcon("speaker"), i18n("Play Sounds"), this);
+    soundAction->setChecked(Prefs::sounds());
+    actionCollection()->addAction("sounds", soundAction);
+    connect(soundAction, SIGNAL(triggered(bool)), m_board, SLOT(setSoundsEnabled(bool)));
 
     // Settings
     KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
