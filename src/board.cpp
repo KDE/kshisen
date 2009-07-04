@@ -30,6 +30,8 @@
 #include <QPainter>
 #include <QTimer>
 
+#include <phonon/audiooutput.h>
+
 #define USE_UPDATE 1
 
 #define EMPTY           0
@@ -113,6 +115,7 @@ void Board::loadSettings()
     setSize(sizeX[Prefs::size()], sizeY[Prefs::size()]);
     setGravityFlag(Prefs::gravity());
     setDelay(s_delay[Prefs::speed()]);
+    setSoundsEnabled(Prefs::sounds());
 }
 
 bool Board::loadTileset(const QString &pathToTileset)
@@ -209,8 +212,8 @@ void Board::gravity(bool update)
             m_gravCols.append(i);
         }
     }
-    if (fallingTiles) {
-        emit playSound(KStandardDirs::locate("sound", "kshisen/tile-fall-tile.ogg"));
+    if (Prefs::sounds() && fallingTiles) {
+        playSound(KStandardDirs::locate("sound", "kshisen/tile-fall-tile.ogg"));
     }
 }
 
@@ -910,7 +913,9 @@ void Board::marked(int x, int y)
     // make sure that the previous connection is correctly undrawn
     undrawConnection(); // is this still needed? (schwarzer)
 
-    emit playSound(KStandardDirs::locate("sound", "kshisen/tile-touch.ogg"));
+    if (Prefs::sounds()) {
+        playSound(KStandardDirs::locate("sound", "kshisen/tile-touch.ogg"));
+    }
 
     if (x == m_markX && y == m_markY) { // the piece is already marked
         // unmark the piece
@@ -2068,6 +2073,32 @@ bool Board::isStuck() const
 bool Board::hasCheated() const
 {
     return m_cheat;
+}
+
+/**
+ * @param enabled Whether sound shall be enabled
+ */
+void Board::setSoundsEnabled(bool enabled)
+{
+    if (enabled) {
+        m_media = new Phonon::MediaObject(this);
+        Phonon::AudioOutput *audioOutput = new Phonon::AudioOutput(Phonon::GameCategory, this);
+        Phonon::createPath(m_media, audioOutput);
+    } else {
+        delete m_media;
+        m_media = 0;
+    }
+    Prefs::setSounds(enabled);
+    Prefs::self()->writeConfig();
+}
+
+/**
+ * @param sound The sound file to be played
+ */
+void Board::playSound(const QString &sound)
+{
+    m_media->setCurrentSource(sound);
+    m_media->play();
 }
 
 #include "board.moc"

@@ -37,6 +37,8 @@
 #include <QSize>
 #include <QWidget>
 
+#include <phonon/mediaobject.h>
+
 static int sizeX[6] = {14, 16, 18, 24, 26, 30};
 static int sizeY[6] = { 6,  9,  8, 12, 14, 16};
 
@@ -220,7 +222,6 @@ signals:
     void selectAMove();
     void selectAMatchingTile();
     void cheatStatusChanged();
-    void playSound(QString);
 
 public slots:
     /// Controls the pause mode
@@ -231,6 +232,8 @@ public slots:
     bool loadTileset(const QString &);
     /// Loads the given background
     bool loadBackground(const QString &);
+    /// Plays the given sound
+    void playSound(const QString &sound);
 
 private slots:
     void undrawConnection();
@@ -273,6 +276,8 @@ private: // functions
     void madeMoveWithSlide(int x1, int y1, int x2, int y2, Path &slide);
     /// Checks all columns and populate the affected columns in m_gravCols
     void gravity(bool update);
+    /// Enables / disables sounds
+    void setSoundsEnabled(bool enabled);
 
 private:
     KGameClock m_gameClock;
@@ -313,6 +318,7 @@ private:
     bool m_paintPossibleMoves;
     QPair<int, int> m_tileRemove1;
     QPair<int, int> m_tileRemove2;
+    Phonon::MediaObject *m_media; ///< MediaObject to play sounds
 };
 
 #endif // BOARD_H

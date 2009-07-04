@@ -27,8 +27,6 @@
 #include <kscoredialog.h>
 #include <kstandardgameaction.h>
 
-#include <phonon/audiooutput.h>
-
 #include <kaction.h>
 #include <kactioncollection.h>
 #include <kconfig.h>
@@ -72,8 +70,6 @@ App::App(QWidget *parent)
     m_gameCheatLabel(0),
     m_board(0)
 {
-    setSoundsEnabled(Prefs::sounds());
-
     m_board = new Board(this);
     m_board->setObjectName("board");
 
@@ -143,37 +139,7 @@ void App::setupActions()
     timer->start(1000);
 
     connect(m_board, SIGNAL(changed()), this, SLOT(updateTileDisplay()));
-    connect(m_board, SIGNAL(playSound(QString)), this, SLOT(playSound(QString)));
-
     connect(m_board, SIGNAL(endOfGame()), this, SLOT(slotEndOfGame()));
-}
-
-/**
- * @param enabled Whether sound shall be enabled
- */
-void App::setSoundsEnabled(bool enabled)
-{
-    if (enabled) {
-        m_media = new Phonon::MediaObject(this);
-        Phonon::AudioOutput *audioOutput = new Phonon::AudioOutput(Phonon::GameCategory, this);
-        Phonon::createPath(m_media, audioOutput);
-    } else {
-        delete m_media;
-        m_media = 0;
-    }
-    Prefs::setSounds(enabled);
-    Prefs::self()->writeConfig();
-}
-
-/**
- * @param sound The sound file to be played
- */
-void App::playSound(const QString &sound)
-{
-    if (Prefs::sounds()) {
-        m_media->setCurrentSource(sound);
-        m_media->play();
-    }
 }
 
 /**
