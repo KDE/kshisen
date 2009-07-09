@@ -4,9 +4,20 @@ Changes in 1.7.0:
  * add Game Over screen to not start the next game without user interaction
  * game can now be resumed by clicking on the board
  * port to KScoreDialog
- *  - there is now one highscore section for each board size
- *  - the gravity option has its separate column now
+    - there is now one highscore section for each board size
+    - the gravity option has its separate column now
  * port to KGameClock to solve several issues
+ * break Pause and Game Over messages if they are too long or the window too
+   small
+ * add a translucent layer to Pause and Game Over messages to make them
+   more readable on darker backgrounds
+ * enforce chineseStyle gameplay for "reduced" tile sets
+    There are tile sets, that have only one tile for e.g. the flowers group.
+    If these tile sets are played in none-chineseStyle, this one tile face
+    appears too often and not every tile matches another one with the same
+    face because they are technically different (e.g different flowers).
+    The solution is to enforce chineseStyle gameplay for tile sets that are
+    known to be reduced. Those are Egypt and Alphabet for now.
 
  * some changes in coding style and naming schema to be more close to the
    kdelibs style

@@ -109,8 +109,12 @@ void Board::loadSettings()
         qDebug() << "An error occurred when loading the background" << Prefs::background() << "KShisen will continue with the default background.";
     }
 
-    // Some themes have a reduced tile set, where there is only one tile for the flowers group
-    // We need to force chinese Style for these, otherwise the board contains tiles with the same face which are technically different and thus do not match
+    // There are tile sets, that have only one tile for e.g. the flowers group.
+    // If these tile sets are played in none-chineseStyle, this one tile face
+    // appears too often and not every tile matches another one with the same
+    // face because they are technically different (e.g different flowers).
+    // The solution is to enforce chineseStyle gameplay for tile sets that are
+    // known to be reduced. Those are Egypt and Alphabet for now.
     if (Prefs::tileSet().endsWith("egypt.desktop") || Prefs::tileSet().endsWith("alphabet.desktop")) {
         setChineseStyleFlag(true);
     } else {
