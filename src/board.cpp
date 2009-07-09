@@ -42,6 +42,7 @@ static int s_delay[5] = {1000, 750, 500, 250, 125};
 
 bool PossibleMove::isInPath(int x, int y) const
 {
+    kDebug() << "Entry";
     if (x == m_path.last().x && y == m_path.last().y) {
         return false;
     }
@@ -77,6 +78,7 @@ Board::Board(QWidget *parent)
     m_highlightedTile(-1), m_connectionTimeout(0),
     m_paintConnection(false), m_paintPossibleMoves(false), m_media(0)
 {
+    kDebug() << "Entry";
     m_tileRemove1.first = -1;
 
     m_random.setSeed(0);
@@ -91,11 +93,13 @@ Board::Board(QWidget *parent)
 
 Board::~Board()
 {
+    kDebug() << "Entry";
     delete [] m_field;
 }
 
 void Board::loadSettings()
 {
+    kDebug() << "Entry";
     if (!loadTileset(Prefs::tileSet())) {
         qDebug() << "An error occurred when loading the tileset" << Prefs::tileSet() << "KShisen will continue with the default tileset.";
     }
@@ -105,8 +109,13 @@ void Board::loadSettings()
         qDebug() << "An error occurred when loading the background" << Prefs::background() << "KShisen will continue with the default background.";
     }
 
-    // special rule
-    setChineseStyleFlag(Prefs::chineseStyle());
+    // Some themes have a reduced tile set, where there is only one tile for the flowers group
+    // We need to force chinese Style for these, otherwise the board contains tiles with the same face which are technically different and thus do not match
+    if (Prefs::tileSet().endsWith("egypt.desktop") || Prefs::tileSet().endsWith("alphabet.desktop")) {
+        setChineseStyleFlag(true);
+    } else {
+        setChineseStyleFlag(Prefs::chineseStyle());
+    }
     setTilesCanSlideFlag(Prefs::tilesCanSlide());
     // Need to load solvable before size because setSize calls newGame which
     // uses the solvable flag. Same with shuffle.
@@ -120,6 +129,7 @@ void Board::loadSettings()
 
 bool Board::loadTileset(const QString &pathToTileset)
 {
+    kDebug() << "Entry";
     if (m_tiles.loadTileset(pathToTileset)) {
         if (m_tiles.loadGraphics()) {
             Prefs::setTileSet(pathToTileset);
@@ -141,11 +151,13 @@ bool Board::loadTileset(const QString &pathToTileset)
 
 bool Board::loadBackground(const QString &pathToBackground)
 {
+    kDebug() << "Entry";
     if (m_background.load(pathToBackground, width(), height())) {
         if (m_background.loadGraphics()) {
             Prefs::setBackground(pathToBackground);
             Prefs::self()->writeConfig();
             resizeBoard();
+            kDebug() << "Exit on success";
             return true;
         }
     }
@@ -157,6 +169,7 @@ bool Board::loadBackground(const QString &pathToBackground)
             resizeBoard();
         }
     }
+    kDebug() << "Exit on failure (fallback to Default)";
     return false;
 }
 
@@ -180,6 +193,7 @@ void Board::setField(int x, int y, int value)
     m_field[y * xTiles() + x] = value;
 }
 
+// TODO: Why is this called every second?
 int Board::field(int x, int y) const
 {
 #ifdef DEBUGGING
@@ -201,6 +215,7 @@ int Board::field(int x, int y) const
  */
 void Board::gravity(bool update)
 {
+    kDebug() << "Entry";
     m_gravCols.clear();
     if (!m_gravityFlag) {
         return;
@@ -223,6 +238,7 @@ void Board::gravity(bool update)
  */
 bool Board::gravity(int column, bool update)
 {
+    kDebug() << "Entry";
     bool affected = false;
     if (m_gravityFlag) {
         int rptr = yTiles() - 1;
@@ -253,6 +269,7 @@ bool Board::gravity(int column, bool update)
 
 void Board::mousePressEvent(QMouseEvent *e)
 {
+    kDebug() << "Entry";
     if (m_isOver) {
         newGame();
         return;
@@ -348,6 +365,7 @@ int Board::yOffset() const
 
 void Board::setSize(int x, int y)
 {
+    kDebug() << "Entry";
     if (x == xTiles() && y == yTiles()) {
         return;
     }
@@ -381,6 +399,7 @@ void Board::setSize(int x, int y)
 
 void Board::resizeEvent(QResizeEvent *e)
 {
+    kDebug() << "Entry";
     kDebug() << "[resizeEvent]";
     if (e->spontaneous()) {
         kDebug() << "[resizeEvent] spontaneous";
@@ -391,6 +410,7 @@ void Board::resizeEvent(QResizeEvent *e)
 
 void Board::resizeBoard()
 {
+    kDebug() << "Entry";
     // calculate tile size required to fit all tiles in the window
     QSize newsize = m_tiles.preferredTileSize(QSize(width(), height()), xTiles(), yTiles());
     m_tiles.reloadTileset(newsize);
@@ -400,11 +420,13 @@ void Board::resizeBoard()
     QPalette palette;
     palette.setBrush(backgroundRole(), m_background.getBackground());
     setPalette(palette);
+    kDebug() << "Exit";
 }
 
 
 void Board::newGame()
 {
+    kDebug() << "Entry";
     kDebug() << "NewGame";
 
     m_isOver = false;
@@ -424,6 +446,11 @@ void Board::newGame()
     // distribute all tiles on board
     int curTile = 1;
     int tileCount = 0;
+    if (m_chineseStyleFlag) {
+        kDebug() << "==== Chinese flag is set";
+    } else {
+        kDebug() << "==== Chinese flag is not set";
+    }
     /*
      * Note by jwickers: i changed the way to distribute tiles
      *  in chinese mahjongg there are 4 tiles of each
@@ -455,6 +482,7 @@ void Board::newGame()
         update();
         resetTimer();
         emit changed();
+        kDebug() << "Exit without shuffling";
         return;
     }
 
@@ -479,6 +507,7 @@ void Board::newGame()
         update();
         resetTimer();
         emit changed();
+        kDebug() << "Exit if game does not need to be solvable";
         return;
     }
 
@@ -544,6 +573,7 @@ void Board::newGame()
     update();
     resetTimer();
     emit changed();
+    kDebug() << "Exit";
 }
 
 /**
@@ -599,6 +629,7 @@ bool Board::isTileHighlighted(int x, int y) const
 
 void Board::updateField(int x, int y)
 {
+    kDebug() << "Entry";
     QRect r(xOffset() + x * m_tiles.qWidth() * 2,
             yOffset() + y * m_tiles.qHeight() * 2,
             m_tiles.width(),
@@ -613,6 +644,7 @@ void Board::updateField(int x, int y)
 
 void Board::paintEvent(QPaintEvent *e)
 {
+    kDebug() << "Entry";
     QRect ur = e->rect();            // rectangle to update
     QPixmap pm(ur.size());           // Pixmap for double-buffering
     pm.fill(this, ur.topLeft());     // fill with widget background
@@ -707,6 +739,7 @@ void Board::paintEvent(QPaintEvent *e)
 
 void Board::reverseSlide(int x, int y, int slideX1, int slideY1, int slideX2, int slideY2)
 {
+    kDebug() << "Entry";
     //kDebug() << "reverseSlide" << x << " " << y;
 
     // s_x2 is the current location of the last tile to slide
@@ -772,6 +805,7 @@ void Board::reverseSlide(int x, int y, int slideX1, int slideY1, int slideX2, in
 
 void Board::performSlide(int x, int y, Path &slide)
 {
+    kDebug() << "Entry";
     //kDebug() << "performSlide" << x << " " << y;
 
     // check if there is something to slide
@@ -830,6 +864,7 @@ void Board::performSlide(int x, int y, Path &slide)
 
 void Board::performMove(PossibleMove &possibleMoves)
 {
+    kDebug() << "Entry";
     m_connection = possibleMoves.m_path;
 #ifdef DEBUGGING
     // DEBUG undo, save board state
@@ -910,6 +945,7 @@ void Board::performMove(PossibleMove &possibleMoves)
 
 void Board::marked(int x, int y)
 {
+    kDebug() << "Entry";
     if (field(x, y) == EMPTY) { // click on empty space on the board
         return;
     }
@@ -994,6 +1030,7 @@ void Board::marked(int x, int y)
 
 void Board::clearHighlight()
 {
+    kDebug() << "Entry";
     if (m_highlightedTile != -1) {
         int oldHighlighted = m_highlightedTile;
         m_highlightedTile = -1;
@@ -1016,6 +1053,7 @@ void Board::clearHighlight()
  */
 bool Board::canMakePath(int x1, int y1, int x2, int y2) const
 {
+    kDebug() << "Entry";
     if (x1 == x2) {
         for (int i = qMin(y1, y2) + 1; i < qMax(y1, y2); ++i) {
             if (field(x1, i) != EMPTY) {
@@ -1046,6 +1084,7 @@ bool Board::canMakePath(int x1, int y1, int x2, int y2) const
  */
 bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path &path) const
 {
+    kDebug() << "Entry";
     int distance = -1;
     path.clear();
     if (x1 == x2) {
@@ -1224,6 +1263,7 @@ bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path &path) const
 */
 int Board::findPath(int x1, int y1, int x2, int y2, PossibleMoves &possibleMoves) const
 {
+    kDebug() << "Entry";
     possibleMoves.clear();
 
     int numberOfPaths = 0;
@@ -1268,6 +1308,7 @@ int Board::findPath(int x1, int y1, int x2, int y2, PossibleMoves &possibleMoves
  */
 int Board::findSimplePath(int x1, int y1, int x2, int y2, PossibleMoves &possibleMoves) const
 {
+    kDebug() << "Entry";
     int numberOfPaths = 0;
     Path path;
     // Find direct line (path of 1 segment)
@@ -1340,6 +1381,7 @@ int Board::findSimplePath(int x1, int y1, int x2, int y2, PossibleMoves &possibl
 
 void Board::drawPossibleMoves(bool b)
 {
+    kDebug() << "Entry";
     if (m_possibleMoves.isEmpty()) {
         return;
     }
@@ -1350,6 +1392,7 @@ void Board::drawPossibleMoves(bool b)
 
 void Board::drawConnection(int timeout)
 {
+    kDebug() << "Entry";
     if (m_connection.isEmpty()) {
         return;
     }
@@ -1369,6 +1412,7 @@ void Board::drawConnection(int timeout)
 
 void Board::undrawConnection()
 {
+    kDebug() << "Entry";
     if (m_tileRemove1.first != -1) {
         setField(m_tileRemove1.first, m_tileRemove1.second, EMPTY);
         setField(m_tileRemove2.first, m_tileRemove2.second, EMPTY);
@@ -1422,6 +1466,7 @@ void Board::undrawConnection()
 
 QPoint Board::midCoord(int x, int y) const
 {
+    kDebug() << "Entry";
     QPoint p;
     int w = m_tiles.qWidth() * 2;
     int h = m_tiles.qHeight() * 2;
@@ -1447,6 +1492,7 @@ QPoint Board::midCoord(int x, int y) const
 
 void Board::setDelay(int newValue)
 {
+    kDebug() << "Entry";
     if (m_delay == newValue) {
         return;
     }
@@ -1460,6 +1506,7 @@ int Board::delay() const
 
 void Board::madeMove(int x1, int y1, int x2, int y2)
 {
+    kDebug() << "Entry";
     Path slide;
     slide.clear();
     madeMoveWithSlide(x1, y1, x2, y2, slide);
@@ -1467,6 +1514,7 @@ void Board::madeMove(int x1, int y1, int x2, int y2)
 
 void Board::madeMoveWithSlide(int x1, int y1, int x2, int y2, Path &slide)
 {
+    kDebug() << "Entry";
     Move *move;
     if (slide.empty()) {
         move = new Move(x1, y1, x2, y2, field(x1, y1), field(x2, y2));
@@ -1738,6 +1786,7 @@ void Board::redo()
 
 void Board::showHint()
 {
+    kDebug() << "Entry";
     undrawConnection();
 
     if (hint_I(m_possibleMoves)) {
@@ -1801,6 +1850,7 @@ void Board::dumpBoard(const int *board) const
  */
 int Board::lineWidth() const
 {
+    kDebug() << "Entry";
     int width = qRound(m_tiles.height() / 10.0);
     if (width < 3) {
         width = 3;
@@ -1811,6 +1861,7 @@ int Board::lineWidth() const
 
 bool Board::hint_I(PossibleMoves &possibleMoves) const
 {
+    kDebug() << "Entry";
     //dumpBoard();
     short done[Board::nTiles];
     for (short i = 0; i < Board::nTiles; ++i) {
@@ -1847,6 +1898,7 @@ bool Board::hint_I(PossibleMoves &possibleMoves) const
 
 void Board::setShuffle(int newValue)
 {
+    kDebug() << "Entry";
     if (m_shuffle == newValue) {
         return;
     }
@@ -1882,6 +1934,7 @@ int Board::currentTime() const
 
 bool Board::solvable(bool noRestore)
 {
+    kDebug() << "Entry";
     int *oldField = 0;
 
     if (!noRestore) {
@@ -1916,6 +1969,7 @@ bool Board::solvableFlag() const
 
 void Board::setSolvableFlag(bool enabled)
 {
+    kDebug() << "Entry";
     if (m_solvableFlag == enabled) {
         return;
     }
@@ -1933,6 +1987,7 @@ bool Board::gravityFlag() const
 
 void Board::setGravityFlag(bool enabled)
 {
+    kDebug() << "Entry";
     if (m_gravityFlag == enabled) {
         return;
     }
@@ -1945,16 +2000,24 @@ void Board::setGravityFlag(bool enabled)
 
 void Board::setChineseStyleFlag(bool enabled)
 {
+    kDebug() << "Entry";
     if (m_chineseStyleFlag == enabled) {
+        kDebug() << "m_chineseStyleFlag == enabled";
         return;
     }
     m_chineseStyleFlag = enabled;
+    if (m_chineseStyleFlag) {
+        kDebug() << "==== Chinese flag is now set.";
+    } else {
+        kDebug() << "==== Chinese flag is now unset.";
+    }
     // we need to force a newGame() because board generation is different
     newGame();
 }
 
 void Board::setTilesCanSlideFlag(bool enabled)
 {
+    kDebug() << "Entry";
     if (m_tilesCanSlideFlag == enabled) {
         return;
     }
@@ -1966,6 +2029,7 @@ void Board::setTilesCanSlideFlag(bool enabled)
 
 void Board::setPauseEnabled(bool enabled)
 {
+    kDebug() << "Entry";
     if (m_isPaused == enabled) {
         return;
     }
@@ -1981,6 +2045,7 @@ void Board::setPauseEnabled(bool enabled)
 
 QSize Board::sizeHint() const
 {
+    kDebug() << "Entry";
     int dpi = logicalDpiX();
     if (dpi < 75) {
         dpi = 75;
@@ -1990,7 +2055,6 @@ QSize Board::sizeHint() const
 
 void Board::resetTimer()
 {
-    //kDebug() << "Restart timer";
     m_gameClock.restart();
 }
 
@@ -2014,6 +2078,7 @@ void Board::resetRedo()
 
 void Board::setGameStuckEnabled(bool enabled)
 {
+    kDebug() << "Entry";
     if (m_isStuck == enabled) {
         return;
     }
@@ -2029,6 +2094,7 @@ void Board::setGameStuckEnabled(bool enabled)
 
 void Board::setGameOverEnabled(bool enabled)
 {
+    kDebug() << "Entry";
     if (m_isOver == enabled) {
         return;
     }
