@@ -103,8 +103,17 @@ void Board::loadSettings()
         qDebug() << "An error occurred when loading the background" << Prefs::background() << "KShisen will continue with the default background.";
     }
 
-    // special rule
-    setChineseStyleFlag(Prefs::chineseStyle());
+    // There are tile sets, that have only one tile for e.g. the flowers group.
+    // If these tile sets are played in none-chineseStyle, this one tile face
+    // appears too often and not every tile matches another one with the same
+    // face because they are technically different (e.g different flowers).
+    // The solution is to enforce chineseStyle gameplay for tile sets that are
+    // known to be reduced. Those are Egypt and Alphabet for now.
+    if (Prefs::tileSet().endsWith("egypt.desktop") || Prefs::tileSet().endsWith("alphabet.desktop")) {
+        setChineseStyleFlag(true);
+    } else {
+        setChineseStyleFlag(Prefs::chineseStyle());
+    }
     setTilesCanSlideFlag(Prefs::tilesCanSlide());
     // Need to load solvable before size because setSize calls newGame which
     // uses the solvable flag. Same with shuffle.
