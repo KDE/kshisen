@@ -115,7 +115,7 @@ void Board::loadSettings()
     // face because they are technically different (e.g different flowers).
     // The solution is to enforce chineseStyle gameplay for tile sets that are
     // known to be reduced. Those are Egypt and Alphabet for now.
-    if (Prefs::tileSet().endsWith("egypt.desktop") || Prefs::tileSet().endsWith("alphabet.desktop")) {
+    if (Prefs::tileSet().endsWith(QLatin1String("egypt.desktop")) || Prefs::tileSet().endsWith(QLatin1String("alphabet.desktop"))) {
         setChineseStyleFlag(true);
     } else {
         setChineseStyleFlag(Prefs::chineseStyle());
