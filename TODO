@@ -4,5 +4,6 @@
 - change the way, scores are evaluated (e.g. make gravity x1.2 instead of x2.0 and add chinese style to the evaluation)
 - get rid of the static sizeX and sizeY arrays; use Qlist<QPair<>> instead (this makes it possible to be more dynamic if it comes to board sizes
 - solve the copyright issue (about dialog)
-- enable sounds
+- put sounds action to Settings menu
+- show a message if no tilesets or backgrounds are found
 - comment, comment, comment...
