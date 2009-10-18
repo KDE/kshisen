@@ -1,4 +1,5 @@
-- add option to enable sounds
+- with Qt 4.6 beta 1 the overlay message background is not drawn ... see what's the problem
+- move sounds option to the settings menu?
 - weight group names in highscore dialog
 - the highscore dialog stores the status of the gravity flag l10n'ed. This looks ugls if the player switches the game's language.
 - change the way, scores are evaluated (e.g. make gravity x1.2 instead of x2.0 and add chinese style to the evaluation)
