@@ -665,6 +665,7 @@ void Board::paintEvent(QPaintEvent *e)
         p.setFont(font);
         //     p.setPen(QPen(QColor("black")));
         p.setBrush(QBrush(QColor(100, 100, 100, 150)));
+        p.setRenderHint( QPainter::Antialiasing );
         p.drawRoundedRect(contentsRect, 10, 10);
 
         if (m_isPaused) {
