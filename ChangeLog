@@ -1,3 +1,10 @@
+Changes in 1.8.0:
+ * add sounds
+ * fix information overlay (game over / pause)
+    In Qt 4.6 beta 1 the translucent background was not shown. Using the
+    Antialiasing flag fixed that.
+ * some minor cleanup and housekeeping
+
 Changes in 1.7.0:
  * fix typo in cheat notification dialog
  * fix bug where game was playable in pause mode
@@ -18,7 +25,6 @@ Changes in 1.7.0:
     face because they are technically different (e.g different flowers).
     The solution is to enforce chineseStyle gameplay for tile sets that are
     known to be reduced. Those are Egypt and Alphabet for now.
-
  * some changes in coding style and naming schema to be more close to the
    kdelibs style
  * some general refactoring
