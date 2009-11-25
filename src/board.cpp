@@ -32,7 +32,6 @@
 
 #include <phonon/audiooutput.h>
 
-#define USE_UPDATE 1
 
 #define EMPTY           0
 #define SEASONS_START   28
@@ -625,11 +624,7 @@ void Board::updateField(int x, int y)
             m_tiles.width(),
             m_tiles.height());
 
-#ifdef USE_UPDATE
     update(r);
-#else
-    repaint(r);
-#endif
 }
 
 void Board::paintEvent(QPaintEvent *e)
@@ -1379,11 +1374,7 @@ void Board::undrawConnection()
         setField(m_tileRemove1.first, m_tileRemove1.second, EMPTY);
         setField(m_tileRemove2.first, m_tileRemove2.second, EMPTY);
         m_tileRemove1.first = -1;
-#ifdef USE_UPDATE
         update();
-#else
-        repaint();
-#endif
     }
 
     gravity(true); // why is this called here? (schwarzer)
