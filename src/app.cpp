@@ -88,13 +88,6 @@ App::App(QWidget *parent)
 }
 
 
-/**
- * There are four areas in the status bar:
- * - game tip
- * - timer
- * - tile count
- * - cheat mode
- */
 void App::setupStatusBar()
 {
     m_gameTipLabel = new QLabel(i18n("Select a tile"), statusBar());
@@ -149,9 +142,6 @@ void App::setupActions()
     connect(m_board, SIGNAL(endOfGame()), this, SLOT(slotEndOfGame()));
 }
 
-/**
- * Flags set in the previously played game should be reset.
- */
 void App::newGame()
 {
     m_board->newGame();
@@ -160,12 +150,6 @@ void App::newGame()
     updateItems();
 }
 
-/**
- * Currently this is done by undoing all moves done by the user as yet and
- * resetting the move history and the timer.
- * This might change over time. However, just make sure, the user gets his
- * currently played game as if it was started by the New Game action.
- */
 void App::restartGame()
 {
     m_board->setUpdatesEnabled(false);
@@ -182,26 +166,17 @@ void App::restartGame()
     updateItems();
 }
 
-
 void App::togglePause()
 {
     m_board->setPauseEnabled(!m_board->isPaused());
 }
 
-/**
- * If the game is paused, do not show the board and disable actions like undo
- * and such.
- */
 void App::setPauseEnabled(bool enabled)
 {
     m_board->setPauseEnabled(enabled);
     updateItems();
 }
 
-/**
- * The Undo action should set the cheat flag, so the user cannot end up in
- * the highscore dialog by making bad decisions. :)
- */
 void App::undo()
 {
     if (!m_board->canUndo()) {
@@ -226,10 +201,6 @@ void App::redo()
     updateItems();
 }
 
-/**
- * The Hint action should set the cheat flag, so the user cannot end up in
- * the highscore dialog by having been told what to do. :)
- */
 void App::hint()
 {
 #ifdef DEBUGGING
@@ -241,10 +212,6 @@ void App::hint()
     updateItems();
 }
 
-/**
- * According to the current state of the game (game over, pause ...) some
- * actions might better be disabled. This is the place to do so.
- */
 void App::updateItems()
 {
     if (m_board->isOver()) {

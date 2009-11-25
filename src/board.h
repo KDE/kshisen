@@ -202,13 +202,25 @@ public:
     void setGameOverEnabled(bool enabled);
     /// Sets whether the game is in cheat mode
     void setCheatModeEnabled(bool enabled);
-    /// Returns whether the game is over
+
+    /** Returns whether the game is over.
+     * @return True if game is over, False if game is not over
+     */
     bool isOver() const;
-    /// Returns whether the game is in pause mode
+
+    /** Returns whether the game is in pause mode.
+     * @return True if game is paused, False if game is not paused
+     */
     bool isPaused() const;
-    /// Returns whether there are still matching tiles left
+
+    /** Returns whether there are still matching tiles left.
+     * @return True if there are no matching tiles left, False if there are matching tiles left
+     */
     bool isStuck() const;
-    /// Returns whether player is in cheat mode
+
+    /** Returns whether player is in cheat mode.
+    * @return True if the player is in cheat mode, False if not
+    */
     bool hasCheated() const;
 
 signals:
@@ -226,7 +238,10 @@ signals:
 public slots:
     /// Controls the pause mode
     void setPauseEnabled(bool enabled);
-    /// Enables / disables sounds
+
+    /** Enables / disables sounds.
+     * @param enabled Whether sound shall be enabled
+     */
     void setSoundsEnabled(bool enabled);
     /// Loads the game settings
     void loadSettings();
@@ -234,37 +249,82 @@ public slots:
     bool loadTileset(const QString &);
     /// Loads the given background
     bool loadBackground(const QString &);
-    /// Plays the given sound
+
+    /** Plays the given sound.
+     * @param sound The sound file to be played
+     */
     void playSound(const QString &sound);
 
 private slots:
     void undrawConnection();
-    /// Returns whether the given column is affected by gravity
+
+    /** Returns whether the given column is affected by gravity.
+     * @param column The column to check
+     * @param update FIXME: What is it for?
+     */
     bool gravity(int column, bool update);
 
 protected:
     virtual QSize sizeHint() const;
 
 private: // functions
+    /** Calculates the board's offset.
+     * The board is centred inside the main playing area. xOffset()/yOffset()
+     * provide the coordinates of the top-left corner of the board.
+     */
     int xOffset() const;
     int yOffset() const;
 
-    /// Returns the line width to use
+    /** Returns the line width to use.
+     * The line width should be relative to the tile size, however, if the tile size is too small, keep a minimum line width.
+     */
     int lineWidth() const;
 
     void setField(int x, int y, int value);
     int field(int x, int y) const;
     void updateField(int, int);
     void clearHighlight();
-    /// Checks if two tiles can match
+
+    /** Checks if two tiles can match.
+     * This is sed for connecting them and for highlighting tiles of the same group.
+     */
     bool tilesMatch(int tile1, int tile2) const;
-    /// Checks if a path between two tiles can be made with a single line
+
+    /** Checks if a path between two tiles can be made with a single line.
+     * @param x1 x coordinate of the first tile
+     * @param y1 y coordinate of the first tile
+     * @param x2 x coordinate of the second tile
+     * @param y2 y coordinate of the second tile
+     */
     bool canMakePath(int x1, int y1, int x2, int y2) const;
-    /// Checks if the tile at (x1,y1) can be slid to (x2,y2)
+
+    /** Checks if the tile at (x1,y1) can be slid to (x2,y2).
+     * @param x1 x coordinate of the slide's initial position
+     * @param y1 y coordinate of the slide's initial position
+     * @param x2 x coordinate of the slide's final position
+     * @param y2 y coordinate of the slide's final position
+     * @param path The movement of the last tile slided will be stored in the path
+     */
     bool canSlideTiles(int x1, int y1, int x2, int y2, Path &path) const;
-    /// Checks if a path between two tiles can be made with 2 or 3 lines
+
+    /** Checks if a path between two tiles can be made with 2 or 3 lines.
+    * @param x1 x coordinate of the first tile
+    * @param y1 y coordinate of the first tile
+    * @param x2 x coordinate of the second tile
+    * @param y2 y coordinate of the second tile
+    * @param possibleMoves All the possible moves are stored here
+    * @return The number of paths found
+    */
     int findPath(int x1, int y1, int x2, int y2, PossibleMoves &possibleMoves) const;
-    /// Find a path of 1 or 2 segments between tiles.
+
+    /** Find a path of 1 or 2 segments between tiles.
+     * @param x1 x coordinate of the first tile
+     * @param y1 y coordinate of the first tile
+     * @param x2 x coordinate of the second tile
+     * @param y2 y coordinate of the second tile
+     * @param possibleMoves All the possible moves are stored here
+     * @return The number of paths found
+     */
     int findSimplePath(int x1, int y1, int x2, int y2, PossibleMoves &possibleMoves) const;
     void performMove(PossibleMove &possibleMoves);
     void performSlide(int x, int y, Path& s);
@@ -276,7 +336,10 @@ private: // functions
     void marked(int x, int y);
     void madeMove(int x1, int y1, int x2, int y2);
     void madeMoveWithSlide(int x1, int y1, int x2, int y2, Path &slide);
-    /// Checks all columns and populate the affected columns in m_gravCols
+
+    /** Checks all columns and populate the affected columns in m_gravCols.
+     * @param update FIXME: What is it for?
+     */
     void gravity(bool update);
 
 private:

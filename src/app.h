@@ -40,7 +40,10 @@ public:
 private slots:
     void slotEndOfGame();
 
-    /// Updates actions, to enable and disable them where needed
+    /** Updates actions, to enable and disable them where needed.
+     * According to the current state of the game (game over, pause ...) some
+     * actions might better be disabled. This is the place to do so.
+     */
     void updateItems();
     /// Updated the time display in the status bar
     void updateTimeDisplay();
@@ -57,20 +60,40 @@ private slots:
     void notifySelectAMatchingTile();
     void notifySelectAMove();
 
-    /// Starts a new game
+    /** Starts a new game.
+     * Flags set in the previously played game should be reset.
+     */
     void newGame();
-    /// Restarts the current game
+
+    /** Restarts the current game.
+     * Currently this is done by undoing all moves done by the user as yet and
+     * resetting the move history and the timer.
+     * This might change over time. However, just make sure, the user gets his
+     * currently played game as if it was started by the New Game action.
+     */
     void restartGame();
     // void isSolvable(); // currently not used
     /// Toggles the pause mode
     void togglePause();
-    /// Controls the pause mode
+
+    /** Controls the pause mode.
+     * If the game is paused, do not show the board and disable actions like undo
+     * and such.
+     */
     void setPauseEnabled(bool enable);
-    /// Undoes one move
+
+    /** Undoes one move.
+     * The Undo action should set the cheat flag, so the user cannot end up in
+     * the highscore dialog by making bad decisions. :)
+     */
     void undo();
     /// Redoes an undone move
     void redo();
-    /// Shows a hint and sets cheat flag
+
+    /** Shows a hint and sets cheat flag.
+     * The Hint action should set the cheat flag, so the user cannot end up in
+     * the highscore dialog by having been told what to do. :)
+     */
     void hint();
     /// Calls showHighscore without arguments
     void keyBindings();
@@ -80,8 +103,15 @@ private slots:
 private:
     /// Calculates the scores
     int score(int x, int y, int seconds, bool gravity) const;
-    /// Sets up the status bar areas
-    void setupStatusBar();
+
+    /** Sets up the status bar areas.
+     * There are four areas in the status bar:
+     * - game tip
+     * - timer
+     * - tile count
+     * - cheat mode
+     */
+void setupStatusBar();
     /// Sets up the needed actions and adds them to the action collection
     void setupActions();
     /// Sets the cheat mode

@@ -214,9 +214,6 @@ int Board::field(int x, int y) const
     return m_field[y * xTiles() + x];
 }
 
-/**
- * @param update FIXME: What is it for?
- */
 void Board::gravity(bool update)
 {
     kDebug() << "Entry";
@@ -236,10 +233,6 @@ void Board::gravity(bool update)
     }
 }
 
-/**
- * @param column The column to check
- * @param update FIXME: What is it for?
- */
 bool Board::gravity(int column, bool update)
 {
     kDebug() << "Entry";
@@ -351,10 +344,6 @@ void Board::mousePressEvent(QMouseEvent *e)
     }
 }
 
-/**
- * The board is centred inside the main playing area. xOffset/yOffset provide
- * the coordinates of the top-left corner of the board.
- */
 int Board::xOffset() const
 {
     int tw = m_tiles.qWidth() * 2;
@@ -580,9 +569,6 @@ void Board::newGame()
     kDebug() << "Exit";
 }
 
-/**
- * This is sed for connecting them and for highlighting tiles of the same group.
- */
 bool Board::tilesMatch(int tile1, int tile2) const
 {
     // identical tiles always match
@@ -1050,12 +1036,6 @@ void Board::clearHighlight()
     }
 }
 
-/**
- * @param x1 x coordinate of the first tile
- * @param y1 y coordinate of the first tile
- * @param x2 x coordinate of the second tile
- * @param y2 y coordinate of the second tile
- */
 bool Board::canMakePath(int x1, int y1, int x2, int y2) const
 {
     kDebug() << "Entry";
@@ -1080,13 +1060,6 @@ bool Board::canMakePath(int x1, int y1, int x2, int y2) const
     return false;
 }
 
-/**
- * @param x1 x coordinate of the slide's initial position
- * @param y1 y coordinate of the slide's initial position
- * @param x2 x coordinate of the slide's final position
- * @param y2 y coordinate of the slide's final position
- * @param path The movement of the last tile slided will be stored in the path
- */
 bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path &path) const
 {
     kDebug() << "Entry";
@@ -1258,14 +1231,6 @@ bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path &path) const
     return false;
 }
 
-/**
-* @param x1 x coordinate of the first tile
-* @param y1 y coordinate of the first tile
-* @param x2 x coordinate of the second tile
-* @param y2 y coordinate of the second tile
-* @param possibleMoves All the possible moves are stored here
-* @return The number of paths found
-*/
 int Board::findPath(int x1, int y1, int x2, int y2, PossibleMoves &possibleMoves) const
 {
     kDebug() << "Entry";
@@ -1303,14 +1268,6 @@ int Board::findPath(int x1, int y1, int x2, int y2, PossibleMoves &possibleMoves
     return numberOfPaths;
 }
 
-/**
- * @param x1 x coordinate of the first tile
- * @param y1 y coordinate of the first tile
- * @param x2 x coordinate of the second tile
- * @param y2 y coordinate of the second tile
- * @param possibleMoves All the possible moves are stored here
- * @return The number of paths found
- */
 int Board::findSimplePath(int x1, int y1, int x2, int y2, PossibleMoves &possibleMoves) const
 {
     kDebug() << "Entry";
@@ -1850,9 +1807,6 @@ void Board::dumpBoard(const int *board) const
 }
 #endif
 
-/**
- * The line width should be relative to the tile size, however, if the tile size is too small, keep a minimum line width.
- */
 int Board::lineWidth() const
 {
     kDebug() << "Entry";
@@ -2117,41 +2071,26 @@ void Board::setCheatModeEnabled(bool enabled)
     emit cheatStatusChanged();
 }
 
-/**
- * @return True if game is over, False if game is not over
- */
 bool Board::isOver() const
 {
     return m_isOver;
 }
 
-/**
- * @return True if game is paused, False if game is not paused
- */
 bool Board::isPaused() const
 {
     return m_isPaused;
 }
 
-/**
- * @return True if there are no matching tiles left, False if there are matching tiles left
- */
 bool Board::isStuck() const
 {
     return m_isStuck;
 }
 
-/**
-* @return True if the player is in cheat mode, False if not
-*/
 bool Board::hasCheated() const
 {
     return m_cheat;
 }
 
-/**
- * @param enabled Whether sound shall be enabled
- */
 void Board::setSoundsEnabled(bool enabled)
 {
     if (enabled) {
@@ -2166,9 +2105,6 @@ void Board::setSoundsEnabled(bool enabled)
     Prefs::self()->writeConfig();
 }
 
-/**
- * @param sound The sound file to be played
- */
 void Board::playSound(const QString &sound)
 {
     m_media->setCurrentSource(sound);
