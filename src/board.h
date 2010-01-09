@@ -380,6 +380,7 @@ private:
     int m_connectionTimeout;
     bool m_paintConnection;
     bool m_paintPossibleMoves;
+    bool m_paintInProgress;
     QPair<int, int> m_tileRemove1;
     QPair<int, int> m_tileRemove2;
     Phonon::MediaObject *m_media; ///< MediaObject to play sounds
