@@ -75,7 +75,7 @@ Board::Board(QWidget *parent)
     m_isPaused(false), m_isStuck(false), m_isOver(false), m_cheat(false),
     m_gravityFlag(true), m_solvableFlag(true), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
     m_highlightedTile(-1), m_connectionTimeout(0),
-    m_paintConnection(false), m_paintPossibleMoves(false), m_media(0)
+    m_paintConnection(false), m_paintPossibleMoves(false), m_paintInProgress(false), m_media(0)
 {
     kDebug() << "Entry";
     m_tileRemove1.first = -1;
@@ -266,6 +266,14 @@ bool Board::gravity(int column, bool update)
 void Board::mousePressEvent(QMouseEvent *e)
 {
     kDebug() << "Entry";
+    // Do not process mouse events while the connection is drawn.
+    // Clicking on one of the already connected tiles would have selected
+    // it before removing it. This is more a workaround than a proper fix
+    // but I have to understand the usage of m_paintConnection first in
+    // order to consider its reusage here. (schwarzer)
+    if (m_paintInProgress) {
+        return;
+    }
     if (m_isOver) {
         newGame();
         return;
@@ -1349,6 +1357,7 @@ void Board::drawPossibleMoves(bool b)
 
 void Board::drawConnection(int timeout)
 {
+    m_paintInProgress = true;
     kDebug() << "Entry";
     if (m_connection.isEmpty()) {
         return;
@@ -1415,6 +1424,7 @@ void Board::undrawConnection()
         m_gameClock.pause();
         emit endOfGame();
     }
+    m_paintInProgress = false;
 }
 
 QPoint Board::midCoord(int x, int y) const
