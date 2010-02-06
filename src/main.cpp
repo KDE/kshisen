@@ -28,17 +28,17 @@
 
 // Version numbers are of the form: MAJOR.MINOR.MICRO
 // The MAJOR number should only be incremented when really major changes occur.
-// The MINOR number is increased for every branch of KDE from trunk (i.e. KDE 4.1, KDE 4.2 etc).
-// The MICRO version is increased for every bugfix release if there were changes.
-// MICRO numbers >= 50 are used for development snapshots in trunk.
-#define KSHISEN_VERSION "1.7.51"
-
+// The MINOR number is increased to a release if new features were added.
+// The MICRO version is increased for every bugfix release.
+// The COMMIT number is only used in trunk and should be increased every few commits, if things changed.
+#define KSHISEN_VERSION "1.9-dev"
+#define KSHISEN_COMMIT "0"
 static const char description[] = I18N_NOOP("A KDE game similar to Mahjongg");
 
 int main(int argc, char **argv)
 {
     KAboutData aboutData("kshisen", 0, ki18n("Shisen-Sho"),
-                         KSHISEN_VERSION, ki18n(description), KAboutData::License_GPL,
+                         KSHISEN_VERSION " #" KSHISEN_COMMIT, ki18n(description), KAboutData::License_GPL,
                          ki18n("(c) 1997, Mario Weilguni"), KLocalizedString(), "http://games.kde.org/kshisen");
     aboutData.addAuthor(ki18n("Frederik Schwarzer"), ki18n("Current Maintainer"), "schwarzerf@gmail.com");
     aboutData.addAuthor(ki18n("Dave Corrie"), ki18n("Former Maintainer"), "kde@davecorrie.com");
