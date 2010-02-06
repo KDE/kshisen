@@ -4,6 +4,8 @@ Changes in 1.8.0:
     In Qt 4.6 beta 1 the translucent background was not shown. Using the
     Antialiasing flag fixed that.
  * some minor cleanup and housekeeping
+ * fix mouse events being processed while the connection is drawn, which
+   caused confudion about tiles being selected
 
 Changes in 1.7.0:
  * fix typo in cheat notification dialog
