@@ -20,6 +20,7 @@
  ***************************************************************************/
 
 #include "app.h"
+#include "penalty.h"
 #include "prefs.h"
 #include "ui_settings.h"
 
@@ -68,9 +69,10 @@ App::App(QWidget *parent)
   : KXmlGuiWindow(parent),
     m_gameTipLabel(0),
     m_gameTimerLabel(0),
+    m_gamePenaltyLabel(0),
     m_gameTilesLabel(0),
-    m_gameCheatLabel(0),
-    m_board(0)
+    m_board(0),
+    m_penaltyTime(0)
 {
     m_board = new Board(this);
     m_board->setObjectName("board");
@@ -96,18 +98,17 @@ void App::setupStatusBar()
     m_gameTimerLabel = new QLabel(i18n("Time: 0:00:00"), statusBar());
     statusBar()->addWidget(m_gameTimerLabel);
 
+    m_gamePenaltyLabel = new QLabel(i18n("Penalty: 0s"), statusBar());
+    statusBar()->addWidget(m_gamePenaltyLabel);
+
     m_gameTilesLabel = new QLabel(i18n("Removed: 0/0"), statusBar());
     statusBar()->addWidget(m_gameTilesLabel);
-
-    m_gameCheatLabel = new QLabel(i18n("Cheat mode"), statusBar());
-    statusBar()->addWidget(m_gameCheatLabel);
-    m_gameCheatLabel->hide();
 }
 
 void App::setupActions()
 {
     // Game
-    KStandardGameAction::gameNew(this, SLOT(newGame()), actionCollection());
+    KStandardGameAction::gameNew(this, SIGNAL(invokeNewGame()), actionCollection());
     KStandardGameAction::restart(this, SLOT(restartGame()), actionCollection());
     KStandardGameAction::pause(this, SLOT(togglePause()), actionCollection());
     KStandardGameAction::highscores(this, SLOT(showHighscores()), actionCollection());
@@ -126,7 +127,6 @@ void App::setupActions()
     // Settings
     KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
 
-    connect(m_board, SIGNAL(cheatStatusChanged()), this, SLOT(updateCheatDisplay()));
     connect(m_board, SIGNAL(changed()), this, SLOT(updateItems()));
     connect(m_board, SIGNAL(tilesDontMatch()), this, SLOT(notifyTilesDontMatch()));
     connect(m_board, SIGNAL(invalidMove()), this, SLOT(notifyInvalidMove()));
@@ -138,16 +138,32 @@ void App::setupActions()
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTimeDisplay()));
     timer->start(1000);
 
+    // TODO: Try putting updateTileDisplay() in updateItems(), which is called by changed() anyway.
+    // This might help getting rid of the temporary hack in updateTimeDisplay()
     connect(m_board, SIGNAL(changed()), this, SLOT(updateTileDisplay()));
     connect(m_board, SIGNAL(endOfGame()), this, SLOT(slotEndOfGame()));
+
+    connect(this, SIGNAL(invokeNewGame()), m_board, SLOT(newGame()));
+    connect(m_board, SIGNAL(newGameStarted()), this, SLOT(newGame()));
+}
+
+void App::imposePenalty(int seconds)
+{
+    m_penaltyTime += seconds;
+    updatePenaltyDisplay();
+}
+
+void App::resetPenalty()
+{
+    m_penaltyTime = 0;
+    updatePenaltyDisplay();
 }
 
 void App::newGame()
 {
-    m_board->newGame();
-    setCheatModeEnabled(false);
     setPauseEnabled(false);
     updateItems();
+    resetPenalty();
 }
 
 void App::restartGame()
@@ -158,11 +174,11 @@ void App::restartGame()
     }
     m_board->resetRedo();
     m_board->resetTimer();
-    setCheatModeEnabled(false);
     m_board->setGameOverEnabled(false);
     m_board->setGameStuckEnabled(false);
     m_board->setUpdatesEnabled(true);
     updateItems();
+    resetPenalty();
 }
 
 void App::togglePause()
@@ -182,7 +198,7 @@ void App::undo()
         return;
     }
     m_board->undo();
-    setCheatModeEnabled(true);
+    imposePenalty(UNDO_PENALTY);
 
     // If the game is stuck (no matching tiles anymore), the player can decide
     // to undo some steps and try a different approach.
@@ -204,9 +220,10 @@ void App::hint()
 {
 #ifdef DEBUGGING
     m_board->makeHintMove();
+    imposePenalty(HINT_PENALTY); // only for testing
 #else
     m_board->showHint();
-    setCheatModeEnabled(true);
+    imposePenalty(HINT_PENALTY);
 #endif
     updateItems();
 }
@@ -241,12 +258,13 @@ void App::slotEndOfGame()
         KMessageBox::information(this, i18n("No more moves possible!"), i18n("End of Game"));
     } else {
         m_board->setGameOverEnabled(true);
+        int gameTime = m_board->currentTime() + m_penaltyTime;
         QString timeString = i18nc("time string: hh:mm:ss", "%1:%2:%3",
-                                    QString().sprintf("%02d", m_board->currentTime() / 3600),
-                                    QString().sprintf("%02d", (m_board->currentTime() / 60) % 60),
-                                    QString().sprintf("%02d", m_board->currentTime() % 60));
+                                    QString().sprintf("%02d", gameTime / 3600),
+                                    QString().sprintf("%02d", (gameTime / 60) % 60),
+                                    QString().sprintf("%02d", gameTime % 60));
         KScoreDialog::FieldInfo scoreInfo;
-        scoreInfo[KScoreDialog::Score].setNum(score(m_board->xTiles(), m_board->yTiles(), m_board->currentTime(), m_board->gravityFlag()));
+        scoreInfo[KScoreDialog::Score].setNum(score(m_board->xTiles(), m_board->yTiles(), gameTime, m_board->gravityFlag()));
         scoreInfo[KScoreDialog::Time] = timeString;
 
         KScoreDialog scoreDialog(KScoreDialog::Name | KScoreDialog::Time | KScoreDialog::Score, this);
@@ -259,18 +277,13 @@ void App::slotEndOfGame()
         }
         scoreDialog.setConfigGroup(QString("%1x%2").arg(sizeX[Prefs::size()]).arg(sizeY[Prefs::size()]));
 
-        if (m_board->hasCheated()) {
-            QString message = i18n("\nYou could have been in the highscores\nif you did not use Undo or Hint.\nTry without them next time.");
-            KMessageBox::information(this, message, i18n("End of Game"));
+        if (scoreDialog.addScore(scoreInfo)) {
+            QString message = i18n("Congratulations!\nYou made it into the hall of fame.");
+            scoreDialog.setComment(message);
+            scoreDialog.exec();
         } else {
-            if (scoreDialog.addScore(scoreInfo)) {
-                QString message = i18n("Congratulations!\nYou made it into the hall of fame.");
-                scoreDialog.setComment(message);
-                scoreDialog.exec();
-            } else {
-                QString message = i18nc("%1 - time string like hh:mm:ss", "You made it in %1", timeString);
-                KMessageBox::information(this, message, i18n("End of Game"));
-            }
+            QString message = i18nc("%1 - time string like hh:mm:ss", "You made it in %1", timeString);
+            KMessageBox::information(this, message, i18n("End of Game"));
         }
     }
     updateItems();
@@ -305,9 +318,9 @@ void App::updateTileDisplay()
     m_gameTilesLabel->setText(message);
 }
 
-void App::updateCheatDisplay()
+void App::updatePenaltyDisplay()
 {
-    m_gameCheatLabel->setVisible(m_board->hasCheated());
+    m_gamePenaltyLabel->setText(i18n("Penalty: %1s", m_penaltyTime));
 }
 
 int App::score(int x, int y, int seconds, bool gravity) const
@@ -348,12 +361,6 @@ void App::notifyTilesDontMatch()
 void App::notifyInvalidMove()
 {
     m_gameTipLabel->setText(i18n("You cannot make this move"));
-}
-
-void App::setCheatModeEnabled(bool enabled)
-{
-    m_board->setCheatModeEnabled(enabled);
-    m_gameCheatLabel->setVisible(enabled);
 }
 
 void App::showHighscores()

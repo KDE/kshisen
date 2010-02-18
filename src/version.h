@@ -4,6 +4,6 @@
 // The MICRO version is increased for every bugfix release.
 
 #ifndef KSHISEN_VERSION
-#define KSHISEN_VERSION "1.9-dev"
+#define KSHISEN_VERSION "1.8+"
 
 #endif // KSHISEN_VERSION

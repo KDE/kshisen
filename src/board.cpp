@@ -71,7 +71,7 @@ Board::Board(QWidget *parent)
     m_field(0),
     m_xTiles(0), m_yTiles(0),
     m_delay(0), m_shuffle(0),
-    m_isPaused(false), m_isStuck(false), m_isOver(false), m_cheat(false),
+    m_isPaused(false), m_isStuck(false), m_isOver(false),
     m_gravityFlag(true), m_solvableFlag(true), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
     m_highlightedTile(-1), m_connectionTimeout(0),
     m_paintConnection(false), m_paintPossibleMoves(false), m_paintInProgress(false), m_media(0)
@@ -416,7 +416,6 @@ void Board::newGame()
     m_isOver = false;
     m_isPaused = false;
     m_isStuck = false;
-    setCheatModeEnabled(false);
 
     m_markX = -1;
     m_markY = -1;
@@ -465,6 +464,7 @@ void Board::newGame()
     if (shuffle() == 0) {
         update();
         resetTimer();
+        emit newGameStarted();
         emit changed();
         kDebug() << "Exit without shuffling";
         return;
@@ -490,6 +490,7 @@ void Board::newGame()
     if (!m_solvableFlag) {
         update();
         resetTimer();
+        emit newGameStarted();
         emit changed();
         kDebug() << "Exit if game does not need to be solvable";
         return;
@@ -2015,15 +2016,6 @@ void Board::setGameOverEnabled(bool enabled)
     update();
 }
 
-void Board::setCheatModeEnabled(bool enabled)
-{
-    if (m_cheat == enabled) {
-        return;
-    }
-    m_cheat = enabled;
-    emit cheatStatusChanged();
-}
-
 bool Board::isOver() const
 {
     return m_isOver;
@@ -2037,11 +2029,6 @@ bool Board::isPaused() const
 bool Board::isStuck() const
 {
     return m_isStuck;
-}
-
-bool Board::hasCheated() const
-{
-    return m_cheat;
 }
 
 void Board::setSoundsEnabled(bool enabled)

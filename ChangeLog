@@ -1,3 +1,8 @@
+Changes since 1.8.0:
+ * abolish cheat mode
+    Cheat mode is replaced by a penalty system. Undo and Hint actions are
+    penalised with seconds to be added to the final time.
+
 Changes in 1.8.0:
  * add sounds
  * fix information overlay (game over / pause)

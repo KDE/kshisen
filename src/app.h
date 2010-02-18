@@ -47,10 +47,10 @@ private slots:
     void updateItems();
     /// Updated the time display in the status bar
     void updateTimeDisplay();
+    /// Updates the penalty timer in the status bar
+    void updatePenaltyDisplay();
     /// Updates the tiles removed display in the status bar
     void updateTileDisplay();
-    /// Updates the cheat status display in the status bar
-    void updateCheatDisplay();
     /// Shows the settings dialog
     void showSettings(); // const?
 
@@ -60,8 +60,8 @@ private slots:
     void notifySelectAMatchingTile();
     void notifySelectAMove();
 
-    /** Starts a new game.
-     * Flags set in the previously played game should be reset.
+    /** Sets some flags for a new game.
+     * This should be called from Board::newGame().
      */
     void newGame();
 
@@ -83,15 +83,15 @@ private slots:
     void setPauseEnabled(bool enable);
 
     /** Undoes one move.
-     * The Undo action should set the cheat flag, so the user cannot end up in
+     * The Undo action should add a time penalty, so the user cannot end up in
      * the highscore dialog by making bad decisions. :)
      */
     void undo();
     /// Redoes an undone move
     void redo();
 
-    /** Shows a hint and sets cheat flag.
-     * The Hint action should set the cheat flag, so the user cannot end up in
+    /** Shows a hint.
+     * The Hint action should add a time penalty, so the user cannot end up in
      * the highscore dialog by having been told what to do. :)
      */
     void hint();
@@ -99,6 +99,14 @@ private slots:
     void keyBindings();
     /// Shows the highscore table
     void showHighscores(); // const?
+
+signals:
+    /** Invokes the creation of a new game.
+     * This signal is connected to the newGame() slot of the Board, which
+     * then does its job and sends a signal back to this class so the rest
+     * of the work can be done here.
+     */
+    void invokeNewGame();
 
 private:
     /// Calculates the scores
@@ -109,20 +117,23 @@ private:
      * - game tip
      * - timer
      * - tile count
-     * - cheat mode
+     * - penalty time
      */
     void setupStatusBar();
     /// Sets up the needed actions and adds them to the action collection
     void setupActions();
-    /// Sets the cheat mode
-    void setCheatModeEnabled(bool enabled);
+    /// Adds the given penalty time to the game time
+    void imposePenalty(int);
+    /// Resets the penalty time
+    void resetPenalty();
 
 private:
     QLabel *m_gameTipLabel; ///< Status bar area for game tips
     QLabel *m_gameTimerLabel; ///< Status bar area for the timer
+    QLabel *m_gamePenaltyLabel; ///< Status bar area for the penalty timer
     QLabel *m_gameTilesLabel; ///< Status bar area for the tile counter
-    QLabel *m_gameCheatLabel; ///< Status bar area for the cheat mode
     Board *m_board; ///< Holds the game board
+    int m_penaltyTime; ///< Holds the current penalty time if the player used hint or undo
 };
 
 #endif // APP_H
