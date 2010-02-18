@@ -25,7 +25,7 @@
 #include "ui_settings.h"
 
 #include <kmahjonggconfigdialog.h>
-#include <kscoredialog.h>
+#include <highscore/kscoredialog.h>
 #include <kstandardgameaction.h>
 
 #include <kaction.h>

@@ -22,6 +22,7 @@
 #include "board.h"
 #include "prefs.h"
 
+#include <kdebug.h>
 #include <kglobalsettings.h>
 #include <klocale.h>
 #include <kstandarddirs.h>
@@ -31,6 +32,8 @@
 #include <QTimer>
 
 #include <phonon/audiooutput.h>
+
+#include <cstring>
 
 
 #define EMPTY           0
