@@ -156,13 +156,12 @@ void App::restartGame()
     while (m_board->canUndo()) {
         m_board->undo();
     }
-    m_board->setUpdatesEnabled(true);
     m_board->resetRedo();
     m_board->resetTimer();
     setCheatModeEnabled(false);
     m_board->setGameOverEnabled(false);
     m_board->setGameStuckEnabled(false);
-    m_board->update();
+    m_board->setUpdatesEnabled(true);
     updateItems();
 }
 
