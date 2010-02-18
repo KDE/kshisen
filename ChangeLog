@@ -5,7 +5,7 @@ Changes in 1.8.0:
     Antialiasing flag fixed that.
  * some minor cleanup and housekeeping
  * fix mouse events being processed while the connection is drawn, which
-   caused confusion about tiles being selected
+   caused confusion about removed tiles being selected
 
 Changes in 1.7.0:
  * fix typo in cheat notification dialog
