@@ -111,7 +111,7 @@ private:
      * - tile count
      * - cheat mode
      */
-void setupStatusBar();
+    void setupStatusBar();
     /// Sets up the needed actions and adds them to the action collection
     void setupActions();
     /// Sets the cheat mode
