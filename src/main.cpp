@@ -19,6 +19,8 @@
  ***************************************************************************/
 
 #include "app.h"
+#include "commit.h"
+#include "version.h"
 
 #include <kapplication.h>
 #include <kaboutdata.h>
@@ -26,13 +28,6 @@
 #include <klocale.h>
 #include <kglobal.h>
 
-// Version numbers are of the form: MAJOR.MINOR.MICRO
-// The MAJOR number should only be incremented when really major changes occur.
-// The MINOR number is increased to a release if new features were added.
-// The MICRO version is increased for every bugfix release.
-// The COMMIT number is only used in trunk and should be increased every few commits, if things changed.
-#define KSHISEN_VERSION "1.9-dev"
-#define KSHISEN_COMMIT "0"
 static const char description[] = I18N_NOOP("A KDE game similar to Mahjongg");
 
 int main(int argc, char **argv)
