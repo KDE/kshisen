@@ -320,6 +320,7 @@ void App::updateTileDisplay()
 
 void App::updatePenaltyDisplay()
 {
+    // xgettext: no-c-format
     m_gamePenaltyLabel->setText(i18n("Penalty: %1s", m_penaltyTime));
 }
 
