@@ -639,7 +639,7 @@ void Board::paintEvent(QPaintEvent *e)
         p.setFont(font);
         //     p.setPen(QPen(QColor("black")));
         p.setBrush(QBrush(QColor(100, 100, 100, 150)));
-        p.setRenderHint( QPainter::Antialiasing );
+        p.setRenderHint(QPainter::Antialiasing);
         p.drawRoundedRect(contentsRect, 10, 10);
 
         if (m_isPaused) {
@@ -1441,7 +1441,7 @@ int Board::delay() const
 void Board::madeMove(int x1, int y1, int x2, int y2)
 {
     Path slide;
-    slide.clear();
+    slide.clear(); // TODO: needed?
     madeMoveWithSlide(x1, y1, x2, y2, slide);
 }
 
