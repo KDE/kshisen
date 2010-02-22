@@ -597,7 +597,7 @@ bool Board::isTileHighlighted(int x, int y) const
     }
 
     // m_tileRemove1.first != -1 is used because the repaint of the first if
-    // on undrawConnection highlihgted the tiles that fell because of gravity
+    // on undrawConnection highlighted the tiles that fell because of gravity
     if (!m_connection.isEmpty() && m_tileRemove1.first != -1) {
         if (x == m_connection.first().x && y == m_connection.first().y) {
             return true;
