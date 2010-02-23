@@ -238,7 +238,7 @@ signals:
 
 public slots:
     /** Does most of the newGame work.
-     * This slot is called from the invokeNewGame() signal from App and
+     * This slot is called from the App::invokeNewGame() signal from App and
      * should call App::newGame again to do the work that cannot be done
      * from Board.
      */

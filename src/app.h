@@ -105,6 +105,8 @@ signals:
      * This signal is connected to the newGame() slot of the Board, which
      * then does its job and sends a signal back to this class so the rest
      * of the work can be done here.
+     * @see newGame()
+     * @see Board::newGame()
      */
     void invokeNewGame();
 
