@@ -136,6 +136,7 @@ private:
     QLabel *m_gameTilesLabel; ///< Status bar area for the tile counter
     Board *m_board; ///< Holds the game board
     int m_penaltyTime; ///< Holds the current penalty time if the player used hint or undo
+    int m_penaltyFreeStrikes; ///< Holds the number of times the player used Undo within penalty-free time
 };
 
 #endif // APP_H

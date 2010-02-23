@@ -72,7 +72,8 @@ App::App(QWidget *parent)
     m_gamePenaltyLabel(0),
     m_gameTilesLabel(0),
     m_board(0),
-    m_penaltyTime(0)
+    m_penaltyTime(0),
+    m_penaltyFreeStrikes(0)
 {
     m_board = new Board(this);
     m_board->setObjectName("board");
@@ -156,6 +157,7 @@ void App::imposePenalty(int seconds)
 void App::resetPenalty()
 {
     m_penaltyTime = 0;
+    m_penaltyFreeStrikes = 0;
     updatePenaltyDisplay();
 }
 
@@ -199,7 +201,9 @@ void App::undo()
     }
     m_board->undo();
 
-    if (!m_board->penaltyVacation()) {
+    if (m_board->penaltyVacation() && m_penaltyFreeStrikes < PENALTYFREE_STRIKES) {
+        ++m_penaltyFreeStrikes;
+    } else {
         imposePenalty(UNDO_PENALTY);
     }
 
