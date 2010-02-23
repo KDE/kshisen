@@ -3,7 +3,7 @@
  *   Copyright 1997   Mario Weilguni <mweilguni@sime.com>                  *
  *   Copyright 2002-2004  Dave Corrie <kde@davecorrie.com>                 *
  *   Copyright 2007  Mauricio Piacentini <mauricio@tabuleiro.com>          *
- *   Copyright 2009  Frederik Schwarzer <schwarzerf@gmail.com>             *
+ *   Copyright 2009,2010  Frederik Schwarzer <schwarzerf@gmail.com>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -20,6 +20,7 @@
  ***************************************************************************/
 
 #include "board.h"
+#include "penalty.h"
 #include "prefs.h"
 
 #include <kdebug.h>
@@ -77,7 +78,8 @@ Board::Board(QWidget *parent)
     m_isPaused(false), m_isStuck(false), m_isOver(false),
     m_gravityFlag(true), m_solvableFlag(true), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
     m_highlightedTile(-1), m_connectionTimeout(0),
-    m_paintConnection(false), m_paintPossibleMoves(false), m_paintInProgress(false), m_media(0)
+    m_paintConnection(false), m_paintPossibleMoves(false), m_paintInProgress(false), m_media(0),
+    m_penaltyVacation(false), m_vacationTimer(0)
 {
     m_tileRemove1.first = -1;
 
@@ -87,6 +89,11 @@ Board::Board(QWidget *parent)
     QPalette palette;
     palette.setBrush(backgroundRole(), m_background.getBackground());
     setPalette(palette);
+
+    m_vacationTimer = new QTimer(this);
+    connect(m_vacationTimer, SIGNAL(timeout()), this, SLOT(skipPenaltyVacation()));
+    m_vacationTimer->setInterval(PENALTYFREE_TIME);
+    m_vacationTimer->setSingleShot(true);
 
     loadSettings();
 }
@@ -917,7 +924,31 @@ void Board::performMove(PossibleMove &possibleMoves)
     delete[] saved3;
     delete[] saved4;
 #endif
+
+    // after every move there is a short delay in which Undo should not
+    // impose penalty time
+    enterPenaltyVacation();
 }
+
+bool Board::penaltyVacation() const
+{
+    return m_penaltyVacation;
+}
+
+void Board::enterPenaltyVacation()
+{
+    if (m_vacationTimer->isActive()) {
+        m_vacationTimer->stop();
+    }
+    m_penaltyVacation = true;
+    m_vacationTimer->start(PENALTYFREE_TIME);
+}
+
+void Board::skipPenaltyVacation()
+{
+    m_penaltyVacation = false;
+}
+
 
 void Board::marked(int x, int y)
 {

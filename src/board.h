@@ -3,7 +3,7 @@
  *   Copyright 1997  Mario Weilguni <mweilguni@sime.com>                   *
  *   Copyright 2002-2004  Dave Corrie <kde@davecorrie.com>                 *
  *   Copyright 2007  Mauricio Piacentini <mauricio@tabuleiro.com>          *
- *   Copyright 2009  Frederik Schwarzer <schwarzerf@gmail.com>             *
+ *   Copyright 2009,2010  Frederik Schwarzer <schwarzerf@gmail.com>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -38,6 +38,8 @@
 #include <QWidget>
 
 #include <phonon/mediaobject.h>
+
+class QTimer;
 
 // used in board.cpp and app.cpp, thus defined here
 static int sizeX[6] = {14, 16, 18, 24, 26, 30};
@@ -216,6 +218,12 @@ public:
      */
     bool isStuck() const;
 
+    /** Returns whether we are in penalty-free time frame.
+     * @return True if we are in penalty-free time, False if safe time is up
+     * @see enterPenaltyVacation()
+     */
+    bool penaltyVacation() const;
+
 signals:
     void markMatched(); // unused?
     void newGameStarted();
@@ -263,6 +271,11 @@ private slots:
      * @param update FIXME: What is it for?
      */
     bool gravity(int column, bool update);
+
+    /** Skips the penaltyVacation time.
+     * @see enterPenaltyVacation()
+     */
+    void skipPenaltyVacation();
 
 protected:
     virtual QSize sizeHint() const;
@@ -342,6 +355,14 @@ private: // functions
      */
     void gravity(bool update);
 
+    /** Starts the penaltyVacation time.
+     * penaltyVacation is a short time frame after every move where
+     * the player can undo a move without being punished with an
+     * x-second penalty.
+     * @see skipPenaltyVacation()
+     */
+    void enterPenaltyVacation();
+
 private:
     KGameClock m_gameClock;
 
@@ -382,6 +403,8 @@ private:
     QPair<int, int> m_tileRemove1;
     QPair<int, int> m_tileRemove2;
     Phonon::MediaObject *m_media; ///< MediaObject to play sounds
+    bool m_penaltyVacation; ///< Whether a penalty will be imposed
+    QTimer *m_vacationTimer; ///< Controls the timeout for the penaltyVacation
 };
 
 #endif // BOARD_H

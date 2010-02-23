@@ -3,7 +3,7 @@
  *   Copyright 1997  Mario Weilguni <mweilguni@sime.com>                   *
  *   Copyright 2002-2004  Dave Corrie <kde@davecorrie.com>                 *
  *   Copyright 2007  Mauricio Piacentini <mauricio@tabuleiro.com>          *
- *   Copyright 2009  Frederik Schwarzer <schwarzerf@gmail.com>             *
+ *   Copyright 2009,2010  Frederik Schwarzer <schwarzerf@gmail.com>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -198,7 +198,10 @@ void App::undo()
         return;
     }
     m_board->undo();
-    imposePenalty(UNDO_PENALTY);
+
+    if (!m_board->penaltyVacation()) {
+        imposePenalty(UNDO_PENALTY);
+    }
 
     // If the game is stuck (no matching tiles anymore), the player can decide
     // to undo some steps and try a different approach.
@@ -302,6 +305,13 @@ void App::updateTimeDisplay()
                             QString().sprintf("%02d", currentTime % 60),
                             m_board->isPaused() ? i18n("(Paused) ") : QString());
 
+#ifdef DEBUGGING
+    if (m_board->penaltyVacation()) {
+        message.append(" no penalty");
+    } else {
+        message.append(" penalty");
+    }
+#endif
     m_gameTimerLabel->setText(message);
     // temporary hack until I find out why m_board->tilesLeft() in updateTileDisplay() counts the previous state of the board, not the current (schwarzer)
     updateTileDisplay();

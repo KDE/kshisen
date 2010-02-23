@@ -21,5 +21,6 @@
 
 #define HINT_PENALTY 10
 #define UNDO_PENALTY 5
+#define PENALTYFREE_TIME 3000
 
 #endif //PENALTY_H
