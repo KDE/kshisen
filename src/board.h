@@ -224,6 +224,12 @@ public:
      */
     bool penaltyVacation() const;
 
+    /// Returns the current time penalty in seconds
+    int penaltyTime() const;
+    /// Resets the penalty time
+    void resetPenalty();
+
+
 signals:
     void markMatched(); // unused?
     void newGameStarted();
@@ -271,11 +277,6 @@ private slots:
      * @param update FIXME: What is it for?
      */
     bool gravity(int column, bool update);
-
-    /** Skips the penaltyVacation time.
-     * @see enterPenaltyVacation()
-     */
-    void skipPenaltyVacation();
 
 protected:
     virtual QSize sizeHint() const;
@@ -359,9 +360,12 @@ private: // functions
      * penaltyVacation is a short time frame after every move where
      * the player can undo a move without being punished with an
      * x-second penalty.
-     * @see skipPenaltyVacation()
      */
     void enterPenaltyVacation();
+    /// Ends the penaltyVacation time
+    void endPenaltyVacation();
+    /// Adds the given penalty time (in seconds) to the penaltyTime
+    void imposePenalty(int seconds);
 
 private:
     KGameClock m_gameClock;
@@ -403,8 +407,9 @@ private:
     QPair<int, int> m_tileRemove1;
     QPair<int, int> m_tileRemove2;
     Phonon::MediaObject *m_media; ///< MediaObject to play sounds
-    bool m_penaltyVacation; ///< Whether a penalty will be imposed
     QTimer *m_vacationTimer; ///< Controls the timeout for the penaltyVacation
+    int m_penaltyFreeStrikes; ///< Holds the number of times the player used Undo within penalty-free time
+    int m_penaltyTime; ///< Holds the current penalty time if the player used hint or undo
 };
 
 #endif // BOARD_H

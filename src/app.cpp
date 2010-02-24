@@ -20,7 +20,6 @@
  ***************************************************************************/
 
 #include "app.h"
-#include "penalty.h"
 #include "prefs.h"
 #include "ui_settings.h"
 
@@ -71,9 +70,7 @@ App::App(QWidget *parent)
     m_gameTimerLabel(0),
     m_gamePenaltyLabel(0),
     m_gameTilesLabel(0),
-    m_board(0),
-    m_penaltyTime(0),
-    m_penaltyFreeStrikes(0)
+    m_board(0)
 {
     m_board = new Board(this);
     m_board->setObjectName("board");
@@ -148,24 +145,10 @@ void App::setupActions()
     connect(m_board, SIGNAL(newGameStarted()), this, SLOT(newGame()));
 }
 
-void App::imposePenalty(int seconds)
-{
-    m_penaltyTime += seconds;
-    updatePenaltyDisplay();
-}
-
-void App::resetPenalty()
-{
-    m_penaltyTime = 0;
-    m_penaltyFreeStrikes = 0;
-    updatePenaltyDisplay();
-}
-
 void App::newGame()
 {
     setPauseEnabled(false);
     updateItems();
-    resetPenalty();
 }
 
 void App::restartGame()
@@ -179,8 +162,8 @@ void App::restartGame()
     m_board->setGameOverEnabled(false);
     m_board->setGameStuckEnabled(false);
     m_board->setUpdatesEnabled(true);
+    m_board->resetPenalty();
     updateItems();
-    resetPenalty();
 }
 
 void App::togglePause()
@@ -201,12 +184,6 @@ void App::undo()
     }
     m_board->undo();
 
-    if (m_board->penaltyVacation() && m_penaltyFreeStrikes < PENALTYFREE_STRIKES) {
-        ++m_penaltyFreeStrikes;
-    } else {
-        imposePenalty(UNDO_PENALTY);
-    }
-
     // If the game is stuck (no matching tiles anymore), the player can decide
     // to undo some steps and try a different approach.
     m_board->setGameStuckEnabled(false);
@@ -225,13 +202,7 @@ void App::redo()
 
 void App::hint()
 {
-#ifdef DEBUGGING
-    m_board->makeHintMove();
-    imposePenalty(HINT_PENALTY); // only for testing
-#else
     m_board->showHint();
-    imposePenalty(HINT_PENALTY);
-#endif
     updateItems();
 }
 
@@ -256,6 +227,7 @@ void App::updateItems()
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Pause))->setChecked(false);
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Hint))->setEnabled(true);
     }
+    updatePenaltyDisplay();
 }
 
 void App::slotEndOfGame()
@@ -265,7 +237,7 @@ void App::slotEndOfGame()
         KMessageBox::information(this, i18n("No more moves possible!"), i18n("End of Game"));
     } else {
         m_board->setGameOverEnabled(true);
-        int gameTime = m_board->currentTime() + m_penaltyTime;
+        int gameTime = m_board->currentTime() + m_board->penaltyTime();
         QString timeString = i18nc("time string: hh:mm:ss", "%1:%2:%3",
                                     QString().sprintf("%02d", gameTime / 3600),
                                     QString().sprintf("%02d", (gameTime / 60) % 60),
@@ -311,9 +283,9 @@ void App::updateTimeDisplay()
 
 #ifdef DEBUGGING
     if (m_board->penaltyVacation()) {
-        message.append(" no penalty");
+        message.append(" v ");
     } else {
-        message.append(" penalty");
+        message.append("   ");
     }
 #endif
     m_gameTimerLabel->setText(message);
@@ -335,7 +307,7 @@ void App::updateTileDisplay()
 void App::updatePenaltyDisplay()
 {
     // xgettext: no-c-format
-    m_gamePenaltyLabel->setText(i18n("Penalty: %1s", m_penaltyTime));
+    m_gamePenaltyLabel->setText(i18n("Penalty: %1s", m_board->penaltyTime()));
 }
 
 int App::score(int x, int y, int seconds, bool gravity) const

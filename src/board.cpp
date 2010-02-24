@@ -79,7 +79,8 @@ Board::Board(QWidget *parent)
     m_gravityFlag(true), m_solvableFlag(true), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
     m_highlightedTile(-1), m_connectionTimeout(0),
     m_paintConnection(false), m_paintPossibleMoves(false), m_paintInProgress(false), m_media(0),
-    m_penaltyVacation(false), m_vacationTimer(0)
+    m_vacationTimer(0), m_penaltyFreeStrikes(0), m_penaltyTime(0)
+
 {
     m_tileRemove1.first = -1;
 
@@ -91,7 +92,6 @@ Board::Board(QWidget *parent)
     setPalette(palette);
 
     m_vacationTimer = new QTimer(this);
-    connect(m_vacationTimer, SIGNAL(timeout()), this, SLOT(skipPenaltyVacation()));
     m_vacationTimer->setInterval(PENALTYFREE_TIME);
     m_vacationTimer->setSingleShot(true);
 
@@ -435,6 +435,8 @@ void Board::newGame()
     resetRedo();
     m_connection.clear();
     m_possibleMoves.clear();
+
+    resetPenalty();
 
     // distribute all tiles on board
     int curTile = 1;
@@ -925,14 +927,16 @@ void Board::performMove(PossibleMove &possibleMoves)
     delete[] saved4;
 #endif
 
-    // after every move there is a short delay in which Undo should not
-    // impose penalty time
-    enterPenaltyVacation();
+    // after a move there is a short delay in which Undo should not
+    // impose penalty time; only the first PENALTYFREE_STRIKES times
+    if (m_penaltyFreeStrikes < PENALTYFREE_STRIKES) {
+        enterPenaltyVacation();
+    }
 }
 
 bool Board::penaltyVacation() const
 {
-    return m_penaltyVacation;
+    return m_vacationTimer->isActive();
 }
 
 void Board::enterPenaltyVacation()
@@ -940,15 +944,31 @@ void Board::enterPenaltyVacation()
     if (m_vacationTimer->isActive()) {
         m_vacationTimer->stop();
     }
-    m_penaltyVacation = true;
-    m_vacationTimer->start(PENALTYFREE_TIME);
+    m_vacationTimer->start();
 }
 
-void Board::skipPenaltyVacation()
+void Board::endPenaltyVacation()
 {
-    m_penaltyVacation = false;
+    if (m_vacationTimer->isActive()) {
+        m_vacationTimer->stop();
+    }
 }
 
+void Board::imposePenalty(int seconds)
+{
+    m_penaltyTime += seconds;
+}
+
+void Board::resetPenalty()
+{
+    m_penaltyTime = 0;
+    m_penaltyFreeStrikes = 0;
+}
+
+int Board::penaltyTime() const
+{
+    return m_penaltyTime;
+}
 
 void Board::marked(int x, int y)
 {
@@ -1508,6 +1528,13 @@ void Board::undo()
         return;
     }
 
+    if (!penaltyVacation()) {
+        imposePenalty(UNDO_PENALTY);
+    } else {
+        ++m_penaltyFreeStrikes;
+    }
+    endPenaltyVacation();
+
     clearHighlight();
     undrawConnection();
     Move *move = m_undo.takeLast();
@@ -1755,6 +1782,8 @@ void Board::showHint()
         m_connection = m_possibleMoves.first().m_path;
         drawConnection(1000);
     }
+
+    imposePenalty(HINT_PENALTY);
 }
 
 
