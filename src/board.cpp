@@ -316,7 +316,7 @@ void Board::mousePressEvent(QMouseEvent *e)
         if (posX != -1) {
             marked(posX, posY);
         } else {
-            // unmark when clicking oustside the board
+            // unmark when clicking outside the board
             unmarkTile();
         }
     }
