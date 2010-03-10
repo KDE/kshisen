@@ -265,6 +265,22 @@ bool Board::gravity(int column, bool update)
     return affected;
 }
 
+void Board::unmarkTile() {
+    // if nothing is marked, nothing to do
+    if (m_markX == -1 || m_markY == -1) {
+        return;
+    }
+    drawPossibleMoves(false);
+    m_possibleMoves.clear();
+    // We need to set m_markX and m_markY to -1 before calling
+    // updateField() to ensure the tile is redrawn as unmarked.
+    int oldMarkX = m_markX;
+    int oldMarkY = m_markY;
+    m_markX = -1;
+    m_markY = -1;
+    updateField(oldMarkX, oldMarkY);
+}
+
 void Board::mousePressEvent(QMouseEvent *e)
 {
     // Do not process mouse events while the connection is drawn.
@@ -299,6 +315,9 @@ void Board::mousePressEvent(QMouseEvent *e)
 
         if (posX != -1) {
             marked(posX, posY);
+        } else {
+            // unmark when clicking oustside the board
+            unmarkTile();
         }
     }
 
@@ -308,13 +327,7 @@ void Board::mousePressEvent(QMouseEvent *e)
 
         // Clear marked tile
         if (m_markX != -1 && field(m_markX, m_markY) != clickedTile) {
-            // We need to set m_markX and m_markY to -1 before calling
-            // updateField() to ensure the tile is redrawn as unmarked.
-            int oldMarkX = m_markX;
-            int oldMarkY = m_markY;
-            m_markX = -1;
-            m_markY = -1;
-            updateField(oldMarkX, oldMarkY);
+            unmarkTile();
         } else {
             m_markX = -1;
             m_markY = -1;
@@ -973,7 +986,19 @@ int Board::penaltyTime() const
 void Board::marked(int x, int y)
 {
     if (field(x, y) == EMPTY) { // click on empty space on the board
-        return;
+        if (m_possibleMoves.count() > 1) {  // if the click is on any of the current possible moves, make that move
+            for (QList<PossibleMove>::iterator iter = m_possibleMoves.begin(); iter != m_possibleMoves.end(); ++iter) {
+                if (iter->isInPath(x, y)) {
+                    performMove(*iter);
+                    emit selectATile();
+                    return;
+                }
+            }
+        } else {
+            // unmark when not clicking on a tile
+            unmarkTile();
+            return;
+        }
     }
     // make sure that the previous connection is correctly undrawn
     undrawConnection(); // is this still needed? (schwarzer)
@@ -984,11 +1009,7 @@ void Board::marked(int x, int y)
 
     if (x == m_markX && y == m_markY) { // the piece is already marked
         // unmark the piece
-        m_markX = -1;
-        m_markY = -1;
-        drawPossibleMoves(false);
-        m_possibleMoves.clear();
-        updateField(x, y);
+        unmarkTile();
         emit selectATile();
         return;
     }
@@ -1016,8 +1037,9 @@ void Board::marked(int x, int y)
     int field1 = field(m_markX, m_markY);
     int field2 = field(x, y);
 
-    // both field match
+    // both tiles do not match
     if (!tilesMatch(field1, field2)) {
+        unmarkTile();
         emit tilesDontMatch();
         return;
     }

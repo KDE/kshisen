@@ -6,7 +6,9 @@ Changes since 1.8.0:
     - Every move is now followed by an x-second time frame in which
       the player can undo the move without being penalised.
     - The player has n penalty-free strikes after which every Undo is penalised
-
+ * fix non-selectable slide lines over empty fields
+ * tiles are now unmarked if the player clicks on empty space or unrelated
+   tiles
 
 Changes in 1.8.0:
  * add sounds
