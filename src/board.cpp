@@ -230,7 +230,7 @@ void Board::gravity(bool update)
 
 bool Board::gravity(int column, bool update)
 {
-    bool affected = false;
+    bool isAffected = false;
     if (m_gravityFlag) {
         int rptr = yTiles() - 1;
         int wptr = yTiles() - 1;
@@ -242,7 +242,7 @@ bool Board::gravity(int column, bool update)
                 if (field(column, rptr) != EMPTY) {
                     setField(column, wptr, field(column, rptr));
                     setField(column, rptr, EMPTY);
-                    affected = true;
+                    isAffected = true;
                     if (update) {
                         updateField(column, rptr);
                         updateField(column, wptr);
@@ -255,7 +255,7 @@ bool Board::gravity(int column, bool update)
             }
         }
     }
-    return affected;
+    return isAffected;
 }
 
 void Board::unmarkTile() {
