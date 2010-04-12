@@ -68,8 +68,8 @@ App::App(QWidget *parent)
   : KXmlGuiWindow(parent),
     m_gameTipLabel(0),
     m_gameTimerLabel(0),
-    m_gamePenaltyLabel(0),
     m_gameTilesLabel(0),
+    m_gameCheatLabel(0),
     m_board(0)
 {
     m_board = new Board(this);
@@ -96,11 +96,12 @@ void App::setupStatusBar()
     m_gameTimerLabel = new QLabel(i18n("Time: 0:00:00"), statusBar());
     statusBar()->addWidget(m_gameTimerLabel);
 
-    m_gamePenaltyLabel = new QLabel(i18n("Penalty: 0s"), statusBar());
-    statusBar()->addWidget(m_gamePenaltyLabel);
-
     m_gameTilesLabel = new QLabel(i18n("Removed: 0/0"), statusBar());
     statusBar()->addWidget(m_gameTilesLabel);
+
+    m_gameCheatLabel = new QLabel(i18n("Cheat mode"), statusBar());
+    statusBar()->addWidget(m_gameCheatLabel);
+    m_gameCheatLabel->hide();
 }
 
 void App::setupActions()
@@ -125,6 +126,7 @@ void App::setupActions()
     // Settings
     KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
 
+    connect(m_board, SIGNAL(cheatStatusChanged()), this, SLOT(updateCheatDisplay()));
     connect(m_board, SIGNAL(changed()), this, SLOT(updateItems()));
     connect(m_board, SIGNAL(tilesDontMatch()), this, SLOT(notifyTilesDontMatch()));
     connect(m_board, SIGNAL(invalidMove()), this, SLOT(notifyInvalidMove()));
@@ -136,8 +138,6 @@ void App::setupActions()
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTimeDisplay()));
     timer->start(1000);
 
-    // TODO: Try putting updateTileDisplay() in updateItems(), which is called by changed() anyway.
-    // This might help getting rid of the temporary hack in updateTimeDisplay()
     connect(m_board, SIGNAL(changed()), this, SLOT(updateTileDisplay()));
     connect(m_board, SIGNAL(endOfGame()), this, SLOT(slotEndOfGame()));
 
@@ -147,6 +147,7 @@ void App::setupActions()
 
 void App::newGame()
 {
+    setCheatModeEnabled(false);
     setPauseEnabled(false);
     updateItems();
 }
@@ -159,10 +160,10 @@ void App::restartGame()
     }
     m_board->resetRedo();
     m_board->resetTimer();
+    setCheatModeEnabled(false);
     m_board->setGameOverEnabled(false);
     m_board->setGameStuckEnabled(false);
     m_board->setUpdatesEnabled(true);
-    m_board->resetPenalty();
     updateItems();
 }
 
@@ -183,6 +184,7 @@ void App::undo()
         return;
     }
     m_board->undo();
+    setCheatModeEnabled(true);
 
     // If the game is stuck (no matching tiles anymore), the player can decide
     // to undo some steps and try a different approach.
@@ -202,7 +204,12 @@ void App::redo()
 
 void App::hint()
 {
+#ifdef DEBUGGING
+    m_board->makeHintMove();
+#else
     m_board->showHint();
+    setCheatModeEnabled(true);
+#endif
     updateItems();
 }
 
@@ -227,7 +234,6 @@ void App::updateItems()
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Pause))->setChecked(false);
         actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Hint))->setEnabled(true);
     }
-    updatePenaltyDisplay();
 }
 
 void App::slotEndOfGame()
@@ -237,13 +243,12 @@ void App::slotEndOfGame()
         KMessageBox::information(this, i18n("No more moves possible!"), i18n("End of Game"));
     } else {
         m_board->setGameOverEnabled(true);
-        int gameTime = m_board->currentTime() + m_board->penaltyTime();
         QString timeString = i18nc("time string: hh:mm:ss", "%1:%2:%3",
-                                    QString().sprintf("%02d", gameTime / 3600),
-                                    QString().sprintf("%02d", (gameTime / 60) % 60),
-                                    QString().sprintf("%02d", gameTime % 60));
+                                    QString().sprintf("%02d", m_board->currentTime() / 3600),
+                                    QString().sprintf("%02d", (m_board->currentTime() / 60) % 60),
+                                    QString().sprintf("%02d", m_board->currentTime() % 60));
         KScoreDialog::FieldInfo scoreInfo;
-        scoreInfo[KScoreDialog::Score].setNum(score(m_board->xTiles(), m_board->yTiles(), gameTime, m_board->gravityFlag()));
+        scoreInfo[KScoreDialog::Score].setNum(score(m_board->xTiles(), m_board->yTiles(), m_board->currentTime(), m_board->gravityFlag()));
         scoreInfo[KScoreDialog::Time] = timeString;
 
         KScoreDialog scoreDialog(KScoreDialog::Name | KScoreDialog::Time | KScoreDialog::Score, this);
@@ -256,13 +261,18 @@ void App::slotEndOfGame()
         }
         scoreDialog.setConfigGroup(QString("%1x%2").arg(sizeX[Prefs::size()]).arg(sizeY[Prefs::size()]));
 
-        if (scoreDialog.addScore(scoreInfo)) {
-            QString message = i18n("Congratulations!\nYou made it into the hall of fame.");
-            scoreDialog.setComment(message);
-            scoreDialog.exec();
-        } else {
-            QString message = i18nc("%1 - time string like hh:mm:ss", "You made it in %1", timeString);
+        if (m_board->hasCheated()) {
+            QString message = i18n("\nYou could have been in the highscores\nif you did not use Undo or Hint.\nTry without them next time.");
             KMessageBox::information(this, message, i18n("End of Game"));
+        } else {
+            if (scoreDialog.addScore(scoreInfo)) {
+                QString message = i18n("Congratulations!\nYou made it into the hall of fame.");
+                scoreDialog.setComment(message);
+                scoreDialog.exec();
+            } else {
+                QString message = i18nc("%1 - time string like hh:mm:ss", "You made it in %1", timeString);
+                KMessageBox::information(this, message, i18n("End of Game"));
+            }
         }
     }
     updateItems();
@@ -281,13 +291,6 @@ void App::updateTimeDisplay()
                             QString().sprintf("%02d", currentTime % 60),
                             m_board->isPaused() ? i18n("(Paused) ") : QString());
 
-#ifdef DEBUGGING
-    if (m_board->penaltyVacation()) {
-        message.append(" v ");
-    } else {
-        message.append("   ");
-    }
-#endif
     m_gameTimerLabel->setText(message);
     // temporary hack until I find out why m_board->tilesLeft() in updateTileDisplay() counts the previous state of the board, not the current (schwarzer)
     updateTileDisplay();
@@ -304,10 +307,9 @@ void App::updateTileDisplay()
     m_gameTilesLabel->setText(message);
 }
 
-void App::updatePenaltyDisplay()
+void App::updateCheatDisplay()
 {
-    // xgettext: no-c-format
-    m_gamePenaltyLabel->setText(i18n("Penalty: %1s", m_board->penaltyTime()));
+    m_gameCheatLabel->setVisible(m_board->hasCheated());
 }
 
 int App::score(int x, int y, int seconds, bool gravity) const
@@ -348,6 +350,12 @@ void App::notifyTilesDontMatch()
 void App::notifyInvalidMove()
 {
     m_gameTipLabel->setText(i18n("You cannot make this move"));
+}
+
+void App::setCheatModeEnabled(bool enabled)
+{
+    m_board->setCheatModeEnabled(enabled);
+    m_gameCheatLabel->setVisible(enabled);
 }
 
 void App::showHighscores()

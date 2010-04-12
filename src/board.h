@@ -39,8 +39,6 @@
 
 #include <phonon/mediaobject.h>
 
-class QTimer;
-
 // used in board.cpp and app.cpp, thus defined here
 static int sizeX[6] = {14, 16, 18, 24, 26, 30};
 static int sizeY[6] = { 6,  9,  8, 12, 14, 16};
@@ -202,6 +200,8 @@ public:
     void setGameStuckEnabled(bool enabled);
     /// Sets whether the game is over
     void setGameOverEnabled(bool enabled);
+    /// Sets whether the game is in cheat mode
+    void setCheatModeEnabled(bool enabled);
 
     /** Returns whether the game is over.
      * @return True if game is over, False if game is not over
@@ -218,17 +218,10 @@ public:
      */
     bool isStuck() const;
 
-    /** Returns whether we are in penalty-free time frame.
-     * @return True if we are in penalty-free time, False if safe time is up
-     * @see enterPenaltyVacation()
-     */
-    bool penaltyVacation() const;
-
-    /// Returns the current time penalty in seconds
-    int penaltyTime() const;
-    /// Resets the penalty time
-    void resetPenalty();
-
+    /** Returns whether player is in cheat mode.
+    * @return True if the player is in cheat mode, False if not
+    */
+    bool hasCheated() const;
 
 signals:
     void markMatched(); // unused?
@@ -241,6 +234,7 @@ signals:
     void selectATile();
     void selectAMove();
     void selectAMatchingTile();
+    void cheatStatusChanged();
 
 public slots:
     /** Does most of the newGame work.
@@ -357,17 +351,6 @@ private: // functions
      */
     void gravity(bool update);
 
-    /** Starts the penaltyVacation time.
-     * penaltyVacation is a short time frame after every move where
-     * the player can undo a move without being punished with an
-     * x-second penalty.
-     */
-    void enterPenaltyVacation();
-    /// Ends the penaltyVacation time
-    void endPenaltyVacation();
-    /// Adds the given penalty time (in seconds) to the penaltyTime
-    void imposePenalty(int seconds);
-
 private:
     KGameClock m_gameClock;
 
@@ -392,6 +375,7 @@ private:
     bool m_isPaused; ///< Whether game is paused
     bool m_isStuck; ///< Whether game has no more matching tiles
     bool m_isOver; ///< Whether game is over
+    bool m_cheat; ///< Whether the cheat mode is set
 
     bool m_gravityFlag; ///< Whether gravity flag is set
     bool m_solvableFlag; ///< Whether solvable flag is set
@@ -408,9 +392,6 @@ private:
     QPair<int, int> m_tileRemove1;
     QPair<int, int> m_tileRemove2;
     Phonon::MediaObject *m_media; ///< MediaObject to play sounds
-    QTimer *m_vacationTimer; ///< Controls the timeout for the penaltyVacation
-    int m_penaltyFreeStrikes; ///< Holds the number of times the player used Undo within penalty-free time
-    int m_penaltyTime; ///< Holds the current penalty time if the player used hint or undo
 };
 
 #endif // BOARD_H

@@ -47,10 +47,10 @@ private slots:
     void updateItems();
     /// Updated the time display in the status bar
     void updateTimeDisplay();
-    /// Updates the penalty timer in the status bar
-    void updatePenaltyDisplay();
     /// Updates the tiles removed display in the status bar
     void updateTileDisplay();
+    /// Updates the cheat status display in the status bar
+    void updateCheatDisplay();
     /// Shows the settings dialog
     void showSettings(); // const?
 
@@ -83,15 +83,15 @@ private slots:
     void setPauseEnabled(bool enable);
 
     /** Undoes one move.
-     * The Undo action should add a time penalty, so the user cannot end up in
+     * The Undo action should set the cheat flag, so the user cannot end up in
      * the highscore dialog by making bad decisions. :)
      */
     void undo();
     /// Redoes an undone move
     void redo();
 
-    /** Shows a hint.
-     * The Hint action should add a time penalty, so the user cannot end up in
+    /** Shows a hint and sets cheat flag.
+     * The Hint action should set the cheat flag, so the user cannot end up in
      * the highscore dialog by having been told what to do. :)
      */
     void hint();
@@ -119,17 +119,19 @@ private:
      * - game tip
      * - timer
      * - tile count
-     * - penalty time
+     * - cheat mode
      */
     void setupStatusBar();
     /// Sets up the needed actions and adds them to the action collection
     void setupActions();
+    /// Sets the cheat mode
+    void setCheatModeEnabled(bool enabled);
 
 private:
     QLabel *m_gameTipLabel; ///< Status bar area for game tips
     QLabel *m_gameTimerLabel; ///< Status bar area for the timer
-    QLabel *m_gamePenaltyLabel; ///< Status bar area for the penalty timer
     QLabel *m_gameTilesLabel; ///< Status bar area for the tile counter
+    QLabel *m_gameCheatLabel; ///< Status bar area for the cheat mode
     Board *m_board; ///< Holds the game board
 };
 
