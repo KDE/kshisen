@@ -376,9 +376,7 @@ void Board::setSize(int x, int y)
         return;
     }
 
-    if (m_field != 0) {
-        delete [] m_field;
-    }
+    delete [] m_field;
 
     m_field = new int[ x * y ];
     m_xTiles = x;
