@@ -636,10 +636,8 @@ void Board::updateField(int x, int y)
 void Board::paintEvent(QPaintEvent *e)
 {
     QRect ur = e->rect();            // rectangle to update
-    QPixmap pm(ur.size());           // Pixmap for double-buffering
-    pm.fill(this, ur.topLeft());     // fill with widget background
-    QPainter p(&pm);
-    p.translate(-ur.x(), -ur.y());   // use widget coordinate system
+    QPainter p(this);
+    p.fillRect(ur, m_background.getBackground());
 
     if (m_isPaused || m_isOver) {
         int boxWidth = width() * 0.7;
@@ -687,10 +685,6 @@ void Board::paintEvent(QPaintEvent *e)
             }
         }
     }
-    p.end();
-
-    p.begin(this);
-    p.drawPixmap(ur.topLeft(), pm);
 
     if (m_paintConnection) {
         p.setPen(QPen(QColor("red"), lineWidth()));
