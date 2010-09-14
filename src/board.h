@@ -368,6 +368,7 @@ private:
     int m_xTiles;
     int m_yTiles;
     int m_delay;
+    int m_level;
     int m_shuffle;
 
     bool m_isPaused; ///< Whether game is paused

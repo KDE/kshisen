@@ -73,7 +73,7 @@ Board::Board(QWidget *parent)
     m_markX(0), m_markY(0),
     m_field(0),
     m_xTiles(0), m_yTiles(0),
-    m_delay(0), m_shuffle(0),
+    m_delay(0), m_level(0), m_shuffle(0),
     m_isPaused(false), m_isStuck(false), m_isOver(false), m_cheat(false),
     m_gravityFlag(true), m_solvableFlag(true), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
     m_highlightedTile(-1), m_connectionTimeout(0),
@@ -127,6 +127,11 @@ void Board::loadSettings()
     setGravityFlag(Prefs::gravity());
     setDelay(s_delay[Prefs::speed()]);
     setSoundsEnabled(Prefs::sounds());
+
+    if( m_level != Prefs::level() ) { 
+        QTimer::singleShot( 0, this, SLOT( newGame() ) );
+    }
+    m_level = Prefs::level();
 }
 
 bool Board::loadTileset(const QString &pathToTileset)
