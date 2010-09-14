@@ -476,7 +476,7 @@ void Board::newGame()
         }
     }
 
-    if (shuffle() == 0) {
+    if (m_shuffle == 0) {
         update();
         resetTimer();
         emit newGameStarted();
@@ -488,7 +488,7 @@ void Board::newGame()
     // shuffle the field
     int tx = xTiles();
     int ty = yTiles();
-    for (int i = 0; i < tx * ty * shuffle(); ++i) {
+    for (int i = 0; i < tx * ty * m_shuffle; ++i) {
         int x1 = m_random.getLong(tx);
         int y1 = m_random.getLong(ty);
         int x2 = m_random.getLong(tx);
@@ -1835,20 +1835,6 @@ bool Board::hint_I(PossibleMoves &possibleMoves) const
     }
 
     return false;
-}
-
-void Board::setShuffle(int newValue)
-{
-    if (m_shuffle == newValue) {
-        return;
-    }
-    m_shuffle = newValue;
-    newGame();
-}
-
-int Board::shuffle() const
-{
-    return m_shuffle;
 }
 
 int Board::tilesLeft() const

@@ -159,8 +159,6 @@ public:
 
     void setSize(int x, int y);
     void resizeBoard();
-    void setShuffle(int);
-    int  shuffle() const;
 
     void showHint();
     bool hint_I(PossibleMoves &possibleMoves) const;
