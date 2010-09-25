@@ -73,7 +73,7 @@ App::App(QWidget *parent)
     m_board(0)
 {
     m_board = new Board(this);
-    m_board->setObjectName("board");
+    m_board->setObjectName( QLatin1String("board" ));
 
     setCentralWidget(m_board);
 
@@ -118,9 +118,9 @@ void App::setupActions()
     KStandardGameAction::redo(this, SLOT(redo()), actionCollection());
     KStandardGameAction::hint(this, SLOT(hint()), actionCollection());
 
-    KToggleAction *soundAction = new KToggleAction(KIcon("speaker"), i18n("Play Sounds"), this);
+    KToggleAction *soundAction = new KToggleAction(KIcon( QLatin1String( "speaker") ), i18n("Play Sounds" ), this);
     soundAction->setChecked(Prefs::sounds());
-    actionCollection()->addAction("sounds", soundAction);
+    actionCollection()->addAction( QLatin1String( "sounds" ), soundAction);
     connect(soundAction, SIGNAL(triggered(bool)), m_board, SLOT(setSoundsEnabled(bool)));
 
     // Settings
