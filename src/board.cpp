@@ -128,7 +128,7 @@ void Board::loadSettings()
     setDelay(s_delay[Prefs::speed()]);
     setSoundsEnabled(Prefs::sounds());
 
-    if( m_level != Prefs::level() ) { 
+    if( m_level != Prefs::level() ) {
         QTimer::singleShot( 0, this, SLOT( newGame() ) );
     }
     m_level = Prefs::level();
