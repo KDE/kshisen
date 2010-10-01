@@ -30,10 +30,10 @@
    <item>
     <widget class="QCheckBox" name="kcfg_Solvable">
      <property name="whatsThis">
-      <string>&lt;b&gt;Allow unsolvable games&lt;/b&gt;&lt;p&gt;If checked, you run the risk of being presented with games that are impossible to solve.&lt;/p&gt;&lt;p&gt;Note: Even if not checked, you will fail to complete a game if you remove the tiles in the wrong order!&lt;/p&gt;</string>
+      <string>&lt;b&gt;Create solvable games only&lt;/b&gt;&lt;p&gt;If checked, you run the risk of being presented with games that are impossible to solve.&lt;/p&gt;&lt;p&gt;Note: Even if not checked, you will fail to complete a game if you remove the tiles in the wrong order!&lt;/p&gt;</string>
      </property>
      <property name="text">
-      <string>Allow unsolvable games</string>
+      <string>Create solvable games only</string>
      </property>
     </widget>
    </item>
