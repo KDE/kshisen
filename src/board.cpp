@@ -129,7 +129,7 @@ void Board::loadSettings()
     setSoundsEnabled(Prefs::sounds());
 
     if( m_level != Prefs::level() ) {
-        QTimer::singleShot( 0, this, SLOT( newGame() ) );
+        newGame();
     }
     m_level = Prefs::level();
 }
