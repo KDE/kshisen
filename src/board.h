@@ -376,10 +376,10 @@ private:
     bool m_isOver; ///< Whether game is over
     bool m_cheat; ///< Whether the cheat mode is set
 
-    bool m_gravityFlag; ///< Whether gravity flag is set
-    bool m_solvableFlag; ///< Whether solvable flag is set
-    bool m_chineseStyleFlag; ///< Whether Chinese style flag is set
-    bool m_tilesCanSlideFlag; ///< Whether tiles can slide flag is set
+    bool m_gravityFlag; ///< Whether game is played with gravity
+    bool m_solvableFlag; ///< Whether game is solvable
+    bool m_chineseStyleFlag; ///< Whether game follows Chinese rules
+    bool m_tilesCanSlideFlag; ///< Whether tiles can slide when connecting
     QList<int> m_gravCols;
 
     int m_highlightedTile;

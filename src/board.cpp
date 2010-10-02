@@ -75,7 +75,7 @@ Board::Board(QWidget *parent)
     m_xTiles(0), m_yTiles(0),
     m_delay(0), m_level(0), m_shuffle(0),
     m_isPaused(false), m_isStuck(false), m_isOver(false), m_cheat(false),
-    m_gravityFlag(true), m_solvableFlag(true), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
+    m_gravityFlag(true), m_solvableFlag(false), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
     m_highlightedTile(-1), m_connectionTimeout(0),
     m_paintConnection(false), m_paintPossibleMoves(false), m_paintInProgress(false), m_media(0)
 {
@@ -506,7 +506,7 @@ void Board::newGame()
         setField(x2, y2, t);
     }
 
-    // do not ensure solvable if m_solvableFlag is false
+    // if m_solvableFlag is false, the game does not need to be solvable; we can drop out here
     if (!m_solvableFlag) {
         update();
         resetTimer();
