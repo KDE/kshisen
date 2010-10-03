@@ -81,9 +81,6 @@ App::App(QWidget *parent)
     setupActions();
     setupGUI();
 
-    //Does this even make sense here? (schwarzer)
-    //qApp->processEvents();
-
     updateItems();
 }
 
