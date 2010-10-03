@@ -1,3 +1,7 @@
+Cnanges in 1.8.2:
+ * fix bug where the game board is not rebuilt when the difficulty level
+   has changed
+
 Changes in 1.8.1:
  * fix non-selectable slide lines over empty fields
  * tiles are now unmarked if the player clicks on empty space or unrelated
