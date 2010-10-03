@@ -73,7 +73,7 @@ Board::Board(QWidget *parent)
     m_markX(0), m_markY(0),
     m_field(0),
     m_xTiles(0), m_yTiles(0),
-    m_delay(0), m_shuffle(0),
+    m_delay(0), m_level(0), m_shuffle(0),
     m_isPaused(false), m_isStuck(false), m_isOver(false), m_cheat(false),
     m_gravityFlag(true), m_solvableFlag(true), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
     m_highlightedTile(-1), m_connectionTimeout(0),
@@ -127,6 +127,11 @@ void Board::loadSettings()
     setGravityFlag(Prefs::gravity());
     setDelay(s_delay[Prefs::speed()]);
     setSoundsEnabled(Prefs::sounds());
+
+    if( m_level != Prefs::level() ) {
+        newGame();
+    }
+    m_level = Prefs::level();
 }
 
 bool Board::loadTileset(const QString &pathToTileset)
@@ -478,7 +483,7 @@ void Board::newGame()
         }
     }
 
-    if (shuffle() == 0) {
+    if (m_shuffle == 0) {
         update();
         resetTimer();
         emit newGameStarted();
@@ -490,7 +495,7 @@ void Board::newGame()
     // shuffle the field
     int tx = xTiles();
     int ty = yTiles();
-    for (int i = 0; i < tx * ty * shuffle(); ++i) {
+    for (int i = 0; i < tx * ty * m_shuffle; ++i) {
         int x1 = m_random.getLong(tx);
         int y1 = m_random.getLong(ty);
         int x2 = m_random.getLong(tx);
@@ -1843,20 +1848,6 @@ bool Board::hint_I(PossibleMoves &possibleMoves) const
     }
 
     return false;
-}
-
-void Board::setShuffle(int newValue)
-{
-    if (m_shuffle == newValue) {
-        return;
-    }
-    m_shuffle = newValue;
-    newGame();
-}
-
-int Board::shuffle() const
-{
-    return m_shuffle;
 }
 
 int Board::tilesLeft() const

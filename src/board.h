@@ -159,8 +159,6 @@ public:
 
     void setSize(int x, int y);
     void resizeBoard();
-    void setShuffle(int);
-    int  shuffle() const;
 
     void showHint();
     bool hint_I(PossibleMoves &possibleMoves) const;
@@ -370,6 +368,7 @@ private:
     int m_xTiles;
     int m_yTiles;
     int m_delay;
+    int m_level;
     int m_shuffle;
 
     bool m_isPaused; ///< Whether game is paused
