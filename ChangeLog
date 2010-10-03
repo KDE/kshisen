@@ -1,6 +1,12 @@
 Changes since 1.8.1:
  * fix bug where the game board is not rebuilt when the difficulty level
    has changed
+ * fix logical error
+   Checking this option ensures that the created games are solvable.
+   The option label was wrong. I could have kept the label and
+   adjusted the code accordingly but I decided to keep the code and
+   switch the meaning of the label, since it makes more sense
+   this way.
 
 Changes in 1.8.1:
  * fix non-selectable slide lines over empty fields
