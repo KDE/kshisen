@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
   <!ENTITY kappname "&kshisen;">
-  <!ENTITY kappversion "1.7.0">     <!--Application version. Use this variable everywhere it's needed.-->
+  <!ENTITY kappversion "1.8.1">     <!--Application version. Use this variable everywhere it's needed.-->
   <!ENTITY package "kdegames">      <!-- do not change this! -->
   <!ENTITY % English "INCLUDE" >    <!-- change language only here -->
   <!ENTITY % addindex "IGNORE">     <!-- do not change this! -->
@@ -35,8 +35,8 @@
       <!-- TRANS:ROLES_OF_TRANSLATORS -->
     </authorgroup>
 
-    <date>2007-09-26</date>
-    <releaseinfo>&kappversion;</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
+    <date>2010-10-03</date>
+    <releaseinfo>&kappversion; (&kde; 4.5)</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
 
     <!--Short description of this document. Do not change unless necessary!-->
     <abstract>
@@ -173,7 +173,7 @@
       </note>
       <itemizedlist>
         <listitem><para>Lines may only cross empty areas of the board.</para></listitem>
-        <listitem><para>Some games are unsolvable. If you would like to avoid unsolvable games uncheck the option <guilabel>Allow unsolvable games</guilabel> in the configuration dialog.</para></listitem>
+        <listitem><para>Some games are unsolvable. If you would like to avoid unsolvable games check the option <guilabel>Create solvable games only</guilabel> in the configuration dialog.</para></listitem>
         <listitem><para>The scores are awarded for the time the player needs to remove all the tiles from the game board. Games with more tiles give more scores.</para></listitem>
         <listitem><para>If you played with the <guilabel>Gravity</guilabel> setting enabled, the score will be doubled.</para></listitem>
         <listitem><para>To be eligible for a place amongst the high scores player has to complete a game instance within the shortest period of time possible.</para></listitem>
@@ -185,7 +185,7 @@
   <chapter id="interface"><title>Interface Overview</title> <!-- do not change this! -->
     <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist> and <varlistentry>. Split the chapter into sections using <sect1(2,3)> for better viewing. -->
     <sect1 id="game-menu">
-      <title>The <guimenu>Game</guimenu> Menu</title>
+      <title>The Game Menu</title>
 
       <para>
         The <guimenu>Game</guimenu> menu lets you control the status of the current game:
@@ -252,7 +252,7 @@
     </sect1>
 
     <sect1 id="move-menu">
-      <title>The <guimenu>Move</guimenu> Menu</title>
+      <title>The Move Menu</title>
 
       <variablelist id="move-menu-undo">
         <varlistentry>
@@ -290,9 +290,19 @@
     </sect1>
 
     <sect1 id="settings-menu">
-      <title>The <guimenu>Settings</guimenu> Menu</title>
+      <title>The Settings Menu</title>
 
       <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice>
+              <guimenu>Settings</guimenu><guimenuitem>Play Sounds</guimenuitem>
+            </menuchoice>
+          </term>
+          <listitem><para>Plays a sound when you touch a tile by clicking with it the &LMB;
+               and when a tile is falling down playing with <guilabel>Gravity</guilabel> enabled.</para></listitem>
+        </varlistentry>
+
         <varlistentry>
           <term>
             <menuchoice>
@@ -343,7 +353,7 @@
     </sect1>
 
     <sect1 id="help"><!--This is a standard Help menubar entry. Only change if needed.-->
-      <title>The <guimenu>Help</guimenu> Menu</title>
+      <title>The Help Menu</title>
       &help.menu.documentation;
     </sect1>
 
@@ -384,6 +394,7 @@
     </screenshot>
 
     <variablelist>
+      <title><guilabel>General</guilabel> page</title>
       <varlistentry>
         <term><guilabel>Gravity</guilabel></term>
         <listitem><para>
@@ -393,11 +404,11 @@
       </varlistentry>
 
       <varlistentry>
-        <term><guilabel>Allow unsolvable games</guilabel></term>
+        <term><guilabel>Create solvable games only</guilabel></term>
         <listitem><para>
-            If checked, you run the risk of being presented with games that are
-            impossible to solve. Note: Even when not checked, you will fail to
-            complete a game if you remove the tiles in the wrong order.
+            If checked, you will only be presented with games that are possible to solve.
+            Note: Even in solvable games you can fail to complete if you remove the tiles 
+            in the wrong order.
         </para></listitem>
       </varlistentry>
 
@@ -443,9 +454,16 @@
       <varlistentry>
         <term><guilabel>Board Size</guilabel></term>
         <listitem><para>
-            This slider allows you to can change the number of tiles
+            This slider allows you to change the number of tiles
             on the board. The more tiles you have, the harder (and longer)
             the game will be.
+        </para></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guilabel>Tiles</guilabel> and <guilabel>Background</guilabel> page</term>
+        <listitem><para>
+            Select you favorite design for tiles and background.
         </para></listitem>
       </varlistentry>
 
