@@ -425,14 +425,14 @@
         <term><guilabel>Tiles can slide, but you can connect only in 2 lines instead of 3</guilabel></term>
         <listitem><para>
             This option changes the rules to the point where it almost
-            becomes a completely different game. When it is active, you can only remove
-            the tiles if they can be connected by a line consisting of only two segments
+            becomes a completely different game. When it is active, you can remove
+            the tiles only if they can be connected by a line consisting of one or two segments
             instead of the customary three. However, you are allowed to slide the tiles
             on the board, if the row or column where they are placed has some empty space.
-            To make a sliding move, you have to click on the tile containing the column or
+            To make a sliding move, you have to click first on the tile in the column or
             row that can slide, and then on the matching tile. If there are two possible
-            sliding moves, you will have to click on one of the two connecting lines to
-            choose your preferred move.
+            sliding moves, blue lines are shown indicating these moves. You then have to click
+            on one of the two lines to choose your preferred move.
         </para></listitem>
       </varlistentry>
 
