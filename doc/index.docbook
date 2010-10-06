@@ -180,6 +180,14 @@
       </itemizedlist>
       <note><title>Note:</title><para>If the player uses the <quote>Undo</quote> or <quote>Hint</quote> feature the record will not be considered as a high score.</para></note>
     </sect1>
+    <sect1 id="tips">
+      <title>Tips</title>
+      <para>
+        Click on a tile with the &RMB; to highlight all matching tiles on the board.
+        Unlike using the <quote>Undo</quote> or <quote>Hint</quote> feature, this
+        help is allowed without being considered cheating.
+      </para>
+    </sect1>
   </chapter>
 
   <chapter id="interface"><title>Interface Overview</title> <!-- do not change this! -->
