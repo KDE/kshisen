@@ -433,7 +433,7 @@
             To make a sliding move, you have to click on the tile containing the column or
             row that can slide, and then on the matching tile. If there are two possible
             sliding moves, you will have to click on one of the two connecting lines to
-            chose your preferred move.
+            choose your preferred move.
         </para></listitem>
       </varlistentry>
 
