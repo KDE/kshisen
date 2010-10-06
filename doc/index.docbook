@@ -180,6 +180,14 @@
       </itemizedlist>
       <note><title>Note:</title><para>If the player uses the <quote>Undo</quote> or <quote>Hint</quote> feature the record will not be considered as a high score.</para></note>
     </sect1>
+    <sect1 id="tips">
+      <title>Tips</title>
+      <para>
+        Click on a tile with the &RMB; to highlight all matching tiles on the board.
+        Unlike using the <quote>Undo</quote> or <quote>Hint</quote> feature, this
+        help is allowed without being considered cheating.
+      </para>
+    </sect1>
   </chapter>
 
   <chapter id="interface"><title>Interface Overview</title> <!-- do not change this! -->
@@ -362,7 +370,6 @@
   <chapter id="faq"><title>Frequently asked questions</title> <!-- do not change this! -->
     <!--This chapter is for frequently asked questions. Please use <qandaset> <qandaentry> only!-->
     <qandaset>
-      <!--Following is a standard list of FAQ questions.-->
       <qandaentry>
         <question><para>I want to change the way this game looks. Can I?</para></question>
         <answer><para>Yes. To change the way &kappname; looks use the <link linkend="game-settings-settings">menubar</link> to open the <link linkend="configuration">configuration utility</link>.</para></answer>
@@ -426,14 +433,14 @@
         <term><guilabel>Tiles can slide, but you can connect only in 2 lines instead of 3</guilabel></term>
         <listitem><para>
             This option changes the rules to the point where it almost
-            becomes a completely different game. When it is active, you can only remove
-            the tiles if they can be connected by a line consisting of only two segments
+            becomes a completely different game. When it is active, you can remove
+            the tiles only if they can be connected by a line consisting of one or two segments
             instead of the customary three. However, you are allowed to slide the tiles
             on the board, if the row or column where they are placed has some empty space.
-            To make a sliding move, you have to click on the tile containing the column or
+            To make a sliding move, you have to click first on the tile in the column or
             row that can slide, and then on the matching tile. If there are two possible
-            sliding moves, you will have to click on one of the two connecting lines to
-            chose your preferred move.
+            sliding moves, blue lines are shown indicating these moves. You then have to click
+            on one of the two lines to choose your preferred move.
         </para></listitem>
       </varlistentry>
 
@@ -529,17 +536,17 @@
       &kappname; Copyright 1997 &Mario.Weilguni; &Mario.Weilguni.mail;
     </para>
     <para>
-      &kappname; Copyright 2002-2004 Dave Corrie kde@davecorrie.com
+      &kappname; Copyright 2002-2004 Dave Corrie <email>kde@davecorrie.com</email>
     </para>
     <para>
-      &kappname; Copyright 2009 Frederik Schwarzer <email>schwarzerf@gmail.com</email>
+      &kappname; Copyright 2009-2010 Frederik Schwarzer <email>schwarzerf@gmail.com</email>
     </para>
 
     <para>
       Documentation Copyright 2000 &Dirk.Doerflinger; <email>ddoerflinger@gmx.net</email>
     </para>
     <para>
-      Documentation Copyright 2009 Frederik Schwarzer <email>schwarzerf@gmail.com</email>
+      Documentation Copyright 2009-2010 Frederik Schwarzer <email>schwarzerf@gmail.com</email>
     </para>
 
     <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
