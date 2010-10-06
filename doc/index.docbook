@@ -362,7 +362,6 @@
   <chapter id="faq"><title>Frequently asked questions</title> <!-- do not change this! -->
     <!--This chapter is for frequently asked questions. Please use <qandaset> <qandaentry> only!-->
     <qandaset>
-      <!--Following is a standard list of FAQ questions.-->
       <qandaentry>
         <question><para>I want to change the way this game looks. Can I?</para></question>
         <answer><para>Yes. To change the way &kappname; looks use the <link linkend="game-settings-settings">menubar</link> to open the <link linkend="configuration">configuration utility</link>.</para></answer>
@@ -529,17 +528,17 @@
       &kappname; Copyright 1997 &Mario.Weilguni; &Mario.Weilguni.mail;
     </para>
     <para>
-      &kappname; Copyright 2002-2004 Dave Corrie kde@davecorrie.com
+      &kappname; Copyright 2002-2004 Dave Corrie <email>kde@davecorrie.com</email>
     </para>
     <para>
-      &kappname; Copyright 2009 Frederik Schwarzer <email>schwarzerf@gmail.com</email>
+      &kappname; Copyright 2009-2010 Frederik Schwarzer <email>schwarzerf@gmail.com</email>
     </para>
 
     <para>
       Documentation Copyright 2000 &Dirk.Doerflinger; <email>ddoerflinger@gmx.net</email>
     </para>
     <para>
-      Documentation Copyright 2009 Frederik Schwarzer <email>schwarzerf@gmail.com</email>
+      Documentation Copyright 2009-2010 Frederik Schwarzer <email>schwarzerf@gmail.com</email>
     </para>
 
     <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
