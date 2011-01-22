@@ -237,6 +237,7 @@ void App::slotEndOfGame()
 {
     if (m_board->tilesLeft() > 0) {
         m_board->setGameStuckEnabled(true);
+        KMessageBox::information(this, i18n("No more moves possible!"), i18n("End of Game"));
     } else {
         m_board->setGameOverEnabled(true);
         QString timeString = i18nc("time string: hh:mm:ss", "%1:%2:%3",

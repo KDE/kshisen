@@ -644,7 +644,7 @@ void Board::paintEvent(QPaintEvent *e)
     QPainter p(this);
     p.fillRect(ur, m_background.getBackground());
 
-    if (m_isPaused || m_isOver || m_isStuck) {
+    if (m_isPaused || m_isOver) {
         int boxWidth = width() * 0.7;
         int boxHeight = height() * 0.8;
         QRect contentsRect = QRect((width() - boxWidth) / 2, (height() - boxHeight) / 2, boxWidth, boxHeight);
@@ -661,8 +661,6 @@ void Board::paintEvent(QPaintEvent *e)
             p.drawText(contentsRect, Qt::AlignCenter|Qt::TextWordWrap, i18n("Game Paused\nClick to resume game."));
         } else if (m_isOver) {
             p.drawText(contentsRect, Qt::AlignCenter|Qt::TextWordWrap, i18n("Game Over\nClick to start a new game."));
-        } else { // m_isStuck
-            p.drawText(contentsRect, Qt::AlignCenter|Qt::TextWordWrap, i18n("Game Stuck\nNo more moves possible."));
         }
     } else {
         int w = m_tiles.width();
