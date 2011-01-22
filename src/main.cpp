@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "app.h"
-#include "commit.h"
+//#include "commit.h"
 #include "version.h"
 
 #include <kapplication.h>
@@ -33,7 +33,7 @@ static const char description[] = I18N_NOOP("A KDE game similar to Mahjongg");
 int main(int argc, char **argv)
 {
     KAboutData aboutData("kshisen", 0, ki18n("Shisen-Sho"),
-                         KSHISEN_VERSION " #" KSHISEN_COMMIT, ki18n(description), KAboutData::License_GPL,
+                         KSHISEN_VERSION/* " #" KSHISEN_COMMIT*/, ki18n(description), KAboutData::License_GPL,
                          ki18n("(c) 1997, Mario Weilguni"), KLocalizedString(), "http://games.kde.org/kshisen");
     aboutData.addAuthor(ki18n("Frederik Schwarzer"), ki18n("Current Maintainer"), "schwarzerf@gmail.com");
     aboutData.addAuthor(ki18n("Dave Corrie"), ki18n("Former Maintainer"), "kde@davecorrie.com");
