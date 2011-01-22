@@ -24,7 +24,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-//#include "debug.h"
+#include "debug.h"
 
 #include <kgameclock.h>
 #include <kmahjonggtileset.h>
