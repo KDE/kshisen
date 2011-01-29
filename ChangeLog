@@ -1,4 +1,7 @@
-Changes since 1.8.1:
+Changes since 1.8.2:
+ * replace "game is stuck" notification dialog with overlay message
+
+Changes in 1.8.2:
  * fix bug where the game board is not rebuilt when the difficulty level
    has changed
  * fix logical error
