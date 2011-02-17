@@ -648,11 +648,11 @@ void Board::paintEvent(QPaintEvent *e)
     p.fillRect(ur, m_background.getBackground());
 
     if (m_isPaused || m_isOver || m_isStuck) {
-        int boxWidth = width() * 0.7;
-        int boxHeight = height() * 0.8;
+        int boxWidth = width() * 0.6;
+        int boxHeight = height() * 0.6;
         QRect contentsRect = QRect((width() - boxWidth) / 2, (height() - boxHeight) / 2, boxWidth, boxHeight);
         QFont font;
-        int fontsize = 36;
+        int fontsize = boxHeight / 13;
         font.setPointSize(fontsize);
         p.setFont(font);
         //     p.setPen(QPen(QColor("black")));
