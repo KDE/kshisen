@@ -69,15 +69,15 @@ bool PossibleMove::isInPath(int x, int y) const
 }
 
 Board::Board(QWidget *parent)
-  : QWidget(parent),
-    m_markX(0), m_markY(0),
-    m_field(0),
-    m_xTiles(0), m_yTiles(0),
-    m_delay(0), m_level(0), m_shuffle(0),
-    m_isPaused(false), m_isStuck(false), m_isOver(false), m_cheat(false),
-    m_gravityFlag(true), m_solvableFlag(false), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
-    m_highlightedTile(-1), m_connectionTimeout(0),
-    m_paintConnection(false), m_paintPossibleMoves(false), m_paintInProgress(false), m_media(0)
+    : QWidget(parent),
+      m_markX(0), m_markY(0),
+      m_field(0),
+      m_xTiles(0), m_yTiles(0),
+      m_delay(0), m_level(0), m_shuffle(0),
+      m_isPaused(false), m_isStuck(false), m_isOver(false), m_cheat(false),
+      m_gravityFlag(true), m_solvableFlag(false), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
+      m_highlightedTile(-1), m_connectionTimeout(0),
+      m_paintConnection(false), m_paintPossibleMoves(false), m_paintInProgress(false), m_media(0)
 {
     m_tileRemove1.first = -1;
 
@@ -128,7 +128,7 @@ void Board::loadSettings()
     setDelay(s_delay[Prefs::speed()]);
     setSoundsEnabled(Prefs::sounds());
 
-    if( m_level != Prefs::level() ) {
+    if (m_level != Prefs::level()) {
         newGame();
     }
     m_level = Prefs::level();
@@ -192,7 +192,7 @@ void Board::setField(int x, int y, int value)
 {
     if (x < 0 || y < 0 || x >= xTiles() || y >= yTiles()) {
         kFatal() << "Attempted write to invalid field position "
-        "(" << x << "," << y << ")";
+                 "(" << x << "," << y << ")";
     }
 
     m_field[y * xTiles() + x] = value;
@@ -204,7 +204,7 @@ int Board::field(int x, int y) const
 #ifdef DEBUGGING
     if (x < -1 || y < -1 || x > xTiles() || y > yTiles()) {
         kFatal() << "Attempted read from invalid field position "
-        "(" << x << "," << y << ")";
+                 "(" << x << "," << y << ")";
     }
 #endif
 
@@ -263,7 +263,8 @@ bool Board::gravity(int column, bool update)
     return isAffected;
 }
 
-void Board::unmarkTile() {
+void Board::unmarkTile()
+{
     // if nothing is marked, nothing to do
     if (m_markX == -1 || m_markY == -1) {
         return;
@@ -661,11 +662,11 @@ void Board::paintEvent(QPaintEvent *e)
         p.drawRoundedRect(contentsRect, 10, 10);
 
         if (m_isPaused) {
-            p.drawText(contentsRect, Qt::AlignCenter|Qt::TextWordWrap, i18n("Game Paused\nClick to resume game."));
+            p.drawText(contentsRect, Qt::AlignCenter | Qt::TextWordWrap, i18n("Game Paused\nClick to resume game."));
         } else if (m_isOver) {
-            p.drawText(contentsRect, Qt::AlignCenter|Qt::TextWordWrap, i18n("Game Over\nClick to start a new game."));
+            p.drawText(contentsRect, Qt::AlignCenter | Qt::TextWordWrap, i18n("Game Over\nClick to start a new game."));
         } else { // m_isStuck
-            p.drawText(contentsRect, Qt::AlignCenter|Qt::TextWordWrap, i18n("Game Stuck\nNo more moves possible."));
+            p.drawText(contentsRect, Qt::AlignCenter | Qt::TextWordWrap, i18n("Game Stuck\nNo more moves possible."));
         }
     } else {
         int w = m_tiles.width();
@@ -1880,9 +1881,9 @@ bool Board::solvable(bool noRestore)
     PossibleMoves p;
     while (hint_I(p)) {
         kFatal(!tilesMatch(field(p.first().m_path.first().x, p.first().m_path.first().y), field(p.first().m_path.last().x, p.first().m_path.last().y)))
-        << "Removing unmatched tiles: (" << p.first().m_path.first().x << "," << p.first().m_path.first().y << ") => "
-        << field(p.first().m_path.first().x, p.first().m_path.first().y) << " (" << p.first().m_path.last().x << "," << p.first().m_path.last().y << ") => "
-        << field(p.first().m_path.last().x, p.first().m_path.last().y);
+                << "Removing unmatched tiles: (" << p.first().m_path.first().x << "," << p.first().m_path.first().y << ") => "
+                << field(p.first().m_path.first().x, p.first().m_path.first().y) << " (" << p.first().m_path.last().x << "," << p.first().m_path.last().y << ") => "
+                << field(p.first().m_path.last().x, p.first().m_path.last().y);
         setField(p.first().m_path.first().x, p.first().m_path.first().y, EMPTY);
         setField(p.first().m_path.last().x, p.first().m_path.last().y, EMPTY);
     }
@@ -1979,7 +1980,7 @@ QSize Board::sizeHint() const
     if (dpi < 75) {
         dpi = 75;
     }
-    return QSize(9*dpi, 7*dpi);
+    return QSize(9 * dpi, 7 * dpi);
 }
 
 void Board::resetTimer()

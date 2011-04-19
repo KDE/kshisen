@@ -59,21 +59,21 @@ class Settings : public QWidget, public Ui::Settings
 {
 public:
     Settings(QWidget *parent)
-            : QWidget(parent) {
+        : QWidget(parent) {
         setupUi(this);
     }
 };
 
 App::App(QWidget *parent)
-  : KXmlGuiWindow(parent),
-    m_gameTipLabel(0),
-    m_gameTimerLabel(0),
-    m_gameTilesLabel(0),
-    m_gameCheatLabel(0),
-    m_board(0)
+    : KXmlGuiWindow(parent),
+      m_gameTipLabel(0),
+      m_gameTimerLabel(0),
+      m_gameTilesLabel(0),
+      m_gameCheatLabel(0),
+      m_board(0)
 {
     m_board = new Board(this);
-    m_board->setObjectName( QLatin1String("board" ));
+    m_board->setObjectName(QLatin1String("board"));
 
     setCentralWidget(m_board);
 
@@ -115,9 +115,9 @@ void App::setupActions()
     KStandardGameAction::redo(this, SLOT(redo()), actionCollection());
     KStandardGameAction::hint(this, SLOT(hint()), actionCollection());
 
-    KToggleAction *soundAction = new KToggleAction(KIcon( QLatin1String( "speaker") ), i18n("Play Sounds" ), this);
+    KToggleAction *soundAction = new KToggleAction(KIcon(QLatin1String("speaker")), i18n("Play Sounds"), this);
     soundAction->setChecked(Prefs::sounds());
-    actionCollection()->addAction( QLatin1String( "sounds" ), soundAction);
+    actionCollection()->addAction(QLatin1String("sounds"), soundAction);
     connect(soundAction, SIGNAL(triggered(bool)), m_board, SLOT(setSoundsEnabled(bool)));
 
     // Settings
@@ -240,9 +240,9 @@ void App::slotEndOfGame()
     } else {
         m_board->setGameOverEnabled(true);
         QString timeString = i18nc("time string: hh:mm:ss", "%1:%2:%3",
-                                    QString().sprintf("%02d", m_board->currentTime() / 3600),
-                                    QString().sprintf("%02d", (m_board->currentTime() / 60) % 60),
-                                    QString().sprintf("%02d", m_board->currentTime() % 60));
+                                   QString().sprintf("%02d", m_board->currentTime() / 3600),
+                                   QString().sprintf("%02d", (m_board->currentTime() / 60) % 60),
+                                   QString().sprintf("%02d", m_board->currentTime() % 60));
         KScoreDialog::FieldInfo scoreInfo;
         scoreInfo[KScoreDialog::Score].setNum(score(m_board->xTiles(), m_board->yTiles(), m_board->currentTime(), m_board->gravityFlag()));
         scoreInfo[KScoreDialog::Time] = timeString;
@@ -282,10 +282,10 @@ void App::updateTimeDisplay()
     //kDebug() << "Time: " << m_board->currentTime();
     int currentTime = m_board->currentTime();
     QString message = i18n("Your time: %1:%2:%3 %4",
-                            QString().sprintf("%02d", currentTime / 3600),
-                            QString().sprintf("%02d", (currentTime / 60) % 60),
-                            QString().sprintf("%02d", currentTime % 60),
-                            m_board->isPaused() ? i18n("(Paused) ") : QString());
+                           QString().sprintf("%02d", currentTime / 3600),
+                           QString().sprintf("%02d", (currentTime / 60) % 60),
+                           QString().sprintf("%02d", currentTime % 60),
+                           m_board->isPaused() ? i18n("(Paused) ") : QString());
 
     m_gameTimerLabel->setText(message);
     // temporary hack until I find out why m_board->tilesLeft() in updateTileDisplay() counts the previous state of the board, not the current (schwarzer)
@@ -297,8 +297,8 @@ void App::updateTileDisplay()
     //kDebug() << "Tiles: " << m_board->tilesLeft();
     int numberOfTiles = (m_board->xTiles() * m_board->yTiles());
     QString message = i18n("Removed: %1/%2 ",
-                    QString().sprintf("%d", numberOfTiles - m_board->tilesLeft()),
-                    QString().sprintf("%d", numberOfTiles));
+                           QString().sprintf("%d", numberOfTiles - m_board->tilesLeft()),
+                           QString().sprintf("%d", numberOfTiles));
 
     m_gameTilesLabel->setText(message);
 }

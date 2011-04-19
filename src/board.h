@@ -70,9 +70,9 @@ class PossibleMove
 {
 public:
     PossibleMove(Path &path) :
-            m_path(path), m_hasSlide(false) { }
+        m_path(path), m_hasSlide(false) { }
     PossibleMove(Path &path, Path &slide) :
-            m_path(path), m_hasSlide(true), m_slide(slide) { }
+        m_path(path), m_hasSlide(true), m_slide(slide) { }
 
     bool isInPath(int x, int y) const;
 
@@ -111,11 +111,11 @@ class Move
 {
 public:
     Move(int x1, int y1, int x2, int y2, int tile) :
-            m_x1(x1), m_y1(y1), m_x2(x2), m_y2(y2), m_tile1(tile), m_tile2(tile), m_hasSlide(false), m_slideX1(-1), m_slideY1(-1), m_slideX2(-1), m_slideY2(-1) { }
+        m_x1(x1), m_y1(y1), m_x2(x2), m_y2(y2), m_tile1(tile), m_tile2(tile), m_hasSlide(false), m_slideX1(-1), m_slideY1(-1), m_slideX2(-1), m_slideY2(-1) { }
     Move(int x1, int y1, int x2, int y2, int tile1, int tile2) :
-            m_x1(x1), m_y1(y1), m_x2(x2), m_y2(y2), m_tile1(tile1), m_tile2(tile2), m_hasSlide(false), m_slideX1(-1), m_slideY1(-1), m_slideX2(-1), m_slideY2(-1) { }
+        m_x1(x1), m_y1(y1), m_x2(x2), m_y2(y2), m_tile1(tile1), m_tile2(tile2), m_hasSlide(false), m_slideX1(-1), m_slideY1(-1), m_slideX2(-1), m_slideY2(-1) { }
     Move(int x1, int y1, int x2, int y2, int tile1, int tile2, int slideX1, int slideY1, int slideX2, int slideY2) :
-            m_x1(x1), m_y1(y1), m_x2(x2), m_y2(y2), m_tile1(tile1), m_tile2(tile2), m_hasSlide(true), m_slideX1(slideX1), m_slideY1(slideY1), m_slideX2(slideX2), m_slideY2(slideY2) { }
+        m_x1(x1), m_y1(y1), m_x2(x2), m_y2(y2), m_tile1(tile1), m_tile2(tile2), m_hasSlide(true), m_slideX1(slideX1), m_slideY1(slideY1), m_slideX2(slideX2), m_slideY2(slideY2) { }
 
     int m_x1, m_y1, m_x2, m_y2; ///< coordinates of the two tiles that matched
     int m_tile1; ///< type of tile at first set of coordinates
