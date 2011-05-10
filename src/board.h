@@ -289,6 +289,8 @@ private: // functions
     void setField(int x, int y, int value);
     int field(int x, int y) const;
     void updateField(int, int);
+    void showInfoRect(QPainter &, const QString &message);
+    void drawTiles(QPainter &, QPaintEvent *);
     void clearHighlight();
 
     /** Checks if two tiles can match.
@@ -371,9 +373,8 @@ private:
     int m_level;
     int m_shuffle;
 
-    bool m_isPaused; ///< Whether game is paused
-    bool m_isStuck; ///< Whether game has no more matching tiles
-    bool m_isOver; ///< Whether game is over
+    enum GameState { Normal, Paused, Stuck, Over }; ///< Whether game is paused, has no more matching tiles or is over
+    GameState m_gameState;
     bool m_cheat; ///< Whether the cheat mode is set
 
     bool m_gravityFlag; ///< Whether game is played with gravity

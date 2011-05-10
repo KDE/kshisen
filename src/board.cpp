@@ -74,7 +74,7 @@ Board::Board(QWidget *parent)
       m_field(0),
       m_xTiles(0), m_yTiles(0),
       m_delay(0), m_level(0), m_shuffle(0),
-      m_isPaused(false), m_isStuck(false), m_isOver(false), m_cheat(false),
+      m_gameState(Normal), m_cheat(false),
       m_gravityFlag(true), m_solvableFlag(false), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
       m_highlightedTile(-1), m_connectionTimeout(0),
       m_paintConnection(false), m_paintPossibleMoves(false), m_paintInProgress(false), m_media(0)
@@ -290,16 +290,15 @@ void Board::mousePressEvent(QMouseEvent *e)
     if (m_paintInProgress) {
         return;
     }
-    if (m_isOver) {
-        newGame();
-        return;
-    }
-    if (m_isPaused) {
-        setPauseEnabled(false);
-        return;
-    }
-    if (m_isStuck) {
-        return;
+    switch (m_gameState) {
+        case Over:
+            newGame();
+            return;
+        case Paused:
+            setPauseEnabled(false);
+            return;
+        case Stuck:
+            return;
     }
     // Calculate field position
     int posX = (e->pos().x() - xOffset()) / (m_tiles.qWidth() * 2);
@@ -436,9 +435,7 @@ void Board::resizeBoard()
 
 void Board::newGame()
 {
-    m_isOver = false;
-    m_isPaused = false;
-    m_isStuck = false;
+    m_gameState = Normal;
     setCheatModeEnabled(false);
 
     m_markX = -1;
@@ -642,59 +639,72 @@ void Board::updateField(int x, int y)
     update(r);
 }
 
+void Board::showInfoRect(QPainter &p, const QString &message)
+{
+    int boxWidth = width() * 0.6;
+    int boxHeight = height() * 0.6;
+    QRect contentsRect = QRect((width() - boxWidth) / 2, (height() - boxHeight) / 2, boxWidth, boxHeight);
+    QFont font;
+    int fontsize = boxHeight / 13;
+    font.setPointSize(fontsize);
+    p.setFont(font);
+    p.setBrush(QBrush(QColor(100, 100, 100, 150)));
+    p.setRenderHint(QPainter::Antialiasing);
+    p.drawRoundedRect(contentsRect, 10, 10);
+
+    p.drawText(contentsRect, Qt::AlignCenter | Qt::TextWordWrap, message);
+}
+
+void Board::drawTiles(QPainter &p, QPaintEvent *e)
+{
+    int w = m_tiles.width();
+    int h = m_tiles.height();
+    int fw = m_tiles.qWidth() * 2;
+    int fh = m_tiles.qHeight() * 2;
+    for (int i = 0; i < xTiles(); ++i) {
+        for (int j = 0; j < yTiles(); ++j) {
+            int tile = field(i, j);
+            if (tile == EMPTY) {
+                continue;
+            }
+
+            int xpos = xOffset() + i * fw;
+            int ypos = yOffset() + j * fh;
+            QRect r(xpos, ypos, w, h);
+            if (e->rect().intersects(r)) {
+                if (isTileHighlighted(i, j)) {
+                    p.drawPixmap(xpos, ypos, m_tiles.selectedTile(1));
+                } else {
+                    p.drawPixmap(xpos, ypos, m_tiles.unselectedTile(1));
+                }
+
+                //draw face
+                p.drawPixmap(xpos, ypos, m_tiles.tileface(tile - 1));
+            }
+        }
+    }
+}
+
 void Board::paintEvent(QPaintEvent *e)
 {
-    QRect ur = e->rect();            // rectangle to update
+    QRect ur = e->rect(); // rectangle to update
     QPainter p(this);
     p.fillRect(ur, m_background.getBackground());
 
-    if (m_isPaused || m_isOver || m_isStuck) {
-        int boxWidth = width() * 0.6;
-        int boxHeight = height() * 0.6;
-        QRect contentsRect = QRect((width() - boxWidth) / 2, (height() - boxHeight) / 2, boxWidth, boxHeight);
-        QFont font;
-        int fontsize = boxHeight / 13;
-        font.setPointSize(fontsize);
-        p.setFont(font);
-        //     p.setPen(QPen(QColor("black")));
-        p.setBrush(QBrush(QColor(100, 100, 100, 150)));
-        p.setRenderHint(QPainter::Antialiasing);
-        p.drawRoundedRect(contentsRect, 10, 10);
-
-        if (m_isPaused) {
-            p.drawText(contentsRect, Qt::AlignCenter | Qt::TextWordWrap, i18n("Game Paused\nClick to resume game."));
-        } else if (m_isOver) {
-            p.drawText(contentsRect, Qt::AlignCenter | Qt::TextWordWrap, i18n("Game Over\nClick to start a new game."));
-        } else { // m_isStuck
-            p.drawText(contentsRect, Qt::AlignCenter | Qt::TextWordWrap, i18n("Game Stuck\nNo more moves possible."));
-        }
-    } else {
-        int w = m_tiles.width();
-        int h = m_tiles.height();
-        int fw = m_tiles.qWidth() * 2;
-        int fh = m_tiles.qHeight() * 2;
-        for (int i = 0; i < xTiles(); ++i) {
-            for (int j = 0; j < yTiles(); ++j) {
-                int tile = field(i, j);
-                if (tile == EMPTY) {
-                    continue;
-                }
-
-                int xpos = xOffset() + i * fw;
-                int ypos = yOffset() + j * fh;
-                QRect r(xpos, ypos, w, h);
-                if (e->rect().intersects(r)) {
-                    if (isTileHighlighted(i, j)) {
-                        p.drawPixmap(xpos, ypos, m_tiles.selectedTile(1));
-                    } else {
-                        p.drawPixmap(xpos, ypos, m_tiles.unselectedTile(1));
-                    }
-
-                    //draw face
-                    p.drawPixmap(xpos, ypos, m_tiles.tileface(tile - 1));
-                }
-            }
-        }
+    switch (m_gameState) {
+        case Normal:
+            drawTiles(p, e);
+            break;
+        case Paused:
+            showInfoRect(p, i18n("Game Paused\nClick to resume game."));
+            break;
+        case Stuck:
+            drawTiles(p, e);
+            showInfoRect(p, i18n("Game Stuck\nNo more moves possible."));
+            break;
+        case Over:
+            showInfoRect(p, i18n("Game Over\nClick to start a new game."));
+            break;
     }
 
     if (m_paintConnection) {
@@ -1824,7 +1834,7 @@ bool Board::hint_I(PossibleMoves &possibleMoves) const
         for (int y = 0; y < yTiles(); ++y) {
             int tile = field(x, y);
             if (tile != EMPTY && done[tile - 1] != 4) {
-                // for all these types of tile search path's
+                // for all these types of tile search paths
                 for (int xx = 0; xx < xTiles(); ++xx) {
                     for (int yy = 0; yy < yTiles(); ++yy) {
                         if (xx != x || yy != y) {
@@ -1961,13 +1971,14 @@ void Board::setTilesCanSlideFlag(bool enabled)
 
 void Board::setPauseEnabled(bool enabled)
 {
-    if (m_isPaused == enabled) {
+    if ((m_gameState == Paused && enabled) || m_gameState == Stuck) {
         return;
     }
-    m_isPaused = enabled;
-    if (m_isPaused) {
+    if (enabled) {
+        m_gameState = Paused;
         m_gameClock.pause();
     } else {
+        m_gameState = Normal;
         m_gameClock.resume();
     }
     emit changed();
@@ -2008,13 +2019,14 @@ void Board::resetRedo()
 
 void Board::setGameStuckEnabled(bool enabled)
 {
-    if (m_isStuck == enabled) {
+    if (m_gameState == Stuck && enabled) {
         return;
     }
-    m_isStuck = enabled;
-    if (m_isStuck) {
+    if (enabled) {
+        m_gameState = Stuck;
         m_gameClock.pause();
     } else {
+        m_gameState = Normal;
         m_gameClock.resume();
     }
     emit changed();
@@ -2023,10 +2035,10 @@ void Board::setGameStuckEnabled(bool enabled)
 
 void Board::setGameOverEnabled(bool enabled)
 {
-    if (m_isOver == enabled) {
+    if (m_gameState == Over && enabled) {
         return;
     }
-    m_isOver = enabled;
+    m_gameState = Over;
     emit changed();
     update();
 }
@@ -2042,17 +2054,17 @@ void Board::setCheatModeEnabled(bool enabled)
 
 bool Board::isOver() const
 {
-    return m_isOver;
+    return m_gameState == Over;
 }
 
 bool Board::isPaused() const
 {
-    return m_isPaused;
+    return m_gameState == Paused;
 }
 
 bool Board::isStuck() const
 {
-    return m_isStuck;
+    return m_gameState == Stuck;
 }
 
 bool Board::hasCheated() const
