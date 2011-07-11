@@ -291,13 +291,12 @@ void App::updateTimeDisplay()
                            m_board->isPaused() ? i18n("(Paused) ") : QString());
 
     m_gameTimerLabel->setText(message);
-    // temporary hack until I find out why m_board->tilesLeft() in updateTileDisplay() counts the previous state of the board, not the current (schwarzer)
+    // FIXME: temporary hack until I find out why m_board->tilesLeft() in updateTileDisplay() counts the previous state of the board, not the current (schwarzer)
     updateTileDisplay();
 }
 
 void App::updateTileDisplay()
 {
-    //kDebug() << "Tiles: " << m_board->tilesLeft();
     int numberOfTiles = (m_board->xTiles() * m_board->yTiles());
     QString message = i18n("Removed: %1/%2 ",
                            QString().sprintf("%d", numberOfTiles - m_board->tilesLeft()),
