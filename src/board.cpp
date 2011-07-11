@@ -162,7 +162,6 @@ bool Board::loadBackground(const QString &pathToBackground)
             Prefs::setBackground(pathToBackground);
             Prefs::self()->writeConfig();
             resizeBoard();
-            kDebug() << "Exit on success";
             return true;
         }
     }
@@ -174,7 +173,6 @@ bool Board::loadBackground(const QString &pathToBackground)
             resizeBoard();
         }
     }
-    kDebug() << "Exit on failure (fallback to Default)";
     return false;
 }
 
@@ -450,11 +448,7 @@ void Board::newGame()
     // distribute all tiles on board
     int curTile = 1;
     int tileCount = 0;
-    if (m_chineseStyleFlag) {
-        kDebug() << "==== Chinese flag is set";
-    } else {
-        kDebug() << "==== Chinese flag is not set";
-    }
+
     /*
      * Note by jwickers: i changed the way to distribute tiles
      *  in chinese mahjongg there are 4 tiles of each
@@ -487,7 +481,6 @@ void Board::newGame()
         resetTimer();
         emit newGameStarted();
         emit changed();
-        kDebug() << "Exit without shuffling";
         return;
     }
 
@@ -513,7 +506,6 @@ void Board::newGame()
         resetTimer();
         emit newGameStarted();
         emit changed();
-        kDebug() << "Exit if game does not need to be solvable";
         return;
     }
 
@@ -967,7 +959,6 @@ void Board::marked(int x, int y)
         emit selectAMatchingTile();
         return;
     } else if (m_possibleMoves.count() > 1) {  // if the click is on any of the current possible moves, make that move
-        //kDebug() << "marked: there may be a move to be selected";
 
         for (QList<PossibleMove>::iterator iter = m_possibleMoves.begin(); iter != m_possibleMoves.end(); ++iter) {
             if (iter->isInPath(x, y)) {
