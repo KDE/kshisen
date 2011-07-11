@@ -526,17 +526,17 @@ void Board::newGame()
     //jwickers: in case the game cannot make the game solvable we do not want to run an infinite loop
     int max_attempts = 200;
 
-    while (!solvable(true) && max_attempts > 0) {
+    while (!solvable(true) && maxAttempts > 0) {
         //kDebug() << "Not solvable";
         //dumpBoard();
 
         // generate a list of free tiles and positions
-        int num_tiles = 0;
+        int numberOfTiles = 0;
         for (int i = 0; i < xTiles() * yTiles(); ++i) {
             if (m_field[i] != EMPTY) {
-                pos[num_tiles] = i;
-                tiles[num_tiles] = m_field[i];
-                ++num_tiles;
+                pos[numberOfTiles] = i;
+                tiles[numberOfTiles] = m_field[i];
+                ++numberOfTiles;
             }
         }
 
@@ -544,17 +544,17 @@ void Board::newGame()
         memcpy(m_field, oldfield, fsize);
 
         // redistribute unsolved tiles
-        while (num_tiles > 0) {
+        while (numberOfTiles > 0) {
             // get a random tile
-            int r1 = m_random.getLong(num_tiles);
-            int r2 = m_random.getLong(num_tiles);
+            int r1 = m_random.getLong(numberOfTiles);
+            int r2 = m_random.getLong(numberOfTiles);
             int tile = tiles[r1];
             int apos = pos[r2];
 
             // truncate list
-            tiles[r1] = tiles[num_tiles-1];
-            pos[r2] = pos[num_tiles-1];
-            --num_tiles;
+            tiles[r1] = tiles[numberOfTiles-1];
+            pos[r2] = pos[numberOfTiles-1];
+            --numberOfTiles;
 
             // put this tile on the new position
             m_field[apos] = tile;
@@ -562,10 +562,10 @@ void Board::newGame()
 
         // remember field
         memcpy(oldfield, m_field, fsize);
-        --max_attempts;
+        --maxAttempts;
     }
     // debug, tell if make solvable failed
-    if (max_attempts == 0) {
+    if (maxAttempts == 0) {
         kDebug() << "NewGame make solvable failed";
     }
 
