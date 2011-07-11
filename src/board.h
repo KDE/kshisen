@@ -343,8 +343,7 @@ private: // functions
     QPoint midCoord(int x, int y) const;
     void unmarkTile();
     void marked(int x, int y);
-    void madeMove(int x1, int y1, int x2, int y2);
-    void madeMoveWithSlide(int x1, int y1, int x2, int y2, Path &slide);
+    void madeMove(int x1, int y1, int x2, int y2, Path slide = Path());
 
     /** Checks all columns and populate the affected columns in m_gravCols.
      * @param update FIXME: What is it for?

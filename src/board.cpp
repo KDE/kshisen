@@ -873,7 +873,7 @@ void Board::performMove(PossibleMove &possibleMoves)
     // and store the slide in a Move
     if (possibleMoves.m_hasSlide) {
         performSlide(m_markX, m_markY, possibleMoves.m_slide);
-        madeMoveWithSlide(m_markX, m_markY, possibleMoves.m_path.last().x, possibleMoves.m_path.last().y, possibleMoves.m_slide);
+        madeMove(m_markX, m_markY, possibleMoves.m_path.last().x, possibleMoves.m_path.last().y, possibleMoves.m_slide);
     } else {
         madeMove(m_markX, m_markY, possibleMoves.m_path.last().x, possibleMoves.m_path.last().y);
     }
@@ -1464,14 +1464,7 @@ int Board::delay() const
     return m_delay;
 }
 
-void Board::madeMove(int x1, int y1, int x2, int y2)
-{
-    Path slide;
-    slide.clear(); // TODO: needed?
-    madeMoveWithSlide(x1, y1, x2, y2, slide);
-}
-
-void Board::madeMoveWithSlide(int x1, int y1, int x2, int y2, Path &slide)
+void Board::madeMove(int x1, int y1, int x2, int y2, Path slide)
 {
     Move *move;
     if (slide.empty()) {
