@@ -524,7 +524,7 @@ void Board::newGame()
     int *tiles = new int[xTiles() * yTiles()];
     int *pos = new int[xTiles() * yTiles()];
     //jwickers: in case the game cannot make the game solvable we do not want to run an infinite loop
-    int max_attempts = 200;
+    int maxAttempts = 200;
 
     while (!solvable(true) && maxAttempts > 0) {
         //kDebug() << "Not solvable";
