@@ -710,12 +710,9 @@ void Board::paintEvent(QPaintEvent *e)
     if (m_paintConnection) {
         p.setPen(QPen(QColor("red"), lineWidth()));
 
-        // Path.size() will always be >= 2
-        Path::const_iterator pathEnd = m_connection.constEnd();
         Path::const_iterator pt1 = m_connection.constBegin();
-        Path::const_iterator pt2 = pt1;
-        ++pt2;
-        while (pt2 != pathEnd) {
+        Path::const_iterator pt2 = pt1 + 1;
+        while (pt2 != m_connection.constEnd()) {
             p.drawLine(midCoord(pt1->x, pt1->y), midCoord(pt2->x, pt2->y));
             ++pt1;
             ++pt2;
@@ -727,12 +724,9 @@ void Board::paintEvent(QPaintEvent *e)
         p.setPen(QPen(QColor("blue"), lineWidth()));
         // paint all possible moves
         for (QList<PossibleMove>::const_iterator iter = m_possibleMoves.constBegin(); iter != m_possibleMoves.constEnd(); ++iter) {
-            // Path.size() will always be >= 2
-            Path::const_iterator pathEnd = iter->m_path.constEnd();
             Path::const_iterator pt1 = iter->m_path.constBegin();
-            Path::const_iterator pt2 = pt1;
-            ++pt2;
-            while (pt2 != pathEnd) {
+            Path::const_iterator pt2 = pt1 + 1;
+            while (pt2 != iter->m_path.constEnd()) {
                 p.drawLine(midCoord(pt1->x, pt1->y), midCoord(pt2->x, pt2->y));
                 ++pt1;
                 ++pt2;
@@ -1403,17 +1397,13 @@ void Board::undrawConnection()
     }
 
     // Redraw all affected fields
-
     Path oldConnection = m_connection;
     m_connection.clear();
     m_paintConnection = false;
 
-    // Path.size() will always be >= 2
-    Path::const_iterator pathEnd = oldConnection.constEnd();
     Path::const_iterator pt1 = oldConnection.constBegin();
-    Path::const_iterator pt2 = pt1;
-    ++pt2;
-    while (pt2 != pathEnd) {
+    Path::const_iterator pt2 = pt1 + 1;
+    while (pt2 != oldConnection.constEnd()) {
         if (pt1->y == pt2->y) {
             for (int i = qMin(pt1->x, pt2->x); i <= qMax(pt1->x, pt2->x); ++i) {
                 updateField(i, pt1->y);
