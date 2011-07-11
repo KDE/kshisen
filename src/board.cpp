@@ -991,11 +991,11 @@ void Board::marked(int x, int y)
         }
     }
 
-    int field1 = field(m_markX, m_markY);
-    int field2 = field(x, y);
+    int tile1 = field(m_markX, m_markY);
+    int tile2 = field(x, y);
 
     // both tiles do not match
-    if (!tilesMatch(field1, field2)) {
+    if (!tilesMatch(tile1, tile2)) {
         unmarkTile();
         emit tilesDontMatch();
         return;
