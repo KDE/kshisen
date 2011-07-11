@@ -1035,15 +1035,16 @@ void Board::marked(int x, int y)
 
 void Board::clearHighlight()
 {
-    if (m_highlightedTile != -1) {
-        int oldHighlighted = m_highlightedTile;
-        m_highlightedTile = -1;
+    if (m_highlightedTile == -1) {
+        return;
+    }
+    int oldHighlighted = m_highlightedTile;
+    m_highlightedTile = -1;
 
-        for (int i = 0; i < xTiles(); ++i) {
-            for (int j = 0; j < yTiles(); ++j) {
-                if (tilesMatch(oldHighlighted, field(i, j))) {
-                    updateField(i, j);
-                }
+    for (int i = 0; i < xTiles(); ++i) {
+        for (int j = 0; j < yTiles(); ++j) {
+            if (tilesMatch(oldHighlighted, field(i, j))) {
+                updateField(i, j);
             }
         }
     }
@@ -1382,12 +1383,13 @@ void Board::drawConnection(int timeout)
 
 void Board::undrawConnection()
 {
-    if (m_tileRemove1.first != -1) {
-        setField(m_tileRemove1.first, m_tileRemove1.second, EMPTY);
-        setField(m_tileRemove2.first, m_tileRemove2.second, EMPTY);
-        m_tileRemove1.first = -1;
-        update();
+    if (m_tileRemove1.first == -1) {
+        return;
     }
+    setField(m_tileRemove1.first, m_tileRemove1.second, EMPTY);
+    setField(m_tileRemove2.first, m_tileRemove2.second, EMPTY);
+    m_tileRemove1.first = -1;
+    update();
 
     gravity(true); // why is this called here? (schwarzer)
 
