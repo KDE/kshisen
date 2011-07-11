@@ -1008,7 +1008,7 @@ void Board::marked(int x, int y)
     }
 
     // trace and perform the move and get the list of possible moves
-    if (findPath(m_markX, m_markY, x, y, m_possibleMoves)) {
+    if (findPath(m_markX, m_markY, x, y, m_possibleMoves) > 0) {
         if (m_possibleMoves.count() > 1) {
             //kDebug() << "marked: there was" << m_possibleMoves.count() << "moves possible for this";
             int withSlide = 0;
@@ -1097,7 +1097,7 @@ bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path &path) const
             }
             // if not found, cannot slide
             // if the first free tile is just next to the sliding tile, no slide (should be a normal move)
-            if (start_free == -1 || start_free == y1 - 1) {
+            if (start_free == -1 || start_free == (y1 - 1)) {
                 //kDebug() << "canSlideTiles no free";
                 return false;
             }
@@ -1273,7 +1273,7 @@ int Board::findPath(int x1, int y1, int x2, int y2, PossibleMoves &possibleMoves
         while (newX >= -1 && newX <= xTiles() &&
                 newY >= -1 && newY <= yTiles() &&
                 field(newX, newY) == EMPTY) {
-            if ((simplePath = findSimplePath(newX, newY, x2, y2, possibleMoves))) {
+            if ((simplePath = findSimplePath(newX, newY, x2, y2, possibleMoves)) > 0) {
                 possibleMoves.last().m_path.prepend(Position(x1, y1));
                 numberOfPaths += simplePath;
             }
@@ -1839,7 +1839,7 @@ bool Board::hint_I(PossibleMoves &possibleMoves) const
                     for (int yy = 0; yy < yTiles(); ++yy) {
                         if (xx != x || yy != y) {
                             if (tilesMatch(field(xx, yy), tile)) {
-                                if (findPath(x, y, xx, yy, possibleMoves)) {
+                                if (findPath(x, y, xx, yy, possibleMoves) > 0) {
                                     //kDebug() << "path.size() ==" << p.size();
                                     //for(Path::const_iterator i = p.constBegin(); i != p.constEnd(); ++i)
                                     //    kDebug() << "pathEntry: (" << i->x << "," << i->y

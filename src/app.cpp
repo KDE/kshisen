@@ -264,7 +264,7 @@ void App::slotEndOfGame()
             QString message = i18n("\nYou could have been in the highscores\nif you did not use Undo or Hint.\nTry without them next time.");
             KMessageBox::information(this, message, i18n("End of Game"));
         } else {
-            if (scoreDialog.addScore(scoreInfo)) {
+            if (scoreDialog.addScore(scoreInfo) > 0) {
                 QString message = i18n("Congratulations!\nYou made it into the hall of fame.");
                 scoreDialog.setComment(message);
                 scoreDialog.exec();
