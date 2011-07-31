@@ -380,7 +380,7 @@ void App::showSettings()
     dialog->addTilesetPage();
     dialog->addBackgroundPage();
     dialog->setHelp(QString(), "kshisen");
-    connect(dialog, SIGNAL(settingsChanged(const QString &)), m_board, SLOT(loadSettings()));
+    connect(dialog, SIGNAL(settingsChanged(QString)), m_board, SLOT(loadSettings()));
     dialog->show();
 }
 
