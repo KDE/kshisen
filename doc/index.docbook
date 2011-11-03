@@ -34,7 +34,7 @@
       </othercredit>
       <!-- TRANS:ROLES_OF_TRANSLATORS -->
     </authorgroup>
-
+    <legalnotice>&FDLNotice;</legalnotice>
     <date>2010-10-03</date>
     <releaseinfo>&kappversion; (&kde; 4.5)</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
 
