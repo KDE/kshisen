@@ -99,12 +99,12 @@ Board::~Board()
 void Board::loadSettings()
 {
     if (!loadTileset(Prefs::tileSet())) {
-        qDebug() << "An error occurred when loading the tileset" << Prefs::tileSet() << "KShisen will continue with the default tileset.";
+        kDebug() << "An error occurred when loading the tileset" << Prefs::tileSet() << "KShisen will continue with the default tileset.";
     }
 
     // Load background
     if (!loadBackground(Prefs::background())) {
-        qDebug() << "An error occurred when loading the background" << Prefs::background() << "KShisen will continue with the default background.";
+        kDebug() << "An error occurred when loading the background" << Prefs::background() << "KShisen will continue with the default background.";
     }
 
     // There are tile sets, that have only one tile for e.g. the flowers group.
