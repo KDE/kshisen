@@ -289,6 +289,8 @@ void Board::mousePressEvent(QMouseEvent *e)
         return;
     }
     switch (m_gameState) {
+        case Normal:
+            break;
         case Over:
             newGame();
             return;
@@ -297,8 +299,6 @@ void Board::mousePressEvent(QMouseEvent *e)
             return;
         case Stuck:
             return;
-        case Normal:
-            break;
     }
     // Calculate field position
     int posX = (e->pos().x() - xOffset()) / (m_tiles.qWidth() * 2);
