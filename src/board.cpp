@@ -298,7 +298,7 @@ void Board::mousePressEvent(QMouseEvent *e)
         case Stuck:
             return;
         case Normal:
-            return;
+            break;
     }
     // Calculate field position
     int posX = (e->pos().x() - xOffset()) / (m_tiles.qWidth() * 2);
