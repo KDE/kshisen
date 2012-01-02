@@ -121,7 +121,7 @@ void App::setupActions()
     connect(soundAction, SIGNAL(triggered(bool)), m_board, SLOT(setSoundsEnabled(bool)));
 
     // Settings
-    KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
+    KStandardAction::preferences(this, SLOT(showSettingsDialog()), actionCollection());
 
     connect(m_board, SIGNAL(cheatStatusChanged()), this, SLOT(updateCheatDisplay()));
     connect(m_board, SIGNAL(changed()), this, SLOT(updateItems()));
@@ -368,7 +368,7 @@ void App::keyBindings()
     KShortcutsDialog::configure(actionCollection(), KShortcutsEditor::LetterShortcutsAllowed, this);
 }
 
-void App::showSettings()
+void App::showSettingsDialog()
 {
     if (KConfigDialog::showDialog("settings")) {
         return;

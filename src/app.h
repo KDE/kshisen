@@ -52,7 +52,7 @@ private slots:
     /// Updates the cheat status display in the status bar
     void updateCheatDisplay();
     /// Shows the settings dialog
-    void showSettings(); // const?
+    void showSettingsDialog(); // const?
 
     void notifyTilesDontMatch();
     void notifyInvalidMove();
