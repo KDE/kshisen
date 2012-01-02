@@ -1354,13 +1354,12 @@ void Board::drawConnection(int timeout)
 
 void Board::undrawConnection()
 {
-    if (m_tileRemove1.first == -1) {
-        return;
+    if (m_tileRemove1.first != -1) {
+        setField(m_tileRemove1.first, m_tileRemove1.second, EMPTY);
+        setField(m_tileRemove2.first, m_tileRemove2.second, EMPTY);
+        m_tileRemove1.first = -1;
+        update();
     }
-    setField(m_tileRemove1.first, m_tileRemove1.second, EMPTY);
-    setField(m_tileRemove2.first, m_tileRemove2.second, EMPTY);
-    m_tileRemove1.first = -1;
-    update();
 
     gravity(true); // why is this called here? (schwarzer)
 
