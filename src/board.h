@@ -228,7 +228,7 @@ signals:
     void endOfGame();
     void resized();
     void invalidMove();
-    void tilesDontMatch();
+    void tilesDoNotMatch();
     void selectATile();
     void selectAMove();
     void selectAMatchingTile();

@@ -977,7 +977,7 @@ void Board::marked(int x, int y)
     // both tiles do not match
     if (!tilesMatch(tile1, tile2)) {
         unmarkTile();
-        emit tilesDontMatch();
+        emit tilesDoNotMatch();
         return;
     }
 

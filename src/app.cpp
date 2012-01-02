@@ -125,7 +125,7 @@ void App::setupActions()
 
     connect(m_board, SIGNAL(cheatStatusChanged()), this, SLOT(updateCheatDisplay()));
     connect(m_board, SIGNAL(changed()), this, SLOT(updateItems()));
-    connect(m_board, SIGNAL(tilesDontMatch()), this, SLOT(notifyTilesDontMatch()));
+    connect(m_board, SIGNAL(tilesDoNotMatch()), this, SLOT(notifyTilesDoNotMatch()));
     connect(m_board, SIGNAL(invalidMove()), this, SLOT(notifyInvalidMove()));
     connect(m_board, SIGNAL(selectATile()), this, SLOT(notifySelectATile()));
     connect(m_board, SIGNAL(selectAMatchingTile()), this, SLOT(notifySelectAMatchingTile()));
@@ -340,7 +340,7 @@ void App::notifySelectAMove()
     m_gameTipLabel->setText(i18n("Select the move you want by clicking on the blue line"));
 }
 
-void App::notifyTilesDontMatch()
+void App::notifyTilesDoNotMatch()
 {
     m_gameTipLabel->setText(i18n("This tile did not match the one you selected"));
 }

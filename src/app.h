@@ -54,7 +54,7 @@ private slots:
     /// Shows the settings dialog
     void showSettingsDialog(); // const?
 
-    void notifyTilesDontMatch();
+    void notifyTilesDoNotMatch();
     void notifyInvalidMove();
     void notifySelectATile();
     void notifySelectAMatchingTile();
