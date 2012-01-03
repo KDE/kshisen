@@ -76,7 +76,7 @@ Board::Board(QWidget *parent)
       m_delay(0), m_level(0), m_shuffle(0),
       m_gameState(Normal), m_cheat(false),
       m_gravityFlag(true), m_solvableFlag(false), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
-      m_highlightedTile(-1), m_connectionTimeout(0),
+      m_highlightedTile(-1),
       m_paintConnection(false), m_paintPossibleMoves(false), m_paintInProgress(false), m_media(0)
 {
     m_tileRemove1.first = -1;
@@ -708,7 +708,7 @@ void Board::paintEvent(QPaintEvent *e)
             ++pt1;
             ++pt2;
         }
-        QTimer::singleShot(m_connectionTimeout, this, SLOT(undrawConnection()));
+        QTimer::singleShot(delay(), this, SLOT(undrawConnection()));
         m_paintConnection = false;
     }
     if (m_paintPossibleMoves) {
@@ -859,7 +859,7 @@ void Board::performMove(PossibleMove &possibleMoves)
         madeMove(m_markX, m_markY, possibleMoves.m_path.last().x, possibleMoves.m_path.last().y);
     }
     drawPossibleMoves(false);
-    drawConnection(delay());
+    drawConnection();
     m_tileRemove1 = QPair<int, int>(m_markX, m_markY);
     m_tileRemove2 = QPair<int, int>(possibleMoves.m_path.last().x, possibleMoves.m_path.last().y);
     m_markX = -1;
@@ -1332,7 +1332,7 @@ void Board::drawPossibleMoves(bool b)
     update();
 }
 
-void Board::drawConnection(int timeout)
+void Board::drawConnection()
 {
     m_paintInProgress = true;
     if (m_connection.isEmpty()) {
@@ -1347,7 +1347,6 @@ void Board::drawConnection(int timeout)
     updateField(x1, y1);
     updateField(x2, y2);
 
-    m_connectionTimeout = timeout;
     m_paintConnection = true;
     update();
 }
@@ -1713,7 +1712,7 @@ void Board::showHint()
 
     if (hint_I(m_possibleMoves)) {
         m_connection = m_possibleMoves.first().m_path;
-        drawConnection(1000);
+        drawConnection();
     }
 }
 

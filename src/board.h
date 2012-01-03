@@ -338,7 +338,7 @@ private: // functions
     void performSlide(int x, int y, Path& s);
     void reverseSlide(int x, int y, int slideX1, int slideY1, int slideX2, int slideY2);
     bool isTileHighlighted(int x, int y) const;
-    void drawConnection(int timeout);
+    void drawConnection();
     void drawPossibleMoves(bool b);
     QPoint midCoord(int x, int y) const;
     void unmarkTile();
@@ -384,7 +384,6 @@ private:
 
     int m_highlightedTile;
 
-    int m_connectionTimeout;
     bool m_paintConnection;
     bool m_paintPossibleMoves;
     bool m_paintInProgress;
