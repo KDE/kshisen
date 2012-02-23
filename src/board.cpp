@@ -3,7 +3,7 @@
  *   Copyright 1997   Mario Weilguni <mweilguni@sime.com>                  *
  *   Copyright 2002-2004  Dave Corrie <kde@davecorrie.com>                 *
  *   Copyright 2007  Mauricio Piacentini <mauricio@tabuleiro.com>          *
- *   Copyright 2009-2012  Frederik Schwarzer <schwarzerf@gmail.com>        *
+ *   Copyright 2009-2011  Frederik Schwarzer <schwarzerf@gmail.com>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -30,6 +30,8 @@
 #include <QMouseEvent>
 #include <QPainter>
 #include <QTimer>
+
+#include <phonon/audiooutput.h>
 
 #include <cstring>
 
@@ -75,9 +77,7 @@ Board::Board(QWidget *parent)
       m_gameState(Normal), m_cheat(false),
       m_gravityFlag(true), m_solvableFlag(false), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
       m_highlightedTile(-1),
-      m_paintConnection(false), m_paintPossibleMoves(false), m_paintInProgress(false),
-      m_soundPick(KStandardDirs::locate("sound", "kshisen/tile-touch.ogg")),
-      m_soundFall(KStandardDirs::locate("sound", "kshisen/tile-fall-tile.ogg"))
+      m_paintConnection(false), m_paintPossibleMoves(false), m_paintInProgress(false), m_media(0)
 {
     m_tileRemove1.first = -1;
 
@@ -227,7 +227,7 @@ void Board::gravity(bool update)
         }
     }
     if (Prefs::sounds() && fallingTiles) {
-        m_soundFall.start();
+        playSound(KStandardDirs::locate("sound", "kshisen/tile-fall-tile.ogg"));
     }
 }
 
@@ -942,7 +942,7 @@ void Board::marked(int x, int y)
     undrawConnection(); // is this still needed? (schwarzer)
 
     if (Prefs::sounds()) {
-        m_soundPick.start();
+        playSound(KStandardDirs::locate("sound", "kshisen/tile-touch.ogg"));
     }
 
     if (x == m_markX && y == m_markY) { // the piece is already marked
@@ -2016,8 +2016,22 @@ bool Board::hasCheated() const
 
 void Board::setSoundsEnabled(bool enabled)
 {
+    if (enabled) {
+        m_media = new Phonon::MediaObject(this);
+        Phonon::AudioOutput *audioOutput = new Phonon::AudioOutput(Phonon::GameCategory, this);
+        Phonon::createPath(m_media, audioOutput);
+    } else {
+        delete m_media;
+        m_media = 0;
+    }
     Prefs::setSounds(enabled);
     Prefs::self()->writeConfig();
+}
+
+void Board::playSound(const QString &sound)
+{
+    m_media->setCurrentSource(sound);
+    m_media->play();
 }
 
 #include "board.moc"

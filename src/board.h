@@ -3,7 +3,7 @@
  *   Copyright 1997  Mario Weilguni <mweilguni@sime.com>                   *
  *   Copyright 2002-2004  Dave Corrie <kde@davecorrie.com>                 *
  *   Copyright 2007  Mauricio Piacentini <mauricio@tabuleiro.com>          *
- *   Copyright 2009-2012  Frederik Schwarzer <schwarzerf@gmail.com>        *
+ *   Copyright 2009,2011  Frederik Schwarzer <schwarzerf@gmail.com>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -25,8 +25,6 @@
 #define BOARD_H
 
 #include "debug.h"
-
-#include <KgSound>
 
 #include <kgameclock.h>
 #include <kmahjonggtileset.h>
@@ -258,6 +256,11 @@ public slots:
     /// Loads the given background
     bool loadBackground(const QString &);
 
+    /** Plays the given sound.
+     * @param sound The sound file to be played
+     */
+    void playSound(const QString &sound);
+
 private slots:
     void undrawConnection();
 
@@ -386,8 +389,7 @@ private:
     bool m_paintInProgress;
     QPair<int, int> m_tileRemove1;
     QPair<int, int> m_tileRemove2;
-    KgSound m_soundPick; ///< Sound object to play when tile is selected
-    KgSound m_soundFall; ///< Sound object to play when tiles fall down in gravity mode
+    Phonon::MediaObject *m_media; ///< MediaObject to play sounds
 };
 
 #endif // BOARD_H
