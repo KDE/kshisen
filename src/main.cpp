@@ -2,7 +2,7 @@
  *   KShisen - A japanese game similar to mahjongg                         *
  *   Copyright 1997  Mario Weilguni <mweilguni@sime.com>                   *
  *   Copyright 2002-2004  Dave Corrie <kde@davecorrie.com>                 *
- *   Copyright 2009,2010  Frederik Schwarzer <schwarzerf@gmail.com>        *
+ *   Copyright 2009,2010  Frederik Schwarzer <schwarzer@kde.org>           *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -35,7 +35,7 @@ int main(int argc, char **argv)
     KAboutData aboutData("kshisen", 0, ki18n("Shisen-Sho"),
                          KSHISEN_VERSION " #" KSHISEN_COMMIT, ki18n(description), KAboutData::License_GPL,
                          ki18n("(c) 1997, Mario Weilguni"), KLocalizedString(), "http://games.kde.org/kshisen");
-    aboutData.addAuthor(ki18n("Frederik Schwarzer"), ki18n("Current Maintainer"), "schwarzerf@gmail.com");
+    aboutData.addAuthor(ki18n("Frederik Schwarzer"), ki18n("Current Maintainer"), "schwarzer@kde.org");
     aboutData.addAuthor(ki18n("Dave Corrie"), ki18n("Former Maintainer"), "kde@davecorrie.com");
     aboutData.addAuthor(ki18n("Mario Weilguni"), ki18n("Original Author"), "mweilguni@sime.com");
     aboutData.addCredit(ki18n("Mauricio Piacentini"), ki18n("KMahjonggLib integration for KDE4"), "mauricio@tabuleiro.com");
