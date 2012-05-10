@@ -18,7 +18,7 @@ kde4_add_app_icon( kshisen_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../hi*-app-kshisen.
 
 kde4_add_executable( kshisen ${kshisen_SRCS} )
 
-target_link_libraries( kshisen ${KDE4_KDEUI_LIBS} kdegames kmahjongglib )
+target_link_libraries( kshisen ${KDE4_KDEUI_LIBS} kdegames ${LIBKMAHJONGG_LIBRARY} )
 
 install( TARGETS kshisen ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
