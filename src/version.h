@@ -23,5 +23,5 @@
 //            - trunk version is "1.9+ #13"
 
 #ifndef KSHISEN_VERSION
-#define KSHISEN_VERSION "1.8+"
+#define KSHISEN_VERSION "1.8.5"
 #endif // KSHISEN_VERSION
