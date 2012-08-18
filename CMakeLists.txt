@@ -18,6 +18,7 @@ endif(NOT COMPILING_KDEGAMES)
 
 add_subdirectory( src )
 add_subdirectory( sounds )
+add_subdirectory( doc )
 
 install( PROGRAMS kshisen.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
 
