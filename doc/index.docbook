@@ -311,42 +311,6 @@
                and when a tile is falling down playing with <guilabel>Gravity</guilabel> enabled.</para></listitem>
         </varlistentry>
 
-        <varlistentry>
-          <term>
-            <menuchoice>
-              <guimenu>Settings</guimenu><guimenuitem>Show Toolbar</guimenuitem>
-            </menuchoice>
-          </term>
-          <listitem><para>Toggles the display of the toolbar on and off.</para></listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>
-            <menuchoice>
-              <guimenu>Settings</guimenu><guimenuitem>Show Statusbar</guimenuitem>
-            </menuchoice>
-          </term>
-          <listitem><para>Toggles the display of the status bar on and off.</para></listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>
-            <menuchoice>
-              <guimenu>Settings</guimenu><guimenuitem>Configure Shortcuts...</guimenuitem>
-            </menuchoice>
-          </term>
-          <listitem><para><action>Opens a dialog which lets you redefine all the keyboard shortcuts.</action></para></listitem>
-        </varlistentry>
-
-        <varlistentry id="settings-menu-toolbar">
-          <term>
-            <menuchoice>
-              <guimenu>Settings</guimenu><guimenuitem>Configure Toolbars...</guimenuitem>
-            </menuchoice>
-          </term>
-          <listitem><para>Displays a &kde; standard dialog where you can configure the toolbar icons.</para></listitem>
-        </varlistentry>
-
         <varlistentry id="game-settings-settings">
           <term>
             <menuchoice>
@@ -357,12 +321,14 @@
         </varlistentry>
 
       </variablelist>
+      <para>
+	Additionally &kshisen; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
+	menu items, for more information read the sections about the
+	<ulink url="help:/fundamentals/ui.html#menus-settings">Settings Menu</ulink> and
+	<ulink url="help:/fundamentals/ui.html#menus-help">Help Menu</ulink>
+	of the &kde; Fundamentals.
+      </para>
 
-    </sect1>
-
-    <sect1 id="help"><!--This is a standard Help menubar entry. Only change if needed.-->
-      <title>The Help Menu</title>
-      &help.menu.documentation;
     </sect1>
 
   </chapter>
@@ -539,14 +505,14 @@
       &kappname; Copyright 2002-2004 Dave Corrie <email>kde@davecorrie.com</email>
     </para>
     <para>
-      &kappname; Copyright 2009-2012 Frederik Schwarzer <email>schwarzer@kde.org</email>
+      &kappname; Copyright 2009-2012 &Frederik.Schwarzer; &Frederik.Schwarzer.mail;
     </para>
 
     <para>
       Documentation Copyright 2000 &Dirk.Doerflinger; <email>ddoerflinger@gmx.net</email>
     </para>
     <para>
-      Documentation Copyright 2009-2010 Frederik Schwarzer <email>schwarzer@kde.org</email>
+      Documentation Copyright 2009-2010 &Frederik.Schwarzer; &Frederik.Schwarzer.mail;
     </para>
 
     <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
