@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
   <!ENTITY kappname "&kshisen;">
-  <!ENTITY kappversion "1.8.1">     <!--Application version. Use this variable everywhere it's needed.-->
+  <!ENTITY kappversion "1.8.4">     <!--Application version. Use this variable everywhere it's needed.-->
   <!ENTITY package "kdegames">      <!-- do not change this! -->
   <!ENTITY % English "INCLUDE" >    <!-- change language only here -->
   <!ENTITY % addindex "IGNORE">     <!-- do not change this! -->
@@ -35,8 +35,8 @@
       <!-- TRANS:ROLES_OF_TRANSLATORS -->
     </authorgroup>
     <legalnotice>&FDLNotice;</legalnotice>
-    <date>2010-10-03</date>
-    <releaseinfo>&kappversion; (&kde; 4.5)</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
+    <date>2013-05-05</date>
+    <releaseinfo>&kappversion; (&kde; 4.11)</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
 
     <!--Short description of this document. Do not change unless necessary!-->
     <abstract>
