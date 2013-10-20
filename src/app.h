@@ -21,11 +21,11 @@
 #ifndef APP_H
 #define APP_H
 
-#include "board.h"
-
 #include <kxmlguiwindow.h>
 
 class QLabel;
+
+class Board;
 
 /**
  * @brief Class holding the application and its functions

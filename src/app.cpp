@@ -20,6 +20,7 @@
  ***************************************************************************/
 
 #include "app.h"
+#include "board.h"
 #include "prefs.h"
 #include "ui_settings.h"
 
