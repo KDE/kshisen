@@ -29,9 +29,9 @@
       <default>true</default>
     </entry>
     <entry name="Speed" type="Int">
-      <default>2</default>
-      <min>0</min>
-      <max>4</max>
+      <default>250</default>
+      <min>100</min>
+      <max>2500</max>
     </entry>
     <entry name="Size" type="Int">
       <default>2</default>

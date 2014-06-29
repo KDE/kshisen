@@ -31,14 +31,10 @@
 #include <QPainter>
 #include <QTimer>
 
-#include <cstring>
-
 
 #define EMPTY           0
 #define SEASONS_START   28
 #define FLOWERS_START   39
-
-static int s_delay[5] = {1000, 750, 500, 250, 125};
 
 bool PossibleMove::isInPath(int x, int y) const
 {
@@ -125,7 +121,15 @@ void Board::loadSettings()
     m_shuffle = Prefs::level() * 4 + 1;
     setSize(sizeX[Prefs::size()], sizeY[Prefs::size()]);
     setGravityFlag(Prefs::gravity());
-    setDelay(s_delay[Prefs::speed()]);
+    if (Prefs::speed() < 100) {
+        kDebug() << "Unter 100!";
+        setDelay(100);
+    } else if (Prefs::speed() > 2500) {
+        kDebug() << "Ueber 2500!";
+        setDelay(2500);
+    } else {
+        setDelay(Prefs::speed());
+    }
     setSoundsEnabled(Prefs::sounds());
 
     if (m_level != Prefs::level()) {
