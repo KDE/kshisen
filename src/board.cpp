@@ -108,7 +108,7 @@ void Board::loadSettings()
     }
 
     // There are tile sets, that have only one tile for e.g. the flowers group.
-    // If these tile sets are played in none-chineseStyle, this one tile face
+    // If these tile sets are played in non-chineseStyle, this one tile face
     // appears too often and not every tile matches another one with the same
     // face because they are technically different (e.g different flowers).
     // The solution is to enforce chineseStyle gameplay for tile sets that are
