@@ -28,6 +28,7 @@ find_package(Phonon4Qt5 REQUIRED)
 
 add_definitions(${QT_DEFINITIONS} )
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
+add_definitions(-DTRANSLATION_DOMAIN="kshisen")
 
 add_subdirectory( src )
 add_subdirectory( sounds )

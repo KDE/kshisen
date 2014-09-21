@@ -6,7 +6,7 @@ set( kshisen_SRCS
      app.cpp
      )
 
-qt5_wrap_ui( kshisen_SRCS
+ki18n_wrap_ui( kshisen_SRCS
     settings.ui
     )
 
