@@ -238,8 +238,8 @@ signals:
 
 public slots:
     /** Does most of the newGame work.
-     * This slot is called from the App::invokeNewGame() signal from App and
-     * should call App::newGame again to do the work that cannot be done
+     * This slot is called from the KShisen::invokeNewGame() signal from KShisen and
+     * should call KShisen::newGame again to do the work that cannot be done
      * from Board.
      */
     void newGame();

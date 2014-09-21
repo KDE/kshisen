@@ -22,30 +22,51 @@
 #include "commit.h"
 #include "version.h"
 
-#include <kapplication.h>
-#include <kaboutdata.h>
-#include <kcmdlineargs.h>
-#include <klocale.h>
+#include <KAboutData>
+#include <Kdelibs4ConfigMigrator>
+
 #include <kglobal.h>
+#include <QCommandLineParser>
+#include <QApplication>
+#include <KLocalizedString>
+#include <QCommandLineParser>
 
 static const char description[] = I18N_NOOP("A KDE game similar to Mahjongg");
 
 int main(int argc, char **argv)
 {
-    KAboutData aboutData("kshisen", 0, ki18n("Shisen-Sho"),
-                         KSHISEN_VERSION " #" KSHISEN_COMMIT, ki18n(description), KAboutData::License_GPL,
-                         ki18n("(c) 1997, Mario Weilguni"), KLocalizedString(), "http://games.kde.org/kshisen");
-    aboutData.addAuthor(ki18n("Frederik Schwarzer"), ki18n("Current Maintainer"), "schwarzer@kde.org");
-    aboutData.addAuthor(ki18n("Dave Corrie"), ki18n("Former Maintainer"), "kde@davecorrie.com");
-    aboutData.addAuthor(ki18n("Mario Weilguni"), ki18n("Original Author"), "mweilguni@sime.com");
-    aboutData.addCredit(ki18n("Mauricio Piacentini"), ki18n("KMahjonggLib integration for KDE4"), "mauricio@tabuleiro.com");
-    aboutData.addCredit(ki18n("Jason Lane"), ki18n("Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"), "jglane@btopenworld.com");
-    aboutData.addCredit(ki18n("Thanks also to everyone who should be listed here but is not!"));
-    KCmdLineArgs::init(argc, argv, &aboutData);
+    KAboutData aboutData("kshisen", i18n("Shisen-Sho"),
+                         KSHISEN_VERSION " #" KSHISEN_COMMIT, i18n(description), KAboutLicense::GPL,
+                         i18n("(c) 1997, Mario Weilguni")); 
+    aboutData.setHomepage("http://games.kde.org/kshisen");
+    aboutData.addAuthor(i18n("Frederik Schwarzer"), i18n("Current Maintainer"), "schwarzer@kde.org");
+    aboutData.addAuthor(i18n("Dave Corrie"), i18n("Former Maintainer"), "kde@davecorrie.com");
+    aboutData.addAuthor(i18n("Mario Weilguni"), i18n("Original Author"), "mweilguni@sime.com");
+    aboutData.addCredit(i18n("Mauricio Piacentini"), i18n("KMahjonggLib integration for KDE4"), "mauricio@tabuleiro.com");
+    aboutData.addCredit(i18n("Jason Lane"), i18n("Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"), "jglane@btopenworld.com");
+    aboutData.addCredit(i18n("Thanks also to everyone who should be listed here but is not!"));
+    QApplication a(argc, argv);
+    QCommandLineParser parser;
+    KAboutData::setApplicationData(aboutData);
+    parser.addVersionOption();
+    parser.addHelpOption();
+    //PORTING SCRIPT: adapt aboutdata variable if necessary
+    aboutData.setupCommandLine(&parser);
+    parser.process(a);
+    aboutData.processCommandLine(&parser);
 
-    KApplication a;
-    KGlobal::locale()->insertCatalog(QLatin1String("libkdegames"));
-    KGlobal::locale()->insertCatalog(QLatin1String("libkmahjongg"));
+    //KGlobal::locale()->insertCatalog(QLatin1String("libkdegames"));
+    //KGlobal::locale()->insertCatalog(QLatin1String("libkmahjongg"));
+
+    // Migrate pre-existing (4.x) configuration
+    QStringList configFiles;
+    configFiles.append(QLatin1String("kshisenrc"));
+    configFiles.append(QLatin1String("kshisen.notifyrc"));
+
+    Kdelibs4ConfigMigrator migrate(QLatin1String("kshisen"));
+    migrate.setConfigFiles(configFiles);
+    migrate.setUiFiles(QStringList() << QLatin1String("kshisenui.rc"));
+    migrate.migrate();
 
     App *app = new App();
     app->show();

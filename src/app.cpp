@@ -380,12 +380,10 @@ void App::showSettingsDialog()
     dialog->addPage(new Settings(0), i18n("General"), "games-config-options");
     dialog->addTilesetPage();
     dialog->addBackgroundPage();
-    dialog->setHelp(QString(), "kshisen");
+    //dialog->setHelp(QString(), "kshisen");
     connect(dialog, SIGNAL(settingsChanged(QString)), m_board, SLOT(loadSettings()));
     dialog->show();
 }
-
-#include "app.moc"
 
 // vim: expandtab:tabstop=4:shiftwidth=4
 // kate: space-indent on; indent-width 4
