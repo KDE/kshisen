@@ -32,7 +32,6 @@
 #include <kactioncollection.h>
 #include <kconfig.h>
 #include <kconfigdialog.h>
-#include <kdebug.h>
 #include <kglobal.h>
 #include <kicon.h>
 #include <klineedit.h>
@@ -48,6 +47,7 @@
 #include <kstatusbar.h>
 #include <ktoggleaction.h>
 
+#include <QDebug>
 #include <QTimer>
 
 #include <cmath>
@@ -283,7 +283,7 @@ void App::updateTimeDisplay()
     if (m_board->isStuck() || m_board->isOver()) {
         return;
     }
-    //kDebug() << "Time: " << m_board->currentTime();
+    //qDebug() << "Time: " << m_board->currentTime();
     int currentTime = m_board->currentTime();
     QString message = i18n("Your time: %1:%2:%3 %4",
                            QString().sprintf("%02d", currentTime / 3600),

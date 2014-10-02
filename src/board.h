@@ -32,9 +32,9 @@
 #include <kmahjonggtileset.h>
 #include <kmahjonggbackground.h>
 
-#include <kdebug.h>
 #include <krandomsequence.h>
 
+#include <QDebug>
 #include <QList>
 #include <QSize>
 #include <QWidget>
@@ -79,16 +79,16 @@ public:
     bool isInPath(int x, int y) const;
 
     void Debug() const {
-        kDebug() << "PossibleMove";
+        qDebug() << "PossibleMove";
         QList<Position>::const_iterator iter;
         for (iter = m_path.constBegin(); iter != m_path.constEnd(); ++iter) {
-            kDebug() << "    Path:" << iter->x << "," << iter->y;
+            qDebug() << "    Path:" << iter->x << "," << iter->y;
         }
 
         if (m_hasSlide) {
-            kDebug() << "   hasSlide";
+            qDebug() << "   hasSlide";
             for (iter = m_slide.constBegin(); iter != m_slide.constEnd(); ++iter) {
-                kDebug() << "    Slide:" << iter->x << "," << iter->y;
+                qDebug() << "    Slide:" << iter->x << "," << iter->y;
             }
         }
     }
