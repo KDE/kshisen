@@ -189,8 +189,7 @@ int Board::yTiles() const
 void Board::setField(int x, int y, int value)
 {
     if (x < 0 || y < 0 || x >= xTiles() || y >= yTiles()) {
-        qFatal() << "Attempted write to invalid field position "
-                 "(" << x << "," << y << ")";
+        qFatal("Attempted write to invalid field position (%u,%u), x, y");
     }
 
     m_field[y * xTiles() + x] = value;
@@ -201,8 +200,7 @@ int Board::field(int x, int y) const
 {
 #ifdef DEBUGGING
     if (x < -1 || y < -1 || x > xTiles() || y > yTiles()) {
-        qFatal() << "Attempted read from invalid field position "
-                 "(" << x << "," << y << ")";
+        qFatal("Attempted read from invalid field position (%u,%u)", x, y);
     }
 #endif
 
@@ -1837,10 +1835,15 @@ bool Board::solvable(bool noRestore)
 
     PossibleMoves p;
     while (hint_I(p)) {
-        qFatal(!tilesMatch(field(p.first().m_path.first().x, p.first().m_path.first().y), field(p.first().m_path.last().x, p.first().m_path.last().y)))
-                << "Removing unmatched tiles: (" << p.first().m_path.first().x << "," << p.first().m_path.first().y << ") => "
-                << field(p.first().m_path.first().x, p.first().m_path.first().y) << " (" << p.first().m_path.last().x << "," << p.first().m_path.last().y << ") => "
-                << field(p.first().m_path.last().x, p.first().m_path.last().y);
+        if (!tilesMatch(field(p.first().m_path.first().x, p.first().m_path.first().y), field(p.first().m_path.last().x, p.first().m_path.last().y))) {
+            qFatal("Removing unmatched tiles: (%u,%u) => %u (%u,%u) => %u",
+                   p.first().m_path.first().x,
+                   p.first().m_path.first().y,
+                   field(p.first().m_path.first().x, p.first().m_path.first().y),
+                   p.first().m_path.last().x,
+                   p.first().m_path.last().y,
+                   field(p.first().m_path.last().x, p.first().m_path.last().y));
+        }
         setField(p.first().m_path.first().x, p.first().m_path.first().y, EMPTY);
         setField(p.first().m_path.last().x, p.first().m_path.last().y, EMPTY);
     }
