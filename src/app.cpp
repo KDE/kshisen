@@ -33,7 +33,7 @@
 #include <kconfig.h>
 #include <kconfigdialog.h>
 #include <kglobal.h>
-#include <kicon.h>
+#include <QIcon>
 #include <klineedit.h>
 #include <klocale.h>
 #include <kmenu.h>
@@ -116,7 +116,7 @@ void App::setupActions()
     KStandardGameAction::redo(this, SLOT(redo()), actionCollection());
     KStandardGameAction::hint(this, SLOT(hint()), actionCollection());
 
-    KToggleAction *soundAction = new KToggleAction(KIcon(QLatin1String("speaker")), i18n("Play Sounds"), this);
+    KToggleAction *soundAction = new KToggleAction(QIcon::fromTheme(QLatin1String("speaker")), i18n("Play Sounds"), this);
     soundAction->setChecked(Prefs::sounds());
     actionCollection()->addAction(QLatin1String("sounds"), soundAction);
     connect(soundAction, SIGNAL(triggered(bool)), m_board, SLOT(setSoundsEnabled(bool)));

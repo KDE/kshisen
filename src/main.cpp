@@ -25,7 +25,6 @@
 #include <KAboutData>
 #include <Kdelibs4ConfigMigrator>
 
-#include <kglobal.h>
 #include <QCommandLineParser>
 #include <QApplication>
 #include <KLocalizedString>
@@ -50,13 +49,9 @@ int main(int argc, char **argv)
     KAboutData::setApplicationData(aboutData);
     parser.addVersionOption();
     parser.addHelpOption();
-    //PORTING SCRIPT: adapt aboutdata variable if necessary
     aboutData.setupCommandLine(&parser);
     parser.process(a);
     aboutData.processCommandLine(&parser);
-
-    //KGlobal::locale()->insertCatalog(QLatin1String("libkdegames"));
-    //KGlobal::locale()->insertCatalog(QLatin1String("libkmahjongg"));
 
     // Migrate pre-existing (4.x) configuration
     QStringList configFiles;

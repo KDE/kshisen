@@ -4,7 +4,7 @@ cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
 
 set (QT_MIN_VERSION "5.2.0")
 
-find_package(ECM 1.0.0 REQUIRED NO_MODULE)
+find_package(ECM 1.2.0 REQUIRED NO_MODULE)
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
@@ -26,7 +26,6 @@ find_package(KF5KMahjongglib REQUIRED)
 find_package(KF5KDEGames 4.9.0 REQUIRED)
 find_package(Phonon4Qt5 REQUIRED)
 
-add_definitions(${QT_DEFINITIONS} )
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 add_definitions(-DTRANSLATION_DOMAIN="kshisen")
 
@@ -34,7 +33,7 @@ add_subdirectory( src )
 add_subdirectory( sounds )
 add_subdirectory( doc )
 
-install( PROGRAMS kshisen.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
+install( PROGRAMS org.kde.kshisen.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
 
 ecm_install_icons( ICONS
                    128-apps-kshisen.png

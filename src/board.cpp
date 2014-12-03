@@ -2020,10 +2020,9 @@ bool Board::hasCheated() const
 void Board::setSoundsEnabled(bool enabled)
 {
     Prefs::setSounds(enabled);
-    Prefs::self()->writeConfig();
+    Prefs::self()->save();
 }
 
-#include "board.moc"
 
 // vim: expandtab:tabstop=4:shiftwidth=4
 // kate: space-indent on; indent-width 4
