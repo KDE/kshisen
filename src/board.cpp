@@ -22,9 +22,8 @@
 #include "board.h"
 #include "prefs.h"
 
-#include <kglobalsettings.h>
-#include <klocale.h>
-#include <kstandarddirs.h>
+#include <KLocalizedString>
+
 
 #include <QDebug>
 #include <QMouseEvent>
@@ -32,6 +31,7 @@
 #include <QTimer>
 
 #include <cstring>
+#include <QStandardPaths>
 
 
 #define EMPTY           0
@@ -76,8 +76,8 @@ Board::Board(QWidget *parent)
       m_gravityFlag(true), m_solvableFlag(false), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
       m_highlightedTile(-1),
       m_paintConnection(false), m_paintPossibleMoves(false), m_paintInProgress(false),
-      m_soundPick(KStandardDirs::locate("sound", "kshisen/tile-touch.ogg")),
-      m_soundFall(KStandardDirs::locate("sound", "kshisen/tile-fall-tile.ogg"))
+      m_soundPick(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("sound/") + "kshisen/tile-touch.ogg")),
+      m_soundFall(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("sound/") + "kshisen/tile-fall-tile.ogg"))
 {
     m_tileRemove1.first = -1;
 
@@ -139,7 +139,7 @@ bool Board::loadTileset(const QString &pathToTileset)
     if (m_tiles.loadTileset(pathToTileset)) {
         if (m_tiles.loadGraphics()) {
             Prefs::setTileSet(pathToTileset);
-            Prefs::self()->writeConfig();
+            Prefs::self()->save();
             resizeBoard();
         }
         return true;
@@ -148,7 +148,7 @@ bool Board::loadTileset(const QString &pathToTileset)
     if (m_tiles.loadDefault()) {
         if (m_tiles.loadGraphics()) {
             Prefs::setTileSet(m_tiles.path());
-            Prefs::self()->writeConfig();
+            Prefs::self()->save();
             resizeBoard();
         }
     }
@@ -160,7 +160,7 @@ bool Board::loadBackground(const QString &pathToBackground)
     if (m_background.load(pathToBackground, width(), height())) {
         if (m_background.loadGraphics()) {
             Prefs::setBackground(pathToBackground);
-            Prefs::self()->writeConfig();
+            Prefs::self()->save();
             resizeBoard();
             return true;
         }
@@ -169,7 +169,7 @@ bool Board::loadBackground(const QString &pathToBackground)
     if (m_background.loadDefault()) {
         if (m_background.loadGraphics()) {
             Prefs::setBackground(m_background.path());
-            Prefs::self()->writeConfig();
+            Prefs::self()->save();
             resizeBoard();
         }
     }

@@ -28,23 +28,18 @@
 #include <highscore/kscoredialog.h>
 #include <kstandardgameaction.h>
 
-#include <kaction.h>
 #include <kactioncollection.h>
 #include <kconfig.h>
 #include <kconfigdialog.h>
-#include <kglobal.h>
 #include <QIcon>
 #include <klineedit.h>
-#include <klocale.h>
-#include <kmenu.h>
+#include <KLocalizedString>
 #include <kmessagebox.h>
-#include <kpushbutton.h>
 #include <kseparator.h>
 #include <kshortcutsdialog.h>
 #include <kstandardaction.h>
-#include <kstandarddirs.h>
 #include <kstandardguiitem.h>
-#include <kstatusbar.h>
+#include <qstatusbar.h>
 #include <ktoggleaction.h>
 
 #include <QDebug>

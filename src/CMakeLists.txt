@@ -17,7 +17,7 @@ add_executable( kshisen ${kshisen_SRCS} )
 include_directories(${PHONON_INCLUDES})
 
 target_link_libraries(kshisen Qt5::Gui KF5::CoreAddons KF5::KIOWidgets KF5::DNSSD Phonon::phonon4qt5 
-                              KF5::XmlGui KF5KDEGames KF5KDEGamesPrivate KF5KMahjongglib )
+                              KF5::XmlGui KF5::I18n KF5KDEGames KF5KDEGamesPrivate KF5KMahjongglib )
 
 install( TARGETS kshisen ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
