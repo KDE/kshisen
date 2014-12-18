@@ -114,28 +114,28 @@ void App::setupActions()
     KToggleAction *soundAction = new KToggleAction(QIcon::fromTheme(QLatin1String("speaker")), i18n("Play Sounds"), this);
     soundAction->setChecked(Prefs::sounds());
     actionCollection()->addAction(QLatin1String("sounds"), soundAction);
-    connect(soundAction, SIGNAL(triggered(bool)), m_board, SLOT(setSoundsEnabled(bool)));
+    connect(soundAction, &KToggleAction::triggered, m_board, &Board::setSoundsEnabled);
 
     // Settings
     KStandardAction::preferences(this, SLOT(showSettingsDialog()), actionCollection());
 
-    connect(m_board, SIGNAL(cheatStatusChanged()), this, SLOT(updateCheatDisplay()));
-    connect(m_board, SIGNAL(changed()), this, SLOT(updateItems()));
-    connect(m_board, SIGNAL(tilesDoNotMatch()), this, SLOT(notifyTilesDoNotMatch()));
-    connect(m_board, SIGNAL(invalidMove()), this, SLOT(notifyInvalidMove()));
-    connect(m_board, SIGNAL(selectATile()), this, SLOT(notifySelectATile()));
-    connect(m_board, SIGNAL(selectAMatchingTile()), this, SLOT(notifySelectAMatchingTile()));
-    connect(m_board, SIGNAL(selectAMove()), this, SLOT(notifySelectAMove()));
+    connect(m_board, &Board::cheatStatusChanged, this, &App::updateCheatDisplay);
+    connect(m_board, &Board::changed, this, &App::updateItems);
+    connect(m_board, &Board::tilesDoNotMatch, this, &App::notifyTilesDoNotMatch);
+    connect(m_board, &Board::invalidMove, this, &App::notifyInvalidMove);
+    connect(m_board, &Board::selectATile, this, &App::notifySelectATile);
+    connect(m_board, &Board::selectAMatchingTile, this, &App::notifySelectAMatchingTile);
+    connect(m_board, &Board::selectAMove, this, &App::notifySelectAMove);
 
     QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(updateTimeDisplay()));
+    connect(timer, &QTimer::timeout, this, &App::updateTimeDisplay);
     timer->start(1000);
 
-    connect(m_board, SIGNAL(changed()), this, SLOT(updateTileDisplay()));
-    connect(m_board, SIGNAL(endOfGame()), this, SLOT(slotEndOfGame()));
+    connect(m_board, &Board::changed, this, &App::updateTileDisplay);
+    connect(m_board, &Board::endOfGame, this, &App::slotEndOfGame);
 
-    connect(this, SIGNAL(invokeNewGame()), m_board, SLOT(newGame()));
-    connect(m_board, SIGNAL(newGameStarted()), this, SLOT(newGame()));
+    connect(this, &App::invokeNewGame, m_board, &Board::newGame);
+    connect(m_board, &Board::newGameStarted, this, &App::newGame);
 }
 
 void App::newGame()
@@ -376,7 +376,7 @@ void App::showSettingsDialog()
     dialog->addTilesetPage();
     dialog->addBackgroundPage();
     //dialog->setHelp(QString(), "kshisen");
-    connect(dialog, SIGNAL(settingsChanged(QString)), m_board, SLOT(loadSettings()));
+    connect(dialog, &KMahjonggConfigDialog::settingsChanged, m_board, &Board::loadSettings);
     dialog->show();
 }
 
