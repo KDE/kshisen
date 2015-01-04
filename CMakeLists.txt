@@ -4,12 +4,12 @@ cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
 
 set (QT_MIN_VERSION "5.2.0")
 
-find_package(ECM 1.2.0 REQUIRED NO_MODULE)
+find_package(ECM 1.3.0 REQUIRED NO_MODULE)
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Gui Svg Qml Quick QuickWidgets)
-find_package(KF5 REQUIRED COMPONENTS CoreAddons XmlGui Config KIO DNSSD NewStuff Declarative DocTools KDELibs4Support)
+find_package(KF5 REQUIRED COMPONENTS CoreAddons XmlGui Config KIO DNSSD NewStuff Declarative DocTools )
 
 include(FeatureSummary)
 include(GenerateExportHeader)
