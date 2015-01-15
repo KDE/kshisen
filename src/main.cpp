@@ -28,12 +28,15 @@
 #include <QCommandLineParser>
 #include <QApplication>
 #include <KLocalizedString>
+#include <KDBusService>
 #include <QCommandLineParser>
 
 static const char description[] = I18N_NOOP("A KDE game similar to Mahjongg");
 
 int main(int argc, char **argv)
 {
+    QApplication a(argc, argv);
+
     KAboutData aboutData("kshisen", i18n("Shisen-Sho"),
                          KSHISEN_VERSION " #" KSHISEN_COMMIT, i18n(description), KAboutLicense::GPL,
                          i18n("(c) 1997, Mario Weilguni")); 
@@ -44,7 +47,6 @@ int main(int argc, char **argv)
     aboutData.addCredit(i18n("Mauricio Piacentini"), i18n("KMahjonggLib integration for KDE4"), "mauricio@tabuleiro.com");
     aboutData.addCredit(i18n("Jason Lane"), i18n("Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"), "jglane@btopenworld.com");
     aboutData.addCredit(i18n("Thanks also to everyone who should be listed here but is not!"));
-    QApplication a(argc, argv);
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
     parser.addVersionOption();
@@ -62,6 +64,8 @@ int main(int argc, char **argv)
     migrate.setConfigFiles(configFiles);
     migrate.setUiFiles(QStringList() << QLatin1String("kshisenui.rc"));
     migrate.migrate();
+
+    KDBusService service;
 
     App *app = new App();
     app->show();
