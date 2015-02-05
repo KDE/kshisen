@@ -4,6 +4,7 @@ set( kshisen_SRCS
      main.cpp
      board.cpp
      app.cpp
+     kshisen_debug.cpp
      )
 
 ki18n_wrap_ui( kshisen_SRCS

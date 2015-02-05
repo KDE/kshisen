@@ -34,7 +34,7 @@
 
 #include <krandomsequence.h>
 
-#include <QDebug>
+#include "kshisen_debug.h"
 #include <QList>
 #include <QSize>
 #include <QWidget>
@@ -79,16 +79,16 @@ public:
     bool isInPath(int x, int y) const;
 
     void Debug() const {
-        qDebug() << "PossibleMove";
+        qCDebug(KSHISEN_LOG) << "PossibleMove";
         QList<Position>::const_iterator iter;
         for (iter = m_path.constBegin(); iter != m_path.constEnd(); ++iter) {
-            qDebug() << "    Path:" << iter->x << "," << iter->y;
+            qCDebug(KSHISEN_LOG) << "    Path:" << iter->x << "," << iter->y;
         }
 
         if (m_hasSlide) {
-            qDebug() << "   hasSlide";
+            qCDebug(KSHISEN_LOG) << "   hasSlide";
             for (iter = m_slide.constBegin(); iter != m_slide.constEnd(); ++iter) {
-                qDebug() << "    Slide:" << iter->x << "," << iter->y;
+                qCDebug(KSHISEN_LOG) << "    Slide:" << iter->x << "," << iter->y;
             }
         }
     }

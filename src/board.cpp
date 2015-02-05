@@ -25,7 +25,7 @@
 #include <KLocalizedString>
 
 
-#include <QDebug>
+#include "kshisen_debug.h"
 #include <QMouseEvent>
 #include <QPainter>
 #include <QTimer>
@@ -45,7 +45,7 @@ bool PossibleMove::isInPath(int x, int y) const
     if (x == m_path.last().x && y == m_path.last().y) {
         return false;
     }
-    qDebug() << "isInPath:" << x << "," << y;
+    qCDebug(KSHISEN_LOG) << "isInPath:" << x << "," << y;
     Debug();
     QList<Position>::const_iterator iter;
     // a path has at least 2 positions
@@ -57,7 +57,7 @@ bool PossibleMove::isInPath(int x, int y) const
         // to fix
         if ((x == iter->x && ((y > pathY && y <= iter->y) || (y < pathY && y >= iter->y)))
                 || (y == iter->y && ((x > pathX && x <= iter->x) || (x < pathX && x >= iter->x)))) {
-            qDebug() << "isInPath:" << x << "," << y << "found in path" << pathX << "," << pathY << " => " << iter->x << "," << iter->y;
+            qCDebug(KSHISEN_LOG) << "isInPath:" << x << "," << y << "found in path" << pathX << "," << pathY << " => " << iter->x << "," << iter->y;
             return true;
         }
         pathX = iter->x;
@@ -99,12 +99,12 @@ Board::~Board()
 void Board::loadSettings()
 {
     if (!loadTileset(Prefs::tileSet())) {
-        qDebug() << "An error occurred when loading the tileset" << Prefs::tileSet() << "KShisen will continue with the default tileset.";
+        qCDebug(KSHISEN_LOG) << "An error occurred when loading the tileset" << Prefs::tileSet() << "KShisen will continue with the default tileset.";
     }
 
     // Load background
     if (!loadBackground(Prefs::background())) {
-        qDebug() << "An error occurred when loading the background" << Prefs::background() << "KShisen will continue with the default background.";
+        qCDebug(KSHISEN_LOG) << "An error occurred when loading the background" << Prefs::background() << "KShisen will continue with the default background.";
     }
 
     // There are tile sets, that have only one tile for e.g. the flowers group.
@@ -409,9 +409,9 @@ void Board::setSize(int x, int y)
 
 void Board::resizeEvent(QResizeEvent *e)
 {
-    qDebug() << "[resizeEvent]";
+    qCDebug(KSHISEN_LOG) << "[resizeEvent]";
     if (e->spontaneous()) {
-        qDebug() << "[resizeEvent] spontaneous";
+        qCDebug(KSHISEN_LOG) << "[resizeEvent] spontaneous";
     }
     resizeBoard();
     emit resized();
@@ -555,7 +555,7 @@ void Board::newGame()
     }
     // debug, tell if make solvable failed
     if (maxAttempts == 0) {
-        qDebug() << "NewGame make solvable failed";
+        qCDebug(KSHISEN_LOG) << "NewGame make solvable failed";
     }
 
 
@@ -878,7 +878,7 @@ void Board::performMove(PossibleMove &possibleMoves)
         // DEBUG undo, compare to saved board state
         for (int i = 0; i < xTiles() * yTiles(); ++i) {
             if (saved1[i] != m_field[i]) {
-                qDebug() << "[DEBUG Undo 1], tile (" << i << ") was" << saved1[i] << "before more, it is" << m_field[i] << "after undo.";
+                qCDebug(KSHISEN_LOG) << "[DEBUG Undo 1], tile (" << i << ") was" << saved1[i] << "before more, it is" << m_field[i] << "after undo.";
                 errorFound = true;
             }
         }
@@ -891,7 +891,7 @@ void Board::performMove(PossibleMove &possibleMoves)
             // DEBUG undo, compare to saved board2 state
             for (int i = 0; i < xTiles() * yTiles(); ++i) {
                 if (saved2[i] != m_field[i]) {
-                    qDebug() << "[DEBUG Undo 2], tile (" << i << ") was" << saved2[i] << "after more, it is" << m_field[i] << "after redo.";
+                    qCDebug(KSHISEN_LOG) << "[DEBUG Undo 2], tile (" << i << ") was" << saved2[i] << "after more, it is" << m_field[i] << "after redo.";
                     errorFound = true;
                 }
             }
@@ -901,13 +901,13 @@ void Board::performMove(PossibleMove &possibleMoves)
     }
     // dumpBoard on error
     if (errorFound) {
-        qDebug() << "[DEBUG] Before move";
+        qCDebug(KSHISEN_LOG) << "[DEBUG] Before move";
         dumpBoard(saved1);
-        qDebug() << "[DEBUG] After move";
+        qCDebug(KSHISEN_LOG) << "[DEBUG] After move";
         dumpBoard(saved2);
-        qDebug() << "[DEBUG] Undo";
+        qCDebug(KSHISEN_LOG) << "[DEBUG] Undo";
         dumpBoard(saved3);
-        qDebug() << "[DEBUG] Redo";
+        qCDebug(KSHISEN_LOG) << "[DEBUG] Redo";
         dumpBoard(saved4);
     }
 
@@ -1483,7 +1483,7 @@ void Board::undo()
         // if there is no slide, keep previous implementation: move both column up
         if (!move->m_hasSlide) {
 #ifdef DEBUGGING
-            qDebug() << "[undo] gravity from a no slide move";
+            qCDebug(KSHISEN_LOG) << "[undo] gravity from a no slide move";
 #endif
             // move tiles from the first column up
             for (y = 0; y < move->m_y1; ++y) {
@@ -1498,7 +1498,7 @@ void Board::undo()
             }
         } else { // else check all tiles from the slide that may have fallen down
 #ifdef DEBUGGING
-            qDebug() << "[undo] gravity from slide s1(" << move->m_slideX1 << "," << move->m_slideY1 << ")=>s2(" << move->m_slideX2 << "," << move->m_slideY2 << ") matching (" << move->m_x1 << "," << move->m_y1 << ")=>(" << move->m_x2 << "," << move->m_y2 << ")";
+            qCDebug(KSHISEN_LOG) << "[undo] gravity from slide s1(" << move->m_slideX1 << "," << move->m_slideY1 << ")=>s2(" << move->m_slideX2 << "," << move->m_slideY2 << ") matching (" << move->m_x1 << "," << move->m_y1 << ")=>(" << move->m_x2 << "," << move->m_y2 << ")";
 #endif
             // horizontal slide
             // because tiles that slides horizontaly may fall down
@@ -1506,7 +1506,7 @@ void Board::undo()
             // we need to take them back up then undo the slide
             if (move->m_slideY1 == move->m_slideY2) {
 #ifdef DEBUGGING
-                qDebug() << "[undo] gravity from horizontal slide";
+                qCDebug(KSHISEN_LOG) << "[undo] gravity from horizontal slide";
 #endif
                 // last slide tile went from slide_x1 -> slide_x2
                 // the number of slided tiles is n = abs(x1 - slide_x1)
@@ -1520,14 +1520,14 @@ void Board::undo()
                     dx = -dx;
                 }
 #ifdef DEBUGGING
-                qDebug() << "[undo] n =" << n;
+                qCDebug(KSHISEN_LOG) << "[undo] n =" << n;
 #endif
                 // slided tiles may fall down after the slide
                 // so any tiles on top of the columns between
                 // slide_x2 -> slide_x2 +/- n (excluded) should go up to slide_y1
                 if (move->m_slideX2 > move->m_slideX1) {  // slide to the right
 #ifdef DEBUGGING
-                    qDebug() << "[undo] slide right";
+                    qCDebug(KSHISEN_LOG) << "[undo] slide right";
 #endif
                     for (int i = move->m_slideX2; i > move->m_slideX2 - n; --i) {
                         // find top tile
@@ -1543,7 +1543,7 @@ void Board::undo()
                             continue;
                         }
 #ifdef DEBUGGING
-                        qDebug() << "[undo] moving (" << i << "," << j << ") up to (" << i << "," << move->m_slideY1 << ")";
+                        qCDebug(KSHISEN_LOG) << "[undo] moving (" << i << "," << j << ") up to (" << i << "," << move->m_slideY1 << ")";
 #endif
                         // put it back up
                         setField(i, move->m_slideY1, field(i, j));
@@ -1553,7 +1553,7 @@ void Board::undo()
                     }
                 } else { // slide to the left
 #ifdef DEBUGGING
-                    qDebug() << "[undo] slide left";
+                    qCDebug(KSHISEN_LOG) << "[undo] slide left";
 #endif
                     for (int i = move->m_slideX2; i < move->m_slideX2 + n; ++i) {
                         // find top tile
@@ -1569,7 +1569,7 @@ void Board::undo()
                             continue;
                         }
 #ifdef DEBUGGING
-                        qDebug() << "[undo] moving (" << i << "," << j << ") up to (" << i << "," << move->m_slideY1 << ")";
+                        qCDebug(KSHISEN_LOG) << "[undo] moving (" << i << "," << j << ") up to (" << i << "," << move->m_slideY1 << ")";
 #endif
                         // put it back up
                         setField(i, move->m_slideY1, field(i, j));
@@ -1580,11 +1580,11 @@ void Board::undo()
                 }
                 // move tiles from the second column up
 #ifdef DEBUGGING
-                qDebug() << "[undo] moving up column x2" << move->m_x2;
+                qCDebug(KSHISEN_LOG) << "[undo] moving up column x2" << move->m_x2;
 #endif
                 for (y = 0; y <= move->m_y2; ++y) {
 #ifdef DEBUGGING
-                    qDebug() << "[undo] moving up tile" << y + 1;
+                    qCDebug(KSHISEN_LOG) << "[undo] moving up tile" << y + 1;
 #endif
                     setField(move->m_x2, y, field(move->m_x2, y + 1));
                     updateField(move->m_x2, y);
@@ -1598,17 +1598,17 @@ void Board::undo()
                     if (move->m_slideY1 > 0) {
                         for (int i = move->m_x1 + dx; i >= move->m_x1; --i) {
 #ifdef DEBUGGING
-                            qDebug() << "[undo] moving up column" << i << "until" << move->m_slideY1;
+                            qCDebug(KSHISEN_LOG) << "[undo] moving up column" << i << "until" << move->m_slideY1;
 #endif
                             for (int j = 0; j < move->m_slideY1; ++j) {
 #ifdef DEBUGGING
-                                qDebug() << "[undo] moving up tile" << j + 1;
+                                qCDebug(KSHISEN_LOG) << "[undo] moving up tile" << j + 1;
 #endif
                                 setField(i, j, field(i, j + 1));
                                 updateField(i, j);
                             }
 #ifdef DEBUGGING
-                            qDebug() << "[undo] clearing last tile" << move->m_slideY1;
+                            qCDebug(KSHISEN_LOG) << "[undo] clearing last tile" << move->m_slideY1;
 #endif
                             setField(i, move->m_slideY1, EMPTY);
                             updateField(i, move->m_slideY1);
@@ -1618,17 +1618,17 @@ void Board::undo()
                     if (move->m_slideY1 > 0) {
                         for (int i = move->m_x1 - dx; i <= move->m_x1; ++i) {
 #ifdef DEBUGGING
-                            qDebug() << "[undo] moving up column" << i << "until" << move->m_slideY1;
+                            qCDebug(KSHISEN_LOG) << "[undo] moving up column" << i << "until" << move->m_slideY1;
 #endif
                             for (int j = 0; j < move->m_slideY1; ++j) {
 #ifdef DEBUGGING
-                                qDebug() << "[undo] moving up tile" << j + 1;
+                                qCDebug(KSHISEN_LOG) << "[undo] moving up tile" << j + 1;
 #endif
                                 setField(i, j, field(i, j + 1));
                                 updateField(i, j);
                             }
 #ifdef DEBUGGING
-                            qDebug() << "[undo] clearing last tile" << move->m_slideY1;
+                            qCDebug(KSHISEN_LOG) << "[undo] clearing last tile" << move->m_slideY1;
 #endif
                             setField(i, move->m_slideY1, EMPTY);
                             updateField(i, move->m_slideY1);
@@ -1638,7 +1638,7 @@ void Board::undo()
 
                 // then undo the slide to put the tiles back to their original location
 #ifdef DEBUGGING
-                qDebug() << "[undo] reversing slide";
+                qCDebug(KSHISEN_LOG) << "[undo] reversing slide";
 #endif
                 reverseSlide(move->m_x1, move->m_y1, move->m_slideX1, move->m_slideY1, move->m_slideX2, move->m_slideY2);
 
@@ -1647,7 +1647,7 @@ void Board::undo()
                 // the default implementation works because it only affects
                 // the two columns were tiles were taken
 #ifdef DEBUGGING
-                qDebug() << "[undo] gravity from vertical slide";
+                qCDebug(KSHISEN_LOG) << "[undo] gravity from vertical slide";
 #endif
 
                 // move tiles from the first column up
@@ -1731,7 +1731,7 @@ void Board::makeHintMove()
 
 void Board::dumpBoard() const
 {
-    qDebug() << "Board contents:";
+    qCDebug(KSHISEN_LOG) << "Board contents:";
     for (int y = 0; y < yTiles(); ++y) {
         QString row;
         for (int x = 0; x < xTiles(); ++x) {
@@ -1742,13 +1742,13 @@ void Board::dumpBoard() const
                 row += QString("%1").arg(tile, 3);
             }
         }
-        qDebug() << row;
+        qCDebug(KSHISEN_LOG) << row;
     }
 }
 
 void Board::dumpBoard(const int *board) const
 {
-    qDebug() << "Board contents:";
+    qCDebug(KSHISEN_LOG) << "Board contents:";
     for (int y = 0; y < yTiles(); ++y) {
         QString row;
         for (int x = 0; x < xTiles(); ++x) {
@@ -1759,7 +1759,7 @@ void Board::dumpBoard(const int *board) const
                 row += QString("%1").arg(tile, 3);
             }
         }
-        qDebug() << row;
+        qCDebug(KSHISEN_LOG) << row;
     }
 }
 #endif

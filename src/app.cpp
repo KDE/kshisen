@@ -42,7 +42,7 @@
 #include <qstatusbar.h>
 #include <ktoggleaction.h>
 
-#include <QDebug>
+#include "kshisen_debug.h"
 #include <QTimer>
 
 #include <cmath>
@@ -278,7 +278,7 @@ void App::updateTimeDisplay()
     if (m_board->isStuck() || m_board->isOver()) {
         return;
     }
-    //qDebug() << "Time: " << m_board->currentTime();
+    //qCDebug(KSHISEN_LOG) << "Time: " << m_board->currentTime();
     int currentTime = m_board->currentTime();
     QString message = i18n("Your time: %1:%2:%3 %4",
                            QString().sprintf("%02d", currentTime / 3600),
