@@ -209,26 +209,26 @@ void App::hint()
 void App::updateItems()
 {
     if (m_board->isOver()) {
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Undo))->setEnabled(false);
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Redo))->setEnabled(false);
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Pause))->setEnabled(false);
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Hint))->setEnabled(false);
+        actionCollection()->action(QLatin1Literal(KStandardGameAction::name(KStandardGameAction::Undo)))->setEnabled(false);
+        actionCollection()->action(QLatin1Literal(KStandardGameAction::name(KStandardGameAction::Redo)))->setEnabled(false);
+        actionCollection()->action(QLatin1Literal(KStandardGameAction::name(KStandardGameAction::Pause)))->setEnabled(false);
+        actionCollection()->action(QLatin1Literal(KStandardGameAction::name(KStandardGameAction::Hint)))->setEnabled(false);
     } else if (m_board->isPaused()) {
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Undo))->setEnabled(false);
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Redo))->setEnabled(false);
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Restart))->setEnabled(false);
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Pause))->setChecked(true);
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Hint))->setEnabled(false);
+        actionCollection()->action(QLatin1Literal(KStandardGameAction::name(KStandardGameAction::Undo)))->setEnabled(false);
+        actionCollection()->action(QLatin1Literal(KStandardGameAction::name(KStandardGameAction::Redo)))->setEnabled(false);
+        actionCollection()->action(QLatin1Literal(KStandardGameAction::name(KStandardGameAction::Restart)))->setEnabled(false);
+        actionCollection()->action(QLatin1Literal(KStandardGameAction::name(KStandardGameAction::Pause)))->setChecked(true);
+        actionCollection()->action(QLatin1Literal(KStandardGameAction::name(KStandardGameAction::Hint)))->setEnabled(false);
     } else if (m_board->isStuck()) {
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Pause))->setEnabled(false);
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Hint))->setEnabled(false);
+        actionCollection()->action(QLatin1Literal(KStandardGameAction::name(KStandardGameAction::Pause)))->setEnabled(false);
+        actionCollection()->action(QLatin1Literal(KStandardGameAction::name(KStandardGameAction::Hint)))->setEnabled(false);
     } else {
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Undo))->setEnabled(m_board->canUndo());
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Redo))->setEnabled(m_board->canRedo());
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Restart))->setEnabled(m_board->canUndo());
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Pause))->setEnabled(true);
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Pause))->setChecked(false);
-        actionCollection()->action(KStandardGameAction::name(KStandardGameAction::Hint))->setEnabled(true);
+        actionCollection()->action(QLatin1Literal(KStandardGameAction::name(KStandardGameAction::Undo)))->setEnabled(m_board->canUndo());
+        actionCollection()->action(QLatin1Literal(KStandardGameAction::name(KStandardGameAction::Redo)))->setEnabled(m_board->canRedo());
+        actionCollection()->action(QLatin1Literal(KStandardGameAction::name(KStandardGameAction::Restart)))->setEnabled(m_board->canUndo());
+        actionCollection()->action(QLatin1Literal(KStandardGameAction::name(KStandardGameAction::Pause)))->setEnabled(true);
+        actionCollection()->action(QLatin1Literal(KStandardGameAction::name(KStandardGameAction::Pause)))->setChecked(false);
+        actionCollection()->action(QLatin1Literal(KStandardGameAction::name(KStandardGameAction::Hint)))->setEnabled(true);
     }
 }
 
@@ -247,14 +247,14 @@ void App::slotEndOfGame()
         scoreInfo[KScoreDialog::Time] = timeString;
 
         KScoreDialog scoreDialog(KScoreDialog::Name | KScoreDialog::Time | KScoreDialog::Score, this);
-        scoreDialog.addField(KScoreDialog::Custom1, i18n("Gravity"), "gravity");
+        scoreDialog.addField(KScoreDialog::Custom1, i18n("Gravity"), QLatin1Literal("gravity"));
         // FIXME: This is bad, because the translated words are stored in the highscores and thus switching the language makes ugly things (schwarzer)
         if (m_board->gravityFlag()) {
             scoreInfo[KScoreDialog::Custom1] = i18n("Yes");
         } else {
             scoreInfo[KScoreDialog::Custom1] = i18n("No");
         }
-        scoreDialog.setConfigGroup(QString("%1x%2").arg(sizeX[Prefs::size()]).arg(sizeY[Prefs::size()]));
+        scoreDialog.setConfigGroup(QString::fromLatin1("%1x%2").arg(sizeX[Prefs::size()]).arg(sizeY[Prefs::size()]));
 
         if (m_board->hasCheated()) {
             QString message = i18n("\nYou could have been in the highscores\nif you did not use Undo or Hint.\nTry without them next time.");
@@ -355,7 +355,7 @@ void App::setCheatModeEnabled(bool enabled)
 void App::showHighscores()
 {
     KScoreDialog scoreDialog(KScoreDialog::Name | KScoreDialog::Time, this);
-    scoreDialog.addField(KScoreDialog::Custom1, i18n("Gravity"), "gravity");
+    scoreDialog.addField(KScoreDialog::Custom1, i18n("Gravity"), QLatin1Literal("gravity"));
     scoreDialog.exec();
 }
 
@@ -366,13 +366,13 @@ void App::keyBindings()
 
 void App::showSettingsDialog()
 {
-    if (KConfigDialog::showDialog("settings")) {
+    if (KConfigDialog::showDialog(QLatin1Literal("settings"))) {
         return;
     }
 
     //Use the classes exposed by LibKmahjongg for our configuration dialog
-    KMahjonggConfigDialog *dialog = new KMahjonggConfigDialog(this, "settings", Prefs::self());
-    dialog->addPage(new Settings(0), i18n("General"), "games-config-options");
+    KMahjonggConfigDialog *dialog = new KMahjonggConfigDialog(this, QLatin1Literal("settings"), Prefs::self());
+    dialog->addPage(new Settings(0), i18n("General"), QLatin1Literal("games-config-options"));
     dialog->addTilesetPage();
     dialog->addBackgroundPage();
     //dialog->setHelp(QString(), "kshisen");

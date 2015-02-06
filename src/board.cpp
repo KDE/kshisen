@@ -76,8 +76,8 @@ Board::Board(QWidget *parent)
       m_gravityFlag(true), m_solvableFlag(false), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
       m_highlightedTile(-1),
       m_paintConnection(false), m_paintPossibleMoves(false), m_paintInProgress(false),
-      m_soundPick(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("sound/") + "kshisen/tile-touch.ogg")),
-      m_soundFall(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("sound/") + "kshisen/tile-fall-tile.ogg"))
+      m_soundPick(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("sounds/kshisen/tile-touch.ogg"))),
+      m_soundFall(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("sounds/kshisen/tile-fall-tile.ogg")))
 {
     m_tileRemove1.first = -1;
 
@@ -189,7 +189,7 @@ int Board::yTiles() const
 void Board::setField(int x, int y, int value)
 {
     if (x < 0 || y < 0 || x >= xTiles() || y >= yTiles()) {
-        qFatal("Attempted write to invalid field position (%u,%u), x, y");
+        qFatal("Attempted write to invalid field position (%u,%u)", x, y);
     }
 
     m_field[y * xTiles() + x] = value;
