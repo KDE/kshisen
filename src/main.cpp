@@ -65,6 +65,8 @@ int main(int argc, char **argv)
     migrate.setUiFiles(QStringList() << QLatin1String("kshisenui.rc"));
     migrate.migrate();
 
+    a.setWindowIcon(QIcon::fromTheme(QLatin1String("kshisen")));
+
     KDBusService service;
 
     App *app = new App();
