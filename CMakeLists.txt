@@ -4,7 +4,7 @@ cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
 
 set (QT_MIN_VERSION "5.2.0")
 
-find_package(ECM 1.3.0 REQUIRED NO_MODULE)
+find_package(ECM 1.7.0 REQUIRED NO_MODULE)
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
@@ -12,6 +12,7 @@ find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Gui )
 find_package(KF5 REQUIRED COMPONENTS CoreAddons XmlGui Config KIO DNSSD NewStuff Declarative DocTools )
 
 include(FeatureSummary)
+include(ECMAddAppIcon)
 include(GenerateExportHeader)
 include(ECMPackageConfigHelpers)
 include(ECMSetupVersion)
@@ -34,7 +35,7 @@ add_subdirectory( src )
 add_subdirectory( sounds )
 add_subdirectory( doc )
 
-install( PROGRAMS org.kde.kshisen.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
+install( PROGRAMS org.kde.kshisen.desktop DESTINATION ${KDE_INSTALL_APPDIR} )
 
 ecm_install_icons( ICONS
                    128-apps-kshisen.png
@@ -43,7 +44,7 @@ ecm_install_icons( ICONS
                    32-apps-kshisen.png
                    22-apps-kshisen.png
                    16-apps-kshisen.png
-                   DESTINATION  ${ICON_INSTALL_DIR}
+                   DESTINATION  ${KDE_INSTALL_ICONDIR}
                    THEME hicolor   )
 
 ########### Display Summary ###############

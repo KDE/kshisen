@@ -20,8 +20,8 @@ include_directories(${PHONON_INCLUDES})
 target_link_libraries(kshisen Qt5::Gui KF5::CoreAddons KF5::KIOWidgets KF5::DNSSD Phonon::phonon4qt5 
                               KF5::XmlGui KF5::I18n KF5KDEGames KF5KDEGamesPrivate KF5KMahjongglib KF5::DBusAddons)
 
-install( TARGETS kshisen ${INSTALL_TARGETS_DEFAULT_ARGS} )
+install( TARGETS kshisen ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 
-install( FILES kshisen.kcfg DESTINATION ${KCFG_INSTALL_DIR} )
-install( FILES kshisenui.rc DESTINATION ${KXMLGUI_INSTALL_DIR}/kshisen )
+install( FILES kshisen.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR} )
+install( FILES kshisenui.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/kshisen )
 
