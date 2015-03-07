@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=kshisen -caption %c
+Exec=kshisen -qwindowtitle %c
 Type=Application
 X-DocPath=kshisen/index.html
 Name=Shisen-Sho
