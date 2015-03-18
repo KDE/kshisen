@@ -35,6 +35,16 @@ static const char description[] = I18N_NOOP("A KDE game similar to Mahjongg");
 
 int main(int argc, char **argv)
 {
+    // Migrate pre-existing (4.x) configuration
+    QStringList configFiles;
+    configFiles.append(QLatin1String("kshisenrc"));
+    configFiles.append(QLatin1String("kshisen.notifyrc"));
+
+    Kdelibs4ConfigMigrator migrate(QLatin1String("kshisen"));
+    migrate.setConfigFiles(configFiles);
+    migrate.setUiFiles(QStringList() << QLatin1String("kshisenui.rc"));
+    migrate.migrate();
+
     QApplication a(argc, argv);
 
     KAboutData aboutData(QLatin1Literal("kshisen"), i18n("Shisen-Sho"),
@@ -54,16 +64,6 @@ int main(int argc, char **argv)
     aboutData.setupCommandLine(&parser);
     parser.process(a);
     aboutData.processCommandLine(&parser);
-
-    // Migrate pre-existing (4.x) configuration
-    QStringList configFiles;
-    configFiles.append(QLatin1String("kshisenrc"));
-    configFiles.append(QLatin1String("kshisen.notifyrc"));
-
-    Kdelibs4ConfigMigrator migrate(QLatin1String("kshisen"));
-    migrate.setConfigFiles(configFiles);
-    migrate.setUiFiles(QStringList() << QLatin1String("kshisenui.rc"));
-    migrate.migrate();
 
     a.setWindowIcon(QIcon::fromTheme(QLatin1String("kshisen")));
 
