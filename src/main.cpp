@@ -47,6 +47,17 @@ int main(int argc, char **argv)
 
     QApplication a(argc, argv);
 
+    // Migrate pre-existing (4.x) configuration
+    QStringList configFiles;
+    configFiles.append(QLatin1String("kshisenrc"));
+    configFiles.append(QLatin1String("kshisen.notifyrc"));
+
+    Kdelibs4ConfigMigrator migrate(QLatin1String("kshisen"));
+    migrate.setConfigFiles(configFiles);
+    migrate.setUiFiles(QStringList() << QLatin1String("kshisenui.rc"));
+    migrate.migrate();
+
+
     KAboutData aboutData(QLatin1Literal("kshisen"), i18n("Shisen-Sho"),
                          QLatin1String(KSHISEN_VERSION " #" KSHISEN_COMMIT), i18n(description), KAboutLicense::GPL,
                          i18n("(c) 1997, Mario Weilguni")); 
