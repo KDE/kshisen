@@ -35,6 +35,8 @@ static const char description[] = I18N_NOOP("A KDE game similar to Mahjongg");
 
 int main(int argc, char **argv)
 {
+    QApplication a(argc, argv);
+
     // Migrate pre-existing (4.x) configuration
     QStringList configFiles;
     configFiles.append(QLatin1String("kshisenrc"));
@@ -45,7 +47,6 @@ int main(int argc, char **argv)
     migrate.setUiFiles(QStringList() << QLatin1String("kshisenui.rc"));
     migrate.migrate();
 
-    QApplication a(argc, argv);
 
     KAboutData aboutData(QLatin1Literal("kshisen"), i18n("Shisen-Sho"),
                          QLatin1String(KSHISEN_VERSION " #" KSHISEN_COMMIT), i18n(description), KAboutLicense::GPL,
