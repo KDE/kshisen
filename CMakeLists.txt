@@ -36,6 +36,7 @@ add_subdirectory( sounds )
 add_subdirectory( doc )
 
 install( PROGRAMS org.kde.kshisen.desktop DESTINATION ${KDE_INSTALL_APPDIR} )
+install( FILES org.kde.kshisen.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR} )
 
 ecm_install_icons( ICONS
                    128-apps-kshisen.png
@@ -51,4 +52,3 @@ ecm_install_icons( ICONS
 feature_summary(WHAT ALL
                 INCLUDE_QUIET_PACKAGES
                 FATAL_ON_MISSING_REQUIRED_PACKAGES)
-
