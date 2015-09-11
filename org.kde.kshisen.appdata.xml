@@ -4,6 +4,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <name>KShisen</name>
+  <name xml:lang="ca">KShisen</name>
   <name xml:lang="cs">KShisen</name>
   <name xml:lang="es">KShisen</name>
   <name xml:lang="nl">KShisen</name>
@@ -12,6 +13,7 @@
   <name xml:lang="uk">KShisen</name>
   <name xml:lang="x-test">xxKShisenxx</name>
   <summary>Shisen-Sho Mahjongg-like Tile Game</summary>
+  <summary xml:lang="ca">Joc de mosaics Shisen-Sho a l'estil Mahjongg</summary>
   <summary xml:lang="cs">Hra s dlaždicemi Šisen-Šo</summary>
   <summary xml:lang="es">Juego de fichas similar al Shisen-Sho Mahjongg</summary>
   <summary xml:lang="nl">Shisen-Sho Mahjongg-achtig stenenspel</summary>
@@ -23,9 +25,11 @@
     <p>
       KShisen is a solitaire-like game played using the standard set of Mahjong tiles. Unlike Mahjong however, KShisen has only one layer of scrambled tiles.
     </p>
+    <p xml:lang="ca">El KShisen és un joc de tipus solitari que es juga usant el conjunt de fitxers estàndard del Mahjong. A diferència del Mahjong, el KShisen només té una capa de fitxes barrejades.</p>
     <p xml:lang="es">KShisen es un juego de solitario que se juega usando las fichas típicas del Mahjong. Al contrario del Mahjong, KShisen solo tiene una capa de fichas barajadas.</p>
     <p xml:lang="nl">KShisen is een solitaire-achtig spel dat wordt gespeeld met de standaard set Mahjong stenen. Anders dan Mahjong heeft KShisen slechts één laag door elkaar gehaalde stenen.</p>
     <p xml:lang="pt">O KShisen é um jogo solitário, jogando com um conjunto-padrão de peças do Mahjong. Ao contrário do Mahjong, contudo, o KShisen só tem uma camada de peças baralhadas.</p>
+    <p xml:lang="pt-BR">KShisen é um jogo solitário, jogado com um conjunto padrão de peças do Mahjong. Ao contrário do Mahjong, o KShisen tem apenas uma camada de peças embaralhadas.</p>
     <p xml:lang="uk">KShisen — гра, подібна до пасьянсу, у якій використовуються плитки маджонґа. Втім, на відміну від класичної гри у маджонґ, у KShisen ви матимете справу лише з одним шаром плиток.</p>
     <p xml:lang="x-test">xxKShisen is a solitaire-like game played using the standard set of Mahjong tiles. Unlike Mahjong however, KShisen has only one layer of scrambled tiles.xx</p>
   </description>
