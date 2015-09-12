@@ -8,6 +8,7 @@
   <name xml:lang="cs">KShisen</name>
   <name xml:lang="es">KShisen</name>
   <name xml:lang="nl">KShisen</name>
+  <name xml:lang="pl">KShisen</name>
   <name xml:lang="pt">KShisen</name>
   <name xml:lang="pt-BR">KShisen</name>
   <name xml:lang="uk">KShisen</name>
@@ -17,6 +18,7 @@
   <summary xml:lang="cs">Hra s dlaždicemi Šisen-Šo</summary>
   <summary xml:lang="es">Juego de fichas similar al Shisen-Sho Mahjongg</summary>
   <summary xml:lang="nl">Shisen-Sho Mahjongg-achtig stenenspel</summary>
+  <summary xml:lang="pl">Gra typu Shisen-Sho Mahjongg</summary>
   <summary xml:lang="pt">Jogo de Peças à Mahjongg Shisen-Sho</summary>
   <summary xml:lang="pt-BR">Jogo de peças parecido com Shisen-Sho Mahjongg</summary>
   <summary xml:lang="uk">Шісен-шо, схожа на маджонґ гра з плитками</summary>
@@ -28,6 +30,7 @@
     <p xml:lang="ca">El KShisen és un joc de tipus solitari que es juga usant el conjunt de fitxers estàndard del Mahjong. A diferència del Mahjong, el KShisen només té una capa de fitxes barrejades.</p>
     <p xml:lang="es">KShisen es un juego de solitario que se juega usando las fichas típicas del Mahjong. Al contrario del Mahjong, KShisen solo tiene una capa de fichas barajadas.</p>
     <p xml:lang="nl">KShisen is een solitaire-achtig spel dat wordt gespeeld met de standaard set Mahjong stenen. Anders dan Mahjong heeft KShisen slechts één laag door elkaar gehaalde stenen.</p>
+    <p xml:lang="pl">KShisen jest grą typu pasjans z standardowym zestawem kamieni Mahjong. W odróżnieniu od Mahjonga, KShisen ma tylko jedną warstwę rozrzuconych kamieni.</p>
     <p xml:lang="pt">O KShisen é um jogo solitário, jogando com um conjunto-padrão de peças do Mahjong. Ao contrário do Mahjong, contudo, o KShisen só tem uma camada de peças baralhadas.</p>
     <p xml:lang="pt-BR">KShisen é um jogo solitário, jogado com um conjunto padrão de peças do Mahjong. Ao contrário do Mahjong, o KShisen tem apenas uma camada de peças embaralhadas.</p>
     <p xml:lang="uk">KShisen — гра, подібна до пасьянсу, у якій використовуються плитки маджонґа. Втім, на відміну від класичної гри у маджонґ, у KShisen ви матимете справу лише з одним шаром плиток.</p>
