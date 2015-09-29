@@ -6,6 +6,7 @@
   <name>KShisen</name>
   <name xml:lang="ca">KShisen</name>
   <name xml:lang="cs">KShisen</name>
+  <name xml:lang="de">KShisen</name>
   <name xml:lang="en-GB">KShisen</name>
   <name xml:lang="es">KShisen</name>
   <name xml:lang="nl">KShisen</name>
@@ -24,6 +25,7 @@
   <summary>Shisen-Sho Mahjongg-like Tile Game</summary>
   <summary xml:lang="ca">Joc de mosaics Shisen-Sho a l'estil Mahjongg</summary>
   <summary xml:lang="cs">Hra s dlaždicemi Šisen-Šo</summary>
+  <summary xml:lang="de">Spiel mit Mahjongg-Spielsteinen</summary>
   <summary xml:lang="en-GB">Shisen-Sho Mahjongg-like Tile Game</summary>
   <summary xml:lang="es">Juego de fichas similar al Shisen-Sho Mahjongg</summary>
   <summary xml:lang="nl">Shisen-Sho Mahjongg-achtig stenenspel</summary>
