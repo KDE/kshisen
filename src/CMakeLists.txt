@@ -15,8 +15,8 @@ kconfig_add_kcfg_files( kshisen_SRCS prefs.kcfgc )
 
 add_executable( kshisen ${kshisen_SRCS} )
 
-target_link_libraries(kshisen Qt5::Gui KF5::CoreAddons KF5::KIOWidgets KF5::DNSSD
-                              KF5::XmlGui KF5::I18n KF5KDEGames KF5KDEGamesPrivate KF5KMahjongglib KF5::DBusAddons)
+target_link_libraries(kshisen Qt5::Gui KF5::XmlGui KF5::I18n KF5KDEGames
+                              KF5KDEGamesPrivate KF5KMahjongglib KF5::DBusAddons)
 
 install( TARGETS kshisen ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 
