@@ -39,8 +39,6 @@
 #include <QSize>
 #include <QWidget>
 
-#include <phonon/mediaobject.h>
-
 // used in board.cpp and app.cpp, thus defined here
 static int sizeX[6] = {14, 16, 18, 24, 26, 30};
 static int sizeY[6] = { 6,  9,  8, 12, 14, 16};
