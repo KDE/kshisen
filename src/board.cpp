@@ -1737,9 +1737,9 @@ void Board::dumpBoard() const
         for (int x = 0; x < xTiles(); ++x) {
             int tile = field(x, y);
             if (tile == EMPTY) {
-                row += " --";
+                row += QLatin1String(" --");
             } else {
-                row += QString("%1").arg(tile, 3);
+                row += QString(QLatin1String("%1")).arg(tile, 3);
             }
         }
         qCDebug(KSHISEN_LOG) << row;
@@ -1754,9 +1754,9 @@ void Board::dumpBoard(const int *board) const
         for (int x = 0; x < xTiles(); ++x) {
             int tile = board[y * xTiles() + x];
             if (tile == EMPTY) {
-                row += " --";
+                row += QLatin1String(" --");
             } else {
-                row += QString("%1").arg(tile, 3);
+                row += QString(QLatin1String("%1")).arg(tile, 3);
             }
         }
         qCDebug(KSHISEN_LOG) << row;
