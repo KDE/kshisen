@@ -69,7 +69,7 @@ bool PossibleMove::isInPath(int x, int y) const
 Board::Board(QWidget *parent)
     : QWidget(parent),
       m_markX(0), m_markY(0),
-      m_field(0),
+      m_field(nullptr),
       m_xTiles(0), m_yTiles(0),
       m_delay(0), m_level(0), m_shuffle(0),
       m_gameState(Normal), m_cheat(false),

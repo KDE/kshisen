@@ -62,11 +62,11 @@ public:
 
 App::App(QWidget *parent)
     : KXmlGuiWindow(parent),
-      m_gameTipLabel(0),
-      m_gameTimerLabel(0),
-      m_gameTilesLabel(0),
-      m_gameCheatLabel(0),
-      m_board(0)
+      m_gameTipLabel(nullptr),
+      m_gameTimerLabel(nullptr),
+      m_gameTilesLabel(nullptr),
+      m_gameCheatLabel(nullptr),
+      m_board(nullptr)
 {
     m_board = new Board(this);
     m_board->setObjectName(QLatin1String("board"));
