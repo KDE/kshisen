@@ -712,10 +712,10 @@ void Board::paintEvent(QPaintEvent *e)
     if (m_paintPossibleMoves) {
         p.setPen(QPen(QColor("blue"), lineWidth()));
         // paint all possible moves
-        for (auto iter = m_possibleMoves.constBegin(); iter != m_possibleMoves.constEnd(); ++iter) {
-            auto pt1 = iter->m_path.constBegin();
+        for (auto const move : m_possibleMoves) {
+            auto pt1 = move.m_path.constBegin();
             auto pt2 = pt1 + 1;
-            while (pt2 != iter->m_path.constEnd()) {
+            while (pt2 != move.m_path.constEnd()) {
                 p.drawLine(midCoord(pt1->x, pt1->y), midCoord(pt2->x, pt2->y));
                 ++pt1;
                 ++pt2;
@@ -923,9 +923,9 @@ void Board::marked(int x, int y)
 {
     if (field(x, y) == EMPTY) { // click on empty space on the board
         if (m_possibleMoves.count() > 1) {  // if the click is on any of the current possible moves, make that move
-            for (auto iter = m_possibleMoves.begin(); iter != m_possibleMoves.end(); ++iter) {
-                if (iter->isInPath(x, y)) {
-                    performMove(*iter);
+            for (auto move : m_possibleMoves) {
+                if (move.isInPath(x, y)) {
+                    performMove(move);
                     emit selectATile();
                     return;
                 }
@@ -960,9 +960,9 @@ void Board::marked(int x, int y)
         return;
     } else if (m_possibleMoves.count() > 1) {  // if the click is on any of the current possible moves, make that move
 
-        for (auto iter = m_possibleMoves.begin(); iter != m_possibleMoves.end(); ++iter) {
-            if (iter->isInPath(x, y)) {
-                performMove(*iter);
+        for (auto move : m_possibleMoves) {
+            if (move.isInPath(x, y)) {
+                performMove(move);
                 emit selectATile();
                 return;
             }
@@ -983,9 +983,9 @@ void Board::marked(int x, int y)
     if (findPath(m_markX, m_markY, x, y, m_possibleMoves) > 0) {
         if (m_possibleMoves.count() > 1) {
             int withSlide = 0;
-            for (auto iter = m_possibleMoves.constBegin(); iter != m_possibleMoves.constEnd(); ++iter) {
-                iter->Debug();
-                if (iter->m_hasSlide) {
+            for (auto const move : m_possibleMoves) {
+                move.Debug();
+                if (move.m_hasSlide) {
                     ++withSlide;
                 }
             }
