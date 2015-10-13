@@ -47,9 +47,9 @@ bool PossibleMove::isInPath(int x, int y) const
     }
     qCDebug(KSHISEN_LOG) << "isInPath:" << x << "," << y;
     Debug();
-    QList<Position>::const_iterator iter;
+
     // a path has at least 2 positions
-    iter = m_path.constBegin();
+    auto iter = m_path.constBegin();
     int pathX = iter->x;
     int pathY = iter->y;
     ++iter;
@@ -699,8 +699,8 @@ void Board::paintEvent(QPaintEvent *e)
     if (m_paintConnection) {
         p.setPen(QPen(QColor("red"), lineWidth()));
 
-        Path::const_iterator pt1 = m_connection.constBegin();
-        Path::const_iterator pt2 = pt1 + 1;
+        auto pt1 = m_connection.constBegin();
+        auto pt2 = pt1 + 1;
         while (pt2 != m_connection.constEnd()) {
             p.drawLine(midCoord(pt1->x, pt1->y), midCoord(pt2->x, pt2->y));
             ++pt1;
@@ -712,9 +712,9 @@ void Board::paintEvent(QPaintEvent *e)
     if (m_paintPossibleMoves) {
         p.setPen(QPen(QColor("blue"), lineWidth()));
         // paint all possible moves
-        for (QList<PossibleMove>::const_iterator iter = m_possibleMoves.constBegin(); iter != m_possibleMoves.constEnd(); ++iter) {
-            Path::const_iterator pt1 = iter->m_path.constBegin();
-            Path::const_iterator pt2 = pt1 + 1;
+        for (auto iter = m_possibleMoves.constBegin(); iter != m_possibleMoves.constEnd(); ++iter) {
+            auto pt1 = iter->m_path.constBegin();
+            auto pt2 = pt1 + 1;
             while (pt2 != iter->m_path.constEnd()) {
                 p.drawLine(midCoord(pt1->x, pt1->y), midCoord(pt2->x, pt2->y));
                 ++pt1;
@@ -923,7 +923,7 @@ void Board::marked(int x, int y)
 {
     if (field(x, y) == EMPTY) { // click on empty space on the board
         if (m_possibleMoves.count() > 1) {  // if the click is on any of the current possible moves, make that move
-            for (QList<PossibleMove>::iterator iter = m_possibleMoves.begin(); iter != m_possibleMoves.end(); ++iter) {
+            for (auto iter = m_possibleMoves.begin(); iter != m_possibleMoves.end(); ++iter) {
                 if (iter->isInPath(x, y)) {
                     performMove(*iter);
                     emit selectATile();
@@ -960,7 +960,7 @@ void Board::marked(int x, int y)
         return;
     } else if (m_possibleMoves.count() > 1) {  // if the click is on any of the current possible moves, make that move
 
-        for (QList<PossibleMove>::iterator iter = m_possibleMoves.begin(); iter != m_possibleMoves.end(); ++iter) {
+        for (auto iter = m_possibleMoves.begin(); iter != m_possibleMoves.end(); ++iter) {
             if (iter->isInPath(x, y)) {
                 performMove(*iter);
                 emit selectATile();
@@ -983,7 +983,7 @@ void Board::marked(int x, int y)
     if (findPath(m_markX, m_markY, x, y, m_possibleMoves) > 0) {
         if (m_possibleMoves.count() > 1) {
             int withSlide = 0;
-            for (QList<PossibleMove>::const_iterator iter = m_possibleMoves.constBegin(); iter != m_possibleMoves.constEnd(); ++iter) {
+            for (auto iter = m_possibleMoves.constBegin(); iter != m_possibleMoves.constEnd(); ++iter) {
                 iter->Debug();
                 if (iter->m_hasSlide) {
                     ++withSlide;
@@ -1370,8 +1370,8 @@ void Board::undrawConnection()
     m_connection.clear();
     m_paintConnection = false;
 
-    Path::const_iterator pt1 = oldConnection.constBegin();
-    Path::const_iterator pt2 = pt1 + 1;
+    auto pt1 = oldConnection.constBegin();
+    auto pt2 = pt1 + 1;
     while (pt2 != oldConnection.constEnd()) {
         if (pt1->y == pt2->y) {
             for (int i = qMin(pt1->x, pt2->x); i <= qMax(pt1->x, pt2->x); ++i) {

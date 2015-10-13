@@ -78,14 +78,14 @@ public:
 
     void Debug() const {
         qCDebug(KSHISEN_LOG) << "PossibleMove";
-        QList<Position>::const_iterator iter;
-        for (iter = m_path.constBegin(); iter != m_path.constEnd(); ++iter) {
+
+        for (auto iter = m_path.constBegin(); iter != m_path.constEnd(); ++iter) {
             qCDebug(KSHISEN_LOG) << "    Path:" << iter->x << "," << iter->y;
         }
 
         if (m_hasSlide) {
             qCDebug(KSHISEN_LOG) << "   hasSlide";
-            for (iter = m_slide.constBegin(); iter != m_slide.constEnd(); ++iter) {
+            for (auto iter = m_slide.constBegin(); iter != m_slide.constEnd(); ++iter) {
                 qCDebug(KSHISEN_LOG) << "    Slide:" << iter->x << "," << iter->y;
             }
         }
