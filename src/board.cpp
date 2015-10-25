@@ -72,7 +72,7 @@ Board::Board(QWidget *parent)
       m_field(nullptr),
       m_xTiles(0), m_yTiles(0),
       m_delay(0), m_level(0), m_shuffle(0),
-      m_gameState(Normal), m_cheat(false),
+      m_gameState(GameState::Normal), m_cheat(false),
       m_gravityFlag(true), m_solvableFlag(false), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
       m_highlightedTile(-1),
       m_paintConnection(false), m_paintPossibleMoves(false), m_paintInProgress(false),
@@ -287,15 +287,15 @@ void Board::mousePressEvent(QMouseEvent *e)
         return;
     }
     switch (m_gameState) {
-        case Normal:
+        case GameState::Normal:
             break;
-        case Over:
+        case GameState::Over:
             newGame();
             return;
-        case Paused:
+        case GameState::Paused:
             setPauseEnabled(false);
             return;
-        case Stuck:
+        case GameState::Stuck:
             return;
     }
     // Calculate field position
@@ -433,7 +433,7 @@ void Board::resizeBoard()
 
 void Board::newGame()
 {
-    m_gameState = Normal;
+    m_gameState = GameState::Normal;
     setCheatModeEnabled(false);
 
     m_markX = -1;
@@ -681,17 +681,17 @@ void Board::paintEvent(QPaintEvent *e)
     p.fillRect(ur, m_background.getBackground());
 
     switch (m_gameState) {
-        case Normal:
+        case GameState::Normal:
             drawTiles(p, e);
             break;
-        case Paused:
+        case GameState::Paused:
             showInfoRect(p, i18n("Game Paused\nClick to resume game."));
             break;
-        case Stuck:
+        case GameState::Stuck:
             drawTiles(p, e);
             showInfoRect(p, i18n("Game Stuck\nNo more moves possible."));
             break;
-        case Over:
+        case GameState::Over:
             showInfoRect(p, i18n("Game Over\nClick to start a new game."));
             break;
     }
@@ -1916,14 +1916,14 @@ void Board::setTilesCanSlideFlag(bool enabled)
 
 void Board::setPauseEnabled(bool enabled)
 {
-    if ((m_gameState == Paused && enabled) || m_gameState == Stuck) {
+    if ((m_gameState == GameState::Paused && enabled) || m_gameState == GameState::Stuck) {
         return;
     }
     if (enabled) {
-        m_gameState = Paused;
+        m_gameState = GameState::Paused;
         m_gameClock.pause();
     } else {
-        m_gameState = Normal;
+        m_gameState = GameState::Normal;
         m_gameClock.resume();
     }
     emit changed();
@@ -1964,14 +1964,14 @@ void Board::resetRedo()
 
 void Board::setGameStuckEnabled(bool enabled)
 {
-    if (m_gameState == Stuck && enabled) {
+    if (m_gameState == GameState::Stuck && enabled) {
         return;
     }
     if (enabled) {
-        m_gameState = Stuck;
+        m_gameState = GameState::Stuck;
         m_gameClock.pause();
     } else {
-        m_gameState = Normal;
+        m_gameState = GameState::Normal;
         m_gameClock.resume();
     }
     emit changed();
@@ -1980,10 +1980,10 @@ void Board::setGameStuckEnabled(bool enabled)
 
 void Board::setGameOverEnabled(bool enabled)
 {
-    if (m_gameState == Over && enabled) {
+    if (m_gameState == GameState::Over && enabled) {
         return;
     }
-    m_gameState = Over;
+    m_gameState = GameState::Over;
     emit changed();
     update();
 }
@@ -1999,17 +1999,17 @@ void Board::setCheatModeEnabled(bool enabled)
 
 bool Board::isOver() const
 {
-    return m_gameState == Over;
+    return m_gameState == GameState::Over;
 }
 
 bool Board::isPaused() const
 {
-    return m_gameState == Paused;
+    return m_gameState == GameState::Paused;
 }
 
 bool Board::isStuck() const
 {
-    return m_gameState == Stuck;
+    return m_gameState == GameState::Stuck;
 }
 
 bool Board::hasCheated() const

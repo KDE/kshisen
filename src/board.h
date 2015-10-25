@@ -367,7 +367,7 @@ private:
     int m_level;
     int m_shuffle;
 
-    enum GameState { Normal, Paused, Stuck, Over }; ///< Whether game is paused, has no more matching tiles or is over
+    enum class GameState { Normal, Paused, Stuck, Over }; ///< Whether game is paused, has no more matching tiles or is over
     GameState m_gameState;
     bool m_cheat; ///< Whether the cheat mode is set
 
