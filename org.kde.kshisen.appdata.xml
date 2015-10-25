@@ -9,6 +9,7 @@
   <name xml:lang="de">KShisen</name>
   <name xml:lang="en-GB">KShisen</name>
   <name xml:lang="es">KShisen</name>
+  <name xml:lang="gl">KShisen</name>
   <name xml:lang="nl">KShisen</name>
   <name xml:lang="pl">KShisen</name>
   <name xml:lang="pt">KShisen</name>
@@ -28,6 +29,7 @@
   <summary xml:lang="de">Spiel mit Mahjongg-Spielsteinen</summary>
   <summary xml:lang="en-GB">Shisen-Sho Mahjongg-like Tile Game</summary>
   <summary xml:lang="es">Juego de fichas similar al Shisen-Sho Mahjongg</summary>
+  <summary xml:lang="gl">Xogo de fichas Shisen-so ao estilo do Mahjongg</summary>
   <summary xml:lang="nl">Shisen-Sho Mahjongg-achtig stenenspel</summary>
   <summary xml:lang="pl">Gra typu Shisen-Sho Mahjongg</summary>
   <summary xml:lang="pt">Jogo de Peças à Mahjongg Shisen-Sho</summary>
@@ -48,6 +50,7 @@
     <p xml:lang="ca">El KShisen és un joc de tipus solitari que es juga usant el conjunt de fitxers estàndard del Mahjong. A diferència del Mahjong, el KShisen només té una capa de fitxes barrejades.</p>
     <p xml:lang="en-GB">KShisen is a solitaire-like game played using the standard set of Mahjong tiles. Unlike Mahjong however, KShisen has only one layer of scrambled tiles.</p>
     <p xml:lang="es">KShisen es un juego de solitario que se juega usando las fichas típicas del Mahjong. Al contrario del Mahjong, KShisen solo tiene una capa de fichas barajadas.</p>
+    <p xml:lang="gl">O KShisen é un xogo similar ao solitario que se xoga usando as pezas estándar do Mahjong. Porén, a diferenza do Mahjong, o KShisen ten unicamente unha capa de pezas desordenadas.</p>
     <p xml:lang="nl">KShisen is een solitaire-achtig spel dat wordt gespeeld met de standaard set Mahjong stenen. Anders dan Mahjong heeft KShisen slechts één laag door elkaar gehaalde stenen.</p>
     <p xml:lang="pl">KShisen jest grą typu pasjans z standardowym zestawem kamieni Mahjong. W odróżnieniu od Mahjonga, KShisen ma tylko jedną warstwę rozrzuconych kamieni.</p>
     <p xml:lang="pt">O KShisen é um jogo solitário, jogando com um conjunto-padrão de peças do Mahjong. Ao contrário do Mahjong, contudo, o KShisen só tem uma camada de peças baralhadas.</p>
