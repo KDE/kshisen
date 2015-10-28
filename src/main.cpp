@@ -38,21 +38,21 @@ int main(int argc, char **argv)
     QApplication a(argc, argv);
 
     // Migrate pre-existing (4.x) configuration
-    Kdelibs4ConfigMigrator migrate(QLatin1String("kshisen"));
-    migrate.setConfigFiles(QStringList() << QLatin1String("kshisenrc"));
-    migrate.setUiFiles(QStringList() << QLatin1String("kshisenui.rc"));
+    Kdelibs4ConfigMigrator migrate(QStringLiteral("kshisen"));
+    migrate.setConfigFiles(QStringList() << QStringLiteral("kshisenrc"));
+    migrate.setUiFiles(QStringList() << QStringLiteral("kshisenui.rc"));
     migrate.migrate();
 
 
-    KAboutData aboutData(QLatin1Literal("kshisen"), i18n("Shisen-Sho"),
-                         QLatin1String(KSHISEN_VERSION " #" KSHISEN_COMMIT), i18n(description), KAboutLicense::GPL,
+    KAboutData aboutData(QStringLiteral("kshisen"), i18n("Shisen-Sho"),
+                         QStringLiteral(KSHISEN_VERSION " #" KSHISEN_COMMIT), i18n(description), KAboutLicense::GPL,
                          i18n("(c) 1997, Mario Weilguni")); 
-    aboutData.setHomepage(QLatin1Literal("http://games.kde.org/kshisen"));
-    aboutData.addAuthor(i18n("Frederik Schwarzer"), i18n("Current Maintainer"), QLatin1Literal("schwarzer@kde.org"));
-    aboutData.addAuthor(i18n("Dave Corrie"), i18n("Former Maintainer"), QLatin1Literal("kde@davecorrie.com"));
-    aboutData.addAuthor(i18n("Mario Weilguni"), i18n("Original Author"), QLatin1Literal("mweilguni@sime.com"));
-    aboutData.addCredit(i18n("Mauricio Piacentini"), i18n("KMahjonggLib integration for KDE4"), QLatin1Literal("mauricio@tabuleiro.com"));
-    aboutData.addCredit(i18n("Jason Lane"), i18n("Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"), QLatin1Literal("jglane@btopenworld.com"));
+    aboutData.setHomepage(QStringLiteral("http://games.kde.org/kshisen"));
+    aboutData.addAuthor(i18n("Frederik Schwarzer"), i18n("Current Maintainer"), QStringLiteral("schwarzer@kde.org"));
+    aboutData.addAuthor(i18n("Dave Corrie"), i18n("Former Maintainer"), QStringLiteral("kde@davecorrie.com"));
+    aboutData.addAuthor(i18n("Mario Weilguni"), i18n("Original Author"), QStringLiteral("mweilguni@sime.com"));
+    aboutData.addCredit(i18n("Mauricio Piacentini"), i18n("KMahjonggLib integration for KDE4"), QStringLiteral("mauricio@tabuleiro.com"));
+    aboutData.addCredit(i18n("Jason Lane"), i18n("Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"), QStringLiteral("jglane@btopenworld.com"));
     aboutData.addCredit(i18n("Thanks also to everyone who should be listed here but is not!"));
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
@@ -62,7 +62,7 @@ int main(int argc, char **argv)
     parser.process(a);
     aboutData.processCommandLine(&parser);
 
-    a.setWindowIcon(QIcon::fromTheme(QLatin1String("kshisen")));
+    a.setWindowIcon(QIcon::fromTheme(QStringLiteral("kshisen")));
 
     KDBusService service;
 

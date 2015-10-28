@@ -76,8 +76,8 @@ Board::Board(QWidget *parent)
       m_gravityFlag(true), m_solvableFlag(false), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
       m_highlightedTile(-1),
       m_paintConnection(false), m_paintPossibleMoves(false), m_paintInProgress(false),
-      m_soundPick(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("sounds/kshisen/tile-touch.ogg"))),
-      m_soundFall(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("sounds/kshisen/tile-fall-tile.ogg")))
+      m_soundPick(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("sounds/kshisen/tile-touch.ogg"))),
+      m_soundFall(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("sounds/kshisen/tile-fall-tile.ogg")))
 {
     m_tileRemove1.first = -1;
 
@@ -706,7 +706,7 @@ void Board::paintEvent(QPaintEvent *e)
             ++pt1;
             ++pt2;
         }
-        QTimer::singleShot(delay(), this, SLOT(undrawConnection()));
+        QTimer::singleShot(delay(), this, &Board::undrawConnection);
         m_paintConnection = false;
     }
     if (m_paintPossibleMoves) {
