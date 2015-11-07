@@ -127,6 +127,7 @@ void App::setupActions()
     connect(m_board, &Board::selectAMatchingTile, this, &App::notifySelectAMatchingTile);
     connect(m_board, &Board::selectAMove, this, &App::notifySelectAMove);
 
+    // TODO: Use QElapsedTime?
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &App::updateTimeDisplay);
     timer->start(1000);
