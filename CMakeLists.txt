@@ -26,9 +26,14 @@ include(KDECMakeSettings)
 find_package(KF5KMahjongglib REQUIRED)
 find_package(KF5KDEGames 4.9.0 REQUIRED)
 
-add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
-add_definitions(-DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII)
-add_definitions(-DTRANSLATION_DOMAIN="kshisen")
+add_definitions(-DQT_USE_FAST_CONCATENATION
+                -DQT_USE_FAST_OPERATOR_PLUS
+                -DQT_NO_CAST_FROM_ASCII
+                -DQT_NO_CAST_TO_ASCII
+                -DQT_NO_CAST_FROM_BYTEARRAY
+                -DQT_NO_URL_CAST_FROM_STRING
+                -DQT_USE_QSTRINGBUILDER
+                -DTRANSLATION_DOMAIN="kshisen")
 
 add_subdirectory(src)
 add_subdirectory(sounds)
