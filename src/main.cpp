@@ -42,7 +42,7 @@ int main(int argc, char **argv)
     migrate.setUiFiles(QStringList() << QStringLiteral("kshisenui.rc"));
     migrate.migrate();
 
-
+    KLocalizedString::setApplicationDomain("kshisen");
     KAboutData aboutData(QStringLiteral("kshisen"), i18n("Shisen-Sho"),
                          QStringLiteral(KSHISEN_VERSION " #" KSHISEN_COMMIT), i18n(description), KAboutLicense::GPL,
                          i18n("(c) 1997, Mario Weilguni")); 
