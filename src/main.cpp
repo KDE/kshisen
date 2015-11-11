@@ -29,7 +29,6 @@
 #include <QApplication>
 #include <KLocalizedString>
 #include <KDBusService>
-#include <QCommandLineParser>
 
 static const char description[] = I18N_NOOP("A KDE game similar to Mahjongg");
 
