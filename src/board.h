@@ -69,7 +69,7 @@ typedef QList<Position> Path;
 class PossibleMove
 {
 public:
-    PossibleMove(Path &path) :
+    explicit PossibleMove(Path &path) :
         m_path(path), m_hasSlide(false) { }
     PossibleMove(Path &path, Path &slide) :
         m_path(path), m_hasSlide(true), m_slide(slide) { }
