@@ -23,6 +23,7 @@
 #include "board.h"
 #include "prefs.h"
 #include "ui_settings.h"
+#include "kshisen_debug.h"
 
 #include <kmahjonggconfigdialog.h>
 #include <highscore/kscoredialog.h>
@@ -31,7 +32,6 @@
 #include <kactioncollection.h>
 #include <kconfig.h>
 #include <kconfigdialog.h>
-#include <QIcon>
 #include <klineedit.h>
 #include <KLocalizedString>
 #include <kmessagebox.h>
@@ -39,10 +39,11 @@
 #include <kshortcutsdialog.h>
 #include <kstandardaction.h>
 #include <kstandardguiitem.h>
-#include <qstatusbar.h>
 #include <ktoggleaction.h>
 
-#include "kshisen_debug.h"
+#include <QIcon>
+#include <QPointer>
+#include <QStatusBar>
 #include <QTimer>
 
 #include <cmath>
@@ -247,24 +248,24 @@ void App::slotEndOfGame()
         scoreInfo[KScoreDialog::Score].setNum(score(m_board->xTiles(), m_board->yTiles(), m_board->currentTime(), m_board->gravityFlag()));
         scoreInfo[KScoreDialog::Time] = timeString;
 
-        KScoreDialog scoreDialog(KScoreDialog::Name | KScoreDialog::Time | KScoreDialog::Score, this);
-        scoreDialog.addField(KScoreDialog::Custom1, i18n("Gravity"), QStringLiteral("gravity"));
+        QPointer<KScoreDialog> scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Time | KScoreDialog::Score, this);
+        scoreDialog->addField(KScoreDialog::Custom1, i18n("Gravity"), QStringLiteral("gravity"));
         // FIXME: This is bad, because the translated words are stored in the highscores and thus switching the language makes ugly things (schwarzer)
         if (m_board->gravityFlag()) {
             scoreInfo[KScoreDialog::Custom1] = i18n("Yes");
         } else {
             scoreInfo[KScoreDialog::Custom1] = i18n("No");
         }
-        scoreDialog.setConfigGroup(QStringLiteral("%1x%2").arg(sizeX[Prefs::size()]).arg(sizeY[Prefs::size()]));
+        scoreDialog->setConfigGroup(QStringLiteral("%1x%2").arg(sizeX[Prefs::size()]).arg(sizeY[Prefs::size()]));
 
         if (m_board->hasCheated()) {
             QString message = i18n("\nYou could have been in the highscores\nif you did not use Undo or Hint.\nTry without them next time.");
             KMessageBox::information(this, message, i18n("End of Game"));
         } else {
-            if (scoreDialog.addScore(scoreInfo) > 0) {
+            if (scoreDialog->addScore(scoreInfo) > 0) {
                 QString message = i18n("Congratulations!\nYou made it into the hall of fame.");
-                scoreDialog.setComment(message);
-                scoreDialog.exec();
+                scoreDialog->setComment(message);
+                scoreDialog->exec();
             } else {
                 QString message = i18nc("%1 - time string like hh:mm:ss", "You made it in %1", timeString);
                 KMessageBox::information(this, message, i18n("End of Game"));
