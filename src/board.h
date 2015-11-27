@@ -39,6 +39,8 @@
 #include <QSize>
 #include <QWidget>
 
+#include <vector>
+
 
 /**
  * @brief Struct holding a position on the board (x,y)
@@ -164,7 +166,7 @@ public:
     void makeHintMove();
     void finish();
     void dumpBoard() const;
-    void dumpBoard(const int *) const;
+    void dumpBoard(std::vector<int>) const;
 #endif
 
     /// Returns the number of tiles left on the board
@@ -357,7 +359,7 @@ private:
     int m_markY;
     Path m_connection;
     PossibleMoves m_possibleMoves;
-    int *m_field; ///< Matrix pointer holding the game board grid
+    std::vector<int> m_field; ///< Matrix pointer holding the game board grid
     int m_xTiles;
     int m_yTiles;
     int m_delay;

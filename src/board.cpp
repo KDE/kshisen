@@ -72,7 +72,6 @@ bool PossibleMove::isInPath(int x, int y) const
 Board::Board(QWidget *parent)
     : QWidget(parent),
       m_markX(0), m_markY(0),
-      m_field(nullptr),
       m_xTiles(0), m_yTiles(0),
       m_delay(0), m_level(0), m_shuffle(0),
       m_gameState(GameState::Normal), m_cheat(false),
@@ -96,7 +95,6 @@ Board::Board(QWidget *parent)
 
 Board::~Board()
 {
-    delete [] m_field;
 }
 
 void Board::loadSettings()
@@ -195,7 +193,7 @@ void Board::setField(int x, int y, int value)
         qFatal("Attempted write to invalid field position (%u,%u)", x, y);
     }
 
-    m_field[y * xTiles() + x] = value;
+    m_field.at(y * xTiles() + x) = value;
 }
 
 // TODO: Why is this called every second?
@@ -211,7 +209,7 @@ int Board::field(int x, int y) const
         return EMPTY;
     }
 
-    return m_field[y * xTiles() + x];
+    return m_field.at(y * xTiles() + x);
 }
 
 void Board::gravity(bool update)
@@ -385,9 +383,9 @@ void Board::setSize(int x, int y)
         return;
     }
 
-    delete [] m_field;
+    m_field.clear();
 
-    m_field = new int[ x * y ];
+    m_field.resize(x * y);
     m_xTiles = x;
     m_yTiles = y;
     for (int i = 0; i < x; ++i) {
@@ -513,11 +511,9 @@ void Board::newGame()
     }
 
 
-    int fsize = xTiles() * yTiles() * sizeof(int);
-    int *oldfield = new int[xTiles() * yTiles()];
-    memcpy(oldfield, m_field, fsize);   // save field
-    int *tiles = new int[xTiles() * yTiles()];
-    int *pos = new int[xTiles() * yTiles()];
+    std::vector<int> oldfield = m_field;
+    std::vector<int> tiles;
+    std::vector<int> pos;
     //jwickers: in case the game cannot made solvable we do not want to run an infinite loop
     int maxAttempts = 200;
 
@@ -525,35 +521,35 @@ void Board::newGame()
         // generate a list of free tiles and positions
         int numberOfTiles = 0;
         for (int i = 0; i < xTiles() * yTiles(); ++i) {
-            if (m_field[i] != EMPTY) {
-                pos[numberOfTiles] = i;
-                tiles[numberOfTiles] = m_field[i];
+            if (m_field.at(i) != EMPTY) {
+                pos.at(numberOfTiles) = i;
+                tiles.at(numberOfTiles) = m_field.at(i);
                 ++numberOfTiles;
             }
         }
 
         // restore field
-        memcpy(m_field, oldfield, fsize);
+        m_field = oldfield;
 
         // redistribute unsolved tiles
         while (numberOfTiles > 0) {
             // get a random tile
             int r1 = m_random.getLong(numberOfTiles);
             int r2 = m_random.getLong(numberOfTiles);
-            int tile = tiles[r1];
-            int apos = pos[r2];
+            int tile = tiles.at(r1);
+            int apos = pos.at(r2);
 
             // truncate list
-            tiles[r1] = tiles[numberOfTiles-1];
-            pos[r2] = pos[numberOfTiles-1];
+            tiles.at(r1) = tiles.at(numberOfTiles - 1);
+            pos.at(r2) = pos.at(numberOfTiles - 1);
             --numberOfTiles;
 
             // put this tile on the new position
-            m_field[apos] = tile;
+            m_field.at(apos) = tile;
         }
 
         // remember field
-        memcpy(oldfield, m_field, fsize);
+        oldfield = m_field;
         --maxAttempts;
     }
     // debug, tell if make solvable failed
@@ -563,10 +559,7 @@ void Board::newGame()
 
 
     // restore field
-    memcpy(m_field, oldfield, fsize);
-    delete [] tiles;
-    delete [] pos;
-    delete [] oldfield;
+    m_field = oldfield;
 
     update();
     resetTimer();
@@ -847,9 +840,8 @@ void Board::performMove(PossibleMove &possibleMoves)
     m_connection = possibleMoves.m_path;
 #ifdef DEBUGGING
     // DEBUG undo, save board state
-    int fsize = xTiles() * yTiles() * sizeof(int);
-    int *saved1 = new int[xTiles() * yTiles()];
-    memcpy(saved1, m_field, fsize);
+    std::vector<int> saved1;
+    saved1 = m_field;
 #endif
     // if the tiles can slide, we have to update the slided tiles too
     // and store the slide in a Move
@@ -870,36 +862,36 @@ void Board::performMove(PossibleMove &possibleMoves)
     // DEBUG undo, force gravity
     undrawConnection();
     // DEBUG undo, save board2 state
-    int *saved2 = new int[xTiles() * yTiles()];
-    int *saved3 = new int[xTiles() * yTiles()]; // after undo
-    int *saved4 = new int[xTiles() * yTiles()]; // after redo
-    memcpy(saved2, m_field, fsize);
+    std::vector<int> saved2;
+    std::vector<int> saved3; // after undo
+    std::vector<int> saved4; // after redo
+    saved2 = m_field;
     // DEBUG undo, undo move
     bool errorFound = false;
     if (canUndo()) {
         undo();
         // DEBUG undo, compare to saved board state
         for (int i = 0; i < xTiles() * yTiles(); ++i) {
-            if (saved1[i] != m_field[i]) {
-                qCDebug(KSHISEN_LOG) << "[DEBUG Undo 1], tile (" << i << ") was" << saved1[i] << "before more, it is" << m_field[i] << "after undo.";
+            if (saved1.at(i) != m_field.at(i)) {
+                qCDebug(KSHISEN_LOG) << "[DEBUG Undo 1], tile (" << i << ") was" << saved1.at(i) << "before more, it is" << m_field.at(i) << "after undo.";
                 errorFound = true;
             }
         }
         // DEBUG undo, save board state
-        memcpy(saved3, m_field, fsize);
+        saved3 = m_field;
         // DEBUG undo, redo
         if (canRedo()) {
             redo();
             undrawConnection();
             // DEBUG undo, compare to saved board2 state
             for (int i = 0; i < xTiles() * yTiles(); ++i) {
-                if (saved2[i] != m_field[i]) {
-                    qCDebug(KSHISEN_LOG) << "[DEBUG Undo 2], tile (" << i << ") was" << saved2[i] << "after more, it is" << m_field[i] << "after redo.";
+                if (saved2.at(i) != m_field.at(i)) {
+                    qCDebug(KSHISEN_LOG) << "[DEBUG Undo 2], tile (" << i << ") was" << saved2.at(i) << "after more, it is" << m_field.at(i) << "after redo.";
                     errorFound = true;
                 }
             }
             // DEBUG undo, save board state
-            memcpy(saved4, m_field, fsize);
+            saved4 = m_field;
         }
     }
     // dumpBoard on error
@@ -914,11 +906,6 @@ void Board::performMove(PossibleMove &possibleMoves)
         dumpBoard(saved4);
     }
 
-    // DEBUG undo, free saved boards
-    delete[] saved1;
-    delete[] saved2;
-    delete[] saved3;
-    delete[] saved4;
 #endif
 }
 
@@ -1749,13 +1736,13 @@ void Board::dumpBoard() const
     }
 }
 
-void Board::dumpBoard(const int *board) const
+void Board::dumpBoard(const std::vector<int> board) const
 {
     qCDebug(KSHISEN_LOG) << "Board contents:";
     for (int y = 0; y < yTiles(); ++y) {
         QString row;
         for (int x = 0; x < xTiles(); ++x) {
-            int tile = board[y * xTiles() + x];
+            int tile = board.at(y * xTiles() + x);
             if (tile == EMPTY) {
                 row += QLatin1String(" --");
             } else {
@@ -1826,11 +1813,10 @@ int Board::currentTime() const
 
 bool Board::solvable(bool noRestore)
 {
-    int *oldField = 0;
+    std::vector<int> oldField;
 
     if (!noRestore) {
-        oldField = new int [xTiles() * yTiles()];
-        memcpy(oldField, m_field, xTiles() * yTiles() * sizeof(int));
+        oldField = m_field;
     }
 
     PossibleMoves p;
@@ -1851,8 +1837,7 @@ bool Board::solvable(bool noRestore)
     int left = tilesLeft();
 
     if (!noRestore) {
-        memcpy(m_field, oldField, xTiles() * yTiles() * sizeof(int));
-        delete [] oldField;
+        m_field = oldField;
     }
 
     return left == 0;
