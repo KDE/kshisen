@@ -401,7 +401,7 @@ void Board::setSize(int x, int y)
     int w = qRound(m_tiles.qWidth() * 2.0 * MINIMUM_SCALE) * xTiles();
     int h = qRound(m_tiles.qHeight() * 2.0 * MINIMUM_SCALE) * yTiles();
     w += m_tiles.width();
-    h += m_tiles.width();
+    h += m_tiles.height();
 
     setMinimumSize(w, h);
 
