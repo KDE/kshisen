@@ -33,12 +33,13 @@
 #include <cstring>
 #include <QStandardPaths>
 
+#include <array>
 
 #define EMPTY           0
 #define SEASONS_START   28
 #define FLOWERS_START   39
 
-static int s_delay[5] = {1000, 750, 500, 250, 125};
+static std::array<int, 5> s_delay = {1000, 750, 500, 250, 125};
 
 bool PossibleMove::isInPath(int x, int y) const
 {
@@ -123,9 +124,9 @@ void Board::loadSettings()
     // uses the solvable flag. Same with shuffle.
     setSolvableFlag(Prefs::solvable());
     m_shuffle = Prefs::level() * 4 + 1;
-    setSize(sizeX[Prefs::size()], sizeY[Prefs::size()]);
+    setSize(sizeX.at(Prefs::size()), sizeY.at(Prefs::size()));
     setGravityFlag(Prefs::gravity());
-    setDelay(s_delay[Prefs::speed()]);
+    setDelay(s_delay.at(Prefs::speed()));
     setSoundsEnabled(Prefs::sounds());
 
     if (m_level != Prefs::level()) {

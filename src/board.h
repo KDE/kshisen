@@ -39,9 +39,11 @@
 #include <QSize>
 #include <QWidget>
 
+#include <array>
+
 // used in board.cpp and app.cpp, thus defined here
-static int sizeX[6] = {14, 16, 18, 24, 26, 30};
-static int sizeY[6] = { 6,  9,  8, 12, 14, 16};
+static std::array<int, 6> sizeX = {14, 16, 18, 24, 26, 30};
+static std::array<int, 6> sizeY = { 6,  9,  8, 12, 14, 16};
 
 /**
  * @brief Struct holding a position on the board (x,y)
