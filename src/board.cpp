@@ -1219,12 +1219,12 @@ int Board::findPath(int x1, int y1, int x2, int y2, PossibleMoves &possibleMoves
     }
 
     // Find paths of 3 segments
-    const int dx[4] = { 1, 0, -1, 0 };
-    const int dy[4] = { 0, 1, 0, -1 };
+    const std::array<int, 4> dx = { 1, 0, -1, 0 };
+    const std::array<int, 4> dy = { 0, 1, 0, -1 };
 
     for (int i = 0; i < 4; ++i) {
-        int newX = x1 + dx[i];
-        int newY = y1 + dy[i];
+        int newX = x1 + dx.at(i);
+        int newY = y1 + dy.at(i);
         while (newX >= -1 && newX <= xTiles() &&
                 newY >= -1 && newY <= yTiles() &&
                 field(newX, newY) == EMPTY) {
@@ -1232,8 +1232,8 @@ int Board::findPath(int x1, int y1, int x2, int y2, PossibleMoves &possibleMoves
                 possibleMoves.last().m_path.prepend(Position(x1, y1));
                 numberOfPaths += simplePath;
             }
-            newX += dx[i];
-            newY += dy[i];
+            newX += dx.at(i);
+            newY += dy.at(i);
         }
     }
     return numberOfPaths;
