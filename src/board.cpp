@@ -33,6 +33,7 @@
 #include <cstring>
 #include <QStandardPaths>
 
+#include <algorithm>
 #include <array>
 
 #define EMPTY           0
@@ -1793,17 +1794,7 @@ bool Board::hint_I(PossibleMoves &possibleMoves) const
 
 int Board::tilesLeft() const
 {
-    int left = 0;
-
-    for (int i = 0; i < xTiles(); ++i) {
-        for (int j = 0; j < yTiles(); ++j) {
-            if (field(i, j) != EMPTY) {
-                ++left;
-            }
-        }
-    }
-
-    return left;
+    return std::count_if(m_field.begin(), m_field.end(), [](int field){ return field != EMPTY; });
 }
 
 int Board::currentTime() const
