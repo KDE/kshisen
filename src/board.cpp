@@ -40,6 +40,8 @@
 #define FLOWERS_START   39
 
 static std::array<int, 5> s_delay = {1000, 750, 500, 250, 125};
+static std::array<int, 6> sizeX = {14, 16, 18, 24, 26, 30};
+static std::array<int, 6> sizeY = { 6,  9,  8, 12, 14, 16};
 
 bool PossibleMove::isInPath(int x, int y) const
 {
