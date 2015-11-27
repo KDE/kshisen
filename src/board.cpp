@@ -1779,15 +1779,12 @@ int Board::lineWidth() const
 
 bool Board::hint_I(PossibleMoves &possibleMoves) const
 {
-    short done[Board::nTiles];
-    for (short i = 0; i < Board::nTiles; ++i) {
-        done[i] = 0;
-    }
+    std::array<short, Board::nTiles> done{}; // Appended {} initialises with zeroes here.
 
     for (int x = 0; x < xTiles(); ++x) {
         for (int y = 0; y < yTiles(); ++y) {
             int tile = field(x, y);
-            if (tile != EMPTY && done[tile - 1] != 4) {
+            if (tile != EMPTY && done.at(tile - 1) != 4) {
                 // for all these types of tile search paths
                 for (int xx = 0; xx < xTiles(); ++xx) {
                     for (int yy = 0; yy < yTiles(); ++yy) {
@@ -1800,7 +1797,7 @@ bool Board::hint_I(PossibleMoves &possibleMoves) const
                         }
                     }
                 }
-                done[tile - 1]++;
+                done.at(tile - 1)++;
             }
         }
     }
