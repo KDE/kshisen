@@ -385,15 +385,12 @@ void Board::setSize(int x, int y)
     }
 
     m_field.clear();
-
     m_field.resize(x * y);
+
     m_xTiles = x;
     m_yTiles = y;
-    for (int i = 0; i < x; ++i) {
-        for (int j = 0; j < y; ++j) {
-            setField(i, j, EMPTY);
-        }
-    }
+
+    std::fill(m_field.begin(), m_field.end(), 0);
 
     // set the minimum size of the scalable window
     const double MINIMUM_SCALE = 0.2;
