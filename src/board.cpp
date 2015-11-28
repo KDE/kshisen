@@ -384,7 +384,6 @@ void Board::setSize(int x, int y)
         return;
     }
 
-    m_field.clear();
     m_field.resize(x * y);
 
     m_xTiles = x;
