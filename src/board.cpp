@@ -188,6 +188,11 @@ int Board::yTiles() const
     return m_yTiles;
 }
 
+int Board::tiles() const
+{
+    return m_field.size();
+}
+
 void Board::setField(int x, int y, int value)
 {
     if (x < 0 || y < 0 || x >= xTiles() || y >= yTiles()) {

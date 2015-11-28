@@ -138,6 +138,7 @@ public:
     Board(QWidget *parent = 0);
     ~Board();
 
+    /// Number of different kinds of tiles in the game.
     static const int nTiles = 42;
 
     virtual void paintEvent(QPaintEvent *e);
@@ -184,8 +185,12 @@ public:
     void setChineseStyleFlag(bool b);
     void setTilesCanSlideFlag(bool b);
 
+    /// Returns possible number of tiles in X direction
     int xTiles() const;
+    /// Returns possible number of tiles in Y direction
     int yTiles() const;
+    /// Returns overall possible number of tiles in current game board size
+    int tiles() const;
 
     /// Resets the game timer
     void resetTimer();
