@@ -19,8 +19,6 @@
  ***************************************************************************/
 
 #include "app.h"
-#include "commit.h"
-#include "version.h"
 
 #include <KAboutData>
 #include <Kdelibs4ConfigMigrator>
@@ -43,9 +41,8 @@ int main(int argc, char **argv)
     migrate.migrate();
 
     KLocalizedString::setApplicationDomain("kshisen");
-    KAboutData aboutData(QStringLiteral("kshisen"), i18n("Shisen-Sho"),
-                         QStringLiteral(KSHISEN_VERSION " #" KSHISEN_COMMIT), i18n(description), KAboutLicense::GPL,
-                         i18n("(c) 1997, Mario Weilguni")); 
+    KAboutData aboutData(QStringLiteral("kshisen"), i18n("Shisen-Sho"), QStringLiteral("1.9+ #17"),
+                         i18n(description), KAboutLicense::GPL, i18n("(c) 1997, Mario Weilguni"));
     aboutData.setHomepage(QStringLiteral("http://games.kde.org/kshisen"));
     aboutData.addAuthor(i18n("Frederik Schwarzer"), i18n("Current Maintainer"), QStringLiteral("schwarzer@kde.org"));
     aboutData.addAuthor(i18n("Dave Corrie"), i18n("Former Maintainer"), QStringLiteral("kde@davecorrie.com"));
