@@ -1738,7 +1738,7 @@ void Board::dumpBoard() const
     }
 }
 
-void Board::dumpBoard(const std::vector<int> board) const
+void Board::dumpBoard(const std::vector<int>& board) const
 {
     qCDebug(KSHISEN_LOG) << "Board contents:";
     for (int y = 0; y < yTiles(); ++y) {
