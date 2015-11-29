@@ -25,21 +25,21 @@
 // the first two numbers of the current release with a '+' sign to indicate the
 // development state.
 //
-// In trunk a commit number (see commit.h) indicates the sub version. The
+// In master a commit number (see commit.h) indicates the sub version. The
 // commit number is increased absolutely and not reset on releases.
 //
-// Example: Version "1.8.3" is the current stable version, so the trunk
+// Example: Version "1.8.3" is the current stable version, so the master
 //          version number is "1.8+" with the commit number "11" resulting
 //          in the version info "1.8+ #11".
 //          With every substantial change in the code the commit number
 //          is increased.
 //          With no new features but two changes at release time:
 //            - stable version is "1.8.4"
-//            - trunk version is "1.8+ #13"
+//            - master version is "1.8+ #13"
 //          With new features and two changes at release time:
 //            - stable version is "1.9"
-//            - trunk version is "1.9+ #13"
+//            - master version is "1.9+ #13"
 
 #ifndef KSHISEN_VERSION
-#define KSHISEN_VERSION "1.8+"
+#define KSHISEN_VERSION "1.9+"
 #endif // KSHISEN_VERSION
