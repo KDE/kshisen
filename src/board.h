@@ -364,7 +364,7 @@ private:
     int m_markY;
     Path m_connection;
     PossibleMoves m_possibleMoves;
-    std::vector<int> m_field; ///< Matrix pointer holding the game board grid
+    std::vector<int> m_field; ///< Matrix holding the game board grid
     int m_xTiles;
     int m_yTiles;
     int m_delay;
