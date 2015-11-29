@@ -30,7 +30,6 @@
 #include <QPainter>
 #include <QTimer>
 
-#include <cstring>
 #include <QStandardPaths>
 
 #include <algorithm>
