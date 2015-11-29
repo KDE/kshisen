@@ -1723,19 +1723,7 @@ void Board::makeHintMove()
 
 void Board::dumpBoard() const
 {
-    qCDebug(KSHISEN_LOG) << "Board contents:";
-    for (int y = 0; y < yTiles(); ++y) {
-        QString row;
-        for (int x = 0; x < xTiles(); ++x) {
-            int tile = field(x, y);
-            if (tile == EMPTY) {
-                row += QLatin1String(" --");
-            } else {
-                row += QString(QLatin1String("%1")).arg(tile, 3);
-            }
-        }
-        qCDebug(KSHISEN_LOG) << row;
-    }
+    dumpBoard(m_field);
 }
 
 void Board::dumpBoard(const std::vector<int>& board) const
