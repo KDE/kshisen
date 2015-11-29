@@ -875,7 +875,7 @@ void Board::performMove(PossibleMove &possibleMoves)
         // DEBUG undo, compare to saved board state
         for (int i = 0; i < xTiles() * yTiles(); ++i) {
             if (saved1.at(i) != m_field.at(i)) {
-                qCDebug(KSHISEN_LOG) << "[DEBUG Undo 1], tile (" << i << ") was" << saved1.at(i) << "before more, it is" << m_field.at(i) << "after undo.";
+                qCDebug(KSHISEN_LOG) << "[DEBUG Undo 1], tile (" << i << ") was" << saved1.at(i) << "before move, it is" << m_field.at(i) << "after undo.";
                 errorFound = true;
             }
         }
@@ -888,7 +888,7 @@ void Board::performMove(PossibleMove &possibleMoves)
             // DEBUG undo, compare to saved board2 state
             for (int i = 0; i < xTiles() * yTiles(); ++i) {
                 if (saved2.at(i) != m_field.at(i)) {
-                    qCDebug(KSHISEN_LOG) << "[DEBUG Undo 2], tile (" << i << ") was" << saved2.at(i) << "after more, it is" << m_field.at(i) << "after redo.";
+                    qCDebug(KSHISEN_LOG) << "[DEBUG Undo 2], tile (" << i << ") was" << saved2.at(i) << "after move, it is" << m_field.at(i) << "after redo.";
                     errorFound = true;
                 }
             }
