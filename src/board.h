@@ -55,7 +55,7 @@ struct Position {
 /**
  * A list of positions (at least 2) makes a Path
  */
-typedef QList<Position> Path;
+using Path = QList<Position>;
 
 /**
  * @brief Class holding a possible move and its functions
@@ -98,7 +98,7 @@ public:
 /**
  * A list of possible moves the player has to choose between
  */
-typedef QList<PossibleMove> PossibleMoves;
+using PossibleMoves = QList<PossibleMove>;
 
 
 /**
