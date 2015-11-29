@@ -93,10 +93,6 @@ Board::Board(QWidget *parent)
     loadSettings();
 }
 
-Board::~Board()
-{
-}
-
 void Board::loadSettings()
 {
     if (!loadTileset(Prefs::tileSet())) {
