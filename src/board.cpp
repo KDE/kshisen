@@ -1348,6 +1348,7 @@ void Board::undrawConnection()
         setField(m_tileRemove2.first, m_tileRemove2.second, EMPTY);
         m_tileRemove1.first = -1;
         update();
+        emit tileCountChanged();
     }
 
     gravity(true); // why is this called here? (schwarzer)

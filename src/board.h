@@ -229,6 +229,7 @@ signals:
     void markMatched(); // unused?
     void newGameStarted();
     void changed();
+    void tileCountChanged();
     void endOfGame();
     void resized();
     void invalidMove();

@@ -79,6 +79,7 @@ App::App(QWidget *parent)
     setupGUI();
 
     updateItems();
+    updateTileDisplay();
 }
 
 
@@ -133,7 +134,7 @@ void App::setupActions()
     connect(timer, &QTimer::timeout, this, &App::updateTimeDisplay);
     timer->start(1000);
 
-    connect(m_board, &Board::changed, this, &App::updateTileDisplay);
+    connect(m_board, &Board::tileCountChanged, this, &App::updateTileDisplay);
     connect(m_board, &Board::endOfGame, this, &App::slotEndOfGame);
 
     connect(this, &App::invokeNewGame, m_board, &Board::newGame);
@@ -145,6 +146,7 @@ void App::newGame()
     setCheatModeEnabled(false);
     setPauseEnabled(false);
     updateItems();
+    updateTileDisplay();
 }
 
 void App::restartGame()
@@ -186,6 +188,7 @@ void App::undo()
     m_board->setGameStuckEnabled(false);
 
     updateItems();
+    updateTileDisplay();
 }
 
 void App::redo()
@@ -195,6 +198,7 @@ void App::redo()
     }
     m_board->redo();
     updateItems();
+    updateTileDisplay();
 }
 
 void App::hint()
@@ -289,8 +293,6 @@ void App::updateTimeDisplay()
                            m_board->isPaused() ? i18n("(Paused) ") : QString());
 
     m_gameTimerLabel->setText(message);
-    // FIXME: temporary hack until I find out why m_board->tilesLeft() in updateTileDisplay() counts the previous state of the board, not the current (schwarzer)
-    updateTileDisplay();
 }
 
 void App::updateTileDisplay()
