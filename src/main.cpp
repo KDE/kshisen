@@ -41,6 +41,7 @@ int main(int argc, char **argv)
     migrate.migrate();
 
     KLocalizedString::setApplicationDomain("kshisen");
+
     KAboutData aboutData(QStringLiteral("kshisen"), i18n("Shisen-Sho"), QStringLiteral("1.9+ #17"),
                          i18n(description), KAboutLicense::GPL, i18n("(c) 1997, Mario Weilguni"));
     aboutData.setHomepage(QStringLiteral("http://games.kde.org/kshisen"));
@@ -50,8 +51,9 @@ int main(int argc, char **argv)
     aboutData.addCredit(i18n("Mauricio Piacentini"), i18n("KMahjonggLib integration for KDE4"), QStringLiteral("mauricio@tabuleiro.com"));
     aboutData.addCredit(i18n("Jason Lane"), i18n("Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"), QStringLiteral("jglane@btopenworld.com"));
     aboutData.addCredit(i18n("Thanks also to everyone who should be listed here but is not!"));
-    QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
+
+    QCommandLineParser parser;
     parser.addVersionOption();
     parser.addHelpOption();
     aboutData.setupCommandLine(&parser);
