@@ -135,7 +135,7 @@ class Board : public QWidget
     Q_OBJECT
 
 public:
-    Board(QWidget *parent = 0);
+    explicit Board(QWidget *parent = 0);
     ~Board();
 
     /// Number of different kinds of tiles in the game.
