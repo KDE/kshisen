@@ -271,8 +271,8 @@ void Board::unmarkTile()
     m_possibleMoves.clear();
     // We need to set m_markX and m_markY to -1 before calling
     // updateField() to ensure the tile is redrawn as unmarked.
-    int oldMarkX = m_markX;
-    int oldMarkY = m_markY;
+    int const oldMarkX = m_markX;
+    int const oldMarkY = m_markY;
     m_markX = -1;
     m_markY = -1;
     updateField(oldMarkX, oldMarkY);
@@ -336,11 +336,11 @@ void Board::mousePressEvent(QMouseEvent *e)
 
         // Perform highlighting
         if (clickedTile != m_highlightedTile) {
-            int oldHighlighted = m_highlightedTile;
+            int const oldHighlighted = m_highlightedTile;
             m_highlightedTile = clickedTile;
             for (int i = 0; i < xTiles(); ++i) {
                 for (int j = 0; j < yTiles(); ++j) {
-                    const int fieldTile = field(i, j);
+                    int const fieldTile = field(i, j);
                     if (fieldTile != EMPTY) {
                         if (fieldTile == oldHighlighted) {
                             updateField(i, j);
@@ -392,11 +392,9 @@ void Board::setSize(int x, int y)
     std::fill(m_field.begin(), m_field.end(), EMPTY);
 
     // set the minimum size of the scalable window
-    const double MINIMUM_SCALE = 0.2;
-    int w = qRound(m_tiles.qWidth() * 2.0 * MINIMUM_SCALE) * xTiles();
-    int h = qRound(m_tiles.qHeight() * 2.0 * MINIMUM_SCALE) * yTiles();
-    w += m_tiles.width();
-    h += m_tiles.height();
+    double const MINIMUM_SCALE = 0.2;
+    int const w = qRound(m_tiles.qWidth() * 2.0 * MINIMUM_SCALE) * xTiles() + m_tiles.width();
+    int const h = qRound(m_tiles.qHeight() * 2.0 * MINIMUM_SCALE) * yTiles() + m_tiles.height();
 
     setMinimumSize(w, h);
 
@@ -418,7 +416,7 @@ void Board::resizeEvent(QResizeEvent *e)
 void Board::resizeBoard()
 {
     // calculate tile size required to fit all tiles in the window
-    QSize newsize = m_tiles.preferredTileSize(QSize(width(), height()), xTiles(), yTiles());
+    QSize const newsize = m_tiles.preferredTileSize(QSize(width(), height()), xTiles(), yTiles());
     m_tiles.reloadTileset(newsize);
     //recalculate bg, if needed
     m_background.sizeChanged(width(), height());
@@ -483,8 +481,8 @@ void Board::newGame()
     }
 
     // shuffle the field
-    int tx = xTiles();
-    int ty = yTiles();
+    int const tx = xTiles();
+    int const ty = yTiles();
     for (int i = 0; i < tx * ty * m_shuffle; ++i) {
         int x1 = m_random.getLong(tx);
         int y1 = m_random.getLong(ty);
@@ -531,10 +529,10 @@ void Board::newGame()
         // redistribute unsolved tiles
         while (numberOfTiles > 0) {
             // get a random tile
-            int r1 = m_random.getLong(numberOfTiles);
-            int r2 = m_random.getLong(numberOfTiles);
-            int tile = tiles.at(r1);
-            int apos = pos.at(r2);
+            int const r1 = m_random.getLong(numberOfTiles);
+            int const r2 = m_random.getLong(numberOfTiles);
+            int const tile = tiles.at(r1);
+            int const apos = pos.at(r2);
 
             // truncate list
             tiles.at(r1) = tiles.at(numberOfTiles - 1);
@@ -613,21 +611,21 @@ bool Board::isTileHighlighted(int x, int y) const
 
 void Board::updateField(int x, int y)
 {
-    QRect r(xOffset() + x * m_tiles.qWidth() * 2,
-            yOffset() + y * m_tiles.qHeight() * 2,
-            m_tiles.width(),
-            m_tiles.height());
+    QRect const r(xOffset() + x * m_tiles.qWidth() * 2,
+                  yOffset() + y * m_tiles.qHeight() * 2,
+                  m_tiles.width(),
+                  m_tiles.height());
 
     update(r);
 }
 
 void Board::showInfoRect(QPainter &p, const QString &message)
 {
-    int boxWidth = width() * 0.6;
-    int boxHeight = height() * 0.6;
-    QRect contentsRect = QRect((width() - boxWidth) / 2, (height() - boxHeight) / 2, boxWidth, boxHeight);
+    int const boxWidth = width() * 0.6;
+    int const boxHeight = height() * 0.6;
+    QRect const contentsRect = QRect((width() - boxWidth) / 2, (height() - boxHeight) / 2, boxWidth, boxHeight);
     QFont font;
-    int fontsize = boxHeight / 13;
+    int const fontsize = boxHeight / 13;
     font.setPointSize(fontsize);
     p.setFont(font);
     p.setBrush(QBrush(QColor(100, 100, 100, 150)));
@@ -639,20 +637,20 @@ void Board::showInfoRect(QPainter &p, const QString &message)
 
 void Board::drawTiles(QPainter &p, QPaintEvent *e)
 {
-    int w = m_tiles.width();
-    int h = m_tiles.height();
-    int fw = m_tiles.qWidth() * 2;
-    int fh = m_tiles.qHeight() * 2;
+    int const w = m_tiles.width();
+    int const h = m_tiles.height();
+    int const fw = m_tiles.qWidth() * 2;
+    int const fh = m_tiles.qHeight() * 2;
     for (int i = 0; i < xTiles(); ++i) {
         for (int j = 0; j < yTiles(); ++j) {
-            int tile = field(i, j);
+            int const tile = field(i, j);
             if (tile == EMPTY) {
                 continue;
             }
 
-            int xpos = xOffset() + i * fw;
-            int ypos = yOffset() + j * fh;
-            QRect r(xpos, ypos, w, h);
+            int const xpos = xOffset() + i * fw;
+            int const ypos = yOffset() + j * fh;
+            QRect const r(xpos, ypos, w, h);
             if (e->rect().intersects(r)) {
                 if (isTileHighlighted(i, j)) {
                     p.drawPixmap(xpos, ypos, m_tiles.selectedTile(1));
@@ -669,7 +667,7 @@ void Board::drawTiles(QPainter &p, QPaintEvent *e)
 
 void Board::paintEvent(QPaintEvent *e)
 {
-    QRect ur = e->rect(); // rectangle to update
+    QRect const ur = e->rect(); // rectangle to update
     QPainter p(this);
     p.fillRect(ur, m_background.getBackground());
 
@@ -724,8 +722,8 @@ void Board::reverseSlide(int x, int y, int slideX1, int slideY1, int slideX2, in
     // slide[XY]2 is the current location of the last tile to slide
     // slide[XY]1 is its destination
     // calculate the offset for the tiles to slide
-    int dx = slideX1 - slideX2;
-    int dy = slideY1 - slideY2;
+    int const dx = slideX1 - slideX2;
+    int const dy = slideY1 - slideY2;
     int current_tile;
     // move all tiles between slideX2, slideY2 and x, y to slide with that offset
     if (dx == 0) {
@@ -789,8 +787,8 @@ void Board::performSlide(int x, int y, Path &slide)
     // slide.first is the current location of the last tile to slide
     // slide.last is its destination
     // calculate the offset for the tiles to slide
-    int dx = slide.last().x - slide.first().x;
-    int dy = slide.last().y - slide.first().y;
+    int const dx = slide.last().x - slide.first().x;
+    int const dy = slide.last().y - slide.first().y;
     int current_tile;
     // move all tiles between m_markX, m_markY and the last tile to slide with that offset
     if (dx == 0) {
@@ -837,8 +835,7 @@ void Board::performMove(PossibleMove &possibleMoves)
     m_connection = possibleMoves.m_path;
 #ifdef DEBUGGING
     // DEBUG undo, save board state
-    std::vector<int> saved1;
-    saved1 = m_field;
+    std::vector<int> saved1 = m_field;
 #endif
     // if the tiles can slide, we have to update the slided tiles too
     // and store the slide in a Move
@@ -859,10 +856,9 @@ void Board::performMove(PossibleMove &possibleMoves)
     // DEBUG undo, force gravity
     undrawConnection();
     // DEBUG undo, save board2 state
-    std::vector<int> saved2;
+    std::vector<int> saved2 = m_field;
     std::vector<int> saved3; // after undo
     std::vector<int> saved4; // after redo
-    saved2 = m_field;
     // DEBUG undo, undo move
     bool errorFound = false;
     if (canUndo()) {
@@ -956,8 +952,8 @@ void Board::marked(int x, int y)
         }
     }
 
-    int tile1 = field(m_markX, m_markY);
-    int tile2 = field(x, y);
+    int const tile1 = field(m_markX, m_markY);
+    int const tile2 = field(x, y);
 
     // both tiles do not match
     if (!tilesMatch(tile1, tile2)) {
@@ -1002,7 +998,7 @@ void Board::clearHighlight()
     if (m_highlightedTile == -1) {
         return;
     }
-    int oldHighlighted = m_highlightedTile;
+    int const oldHighlighted = m_highlightedTile;
     m_highlightedTile = -1;
 
     for (int i = 0; i < xTiles(); ++i) {
@@ -1215,8 +1211,8 @@ int Board::findPath(int x1, int y1, int x2, int y2, PossibleMoves &possibleMoves
     }
 
     // Find paths of 3 segments
-    const std::array<int, 4> dx = { 1, 0, -1, 0 };
-    const std::array<int, 4> dy = { 0, 1, 0, -1 };
+    std::array<int, 4> const dx = { 1, 0, -1, 0 };
+    std::array<int, 4> const dy = { 0, 1, 0, -1 };
 
     for (int i = 0; i < 4; ++i) {
         int newX = x1 + dx.at(i);
@@ -1324,10 +1320,10 @@ void Board::drawConnection()
         return;
     }
 
-    int x1 = m_connection.first().x;
-    int y1 = m_connection.first().y;
-    int x2 = m_connection.last().x;
-    int y2 = m_connection.last().y;
+    int const x1 = m_connection.first().x;
+    int const y1 = m_connection.first().y;
+    int const x2 = m_connection.last().x;
+    int const y2 = m_connection.last().y;
     // lighten the fields
     updateField(x1, y1);
     updateField(x2, y2);
@@ -1354,7 +1350,7 @@ void Board::undrawConnection()
     }
 
     // Redraw all affected fields
-    Path oldConnection = m_connection;
+    Path const oldConnection = m_connection;
     m_connection.clear();
     m_paintConnection = false;
 
@@ -1386,8 +1382,8 @@ void Board::undrawConnection()
 QPoint Board::midCoord(int x, int y) const
 {
     QPoint p;
-    int w = m_tiles.qWidth() * 2;
-    int h = m_tiles.qHeight() * 2;
+    int const w = m_tiles.qWidth() * 2;
+    int const h = m_tiles.qHeight() * 2;
 
     if (x == -1) {
         p.setX(xOffset() - (w / 4));
@@ -1756,7 +1752,7 @@ bool Board::hint_I(PossibleMoves &possibleMoves) const
 
     for (int x = 0; x < xTiles(); ++x) {
         for (int y = 0; y < yTiles(); ++y) {
-            int tile = field(x, y);
+            int const tile = field(x, y);
             if (tile != EMPTY && done.at(tile - 1) != 4) {
                 // for all these types of tile search paths
                 for (int xx = 0; xx < xTiles(); ++xx) {
@@ -1810,7 +1806,7 @@ bool Board::solvable(bool noRestore)
         setField(p.first().m_path.last().x, p.first().m_path.last().y, EMPTY);
     }
 
-    int left = tilesLeft();
+    int const left = tilesLeft();
 
     if (!noRestore) {
         m_field = oldField;

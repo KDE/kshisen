@@ -129,7 +129,6 @@ void App::setupActions()
     connect(m_board, &Board::selectAMatchingTile, this, &App::notifySelectAMatchingTile);
     connect(m_board, &Board::selectAMove, this, &App::notifySelectAMove);
 
-    // TODO: Use QElapsedTime?
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &App::updateTimeDisplay);
     timer->start(1000);
@@ -244,10 +243,10 @@ void App::slotEndOfGame()
         m_board->setGameStuckEnabled(true);
     } else {
         m_board->setGameOverEnabled(true);
-        QString timeString = i18nc("time string: hh:mm:ss", "%1:%2:%3",
-                                   QString().sprintf("%02d", m_board->currentTime() / 3600),
-                                   QString().sprintf("%02d", (m_board->currentTime() / 60) % 60),
-                                   QString().sprintf("%02d", m_board->currentTime() % 60));
+        QString const timeString = i18nc("time string: hh:mm:ss", "%1:%2:%3",
+                                         QString().sprintf("%02d", m_board->currentTime() / 3600),
+                                         QString().sprintf("%02d", (m_board->currentTime() / 60) % 60),
+                                         QString().sprintf("%02d", m_board->currentTime() % 60));
         KScoreDialog::FieldInfo scoreInfo;
         scoreInfo[KScoreDialog::Score].setNum(score(m_board->xTiles(), m_board->yTiles(), m_board->currentTime(), m_board->gravityFlag()));
         scoreInfo[KScoreDialog::Time] = timeString;
@@ -263,15 +262,15 @@ void App::slotEndOfGame()
         scoreDialog->setConfigGroup(QStringLiteral("%1x%2").arg(m_board->xTiles()).arg(m_board->yTiles()));
 
         if (m_board->hasCheated()) {
-            QString message = i18n("\nYou could have been in the highscores\nif you did not use Undo or Hint.\nTry without them next time.");
+            QString const message = i18n("\nYou could have been in the highscores\nif you did not use Undo or Hint.\nTry without them next time.");
             KMessageBox::information(this, message, i18n("End of Game"));
         } else {
             if (scoreDialog->addScore(scoreInfo) > 0) {
-                QString message = i18n("Congratulations!\nYou made it into the hall of fame.");
+                QString const message = i18n("Congratulations!\nYou made it into the hall of fame.");
                 scoreDialog->setComment(message);
                 scoreDialog->exec();
             } else {
-                QString message = i18nc("%1 - time string like hh:mm:ss", "You made it in %1", timeString);
+                QString const message = i18nc("%1 - time string like hh:mm:ss", "You made it in %1", timeString);
                 KMessageBox::information(this, message, i18n("End of Game"));
             }
         }
@@ -285,19 +284,19 @@ void App::updateTimeDisplay()
         return;
     }
     //qCDebug(KSHISEN_LOG) << "Time: " << m_board->currentTime();
-    int currentTime = m_board->currentTime();
-    QString message = i18n("Your time: %1:%2:%3 %4",
-                           QString().sprintf("%02d", currentTime / 3600),
-                           QString().sprintf("%02d", (currentTime / 60) % 60),
-                           QString().sprintf("%02d", currentTime % 60),
-                           m_board->isPaused() ? i18n("(Paused) ") : QString());
+    int const currentTime = m_board->currentTime();
+    QString const message = i18n("Your time: %1:%2:%3 %4",
+                                 QString().sprintf("%02d", currentTime / 3600),
+                                 QString().sprintf("%02d", (currentTime / 60) % 60),
+                                 QString().sprintf("%02d", currentTime % 60),
+                                 m_board->isPaused() ? i18n("(Paused) ") : QString());
 
     m_gameTimerLabel->setText(message);
 }
 
 void App::updateTileDisplay()
 {
-    int numberOfTiles = m_board->tiles();
+    int const numberOfTiles = m_board->tiles();
     m_gameTilesLabel->setText(i18n("Removed: %1/%2 ", numberOfTiles - m_board->tilesLeft(), numberOfTiles));
 }
 
@@ -308,11 +307,11 @@ void App::updateCheatDisplay()
 
 int App::score(int x, int y, int seconds, bool gravity) const
 {
-    double ntiles = x * y;
-    double tilespersec = ntiles / static_cast<double>(seconds);
+    double const ntiles = x * y;
+    double const tilespersec = ntiles / static_cast<double>(seconds);
 
-    double sizebonus = std::sqrt(ntiles / static_cast<double>(14.0 * 6.0));
-    double points = tilespersec / 0.14 * 100.0;
+    double const sizebonus = std::sqrt(ntiles / static_cast<double>(14.0 * 6.0));
+    double const points = tilespersec / 0.14 * 100.0;
 
     if (gravity) {
         return static_cast<int>(2.0 * points * sizebonus);
