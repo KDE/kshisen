@@ -1453,8 +1453,6 @@ void Board::undo()
     undrawConnection();
     Move *move = m_undo.takeLast();
     if (gravityFlag()) {
-        int y;
-
         // When both tiles reside in the same column, the order of undo is
         // significant (we must undo the lower tile first).
         // Also in that case there cannot be a slide
@@ -1470,13 +1468,13 @@ void Board::undo()
             qCDebug(KSHISEN_LOG) << "[undo] gravity from a no slide move";
 #endif
             // move tiles from the first column up
-            for (y = 0; y < move->m_y1; ++y) {
+            for (int y = 0; y < move->m_y1; ++y) {
                 setField(move->m_x1, y, field(move->m_x1, y + 1));
                 updateField(move->m_x1, y);
             }
 
             // move tiles from the second column up
-            for (y = 0; y < move->m_y2; ++y) {
+            for (int y = 0; y < move->m_y2; ++y) {
                 setField(move->m_x2, y, field(move->m_x2, y + 1));
                 updateField(move->m_x2, y);
             }
@@ -1566,7 +1564,7 @@ void Board::undo()
 #ifdef DEBUGGING
                 qCDebug(KSHISEN_LOG) << "[undo] moving up column x2" << move->m_x2;
 #endif
-                for (y = 0; y <= move->m_y2; ++y) {
+                for (int y = 0; y <= move->m_y2; ++y) {
 #ifdef DEBUGGING
                     qCDebug(KSHISEN_LOG) << "[undo] moving up tile" << y + 1;
 #endif
@@ -1635,13 +1633,13 @@ void Board::undo()
 #endif
 
                 // move tiles from the first column up
-                for (y = 0; y < move->m_y1; ++y) {
+                for (int y = 0; y < move->m_y1; ++y) {
                     setField(move->m_x1, y, field(move->m_x1, y + 1));
                     updateField(move->m_x1, y);
                 }
 
                 // move tiles from the second column up
-                for (y = 0; y < move->m_y2; ++y) {
+                for (int y = 0; y < move->m_y2; ++y) {
                     setField(move->m_x2, y, field(move->m_x2, y + 1));
                     updateField(move->m_x2, y);
                 }
