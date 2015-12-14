@@ -11,6 +11,7 @@
   <name xml:lang="de">KShisen</name>
   <name xml:lang="en-GB">KShisen</name>
   <name xml:lang="es">KShisen</name>
+  <name xml:lang="fi">KShisen</name>
   <name xml:lang="gl">KShisen</name>
   <name xml:lang="nl">KShisen</name>
   <name xml:lang="pl">KShisen</name>
@@ -33,6 +34,7 @@
   <summary xml:lang="de">Spiel mit Mahjongg-Spielsteinen</summary>
   <summary xml:lang="en-GB">Shisen-Sho Mahjongg-like Tile Game</summary>
   <summary xml:lang="es">Juego de fichas similar al Shisen-Sho Mahjongg</summary>
+  <summary xml:lang="fi">Shisen-sho, mahjongmainen laattapeli</summary>
   <summary xml:lang="gl">Xogo de fichas Shisen-so ao estilo do Mahjongg</summary>
   <summary xml:lang="nl">Shisen-Sho Mahjongg-achtig stenenspel</summary>
   <summary xml:lang="pl">Gra typu Shisen-Sho Mahjongg</summary>
@@ -57,6 +59,7 @@
     <p xml:lang="de">KShisen ähnelt dem Spiel Solitär und wird mit Mahjong-Steinen gespielt. Anders als bei Mahjong, gibt es bei KShisen aber nur eine Ebene gemischter Steine.</p>
     <p xml:lang="en-GB">KShisen is a solitaire-like game played using the standard set of Mahjong tiles. Unlike Mahjong however, KShisen has only one layer of scrambled tiles.</p>
     <p xml:lang="es">KShisen es un juego de solitario que se juega usando las fichas típicas del Mahjong. Al contrario del Mahjong, KShisen solo tiene una capa de fichas barajadas.</p>
+    <p xml:lang="fi">KShisen on pasianssimainen peli, joka käyttää tavallisia mahjong-tiiliä. Mahjongista poiketen KShisenissä on kuitenkin vain yksi kerros sekoitettuja tiiliä.</p>
     <p xml:lang="gl">O KShisen é un xogo similar ao solitario que se xoga usando as pezas estándar do Mahjong. Porén, a diferenza do Mahjong, o KShisen ten unicamente unha capa de pezas desordenadas.</p>
     <p xml:lang="nl">KShisen is een solitaire-achtig spel dat wordt gespeeld met de standaard set Mahjong stenen. Anders dan Mahjong heeft KShisen slechts één laag door elkaar gehaalde stenen.</p>
     <p xml:lang="pl">KShisen jest grą typu pasjans z standardowym zestawem kamieni Mahjong. W odróżnieniu od Mahjonga, KShisen ma tylko jedną warstwę rozrzuconych kamieni.</p>
