@@ -324,7 +324,7 @@ void Board::mousePressEvent(QMouseEvent *e)
 
     // Assist by highlighting all tiles of same type
     if (e->button() == Qt::RightButton) {
-        int clickedTile = field(posX, posY);
+        int const clickedTile = field(posX, posY);
 
         // Clear marked tile
         if (m_markX != -1 && field(m_markX, m_markY) != clickedTile) {
@@ -484,14 +484,14 @@ void Board::newGame()
     int const tx = xTiles();
     int const ty = yTiles();
     for (int i = 0; i < tx * ty * m_shuffle; ++i) {
-        int x1 = m_random.getLong(tx);
-        int y1 = m_random.getLong(ty);
-        int x2 = m_random.getLong(tx);
-        int y2 = m_random.getLong(ty);
+        int const x1 = m_random.getLong(tx);
+        int const y1 = m_random.getLong(ty);
+        int const x2 = m_random.getLong(tx);
+        int const y2 = m_random.getLong(ty);
         // keep and use t, because the next setField() call changes what field() will return
         // so there would a significant impact on shuffling with the field() call put into the
         // place where 't' is used
-        int t  = field(x1, y1);
+        int const t = field(x1, y1);
         setField(x1, y1, field(x2, y2));
         setField(x2, y2, t);
     }
