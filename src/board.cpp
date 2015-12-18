@@ -69,7 +69,7 @@ bool PossibleMove::isInPath(int x, int y) const
     return false;
 }
 
-Board::Board(QWidget *parent)
+Board::Board(QWidget * parent)
     : QWidget(parent),
       m_markX(0), m_markY(0),
       m_xTiles(0), m_yTiles(0),
@@ -131,7 +131,7 @@ void Board::loadSettings()
     m_level = Prefs::level();
 }
 
-bool Board::loadTileset(const QString &pathToTileset)
+bool Board::loadTileset(const QString & pathToTileset)
 {
     if (m_tiles.loadTileset(pathToTileset)) {
         if (m_tiles.loadGraphics()) {
@@ -152,7 +152,7 @@ bool Board::loadTileset(const QString &pathToTileset)
     return false;
 }
 
-bool Board::loadBackground(const QString &pathToBackground)
+bool Board::loadBackground(const QString & pathToBackground)
 {
     if (m_background.load(pathToBackground, width(), height())) {
         if (m_background.loadGraphics()) {
@@ -278,7 +278,7 @@ void Board::unmarkTile()
     updateField(oldMarkX, oldMarkY);
 }
 
-void Board::mousePressEvent(QMouseEvent *e)
+void Board::mousePressEvent(QMouseEvent * e)
 {
     // Do not process mouse events while the connection is drawn.
     // Clicking on one of the already connected tiles would have selected
@@ -403,7 +403,7 @@ void Board::setSize(int x, int y)
     emit changed();
 }
 
-void Board::resizeEvent(QResizeEvent *e)
+void Board::resizeEvent(QResizeEvent * e)
 {
     qCDebug(KSHISEN_LOG) << "[resizeEvent]";
     if (e->spontaneous()) {
@@ -619,7 +619,7 @@ void Board::updateField(int x, int y)
     update(r);
 }
 
-void Board::showInfoRect(QPainter &p, const QString &message)
+void Board::showInfoRect(QPainter & p, const QString & message)
 {
     int const boxWidth = width() * 0.6;
     int const boxHeight = height() * 0.6;
@@ -635,7 +635,7 @@ void Board::showInfoRect(QPainter &p, const QString &message)
     p.drawText(contentsRect, Qt::AlignCenter | Qt::TextWordWrap, message);
 }
 
-void Board::drawTiles(QPainter &p, QPaintEvent *e)
+void Board::drawTiles(QPainter & p, QPaintEvent * e)
 {
     int const w = m_tiles.width();
     int const h = m_tiles.height();
@@ -665,7 +665,7 @@ void Board::drawTiles(QPainter &p, QPaintEvent *e)
     }
 }
 
-void Board::paintEvent(QPaintEvent *e)
+void Board::paintEvent(QPaintEvent * e)
 {
     QRect const ur = e->rect(); // rectangle to update
     QPainter p(this);
@@ -777,7 +777,7 @@ void Board::reverseSlide(int x, int y, int slideX1, int slideY1, int slideX2, in
     }
 }
 
-void Board::performSlide(int x, int y, Path &slide)
+void Board::performSlide(int x, int y, Path & slide)
 {
     // check if there is something to slide
     if (slide.empty()) {
@@ -830,7 +830,7 @@ void Board::performSlide(int x, int y, Path &slide)
     }
 }
 
-void Board::performMove(PossibleMove &possibleMoves)
+void Board::performMove(PossibleMove & possibleMoves)
 {
     m_connection = possibleMoves.m_path;
 #ifdef DEBUGGING
@@ -1033,7 +1033,7 @@ bool Board::canMakePath(int x1, int y1, int x2, int y2) const
     return false;
 }
 
-bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path &path) const
+bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path & path) const
 {
     int distance = -1;
     path.clear();
@@ -1195,7 +1195,7 @@ bool Board::canSlideTiles(int x1, int y1, int x2, int y2, Path &path) const
     return false;
 }
 
-int Board::findPath(int x1, int y1, int x2, int y2, PossibleMoves &possibleMoves) const
+int Board::findPath(int x1, int y1, int x2, int y2, PossibleMoves & possibleMoves) const
 {
     possibleMoves.clear();
 
@@ -1231,7 +1231,7 @@ int Board::findPath(int x1, int y1, int x2, int y2, PossibleMoves &possibleMoves
     return numberOfPaths;
 }
 
-int Board::findSimplePath(int x1, int y1, int x2, int y2, PossibleMoves &possibleMoves) const
+int Board::findSimplePath(int x1, int y1, int x2, int y2, PossibleMoves & possibleMoves) const
 {
     int numberOfPaths = 0;
     Path path;
@@ -1744,7 +1744,7 @@ int Board::lineWidth() const
     return width;
 }
 
-bool Board::hint_I(PossibleMoves &possibleMoves) const
+bool Board::hint_I(PossibleMoves & possibleMoves) const
 {
     std::array<short, Board::nTiles> done{}; // Appended {} initialises with zeroes here.
 

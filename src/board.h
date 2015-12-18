@@ -135,14 +135,14 @@ class Board : public QWidget
     Q_OBJECT
 
 public:
-    explicit Board(QWidget *parent = 0);
+    explicit Board(QWidget * parent = 0);
 
     /// Number of different kinds of tiles in the game.
     static int const nTiles = 42;
 
-    virtual void paintEvent(QPaintEvent *e);
-    virtual void mousePressEvent(QMouseEvent *e);
-    virtual void resizeEvent(QResizeEvent *e);
+    virtual void paintEvent(QPaintEvent * e);
+    virtual void mousePressEvent(QMouseEvent * e);
+    virtual void resizeEvent(QResizeEvent * e);
 
     void setDelay(int);
     int  delay() const;
@@ -160,13 +160,13 @@ public:
     void resizeBoard();
 
     void showHint();
-    bool hint_I(PossibleMoves &possibleMoves) const;
+    bool hint_I(PossibleMoves & possibleMoves) const;
 
 #ifdef DEBUGGING
     void makeHintMove();
     void finish();
     void dumpBoard() const;
-    void dumpBoard(const std::vector<int>& board) const;
+    void dumpBoard(const std::vector<int> & board) const;
 #endif
 
     /// Returns the number of tiles left on the board
@@ -256,9 +256,9 @@ public slots:
     /// Loads the game settings
     void loadSettings();
     /// Loads the given tileset
-    bool loadTileset(const QString &);
+    bool loadTileset(const QString & pathToTileset);
     /// Loads the given background
-    bool loadBackground(const QString &);
+    bool loadBackground(const QString & pathToBackground);
 
 private slots:
     void undrawConnection();
@@ -288,7 +288,7 @@ private: // functions
     void setField(int x, int y, int value);
     int field(int x, int y) const;
     void updateField(int, int);
-    void showInfoRect(QPainter &, const QString &message);
+    void showInfoRect(QPainter &, const QString & message);
     void drawTiles(QPainter &, QPaintEvent *);
     void clearHighlight();
 
@@ -312,7 +312,7 @@ private: // functions
      * @param y2 y coordinate of the slide's final position
      * @param path The movement of the last tile slided will be stored in the path
      */
-    bool canSlideTiles(int x1, int y1, int x2, int y2, Path &path) const;
+    bool canSlideTiles(int x1, int y1, int x2, int y2, Path & path) const;
 
     /** Checks if a path between two tiles can be made with 2 or 3 lines.
     * @param x1 x coordinate of the first tile
@@ -322,7 +322,7 @@ private: // functions
     * @param possibleMoves All the possible moves are stored here
     * @return The number of paths found
     */
-    int findPath(int x1, int y1, int x2, int y2, PossibleMoves &possibleMoves) const;
+    int findPath(int x1, int y1, int x2, int y2, PossibleMoves & possibleMoves) const;
 
     /** Find a path of 1 or 2 segments between tiles.
      * @param x1 x coordinate of the first tile
@@ -332,9 +332,9 @@ private: // functions
      * @param possibleMoves All the possible moves are stored here
      * @return The number of paths found
      */
-    int findSimplePath(int x1, int y1, int x2, int y2, PossibleMoves &possibleMoves) const;
-    void performMove(PossibleMove &possibleMoves);
-    void performSlide(int x, int y, Path& s);
+    int findSimplePath(int x1, int y1, int x2, int y2, PossibleMoves & possibleMoves) const;
+    void performMove(PossibleMove & possibleMoves);
+    void performSlide(int x, int y, Path & s);
     void reverseSlide(int x, int y, int slideX1, int slideY1, int slideX2, int slideY2);
     bool isTileHighlighted(int x, int y) const;
     void drawConnection();
