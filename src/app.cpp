@@ -251,7 +251,7 @@ void App::slotEndOfGame()
         scoreInfo[KScoreDialog::Score].setNum(score(m_board->xTiles(), m_board->yTiles(), m_board->currentTime(), m_board->gravityFlag()));
         scoreInfo[KScoreDialog::Time] = timeString;
 
-        QPointer<KScoreDialog> scoreDialog(new KScoreDialog(KScoreDialog::Name | KScoreDialog::Time | KScoreDialog::Score, this));
+        QPointer<KScoreDialog> scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Time | KScoreDialog::Score, this);
         scoreDialog->addField(KScoreDialog::Custom1, i18n("Gravity"), QStringLiteral("gravity"));
         // FIXME: This is bad, because the translated words are stored in the highscores and thus switching the language makes ugly things (schwarzer)
         if (m_board->gravityFlag()) {
