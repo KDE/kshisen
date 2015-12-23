@@ -42,20 +42,12 @@
 #include <vector>
 
 
-/**
- * @brief Struct holding a position on the board (x,y)
- */
-struct Position {
-    Position() : x(0), y(0) { }
-    Position(int _x, int _y) : x(_x), y(_y) { }
-    int x; ///< x position
-    int y; ///< y position
-};
+using TilePos = QPoint;
 
 /**
  * A list of positions (at least 2) makes a Path
  */
-using Path = QList<Position>;
+using Path = QList<TilePos>;
 
 /**
  * @brief Class holding a possible move and its functions
@@ -73,19 +65,19 @@ public:
     PossibleMove(Path &path, Path &slide) :
         m_path(path), m_hasSlide(true), m_slide(slide) { }
 
-    bool isInPath(int x, int y) const;
+    bool isInPath(TilePos const & tilePos) const;
 
     void Debug() const {
         qCDebug(KSHISEN_LOG) << "PossibleMove";
 
         for (auto iter = m_path.cbegin(); iter != m_path.cend(); ++iter) {
-            qCDebug(KSHISEN_LOG) << "    Path:" << iter->x << "," << iter->y;
+            qCDebug(KSHISEN_LOG) << "    Path:" << iter->x() << "," << iter->y();
         }
 
         if (m_hasSlide) {
             qCDebug(KSHISEN_LOG) << "   hasSlide";
             for (auto iter = m_slide.cbegin(); iter != m_slide.cend(); ++iter) {
-                qCDebug(KSHISEN_LOG) << "    Slide:" << iter->x << "," << iter->y;
+                qCDebug(KSHISEN_LOG) << "    Slide:" << iter->x() << "," << iter->y();
             }
         }
     }
@@ -109,12 +101,12 @@ using PossibleMoves = QList<PossibleMove>;
 class Move
 {
 public:
-    Move(int x1, int y1, int x2, int y2, int tile) :
-        m_x1(x1), m_y1(y1), m_x2(x2), m_y2(y2), m_tile1(tile), m_tile2(tile), m_hasSlide(false), m_slideX1(-1), m_slideY1(-1), m_slideX2(-1), m_slideY2(-1) { }
-    Move(int x1, int y1, int x2, int y2, int tile1, int tile2) :
-        m_x1(x1), m_y1(y1), m_x2(x2), m_y2(y2), m_tile1(tile1), m_tile2(tile2), m_hasSlide(false), m_slideX1(-1), m_slideY1(-1), m_slideX2(-1), m_slideY2(-1) { }
-    Move(int x1, int y1, int x2, int y2, int tile1, int tile2, int slideX1, int slideY1, int slideX2, int slideY2) :
-        m_x1(x1), m_y1(y1), m_x2(x2), m_y2(y2), m_tile1(tile1), m_tile2(tile2), m_hasSlide(true), m_slideX1(slideX1), m_slideY1(slideY1), m_slideX2(slideX2), m_slideY2(slideY2) { }
+    Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile) :
+        m_x1(tilePos1.x()), m_y1(tilePos1.y()), m_x2(tilePos2.x()), m_y2(tilePos2.y()), m_tile1(tile), m_tile2(tile), m_hasSlide(false), m_slideX1(-1), m_slideY1(-1), m_slideX2(-1), m_slideY2(-1) { }
+    Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2) :
+        m_x1(tilePos1.x()), m_y1(tilePos1.y()), m_x2(tilePos2.x()), m_y2(tilePos2.y()), m_tile1(tile1), m_tile2(tile2), m_hasSlide(false), m_slideX1(-1), m_slideY1(-1), m_slideX2(-1), m_slideY2(-1) { }
+    Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2, int slideX1, int slideY1, int slideX2, int slideY2) :
+        m_x1(tilePos1.x()), m_y1(tilePos1.y()), m_x2(tilePos2.x()), m_y2(tilePos2.y()), m_tile1(tile1), m_tile2(tile2), m_hasSlide(true), m_slideX1(slideX1), m_slideY1(slideY1), m_slideX2(slideX2), m_slideY2(slideY2) { }
 
     int m_x1, m_y1, m_x2, m_y2; ///< coordinates of the two tiles that matched
     int m_tile1; ///< type of tile at first set of coordinates
@@ -256,9 +248,9 @@ public slots:
     /// Loads the game settings
     void loadSettings();
     /// Loads the given tileset
-    bool loadTileset(const QString & pathToTileset);
+    bool loadTileset(QString const & pathToTileset);
     /// Loads the given background
-    bool loadBackground(const QString & pathToBackground);
+    bool loadBackground(QString const & pathToBackground);
 
 private slots:
     void undrawConnection();
@@ -285,9 +277,9 @@ private: // functions
      */
     int lineWidth() const;
 
-    void setField(int x, int y, int value);
-    int field(int x, int y) const;
-    void updateField(int, int);
+    void setField(TilePos const & tilePos, int value);
+    int field(TilePos const & tilePos) const;
+    void updateField(TilePos const & tilePos);
     void showInfoRect(QPainter &, const QString & message);
     void drawTiles(QPainter &, QPaintEvent *);
     void clearHighlight();
@@ -298,51 +290,47 @@ private: // functions
     bool tilesMatch(int tile1, int tile2) const;
 
     /** Checks if a path between two tiles can be made with a single line.
-     * @param x1 x coordinate of the first tile
-     * @param y1 y coordinate of the first tile
-     * @param x2 x coordinate of the second tile
-     * @param y2 y coordinate of the second tile
+     * @param tilePos1 coordinates of the first tile
+     * @param tilePos2 coordinates of the second tile
      */
-    bool canMakePath(int x1, int y1, int x2, int y2) const;
+    bool canMakePath(TilePos const & tilePos1, TilePos const & tilePos2) const;
 
-    /** Checks if the tile at (x1,y1) can be slid to (x2,y2).
-     * @param x1 x coordinate of the slide's initial position
-     * @param y1 y coordinate of the slide's initial position
-     * @param x2 x coordinate of the slide's final position
-     * @param y2 y coordinate of the slide's final position
+    /** Checks if the tile at \p tilePos1 can be slid to \p tilePos2.
+     * @param tilePos1 coordinates of the slide's initial position
+     * @param tilePos2 coordinates of the slide's final position
      * @param path The movement of the last tile slided will be stored in the path
      */
-    bool canSlideTiles(int x1, int y1, int x2, int y2, Path & path) const;
+    bool canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Path & path) const;
 
     /** Checks if a path between two tiles can be made with 2 or 3 lines.
-    * @param x1 x coordinate of the first tile
-    * @param y1 y coordinate of the first tile
-    * @param x2 x coordinate of the second tile
-    * @param y2 y coordinate of the second tile
+    * @param tilePos1 coordinate of the first tile
+    * @param tilePos2 coordinate of the second tile
     * @param possibleMoves All the possible moves are stored here
     * @return The number of paths found
     */
-    int findPath(int x1, int y1, int x2, int y2, PossibleMoves & possibleMoves) const;
+    int findPath(TilePos const & tilePos1, TilePos const & tilePos2, PossibleMoves & possibleMoves) const;
 
     /** Find a path of 1 or 2 segments between tiles.
-     * @param x1 x coordinate of the first tile
-     * @param y1 y coordinate of the first tile
-     * @param x2 x coordinate of the second tile
-     * @param y2 y coordinate of the second tile
+     * @param tilePos1 coordinates of the first tile
+     * @param tilePos2 coordinates of the second tile
      * @param possibleMoves All the possible moves are stored here
      * @return The number of paths found
      */
-    int findSimplePath(int x1, int y1, int x2, int y2, PossibleMoves & possibleMoves) const;
+    int findSimplePath(TilePos const & tilePos1, TilePos const & tilePos2, PossibleMoves & possibleMoves) const;
     void performMove(PossibleMove & possibleMoves);
-    void performSlide(int x, int y, Path & s);
-    void reverseSlide(int x, int y, int slideX1, int slideY1, int slideX2, int slideY2);
-    bool isTileHighlighted(int x, int y) const;
+    void performSlide(TilePos const & tilePos, Path & s);
+    void reverseSlide(TilePos const & tilePos, int slideX1, int slideY1, int slideX2, int slideY2);
+    bool isTileHighlighted(TilePos const & tilePos) const;
     void drawConnection();
     void drawPossibleMoves(bool b);
-    QPoint midCoord(int x, int y) const;
+    /** Calculated the middle coordinates of the given tile position.
+     * @param tilePos Tile position
+     * @return The middle coordinates of the tile at \p tilePos
+     */
+    QPoint midCoord(TilePos const & tilePos) const;
     void unmarkTile();
-    void marked(int x, int y);
-    void madeMove(int x1, int y1, int x2, int y2, Path slide = Path());
+    void marked(TilePos const & tilePos);
+    void madeMove(TilePos const & tilePos1, TilePos const & tilePos2, Path slide = Path());
 
     /** Checks all columns and populate the affected columns in m_gravCols.
      * @param update FIXME: What is it for?
@@ -386,8 +374,8 @@ private:
     bool m_paintConnection;
     bool m_paintPossibleMoves;
     bool m_paintInProgress;
-    QPair<int, int> m_tileRemove1;
-    QPair<int, int> m_tileRemove2;
+    TilePos m_tileRemove1;
+    TilePos m_tileRemove2;
     KgSound m_soundPick; ///< Sound object to play when tile is selected
     KgSound m_soundFall; ///< Sound object to play when tiles fall down in gravity mode
 };
