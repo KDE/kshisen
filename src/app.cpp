@@ -375,7 +375,7 @@ void App::showSettingsDialog()
     dialog->addPage(new Settings(0), i18n("General"), QStringLiteral("games-config-options"));
     dialog->addTilesetPage();
     dialog->addBackgroundPage();
-    //dialog->setHelp(QString(), "kshisen");
+
     connect(dialog, &KMahjonggConfigDialog::settingsChanged, m_board, &Board::loadSettings);
     dialog->show();
 }
