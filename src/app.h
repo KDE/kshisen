@@ -39,7 +39,7 @@ class App : public KXmlGuiWindow
     Q_OBJECT
 
 public:
-    explicit App(QWidget *parent = 0);
+    explicit App(QWidget * parent = 0);
 
 private slots:
     void slotEndOfGame();
@@ -132,11 +132,11 @@ private:
     void setCheatModeEnabled(bool enabled);
 
 private:
-    QLabel *m_gameTipLabel; ///< Status bar area for game tips
-    QLabel *m_gameTimerLabel; ///< Status bar area for the timer
-    QLabel *m_gameTilesLabel; ///< Status bar area for the tile counter
-    QLabel *m_gameCheatLabel; ///< Status bar area for the cheat mode
-    Board *m_board; ///< Holds the game board
+    QLabel * m_gameTipLabel; ///< Status bar area for game tips
+    QLabel * m_gameTimerLabel; ///< Status bar area for the timer
+    QLabel * m_gameTilesLabel; ///< Status bar area for the tile counter
+    QLabel * m_gameCheatLabel; ///< Status bar area for the cheat mode
+    Board * m_board; ///< Holds the game board
 };
 
 #endif // APP_H

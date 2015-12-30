@@ -32,7 +32,6 @@
 #include <QTimer>
 
 // KDE
-#include <KStandardGameAction>
 #include <KActionCollection>
 #include <KConfig>
 #include <KConfigDialog>
@@ -46,7 +45,8 @@
 #include <KToggleAction>
 
 // KDEGames
-#include <highscore/kscoredialog.h>
+#include <KScoreDialog>
+#include <KStandardGameAction>
 
 // Kmahjongg
 #include <kmahjonggconfigdialog.h>
@@ -64,19 +64,20 @@
 class Settings : public QWidget, public Ui::Settings
 {
 public:
-    Settings(QWidget *parent)
-        : QWidget(parent) {
+    Settings(QWidget * parent)
+        : QWidget(parent)
+    {
         setupUi(this);
     }
 };
 
-App::App(QWidget *parent)
-    : KXmlGuiWindow(parent),
-      m_gameTipLabel(nullptr),
-      m_gameTimerLabel(nullptr),
-      m_gameTilesLabel(nullptr),
-      m_gameCheatLabel(nullptr),
-      m_board(nullptr)
+App::App(QWidget * parent)
+    : KXmlGuiWindow(parent)
+    , m_gameTipLabel(nullptr)
+    , m_gameTimerLabel(nullptr)
+    , m_gameTilesLabel(nullptr)
+    , m_gameCheatLabel(nullptr)
+    , m_board(nullptr)
 {
     m_board = new Board(this);
     m_board->setObjectName(QStringLiteral("board"));
@@ -122,7 +123,7 @@ void App::setupActions()
     KStandardGameAction::redo(this, SLOT(redo()), actionCollection());
     KStandardGameAction::hint(this, SLOT(hint()), actionCollection());
 
-    KToggleAction *soundAction = new KToggleAction(QIcon::fromTheme(QStringLiteral("speaker")), i18n("Play Sounds"), this);
+    KToggleAction * soundAction = new KToggleAction(QIcon::fromTheme(QStringLiteral("speaker")), i18n("Play Sounds"), this);
     soundAction->setChecked(Prefs::sounds());
     actionCollection()->addAction(QStringLiteral("sounds"), soundAction);
     connect(soundAction, &KToggleAction::triggered, m_board, &Board::setSoundsEnabled);
@@ -138,7 +139,7 @@ void App::setupActions()
     connect(m_board, &Board::selectAMatchingTile, this, &App::notifySelectAMatchingTile);
     connect(m_board, &Board::selectAMove, this, &App::notifySelectAMove);
 
-    QTimer *timer = new QTimer(this);
+    QTimer * timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &App::updateTimeDisplay);
     timer->start(1000);
 
@@ -380,7 +381,7 @@ void App::showSettingsDialog()
     }
 
     //Use the classes exposed by LibKmahjongg for our configuration dialog
-    KMahjonggConfigDialog *dialog = new KMahjonggConfigDialog(this, QStringLiteral("settings"), Prefs::self());
+    KMahjonggConfigDialog * dialog = new KMahjonggConfigDialog(this, QStringLiteral("settings"), Prefs::self());
     dialog->addPage(new Settings(0), i18n("General"), QStringLiteral("games-config-options"));
     dialog->addTilesetPage();
     dialog->addBackgroundPage();

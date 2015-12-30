@@ -26,4 +26,4 @@
 
 Q_DECLARE_LOGGING_CATEGORY(KSHISEN_LOG)
 
-#endif 
+#endif

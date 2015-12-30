@@ -25,8 +25,8 @@
 // KDE
 #include <KAboutData>
 #include <KDBusService>
-#include <Kdelibs4ConfigMigrator>
 #include <KLocalizedString>
+#include <Kdelibs4ConfigMigrator>
 
 // KShisen
 #include "app.h"
@@ -34,7 +34,7 @@
 
 static const char description[] = I18N_NOOP("A KDE game similar to Mahjongg");
 
-int main(int argc, char **argv)
+int main(int argc, char ** argv)
 {
     QApplication a(argc, argv);
 
@@ -68,7 +68,7 @@ int main(int argc, char **argv)
 
     KDBusService service;
 
-    App *app = new App();
+    App * app = new App();
     app->show();
     return a.exec();
 }

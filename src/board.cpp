@@ -40,13 +40,13 @@
 #include "prefs.h"
 
 
-#define EMPTY           0
-#define SEASONS_START   28
-#define FLOWERS_START   39
+#define EMPTY 0
+#define SEASONS_START 28
+#define FLOWERS_START 39
 
 static std::array<int, 5> const s_delay = {1000, 750, 500, 250, 125};
 static std::array<int, 6> const s_sizeX = {14, 16, 18, 24, 26, 30};
-static std::array<int, 6> const s_sizeY = { 6,  9,  8, 12, 14, 16};
+static std::array<int, 6> const s_sizeY = {6, 9, 8, 12, 14, 16};
 
 bool PossibleMove::isInPath(TilePos const & tilePos) const
 {
@@ -64,9 +64,9 @@ bool PossibleMove::isInPath(TilePos const & tilePos) const
     for (; iter != m_path.cend(); ++iter) {
         // to fix
         if ((tilePos.x() == iter->x() && ((tilePos.y() > pathY && tilePos.y() <= iter->y())
-            || (tilePos.y() < pathY && tilePos.y() >= iter->y())))
+                                          || (tilePos.y() < pathY && tilePos.y() >= iter->y())))
             || (tilePos.y() == iter->y() && ((tilePos.x() > pathX && tilePos.x() <= iter->x())
-            || (tilePos.x() < pathX && tilePos.x() >= iter->x())))) {
+                                             || (tilePos.x() < pathX && tilePos.x() >= iter->x())))) {
             qCDebug(KSHISEN_LOG) << "isInPath:" << tilePos.x() << "," << tilePos.y() << "found in path" << pathX << "," << pathY << " => " << iter->x() << "," << iter->y();
             return true;
         }
@@ -77,16 +77,26 @@ bool PossibleMove::isInPath(TilePos const & tilePos) const
 }
 
 Board::Board(QWidget * parent)
-    : QWidget(parent),
-      m_markX(0), m_markY(0),
-      m_xTiles(0), m_yTiles(0),
-      m_delay(0), m_level(0), m_shuffle(0),
-      m_gameState(GameState::Normal), m_cheat(false),
-      m_gravityFlag(true), m_solvableFlag(false), m_chineseStyleFlag(false), m_tilesCanSlideFlag(false),
-      m_highlightedTile(-1),
-      m_paintConnection(false), m_paintPossibleMoves(false), m_paintInProgress(false),
-      m_soundPick(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("sounds/kshisen/tile-touch.ogg"))),
-      m_soundFall(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("sounds/kshisen/tile-fall-tile.ogg")))
+    : QWidget(parent)
+    , m_markX(0)
+    , m_markY(0)
+    , m_xTiles(0)
+    , m_yTiles(0)
+    , m_delay(0)
+    , m_level(0)
+    , m_shuffle(0)
+    , m_gameState(GameState::Normal)
+    , m_cheat(false)
+    , m_gravityFlag(true)
+    , m_solvableFlag(false)
+    , m_chineseStyleFlag(false)
+    , m_tilesCanSlideFlag(false)
+    , m_highlightedTile(-1)
+    , m_paintConnection(false)
+    , m_paintPossibleMoves(false)
+    , m_paintInProgress(false)
+    , m_soundPick(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("sounds/kshisen/tile-touch.ogg")))
+    , m_soundFall(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("sounds/kshisen/tile-fall-tile.ogg")))
 {
     m_tileRemove1.setX(-1);
 
@@ -310,8 +320,7 @@ void Board::mousePressEvent(QMouseEvent * e)
     int posX = (e->pos().x() - xOffset()) / (m_tiles.qWidth() * 2);
     int posY = (e->pos().y() - yOffset()) / (m_tiles.qHeight() * 2);
 
-    if (e->pos().x() < xOffset() || e->pos().y() < yOffset() ||
-            posX >= xTiles() || posY >= yTiles()) {
+    if (e->pos().x() < xOffset() || e->pos().y() < yOffset() || posX >= xTiles() || posY >= yTiles()) {
         posX = -1;
         posY = -1;
     }
@@ -909,7 +918,7 @@ void Board::performMove(PossibleMove & possibleMoves)
 void Board::marked(TilePos const & tilePos)
 {
     if (field(tilePos) == EMPTY) { // click on empty space on the board
-        if (m_possibleMoves.size() > 1) {  // if the click is on any of the current possible moves, make that move
+        if (m_possibleMoves.size() > 1) { // if the click is on any of the current possible moves, make that move
             for (auto move : m_possibleMoves) {
                 if (move.isInPath(tilePos)) {
                     performMove(move);
@@ -945,7 +954,7 @@ void Board::marked(TilePos const & tilePos)
         updateField(tilePos);
         emit selectAMatchingTile();
         return;
-    } else if (m_possibleMoves.size() > 1) {  // if the click is on any of the current possible moves, make that move
+    } else if (m_possibleMoves.size() > 1) { // if the click is on any of the current possible moves, make that move
 
         for (auto move : m_possibleMoves) {
             if (move.isInPath(tilePos)) {
@@ -1214,15 +1223,13 @@ int Board::findPath(TilePos const & tilePos1, TilePos const & tilePos2, Possible
     }
 
     // Find paths of 3 segments
-    std::array<int, 4> const dx = { 1, 0, -1, 0 };
-    std::array<int, 4> const dy = { 0, 1, 0, -1 };
+    std::array<int, 4> const dx = {1, 0, -1, 0};
+    std::array<int, 4> const dy = {0, 1, 0, -1};
 
     for (int i = 0; i < 4; ++i) {
         int newX = tilePos1.x() + dx.at(i);
         int newY = tilePos1.y() + dy.at(i);
-        while (newX >= -1 && newX <= xTiles() &&
-                newY >= -1 && newY <= yTiles() &&
-                field(TilePos(newX, newY)) == EMPTY) {
+        while (newX >= -1 && newX <= xTiles() && newY >= -1 && newY <= yTiles() && field(TilePos(newX, newY)) == EMPTY) {
             if ((simplePath = findSimplePath(TilePos(newX, newY), tilePos2, possibleMoves)) > 0) {
                 possibleMoves.back().m_path.prepend(tilePos1);
                 numberOfPaths += simplePath;
@@ -1424,7 +1431,7 @@ int Board::delay() const
 
 void Board::madeMove(TilePos const & tilePos1, TilePos const & tilePos2, Path slide)
 {
-    Move *move;
+    Move * move;
     if (slide.empty()) {
         move = new Move(tilePos1, tilePos2, field(tilePos1), field(tilePos2));
     } else {
@@ -1456,7 +1463,7 @@ void Board::undo()
 
     clearHighlight();
     undrawConnection();
-    Move *move = m_undo.takeLast();
+    Move * move = m_undo.takeLast();
     if (gravityFlag()) {
         // When both tiles reside in the same column, the order of undo is
         // significant (we must undo the lower tile first).
@@ -1512,7 +1519,7 @@ void Board::undo()
                 // slided tiles may fall down after the slide
                 // so any tiles on top of the columns between
                 // slide_x2 -> slide_x2 +/- n (excluded) should go up to slide_y1
-                if (move->m_slideX2 > move->m_slideX1) {  // slide to the right
+                if (move->m_slideX2 > move->m_slideX1) { // slide to the right
 #ifdef DEBUGGING
                     qCDebug(KSHISEN_LOG) << "[undo] slide right";
 #endif
@@ -1565,10 +1572,10 @@ void Board::undo()
                         updateField(TilePos(i, move->m_slideY1));
                     }
                 }
-                // move tiles from the second column up
 #ifdef DEBUGGING
                 qCDebug(KSHISEN_LOG) << "[undo] moving up column x2" << move->m_x2;
 #endif
+                // move tiles from the second column up
                 for (int y = 0; y <= move->m_y2; ++y) {
 #ifdef DEBUGGING
                     qCDebug(KSHISEN_LOG) << "[undo] moving up tile" << y + 1;
@@ -1581,7 +1588,7 @@ void Board::undo()
                 // x1 -> x1+dx should go up one
                 // if their height > slide_y1
                 // because they have fallen after the slide
-                if (move->m_slideX2 > move->m_slideX1) {  // slide to the right
+                if (move->m_slideX2 > move->m_slideX1) { // slide to the right
                     if (move->m_slideY1 > 0) {
                         for (int i = move->m_x1 + dx; i >= move->m_x1; --i) {
 #ifdef DEBUGGING
@@ -1623,19 +1630,19 @@ void Board::undo()
                     }
                 }
 
-                // then undo the slide to put the tiles back to their original location
 #ifdef DEBUGGING
                 qCDebug(KSHISEN_LOG) << "[undo] reversing slide";
 #endif
+                // then undo the slide to put the tiles back to their original location
                 reverseSlide(TilePos(move->m_x1, move->m_y1), move->m_slideX1, move->m_slideY1, move->m_slideX2, move->m_slideY2);
 
             } else {
-                // vertical slide, in fact nothing special is necessary
-                // the default implementation works because it only affects
-                // the two columns were tiles were taken
 #ifdef DEBUGGING
                 qCDebug(KSHISEN_LOG) << "[undo] gravity from vertical slide";
 #endif
+                // vertical slide, in fact nothing special is necessary
+                // the default implementation works because it only affects
+                // the two columns were tiles were taken
 
                 // move tiles from the first column up
                 for (int y = 0; y < move->m_y1; ++y) {
@@ -1673,7 +1680,7 @@ void Board::redo()
     if (canRedo()) {
         clearHighlight();
         undrawConnection();
-        Move *move = m_redo.takeFirst();
+        Move * move = m_redo.takeFirst();
         // redo the slide if any
         if (move->m_hasSlide) {
             Path s;
@@ -1721,7 +1728,7 @@ void Board::dumpBoard() const
     dumpBoard(m_field);
 }
 
-void Board::dumpBoard(const std::vector<int>& board) const
+void Board::dumpBoard(const std::vector<int> & board) const
 {
     qCDebug(KSHISEN_LOG) << "Board contents:";
     for (int y = 0; y < yTiles(); ++y) {
@@ -1778,7 +1785,7 @@ bool Board::hint_I(PossibleMoves & possibleMoves) const
 
 int Board::tilesLeft() const
 {
-    return std::count_if(m_field.begin(), m_field.end(), [](int field){ return field != EMPTY; });
+    return std::count_if(m_field.begin(), m_field.end(), [](int field) { return field != EMPTY; });
 }
 
 int Board::currentTime() const

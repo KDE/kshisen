@@ -36,8 +36,8 @@
 #include <KRandomSequence>
 
 // KDEGames
-#include <KgSound>
 #include <KGameClock>
+#include <KgSound>
 
 // KMahjongg
 #include <kmahjonggbackground.h>
@@ -66,14 +66,22 @@ using Path = QList<TilePos>;
 class PossibleMove
 {
 public:
-    explicit PossibleMove(Path &path) :
-        m_path(path), m_hasSlide(false) { }
-    PossibleMove(Path &path, Path &slide) :
-        m_path(path), m_hasSlide(true), m_slide(slide) { }
+    explicit PossibleMove(Path & path)
+        : m_path(path)
+        , m_hasSlide(false)
+    {
+    }
+    PossibleMove(Path & path, Path & slide)
+        : m_path(path)
+        , m_hasSlide(true)
+        , m_slide(slide)
+    {
+    }
 
     bool isInPath(TilePos const & tilePos) const;
 
-    void Debug() const {
+    void Debug() const
+    {
         qCDebug(KSHISEN_LOG) << "PossibleMove";
 
         for (auto iter = m_path.cbegin(); iter != m_path.cend(); ++iter) {
@@ -107,12 +115,48 @@ using PossibleMoves = QList<PossibleMove>;
 class Move
 {
 public:
-    Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile) :
-        m_x1(tilePos1.x()), m_y1(tilePos1.y()), m_x2(tilePos2.x()), m_y2(tilePos2.y()), m_tile1(tile), m_tile2(tile), m_hasSlide(false), m_slideX1(-1), m_slideY1(-1), m_slideX2(-1), m_slideY2(-1) { }
-    Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2) :
-        m_x1(tilePos1.x()), m_y1(tilePos1.y()), m_x2(tilePos2.x()), m_y2(tilePos2.y()), m_tile1(tile1), m_tile2(tile2), m_hasSlide(false), m_slideX1(-1), m_slideY1(-1), m_slideX2(-1), m_slideY2(-1) { }
-    Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2, int slideX1, int slideY1, int slideX2, int slideY2) :
-        m_x1(tilePos1.x()), m_y1(tilePos1.y()), m_x2(tilePos2.x()), m_y2(tilePos2.y()), m_tile1(tile1), m_tile2(tile2), m_hasSlide(true), m_slideX1(slideX1), m_slideY1(slideY1), m_slideX2(slideX2), m_slideY2(slideY2) { }
+    Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile)
+        : m_x1(tilePos1.x())
+        , m_y1(tilePos1.y())
+        , m_x2(tilePos2.x())
+        , m_y2(tilePos2.y())
+        , m_tile1(tile)
+        , m_tile2(tile)
+        , m_hasSlide(false)
+        , m_slideX1(-1)
+        , m_slideY1(-1)
+        , m_slideX2(-1)
+        , m_slideY2(-1)
+    {
+    }
+    Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2)
+        : m_x1(tilePos1.x())
+        , m_y1(tilePos1.y())
+        , m_x2(tilePos2.x())
+        , m_y2(tilePos2.y())
+        , m_tile1(tile1)
+        , m_tile2(tile2)
+        , m_hasSlide(false)
+        , m_slideX1(-1)
+        , m_slideY1(-1)
+        , m_slideX2(-1)
+        , m_slideY2(-1)
+    {
+    }
+    Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2, int slideX1, int slideY1, int slideX2, int slideY2)
+        : m_x1(tilePos1.x())
+        , m_y1(tilePos1.y())
+        , m_x2(tilePos2.x())
+        , m_y2(tilePos2.y())
+        , m_tile1(tile1)
+        , m_tile2(tile2)
+        , m_hasSlide(true)
+        , m_slideX1(slideX1)
+        , m_slideY1(slideY1)
+        , m_slideX2(slideX2)
+        , m_slideY2(slideY2)
+    {
+    }
 
     int m_x1, m_y1, m_x2, m_y2; ///< coordinates of the two tiles that matched
     int m_tile1; ///< type of tile at first set of coordinates
@@ -143,7 +187,7 @@ public:
     virtual void resizeEvent(QResizeEvent * e);
 
     void setDelay(int);
-    int  delay() const;
+    int delay() const;
 
     /// Returns if undo step is available
     bool canUndo() const;
@@ -351,8 +395,8 @@ private:
 
     KRandomSequence m_random;
 
-    QList<Move*> m_undo; ///< Undo history
-    QList<Move*> m_redo; ///< Redo history
+    QList<Move *> m_undo; ///< Undo history
+    QList<Move *> m_redo; ///< Redo history
 
     int m_markX;
     int m_markY;
@@ -366,7 +410,10 @@ private:
     int m_shuffle;
 
     // The game can be in one of the following states.
-    enum class GameState { Normal, Paused, Stuck, Over };
+    enum class GameState { Normal,
+                           Paused,
+                           Stuck,
+                           Over };
     GameState m_gameState;
     bool m_cheat; ///< Whether the cheat mode is set
 
