@@ -53,7 +53,7 @@
 
 // KShisen
 #include "board.h"
-#include "kshisen_debug.h"
+#include "debug.h"
 #include "prefs.h"
 #include "ui_settings.h"
 

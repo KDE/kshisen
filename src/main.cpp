@@ -30,8 +30,9 @@
 
 // KShisen
 #include "app.h"
+#include "debug.h"
 
-
+Q_LOGGING_CATEGORY(KSHISEN_LOG, "log_kshisen")
 static const char description[] = I18N_NOOP("A KDE game similar to Mahjongg");
 
 int main(int argc, char ** argv)

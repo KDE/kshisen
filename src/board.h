@@ -45,7 +45,6 @@
 
 // KShisen
 #include "debug.h"
-#include "kshisen_debug.h"
 
 
 using TilePos = QPoint;

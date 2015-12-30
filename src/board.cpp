@@ -36,7 +36,7 @@
 #include <KLocalizedString>
 
 // KShisen
-#include "kshisen_debug.h"
+#include "debug.h"
 #include "prefs.h"
 
 
