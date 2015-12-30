@@ -19,34 +19,43 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
+// own
 #include "app.h"
-#include "board.h"
-#include "prefs.h"
-#include "ui_settings.h"
-#include "kshisen_debug.h"
 
-#include <kmahjonggconfigdialog.h>
-#include <highscore/kscoredialog.h>
-#include <kstandardgameaction.h>
+// STL
+#include <cmath>
 
-#include <kactioncollection.h>
-#include <kconfig.h>
-#include <kconfigdialog.h>
-#include <klineedit.h>
-#include <KLocalizedString>
-#include <kmessagebox.h>
-#include <kseparator.h>
-#include <kshortcutsdialog.h>
-#include <kstandardaction.h>
-#include <kstandardguiitem.h>
-#include <ktoggleaction.h>
-
+// Qt
 #include <QIcon>
 #include <QPointer>
 #include <QStatusBar>
 #include <QTimer>
 
-#include <cmath>
+// KDE
+#include <KStandardGameAction>
+#include <KActionCollection>
+#include <KConfig>
+#include <KConfigDialog>
+#include <KLineEdit>
+#include <KLocalizedString>
+#include <KMessageBox>
+#include <KSeparator>
+#include <KShortcutsDialog>
+#include <KStandardAction>
+#include <KStandardGuiItem>
+#include <KToggleAction>
+
+// KDEGames
+#include <highscore/kscoredialog.h>
+
+// Kmahjongg
+#include <kmahjonggconfigdialog.h>
+
+// KShisen
+#include "board.h"
+#include "kshisen_debug.h"
+#include "prefs.h"
+#include "ui_settings.h"
 
 
 /**

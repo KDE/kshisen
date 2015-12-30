@@ -19,21 +19,26 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
+// own
 #include "board.h"
-#include "prefs.h"
 
-#include <KLocalizedString>
-
-
-#include "kshisen_debug.h"
-#include <QMouseEvent>
-#include <QPainter>
-#include <QTimer>
-
-#include <QStandardPaths>
-
+// STL
 #include <algorithm>
 #include <array>
+
+// Qt
+#include <QMouseEvent>
+#include <QPainter>
+#include <QStandardPaths>
+#include <QTimer>
+
+// KDE
+#include <KLocalizedString>
+
+// KShisen
+#include "kshisen_debug.h"
+#include "prefs.h"
+
 
 #define EMPTY           0
 #define SEASONS_START   28

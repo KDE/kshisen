@@ -18,15 +18,19 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
+// Qt
+#include <QApplication>
+#include <QCommandLineParser>
+
+// KDE
+#include <KAboutData>
+#include <KDBusService>
+#include <Kdelibs4ConfigMigrator>
+#include <KLocalizedString>
+
+// KShisen
 #include "app.h"
 
-#include <KAboutData>
-#include <Kdelibs4ConfigMigrator>
-
-#include <QCommandLineParser>
-#include <QApplication>
-#include <KLocalizedString>
-#include <KDBusService>
 
 static const char description[] = I18N_NOOP("A KDE game similar to Mahjongg");
 

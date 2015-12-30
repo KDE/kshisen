@@ -20,8 +20,10 @@
 #ifndef KSHISEN_DEBUG_H
 #define KSHISEN_DEBUG_H
 
+// Qt
 #include <QLoggingCategory>
+
+
 Q_DECLARE_LOGGING_CATEGORY(KSHISEN_LOG)
 
 #endif 
-

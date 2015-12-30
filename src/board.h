@@ -24,22 +24,28 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include "debug.h"
+// STL
+#include <vector>
 
-#include <KgSound>
-
-#include <kgameclock.h>
-#include <kmahjonggtileset.h>
-#include <kmahjonggbackground.h>
-
-#include <krandomsequence.h>
-
-#include "kshisen_debug.h"
+// Qt
 #include <QList>
 #include <QSize>
 #include <QWidget>
 
-#include <vector>
+// KDE
+#include <KRandomSequence>
+
+// KDEGames
+#include <KgSound>
+#include <KGameClock>
+
+// KMahjongg
+#include <kmahjonggbackground.h>
+#include <kmahjonggtileset.h>
+
+// KShisen
+#include "debug.h"
+#include "kshisen_debug.h"
 
 
 using TilePos = QPoint;

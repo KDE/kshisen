@@ -17,7 +17,8 @@
     Boston, MA 02110-1301, USA.
 */
 
+// KShisen
 #include "kshisen_debug.h"
+
+
 Q_LOGGING_CATEGORY(KSHISEN_LOG, "log_kshisen")
-
-

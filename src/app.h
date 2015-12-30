@@ -21,11 +21,15 @@
 #ifndef APP_H
 #define APP_H
 
-#include <kxmlguiwindow.h>
+// KDE
+#include <KXmlGuiWindow>
 
+// Qt
 class QLabel;
 
+// KShisen
 class Board;
+
 
 /**
  * @brief Class holding the application and its functions
