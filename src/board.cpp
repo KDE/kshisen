@@ -1705,8 +1705,8 @@ void Board::makeHintMove()
     if (hint_I(possibleMoves)) {
         m_markX = -1;
         m_markY = -1;
-        marked(possibleMoves.front().m_path.front().x(), possibleMoves.front().m_path.front().y());
-        marked(possibleMoves.front().m_path.back().x(), possibleMoves.front().m_path.back().y());
+        marked(TilePos(possibleMoves.front().m_path.front().x(), possibleMoves.front().m_path.front().y()));
+        marked(TilePos(possibleMoves.front().m_path.back().x(), possibleMoves.front().m_path.back().y()));
     }
 }
 
