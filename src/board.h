@@ -68,6 +68,7 @@ public:
     explicit PossibleMove(Path & path)
         : m_path(path)
         , m_hasSlide(false)
+        , m_slide()
     {
     }
     PossibleMove(Path & path, Path & slide)
