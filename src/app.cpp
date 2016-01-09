@@ -269,7 +269,8 @@ void App::slotEndOfGame()
         } else {
             scoreInfo[KScoreDialog::Custom1] = i18n("No");
         }
-        scoreDialog->setConfigGroup(QStringLiteral("%1x%2").arg(m_board->xTiles()).arg(m_board->yTiles()));
+        QString const configGroup = QStringLiteral("%1x%2").arg(m_board->xTiles()).arg(m_board->yTiles());
+        scoreDialog->setConfigGroup(qMakePair(QByteArray(configGroup.toUtf8()), configGroup));
 
         if (m_board->hasCheated()) {
             QString const message = i18n("\nYou could have been in the highscores\nif you did not use Undo or Hint.\nTry without them next time.");
