@@ -177,7 +177,7 @@ class Board : public QWidget
     Q_OBJECT
 
 public:
-    explicit Board(QWidget * parent = 0);
+    explicit Board(QWidget * parent = nullptr);
 
     /// Number of different kinds of tiles in the game.
     static int const nTiles = 42;

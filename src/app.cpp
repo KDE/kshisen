@@ -383,7 +383,7 @@ void App::showSettingsDialog()
 
     //Use the classes exposed by LibKmahjongg for our configuration dialog
     KMahjonggConfigDialog * dialog = new KMahjonggConfigDialog(this, QStringLiteral("settings"), Prefs::self());
-    dialog->addPage(new Settings(0), i18n("General"), QStringLiteral("games-config-options"));
+    dialog->addPage(new Settings(nullptr), i18n("General"), QStringLiteral("games-config-options"));
     dialog->addTilesetPage();
     dialog->addBackgroundPage();
 

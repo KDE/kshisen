@@ -39,7 +39,7 @@ class App : public KXmlGuiWindow
     Q_OBJECT
 
 public:
-    explicit App(QWidget * parent = 0);
+    explicit App(QWidget * parent = nullptr);
 
 private slots:
     void slotEndOfGame();
