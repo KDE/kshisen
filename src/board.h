@@ -220,11 +220,11 @@ public:
     bool solvable(bool noRestore = false); // const?
 
     bool solvableFlag() const;
-    void setSolvableFlag(bool b);
+    void setSolvableFlag(bool enabled);
     bool gravityFlag() const;
-    void setGravityFlag(bool b);
-    void setChineseStyleFlag(bool b);
-    void setTilesCanSlideFlag(bool b);
+    void setGravityFlag(bool enabled);
+    void setChineseStyleFlag(bool enabled);
+    void setTilesCanSlideFlag(bool enabled);
 
     /// Returns possible number of tiles in X direction
     int xTiles() const;
@@ -368,7 +368,7 @@ private: // functions
      */
     int findSimplePath(TilePos const & tilePos1, TilePos const & tilePos2, PossibleMoves & possibleMoves) const;
     void performMove(PossibleMove & possibleMoves);
-    void performSlide(TilePos const & tilePos, Path & s);
+    void performSlide(TilePos const & tilePos, Path & slide);
     void reverseSlide(TilePos const & tilePos, int slideX1, int slideY1, int slideX2, int slideY2);
     bool isTileHighlighted(TilePos const & tilePos) const;
     void drawConnection();

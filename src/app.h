@@ -84,7 +84,7 @@ private slots:
      * If the game is paused, do not show the board and disable actions like undo
      * and such.
      */
-    void setPauseEnabled(bool enable);
+    void setPauseEnabled(bool enabled);
 
     /** Undoes one move.
      * The Undo action should set the cheat flag, so the user cannot end up in
