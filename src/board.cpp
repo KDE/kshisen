@@ -1449,7 +1449,7 @@ void Board::madeMove(TilePos const & tilePos1, TilePos const & tilePos2, Path sl
         move = new Move(tilePos1, tilePos2, field(tilePos1), field(tilePos2), slide.front().x(), slide.front().y(), slide.back().x(), slide.back().y());
     }
     m_undo.push_back(move);
-    while (m_redo.size()) {
+    while (m_redo.size() != 0) {
         delete m_redo.front();
         m_redo.removeFirst();
     }
