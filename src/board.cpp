@@ -966,7 +966,8 @@ void Board::marked(TilePos const & tilePos)
         updateField(tilePos);
         emit selectAMatchingTile();
         return;
-    } else if (m_possibleMoves.size() > 1) { // if the click is on any of the current possible moves, make that move
+    }
+    if (m_possibleMoves.size() > 1) { // if the click is on any of the current possible moves, make that move
 
         for (auto move : m_possibleMoves) {
             if (move.isInPath(tilePos)) {
@@ -1096,9 +1097,9 @@ bool Board::canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Pa
                 // final position of the last slided tile
                 path.push_back(TilePos(tilePos1.x(), start_free + 1 - distance));
                 return true;
-            } else {
-                return false;
             }
+            return false;
+
         } else if (tilePos2.y() > tilePos1.y()) {
             distance = tilePos2.y() - tilePos1.y();
             // count how much free space we have for sliding
@@ -1132,9 +1133,8 @@ bool Board::canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Pa
                 // final position of the last slided tile
                 path.push_back(TilePos(tilePos1.x(), start_free - 1 + distance));
                 return true;
-            } else {
-                return false;
             }
+            return false;
         }
         // y1 == y2 ?!
         return false;
@@ -1174,9 +1174,9 @@ bool Board::canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Pa
                 // final position of the last slided tile
                 path.push_back(TilePos(start_free + 1 - distance, tilePos1.y()));
                 return true;
-            } else {
-                return false;
             }
+            return false;
+
         } else if (tilePos2.x() > tilePos1.x()) {
             distance = tilePos2.x() - tilePos1.x();
             // count how much free space we have for sliding
@@ -1210,9 +1210,8 @@ bool Board::canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Pa
                 // final position of the last slided tile
                 path.push_back(TilePos(start_free - 1 + distance, tilePos1.y()));
                 return true;
-            } else {
-                return false;
             }
+            return false;
         }
         // x1 == x2 ?!
         return false;

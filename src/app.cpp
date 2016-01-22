@@ -327,9 +327,8 @@ int App::score(int x, int y, int seconds, bool gravity) const
 
     if (gravity) {
         return static_cast<int>(2.0 * points * sizebonus);
-    } else {
-        return static_cast<int>(points * sizebonus);
     }
+    return static_cast<int>(points * sizebonus);
 }
 
 void App::notifySelectATile()
