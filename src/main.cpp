@@ -69,7 +69,7 @@ int main(int argc, char ** argv)
 
     KDBusService service;
 
-    App * app = new App();
+    auto app = new App();
     app->show();
     return a.exec();
 }
