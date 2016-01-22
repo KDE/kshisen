@@ -84,14 +84,14 @@ public:
     {
         qCDebug(KSHISEN_LOG) << "PossibleMove";
 
-        for (auto iter = m_path.cbegin(); iter != m_path.cend(); ++iter) {
-            qCDebug(KSHISEN_LOG) << "    Path:" << iter->x() << "," << iter->y();
+        for (auto iter : m_path) {
+            qCDebug(KSHISEN_LOG) << "    Path:" << iter.x() << "," << iter.y();
         }
 
         if (m_hasSlide) {
             qCDebug(KSHISEN_LOG) << "   hasSlide";
-            for (auto iter = m_slide.cbegin(); iter != m_slide.cend(); ++iter) {
-                qCDebug(KSHISEN_LOG) << "    Slide:" << iter->x() << "," << iter->y();
+            for (auto iter : m_slide) {
+                qCDebug(KSHISEN_LOG) << "    Slide:" << iter.x() << "," << iter.y();
             }
         }
     }
