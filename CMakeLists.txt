@@ -1,15 +1,21 @@
 project(kshisen)
 
 cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
-
 set(QT_MIN_VERSION "5.2.0")
+set(KF5_MIN_VERSION "5.15.0")
 
 find_package(ECM 1.7.0 REQUIRED NO_MODULE)
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Gui)
-find_package(KF5 REQUIRED COMPONENTS DBusAddons XmlGui Config DocTools)
+find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+    Config
+    Crash
+    DBusAddons
+    DocTools
+    XmlGui
+)
 
 include(FeatureSummary)
 include(ECMAddAppIcon)
@@ -26,13 +32,15 @@ include(KDECMakeSettings)
 find_package(KF5KMahjongglib REQUIRED)
 find_package(KF5KDEGames 4.9.0 REQUIRED)
 
-add_definitions(-DQT_USE_FAST_CONCATENATION
-                -DQT_USE_FAST_OPERATOR_PLUS
-                -DQT_NO_CAST_FROM_ASCII
-                -DQT_NO_CAST_TO_ASCII
-                -DQT_NO_CAST_FROM_BYTEARRAY
-                -DQT_NO_URL_CAST_FROM_STRING
-                -DQT_USE_QSTRINGBUILDER)
+add_definitions(
+    -DQT_USE_FAST_CONCATENATION
+    -DQT_USE_FAST_OPERATOR_PLUS
+    -DQT_NO_CAST_FROM_ASCII
+    -DQT_NO_CAST_TO_ASCII
+    -DQT_NO_CAST_FROM_BYTEARRAY
+    -DQT_NO_URL_CAST_FROM_STRING
+    -DQT_USE_QSTRINGBUILDER
+)
 
 add_subdirectory(src)
 add_subdirectory(sounds)
@@ -42,16 +50,15 @@ install(PROGRAMS org.kde.kshisen.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install(FILES org.kde.kshisen.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
 ecm_install_icons(ICONS
-                  128-apps-kshisen.png
-                  64-apps-kshisen.png
-                  48-apps-kshisen.png
-                  32-apps-kshisen.png
-                  22-apps-kshisen.png
-                  16-apps-kshisen.png
-                  DESTINATION ${KDE_INSTALL_ICONDIR}
-                  THEME hicolor)
+    128-apps-kshisen.png
+    64-apps-kshisen.png
+    48-apps-kshisen.png
+    32-apps-kshisen.png
+    22-apps-kshisen.png
+    16-apps-kshisen.png
+    DESTINATION ${KDE_INSTALL_ICONDIR}
+    THEME hicolor
+)
 
 ########### Display Summary ###############
-feature_summary(WHAT ALL
-                INCLUDE_QUIET_PACKAGES
-                FATAL_ON_MISSING_REQUIRED_PACKAGES)
+feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

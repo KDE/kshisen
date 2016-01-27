@@ -24,6 +24,7 @@
 
 // KDE
 #include <KAboutData>
+#include <KCrash>
 #include <KDBusService>
 #include <KLocalizedString>
 #include <Kdelibs4ConfigMigrator>
@@ -57,6 +58,7 @@ int main(int argc, char ** argv)
     aboutData.addCredit(i18n("Jason Lane"), i18n("Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"), QStringLiteral("jglane@btopenworld.com"));
     aboutData.addCredit(i18n("Thanks also to everyone who should be listed here but is not!"));
     KAboutData::setApplicationData(aboutData);
+    KCrash::initialize();
 
     QCommandLineParser parser;
     parser.addVersionOption();

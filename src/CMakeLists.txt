@@ -1,7 +1,8 @@
 set(kshisen_SRCS
-    main.cpp
+    app.cpp
     board.cpp
-    app.cpp)
+    main.cpp
+)
 
 ki18n_wrap_ui(kshisen_SRCS settings.ui)
 
@@ -10,13 +11,15 @@ kconfig_add_kcfg_files(kshisen_SRCS prefs.kcfgc)
 add_executable(kshisen ${kshisen_SRCS})
 
 target_link_libraries(kshisen
-                      Qt5::Gui
-                      KF5::XmlGui
-                      KF5::I18n
-                      KF5KDEGames
-                      KF5KDEGamesPrivate
-                      KF5KMahjongglib
-                      KF5::DBusAddons)
+    Qt5::Gui
+    KF5::Crash
+    KF5::DBusAddons
+    KF5::I18n
+    KF5::XmlGui
+    KF5KDEGames
+    KF5KDEGamesPrivate
+    KF5KMahjongglib
+)
 
 install(TARGETS kshisen ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
