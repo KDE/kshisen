@@ -728,7 +728,7 @@ void Board::paintEvent(QPaintEvent * e)
     if (m_paintPossibleMoves) {
         p.setPen(QPen(QColor("blue"), lineWidth()));
         // paint all possible moves
-        for (auto const move : m_possibleMoves) {
+        foreach (auto const move, m_possibleMoves) {
             auto pt1 = move.m_path.cbegin();
             auto pt2 = pt1 + 1;
             while (pt2 != move.m_path.cend()) {
@@ -931,7 +931,7 @@ void Board::marked(TilePos const & tilePos)
 {
     if (field(tilePos) == EMPTY) { // click on empty space on the board
         if (m_possibleMoves.size() > 1) { // if the click is on any of the current possible moves, make that move
-            for (auto move : m_possibleMoves) {
+            foreach (auto move, m_possibleMoves) {
                 if (move.isInPath(tilePos)) {
                     performMove(move);
                     emit selectATile();
@@ -969,7 +969,7 @@ void Board::marked(TilePos const & tilePos)
     }
     if (m_possibleMoves.size() > 1) { // if the click is on any of the current possible moves, make that move
 
-        for (auto move : m_possibleMoves) {
+        foreach (auto move, m_possibleMoves) {
             if (move.isInPath(tilePos)) {
                 performMove(move);
                 emit selectATile();
@@ -992,7 +992,7 @@ void Board::marked(TilePos const & tilePos)
     if (findPath(TilePos(m_markX, m_markY), tilePos, m_possibleMoves) > 0) {
         if (m_possibleMoves.size() > 1) {
             int withSlide = 0;
-            for (auto const move : m_possibleMoves) {
+            foreach (auto const move, m_possibleMoves) {
                 move.Debug();
                 if (move.m_hasSlide) {
                     ++withSlide;

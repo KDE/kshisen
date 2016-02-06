@@ -84,13 +84,13 @@ public:
     {
         qCDebug(KSHISEN_LOG) << "PossibleMove";
 
-        for (auto iter : m_path) {
+        foreach (auto iter, m_path) {
             qCDebug(KSHISEN_LOG) << "    Path:" << iter.x() << "," << iter.y();
         }
 
         if (m_hasSlide) {
             qCDebug(KSHISEN_LOG) << "   hasSlide";
-            for (auto iter : m_slide) {
+            foreach (auto iter, m_slide) {
                 qCDebug(KSHISEN_LOG) << "    Slide:" << iter.x() << "," << iter.y();
             }
         }
