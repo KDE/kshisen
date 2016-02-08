@@ -366,6 +366,8 @@ void App::showHighscores()
 {
     KScoreDialog scoreDialog(KScoreDialog::Name | KScoreDialog::Time, this);
     scoreDialog.addField(KScoreDialog::Custom1, i18n("Gravity"), QStringLiteral("gravity"));
+    QString const configGroup = QStringLiteral("%1x%2").arg(m_board->xTiles()).arg(m_board->yTiles());
+    scoreDialog.setConfigGroup(qMakePair(QByteArray(configGroup.toUtf8()), configGroup));
     scoreDialog.exec();
 }
 
