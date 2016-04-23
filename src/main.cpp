@@ -48,7 +48,7 @@ int main(int argc, char ** argv)
 
     KLocalizedString::setApplicationDomain("kshisen");
 
-    KAboutData aboutData(QStringLiteral("kshisen"), i18n("Shisen-Sho"), QStringLiteral("1.10"),
+    KAboutData aboutData(QStringLiteral("kshisen"), i18n("Shisen-Sho"), QStringLiteral("1.10.0"),
                          i18n(description), KAboutLicense::GPL, i18n("(c) 1997, Mario Weilguni"));
     aboutData.setHomepage(QStringLiteral("http://games.kde.org/kshisen"));
     aboutData.addAuthor(i18n("Frederik Schwarzer"), i18n("Current Maintainer"), QStringLiteral("schwarzer@kde.org"));
