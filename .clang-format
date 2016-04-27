@@ -45,11 +45,11 @@ DisableFormat:   false
 ExperimentalAutoDetectBinPacking: false
 ForEachMacros:   [ foreach, Q_FOREACH ]
 IncludeCategories:
-  - Regex:          '^"'
+  - Regex:          '^<Q'
     Priority:       1
   - Regex:          '^<K'
     Priority:       2
-  - Regex:          '^<Q'
+  - Regex:          '^"'
     Priority:       3
 IndentCaseLabels: true
 IndentWidth:     4
