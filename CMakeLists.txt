@@ -6,9 +6,9 @@ set(KF5_MIN_VERSION "5.15.0")
 
 find_package(ECM 1.7.0 REQUIRED NO_MODULE)
 
-#if(ENABLE_CLAZY)
-#    set(CMAKE_CXX_COMPILER clazy)
-#endif()
+if(ENABLE_CLAZY)
+    set(CMAKE_CXX_COMPILER clazy)
+endif()
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 

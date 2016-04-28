@@ -1,0 +1,69 @@
+/***************************************************************************
+ *   KShisen - A japanese game similar to mahjongg                         *
+ *   Copyright 2016  Frederik Schwarzer <schwarzer@kde.org>                *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
+ ***************************************************************************/
+
+#include "types.h"
+
+#ifndef MOVE_H
+#define MOVE_H
+
+/**
+ * @brief Class holding a move on the board made by the player
+ *
+ * Contains all the information needed to undo or redo a move.
+ */
+class Move
+{
+public:
+    Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile);
+    Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2);
+    Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2, int slideX1, int slideY1, int slideX2, int slideY2);
+
+    int x1() const;
+    int y1() const;
+    int x2() const;
+    int y2() const;
+    int tile1() const;
+    int tile2() const;
+    int hasSlide() const;
+    int slideX1() const;
+    int slideY1() const;
+    int slideX2() const;
+    int slideY2() const;
+
+    /**
+     * @brief Swaps the two tiles involved in a move.
+     *
+     * This is needed for undoing a move in case both tiles are in the same column.
+     */
+    void swapTiles();
+
+private:
+    int m_x1, m_y1, m_x2, m_y2; ///< coordinates of the two tiles that matched
+    int m_tile1; ///< type of tile at first set of coordinates
+    int m_tile2; ///< type of tile at second set of coordinates
+    bool m_hasSlide; ///< if we performed a slide during the move
+    int m_slideX1; ///< original x coordinate of the last slided tile
+    int m_slideY1; ///< original y coordinate of the last slided tile
+    int m_slideX2; ///< final x coordinate of the last slided tile
+    int m_slideY2; ///< final y coordinate of the last slided tile
+};
+
+#endif // MOVE_H
+
+// vim: expandtab:tabstop=4:shiftwidth=4
+// kate: space-indent on; indent-width 4

@@ -3,7 +3,7 @@
  *   Copyright 1997  Mario Weilguni <mweilguni@sime.com>                   *
  *   Copyright 2002-2004  Dave Corrie <kde@davecorrie.com>                 *
  *   Copyright 2007  Mauricio Piacentini <mauricio@tabuleiro.com>          *
- *   Copyright 2009-2012  Frederik Schwarzer <schwarzer@kde.org>           *
+ *   Copyright 2009-2016  Frederik Schwarzer <schwarzer@kde.org>           *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -39,135 +39,19 @@
 #include <KGameClock>
 #include <KgSound>
 
-// KMahjongg
+// LibKMahjongg
 #include <kmahjonggbackground.h>
 #include <kmahjonggtileset.h>
 
 // KShisen
 #include "debug.h"
-
-
-using TilePos = QPoint;
-
-/**
- * A list of positions (at least 2) makes a Path
- */
-using Path = QList<TilePos>;
-
-/**
- * @brief Class holding a possible move and its functions
- *
- * A PossibleMove is a connection Path between two tiles
- * and optionally a slide Path.
- * Sometimes for a couple of tiles to match there may be multiple
- * possible moves for the player to choose between.
- */
-class PossibleMove
-{
-public:
-    explicit PossibleMove(Path & path)
-        : m_path(path)
-        , m_hasSlide(false)
-        , m_slide()
-    {
-    }
-    PossibleMove(Path & path, Path & slide)
-        : m_path(path)
-        , m_hasSlide(true)
-        , m_slide(slide)
-    {
-    }
-
-    bool isInPath(TilePos const & tilePos) const;
-
-    void Debug() const
-    {
-        qCDebug(KSHISEN_LOG) << "PossibleMove";
-
-        foreach (auto iter, m_path) {
-            qCDebug(KSHISEN_LOG) << "    Path:" << iter.x() << "," << iter.y();
-        }
-
-        if (m_hasSlide) {
-            qCDebug(KSHISEN_LOG) << "   hasSlide";
-            foreach (auto iter, m_slide) {
-                qCDebug(KSHISEN_LOG) << "    Slide:" << iter.x() << "," << iter.y();
-            }
-        }
-    }
-
-    Path m_path; ///< path used to connect the two tiles
-    bool m_hasSlide; ///< flag set if the move requires a slide
-    Path m_slide; ///< path representing the movement of the last sliding tile
-};
+#include "move.h"
+#include "possiblemove.h"
 
 /**
  * A list of possible moves the player has to choose between
  */
 using PossibleMoves = QList<PossibleMove>;
-
-
-/**
- * @brief Class holding a move on the board made by the player
- *
- * Contains all the information needed to undo or redo a move.
- */
-class Move
-{
-public:
-    Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile)
-        : m_x1(tilePos1.x())
-        , m_y1(tilePos1.y())
-        , m_x2(tilePos2.x())
-        , m_y2(tilePos2.y())
-        , m_tile1(tile)
-        , m_tile2(tile)
-        , m_hasSlide(false)
-        , m_slideX1(-1)
-        , m_slideY1(-1)
-        , m_slideX2(-1)
-        , m_slideY2(-1)
-    {
-    }
-    Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2)
-        : m_x1(tilePos1.x())
-        , m_y1(tilePos1.y())
-        , m_x2(tilePos2.x())
-        , m_y2(tilePos2.y())
-        , m_tile1(tile1)
-        , m_tile2(tile2)
-        , m_hasSlide(false)
-        , m_slideX1(-1)
-        , m_slideY1(-1)
-        , m_slideX2(-1)
-        , m_slideY2(-1)
-    {
-    }
-    Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2, int slideX1, int slideY1, int slideX2, int slideY2)
-        : m_x1(tilePos1.x())
-        , m_y1(tilePos1.y())
-        , m_x2(tilePos2.x())
-        , m_y2(tilePos2.y())
-        , m_tile1(tile1)
-        , m_tile2(tile2)
-        , m_hasSlide(true)
-        , m_slideX1(slideX1)
-        , m_slideY1(slideY1)
-        , m_slideX2(slideX2)
-        , m_slideY2(slideY2)
-    {
-    }
-
-    int m_x1, m_y1, m_x2, m_y2; ///< coordinates of the two tiles that matched
-    int m_tile1; ///< type of tile at first set of coordinates
-    int m_tile2; ///< type of tile at second set of coordinates
-    bool m_hasSlide; ///< if we performed a slide during the move
-    int m_slideX1; ///< original x coordinate of the last slided tile
-    int m_slideY1; ///< original y coordinate of the last slided tile
-    int m_slideX2; ///< final x coordinate of the last slided tile
-    int m_slideY2; ///< final y coordinate of the last slided tile
-};
-
 
 /**
  * @brief Class holding the game board and its functions.
@@ -368,7 +252,7 @@ private: // functions
      */
     int findSimplePath(TilePos const & tilePos1, TilePos const & tilePos2, PossibleMoves & possibleMoves) const;
     void performMove(PossibleMove & possibleMoves);
-    void performSlide(TilePos const & tilePos, Path & slide);
+    void performSlide(TilePos const & tilePos, Path const & slide);
     void reverseSlide(TilePos const & tilePos, int slideX1, int slideY1, int slideX2, int slideY2);
     bool isTileHighlighted(TilePos const & tilePos) const;
     void drawConnection();

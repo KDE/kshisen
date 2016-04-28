@@ -2,6 +2,8 @@ set(kshisen_SRCS
     app.cpp
     board.cpp
     main.cpp
+    move.cpp
+    possiblemove.cpp
 )
 
 ki18n_wrap_ui(kshisen_SRCS settings.ui)
@@ -25,4 +27,3 @@ install(TARGETS kshisen ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES kshisen.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
 install(FILES kshisenui.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/kshisen)
-
