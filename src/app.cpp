@@ -48,7 +48,7 @@
 #include <KScoreDialog>
 #include <KStandardGameAction>
 
-// Kmahjongg
+// LibKmahjongg
 #include <kmahjonggconfigdialog.h>
 
 // KShisen
