@@ -509,7 +509,7 @@ void Board::newGame()
     //jwickers: in case the game cannot made solvable we do not want to run an infinite loop
     int maxAttempts = 200;
 
-    while (!solvable(true) && maxAttempts > 0) {
+    while (!isSolvable(true) && maxAttempts > 0) {
         // generate a list of free tiles and positions
         int numberOfTiles = 0;
         for (int i = 0; i < xTiles() * yTiles(); ++i) {
@@ -1774,7 +1774,7 @@ int Board::currentTime() const
     return m_gameClock.seconds();
 }
 
-bool Board::solvable(bool noRestore)
+bool Board::isSolvable(bool noRestore)
 {
     std::vector<int> oldField;
 
@@ -1820,7 +1820,7 @@ void Board::setSolvableFlag(bool enabled)
     }
     m_solvableFlag = enabled;
     // if the solvable flag was set and the current game is not solvable, start a new game
-    if (m_solvableFlag && !solvable()) {
+    if (m_solvableFlag && !isSolvable()) {
         newGame();
     }
 }

@@ -101,7 +101,7 @@ public:
     int currentTime() const;
 
     /// Returns whether the current game is solvable
-    bool solvable(bool noRestore = false); // const?
+    bool isSolvable(bool noRestore = false); // const?
 
     bool solvableFlag() const;
     void setSolvableFlag(bool enabled);
