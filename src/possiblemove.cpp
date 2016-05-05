@@ -22,6 +22,8 @@
 // KShisen
 #include "debug.h"
 
+namespace KShisen
+{
 PossibleMove::PossibleMove(Path & path)
     : m_path(path)
     , m_hasSlide(false)
@@ -93,6 +95,7 @@ bool PossibleMove::hasSlide() const
 Path PossibleMove::slide() const
 {
     return m_slide;
+}
 }
 
 // vim: expandtab:tabstop=4:shiftwidth=4

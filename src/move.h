@@ -18,9 +18,11 @@
 
 #include "types.h"
 
-#ifndef MOVE_H
-#define MOVE_H
+#ifndef KSHISEN_MOVE_H
+#define KSHISEN_MOVE_H
 
+namespace KShisen
+{
 /**
  * @brief Class holding a move on the board made by the player
  *
@@ -62,8 +64,9 @@ private:
     int m_slideX2; ///< final x coordinate of the last slided tile
     int m_slideY2; ///< final y coordinate of the last slided tile
 };
+}
 
-#endif // MOVE_H
+#endif // KSHISEN_MOVE_H
 
 // vim: expandtab:tabstop=4:shiftwidth=4
 // kate: space-indent on; indent-width 4

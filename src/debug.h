@@ -16,16 +16,18 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef DEBUG_H
-#define DEBUG_H
+#ifndef KSHISEN_DEBUG_H
+#define KSHISEN_DEBUG_H
 
 // Qt
 #include <QLoggingCategory>
 
-
+namespace KShisen
+{
 Q_DECLARE_LOGGING_CATEGORY(KSHISEN_LOG)
 
 // Use for debugging game mode.
 //#define DEBUGGING
+}
 
-#endif // DEBUG_H
+#endif // KSHISEN_DEBUG_H

@@ -19,6 +19,8 @@
 // own
 #include "move.h"
 
+namespace KShisen
+{
 Move::Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile)
     : m_x1(tilePos1.x())
     , m_y1(tilePos1.y())
@@ -124,6 +126,7 @@ void Move::swapTiles()
     std::swap(m_x1, m_x2);
     std::swap(m_y1, m_y2);
     std::swap(m_tile1, m_tile2);
+}
 }
 
 // vim: expandtab:tabstop=4:shiftwidth=4

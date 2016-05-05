@@ -57,7 +57,8 @@
 #include "prefs.h"
 #include "ui_settings.h"
 
-
+namespace KShisen
+{
 /**
  * @brief Class holding the settings dialog and its functions
  */
@@ -390,6 +391,7 @@ void App::showSettingsDialog()
 
     connect(dialog, &KMahjonggConfigDialog::settingsChanged, m_board, &Board::loadSettings);
     dialog->show();
+}
 }
 
 // vim: expandtab:tabstop=4:shiftwidth=4

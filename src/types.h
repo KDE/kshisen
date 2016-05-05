@@ -16,20 +16,23 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef TYPES_H
-#define TYPES_H
+#ifndef KSHISEN_TYPES_H
+#define KSHISEN_TYPES_H
 
 #include <QList>
 #include <QPoint>
 
+namespace KShisen
+{
 using TilePos = QPoint;
 
 /**
  * A list of positions (at least 2) makes a Path
  */
 using Path = QList<TilePos>;
+}
 
-#endif // TYPES_H
+#endif // KSHISEN_TYPES_H
 
 // vim: expandtab:tabstop=4:shiftwidth=4
 // kate: space-indent on; indent-width 4

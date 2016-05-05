@@ -16,11 +16,13 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef POSSIBLEMOVE_H
-#define POSSIBLEMOVE_H
+#ifndef KSHISEN_POSSIBLEMOVE_H
+#define KSHISEN_POSSIBLEMOVE_H
 
 #include "types.h"
 
+namespace KShisen
+{
 /**
  * @brief Class holding a possible move and its functions
  *
@@ -48,8 +50,9 @@ private:
     bool m_hasSlide; ///< flag set if the move requires a slide
     Path m_slide; ///< path representing the movement of the last sliding tile
 };
+}
 
-#endif // POSSIBLEMOVE_H
+#endif // KSHISEN_POSSIBLEMOVE_H
 
 // vim: expandtab:tabstop=4:shiftwidth=4
 // kate: space-indent on; indent-width 4

@@ -39,7 +39,8 @@
 #include "debug.h"
 #include "prefs.h"
 
-
+namespace KShisen
+{
 #define EMPTY 0
 #define SEASONS_START 28
 #define FLOWERS_START 39
@@ -1972,7 +1973,7 @@ void Board::setSoundsEnabled(bool enabled)
     Prefs::setSounds(enabled);
     Prefs::self()->save();
 }
-
+}
 
 // vim: expandtab:tabstop=4:shiftwidth=4
 // kate: space-indent on; indent-width 4

@@ -21,8 +21,8 @@
 
 // KMahjonggLib integration and SVG support for KDE 4: Mauricio Piacentini <mauricio@tabuleiro.com>
 
-#ifndef BOARD_H
-#define BOARD_H
+#ifndef KSHISEN_BOARD_H
+#define KSHISEN_BOARD_H
 
 // STL
 #include <vector>
@@ -48,6 +48,8 @@
 #include "move.h"
 #include "possiblemove.h"
 
+namespace KShisen
+{
 /**
  * A list of possible moves the player has to choose between
  */
@@ -317,8 +319,9 @@ private:
     KgSound m_soundPick; ///< Sound object to play when tile is selected
     KgSound m_soundFall; ///< Sound object to play when tiles fall down in gravity mode
 };
+}
 
-#endif // BOARD_H
+#endif // KSHISEN_BOARD_H
 
 // vim: expandtab:tabstop=4:shiftwidth=4
 // kate: space-indent on; indent-width 4

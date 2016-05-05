@@ -18,8 +18,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APP_H
-#define APP_H
+#ifndef KSHISEN_APP_H
+#define KSHISEN_APP_H
 
 // KDE
 #include <KXmlGuiWindow>
@@ -28,9 +28,13 @@
 class QLabel;
 
 // KShisen
+namespace KShisen
+{
 class Board;
+}
 
-
+namespace KShisen
+{
 /**
  * @brief Class holding the application and its functions
  */
@@ -138,8 +142,9 @@ private:
     QLabel * m_gameCheatLabel; ///< Status bar area for the cheat mode
     Board * m_board; ///< Holds the game board
 };
+}
 
-#endif // APP_H
+#endif // KSHISEN_APP_H
 
 // vim: expandtab:tabstop=4:shiftwidth=4
 // kate: space-indent on; indent-width 4
