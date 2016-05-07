@@ -278,6 +278,11 @@ private: // functions
      */
     bool isValidPos(TilePos const & tilePos) const;
 
+    /** Returns True if @p tilePos is a valid position on Board including outline.
+     * @return Wether @p tiePos is valid.
+     */
+    bool isValidPosWithOutline(TilePos const & tilePos) const;
+
 private:
     KGameClock m_gameClock;
 

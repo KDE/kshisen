@@ -203,7 +203,7 @@ void Board::setField(TilePos const & tilePos, int value)
 int Board::field(TilePos const & tilePos) const
 {
 #ifdef DEBUGGING
-    if (!isValidPos(tilePos)) {
+    if (!isValidPosWithOutline(tilePos)) {
         qFatal("Attempted read from invalid field position (%u,%u)", tilePos.x(), tilePos.y());
     }
 #endif
@@ -1980,6 +1980,14 @@ bool Board::isValidPos(TilePos const & tilePos) const
         && tilePos.y() >= 0
         && tilePos.x() < xTiles()
         && tilePos.y() < yTiles();
+}
+
+bool Board::isValidPosWithOutline(const TilePos& tilePos) const
+{
+    return tilePos.x() >= -1
+    && tilePos.y() >= -1
+    && tilePos.x() <= xTiles()
+    && tilePos.y() <= yTiles();
 }
 }
 
