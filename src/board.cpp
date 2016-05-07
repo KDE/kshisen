@@ -192,7 +192,7 @@ int Board::tiles() const
 
 void Board::setField(TilePos const & tilePos, int value)
 {
-    if (tilePos.x() < 0 || tilePos.y() < 0 || tilePos.x() >= xTiles() || tilePos.y() >= yTiles()) {
+    if (!isValidPos(tilePos)) {
         qFatal("Attempted write to invalid field position (%u,%u)", tilePos.x(), tilePos.y());
     }
 
@@ -203,12 +203,12 @@ void Board::setField(TilePos const & tilePos, int value)
 int Board::field(TilePos const & tilePos) const
 {
 #ifdef DEBUGGING
-    if (tilePos.x() < -1 || tilePos.y() < -1 || tilePos.x() > xTiles() || tilePos.y() > yTiles()) {
+    if (!isValidPos(tilePos)) {
         qFatal("Attempted read from invalid field position (%u,%u)", tilePos.x(), tilePos.y());
     }
 #endif
 
-    if (tilePos.x() < 0 || tilePos.y() < 0 || tilePos.x() >= xTiles() || tilePos.y() >= yTiles()) {
+    if (!isValidPos(tilePos)) {
         return EMPTY;
     }
 
@@ -1972,6 +1972,14 @@ void Board::setSoundsEnabled(bool enabled)
 {
     Prefs::setSounds(enabled);
     Prefs::self()->save();
+}
+
+bool Board::isValidPos(TilePos const & tilePos) const
+{
+    return tilePos.x() >= 0
+        && tilePos.y() >= 0
+        && tilePos.x() < xTiles()
+        && tilePos.y() < yTiles();
 }
 }
 

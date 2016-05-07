@@ -273,6 +273,11 @@ private: // functions
      */
     void gravity(bool update);
 
+    /** Returns True if @p tilePos is a valid position on Board.
+     * @return Wether @p tiePos is valid.
+     */
+    bool isValidPos(TilePos const & tilePos) const;
+
 private:
     KGameClock m_gameClock;
 
