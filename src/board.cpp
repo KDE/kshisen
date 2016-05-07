@@ -1211,15 +1211,15 @@ int Board::findPath(TilePos const & tilePos1, TilePos const & tilePos2, Possible
     std::array<int, 4> const dy = {0, 1, 0, -1};
 
     for (int i = 0; i < 4; ++i) {
-        int newX = tilePos1.x() + dx.at(i);
-        int newY = tilePos1.y() + dy.at(i);
-        while (isValidPosWithOutline(TilePos(newX, newY)) && field(TilePos(newX, newY)) == EMPTY) {
-            if ((simplePath = findSimplePath(TilePos(newX, newY), tilePos2, possibleMoves)) > 0) {
+        int tempX = tilePos1.x() + dx.at(i);
+        int tempY = tilePos1.y() + dy.at(i);
+        while (isValidPosWithOutline(TilePos(tempX, tempY)) && field(TilePos(tempX, tempY)) == EMPTY) {
+            if ((simplePath = findSimplePath(TilePos(tempX, tempY), tilePos2, possibleMoves)) > 0) {
                 possibleMoves.back().path().prepend(tilePos1);
                 numberOfPaths += simplePath;
             }
-            newX += dx.at(i);
-            newY += dy.at(i);
+            tempX += dx.at(i);
+            tempY += dy.at(i);
         }
     }
     return numberOfPaths;
