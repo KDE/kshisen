@@ -227,15 +227,17 @@ void Board::applyGravity(TilePos const tilePos1, TilePos const tilePos2)
         int rptr = yTiles() - 1;
         int wptr = yTiles() - 1;
         while (rptr >= 0) {
-            if (field(TilePos(column, wptr)) != EMPTY) {
+            TilePos wptrPos = TilePos(column, wptr);
+            if (field(wptrPos) != EMPTY) {
                 --rptr;
                 --wptr;
             } else {
-                if (field(TilePos(column, rptr)) != EMPTY) {
-                    setField(TilePos(column, wptr), field(TilePos(column, rptr)));
-                    setField(TilePos(column, rptr), EMPTY);
-                    updateField(TilePos(column, rptr));
-                    updateField(TilePos(column, wptr));
+                TilePos rptrPos = TilePos(column, rptr);
+                if (field(rptrPos) != EMPTY) {
+                    setField(wptrPos, field(rptrPos));
+                    setField(rptrPos, EMPTY);
+                    updateField(rptrPos);
+                    updateField(wptrPos);
                     --wptr;
                     --rptr;
                     if (Prefs::sounds()) {
