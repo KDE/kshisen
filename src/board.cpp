@@ -73,7 +73,6 @@ Board::Board(QWidget * parent)
     , m_solvableFlag(false)
     , m_chineseStyleFlag(false)
     , m_tilesCanSlideFlag(false)
-    , m_gravCols()
     , m_highlightedTile(-1)
     , m_paintConnection(false)
     , m_paintPossibleMoves(false)
@@ -220,7 +219,6 @@ int Board::field(TilePos const & tilePos) const
 
 void Board::gravity(bool update)
 {
-    m_gravCols.clear();
     if (!m_gravityFlag) {
         return;
     }
@@ -228,7 +226,6 @@ void Board::gravity(bool update)
     for (int i = 0; i < xTiles(); ++i) {
         if (gravity(i, update)) {
             fallingTiles = true;
-            m_gravCols.push_back(i);
         }
     }
     if (Prefs::sounds() && fallingTiles) {
