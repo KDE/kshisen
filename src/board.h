@@ -317,7 +317,7 @@ private:
     bool m_solvableFlag; ///< Whether game is solvable
     bool m_chineseStyleFlag; ///< Whether game follows Chinese rules
     bool m_tilesCanSlideFlag; ///< Whether tiles can slide when connecting
-    QList<int> m_gravCols;
+    std::list<int> m_gravCols;
 
     int m_highlightedTile;
 
