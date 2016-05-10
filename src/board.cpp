@@ -217,12 +217,13 @@ int Board::field(TilePos const & tilePos) const
     return m_field.at(tilePos.y() * xTiles() + tilePos.x());
 }
 
-void Board::applyGravity()
+void Board::applyGravity(TilePos const tilePos1, TilePos const tilePos2)
 {
     if (!m_gravityFlag) {
         return;
     }
-    for (int column = 0; column < xTiles(); ++column) {
+    std::array<int, 2> const affectedColumns = {tilePos1.x(), tilePos2.x()};
+    for (auto const column: affectedColumns) {
         int rptr = yTiles() - 1;
         int wptr = yTiles() - 1;
         while (rptr >= 0) {
@@ -1318,12 +1319,11 @@ void Board::undrawConnection()
     if (m_tileRemove1.x() != -1) {
         setField(m_tileRemove1, EMPTY);
         setField(m_tileRemove2, EMPTY);
+        applyGravity(m_tileRemove1, m_tileRemove2);
         m_tileRemove1.setX(-1);
         update();
         emit tileCountChanged();
     }
-
-    applyGravity(); // why is this called here? (schwarzer)
 
     // is already undrawn?
     if (m_connection.empty()) {
@@ -1650,7 +1650,7 @@ void Board::redo()
         setField(TilePos(move->x2(), move->y2()), EMPTY);
         updateField(TilePos(move->x1(), move->y1()));
         updateField(TilePos(move->x2(), move->y2()));
-        applyGravity();
+        applyGravity(TilePos(move->x1(), move->y1()), TilePos(move->x2(), move->y2()));
         m_undo.push_back(move);
         emit changed();
     }

@@ -264,7 +264,7 @@ private: // functions
 
     /** Applies gravity to all columns.
      */
-    void applyGravity();
+    void applyGravity(TilePos const tilePos1, TilePos const tilePos2);
 
     /** Returns True if @p tilePos is a valid position on Board.
      * @return Wether @p tiePos is valid.
