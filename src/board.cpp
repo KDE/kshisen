@@ -222,6 +222,10 @@ void Board::applyGravity(TilePos const tilePos1, TilePos const tilePos2)
     if (!m_gravityFlag) {
         return;
     }
+    // If both removed tiles are in the same column, we iterate over the same
+    // column twice but all ideas I had to prevent that from happening seemed
+    // more complex that living with that second iteration once in a while.
+    // Maybe later ... (schwarzer)
     std::array<int, 2> const affectedColumns = {tilePos1.x(), tilePos2.x()};
     for (auto const column: affectedColumns) {
         int rptr = yTiles() - 1;
