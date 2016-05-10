@@ -191,12 +191,6 @@ public slots:
 private slots:
     void undrawConnection();
 
-    /** Returns whether the given column is affected by gravity.
-     * @param column The column to check
-     * @return If column was affected.
-     */
-    bool applyGravity(int column);
-
 protected:
     virtual QSize sizeHint() const;
 
@@ -271,6 +265,12 @@ private: // functions
     /** Applies gravity to all columns.
      */
     void applyGravity();
+
+    /** Applies gravity to the given column and returns whether it was affected.
+     * @param column The column to check
+     * @return If column was affected.
+     */
+    bool applyGravity(int column);
 
     /** Returns True if @p tilePos is a valid position on Board.
      * @return Wether @p tiePos is valid.
