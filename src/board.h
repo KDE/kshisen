@@ -195,7 +195,7 @@ private slots:
      * @param column The column to check
      * @return If column was affected.
      */
-    bool gravity(int column);
+    bool applyGravity(int column);
 
 protected:
     virtual QSize sizeHint() const;
@@ -270,7 +270,7 @@ private: // functions
 
     /** Applies gravity to all columns.
      */
-    void gravity();
+    void applyGravity();
 
     /** Returns True if @p tilePos is a valid position on Board.
      * @return Wether @p tiePos is valid.

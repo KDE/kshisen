@@ -217,13 +217,13 @@ int Board::field(TilePos const & tilePos) const
     return m_field.at(tilePos.y() * xTiles() + tilePos.x());
 }
 
-void Board::gravity()
+void Board::applyGravity()
 {
     if (!m_gravityFlag) {
         return;
     }
     for (int i = 0; i < xTiles(); ++i) {
-        if (gravity(i)) {
+        if (applyGravity(i)) {
             if (Prefs::sounds()) {
                 m_soundFall.start();
             }
@@ -231,7 +231,7 @@ void Board::gravity()
     }
 }
 
-bool Board::gravity(int column)
+bool Board::applyGravity(int column)
 {
     bool isAffected = false;
     int rptr = yTiles() - 1;
@@ -1332,7 +1332,7 @@ void Board::undrawConnection()
         emit tileCountChanged();
     }
 
-    gravity(); // why is this called here? (schwarzer)
+    applyGravity(); // why is this called here? (schwarzer)
 
     // is already undrawn?
     if (m_connection.empty()) {
@@ -1659,7 +1659,7 @@ void Board::redo()
         setField(TilePos(move->x2(), move->y2()), EMPTY);
         updateField(TilePos(move->x1(), move->y1()));
         updateField(TilePos(move->x2(), move->y2()));
-        gravity();
+        applyGravity();
         m_undo.push_back(move);
         emit changed();
     }
