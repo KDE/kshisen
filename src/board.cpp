@@ -202,7 +202,6 @@ void Board::setField(TilePos const & tilePos, int value)
     m_field.at(tilePos.y() * xTiles() + tilePos.x()) = value;
 }
 
-// TODO: Why is this called every second?
 int Board::field(TilePos const & tilePos) const
 {
     if (!isValidPosWithOutline(tilePos)) {
