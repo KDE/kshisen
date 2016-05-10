@@ -96,6 +96,10 @@ Path PossibleMove::slide() const
 {
     return m_slide;
 }
+void PossibleMove::prependTile(TilePos const tilePos)
+{
+    m_path.prepend(tilePos);
+}
 }
 
 // vim: expandtab:tabstop=4:shiftwidth=4

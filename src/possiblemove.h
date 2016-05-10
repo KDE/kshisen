@@ -44,6 +44,7 @@ public:
     Path path() const;
     bool hasSlide() const;
     Path slide() const;
+    void prependTile(TilePos const tilePos);
 
 private:
     Path m_path; ///< path used to connect the two tiles

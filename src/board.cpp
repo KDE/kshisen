@@ -1215,7 +1215,7 @@ int Board::findPath(TilePos const & tilePos1, TilePos const & tilePos2, Possible
         int tempY = tilePos1.y() + dy.at(i);
         while (isValidPosWithOutline(TilePos(tempX, tempY)) && field(TilePos(tempX, tempY)) == EMPTY) {
             if ((simplePath = findSimplePath(TilePos(tempX, tempY), tilePos2, possibleMoves)) > 0) {
-                possibleMoves.back().path().prepend(tilePos1);
+                possibleMoves.back().prependTile(tilePos1);
                 numberOfPaths += simplePath;
             }
             tempX += dx.at(i);
