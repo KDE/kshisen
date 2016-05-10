@@ -193,9 +193,9 @@ private slots:
 
     /** Returns whether the given column is affected by gravity.
      * @param column The column to check
-     * @param update FIXME: What is it for?
+     * @return If column was affected.
      */
-    bool gravity(int column, bool update);
+    bool gravity(int column);
 
 protected:
     virtual QSize sizeHint() const;
@@ -268,10 +268,9 @@ private: // functions
     void marked(TilePos const & tilePos);
     void madeMove(TilePos const & tilePos1, TilePos const & tilePos2, Path slide = Path());
 
-    /** Checks all columns and populate the affected columns in m_gravCols.
-     * @param update FIXME: What is it for?
+    /** Applies gravity to all columns.
      */
-    void gravity(bool update);
+    void gravity();
 
     /** Returns True if @p tilePos is a valid position on Board.
      * @return Wether @p tiePos is valid.
