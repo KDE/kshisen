@@ -222,39 +222,30 @@ void Board::applyGravity()
     if (!m_gravityFlag) {
         return;
     }
-    for (int i = 0; i < xTiles(); ++i) {
-        if (applyGravity(i)) {
-            if (Prefs::sounds()) {
-                m_soundFall.start();
-            }
-        }
-    }
-}
-
-bool Board::applyGravity(int column)
-{
-    bool isAffected = false;
-    int rptr = yTiles() - 1;
-    int wptr = yTiles() - 1;
-    while (rptr >= 0) {
-        if (field(TilePos(column, wptr)) != EMPTY) {
-            --rptr;
-            --wptr;
-        } else {
-            if (field(TilePos(column, rptr)) != EMPTY) {
-                setField(TilePos(column, wptr), field(TilePos(column, rptr)));
-                setField(TilePos(column, rptr), EMPTY);
-                updateField(TilePos(column, rptr));
-                updateField(TilePos(column, wptr));
+    for (int column = 0; column < xTiles(); ++column) {
+        int rptr = yTiles() - 1;
+        int wptr = yTiles() - 1;
+        while (rptr >= 0) {
+            if (field(TilePos(column, wptr)) != EMPTY) {
+                --rptr;
                 --wptr;
-                --rptr;
-                isAffected = true;
             } else {
-                --rptr;
+                if (field(TilePos(column, rptr)) != EMPTY) {
+                    setField(TilePos(column, wptr), field(TilePos(column, rptr)));
+                    setField(TilePos(column, rptr), EMPTY);
+                    updateField(TilePos(column, rptr));
+                    updateField(TilePos(column, wptr));
+                    --wptr;
+                    --rptr;
+                    if (Prefs::sounds()) {
+                        m_soundFall.start();
+                    }
+                } else {
+                    --rptr;
+                }
             }
         }
     }
-    return isAffected;
 }
 
 void Board::unmarkTile()
