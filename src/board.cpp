@@ -1982,12 +1982,12 @@ bool Board::isValidPos(TilePos const & tilePos) const
         && tilePos.y() < yTiles();
 }
 
-bool Board::isValidPosWithOutline(const TilePos& tilePos) const
+bool Board::isValidPosWithOutline(TilePos const & tilePos) const
 {
     return tilePos.x() >= -1
-    && tilePos.y() >= -1
-    && tilePos.x() <= xTiles()
-    && tilePos.y() <= yTiles();
+        && tilePos.y() >= -1
+        && tilePos.x() <= xTiles()
+        && tilePos.y() <= yTiles();
 }
 }
 
