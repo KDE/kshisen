@@ -34,7 +34,7 @@
 #include "debug.h"
 namespace KShisen
 {
-Q_LOGGING_CATEGORY(KSHISEN_LOG, "log_kshisen")
+Q_LOGGING_CATEGORY(KSHISEN_General, "kshisen_general")
 }
 static const char description[] = I18N_NOOP("A KDE game similar to Mahjongg");
 

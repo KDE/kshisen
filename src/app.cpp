@@ -296,7 +296,7 @@ void App::updateTimeDisplay()
     if (m_board->isStuck() || m_board->isOver()) {
         return;
     }
-    //qCDebug(KSHISEN_LOG) << "Time: " << m_board->currentTime();
+    //qCDebug(KSHISEN_General) << "Time: " << m_board->currentTime();
     int const currentTime = m_board->currentTime();
     QString const message = i18n("Your time: %1:%2:%3 %4",
                                  QString().sprintf("%02d", currentTime / 3600),

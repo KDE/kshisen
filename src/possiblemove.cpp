@@ -43,7 +43,7 @@ bool PossibleMove::isInPath(TilePos const & tilePos) const
     if (tilePos.x() == m_path.back().x() && tilePos.y() == m_path.back().y()) {
         return false;
     }
-    qCDebug(KSHISEN_LOG) << "isInPath:" << tilePos.x() << "," << tilePos.y();
+    qCDebug(KSHISEN_General) << "isInPath:" << tilePos.x() << "," << tilePos.y();
     Debug();
 
     // a path has at least 2 positions
@@ -57,7 +57,7 @@ bool PossibleMove::isInPath(TilePos const & tilePos) const
                                           || (tilePos.y() < pathY && tilePos.y() >= iter->y())))
             || (tilePos.y() == iter->y() && ((tilePos.x() > pathX && tilePos.x() <= iter->x())
                                              || (tilePos.x() < pathX && tilePos.x() >= iter->x())))) {
-            qCDebug(KSHISEN_LOG) << "isInPath:" << tilePos.x() << "," << tilePos.y() << "found in path" << pathX << "," << pathY << " => " << iter->x() << "," << iter->y();
+            qCDebug(KSHISEN_General) << "isInPath:" << tilePos.x() << "," << tilePos.y() << "found in path" << pathX << "," << pathY << " => " << iter->x() << "," << iter->y();
             return true;
         }
         pathX = iter->x();
@@ -68,16 +68,16 @@ bool PossibleMove::isInPath(TilePos const & tilePos) const
 
 void PossibleMove::Debug() const
 {
-    qCDebug(KSHISEN_LOG) << "PossibleMove";
+    qCDebug(KSHISEN_General) << "PossibleMove";
 
     foreach (auto iter, m_path) {
-        qCDebug(KSHISEN_LOG) << "    Path:" << iter.x() << "," << iter.y();
+        qCDebug(KSHISEN_General) << "    Path:" << iter.x() << "," << iter.y();
     }
 
     if (m_hasSlide) {
-        qCDebug(KSHISEN_LOG) << "   hasSlide";
+        qCDebug(KSHISEN_General) << "   hasSlide";
         foreach (auto iter, m_slide) {
-            qCDebug(KSHISEN_LOG) << "    Slide:" << iter.x() << "," << iter.y();
+            qCDebug(KSHISEN_General) << "    Slide:" << iter.x() << "," << iter.y();
         }
     }
 }

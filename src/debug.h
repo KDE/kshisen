@@ -24,7 +24,7 @@
 
 namespace KShisen
 {
-Q_DECLARE_LOGGING_CATEGORY(KSHISEN_LOG)
+Q_DECLARE_LOGGING_CATEGORY(KSHISEN_General)
 
 // Use for debugging game mode.
 //#define DEBUGGING
