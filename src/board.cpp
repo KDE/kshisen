@@ -205,14 +205,12 @@ void Board::setField(TilePos const & tilePos, int value)
 // TODO: Why is this called every second?
 int Board::field(TilePos const & tilePos) const
 {
-#ifdef DEBUGGING
     if (!isValidPosWithOutline(tilePos)) {
         qCCritical(KSHISEN_General) << "Attempted read from invalid field position:"
                                     << tilePos.x()
                                     << ","
                                     << tilePos.y();
     }
-#endif
 
     if (!isValidPos(tilePos)) {
         return EMPTY;
