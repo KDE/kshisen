@@ -222,14 +222,12 @@ void Board::gravity(bool update)
     if (!m_gravityFlag) {
         return;
     }
-    bool fallingTiles = false;
     for (int i = 0; i < xTiles(); ++i) {
         if (gravity(i, update)) {
-            fallingTiles = true;
+            if (Prefs::sounds()) {
+                m_soundFall.start();
+            }
         }
-    }
-    if (Prefs::sounds() && fallingTiles) {
-        m_soundFall.start();
     }
 }
 
