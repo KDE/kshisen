@@ -207,15 +207,28 @@ private: // functions
      */
     int lineWidth() const;
 
+    /** Puts a tile of type @p value to the given position @p tilePos.
+     * @param tilePos Position to be modified.
+     * @param value Type of the tile to place.
+     */
     void setField(TilePos const & tilePos, int value);
+    /** Returns the kind of tile residing at the given position @p tilePos
+     * @param TilePos Position to look at.
+     * @return Type of the tile.
+     */
     int field(TilePos const & tilePos) const;
+    /** Redraws the area of the given @p TilePos.
+     * @param TilePos Position of the tile to redraw.
+     */
     void updateField(TilePos const & tilePos);
     void showInfoRect(QPainter &, const QString & message);
     void drawTiles(QPainter &, QPaintEvent *);
     void clearHighlight();
 
     /** Checks if two tiles can match.
-     * This is sed for connecting them and for highlighting tiles of the same group.
+     * This is used for connecting them and for highlighting tiles of the same group.
+     * @param tile1 type of the first tile
+     * @param tile2 type of the second tile
      */
     bool tilesMatch(int tile1, int tile2) const;
 
@@ -233,8 +246,8 @@ private: // functions
     bool canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Path & path) const;
 
     /** Checks if a path between two tiles can be made with 2 or 3 lines.
-    * @param tilePos1 coordinate of the first tile
-    * @param tilePos2 coordinate of the second tile
+    * @param tilePos1 coordinates of the first tile
+    * @param tilePos2 coordinates of the second tile
     * @param possibleMoves All the possible moves are stored here
     * @return The number of paths found
     */
@@ -243,7 +256,7 @@ private: // functions
     /** Find a path of 1 or 2 segments between tiles.
      * @param tilePos1 coordinates of the first tile
      * @param tilePos2 coordinates of the second tile
-     * @param possibleMoves All the possible moves are stored here
+     * @param possibleMoves all the possible moves are stored here
      * @return The number of paths found
      */
     int findSimplePath(TilePos const & tilePos1, TilePos const & tilePos2, PossibleMoves & possibleMoves) const;
@@ -254,7 +267,7 @@ private: // functions
     void drawConnection();
     void drawPossibleMoves(bool b);
     /** Calculated the middle coordinates of the given tile position.
-     * @param tilePos Tile position
+     * @param tilePos tile position
      * @return The middle coordinates of the tile at \p tilePos
      */
     QPoint midCoord(TilePos const & tilePos) const;
@@ -263,6 +276,8 @@ private: // functions
     void madeMove(TilePos const & tilePos1, TilePos const & tilePos2, Path slide = Path());
 
     /** Applies gravity to all columns.
+     * @param tilePos1 coordinates of the first tile
+     * @param tilePos2 coordinates of the second tile
      */
     void applyGravity(TilePos const tilePos1, TilePos const tilePos2);
 
