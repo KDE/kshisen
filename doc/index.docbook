@@ -1,15 +1,12 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-  <!ENTITY kappname "&kshisen;">
-  <!ENTITY kappversion "1.8.4">     <!--Application version. Use this variable everywhere it's needed.-->
-  <!ENTITY package "kdegames">      <!-- do not change this! -->
   <!ENTITY % English "INCLUDE" >    <!-- change language only here -->
   <!ENTITY % addindex "IGNORE">     <!-- do not change this! -->
 ]>
 
 <book id="kshisen" lang="&language;"> <!-- do not change this! -->
   <bookinfo>
-    <title>The &kappname; Handbook</title> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+    <title>The &kshisen; Handbook</title> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
     <!-- List of immidiate authors begins here. -->
     <!--INPORTANT! - All other contributors: [to be determined] -->
     <authorgroup>
@@ -35,12 +32,12 @@
       <!-- TRANS:ROLES_OF_TRANSLATORS -->
     </authorgroup>
     <legalnotice>&FDLNotice;</legalnotice>
-    <date>2013-05-05</date>
-    <releaseinfo>&kappversion; (&kde; 4.11)</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
+    <date>2016-05-09</date>
+    <releaseinfo>1.10 (Applications 16.04)</releaseinfo>
 
     <!--Short description of this document. Do not change unless necessary!-->
     <abstract>
-      <para>This documentation describes the game of &kappname; version &kappversion;</para>
+      <para>This documentation describes the game of &kshisen; version 1.10</para>
     </abstract>
 
     <!--List of relevant keywords-->
@@ -65,21 +62,31 @@
 
     <!--Short game description starts here. 3-4 sentences (paragraphs)-->
     <para>
-      &kappname; is a solitaire-like game played using the standard set of Mahjong tiles.
-      Unlike Mahjong however, &kappname; has only one layer of scrambled tiles.
+      &kshisen; is a solitaire-like game played using the standard set of Mahjong tiles.
+      Unlike Mahjong however, &kshisen; has only one layer of scrambled tiles.
       You can remove matching pieces if they can be connected with a line
       with at most two bends in it. At the same time, the line must not
       cross any other tiles.
-      To win a game of &kappname; the player has to remove all the tiles from the game board.
+      To win a game of &kshisen; the player has to remove all the tiles from the game board.
     </para>
   </chapter>
 
   <chapter id="howto"><title>How to Play</title> <!-- do not change this! -->
+    <screenshot>
+    <mediaobject>
+    <imageobject>
+    <imagedata fileref="gameboard.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+    <phrase>&kshisen; gameboard</phrase>
+    </textobject>
+    </mediaobject>
+    </screenshot>
     <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
     <note><title>Objective:</title><para>Remove all the tiles from the game board within the shortest time possible.</para></note><!--Describe the objective of the game.-->
     <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
     <para>
-      &kappname; will load a default layout automatically once you start the game and you can start playing right away.
+      &kshisen; will load a default layout automatically once you start the game and you can start playing right away.
     </para>
     <para>
       You should carefully study the tiles lied out on the game board and find two tiles matching exactly. When you have found such a pair use your mouse to select them.
@@ -192,7 +199,9 @@
 
   <chapter id="interface"><title>Interface Overview</title> <!-- do not change this! -->
     <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist> and <varlistentry>. Split the chapter into sections using <sect1(2,3)> for better viewing. -->
-    <sect1 id="game-menu">
+    <sect1 id="menu">
+    <title>Menu Items</title>
+    <sect2 id="game-menu">
       <title>The Game Menu</title>
 
       <para>
@@ -237,7 +246,7 @@
               <guimenu>Game</guimenu><guimenuitem>Show High Scores</guimenuitem>
             </menuchoice>
           </term>
-          <listitem><para>Shows your top ten charts of &kappname;.</para></listitem>
+          <listitem><para>Shows your top ten charts of &kshisen;.</para></listitem>
         </varlistentry>
 
         <varlistentry>
@@ -247,7 +256,7 @@
               <guimenu>Game</guimenu><guimenuitem>Quit</guimenuitem>
             </menuchoice>
           </term>
-          <listitem><para><action>Quits</action> &kappname;.</para></listitem>
+          <listitem><para><action>Quits</action> &kshisen;.</para></listitem>
         </varlistentry>
 
       </variablelist>
@@ -257,9 +266,9 @@
         See <xref linkend="key-bindings"/> for a list.
       </para>
 
-    </sect1>
+    </sect2>
 
-    <sect1 id="move-menu">
+    <sect2 id="move-menu">
       <title>The Move Menu</title>
 
       <variablelist id="move-menu-undo">
@@ -295,9 +304,9 @@
 
       </variablelist>
 
-    </sect1>
+    </sect2>
 
-    <sect1 id="settings-menu">
+    <sect2 id="settings-menu">
       <title>The Settings Menu</title>
 
       <variablelist>
@@ -314,10 +323,10 @@
         <varlistentry id="game-settings-settings">
           <term>
             <menuchoice>
-              <guimenu>Settings</guimenu><guimenuitem>Configure &kappname;...</guimenuitem>
+              <guimenu>Settings</guimenu><guimenuitem>Configure &kshisen;...</guimenuitem>
             </menuchoice>
           </term>
-          <listitem><para>Opens the <link linkend="configuration">configuration dialog</link> to change &kappname; settings.</para></listitem>
+          <listitem><para>Opens the <link linkend="configuration">configuration dialog</link> to change &kshisen; settings.</para></listitem>
         </varlistentry>
 
       </variablelist>
@@ -328,6 +337,30 @@
 	<ulink url="help:/fundamentals/ui.html#menus-help">Help Menu</ulink>
 	of the &kde; Fundamentals.
       </para>
+    </sect2>
+    </sect1>
+
+    <sect1 id="key-bindings">
+      <title>Default Key Bindings</title>
+
+      <para>Default shortcuts are:</para>
+
+      <informaltable>
+        <tgroup cols="2">
+          <tbody>
+            <row><entry>New</entry><entry><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></entry></row>
+            <row><entry>Restart Game</entry><entry><keycap>F5</keycap></entry></row>
+            <row><entry>Pause</entry><entry><keycap>P</keycap></entry></row>
+            <row><entry>Show High Scores</entry><entry><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></entry></row>
+            <row><entry>Quit</entry><entry><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></entry></row>
+            <row><entry>Undo</entry><entry><keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo></entry></row>
+            <row><entry>Redo</entry><entry><keycombo action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo></entry></row>
+            <row><entry>Hint</entry><entry><keycap>H</keycap></entry></row>
+            <row><entry>&kshisen; Handbook</entry><entry><keycap>F1</keycap></entry></row>
+            <row><entry>What's This</entry><entry><keycombo action="simul">&Ctrl;&Shift;<keycap>F1</keycap></keycombo></entry></row>
+          </tbody>
+        </tgroup>
+      </informaltable>
 
     </sect1>
 
@@ -338,7 +371,7 @@
     <qandaset>
       <qandaentry>
         <question><para>I want to change the way this game looks. Can I?</para></question>
-        <answer><para>Yes. To change the way &kappname; looks use the <link linkend="game-settings-settings">menubar</link> to open the <link linkend="configuration">configuration utility</link>.</para></answer>
+        <answer><para>Yes. To change the way &kshisen; looks use the <link linkend="game-settings-settings">menubar</link> to open the <link linkend="configuration">configuration utility</link>.</para></answer>
       </qandaentry>
       <qandaentry>
         <question><para>Can I use keyboard?</para></question>
@@ -354,15 +387,15 @@
   <chapter id="configuration"><title>Game Configuration</title> <!-- do not change this! -->
     <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
     <para>
-      Selecting the <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kappname;...</guimenuitem></menuchoice>
+      Selecting the <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kshisen;...</guimenuitem></menuchoice>
       menu item will open a configuration dialog which lets you alter the behavior of the game.
     </para>
 
     <screenshot>
-      <screeninfo>&kappname; configuration dialog</screeninfo>
+      <screeninfo>&kshisen; configuration dialog</screeninfo>
       <mediaobject>
         <imageobject><imagedata fileref="kshisen-configuration.png" format="PNG"/></imageobject>
-        <textobject><phrase>&kappname; configuration dialog</phrase></textobject>
+        <textobject><phrase>&kshisen; configuration dialog</phrase></textobject>
       </mediaobject>
     </screenshot>
 
@@ -389,7 +422,7 @@
         <term><guilabel>Use Chinese style: any flower match any flower, any season match any season</guilabel></term>
         <listitem><para>
             Use the traditional rules for matching the tiles. Previous
-            version of &kappname; used to allow only exact tiles matches, which is
+            version of &kshisen; used to allow only exact tiles matches, which is
             inconsistent with Mahjong rules. It is recommended
             to keep this option checked.
         </para></listitem>
@@ -443,7 +476,7 @@
       <varlistentry>
         <term><guibutton>Help</guibutton></term>
         <listitem><para>
-            Opens &kappname; help pages (this document).
+            Opens &kshisen; help pages (this document).
         </para></listitem>
       </varlistentry>
 
@@ -470,42 +503,19 @@
 
     </variablelist>
 
-    <sect1 id="key-bindings">
-      <title>Default Key Bindings</title>
-
-      <para>Default shortcuts are:</para>
-
-      <informaltable>
-        <tgroup cols="2">
-          <tbody>
-            <row><entry>New</entry><entry><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></entry></row>
-            <row><entry>Restart Game</entry><entry><keycap>F5</keycap></entry></row>
-            <row><entry>Pause</entry><entry><keycap>P</keycap></entry></row>
-            <row><entry>Show High Scores</entry><entry><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></entry></row>
-            <row><entry>Quit</entry><entry><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></entry></row>
-            <row><entry>Undo</entry><entry><keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo></entry></row>
-            <row><entry>Redo</entry><entry><keycombo action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo></entry></row>
-            <row><entry>Hint</entry><entry><keycap>H</keycap></entry></row>
-            <row><entry>&kappname; Handbook</entry><entry><keycap>F1</keycap></entry></row>
-            <row><entry>What's This</entry><entry><keycombo action="simul">&Ctrl;&Shift;<keycap>F1</keycap></keycombo></entry></row>
-          </tbody>
-        </tgroup>
-      </informaltable>
-
-    </sect1>
   </chapter>
 
   <chapter id="credits"><title>Credits and License</title> <!-- do not change this! -->
     <!--This chapter is for credits and licenses.-->
 
     <para>
-      &kappname; Copyright 1997 &Mario.Weilguni; &Mario.Weilguni.mail;
+      &kshisen; Copyright 1997 &Mario.Weilguni; &Mario.Weilguni.mail;
     </para>
     <para>
-      &kappname; Copyright 2002-2004 Dave Corrie <email>kde@davecorrie.com</email>
+      &kshisen; Copyright 2002-2004 Dave Corrie <email>kde@davecorrie.com</email>
     </para>
     <para>
-      &kappname; Copyright 2009-2012 &Frederik.Schwarzer; &Frederik.Schwarzer.mail;
+      &kshisen; Copyright 2009-2012 &Frederik.Schwarzer; &Frederik.Schwarzer.mail;
     </para>
 
     <para>
@@ -522,20 +532,6 @@
     <!-- !!!do not change ANYTHING after this line!!!! -->
 
   </chapter>
-
-  <appendix id="installation">
-    <title>Installation</title>
-
-    &install.intro.documentation;
-
-
-    <sect1 id="Compilation">
-      <title>Compilation and Installation</title>
-
-      &install.compile.documentation;
-
-    </sect1>
-  </appendix>
 
   &documentation.index;
 </book>
