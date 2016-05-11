@@ -255,9 +255,9 @@ void App::slotEndOfGame()
     } else {
         m_board->setGameOverEnabled(true);
         auto const timeString = i18nc("time string: hh:mm:ss", "%1:%2:%3",
-                                         QString().sprintf("%02d", m_board->currentTime() / 3600),
-                                         QString().sprintf("%02d", (m_board->currentTime() / 60) % 60),
-                                         QString().sprintf("%02d", m_board->currentTime() % 60));
+                                      QString().sprintf("%02d", m_board->currentTime() / 3600),
+                                      QString().sprintf("%02d", (m_board->currentTime() / 60) % 60),
+                                      QString().sprintf("%02d", m_board->currentTime() % 60));
         KScoreDialog::FieldInfo scoreInfo;
         scoreInfo[KScoreDialog::Score].setNum(score(m_board->xTiles(), m_board->yTiles(), m_board->currentTime(), m_board->gravityFlag()));
         scoreInfo[KScoreDialog::Time] = timeString;
@@ -299,10 +299,10 @@ void App::updateTimeDisplay()
     //qCDebug(KSHISEN_General) << "Time: " << m_board->currentTime();
     auto const currentTime = m_board->currentTime();
     auto const message = i18n("Your time: %1:%2:%3 %4",
-                                 QString().sprintf("%02d", currentTime / 3600),
-                                 QString().sprintf("%02d", (currentTime / 60) % 60),
-                                 QString().sprintf("%02d", currentTime % 60),
-                                 m_board->isPaused() ? i18n("(Paused) ") : QString());
+                              QString().sprintf("%02d", currentTime / 3600),
+                              QString().sprintf("%02d", (currentTime / 60) % 60),
+                              QString().sprintf("%02d", currentTime % 60),
+                              m_board->isPaused() ? i18n("(Paused) ") : QString());
 
     m_gameTimerLabel->setText(message);
 }

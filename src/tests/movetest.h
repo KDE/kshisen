@@ -21,7 +21,7 @@
 #include "../move.h"
 #include "../types.h"
 
-class MoveTest: public QObject
+class MoveTest : public QObject
 {
     Q_OBJECT
 private slots:

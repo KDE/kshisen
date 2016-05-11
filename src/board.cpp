@@ -227,7 +227,7 @@ void Board::applyGravity(TilePos const tilePos1, TilePos const tilePos2)
     // more complex that living with that second iteration once in a while.
     // Maybe later ... (schwarzer)
     std::array<int, 2> const affectedColumns = {tilePos1.x(), tilePos2.x()};
-    for (auto const column: affectedColumns) {
+    for (auto const column : affectedColumns) {
         auto rptr = yTiles() - 1;
         auto wptr = yTiles() - 1;
         while (rptr >= 0) {
@@ -602,9 +602,9 @@ bool Board::isTileHighlighted(TilePos const & tilePos) const
 void Board::updateField(TilePos const & tilePos)
 {
     auto const r = QRect(xOffset() + tilePos.x() * m_tiles.qWidth() * 2,
-                  yOffset() + tilePos.y() * m_tiles.qHeight() * 2,
-                  m_tiles.width(),
-                  m_tiles.height());
+                         yOffset() + tilePos.y() * m_tiles.qHeight() * 2,
+                         m_tiles.width(),
+                         m_tiles.height());
 
     update(r);
 }
@@ -1771,12 +1771,12 @@ bool Board::isSolvable(bool restore)
         auto const tile2 = TilePos(p.front().path().back().x(), p.front().path().back().y());
         if (!tilesMatch(field(tile1), field(tile2))) {
             auto errMessage = QStringLiteral("Removing unmatched tiles: (%1,%2) => %3 (%4,%5) => %6")
-                                     .arg(p.front().path().front().x())
-                                     .arg(p.front().path().front().y())
-                                     .arg(field(tile1))
-                                     .arg(p.front().path().back().x())
-                                     .arg(p.front().path().back().y())
-                                     .arg(field(tile2));
+                                  .arg(p.front().path().front().x())
+                                  .arg(p.front().path().front().y())
+                                  .arg(field(tile1))
+                                  .arg(p.front().path().back().x())
+                                  .arg(p.front().path().back().y())
+                                  .arg(field(tile2));
             qCCritical(KSHISEN_General) << errMessage;
         }
         setField(tile1, EMPTY);
