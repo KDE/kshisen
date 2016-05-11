@@ -1093,9 +1093,9 @@ bool Board::canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Pa
 
             // so we can slide of end_free - start_free, compare this to the distance
             if (distance <= (endFree - startFree)) {
-                // first position of the last slided tile
+                // first position of the last slidden tile
                 path.push_back(TilePos(tilePos1.x(), startFree - 1));
-                // final position of the last slided tile
+                // final position of the last slidden tile
                 path.push_back(TilePos(tilePos1.x(), startFree - 1 + distance));
                 return true;
             }
@@ -1134,9 +1134,9 @@ bool Board::canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Pa
 
             // so we can slide of start_free - end_free, compare this to the distance
             if (distance <= (startFree - endFree)) {
-                // first position of the last slided tile
+                // first position of the last slidden tile
                 path.push_back(TilePos(startFree + 1, tilePos1.y()));
-                // final position of the last slided tile
+                // final position of the last slidden tile
                 path.push_back(TilePos(startFree + 1 - distance, tilePos1.y()));
                 return true;
             }
@@ -1170,9 +1170,9 @@ bool Board::canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Pa
 
             // so we can slide of endFree - startFree, compare this to the distance
             if (distance <= (endFree - startFree)) {
-                // first position of the last slided tile
+                // first position of the last slidden tile
                 path.push_back(TilePos(startFree - 1, tilePos1.y()));
-                // final position of the last slided tile
+                // final position of the last slidden tile
                 path.push_back(TilePos(startFree - 1 + distance, tilePos1.y()));
                 return true;
             }
@@ -1474,12 +1474,12 @@ void Board::undo()
                 qCDebug(KSHISEN_General) << "[undo] gravity from horizontal slide";
 
                 // last slide tile went from slideX1() -> slideX2()
-                // the number of slided tiles is n = abs(x1 - slideX1())
+                // the number of slidden tiles is n = abs(x1 - slideX1())
                 auto n = move->x1() - move->slideX1();
                 if (n < 0) {
                     n = -n;
                 }
-                // distance slided is
+                // distance slidden is
                 auto dx = move->slideX2() - move->slideX1();
                 if (dx < 0) {
                     dx = -dx;
@@ -1487,7 +1487,7 @@ void Board::undo()
 
                 qCDebug(KSHISEN_General) << "[undo] n =" << n;
 
-                // slided tiles may fall down after the slide
+                // slidden tiles may fall down after the slide
                 // so any tiles on top of the columns between
                 // slideX2() -> slideX2() +/- n (excluded) should go up to slideY1()
                 if (move->slideX2() > move->slideX1()) { // slide to the right
@@ -1553,7 +1553,7 @@ void Board::undo()
                     setField(TilePos(move->x2(), y), field(TilePos(move->x2(), y + 1)));
                     updateField(TilePos(move->x2(), y));
                 }
-                // and all columns that fell after the tiles slided between
+                // and all columns that fell after the tiles slidden between
                 // only if they were not replaced by a sliding tile !!
                 // x1 -> x1+dx should go up one
                 // if their height > slideY1()
