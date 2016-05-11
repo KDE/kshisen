@@ -384,9 +384,9 @@ void Board::setSize(int x, int y)
     std::fill(m_field.begin(), m_field.end(), EMPTY);
 
     // set the minimum size of the scalable window
-    auto const MINIMUM_SCALE = 0.2;
-    auto const w = qRound(m_tiles.qWidth() * 2.0 * MINIMUM_SCALE) * xTiles() + m_tiles.width();
-    auto const h = qRound(m_tiles.qHeight() * 2.0 * MINIMUM_SCALE) * yTiles() + m_tiles.height();
+    auto const minScale = 0.2;
+    auto const w = qRound(m_tiles.qWidth() * 2.0 * minScale) * xTiles() + m_tiles.width();
+    auto const h = qRound(m_tiles.qHeight() * 2.0 * minScale) * yTiles() + m_tiles.height();
 
     setMinimumSize(w, h);
 
@@ -714,28 +714,28 @@ void Board::reverseSlide(TilePos const & tilePos, int slideX1, int slideY1, int 
     // calculate the offset for the tiles to slide
     auto const dx = slideX1 - slideX2;
     auto const dy = slideY1 - slideY2;
-    auto current_tile = 0;
+    auto currentTile = 0;
     // move all tiles between slideX2, slideY2 and x, y to slide with that offset
     if (dx == 0) {
         if (tilePos.y() < slideY2) {
             for (auto i = tilePos.y() + 1; i <= slideY2; ++i) {
-                current_tile = field(TilePos(tilePos.x(), i));
-                if (current_tile == EMPTY) {
+                currentTile = field(TilePos(tilePos.x(), i));
+                if (currentTile == EMPTY) {
                     continue;
                 }
                 setField(TilePos(tilePos.x(), i), EMPTY);
-                setField(TilePos(tilePos.x(), i + dy), current_tile);
+                setField(TilePos(tilePos.x(), i + dy), currentTile);
                 updateField(TilePos(tilePos.x(), i));
                 updateField(TilePos(tilePos.x(), i + dy));
             }
         } else {
             for (auto i = tilePos.y() - 1; i >= slideY2; --i) {
-                current_tile = field(TilePos(tilePos.x(), i));
-                if (current_tile == EMPTY) {
+                currentTile = field(TilePos(tilePos.x(), i));
+                if (currentTile == EMPTY) {
                     continue;
                 }
                 setField(TilePos(tilePos.x(), i), EMPTY);
-                setField(TilePos(tilePos.x(), i + dy), current_tile);
+                setField(TilePos(tilePos.x(), i + dy), currentTile);
                 updateField(TilePos(tilePos.x(), i));
                 updateField(TilePos(tilePos.x(), i + dy));
             }
@@ -743,23 +743,23 @@ void Board::reverseSlide(TilePos const & tilePos, int slideX1, int slideY1, int 
     } else if (dy == 0) {
         if (tilePos.x() < slideX2) {
             for (auto i = tilePos.x() + 1; i <= slideX2; ++i) {
-                current_tile = field(TilePos(i, tilePos.y()));
-                if (current_tile == EMPTY) {
+                currentTile = field(TilePos(i, tilePos.y()));
+                if (currentTile == EMPTY) {
                     continue;
                 }
                 setField(TilePos(i, tilePos.y()), EMPTY);
-                setField(TilePos(i + dx, tilePos.y()), current_tile);
+                setField(TilePos(i + dx, tilePos.y()), currentTile);
                 updateField(TilePos(i, tilePos.y()));
                 updateField(TilePos(i + dx, tilePos.y()));
             }
         } else {
             for (auto i = tilePos.x() - 1; i >= slideX2; --i) {
-                current_tile = field(TilePos(i, tilePos.y()));
-                if (current_tile == EMPTY) {
+                currentTile = field(TilePos(i, tilePos.y()));
+                if (currentTile == EMPTY) {
                     continue;
                 }
                 setField(TilePos(i, tilePos.y()), EMPTY);
-                setField(TilePos(i + dx, tilePos.y()), current_tile);
+                setField(TilePos(i + dx, tilePos.y()), currentTile);
                 updateField(TilePos(i, tilePos.y()));
                 updateField(TilePos(i + dx, tilePos.y()));
             }
@@ -779,22 +779,22 @@ void Board::performSlide(TilePos const & tilePos, Path const & slide)
     // calculate the offset for the tiles to slide
     auto const dx = slide.back().x() - slide.front().x();
     auto const dy = slide.back().y() - slide.front().y();
-    auto current_tile = 0;
+    auto currentTile = 0;
     // move all tiles between m_markX, m_markY and the last tile to slide with that offset
     if (dx == 0) {
         if (tilePos.y() < slide.front().y()) {
             for (auto i = slide.front().y(); i > tilePos.y(); --i) {
-                current_tile = field(TilePos(tilePos.x(), i));
+                currentTile = field(TilePos(tilePos.x(), i));
                 setField(TilePos(tilePos.x(), i), EMPTY);
-                setField(TilePos(tilePos.x(), i + dy), current_tile);
+                setField(TilePos(tilePos.x(), i + dy), currentTile);
                 updateField(TilePos(tilePos.x(), i));
                 updateField(TilePos(tilePos.x(), i + dy));
             }
         } else {
             for (auto i = slide.front().y(); i < tilePos.y(); ++i) {
-                current_tile = field(TilePos(tilePos.x(), i));
+                currentTile = field(TilePos(tilePos.x(), i));
                 setField(TilePos(tilePos.x(), i), EMPTY);
-                setField(TilePos(tilePos.x(), i + dy), current_tile);
+                setField(TilePos(tilePos.x(), i + dy), currentTile);
                 updateField(TilePos(tilePos.x(), i));
                 updateField(TilePos(tilePos.x(), i + dy));
             }
@@ -802,17 +802,17 @@ void Board::performSlide(TilePos const & tilePos, Path const & slide)
     } else if (dy == 0) {
         if (tilePos.x() < slide.front().x()) {
             for (auto i = slide.front().x(); i > tilePos.x(); --i) {
-                current_tile = field(TilePos(i, tilePos.y()));
+                currentTile = field(TilePos(i, tilePos.y()));
                 setField(TilePos(i, tilePos.y()), EMPTY);
-                setField(TilePos(i + dx, tilePos.y()), current_tile);
+                setField(TilePos(i + dx, tilePos.y()), currentTile);
                 updateField(TilePos(i, tilePos.y()));
                 updateField(TilePos(i + dx, tilePos.y()));
             }
         } else {
             for (auto i = slide.front().x(); i < tilePos.x(); ++i) {
-                current_tile = field(TilePos(i, tilePos.y()));
+                currentTile = field(TilePos(i, tilePos.y()));
                 setField(TilePos(i, tilePos.y()), EMPTY);
-                setField(TilePos(i + dx, tilePos.y()), current_tile);
+                setField(TilePos(i + dx, tilePos.y()), currentTile);
                 updateField(TilePos(i, tilePos.y()));
                 updateField(TilePos(i + dx, tilePos.y()));
             }
@@ -1032,35 +1032,35 @@ bool Board::canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Pa
         if (tilePos1.y() > tilePos2.y()) {
             distance = tilePos1.y() - tilePos2.y();
             // count how much free space we have for sliding
-            auto start_free = -1;
-            auto end_free = -1;
+            auto startFree = -1;
+            auto endFree = -1;
             // find first tile empty
             for (auto i = tilePos1.y() - 1; i >= 0; --i) {
                 if (field(TilePos(tilePos1.x(), i)) == EMPTY) {
-                    start_free = i;
+                    startFree = i;
                     break;
                 }
             }
             // if not found, cannot slide
             // if the first free tile is just next to the sliding tile, no slide (should be a normal move)
-            if (start_free == -1 || start_free == (tilePos1.y() - 1)) {
+            if (startFree == -1 || startFree == (tilePos1.y() - 1)) {
                 return false;
             }
             // find last tile empty
-            for (auto i = start_free - 1; i >= 0; --i) {
+            for (auto i = startFree - 1; i >= 0; --i) {
                 if (field(TilePos(tilePos1.x(), i)) != EMPTY) {
-                    end_free = i;
+                    endFree = i;
                     break;
                 }
             }
             // if not found, it is the border: 0
 
             // so we can slide of start_free - end_free, compare this to the distance
-            if (distance <= (start_free - end_free)) {
+            if (distance <= (startFree - endFree)) {
                 // first position of the last slided tile
-                path.push_back(TilePos(tilePos1.x(), start_free + 1));
+                path.push_back(TilePos(tilePos1.x(), startFree + 1));
                 // final position of the last slided tile
-                path.push_back(TilePos(tilePos1.x(), start_free + 1 - distance));
+                path.push_back(TilePos(tilePos1.x(), startFree + 1 - distance));
                 return true;
             }
             return false;
@@ -1068,35 +1068,35 @@ bool Board::canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Pa
         } else if (tilePos2.y() > tilePos1.y()) {
             distance = tilePos2.y() - tilePos1.y();
             // count how much free space we have for sliding
-            auto start_free = -1;
-            auto end_free = yTiles();
+            auto startFree = -1;
+            auto endFree = yTiles();
             // find first tile empty
             for (auto i = tilePos1.y() + 1; i < yTiles(); ++i) {
                 if (field(TilePos(tilePos1.x(), i)) == EMPTY) {
-                    start_free = i;
+                    startFree = i;
                     break;
                 }
             }
             // if not found, cannot slide
             // if the first free tile is just next to the sliding tile, no slide (should be a normal move)
-            if (start_free == -1 || start_free == tilePos1.y() + 1) {
+            if (startFree == -1 || startFree == tilePos1.y() + 1) {
                 return false;
             }
             // find last tile empty
-            for (auto i = start_free + 1; i < yTiles(); ++i) {
+            for (auto i = startFree + 1; i < yTiles(); ++i) {
                 if (field(TilePos(tilePos1.x(), i)) != EMPTY) {
-                    end_free = i;
+                    endFree = i;
                     break;
                 }
             }
             // if not found, it is the border: yTiles()-1
 
             // so we can slide of end_free - start_free, compare this to the distance
-            if (distance <= (end_free - start_free)) {
+            if (distance <= (endFree - startFree)) {
                 // first position of the last slided tile
-                path.push_back(TilePos(tilePos1.x(), start_free - 1));
+                path.push_back(TilePos(tilePos1.x(), startFree - 1));
                 // final position of the last slided tile
-                path.push_back(TilePos(tilePos1.x(), start_free - 1 + distance));
+                path.push_back(TilePos(tilePos1.x(), startFree - 1 + distance));
                 return true;
             }
             return false;
@@ -1109,35 +1109,35 @@ bool Board::canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Pa
         if (tilePos1.x() > tilePos2.x()) {
             distance = tilePos1.x() - tilePos2.x();
             // count how much free space we have for sliding
-            auto start_free = -1;
-            auto end_free = -1;
+            auto startFree = -1;
+            auto endFree = -1;
             // find first tile empty
             for (auto i = tilePos1.x() - 1; i >= 0; --i) {
                 if (field(TilePos(i, tilePos1.y())) == EMPTY) {
-                    start_free = i;
+                    startFree = i;
                     break;
                 }
             }
             // if not found, cannot slide
             // if the first free tile is just next to the sliding tile, no slide (should be a normal move)
-            if (start_free == -1 || start_free == tilePos1.x() - 1) {
+            if (startFree == -1 || startFree == tilePos1.x() - 1) {
                 return false;
             }
             // find last tile empty
-            for (auto i = start_free - 1; i >= 0; --i) {
+            for (auto i = startFree - 1; i >= 0; --i) {
                 if (field(TilePos(i, tilePos1.y())) != EMPTY) {
-                    end_free = i;
+                    endFree = i;
                     break;
                 }
             }
             // if not found, it is the border: 0
 
             // so we can slide of start_free - end_free, compare this to the distance
-            if (distance <= (start_free - end_free)) {
+            if (distance <= (startFree - endFree)) {
                 // first position of the last slided tile
-                path.push_back(TilePos(start_free + 1, tilePos1.y()));
+                path.push_back(TilePos(startFree + 1, tilePos1.y()));
                 // final position of the last slided tile
-                path.push_back(TilePos(start_free + 1 - distance, tilePos1.y()));
+                path.push_back(TilePos(startFree + 1 - distance, tilePos1.y()));
                 return true;
             }
             return false;
@@ -1145,35 +1145,35 @@ bool Board::canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Pa
         } else if (tilePos2.x() > tilePos1.x()) {
             distance = tilePos2.x() - tilePos1.x();
             // count how much free space we have for sliding
-            auto start_free = -1;
-            auto end_free = xTiles();
+            auto startFree = -1;
+            auto endFree = xTiles();
             // find first tile empty
             for (auto i = tilePos1.x() + 1; i < xTiles(); ++i) {
                 if (field(TilePos(i, tilePos1.y())) == EMPTY) {
-                    start_free = i;
+                    startFree = i;
                     break;
                 }
             }
             // if not found, cannot slide
             // if the first free tile is just next to the sliding tile, no slide (should be a normal move)
-            if (start_free == -1 || start_free == tilePos1.x() + 1) {
+            if (startFree == -1 || startFree == tilePos1.x() + 1) {
                 return false;
             }
             // find last tile empty
-            for (auto i = start_free + 1; i < xTiles(); ++i) {
+            for (auto i = startFree + 1; i < xTiles(); ++i) {
                 if (field(TilePos(i, tilePos1.y())) != EMPTY) {
-                    end_free = i;
+                    endFree = i;
                     break;
                 }
             }
             // if not found, it is the border: xTiles()-1
 
-            // so we can slide of end_free - start_free, compare this to the distance
-            if (distance <= (end_free - start_free)) {
+            // so we can slide of endFree - startFree, compare this to the distance
+            if (distance <= (endFree - startFree)) {
                 // first position of the last slided tile
-                path.push_back(TilePos(start_free - 1, tilePos1.y()));
+                path.push_back(TilePos(startFree - 1, tilePos1.y()));
                 // final position of the last slided tile
-                path.push_back(TilePos(start_free - 1 + distance, tilePos1.y()));
+                path.push_back(TilePos(startFree - 1 + distance, tilePos1.y()));
                 return true;
             }
             return false;
@@ -1473,8 +1473,8 @@ void Board::undo()
             if (move->slideY1() == move->slideY2()) {
                 qCDebug(KSHISEN_General) << "[undo] gravity from horizontal slide";
 
-                // last slide tile went from slide_x1 -> slide_x2
-                // the number of slided tiles is n = abs(x1 - slide_x1)
+                // last slide tile went from slideX1() -> slideX2()
+                // the number of slided tiles is n = abs(x1 - slideX1())
                 auto n = move->x1() - move->slideX1();
                 if (n < 0) {
                     n = -n;
@@ -1489,7 +1489,7 @@ void Board::undo()
 
                 // slided tiles may fall down after the slide
                 // so any tiles on top of the columns between
-                // slide_x2 -> slide_x2 +/- n (excluded) should go up to slide_y1
+                // slideX2() -> slideX2() +/- n (excluded) should go up to slideY1()
                 if (move->slideX2() > move->slideX1()) { // slide to the right
 
                     qCDebug(KSHISEN_General) << "[undo] slide right";
@@ -1556,7 +1556,7 @@ void Board::undo()
                 // and all columns that fell after the tiles slided between
                 // only if they were not replaced by a sliding tile !!
                 // x1 -> x1+dx should go up one
-                // if their height > slide_y1
+                // if their height > slideY1()
                 // because they have fallen after the slide
                 if (move->slideX2() > move->slideX1()) { // slide to the right
                     if (move->slideY1() > 0) {
