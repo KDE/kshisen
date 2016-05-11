@@ -46,6 +46,10 @@ add_definitions(
     -DQT_USE_QSTRINGBUILDER
 )
 
+add_compile_options(
+    -std=c++14
+)
+
 add_subdirectory(src)
 add_subdirectory(icons)
 add_subdirectory(sounds)

@@ -48,8 +48,8 @@ bool PossibleMove::isInPath(TilePos const & tilePos) const
 
     // a path has at least 2 positions
     auto iter = m_path.cbegin();
-    int pathX = iter->x();
-    int pathY = iter->y();
+    auto pathX = iter->x();
+    auto pathY = iter->y();
     ++iter;
     for (; iter != m_path.cend(); ++iter) {
         // to fix

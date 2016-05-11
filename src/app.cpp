@@ -124,7 +124,7 @@ void App::setupActions()
     KStandardGameAction::redo(this, SLOT(redo()), actionCollection());
     KStandardGameAction::hint(this, SLOT(hint()), actionCollection());
 
-    KToggleAction * soundAction = new KToggleAction(QIcon::fromTheme(QStringLiteral("speaker")), i18n("Play Sounds"), this);
+    auto soundAction = new KToggleAction(QIcon::fromTheme(QStringLiteral("speaker")), i18n("Play Sounds"), this);
     soundAction->setChecked(Prefs::sounds());
     actionCollection()->addAction(QStringLiteral("sounds"), soundAction);
     connect(soundAction, &KToggleAction::triggered, m_board, &Board::setSoundsEnabled);
@@ -254,7 +254,7 @@ void App::slotEndOfGame()
         m_board->setGameStuckEnabled(true);
     } else {
         m_board->setGameOverEnabled(true);
-        QString const timeString = i18nc("time string: hh:mm:ss", "%1:%2:%3",
+        auto const timeString = i18nc("time string: hh:mm:ss", "%1:%2:%3",
                                          QString().sprintf("%02d", m_board->currentTime() / 3600),
                                          QString().sprintf("%02d", (m_board->currentTime() / 60) % 60),
                                          QString().sprintf("%02d", m_board->currentTime() % 60));
@@ -270,19 +270,19 @@ void App::slotEndOfGame()
         } else {
             scoreInfo[KScoreDialog::Custom1] = i18n("No");
         }
-        QString const configGroup = QStringLiteral("%1x%2").arg(m_board->xTiles()).arg(m_board->yTiles());
+        auto const configGroup = QStringLiteral("%1x%2").arg(m_board->xTiles()).arg(m_board->yTiles());
         scoreDialog->setConfigGroup(qMakePair(QByteArray(configGroup.toUtf8()), configGroup));
 
         if (m_board->hasCheated()) {
-            QString const message = i18n("\nYou could have been in the highscores\nif you did not use Undo or Hint.\nTry without them next time.");
+            auto const message = i18n("\nYou could have been in the highscores\nif you did not use Undo or Hint.\nTry without them next time.");
             KMessageBox::information(this, message, i18n("End of Game"));
         } else {
             if (scoreDialog->addScore(scoreInfo) > 0) {
-                QString const message = i18n("Congratulations!\nYou made it into the hall of fame.");
+                auto const message = i18n("Congratulations!\nYou made it into the hall of fame.");
                 scoreDialog->setComment(message);
                 scoreDialog->exec();
             } else {
-                QString const message = i18nc("%1 - time string like hh:mm:ss", "You made it in %1", timeString);
+                auto const message = i18nc("%1 - time string like hh:mm:ss", "You made it in %1", timeString);
                 KMessageBox::information(this, message, i18n("End of Game"));
             }
         }
@@ -297,8 +297,8 @@ void App::updateTimeDisplay()
         return;
     }
     //qCDebug(KSHISEN_General) << "Time: " << m_board->currentTime();
-    int const currentTime = m_board->currentTime();
-    QString const message = i18n("Your time: %1:%2:%3 %4",
+    auto const currentTime = m_board->currentTime();
+    auto const message = i18n("Your time: %1:%2:%3 %4",
                                  QString().sprintf("%02d", currentTime / 3600),
                                  QString().sprintf("%02d", (currentTime / 60) % 60),
                                  QString().sprintf("%02d", currentTime % 60),
@@ -309,7 +309,7 @@ void App::updateTimeDisplay()
 
 void App::updateTileDisplay()
 {
-    int const numberOfTiles = m_board->tiles();
+    auto const numberOfTiles = m_board->tiles();
     m_gameTilesLabel->setText(i18n("Removed: %1/%2 ", numberOfTiles - m_board->tilesLeft(), numberOfTiles));
 }
 
@@ -320,11 +320,11 @@ void App::updateCheatDisplay()
 
 int App::score(int x, int y, int seconds, bool gravity) const
 {
-    double const ntiles = x * y;
-    double const tilespersec = ntiles / static_cast<double>(seconds);
+    auto const ntiles = static_cast<double>(x * y);
+    auto const tilespersec = ntiles / static_cast<double>(seconds);
 
-    double const sizebonus = std::sqrt(ntiles / static_cast<double>(14.0 * 6.0));
-    double const points = tilespersec / 0.14 * 100.0;
+    auto const sizebonus = std::sqrt(ntiles / static_cast<double>(14.0 * 6.0));
+    auto const points = tilespersec / 0.14 * 100.0;
 
     if (gravity) {
         return static_cast<int>(2.0 * points * sizebonus);
@@ -367,7 +367,7 @@ void App::showHighscores()
 {
     KScoreDialog scoreDialog(KScoreDialog::Name | KScoreDialog::Time, this);
     scoreDialog.addField(KScoreDialog::Custom1, i18n("Gravity"), QStringLiteral("gravity"));
-    QString const configGroup = QStringLiteral("%1x%2").arg(m_board->xTiles()).arg(m_board->yTiles());
+    auto const configGroup = QStringLiteral("%1x%2").arg(m_board->xTiles()).arg(m_board->yTiles());
     scoreDialog.setConfigGroup(qMakePair(QByteArray(configGroup.toUtf8()), configGroup));
     scoreDialog.exec();
 }
@@ -384,7 +384,7 @@ void App::showSettingsDialog()
     }
 
     //Use the classes exposed by LibKmahjongg for our configuration dialog
-    KMahjonggConfigDialog * dialog = new KMahjonggConfigDialog(this, QStringLiteral("settings"), Prefs::self());
+    auto dialog = new KMahjonggConfigDialog(this, QStringLiteral("settings"), Prefs::self());
     dialog->addPage(new Settings(nullptr), i18n("General"), QStringLiteral("games-config-options"));
     dialog->addTilesetPage();
     dialog->addBackgroundPage();
