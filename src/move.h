@@ -40,7 +40,7 @@ public:
     int y2() const;
     int tile1() const;
     int tile2() const;
-    int hasSlide() const;
+    bool hasSlide() const;
     int slideX1() const;
     int slideY1() const;
     int slideX2() const;

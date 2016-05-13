@@ -81,7 +81,7 @@ int Move::tile2() const
     return m_tile2;
 }
 
-int Move::hasSlide() const
+bool Move::hasSlide() const
 {
     return m_hasSlide;
 }
