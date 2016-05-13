@@ -26,7 +26,7 @@ void MoveTest::initTestCase()
     m_tile2 = KShisen::TilePos(3, 4);
 }
 
-void MoveTest::swap()
+void MoveTest::swapTiles()
 {
     auto move = KShisen::Move(m_tile1, m_tile2, 12, 34);
     move.swapTiles();

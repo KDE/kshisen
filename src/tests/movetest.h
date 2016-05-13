@@ -29,7 +29,7 @@ class MoveTest : public QObject
     Q_OBJECT
 private slots:
     void initTestCase();
-    void swap();
+    void swapTiles();
 
     void cleanupTestCase();
 
