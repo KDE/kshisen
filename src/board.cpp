@@ -532,8 +532,8 @@ void Board::newGame()
 
 
     std::vector<int> oldfield = m_field;
-    std::vector<int> tiles;
-    std::vector<int> pos;
+    std::vector<int> tiles(m_field.size());
+    std::vector<int> pos(m_field.size());
     //jwickers: in case the game cannot made solvable we do not want to run an infinite loop
     int maxAttempts = 200;
 
