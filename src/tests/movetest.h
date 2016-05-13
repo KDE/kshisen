@@ -16,6 +16,9 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
+#ifndef MOVETEST_H
+#define MOVETEST_H
+
 #include <QtTest>
 
 #include "../move.h"
@@ -34,3 +37,5 @@ private:
     KShisen::TilePos m_tile1;
     KShisen::TilePos m_tile2;
 };
+
+#endif // MOVETEST_H
