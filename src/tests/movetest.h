@@ -29,13 +29,27 @@ class MoveTest : public QObject
     Q_OBJECT
 private slots:
     void initTestCase();
+
+    void x1() const;
+    void y1() const;
+    void x2() const;
+    void y2() const;
+    void tile1() const;
+    void tile2() const;
+    void hasSlide() const;
+    void slideX1() const;
+    void slideY1() const;
+    void slideX2() const;
+    void slideY2() const;
     void swapTiles();
 
     void cleanupTestCase();
 
 private:
-    KShisen::TilePos m_tile1;
-    KShisen::TilePos m_tile2;
+    KShisen::TilePos m_tile1{1, 2};
+    KShisen::TilePos m_tile2{3, 4};
+    KShisen::Move m_moveWithoutSlide{m_tile1, m_tile2, 12, 34};
+    KShisen::Move m_moveWithSlide{m_tile1, m_tile2, 12, 34, 5, 6, 7, 8};
 };
 
 #endif // MOVETEST_H

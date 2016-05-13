@@ -20,10 +20,62 @@
 
 void MoveTest::initTestCase()
 {
-    qDebug("called before everything else");
+}
 
-    m_tile1 = KShisen::TilePos(1, 2);
-    m_tile2 = KShisen::TilePos(3, 4);
+void MoveTest::x1() const
+{
+    QCOMPARE(m_moveWithoutSlide.x1(), 1);
+}
+
+void MoveTest::y1() const
+{
+    QCOMPARE(m_moveWithoutSlide.y1(), 2);
+}
+
+void MoveTest::x2() const
+{
+    QCOMPARE(m_moveWithoutSlide.x2(), 3);
+}
+
+void MoveTest::y2() const
+{
+    QCOMPARE(m_moveWithoutSlide.y2(), 4);
+}
+
+void MoveTest::tile1() const
+{
+    QCOMPARE(m_moveWithoutSlide.tile1(), 12);
+}
+
+void MoveTest::tile2() const
+{
+    QCOMPARE(m_moveWithoutSlide.tile2(), 34);
+}
+
+void MoveTest::hasSlide() const
+{
+    QCOMPARE(m_moveWithoutSlide.hasSlide(), false);
+    QCOMPARE(m_moveWithSlide.hasSlide(), true);
+}
+
+void MoveTest::slideX1() const
+{
+    QCOMPARE(m_moveWithSlide.slideX1(), 5);
+}
+
+void MoveTest::slideY1() const
+{
+    QCOMPARE(m_moveWithSlide.slideY1(), 6);
+}
+
+void MoveTest::slideX2() const
+{
+    QCOMPARE(m_moveWithSlide.slideX2(), 7);
+}
+
+void MoveTest::slideY2() const
+{
+    QCOMPARE(m_moveWithSlide.slideY2(), 8);
 }
 
 void MoveTest::swapTiles()
@@ -42,7 +94,6 @@ void MoveTest::swapTiles()
 
 void MoveTest::cleanupTestCase()
 {
-    qDebug("called after myFirstTest and mySecondTest");
 }
 
 QTEST_MAIN(MoveTest)
