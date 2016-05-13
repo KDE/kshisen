@@ -282,12 +282,12 @@ private: // functions
     void applyGravity(TilePos const tilePos1, TilePos const tilePos2);
 
     /** Returns True if @p tilePos is a valid position on Board.
-     * @return Wether @p tiePos is valid.
+     * @return Whether @p tiePos is valid.
      */
     bool isValidPos(TilePos const & tilePos) const;
 
     /** Returns True if @p tilePos is a valid position on Board including outline.
-     * @return Wether @p tiePos is valid.
+     * @return Whether @p tiePos is valid.
      */
     bool isValidPosWithOutline(TilePos const & tilePos) const;
 
