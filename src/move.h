@@ -54,7 +54,8 @@ public:
     void swapTiles();
 
 private:
-    int m_x1, m_y1, m_x2, m_y2; ///< coordinates of the two tiles that matched
+    TilePos m_tilePos1; ///< coordinates of the first tile that matched
+    TilePos m_tilePos2; ///< coordinates of the second tile that matched
     int m_tile1; ///< type of tile at first set of coordinates
     int m_tile2; ///< type of tile at second set of coordinates
     bool m_hasSlide; ///< if we performed a slide during the move

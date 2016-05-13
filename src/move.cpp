@@ -22,10 +22,8 @@
 namespace KShisen
 {
 Move::Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2)
-    : m_x1(tilePos1.x())
-    , m_y1(tilePos1.y())
-    , m_x2(tilePos2.x())
-    , m_y2(tilePos2.y())
+    : m_tilePos1(tilePos1)
+    , m_tilePos2(tilePos2)
     , m_tile1(tile1)
     , m_tile2(tile2)
     , m_hasSlide(false)
@@ -37,10 +35,8 @@ Move::Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int ti
 }
 
 Move::Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2, int slideX1, int slideY1, int slideX2, int slideY2)
-    : m_x1(tilePos1.x())
-    , m_y1(tilePos1.y())
-    , m_x2(tilePos2.x())
-    , m_y2(tilePos2.y())
+    : m_tilePos1(tilePos1)
+    , m_tilePos2(tilePos2)
     , m_tile1(tile1)
     , m_tile2(tile2)
     , m_hasSlide(true)
@@ -53,22 +49,22 @@ Move::Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int ti
 
 int Move::x1() const
 {
-    return m_x1;
+    return m_tilePos1.x();
 }
 
 int Move::y1() const
 {
-    return m_y1;
+    return m_tilePos1.y();
 }
 
 int Move::x2() const
 {
-    return m_x2;
+    return m_tilePos2.x();
 }
 
 int Move::y2() const
 {
-    return m_y2;
+    return m_tilePos2.y();
 }
 
 int Move::tile1() const
@@ -108,8 +104,7 @@ int Move::slideY2() const
 
 void Move::swapTiles()
 {
-    std::swap(m_x1, m_x2);
-    std::swap(m_y1, m_y2);
+    std::swap(m_tilePos1, m_tilePos2);
     std::swap(m_tile1, m_tile2);
 }
 }
