@@ -497,8 +497,8 @@ void Board::newGame()
 
 
     auto oldfield = m_field;
-    decltype(m_field) tiles;
-    decltype(m_field) pos;
+    decltype(m_field) tiles(m_field.size());
+    decltype(m_field) pos(m_field.size());
     //jwickers: in case the game cannot made solvable we do not want to run an infinite loop
     auto maxAttempts = 200;
 
