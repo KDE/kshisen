@@ -21,21 +21,6 @@
 
 namespace KShisen
 {
-Move::Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile)
-    : m_x1(tilePos1.x())
-    , m_y1(tilePos1.y())
-    , m_x2(tilePos2.x())
-    , m_y2(tilePos2.y())
-    , m_tile1(tile)
-    , m_tile2(tile)
-    , m_hasSlide(false)
-    , m_slideX1(-1)
-    , m_slideY1(-1)
-    , m_slideX2(-1)
-    , m_slideY2(-1)
-{
-}
-
 Move::Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2)
     : m_x1(tilePos1.x())
     , m_y1(tilePos1.y())
