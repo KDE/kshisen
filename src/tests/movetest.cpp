@@ -31,7 +31,12 @@ void MoveTest::swap()
     auto move = KShisen::Move(m_tile1, m_tile2, 12, 34);
     move.swapTiles();
 
+    QCOMPARE(move.x1(), 3);
+    QCOMPARE(move.y1(), 4);
     QCOMPARE(move.tile1(), 34);
+
+    QCOMPARE(move.x2(), 1);
+    QCOMPARE(move.y2(), 2);
     QCOMPARE(move.tile2(), 12);
 }
 
