@@ -113,5 +113,5 @@ void MoveTest::cleanupTestCase()
 {
 }
 
-QTEST_MAIN(MoveTest)
+QTEST_APPLESS_MAIN(MoveTest)
 #include "movetest.moc"
