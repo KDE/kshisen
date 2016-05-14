@@ -48,8 +48,10 @@ private slots:
 private:
     KShisen::TilePos m_tile1{1, 2};
     KShisen::TilePos m_tile2{3, 4};
+    KShisen::TilePos m_tile3{5, 6};
+    KShisen::TilePos m_tile4{7, 8};
     KShisen::Move m_moveWithoutSlide{m_tile1, m_tile2, 12, 34};
-    KShisen::Move m_moveWithSlide{m_tile1, m_tile2, 12, 34, 5, 6, 7, 8};
+    KShisen::Move m_moveWithSlide{m_tile3, m_tile4, 56, 78, 15, 16, 17, 18};
 };
 
 #endif // MOVETEST_H
