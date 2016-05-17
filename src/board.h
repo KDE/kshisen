@@ -217,10 +217,10 @@ private: // functions
      * @return Type of the tile.
      */
     int field(TilePos const & tilePos) const;
-    /** Redraws the area of the given @p TilePos.
-     * @param TilePos Position of the tile to redraw.
+    /** Repaints the area of the given @p TilePos.
+     * @param TilePos Position of the tile to repaint.
      */
-    void updateField(TilePos const & tilePos);
+    void repaintTile(TilePos const & tilePos);
     void showInfoRect(QPainter &, const QString & message);
     void drawTiles(QPainter &, QPaintEvent *);
     void clearHighlight();

@@ -240,8 +240,8 @@ void Board::applyGravity(TilePos const tilePos1, TilePos const tilePos2)
                 if (field(rptrPos) != EMPTY) {
                     setField(wptrPos, field(rptrPos));
                     setField(rptrPos, EMPTY);
-                    updateField(rptrPos);
-                    updateField(wptrPos);
+                    repaintTile(rptrPos);
+                    repaintTile(wptrPos);
                     --wptr;
                     --rptr;
                     if (Prefs::sounds()) {
@@ -268,7 +268,7 @@ void Board::unmarkTile()
     auto const oldTilePos = TilePos(m_markX, m_markY);
     m_markX = -1;
     m_markY = -1;
-    updateField(oldTilePos);
+    repaintTile(oldTilePos);
 }
 
 void Board::mousePressEvent(QMouseEvent * e)
@@ -335,20 +335,20 @@ void Board::mousePressEvent(QMouseEvent * e)
                     auto const fieldTile = field(TilePos(i, j));
                     if (fieldTile != EMPTY) {
                         if (fieldTile == oldHighlighted) {
-                            updateField(TilePos(i, j));
+                            repaintTile(TilePos(i, j));
                         } else if (fieldTile == clickedTile) {
-                            updateField(TilePos(i, j));
+                            repaintTile(TilePos(i, j));
                         } else if (m_chineseStyleFlag) {
                             if (clickedTile >= SEASONS_START && clickedTile <= (SEASONS_START + 3) && fieldTile >= SEASONS_START && fieldTile <= (SEASONS_START + 3)) {
-                                updateField(TilePos(i, j));
+                                repaintTile(TilePos(i, j));
                             } else if (clickedTile >= FLOWERS_START && clickedTile <= (FLOWERS_START + 3) && fieldTile >= FLOWERS_START && fieldTile <= (FLOWERS_START + 3)) {
-                                updateField(TilePos(i, j));
+                                repaintTile(TilePos(i, j));
                             }
                             // oldHighlighted
                             if (oldHighlighted >= SEASONS_START && oldHighlighted <= (SEASONS_START + 3) && fieldTile >= SEASONS_START && fieldTile <= (SEASONS_START + 3)) {
-                                updateField(TilePos(i, j));
+                                repaintTile(TilePos(i, j));
                             } else if (oldHighlighted >= FLOWERS_START && oldHighlighted <= (FLOWERS_START + 3) && fieldTile >= FLOWERS_START && fieldTile <= (FLOWERS_START + 3)) {
-                                updateField(TilePos(i, j));
+                                repaintTile(TilePos(i, j));
                             }
                         }
                     }
@@ -599,7 +599,7 @@ bool Board::isTileHighlighted(TilePos const & tilePos) const
     return false;
 }
 
-void Board::updateField(TilePos const & tilePos)
+void Board::repaintTile(TilePos const & tilePos)
 {
     auto const r = QRect(xOffset() + tilePos.x() * m_tiles.qWidth() * 2,
                          yOffset() + tilePos.y() * m_tiles.qHeight() * 2,
@@ -725,8 +725,8 @@ void Board::reverseSlide(TilePos const & tilePos, Slide const & slide)
                 }
                 setField(TilePos(tilePos.x(), i), EMPTY);
                 setField(TilePos(tilePos.x(), i + dy), currentTile);
-                updateField(TilePos(tilePos.x(), i));
-                updateField(TilePos(tilePos.x(), i + dy));
+                repaintTile(TilePos(tilePos.x(), i));
+                repaintTile(TilePos(tilePos.x(), i + dy));
             }
         } else {
             for (auto i = tilePos.y() - 1; i >= slide.back().y(); --i) {
@@ -736,8 +736,8 @@ void Board::reverseSlide(TilePos const & tilePos, Slide const & slide)
                 }
                 setField(TilePos(tilePos.x(), i), EMPTY);
                 setField(TilePos(tilePos.x(), i + dy), currentTile);
-                updateField(TilePos(tilePos.x(), i));
-                updateField(TilePos(tilePos.x(), i + dy));
+                repaintTile(TilePos(tilePos.x(), i));
+                repaintTile(TilePos(tilePos.x(), i + dy));
             }
         }
     } else if (dy == 0) {
@@ -749,8 +749,8 @@ void Board::reverseSlide(TilePos const & tilePos, Slide const & slide)
                 }
                 setField(TilePos(i, tilePos.y()), EMPTY);
                 setField(TilePos(i + dx, tilePos.y()), currentTile);
-                updateField(TilePos(i, tilePos.y()));
-                updateField(TilePos(i + dx, tilePos.y()));
+                repaintTile(TilePos(i, tilePos.y()));
+                repaintTile(TilePos(i + dx, tilePos.y()));
             }
         } else {
             for (auto i = tilePos.x() - 1; i >= slide.back().x(); --i) {
@@ -760,8 +760,8 @@ void Board::reverseSlide(TilePos const & tilePos, Slide const & slide)
                 }
                 setField(TilePos(i, tilePos.y()), EMPTY);
                 setField(TilePos(i + dx, tilePos.y()), currentTile);
-                updateField(TilePos(i, tilePos.y()));
-                updateField(TilePos(i + dx, tilePos.y()));
+                repaintTile(TilePos(i, tilePos.y()));
+                repaintTile(TilePos(i + dx, tilePos.y()));
             }
         }
     }
@@ -787,16 +787,16 @@ void Board::performSlide(TilePos const & tilePos, Slide const & slide)
                 currentTile = field(TilePos(tilePos.x(), i));
                 setField(TilePos(tilePos.x(), i), EMPTY);
                 setField(TilePos(tilePos.x(), i + dy), currentTile);
-                updateField(TilePos(tilePos.x(), i));
-                updateField(TilePos(tilePos.x(), i + dy));
+                repaintTile(TilePos(tilePos.x(), i));
+                repaintTile(TilePos(tilePos.x(), i + dy));
             }
         } else {
             for (auto i = slide.front().y(); i < tilePos.y(); ++i) {
                 currentTile = field(TilePos(tilePos.x(), i));
                 setField(TilePos(tilePos.x(), i), EMPTY);
                 setField(TilePos(tilePos.x(), i + dy), currentTile);
-                updateField(TilePos(tilePos.x(), i));
-                updateField(TilePos(tilePos.x(), i + dy));
+                repaintTile(TilePos(tilePos.x(), i));
+                repaintTile(TilePos(tilePos.x(), i + dy));
             }
         }
     } else if (dy == 0) {
@@ -805,16 +805,16 @@ void Board::performSlide(TilePos const & tilePos, Slide const & slide)
                 currentTile = field(TilePos(i, tilePos.y()));
                 setField(TilePos(i, tilePos.y()), EMPTY);
                 setField(TilePos(i + dx, tilePos.y()), currentTile);
-                updateField(TilePos(i, tilePos.y()));
-                updateField(TilePos(i + dx, tilePos.y()));
+                repaintTile(TilePos(i, tilePos.y()));
+                repaintTile(TilePos(i + dx, tilePos.y()));
             }
         } else {
             for (auto i = slide.front().x(); i < tilePos.x(); ++i) {
                 currentTile = field(TilePos(i, tilePos.y()));
                 setField(TilePos(i, tilePos.y()), EMPTY);
                 setField(TilePos(i + dx, tilePos.y()), currentTile);
-                updateField(TilePos(i, tilePos.y()));
-                updateField(TilePos(i + dx, tilePos.y()));
+                repaintTile(TilePos(i, tilePos.y()));
+                repaintTile(TilePos(i + dx, tilePos.y()));
             }
         }
     }
@@ -928,7 +928,7 @@ void Board::marked(TilePos const & tilePos)
         m_markY = tilePos.y();
         drawPossibleMoves(false);
         m_possibleMoves.clear();
-        updateField(tilePos);
+        repaintTile(tilePos);
         emit selectAMatchingTile();
         return;
     }
@@ -995,7 +995,7 @@ void Board::clearHighlight()
     for (decltype(xTiles()) i = 0; i < xTiles(); ++i) {
         for (decltype(yTiles()) j = 0; j < yTiles(); ++j) {
             if (tilesMatch(oldHighlighted, field(TilePos(i, j)))) {
-                updateField(TilePos(i, j));
+                repaintTile(TilePos(i, j));
             }
         }
     }
@@ -1313,8 +1313,8 @@ void Board::drawConnection()
     auto const tile1 = TilePos(m_connection.front().x(), m_connection.front().y());
     auto const tile2 = TilePos(m_connection.back().x(), m_connection.back().y());
     // lighten the fields
-    updateField(tile1);
-    updateField(tile2);
+    repaintTile(tile1);
+    repaintTile(tile2);
 
     m_paintConnection = true;
     update();
@@ -1346,11 +1346,11 @@ void Board::undrawConnection()
     while (pt2 != oldConnection.cend()) {
         if (pt1->y() == pt2->y()) {
             for (auto i = qMin(pt1->x(), pt2->x()); i <= qMax(pt1->x(), pt2->x()); ++i) {
-                updateField(TilePos(i, pt1->y()));
+                repaintTile(TilePos(i, pt1->y()));
             }
         } else {
             for (auto i = qMin(pt1->y(), pt2->y()); i <= qMax(pt1->y(), pt2->y()); ++i) {
-                updateField(TilePos(pt1->x(), i));
+                repaintTile(TilePos(pt1->x(), i));
             }
         }
         ++pt1;
@@ -1454,13 +1454,13 @@ void Board::undo()
             // move tiles from the first column up
             for (decltype(move->y1()) y = 0; y < move->y1(); ++y) {
                 setField(TilePos(move->x1(), y), field(TilePos(move->x1(), y + 1)));
-                updateField(TilePos(move->x1(), y));
+                repaintTile(TilePos(move->x1(), y));
             }
 
             // move tiles from the second column up
             for (decltype(move->y2()) y = 0; y < move->y2(); ++y) {
                 setField(TilePos(move->x2(), y), field(TilePos(move->x2(), y + 1)));
-                updateField(TilePos(move->x2(), y));
+                repaintTile(TilePos(move->x2(), y));
             }
         } else { // else check all tiles from the slide that may have fallen down
 
@@ -1513,8 +1513,8 @@ void Board::undo()
                         // put it back up
                         setField(TilePos(i, move->slideY1()), field(TilePos(i, j)));
                         setField(TilePos(i, j), EMPTY);
-                        updateField(TilePos(i, j));
-                        updateField(TilePos(i, move->slideY1()));
+                        repaintTile(TilePos(i, j));
+                        repaintTile(TilePos(i, move->slideY1()));
                     }
                 } else { // slide to the left
 
@@ -1539,8 +1539,8 @@ void Board::undo()
                         // put it back up
                         setField(TilePos(i, move->slideY1()), field(TilePos(i, j)));
                         setField(TilePos(i, j), EMPTY);
-                        updateField(TilePos(i, j));
-                        updateField(TilePos(i, move->slideY1()));
+                        repaintTile(TilePos(i, j));
+                        repaintTile(TilePos(i, move->slideY1()));
                     }
                 }
 
@@ -1551,7 +1551,7 @@ void Board::undo()
                     qCDebug(KSHISEN_General) << "[undo] moving up tile" << y + 1;
 
                     setField(TilePos(move->x2(), y), field(TilePos(move->x2(), y + 1)));
-                    updateField(TilePos(move->x2(), y));
+                    repaintTile(TilePos(move->x2(), y));
                 }
                 // and all columns that fell after the tiles slidden between
                 // only if they were not replaced by a sliding tile !!
@@ -1567,13 +1567,13 @@ void Board::undo()
                                 qCDebug(KSHISEN_General) << "[undo] moving up tile" << j + 1;
 
                                 setField(TilePos(i, j), field(TilePos(i, j + 1)));
-                                updateField(TilePos(i, j));
+                                repaintTile(TilePos(i, j));
                             }
 
                             qCDebug(KSHISEN_General) << "[undo] clearing last tile" << move->slideY1();
 
                             setField(TilePos(i, move->slideY1()), EMPTY);
-                            updateField(TilePos(i, move->slideY1()));
+                            repaintTile(TilePos(i, move->slideY1()));
                         }
                     }
                 } else { // slide to the left
@@ -1585,13 +1585,13 @@ void Board::undo()
                                 qCDebug(KSHISEN_General) << "[undo] moving up tile" << j + 1;
 
                                 setField(TilePos(i, j), field(TilePos(i, j + 1)));
-                                updateField(TilePos(i, j));
+                                repaintTile(TilePos(i, j));
                             }
 
                             qCDebug(KSHISEN_General) << "[undo] clearing last tile" << move->slideY1();
 
                             setField(TilePos(i, move->slideY1()), EMPTY);
-                            updateField(TilePos(i, move->slideY1()));
+                            repaintTile(TilePos(i, move->slideY1()));
                         }
                     }
                 }
@@ -1611,13 +1611,13 @@ void Board::undo()
                 // move tiles from the first column up
                 for (decltype(move->y1()) y = 0; y < move->y1(); ++y) {
                     setField(TilePos(move->x1(), y), field(TilePos(move->x1(), y + 1)));
-                    updateField(TilePos(move->x1(), y));
+                    repaintTile(TilePos(move->x1(), y));
                 }
 
                 // move tiles from the second column up
                 for (decltype(move->y2()) y = 0; y < move->y2(); ++y) {
                     setField(TilePos(move->x2(), y), field(TilePos(move->x2(), y + 1)));
-                    updateField(TilePos(move->x2(), y));
+                    repaintTile(TilePos(move->x2(), y));
                 }
             }
         }
@@ -1632,8 +1632,8 @@ void Board::undo()
     // replace taken tiles
     setField(TilePos(move->x1(), move->y1()), move->tile1());
     setField(TilePos(move->x2(), move->y2()), move->tile2());
-    updateField(TilePos(move->x1(), move->y1()));
-    updateField(TilePos(move->x2(), move->y2()));
+    repaintTile(TilePos(move->x1(), move->y1()));
+    repaintTile(TilePos(move->x2(), move->y2()));
 
     m_redo.prepend(move);
     emit changed();
@@ -1654,8 +1654,8 @@ void Board::redo()
         }
         setField(TilePos(move->x1(), move->y1()), EMPTY);
         setField(TilePos(move->x2(), move->y2()), EMPTY);
-        updateField(TilePos(move->x1(), move->y1()));
-        updateField(TilePos(move->x2(), move->y2()));
+        repaintTile(TilePos(move->x1(), move->y1()));
+        repaintTile(TilePos(move->x2(), move->y2()));
         applyGravity(TilePos(move->x1(), move->y1()), TilePos(move->x2(), move->y2()));
         m_undo.push_back(move);
         emit changed();
