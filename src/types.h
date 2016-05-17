@@ -30,6 +30,8 @@ using TilePos = QPoint;
  * A list of positions (at least 2) makes a Path
  */
 using Path = QList<TilePos>;
+
+using Slide = QList<TilePos>;
 }
 
 #endif // KSHISEN_TYPES_H

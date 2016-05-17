@@ -32,7 +32,7 @@ class Move
 {
 public:
     Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2);
-    Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2, int slideX1, int slideY1, int slideX2, int slideY2);
+    Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2, Slide const & slide);
 
     int x1() const;
     int y1() const;
@@ -41,6 +41,7 @@ public:
     int tile1() const;
     int tile2() const;
     bool hasSlide() const;
+    Slide slide() const;
     int slideX1() const;
     int slideY1() const;
     int slideX2() const;
@@ -59,10 +60,7 @@ private:
     int m_tile1; ///< type of tile at first set of coordinates
     int m_tile2; ///< type of tile at second set of coordinates
     bool m_hasSlide; ///< if we performed a slide during the move
-    int m_slideX1; ///< original x coordinate of the last slided tile
-    int m_slideY1; ///< original y coordinate of the last slided tile
-    int m_slideX2; ///< final x coordinate of the last slided tile
-    int m_slideY2; ///< final y coordinate of the last slided tile
+    Slide m_slide; ///< original x coordinate of the last slided tile
 };
 }
 

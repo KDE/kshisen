@@ -37,6 +37,7 @@ private slots:
     void tile1() const;
     void tile2() const;
     void hasSlide() const;
+    void slide() const;
     void slideX1() const;
     void slideY1() const;
     void slideX2() const;
@@ -50,8 +51,10 @@ private:
     KShisen::TilePos m_tile2{3, 4};
     KShisen::TilePos m_tile3{5, 6};
     KShisen::TilePos m_tile4{7, 8};
+    KShisen::TilePos m_slidePos1{15, 16};
+    KShisen::TilePos m_slidePos2{17, 18};
     KShisen::Move m_moveWithoutSlide{m_tile1, m_tile2, 12, 34};
-    KShisen::Move m_moveWithSlide{m_tile3, m_tile4, 56, 78, 15, 16, 17, 18};
+    KShisen::Move m_moveWithSlide{m_tile3, m_tile4, 56, 78, KShisen::Slide() << m_slidePos1 << m_slidePos2};
 };
 
 #endif // MOVETEST_H

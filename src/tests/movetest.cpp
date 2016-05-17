@@ -64,27 +64,33 @@ void MoveTest::hasSlide() const
     QCOMPARE(m_moveWithSlide.hasSlide(), true);
 }
 
+void MoveTest::slide() const
+{
+    QCOMPARE(m_moveWithoutSlide.slide(), KShisen::Slide());
+    QCOMPARE(m_moveWithSlide.slide(), KShisen::Slide() << m_slidePos1 << m_slidePos2);
+}
+
 void MoveTest::slideX1() const
 {
-    QCOMPARE(m_moveWithoutSlide.slideX1(), -1);
+    QCOMPARE(m_moveWithoutSlide.slideX1(), 0);
     QCOMPARE(m_moveWithSlide.slideX1(), 15);
 }
 
 void MoveTest::slideY1() const
 {
-    QCOMPARE(m_moveWithoutSlide.slideY1(), -1);
+    QCOMPARE(m_moveWithoutSlide.slideY1(), 0);
     QCOMPARE(m_moveWithSlide.slideY1(), 16);
 }
 
 void MoveTest::slideX2() const
 {
-    QCOMPARE(m_moveWithoutSlide.slideX2(), -1);
+    QCOMPARE(m_moveWithoutSlide.slideX2(), 0);
     QCOMPARE(m_moveWithSlide.slideX2(), 17);
 }
 
 void MoveTest::slideY2() const
 {
-    QCOMPARE(m_moveWithoutSlide.slideY2(), -1);
+    QCOMPARE(m_moveWithoutSlide.slideY2(), 0);
     QCOMPARE(m_moveWithSlide.slideY2(), 18);
 }
 

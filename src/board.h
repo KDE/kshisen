@@ -241,9 +241,9 @@ private: // functions
     /** Checks if the tile at \p tilePos1 can be slid to \p tilePos2.
      * @param tilePos1 coordinates of the slide's initial position
      * @param tilePos2 coordinates of the slide's final position
-     * @param path The movement of the last tile slided will be stored in the path
+     * @param slide The movement of the last tile slid will be stored in @p slide
      */
-    bool canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Path & path) const;
+    bool canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Slide & slide) const;
 
     /** Checks if a path between two tiles can be made with 2 or 3 lines.
     * @param tilePos1 coordinates of the first tile
@@ -261,8 +261,8 @@ private: // functions
      */
     int findSimplePath(TilePos const & tilePos1, TilePos const & tilePos2, PossibleMoves & possibleMoves) const;
     void performMove(PossibleMove & possibleMoves);
-    void performSlide(TilePos const & tilePos, Path const & slide);
-    void reverseSlide(TilePos const & tilePos, int slideX1, int slideY1, int slideX2, int slideY2);
+    void performSlide(TilePos const & tilePos, Slide const & slide);
+    void reverseSlide(TilePos const & tilePos, Slide const & slide);
     bool isTileHighlighted(TilePos const & tilePos) const;
     void drawConnection();
     void drawPossibleMoves(bool b);
@@ -273,7 +273,7 @@ private: // functions
     QPoint midCoord(TilePos const & tilePos) const;
     void unmarkTile();
     void marked(TilePos const & tilePos);
-    void madeMove(TilePos const & tilePos1, TilePos const & tilePos2, Path slide = Path());
+    void madeMove(TilePos const & tilePos1, TilePos const & tilePos2, Slide slide = Slide());
 
     /** Applies gravity to all columns.
      * @param tilePos1 coordinates of the first tile

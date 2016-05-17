@@ -707,18 +707,18 @@ void Board::paintEvent(QPaintEvent * e)
     p.end();
 }
 
-void Board::reverseSlide(TilePos const & tilePos, int slideX1, int slideY1, int slideX2, int slideY2)
+void Board::reverseSlide(TilePos const & tilePos, Slide const & slide)
 {
     // slide[XY]2 is the current location of the last tile to slide
     // slide[XY]1 is its destination
     // calculate the offset for the tiles to slide
-    auto const dx = slideX1 - slideX2;
-    auto const dy = slideY1 - slideY2;
+    auto const dx = slide.front().x() - slide.back().x();
+    auto const dy = slide.front().y() - slide.back().y();
     auto currentTile = 0;
     // move all tiles between slideX2, slideY2 and x, y to slide with that offset
     if (dx == 0) {
-        if (tilePos.y() < slideY2) {
-            for (auto i = tilePos.y() + 1; i <= slideY2; ++i) {
+        if (tilePos.y() < slide.back().y()) {
+            for (auto i = tilePos.y() + 1; i <= slide.back().y(); ++i) {
                 currentTile = field(TilePos(tilePos.x(), i));
                 if (currentTile == EMPTY) {
                     continue;
@@ -729,7 +729,7 @@ void Board::reverseSlide(TilePos const & tilePos, int slideX1, int slideY1, int 
                 updateField(TilePos(tilePos.x(), i + dy));
             }
         } else {
-            for (auto i = tilePos.y() - 1; i >= slideY2; --i) {
+            for (auto i = tilePos.y() - 1; i >= slide.back().y(); --i) {
                 currentTile = field(TilePos(tilePos.x(), i));
                 if (currentTile == EMPTY) {
                     continue;
@@ -741,8 +741,8 @@ void Board::reverseSlide(TilePos const & tilePos, int slideX1, int slideY1, int 
             }
         }
     } else if (dy == 0) {
-        if (tilePos.x() < slideX2) {
-            for (auto i = tilePos.x() + 1; i <= slideX2; ++i) {
+        if (tilePos.x() < slide.back().x()) {
+            for (auto i = tilePos.x() + 1; i <= slide.back().x(); ++i) {
                 currentTile = field(TilePos(i, tilePos.y()));
                 if (currentTile == EMPTY) {
                     continue;
@@ -753,7 +753,7 @@ void Board::reverseSlide(TilePos const & tilePos, int slideX1, int slideY1, int 
                 updateField(TilePos(i + dx, tilePos.y()));
             }
         } else {
-            for (auto i = tilePos.x() - 1; i >= slideX2; --i) {
+            for (auto i = tilePos.x() - 1; i >= slide.back().x(); --i) {
                 currentTile = field(TilePos(i, tilePos.y()));
                 if (currentTile == EMPTY) {
                     continue;
@@ -767,7 +767,7 @@ void Board::reverseSlide(TilePos const & tilePos, int slideX1, int slideY1, int 
     }
 }
 
-void Board::performSlide(TilePos const & tilePos, Path const & slide)
+void Board::performSlide(TilePos const & tilePos, Slide const & slide)
 {
     // check if there is something to slide
     if (slide.empty()) {
@@ -1024,10 +1024,10 @@ bool Board::canMakePath(TilePos const & tilePos1, TilePos const & tilePos2) cons
     return false;
 }
 
-bool Board::canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Path & path) const
+bool Board::canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Slide & slide) const
 {
     auto distance = -1;
-    path.clear();
+    slide.clear();
     if (tilePos1.x() == tilePos2.x()) {
         if (tilePos1.y() > tilePos2.y()) {
             distance = tilePos1.y() - tilePos2.y();
@@ -1058,9 +1058,9 @@ bool Board::canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Pa
             // so we can slide of start_free - end_free, compare this to the distance
             if (distance <= (startFree - endFree)) {
                 // first position of the last slided tile
-                path.push_back(TilePos(tilePos1.x(), startFree + 1));
+                slide.push_back(TilePos(tilePos1.x(), startFree + 1));
                 // final position of the last slided tile
-                path.push_back(TilePos(tilePos1.x(), startFree + 1 - distance));
+                slide.push_back(TilePos(tilePos1.x(), startFree + 1 - distance));
                 return true;
             }
             return false;
@@ -1094,9 +1094,9 @@ bool Board::canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Pa
             // so we can slide of end_free - start_free, compare this to the distance
             if (distance <= (endFree - startFree)) {
                 // first position of the last slidden tile
-                path.push_back(TilePos(tilePos1.x(), startFree - 1));
+                slide.push_back(TilePos(tilePos1.x(), startFree - 1));
                 // final position of the last slidden tile
-                path.push_back(TilePos(tilePos1.x(), startFree - 1 + distance));
+                slide.push_back(TilePos(tilePos1.x(), startFree - 1 + distance));
                 return true;
             }
             return false;
@@ -1135,9 +1135,9 @@ bool Board::canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Pa
             // so we can slide of start_free - end_free, compare this to the distance
             if (distance <= (startFree - endFree)) {
                 // first position of the last slidden tile
-                path.push_back(TilePos(startFree + 1, tilePos1.y()));
+                slide.push_back(TilePos(startFree + 1, tilePos1.y()));
                 // final position of the last slidden tile
-                path.push_back(TilePos(startFree + 1 - distance, tilePos1.y()));
+                slide.push_back(TilePos(startFree + 1 - distance, tilePos1.y()));
                 return true;
             }
             return false;
@@ -1171,9 +1171,9 @@ bool Board::canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Pa
             // so we can slide of endFree - startFree, compare this to the distance
             if (distance <= (endFree - startFree)) {
                 // first position of the last slidden tile
-                path.push_back(TilePos(startFree - 1, tilePos1.y()));
+                slide.push_back(TilePos(startFree - 1, tilePos1.y()));
                 // final position of the last slidden tile
-                path.push_back(TilePos(startFree - 1 + distance, tilePos1.y()));
+                slide.push_back(TilePos(startFree - 1 + distance, tilePos1.y()));
                 return true;
             }
             return false;
@@ -1240,26 +1240,26 @@ int Board::findSimplePath(TilePos const & tilePos1, TilePos const & tilePos2, Po
     // I isolate the special code when tiles can slide even if it duplicates code for now
     // Can we make a path sliding tiles ?, the slide move is always first, then a normal path
     if (m_tilesCanSlideFlag) {
-        Path slidePath;
+        Slide slide;
         // Find path of 2 segments (route A)
-        if (canSlideTiles(tilePos1, TilePos(tilePos2.x(), tilePos1.y()), slidePath)
+        if (canSlideTiles(tilePos1, TilePos(tilePos2.x(), tilePos1.y()), slide)
             && canMakePath(TilePos(tilePos2.x(), tilePos1.y()), tilePos2)) {
             path.clear();
             path.push_back(tilePos1);
             path.push_back(TilePos(tilePos2.x(), tilePos1.y()));
             path.push_back(tilePos2);
-            possibleMoves.push_back(PossibleMove(path, slidePath));
+            possibleMoves.push_back(PossibleMove(path, slide));
             ++numberOfPaths;
         }
 
         // Find path of 2 segments (route B)
-        if (canSlideTiles(tilePos1, TilePos(tilePos1.x(), tilePos2.y()), slidePath)
+        if (canSlideTiles(tilePos1, TilePos(tilePos1.x(), tilePos2.y()), slide)
             && canMakePath(TilePos(tilePos1.x(), tilePos2.y()), tilePos2)) {
             path.clear();
             path.push_back(tilePos1);
             path.push_back(TilePos(tilePos1.x(), tilePos2.y()));
             path.push_back(tilePos2);
-            possibleMoves.push_back(PossibleMove(path, slidePath));
+            possibleMoves.push_back(PossibleMove(path, slide));
             ++numberOfPaths;
         }
     }
@@ -1404,13 +1404,13 @@ int Board::delay() const
     return m_delay;
 }
 
-void Board::madeMove(TilePos const & tilePos1, TilePos const & tilePos2, Path slide)
+void Board::madeMove(TilePos const & tilePos1, TilePos const & tilePos2, Slide slide)
 {
     Move * move;
     if (slide.empty()) {
         move = new Move(tilePos1, tilePos2, field(tilePos1), field(tilePos2));
     } else {
-        move = new Move(tilePos1, tilePos2, field(tilePos1), field(tilePos2), slide.front().x(), slide.front().y(), slide.back().x(), slide.back().y());
+        move = new Move(tilePos1, tilePos2, field(tilePos1), field(tilePos2), slide);
     }
     m_undo.push_back(move);
     while (m_redo.size() != 0) {
@@ -1599,7 +1599,7 @@ void Board::undo()
                 qCDebug(KSHISEN_General) << "[undo] reversing slide";
 
                 // then undo the slide to put the tiles back to their original location
-                reverseSlide(TilePos(move->x1(), move->y1()), move->slideX1(), move->slideY1(), move->slideX2(), move->slideY2());
+                reverseSlide(TilePos(move->x1(), move->y1()), move->slide());
 
             } else {
                 qCDebug(KSHISEN_General) << "[undo] gravity from vertical slide";
@@ -1625,7 +1625,7 @@ void Board::undo()
         // undo slide if any
         if (move->hasSlide()) {
             // perform the slide in reverse
-            reverseSlide(TilePos(move->x1(), move->y1()), move->slideX1(), move->slideY1(), move->slideX2(), move->slideY2());
+            reverseSlide(TilePos(move->x1(), move->y1()), move->slide());
         }
     }
 
@@ -1647,7 +1647,7 @@ void Board::redo()
         auto move = m_redo.takeFirst();
         // redo the slide if any
         if (move->hasSlide()) {
-            Path s;
+            Slide s;
             s.push_back(TilePos(move->slideX1(), move->slideY1()));
             s.push_back(TilePos(move->slideX2(), move->slideY2()));
             performSlide(TilePos(move->x1(), move->y1()), s);

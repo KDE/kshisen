@@ -27,23 +27,17 @@ Move::Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int ti
     , m_tile1(tile1)
     , m_tile2(tile2)
     , m_hasSlide(false)
-    , m_slideX1(-1)
-    , m_slideY1(-1)
-    , m_slideX2(-1)
-    , m_slideY2(-1)
+    , m_slide(Slide())
 {
 }
 
-Move::Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2, int slideX1, int slideY1, int slideX2, int slideY2)
+Move::Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2, Slide const & slide)
     : m_tilePos1(tilePos1)
     , m_tilePos2(tilePos2)
     , m_tile1(tile1)
     , m_tile2(tile2)
     , m_hasSlide(true)
-    , m_slideX1(slideX1)
-    , m_slideY1(slideY1)
-    , m_slideX2(slideX2)
-    , m_slideY2(slideY2)
+    , m_slide(slide)
 {
 }
 
@@ -82,24 +76,29 @@ bool Move::hasSlide() const
     return m_hasSlide;
 }
 
+Slide Move::slide() const
+{
+    return m_slide;
+}
+
 int Move::slideX1() const
 {
-    return m_slideX1;
+    return m_slide.front().x();
 }
 
 int Move::slideY1() const
 {
-    return m_slideY1;
+    return m_slide.front().y();
 }
 
 int Move::slideX2() const
 {
-    return m_slideX2;
+    return m_slide.back().x();
 }
 
 int Move::slideY2() const
 {
-    return m_slideY2;
+    return m_slide.back().y();
 }
 
 void Move::swapTiles()
