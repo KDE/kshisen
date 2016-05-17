@@ -35,7 +35,7 @@ class PossibleMove
 {
 public:
     explicit PossibleMove(Path & path);
-    PossibleMove(Path & path, Path & slide);
+    PossibleMove(Path & path, Slide & slide);
 
     bool isInPath(TilePos const & tilePos) const;
 

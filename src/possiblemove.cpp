@@ -31,7 +31,7 @@ PossibleMove::PossibleMove(Path & path)
 {
 }
 
-PossibleMove::PossibleMove(Path & path, Path & slide)
+PossibleMove::PossibleMove(Path & path, Slide & slide)
     : m_path(path)
     , m_hasSlide(true)
     , m_slide(slide)
