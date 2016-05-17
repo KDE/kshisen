@@ -43,13 +43,13 @@ public:
 
     Path path() const;
     bool hasSlide() const;
-    Path slide() const;
+    Slide slide() const;
     void prependTile(TilePos const tilePos);
 
 private:
     Path m_path; ///< path used to connect the two tiles
     bool m_hasSlide; ///< flag set if the move requires a slide
-    Path m_slide; ///< path representing the movement of the last sliding tile
+    Slide m_slide; ///< representing the movement of the last sliding tile
 };
 }
 

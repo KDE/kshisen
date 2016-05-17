@@ -92,7 +92,7 @@ bool PossibleMove::hasSlide() const
     return m_hasSlide;
 }
 
-Path PossibleMove::slide() const
+Slide PossibleMove::slide() const
 {
     return m_slide;
 }
