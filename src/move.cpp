@@ -83,21 +83,33 @@ Slide Move::slide() const
 
 int Move::slideX1() const
 {
+    if (m_slide.empty()) {
+        return 0;
+    }
     return m_slide.front().x();
 }
 
 int Move::slideY1() const
 {
+    if (m_slide.empty()) {
+        return 0;
+    }
     return m_slide.front().y();
 }
 
 int Move::slideX2() const
 {
+    if (m_slide.empty()) {
+        return 0;
+    }
     return m_slide.back().x();
 }
 
 int Move::slideY2() const
 {
+    if (m_slide.empty()) {
+        return 0;
+    }
     return m_slide.back().y();
 }
 
