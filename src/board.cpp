@@ -1702,7 +1702,7 @@ void Board::dumpBoard(const std::vector<int> & field) const
             if (tile == EMPTY) {
                 row += QLatin1String(" --");
             } else {
-                row += QString(QLatin1String("%1")).arg(tile, 3);
+                row += QStringLiteral("%1").arg(tile, 3);
             }
         }
         qCDebug(KSHISEN_General) << row;
