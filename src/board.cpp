@@ -1692,13 +1692,13 @@ void Board::dumpBoard() const
     dumpBoard(m_field);
 }
 
-void Board::dumpBoard(const std::vector<int> & board) const
+void Board::dumpBoard(const std::vector<int> & field) const
 {
     qCDebug(KSHISEN_General) << "Board contents:";
     for (decltype(yTiles()) y = 0; y < yTiles(); ++y) {
         QString row;
         for (decltype(xTiles()) x = 0; x < xTiles(); ++x) {
-            auto tile = board.at(y * xTiles() + x);
+            auto tile = field.at(y * xTiles() + x);
             if (tile == EMPTY) {
                 row += QLatin1String(" --");
             } else {

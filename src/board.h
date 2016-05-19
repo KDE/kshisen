@@ -94,7 +94,7 @@ public:
     void makeHintMove();
     void finish();
     void dumpBoard() const;
-    void dumpBoard(const std::vector<int> & board) const;
+    void dumpBoard(const std::vector<int> & field) const;
 #endif
 
     /// Returns the number of tiles left on the board
