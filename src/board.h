@@ -275,11 +275,8 @@ private: // functions
     void marked(TilePos const & tilePos);
     void madeMove(TilePos const & tilePos1, TilePos const & tilePos2, Slide slide = Slide());
 
-    /** Applies gravity to all columns.
-     * @param tilePos1 coordinates of the first tile
-     * @param tilePos2 coordinates of the second tile
-     */
-    void applyGravity(TilePos const tilePos1, TilePos const tilePos2);
+    /// Applies gravity to all columns.
+    void applyGravity();
 
     /** Returns True if @p tilePos is a valid position on Board.
      * @return Whether @p tiePos is valid.
