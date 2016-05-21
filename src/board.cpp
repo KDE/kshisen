@@ -1401,15 +1401,14 @@ int Board::delay() const
 
 void Board::madeMove(TilePos const & tilePos1, TilePos const & tilePos2, Slide slide)
 {
-    Move * move;
+    std::unique_ptr<Move> move;
     if (slide.empty()) {
-        move = new Move(tilePos1, tilePos2, field(tilePos1), field(tilePos2));
+        move = std::make_unique<Move>(tilePos1, tilePos2, field(tilePos1), field(tilePos2));
     } else {
-        move = new Move(tilePos1, tilePos2, field(tilePos1), field(tilePos2), slide);
+        move = std::make_unique<Move>(tilePos1, tilePos2, field(tilePos1), field(tilePos2), slide);
     }
-    m_undo.push_back(move);
+    m_undo.push_back(std::move(move));
     while (m_redo.size() != 0) {
-        delete m_redo.front();
         m_redo.pop_front();
     }
     emit changed();
@@ -1433,7 +1432,7 @@ void Board::undo()
 
     clearHighlight();
     undrawConnection();
-    Move * move = m_undo.back();
+    std::unique_ptr<Move> move = std::move(m_undo.back());
     m_undo.pop_back();
     if (gravityFlag()) {
         // When both tiles reside in the same column, the order of undo is
@@ -1631,7 +1630,7 @@ void Board::undo()
     repaintTile(TilePos(move->x1(), move->y1()));
     repaintTile(TilePos(move->x2(), move->y2()));
 
-    m_redo.push_front(move);
+    m_redo.push_front(std::move(move));
     emit changed();
 }
 
@@ -1640,7 +1639,7 @@ void Board::redo()
     if (canRedo()) {
         clearHighlight();
         undrawConnection();
-        auto move = m_redo.front();
+        std::unique_ptr<Move> move = std::move(m_redo.front());
         m_redo.pop_front();
         // redo the slide if any
         if (move->hasSlide()) {
@@ -1654,7 +1653,7 @@ void Board::redo()
         repaintTile(TilePos(move->x1(), move->y1()));
         repaintTile(TilePos(move->x2(), move->y2()));
         applyGravity();
-        m_undo.push_back(move);
+        m_undo.push_back(std::move(move));
         emit changed();
     }
 }
@@ -1880,7 +1879,6 @@ void Board::resetUndo()
     if (!canUndo()) {
         return;
     }
-    qDeleteAll(m_undo);
     m_undo.clear();
 }
 
@@ -1889,7 +1887,6 @@ void Board::resetRedo()
     if (!canRedo()) {
         return;
     }
-    qDeleteAll(m_redo);
     m_redo.clear();
 }
 

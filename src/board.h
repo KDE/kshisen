@@ -25,6 +25,7 @@
 #define KSHISEN_BOARD_H
 
 // STL
+#include <memory>
 #include <vector>
 
 // Qt
@@ -296,8 +297,8 @@ private:
 
     KRandomSequence m_random;
 
-    std::list<Move *> m_undo; ///< Undo history
-    std::list<Move *> m_redo; ///< Redo history
+    std::list<std::unique_ptr<Move>> m_undo; ///< Undo history
+    std::list<std::unique_ptr<Move>> m_redo; ///< Redo history
 
     int m_markX;
     int m_markY;
