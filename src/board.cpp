@@ -1410,7 +1410,7 @@ void Board::madeMove(TilePos const & tilePos1, TilePos const & tilePos2, Slide s
     m_undo.push_back(move);
     while (m_redo.size() != 0) {
         delete m_redo.front();
-        m_redo.removeFirst();
+        m_redo.pop_front();
     }
     emit changed();
 }
@@ -1433,7 +1433,8 @@ void Board::undo()
 
     clearHighlight();
     undrawConnection();
-    Move * move = m_undo.takeLast();
+    Move * move = m_undo.back();
+    m_undo.pop_back();
     if (gravityFlag()) {
         // When both tiles reside in the same column, the order of undo is
         // significant (we must undo the lower tile first).
@@ -1630,7 +1631,7 @@ void Board::undo()
     repaintTile(TilePos(move->x1(), move->y1()));
     repaintTile(TilePos(move->x2(), move->y2()));
 
-    m_redo.prepend(move);
+    m_redo.push_front(move);
     emit changed();
 }
 
@@ -1639,7 +1640,8 @@ void Board::redo()
     if (canRedo()) {
         clearHighlight();
         undrawConnection();
-        auto move = m_redo.takeFirst();
+        auto move = m_redo.front();
+        m_redo.pop_front();
         // redo the slide if any
         if (move->hasSlide()) {
             Slide s;

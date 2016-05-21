@@ -296,8 +296,8 @@ private:
 
     KRandomSequence m_random;
 
-    QList<Move *> m_undo; ///< Undo history
-    QList<Move *> m_redo; ///< Redo history
+    std::list<Move *> m_undo; ///< Undo history
+    std::list<Move *> m_redo; ///< Redo history
 
     int m_markX;
     int m_markY;
