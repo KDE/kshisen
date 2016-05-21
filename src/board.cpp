@@ -45,9 +45,9 @@ namespace KShisen
 #define SEASONS_START 28
 #define FLOWERS_START 39
 
-static std::array<int, 5> const s_delay {{1000, 750, 500, 250, 125}};
-static std::array<int, 6> const s_sizeX {{14, 16, 18, 24, 26, 30}};
-static std::array<int, 6> const s_sizeY {{6, 9, 8, 12, 14, 16}};
+static std::array<int, 5> constexpr s_delay {{1000, 750, 500, 250, 125}};
+static std::array<int, 6> constexpr s_sizeX {{14, 16, 18, 24, 26, 30}};
+static std::array<int, 6> constexpr s_sizeY {{6, 9, 8, 12, 14, 16}};
 
 Board::Board(QWidget * parent)
     : QWidget(parent)
@@ -379,7 +379,7 @@ void Board::setSize(int x, int y)
     std::fill(m_field.begin(), m_field.end(), EMPTY);
 
     // set the minimum size of the scalable window
-    auto const minScale = 0.2;
+    auto constexpr minScale = 0.2;
     auto const w = qRound(m_tiles.qWidth() * 2.0 * minScale) * xTiles() + m_tiles.width();
     auto const h = qRound(m_tiles.qHeight() * 2.0 * minScale) * yTiles() + m_tiles.height();
 
@@ -1194,8 +1194,8 @@ int Board::findPath(TilePos const & tilePos1, TilePos const & tilePos2, Possible
     }
 
     // Find paths of 3 segments
-    std::array<int, 4> const dx {{1, 0, -1, 0}};
-    std::array<int, 4> const dy {{0, 1, 0, -1}};
+    std::array<int, 4> constexpr dx {{1, 0, -1, 0}};
+    std::array<int, 4> constexpr dy {{0, 1, 0, -1}};
 
     for (auto i = 0; i < 4; ++i) {
         auto tempX = tilePos1.x() + dx.at(i);

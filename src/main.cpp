@@ -37,7 +37,7 @@ namespace KShisen
 {
 Q_LOGGING_CATEGORY(KSHISEN_General, "kshisen")
 }
-static const char description[] = I18N_NOOP("A KDE game similar to Mahjongg");
+static constexpr char description[] = I18N_NOOP("A KDE game similar to Mahjongg");
 
 int main(int argc, char ** argv)
 {

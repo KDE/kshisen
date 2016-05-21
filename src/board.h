@@ -66,7 +66,7 @@ public:
     explicit Board(QWidget * parent = nullptr);
 
     /// Number of different kinds of tiles in the game.
-    static int const nTiles = 42;
+    static int constexpr nTiles = 42;
 
     virtual void paintEvent(QPaintEvent * e);
     virtual void mousePressEvent(QMouseEvent * e);
