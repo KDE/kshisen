@@ -21,11 +21,14 @@
 #ifndef KSHISEN_APP_H
 #define KSHISEN_APP_H
 
-// KDE
-#include <KXmlGuiWindow>
+// STL
+#include <memory>
 
 // Qt
-class QLabel;
+#include <QLabel>
+
+// KDE
+#include <KXmlGuiWindow>
 
 // KShisen
 namespace KShisen
@@ -136,10 +139,10 @@ private:
     void setCheatModeEnabled(bool enabled);
 
 private:
-    QLabel * m_gameTipLabel; ///< Status bar area for game tips
-    QLabel * m_gameTimerLabel; ///< Status bar area for the timer
-    QLabel * m_gameTilesLabel; ///< Status bar area for the tile counter
-    QLabel * m_gameCheatLabel; ///< Status bar area for the cheat mode
+    std::unique_ptr<QLabel> m_gameTipLabel; ///< Status bar area for game tips
+    std::unique_ptr<QLabel> m_gameTimerLabel; ///< Status bar area for the timer
+    std::unique_ptr<QLabel> m_gameTilesLabel; ///< Status bar area for the tile counter
+    std::unique_ptr<QLabel> m_gameCheatLabel; ///< Status bar area for the cheat mode
     Board * m_board; ///< Holds the game board
 };
 }

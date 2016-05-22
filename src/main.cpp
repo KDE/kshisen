@@ -18,6 +18,9 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
+// STL
+#include <memory>
+
 // Qt
 #include <QApplication>
 #include <QCommandLineParser>
@@ -74,7 +77,7 @@ int main(int argc, char ** argv)
 
     KDBusService service;
 
-    auto app = new KShisen::App();
+    auto app = std::make_unique<KShisen::App>();
     app->show();
     return a.exec();
 }
