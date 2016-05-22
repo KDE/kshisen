@@ -1432,7 +1432,7 @@ void Board::undo()
 
     clearHighlight();
     undrawConnection();
-    std::unique_ptr<Move> move = std::move(m_undo.back());
+    auto move = std::move(m_undo.back());
     m_undo.pop_back();
     if (gravityFlag()) {
         // When both tiles reside in the same column, the order of undo is
@@ -1639,7 +1639,7 @@ void Board::redo()
     if (canRedo()) {
         clearHighlight();
         undrawConnection();
-        std::unique_ptr<Move> move = std::move(m_redo.front());
+        auto move = std::move(m_redo.front());
         m_redo.pop_front();
         // redo the slide if any
         if (move->hasSlide()) {
