@@ -1408,8 +1408,8 @@ void Board::madeMove(TilePos const & tilePos1, TilePos const & tilePos2, Slide s
         move = std::make_unique<Move>(tilePos1, tilePos2, field(tilePos1), field(tilePos2), slide);
     }
     m_undo.push_back(std::move(move));
-    while (m_redo.size() != 0) {
-        m_redo.pop_front();
+    if (!m_redo.empty()) {
+        m_redo.clear();
     }
     emit changed();
 }
