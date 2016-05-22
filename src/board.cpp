@@ -1966,7 +1966,7 @@ bool Board::isValidPosWithOutline(TilePos const & tilePos) const
         && tilePos.x() <= xTiles()
         && tilePos.y() <= yTiles();
 }
-}
+} // namespace KShisen
 
 // vim: expandtab:tabstop=4:shiftwidth=4
 // kate: space-indent on; indent-width 4

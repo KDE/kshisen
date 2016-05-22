@@ -51,7 +51,7 @@ private:
     bool m_hasSlide; ///< flag set if the move requires a slide
     Slide m_slide; ///< representing the movement of the last sliding tile
 };
-}
+} // namespace KShisen
 
 #endif // KSHISEN_POSSIBLEMOVE_H
 

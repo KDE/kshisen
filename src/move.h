@@ -62,7 +62,7 @@ private:
     bool m_hasSlide; ///< if we performed a slide during the move
     Slide m_slide; ///< original x coordinate of the last slided tile
 };
-}
+} // namespace KShisen
 
 #endif // KSHISEN_MOVE_H
 

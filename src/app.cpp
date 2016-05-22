@@ -392,7 +392,7 @@ void App::showSettingsDialog()
     connect(dialog, &KMahjonggConfigDialog::settingsChanged, m_board, &Board::loadSettings);
     dialog->show();
 }
-}
+} // namespace KShisen
 
 // vim: expandtab:tabstop=4:shiftwidth=4
 // kate: space-indent on; indent-width 4

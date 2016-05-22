@@ -334,7 +334,7 @@ private:
     KgSound m_soundPick; ///< Sound object to play when tile is selected
     KgSound m_soundFall; ///< Sound object to play when tiles fall down in gravity mode
 };
-}
+} // namespace KShisen
 
 #endif // KSHISEN_BOARD_H
 

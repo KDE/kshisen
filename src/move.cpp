@@ -118,7 +118,7 @@ void Move::swapTiles()
     std::swap(m_tilePos1, m_tilePos2);
     std::swap(m_tile1, m_tile2);
 }
-}
+} // namespace KShisen
 
 // vim: expandtab:tabstop=4:shiftwidth=4
 // kate: space-indent on; indent-width 4

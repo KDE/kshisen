@@ -145,7 +145,7 @@ private:
     std::unique_ptr<QLabel> m_gameCheatLabel; ///< Status bar area for the cheat mode
     Board * m_board; ///< Holds the game board
 };
-}
+} // namespace KShisen
 
 #endif // KSHISEN_APP_H
 
