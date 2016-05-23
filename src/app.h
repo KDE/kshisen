@@ -21,14 +21,11 @@
 #ifndef KSHISEN_APP_H
 #define KSHISEN_APP_H
 
-// STL
-#include <memory>
-
-// Qt
-#include <QLabel>
-
 // KDE
 #include <KXmlGuiWindow>
+
+// Qt
+class QLabel;
 
 // KShisen
 namespace KShisen

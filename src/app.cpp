@@ -27,6 +27,7 @@
 
 // Qt
 #include <QIcon>
+#include <QLabel>
 #include <QPointer>
 #include <QStatusBar>
 #include <QTimer>
