@@ -78,7 +78,7 @@ int main(int argc, char ** argv)
 
     KDBusService service;
 
-    auto app = std::make_shared<KShisen::App>();
+    auto app = new KShisen::App();
     app->show();
     return a.exec();
 }
