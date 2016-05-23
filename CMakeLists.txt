@@ -1,8 +1,10 @@
 project(kshisen)
 
-cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
 set(QT_MIN_VERSION "5.2.0")
 set(KF5_MIN_VERSION "5.15.0")
+
+set(CMAKE_CXX_STANDARD 14)
 
 find_package(ECM 1.7.0 REQUIRED NO_MODULE)
 
@@ -44,10 +46,6 @@ add_definitions(
     -DQT_NO_CAST_FROM_BYTEARRAY
     -DQT_NO_URL_CAST_FROM_STRING
     -DQT_USE_QSTRINGBUILDER
-)
-
-add_compile_options(
-    -std=c++14
 )
 
 add_subdirectory(src)
