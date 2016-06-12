@@ -9,6 +9,7 @@
   <name xml:lang="ca-valencia">KShisen</name>
   <name xml:lang="cs">KShisen</name>
   <name xml:lang="de">KShisen</name>
+  <name xml:lang="el">KShisen</name>
   <name xml:lang="en-GB">KShisen</name>
   <name xml:lang="es">KShisen</name>
   <name xml:lang="fi">KShisen</name>
@@ -33,6 +34,7 @@
   <summary xml:lang="ca-valencia">Joc de mosaics Shisen-Sho a l'estil Mahjongg</summary>
   <summary xml:lang="cs">Hra s dlaždicemi Šisen-Šo</summary>
   <summary xml:lang="de">Spiel mit Mahjongg-Spielsteinen</summary>
+  <summary xml:lang="el">Παιχνίδι Shisen-Sho με πλακάκια όπως το Mahjongg</summary>
   <summary xml:lang="en-GB">Shisen-Sho Mahjongg-like Tile Game</summary>
   <summary xml:lang="es">Juego de fichas similar al Shisen-Sho Mahjongg</summary>
   <summary xml:lang="fi">Shisen-sho, mahjongmainen laattapeli</summary>
@@ -59,6 +61,7 @@
     <p xml:lang="ca">El KShisen és un joc de tipus solitari que es juga usant el conjunt de fitxers estàndard del Mahjong. A diferència del Mahjong, el KShisen només té una capa de fitxes barrejades.</p>
     <p xml:lang="ca-valencia">El KShisen és un joc de tipus solitari que es juga usant el conjunt de fitxers estàndard del Mahjong. A diferència del Mahjong, el KShisen només té una capa de fitxes barrejades.</p>
     <p xml:lang="de">KShisen ähnelt dem Spiel Solitär und wird mit Mahjong-Steinen gespielt. Anders als bei Mahjong, gibt es bei KShisen aber nur eine Ebene gemischter Steine.</p>
+    <p xml:lang="el">Το KShisen είναι ένα παιχνίδι που παίζεται με τα πλακάκια του Mahjong. Όμως αντίθετα από το Mahjong, το KShisen έχει ένα μόνο επίπεδο με πλακάκια.</p>
     <p xml:lang="en-GB">KShisen is a solitaire-like game played using the standard set of Mahjong tiles. Unlike Mahjong however, KShisen has only one layer of scrambled tiles.</p>
     <p xml:lang="es">KShisen es un juego de solitario que se juega usando las fichas típicas del Mahjong. Al contrario del Mahjong, KShisen solo tiene una capa de fichas barajadas.</p>
     <p xml:lang="fi">KShisen on pasianssimainen peli, joka käyttää tavallisia mahjong-tiiliä. Mahjongista poiketen KShisenissä on kuitenkin vain yksi kerros sekoitettuja tiiliä.</p>
