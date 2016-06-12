@@ -1337,7 +1337,7 @@ void Board::undrawConnection()
     m_paintConnection = false;
 
     auto pt1 = oldConnection.cbegin();
-    auto pt2 = pt1 + 1;
+    auto pt2 = pt1 + 1; // TODO: std::next?
     while (pt2 != oldConnection.cend()) {
         if (pt1->y() == pt2->y()) {
             for (auto i = qMin(pt1->x(), pt2->x()); i <= qMax(pt1->x(), pt2->x()); ++i) {
