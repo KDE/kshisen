@@ -334,15 +334,15 @@ void Board::mousePressEvent(QMouseEvent * e)
                         } else if (fieldTile == clickedTile) {
                             repaintTile(TilePos(i, j));
                         } else if (m_chineseStyleFlag) {
-                            if (clickedTile >= SEASONS_START && clickedTile <= (SEASONS_START + 3) && fieldTile >= SEASONS_START && fieldTile <= (SEASONS_START + 3)) {
+                            if (tileIsSeason(clickedTile) && tileIsSeason(fieldTile)) {
                                 repaintTile(TilePos(i, j));
-                            } else if (clickedTile >= FLOWERS_START && clickedTile <= (FLOWERS_START + 3) && fieldTile >= FLOWERS_START && fieldTile <= (FLOWERS_START + 3)) {
+                            } else if (tileIsFlower(clickedTile) && tileIsFlower(fieldTile)) {
                                 repaintTile(TilePos(i, j));
                             }
                             // oldHighlighted
-                            if (oldHighlighted >= SEASONS_START && oldHighlighted <= (SEASONS_START + 3) && fieldTile >= SEASONS_START && fieldTile <= (SEASONS_START + 3)) {
+                            if (tileIsSeason(oldHighlighted) && tileIsSeason(fieldTile)) {
                                 repaintTile(TilePos(i, j));
-                            } else if (oldHighlighted >= FLOWERS_START && oldHighlighted <= (FLOWERS_START + 3) && fieldTile >= FLOWERS_START && fieldTile <= (FLOWERS_START + 3)) {
+                            } else if (tileIsFlower(oldHighlighted) && tileIsFlower(fieldTile)) {
                                 repaintTile(TilePos(i, j));
                             }
                         }
@@ -443,7 +443,7 @@ void Board::newGame()
     for (decltype(yTiles()) y = 0; y < yTiles(); ++y) {
         for (decltype(xTiles()) x = 0; x < xTiles(); ++x) {
             // do not duplicate flowers or seasons
-            if (!m_chineseStyleFlag || !((curTile >= SEASONS_START && curTile <= (SEASONS_START + 3)) || (curTile >= FLOWERS_START && curTile <= (FLOWERS_START + 3)))) {
+            if (!m_chineseStyleFlag || !(tileIsSeason(curTile) || tileIsFlower(curTile))) {
                 setField(TilePos(x, y), curTile);
                 if (++tileCount >= 4) {
                     tileCount = 0;
@@ -556,13 +556,11 @@ bool Board::tilesMatch(int tile1, int tile2) const
     // for flowers and seasons
     if (m_chineseStyleFlag) {
         // if both tiles are seasons
-        if (tile1 >= SEASONS_START && tile1 <= SEASONS_START + 3
-            && tile2 >= SEASONS_START && tile2 <= SEASONS_START + 3) {
+        if (tileIsSeason(tile1) && tileIsSeason(tile2)) {
             return true;
         }
         // if both tiles are flowers
-        if (tile1 >= FLOWERS_START && tile1 <= FLOWERS_START + 3
-            && tile2 >= FLOWERS_START && tile2 <= FLOWERS_START + 3) {
+        if (tileIsFlower(tile1) && tileIsFlower(tile2)) {
             return true;
         }
     }
@@ -1965,6 +1963,16 @@ bool Board::isValidPosWithOutline(TilePos const & tilePos) const
         && tilePos.y() >= -1
         && tilePos.x() <= xTiles()
         && tilePos.y() <= yTiles();
+}
+
+bool Board::tileIsFlower(int tile) const
+{
+    return tile >= FLOWERS_START && tile <= (FLOWERS_START + 3);
+}
+
+bool Board::tileIsSeason(int tile) const
+{
+    return tile >= SEASONS_START && tile <= (SEASONS_START + 3);
 }
 } // namespace KShisen
 
