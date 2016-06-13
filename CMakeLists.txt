@@ -31,7 +31,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 include(FeatureSummary)
 include(ECMAddAppIcon)
 include(GenerateExportHeader)
-include(ECMPackageConfigHelpers)
+include(CMakePackageConfigHelpers)
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
 include(ECMMarkNonGuiExecutable)
