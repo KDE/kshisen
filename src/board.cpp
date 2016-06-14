@@ -334,15 +334,15 @@ void Board::mousePressEvent(QMouseEvent * e)
                         } else if (fieldTile == clickedTile) {
                             repaintTile(TilePos(i, j));
                         } else if (m_chineseStyleFlag) {
-                            if (tileIsSeason(clickedTile) && tileIsSeason(fieldTile)) {
+                            if (isTileSeason(clickedTile) && isTileSeason(fieldTile)) {
                                 repaintTile(TilePos(i, j));
-                            } else if (tileIsFlower(clickedTile) && tileIsFlower(fieldTile)) {
+                            } else if (isTileFlower(clickedTile) && isTileFlower(fieldTile)) {
                                 repaintTile(TilePos(i, j));
                             }
                             // oldHighlighted
-                            if (tileIsSeason(oldHighlighted) && tileIsSeason(fieldTile)) {
+                            if (isTileSeason(oldHighlighted) && isTileSeason(fieldTile)) {
                                 repaintTile(TilePos(i, j));
-                            } else if (tileIsFlower(oldHighlighted) && tileIsFlower(fieldTile)) {
+                            } else if (isTileFlower(oldHighlighted) && isTileFlower(fieldTile)) {
                                 repaintTile(TilePos(i, j));
                             }
                         }
@@ -443,7 +443,7 @@ void Board::newGame()
     for (decltype(yTiles()) y = 0; y < yTiles(); ++y) {
         for (decltype(xTiles()) x = 0; x < xTiles(); ++x) {
             // do not duplicate flowers or seasons
-            if (!m_chineseStyleFlag || !(tileIsSeason(curTile) || tileIsFlower(curTile))) {
+            if (!m_chineseStyleFlag || !(isTileSeason(curTile) || isTileFlower(curTile))) {
                 setField(TilePos(x, y), curTile);
                 if (++tileCount >= 4) {
                     tileCount = 0;
@@ -556,11 +556,11 @@ bool Board::tilesMatch(int tile1, int tile2) const
     // for flowers and seasons
     if (m_chineseStyleFlag) {
         // if both tiles are seasons
-        if (tileIsSeason(tile1) && tileIsSeason(tile2)) {
+        if (isTileSeason(tile1) && isTileSeason(tile2)) {
             return true;
         }
         // if both tiles are flowers
-        if (tileIsFlower(tile1) && tileIsFlower(tile2)) {
+        if (isTileFlower(tile1) && isTileFlower(tile2)) {
             return true;
         }
     }
@@ -1965,12 +1965,12 @@ bool Board::isValidPosWithOutline(TilePos const & tilePos) const
         && tilePos.y() <= yTiles();
 }
 
-bool Board::tileIsFlower(int tile) const
+bool Board::isTileFlower(int tile) const
 {
     return tile >= FLOWERS_START && tile <= (FLOWERS_START + 3);
 }
 
-bool Board::tileIsSeason(int tile) const
+bool Board::isTileSeason(int tile) const
 {
     return tile >= SEASONS_START && tile <= (SEASONS_START + 3);
 }

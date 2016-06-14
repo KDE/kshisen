@@ -292,11 +292,11 @@ private: // functions
     /** Returns True if @p tile is of kind FLOWERS.
      * @return Whether @p tile is within the range of the Flower tiles.
      */
-    bool tileIsFlower(int tile) const;
+    bool isTileFlower(int tile) const;
     /** Returns True if @p tile is of kind SEASONS.
      * @return Whether @p tile is within the range of the Seasons tiles.
      */
-    bool tileIsSeason(int tile) const;
+    bool isTileSeason(int tile) const;
 
 private:
     KGameClock m_gameClock;
