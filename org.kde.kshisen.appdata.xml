@@ -30,6 +30,7 @@
   <name xml:lang="uk">KShisen</name>
   <name xml:lang="x-test">xxKShisenxx</name>
   <name xml:lang="zh-CN">KShisen</name>
+  <name xml:lang="zh-TW">KShisen</name>
   <summary>Shisen-Sho Mahjongg-like Tile Game</summary>
   <summary xml:lang="ca">Joc de mosaics Shisen-Sho a l'estil Mahjongg</summary>
   <summary xml:lang="ca-valencia">Joc de mosaics Shisen-Sho a l'estil Mahjongg</summary>
@@ -56,6 +57,7 @@
   <summary xml:lang="uk">Шісен-шо, схожа на маджонґ гра з плитками</summary>
   <summary xml:lang="x-test">xxShisen-Sho Mahjongg-like Tile Gamexx</summary>
   <summary xml:lang="zh-CN">类似连连看的麻将游戏</summary>
+  <summary xml:lang="zh-TW">四川省麻將牌遊戲</summary>
   <description>
     <p>
       KShisen is a solitaire-like game played using the standard set of Mahjong tiles. Unlike Mahjong however, KShisen has only one layer of scrambled tiles.
@@ -84,6 +86,7 @@
     <p xml:lang="uk">KShisen — гра, подібна до пасьянсу, у якій використовуються плитки маджонґа. Втім, на відміну від класичної гри у маджонґ, у KShisen ви матимете справу лише з одним шаром плиток.</p>
     <p xml:lang="x-test">xxKShisen is a solitaire-like game played using the standard set of Mahjong tiles. Unlike Mahjong however, KShisen has only one layer of scrambled tiles.xx</p>
     <p xml:lang="zh-CN">KShisen 是一个使用麻将牌的类牌游戏。和麻将配对不同的是，KShisen 只有一层打乱的牌。</p>
+    <p xml:lang="zh-TW">KShisen 是類似四川省麻將的個人遊戲。不過它只有一層。</p>
   </description>
   <url type="homepage">http://games.kde.org/game.php?game=kshisen</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kshisen</url>
