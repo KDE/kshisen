@@ -69,9 +69,9 @@ public:
     /// Number of different kinds of tiles in the game.
     static int constexpr nTiles = 42;
 
-    virtual void paintEvent(QPaintEvent * e);
-    virtual void mousePressEvent(QMouseEvent * e);
-    virtual void resizeEvent(QResizeEvent * e);
+    void paintEvent(QPaintEvent * e) Q_DECL_OVERRIDE;
+    void mousePressEvent(QMouseEvent * e) Q_DECL_OVERRIDE;
+    void resizeEvent(QResizeEvent * e) Q_DECL_OVERRIDE;
 
     void setDelay(int);
     int delay() const;
@@ -193,7 +193,7 @@ private slots:
     void undrawConnection();
 
 protected:
-    virtual QSize sizeHint() const;
+    QSize sizeHint() const Q_DECL_OVERRIDE;
 
 private: // functions
     /** Calculates the board's offset.
