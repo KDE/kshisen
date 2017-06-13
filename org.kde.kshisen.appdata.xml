@@ -14,6 +14,7 @@
   <name xml:lang="es">KShisen</name>
   <name xml:lang="et">KShisen</name>
   <name xml:lang="fi">KShisen</name>
+  <name xml:lang="fr">KShisen</name>
   <name xml:lang="gl">KShisen</name>
   <name xml:lang="nl">KShisen</name>
   <name xml:lang="nn">KShisen</name>
@@ -41,6 +42,7 @@
   <summary xml:lang="es">Juego de fichas similar al Shisen-Sho Mahjongg</summary>
   <summary xml:lang="et">Mahjonggi moodi klotsimäng</summary>
   <summary xml:lang="fi">Shisen-sho, mahjongmainen laattapeli</summary>
+  <summary xml:lang="fr">Jeu de tuiles Shisen-Sho dans le style du Mahjongg</summary>
   <summary xml:lang="gl">Xogo de fichas Shisen-so ao estilo do Mahjongg</summary>
   <summary xml:lang="nl">Shisen-Sho Mahjongg-achtig stenenspel</summary>
   <summary xml:lang="nn">Shisen-Sho mahjong-liknande brikkespel</summary>
@@ -70,6 +72,7 @@
     <p xml:lang="es">KShisen es un juego de solitario que se juega usando las fichas típicas del Mahjong. Al contrario del Mahjong, KShisen solo tiene una capa de fichas barajadas.</p>
     <p xml:lang="et">KShisen on Mahjonggi moodi mäng, mida mängitaksegi Mahjonggile omaste klotsidega. Viimasest erinevalt on siin aga ainult üks kiht klotse.</p>
     <p xml:lang="fi">KShisen on pasianssimainen peli, joka käyttää tavallisia mahjong-tiiliä. Mahjongista poiketen KShisenissä on kuitenkin vain yksi kerros sekoitettuja tiiliä.</p>
+    <p xml:lang="fr">KShisen est un jeu en solitaire qui se joue en utilisant les tuiles standard du Mahjong. A la différence du Mahjong, KShisen n'a qu'une couche de tuiles mélangées.</p>
     <p xml:lang="gl">O KShisen é un xogo similar ao solitario que se xoga usando as pezas estándar do Mahjong. Porén, a diferenza do Mahjong, o KShisen ten unicamente unha capa de pezas desordenadas.</p>
     <p xml:lang="nl">KShisen is een solitaire-achtig spel dat wordt gespeeld met de standaard set Mahjong stenen. Anders dan Mahjong heeft KShisen slechts één laag door elkaar gehaalde stenen.</p>
     <p xml:lang="nn">KShisen er eit kaballiknande spel som ein spelar med vanleg mahjongbrikker. I motsetning ti spelet mahjong har ein berre eitt lag med brikker.</p>
