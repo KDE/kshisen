@@ -28,6 +28,7 @@
   <name xml:lang="sr-ijekavian">К‑шисен</name>
   <name xml:lang="sr-ijekavianlatin">KShisen</name>
   <name xml:lang="sv">kshisen</name>
+  <name xml:lang="tr">KShisen</name>
   <name xml:lang="uk">KShisen</name>
   <name xml:lang="x-test">xxKShisenxx</name>
   <name xml:lang="zh-CN">KShisen</name>
@@ -56,6 +57,7 @@
   <summary xml:lang="sr-ijekavian">Игра с плочицама попут маџонга</summary>
   <summary xml:lang="sr-ijekavianlatin">Igra s pločicama poput madžonga</summary>
   <summary xml:lang="sv">Shisen-Sho Mahjongg-liknande brickspel</summary>
+  <summary xml:lang="tr">Shisen-Sho Mahjongg Benzeri Döşeme Oyunu</summary>
   <summary xml:lang="uk">Шісен-шо, схожа на маджонґ гра з плитками</summary>
   <summary xml:lang="x-test">xxShisen-Sho Mahjongg-like Tile Gamexx</summary>
   <summary xml:lang="zh-CN">类似连连看的麻将游戏</summary>
@@ -86,6 +88,7 @@
     <p xml:lang="sr-ijekavian">К‑шисен је игра налик на пасијанс са стандардним скупом маџонг плочица. За разлику од маџонга, К‑шисен има само један слој измешаних плочица.</p>
     <p xml:lang="sr-ijekavianlatin">KShisen je igra nalik na pasijans sa standardnim skupom madžong pločica. Za razliku od madžonga, KShisen ima samo jedan sloj izmešanih pločica.</p>
     <p xml:lang="sv">Ksisen är ett patiensliknande spel som spelas med den vanliga uppsättningen Mahjong-brickor. I motsats till Mahjong har Kshisen dock bara ett lager med blandade brickor.</p>
+    <p xml:lang="tr">KShisen, Mahjong standart kiremit kümesini kullanarak oynanan, solitaire benzeri bir oyundur. Bununla birlikte Mahjong'tan farklı olarak, KShisen'in sadece tek katmanlı döşeme vardır.</p>
     <p xml:lang="uk">KShisen — гра, подібна до пасьянсу, у якій використовуються плитки маджонґа. Втім, на відміну від класичної гри у маджонґ, у KShisen ви матимете справу лише з одним шаром плиток.</p>
     <p xml:lang="x-test">xxKShisen is a solitaire-like game played using the standard set of Mahjong tiles. Unlike Mahjong however, KShisen has only one layer of scrambled tiles.xx</p>
     <p xml:lang="zh-CN">KShisen 是一个使用麻将牌的类牌游戏。和麻将配对不同的是，KShisen 只有一层打乱的牌。</p>
