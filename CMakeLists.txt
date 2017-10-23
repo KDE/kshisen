@@ -1,8 +1,8 @@
 project(kshisen)
 
 cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
-set(QT_MIN_VERSION "5.2.0")
-set(KF5_MIN_VERSION "5.15.0")
+set(QT_MIN_VERSION "5.7.0")
+set(KF5_MIN_VERSION "5.30.0")
 
 set(CMAKE_CXX_STANDARD 14) # C++14...
 set(CMAKE_CXX_STANDARD_REQUIRED ON) # ...is required...
@@ -11,7 +11,7 @@ set(CMAKE_CXX_EXTENSIONS OFF) # ...without compiler extensions like gnu++14
 # Found this somewhere but cannot re-find it now ... but want to investigate later, so keeping this here for now.
 #set(CXX_CLANG_TIDY ON)
 
-find_package(ECM 1.7.0 REQUIRED NO_MODULE)
+find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 
 if(ENABLE_CLAZY)
     set(CMAKE_CXX_COMPILER clazy)
