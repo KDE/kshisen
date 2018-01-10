@@ -139,8 +139,8 @@ bool Board::loadTileset(QString const & pathToTileset)
             Prefs::setTileSet(pathToTileset);
             Prefs::self()->save();
             resizeBoard();
+            return true;
         }
-        return true;
     }
     //Try default
     if (m_tiles.loadDefault()) {
