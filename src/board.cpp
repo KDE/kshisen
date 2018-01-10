@@ -97,12 +97,12 @@ Board::Board(QWidget * parent)
 void Board::loadSettings()
 {
     if (!loadTileset(Prefs::tileSet())) {
-        qCWarning(KSHISEN_General) << "An error occurred when loading the tileset" << Prefs::tileSet() << "KShisen will continue with the default tileset.";
+        qCWarning(KSHISEN_General) << "An error occurred when loading the tileset. " << Prefs::tileSet() << " and the default tileset have been tried.";
     }
 
     // Load background
     if (!loadBackground(Prefs::background())) {
-        qCWarning(KSHISEN_General) << "An error occurred when loading the background" << Prefs::background() << "KShisen will continue with the default background.";
+        qCWarning(KSHISEN_General) << "An error occurred when loading the background. " << Prefs::background() << " and the default background have been tried.";
     }
 
     // There are tile sets, that have only one tile for e.g. the flowers group.
