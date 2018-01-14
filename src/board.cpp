@@ -27,6 +27,7 @@
 #include <array>
 
 // Qt
+#include <QMessageBox>
 #include <QMouseEvent>
 #include <QPainter>
 #include <QStandardPaths>
@@ -97,12 +98,16 @@ Board::Board(QWidget * parent)
 void Board::loadSettings()
 {
     if (!loadTileset(Prefs::tileSet())) {
-        qCWarning(KSHISEN_General) << "An error occurred when loading the tileset. " << Prefs::tileSet() << " and the default tileset have been tried.";
+        QMessageBox::critical(this,
+                              i18n("Error Loading Tiles"),
+                              i18nc("%1 is a path to a tileset file", "An error occurred when loading the tileset. %1 and the default tileset have been tried.\nPlease install the KMahjongg library.", Prefs::tileSet()));
     }
 
     // Load background
     if (!loadBackground(Prefs::background())) {
-        qCWarning(KSHISEN_General) << "An error occurred when loading the background. " << Prefs::background() << " and the default background have been tried.";
+        QMessageBox::critical(this,
+                              i18n("Error Loading Background"),
+                              i18nc("%1 is a path to a background image file", "An error occurred when loading the background. %1 and the default background have been tried.\nPlease install the KMahjongg library.", Prefs::background()));
     }
 
     // There are tile sets, that have only one tile for e.g. the flowers group.
