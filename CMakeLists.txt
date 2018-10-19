@@ -39,6 +39,8 @@ include(KDEInstallDirs)
 include(ECMInstallIcons)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
+include(ECMQtDeclareLoggingCategory)
+
 
 find_package(KF5KMahjongglib REQUIRED)
 find_package(KF5KDEGames 4.9.0 REQUIRED)
@@ -61,5 +63,6 @@ add_subdirectory(doc)
 install(PROGRAMS org.kde.kshisen.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install(FILES org.kde.kshisen.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
+install( FILES kshisen.categories DESTINATION ${KDE_INSTALL_CONFDIR} )
 ########### Display Summary ###############
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

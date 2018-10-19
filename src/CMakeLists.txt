@@ -6,6 +6,8 @@ set(kshisen_SRCS
     possiblemove.cpp
 )
 
+ecm_qt_declare_logging_category(kshisen_SRCS HEADER debug.h IDENTIFIER KSHISEN_General CATEGORY_NAME kshisen)
+
 ki18n_wrap_ui(kshisen_SRCS settings.ui)
 
 kconfig_add_kcfg_files(kshisen_SRCS prefs.kcfgc)
