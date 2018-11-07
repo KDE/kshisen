@@ -101,6 +101,7 @@
   <url type="homepage">http://games.kde.org/game.php?game=kshisen</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kshisen</url>
   <url type="help">http://docs.kde.org/stable/en/kdegames/kshisen/index.html</url>
+  <url type="donation">https://www.kde.org/community/donations/?app=kshisen&amp;source=appdata</url>
   <screenshots>
     <screenshot type="default">
       <image>http://kde.org/images/screenshots/kshisen.png</image>
