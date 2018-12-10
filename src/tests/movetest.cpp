@@ -120,4 +120,3 @@ void MoveTest::cleanupTestCase()
 }
 
 QTEST_APPLESS_MAIN(MoveTest)
-#include "movetest.moc"
