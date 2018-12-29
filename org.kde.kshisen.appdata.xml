@@ -107,6 +107,7 @@
   <url type="donation">https://www.kde.org/community/donations/?app=kshisen&amp;source=appdata</url>
   <screenshots>
     <screenshot type="default">
+      <caption>Playing KShisen</caption>
       <image>https://kde.org/images/screenshots/kshisen.png</image>
     </screenshot>
   </screenshots>
