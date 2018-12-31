@@ -29,7 +29,7 @@
   <name xml:lang="sr-Latn">KShisen</name>
   <name xml:lang="sr-ijekavian">К‑шисен</name>
   <name xml:lang="sr-ijekavianlatin">KShisen</name>
-  <name xml:lang="sv">kshisen</name>
+  <name xml:lang="sv">Kshisen</name>
   <name xml:lang="tr">KShisen</name>
   <name xml:lang="uk">KShisen</name>
   <name xml:lang="x-test">xxKShisenxx</name>
@@ -94,7 +94,7 @@
     <p xml:lang="sr-Latn">KShisen je igra nalik na pasijans sa standardnim skupom madžong pločica. Za razliku od madžonga, KShisen ima samo jedan sloj izmešanih pločica.</p>
     <p xml:lang="sr-ijekavian">К‑шисен је игра налик на пасијанс са стандардним скупом маџонг плочица. За разлику од маџонга, К‑шисен има само један слој измешаних плочица.</p>
     <p xml:lang="sr-ijekavianlatin">KShisen je igra nalik na pasijans sa standardnim skupom madžong pločica. Za razliku od madžonga, KShisen ima samo jedan sloj izmešanih pločica.</p>
-    <p xml:lang="sv">Ksisen är ett patiensliknande spel som spelas med den vanliga uppsättningen Mahjong-brickor. I motsats till Mahjong har Kshisen dock bara ett lager med blandade brickor.</p>
+    <p xml:lang="sv">Kshisen är ett patiensliknande spel som spelas med den vanliga uppsättningen Mahjong-brickor. I motsats till Mahjong har Kshisen dock bara ett lager med blandade brickor.</p>
     <p xml:lang="tr">KShisen, Mahjong standart kiremit kümesini kullanarak oynanan, solitaire benzeri bir oyundur. Bununla birlikte Mahjong'tan farklı olarak, KShisen'in sadece tek katmanlı döşeme vardır.</p>
     <p xml:lang="uk">KShisen — гра, подібна до пасьянсу, у якій використовуються плитки маджонґа. Втім, на відміну від класичної гри у маджонґ, у KShisen ви матимете справу лише з одним шаром плиток.</p>
     <p xml:lang="x-test">xxKShisen is a solitaire-like game played using the standard set of Mahjong tiles. Unlike Mahjong however, KShisen has only one layer of scrambled tiles.xx</p>
@@ -108,6 +108,14 @@
   <screenshots>
     <screenshot type="default">
       <caption>Playing KShisen</caption>
+      <caption xml:lang="ca">Jugant al KShisen</caption>
+      <caption xml:lang="gl">Xogando a KShisen</caption>
+      <caption xml:lang="nl">KShisen spelen</caption>
+      <caption xml:lang="pt">Jogo do KShisen</caption>
+      <caption xml:lang="pt-BR">Jogando KShisen</caption>
+      <caption xml:lang="sv">Spela Kshisen</caption>
+      <caption xml:lang="uk">Гра у KShisen</caption>
+      <caption xml:lang="x-test">xxPlaying KShisenxx</caption>
       <image>https://kde.org/images/screenshots/kshisen.png</image>
     </screenshot>
   </screenshots>
