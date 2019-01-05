@@ -109,6 +109,7 @@
     <screenshot type="default">
       <caption>Playing KShisen</caption>
       <caption xml:lang="ca">Jugant al KShisen</caption>
+      <caption xml:lang="ca-valencia">Jugant al KShisen</caption>
       <caption xml:lang="gl">Xogando a KShisen</caption>
       <caption xml:lang="id">Memainkan KShisen</caption>
       <caption xml:lang="nl">KShisen spelen</caption>
@@ -117,6 +118,7 @@
       <caption xml:lang="sv">Spela Kshisen</caption>
       <caption xml:lang="uk">Гра у KShisen</caption>
       <caption xml:lang="x-test">xxPlaying KShisenxx</caption>
+      <caption xml:lang="zh-TW">遊玩 KShisen</caption>
       <image>https://kde.org/images/screenshots/kshisen.png</image>
     </screenshot>
   </screenshots>
