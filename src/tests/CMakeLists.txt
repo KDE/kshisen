@@ -7,6 +7,6 @@ enable_testing()
 find_package(Qt5Test REQUIRED)
 
 add_executable(movetest movetest.cpp ../move.cpp)
-add_test(movetest movetest)
+add_test(NAME movetest COMMAND movetest)
 
 target_link_libraries(movetest Qt5::Test)
