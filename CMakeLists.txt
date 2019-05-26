@@ -44,6 +44,10 @@ include(ECMQtDeclareLoggingCategory)
 
 find_package(KF5KMahjongglib REQUIRED)
 find_package(KF5KDEGames 4.9.0 REQUIRED)
+if (${KF5Config_VERSION} STRGREATER "5.56.0")
+        add_definitions(-DQT_NO_FOREACH)
+        MESSAGE(STATUS "compile without foreach")
+endif()
 
 add_definitions(
     -DQT_STRICT_ITERATORS
