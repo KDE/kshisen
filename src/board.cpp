@@ -27,7 +27,6 @@
 #include <array>
 
 // Qt
-#include <QMessageBox>
 #include <QMouseEvent>
 #include <QPainter>
 #include <QStandardPaths>
@@ -35,6 +34,7 @@
 
 // KDE
 #include <KLocalizedString>
+#include <KMessageBox>
 
 // KShisen
 #include "debug.h"
@@ -98,16 +98,18 @@ Board::Board(QWidget * parent)
 void Board::loadSettings()
 {
     if (!loadTileset(Prefs::tileSet())) {
-        QMessageBox::critical(this,
-                              i18n("Error Loading Tiles"),
-                              i18nc("%1 is a path to a tileset file", "An error occurred when loading the tileset. %1 and the default tileset have been tried.\nPlease install the KMahjongg library.", Prefs::tileSet()));
+        KMessageBox::error(this
+                           , i18nc("%1 is a path to a tileset file", "An error occurred when loading the tileset. %1 and the default tileset have been tried.\nPlease install the KMahjongg library.", Prefs::tileSet())
+                           , i18n("Error Loading Tiles")
+                          );
     }
 
     // Load background
     if (!loadBackground(Prefs::background())) {
-        QMessageBox::critical(this,
-                              i18n("Error Loading Background"),
-                              i18nc("%1 is a path to a background image file", "An error occurred when loading the background. %1 and the default background have been tried.\nPlease install the KMahjongg library.", Prefs::background()));
+        KMessageBox::error(this
+                           , i18nc("%1 is a path to a background image file", "An error occurred when loading the background. %1 and the default background have been tried.\nPlease install the KMahjongg library.", Prefs::background())
+                           , i18n("Error Loading Background")
+                          );
     }
 
     // There are tile sets, that have only one tile for e.g. the flowers group.
