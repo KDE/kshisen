@@ -36,13 +36,10 @@
 #include <KActionCollection>
 #include <KConfig>
 #include <KConfigDialog>
-#include <KLineEdit>
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KSeparator>
 #include <KShortcutsDialog>
 #include <KStandardAction>
-#include <KStandardGuiItem>
 #include <KToggleAction>
 
 // KDEGames
