@@ -12,6 +12,8 @@ ki18n_wrap_ui(kshisen_SRCS settings.ui)
 
 kconfig_add_kcfg_files(kshisen_SRCS prefs.kcfgc)
 
+file(GLOB ICON_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../icons/*-apps-kshisen.png")
+ecm_add_app_icon(kshisen_SRCS ICONS ${ICON_SRCS})
 add_executable(kshisen ${kshisen_SRCS})
 
 target_link_libraries(kshisen
