@@ -52,7 +52,7 @@ int main(int argc, char ** argv)
 
     KAboutData aboutData(QStringLiteral("kshisen"), i18n("Shisen-Sho"), QStringLiteral("1.10+ #25"),
                          i18n(description), KAboutLicense::GPL, i18n("Copyright 1997 Mario Weilguni"));
-    aboutData.setHomepage(QStringLiteral("http://games.kde.org/kshisen"));
+    aboutData.setHomepage(QStringLiteral("https://kde.org/applications/games/org.kde.kshisen"));
     aboutData.addAuthor(i18n("Frederik Schwarzer"), i18n("Current Maintainer"), QStringLiteral("schwarzer@kde.org"));
     aboutData.addAuthor(i18n("Dave Corrie"), i18n("Former Maintainer"), QStringLiteral("kde@davecorrie.com"));
     aboutData.addAuthor(i18n("Mario Weilguni"), i18n("Original Author"), QStringLiteral("mweilguni@sime.com"));
