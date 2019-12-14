@@ -19,7 +19,7 @@
 #ifndef MOVETEST_H
 #define MOVETEST_H
 
-#include <QtTest>
+#include <QTest>
 
 #include "../move.h"
 #include "../types.h"
