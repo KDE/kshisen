@@ -40,6 +40,8 @@ static constexpr char description[] = I18N_NOOP("A KDE game similar to Mahjongg"
 
 int main(int argc, char ** argv)
 {
+    // Fixes blurry icons with fractional scaling
+    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     QApplication a(argc, argv);
 
     // Migrate pre-existing (4.x) configuration
