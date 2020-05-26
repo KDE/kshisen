@@ -196,7 +196,7 @@ int Board::tiles() const
     return m_field.size();
 }
 
-void Board::setField(TilePos const & tilePos, int value)
+void Board::setField(TilePos tilePos, int value)
 {
     if (!isValidPos(tilePos)) {
         qCCritical(KSHISEN_General) << "Attempted write to invalid field position:"
@@ -208,7 +208,7 @@ void Board::setField(TilePos const & tilePos, int value)
     m_field.at(tilePos.y() * xTiles() + tilePos.x()) = value;
 }
 
-int Board::field(TilePos const & tilePos) const
+int Board::field(TilePos tilePos) const
 {
     if (!isValidPosWithOutline(tilePos)) {
         qCCritical(KSHISEN_General) << "Attempted read from invalid field position:"
@@ -574,7 +574,7 @@ bool Board::tilesMatch(int tile1, int tile2) const
     return false;
 }
 
-bool Board::isTileHighlighted(TilePos const & tilePos) const
+bool Board::isTileHighlighted(TilePos tilePos) const
 {
     if (tilePos.x() == m_markX && tilePos.y() == m_markY) {
         return true;
@@ -599,7 +599,7 @@ bool Board::isTileHighlighted(TilePos const & tilePos) const
     return false;
 }
 
-void Board::repaintTile(TilePos const & tilePos)
+void Board::repaintTile(TilePos tilePos)
 {
     auto const r = QRect(xOffset() + tilePos.x() * m_tiles.qWidth() * 2,
                          yOffset() + tilePos.y() * m_tiles.qHeight() * 2,
@@ -707,7 +707,7 @@ void Board::paintEvent(QPaintEvent * e)
     p.end();
 }
 
-void Board::reverseSlide(TilePos const & tilePos, Slide const & slide)
+void Board::reverseSlide(TilePos tilePos, Slide const & slide)
 {
     // slide[XY]2 is the current location of the last tile to slide
     // slide[XY]1 is its destination
@@ -767,7 +767,7 @@ void Board::reverseSlide(TilePos const & tilePos, Slide const & slide)
     }
 }
 
-void Board::performSlide(TilePos const & tilePos, Slide const & slide)
+void Board::performSlide(TilePos tilePos, Slide const & slide)
 {
     // check if there is something to slide
     if (slide.empty()) {
@@ -892,7 +892,7 @@ void Board::performMove(PossibleMove & possibleMoves)
 #endif
 }
 
-void Board::marked(TilePos const & tilePos)
+void Board::marked(TilePos tilePos)
 {
     if (field(tilePos) == EMPTY) { // click on empty space on the board
         if (m_possibleMoves.size() > 1) { // if the click is on any of the current possible moves, make that move
@@ -1001,7 +1001,7 @@ void Board::clearHighlight()
     }
 }
 
-bool Board::canMakePath(TilePos const & tilePos1, TilePos const & tilePos2) const
+bool Board::canMakePath(TilePos tilePos1, TilePos tilePos2) const
 {
     if (tilePos1.x() == tilePos2.x()) {
         for (auto i = qMin(tilePos1.y(), tilePos2.y()) + 1; i < qMax(tilePos1.y(), tilePos2.y()); ++i) {
@@ -1024,7 +1024,7 @@ bool Board::canMakePath(TilePos const & tilePos1, TilePos const & tilePos2) cons
     return false;
 }
 
-bool Board::canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Slide & slide) const
+bool Board::canSlideTiles(TilePos tilePos1, TilePos tilePos2, Slide & slide) const
 {
     auto distance = -1;
     slide.clear();
@@ -1184,7 +1184,7 @@ bool Board::canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Sl
     return false;
 }
 
-int Board::findPath(TilePos const & tilePos1, TilePos const & tilePos2, PossibleMoves & possibleMoves) const
+int Board::findPath(TilePos tilePos1, TilePos tilePos2, PossibleMoves & possibleMoves) const
 {
     possibleMoves.clear();
 
@@ -1217,7 +1217,7 @@ int Board::findPath(TilePos const & tilePos1, TilePos const & tilePos2, Possible
     return numberOfPaths;
 }
 
-int Board::findSimplePath(TilePos const & tilePos1, TilePos const & tilePos2, PossibleMoves & possibleMoves) const
+int Board::findSimplePath(TilePos tilePos1, TilePos tilePos2, PossibleMoves & possibleMoves) const
 {
     auto numberOfPaths = 0;
     Path path;
@@ -1366,7 +1366,7 @@ void Board::undrawConnection()
     m_paintInProgress = false;
 }
 
-QPoint Board::midCoord(TilePos const & tilePos) const
+QPoint Board::midCoord(TilePos tilePos) const
 {
     QPoint p;
     auto const w = m_tiles.qWidth() * 2;
@@ -1404,7 +1404,7 @@ int Board::delay() const
     return m_delay;
 }
 
-void Board::madeMove(TilePos const & tilePos1, TilePos const & tilePos2, Slide slide)
+void Board::madeMove(TilePos tilePos1, TilePos tilePos2, Slide slide)
 {
     std::unique_ptr<Move> move;
     if (slide.empty()) {
@@ -1956,7 +1956,7 @@ void Board::setSoundsEnabled(bool enabled)
     Prefs::self()->save();
 }
 
-bool Board::isValidPos(TilePos const & tilePos) const
+bool Board::isValidPos(TilePos tilePos) const
 {
     return tilePos.x() >= 0
         && tilePos.y() >= 0
@@ -1964,7 +1964,7 @@ bool Board::isValidPos(TilePos const & tilePos) const
         && tilePos.y() < yTiles();
 }
 
-bool Board::isValidPosWithOutline(TilePos const & tilePos) const
+bool Board::isValidPosWithOutline(TilePos tilePos) const
 {
     return tilePos.x() >= -1
         && tilePos.y() >= -1

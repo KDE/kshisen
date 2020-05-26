@@ -37,7 +37,7 @@ public:
     explicit PossibleMove(Path & path);
     PossibleMove(Path & path, Slide & slide);
 
-    bool isInPath(TilePos const & tilePos) const;
+    bool isInPath(TilePos tilePos) const;
 
     void Debug() const;
 

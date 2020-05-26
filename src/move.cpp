@@ -21,7 +21,7 @@
 
 namespace KShisen
 {
-Move::Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2)
+Move::Move(TilePos tilePos1, TilePos tilePos2, int tile1, int tile2)
     : m_tilePos1(tilePos1)
     , m_tilePos2(tilePos2)
     , m_tile1(tile1)
@@ -31,7 +31,7 @@ Move::Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int ti
 {
 }
 
-Move::Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2, Slide const & slide)
+Move::Move(TilePos tilePos1, TilePos tilePos2, int tile1, int tile2, Slide const & slide)
     : m_tilePos1(tilePos1)
     , m_tilePos2(tilePos2)
     , m_tile1(tile1)

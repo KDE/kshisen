@@ -31,8 +31,8 @@ namespace KShisen
 class Move
 {
 public:
-    Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2);
-    Move(TilePos const & tilePos1, TilePos const & tilePos2, int tile1, int tile2, Slide const & slide);
+    Move(TilePos tilePos1, TilePos tilePos2, int tile1, int tile2);
+    Move(TilePos tilePos1, TilePos tilePos2, int tile1, int tile2, Slide const & slide);
 
     int x1() const;
     int y1() const;

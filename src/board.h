@@ -212,16 +212,16 @@ private: // functions
      * @param tilePos Position to be modified.
      * @param value Type of the tile to place.
      */
-    void setField(TilePos const & tilePos, int value);
+    void setField(TilePos tilePos, int value);
     /** Returns the kind of tile residing at the given position @p tilePos
      * @param TilePos Position to look at.
      * @return Type of the tile.
      */
-    int field(TilePos const & tilePos) const;
+    int field(TilePos tilePos) const;
     /** Repaints the area of the given @p TilePos.
      * @param TilePos Position of the tile to repaint.
      */
-    void repaintTile(TilePos const & tilePos);
+    void repaintTile(TilePos tilePos);
     void showInfoRect(QPainter &, const QString & message);
     void drawTiles(QPainter &, QPaintEvent *);
     void clearHighlight();
@@ -237,14 +237,14 @@ private: // functions
      * @param tilePos1 coordinates of the first tile
      * @param tilePos2 coordinates of the second tile
      */
-    bool canMakePath(TilePos const & tilePos1, TilePos const & tilePos2) const;
+    bool canMakePath(TilePos tilePos1, TilePos tilePos2) const;
 
     /** Checks if the tile at \p tilePos1 can be slid to \p tilePos2.
      * @param tilePos1 coordinates of the slide's initial position
      * @param tilePos2 coordinates of the slide's final position
      * @param slide The movement of the last tile slid will be stored in @p slide
      */
-    bool canSlideTiles(TilePos const & tilePos1, TilePos const & tilePos2, Slide & slide) const;
+    bool canSlideTiles(TilePos tilePos1, TilePos tilePos2, Slide & slide) const;
 
     /** Checks if a path between two tiles can be made with 2 or 3 lines.
     * @param tilePos1 coordinates of the first tile
@@ -252,7 +252,7 @@ private: // functions
     * @param possibleMoves All the possible moves are stored here
     * @return The number of paths found
     */
-    int findPath(TilePos const & tilePos1, TilePos const & tilePos2, PossibleMoves & possibleMoves) const;
+    int findPath(TilePos tilePos1, TilePos tilePos2, PossibleMoves & possibleMoves) const;
 
     /** Find a path of 1 or 2 segments between tiles.
      * @param tilePos1 coordinates of the first tile
@@ -260,21 +260,21 @@ private: // functions
      * @param possibleMoves all the possible moves are stored here
      * @return The number of paths found
      */
-    int findSimplePath(TilePos const & tilePos1, TilePos const & tilePos2, PossibleMoves & possibleMoves) const;
+    int findSimplePath(TilePos tilePos1, TilePos tilePos2, PossibleMoves & possibleMoves) const;
     void performMove(PossibleMove & possibleMoves);
-    void performSlide(TilePos const & tilePos, Slide const & slide);
-    void reverseSlide(TilePos const & tilePos, Slide const & slide);
-    bool isTileHighlighted(TilePos const & tilePos) const;
+    void performSlide(TilePos tilePos, Slide const & slide);
+    void reverseSlide(TilePos tilePos, Slide const & slide);
+    bool isTileHighlighted(TilePos tilePos) const;
     void drawConnection();
     void drawPossibleMoves(bool b);
     /** Calculated the middle coordinates of the given tile position.
      * @param tilePos tile position
      * @return The middle coordinates of the tile at \p tilePos
      */
-    QPoint midCoord(TilePos const & tilePos) const;
+    QPoint midCoord(TilePos tilePos) const;
     void unmarkTile();
-    void marked(TilePos const & tilePos);
-    void madeMove(TilePos const & tilePos1, TilePos const & tilePos2, Slide slide = Slide());
+    void marked(TilePos tilePos);
+    void madeMove(TilePos tilePos1, TilePos tilePos2, Slide slide = Slide());
 
     /// Applies gravity to all columns.
     void applyGravity();
@@ -282,12 +282,12 @@ private: // functions
     /** Returns True if @p tilePos is a valid position on Board.
      * @return Whether @p tiePos is valid.
      */
-    bool isValidPos(TilePos const & tilePos) const;
+    bool isValidPos(TilePos tilePos) const;
 
     /** Returns True if @p tilePos is a valid position on Board including outline.
      * @return Whether @p tiePos is valid.
      */
-    bool isValidPosWithOutline(TilePos const & tilePos) const;
+    bool isValidPosWithOutline(TilePos tilePos) const;
 
     /** Returns True if @p tile is of kind FLOWERS.
      * @return Whether @p tile is within the range of the Flower tiles.

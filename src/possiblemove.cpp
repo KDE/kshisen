@@ -38,7 +38,7 @@ PossibleMove::PossibleMove(Path & path, Slide & slide)
 {
 }
 
-bool PossibleMove::isInPath(TilePos const & tilePos) const
+bool PossibleMove::isInPath(TilePos tilePos) const
 {
     if (tilePos.x() == m_path.back().x() && tilePos.y() == m_path.back().y()) {
         return false;
