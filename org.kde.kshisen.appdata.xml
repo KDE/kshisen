@@ -33,6 +33,7 @@
   <name xml:lang="sv">Kshisen</name>
   <name xml:lang="tr">KShisen</name>
   <name xml:lang="uk">KShisen</name>
+  <name xml:lang="x-test">xxKShisenxx</name>
   <name xml:lang="zh-CN">KShisen</name>
   <name xml:lang="zh-TW">KShisen</name>
   <summary>Shisen-Sho Mahjongg-like Tile Game</summary>
@@ -65,6 +66,7 @@
   <summary xml:lang="sv">Shisen-Sho Mahjongg-liknande brickspel</summary>
   <summary xml:lang="tr">Shisen-Sho Mahjongg Benzeri Döşeme Oyunu</summary>
   <summary xml:lang="uk">Шісен-шо, схожа на маджонґ гра з плитками</summary>
+  <summary xml:lang="x-test">xxShisen-Sho Mahjongg-like Tile Gamexx</summary>
   <summary xml:lang="zh-CN">类似连连看的麻将游戏</summary>
   <summary xml:lang="zh-TW">四川省麻將牌遊戲</summary>
   <description>
@@ -99,6 +101,7 @@
     <p xml:lang="sv">Kshisen är ett patiensliknande spel som spelas med den vanliga uppsättningen Mahjong-brickor. I motsats till Mahjong har Kshisen dock bara ett lager med blandade brickor.</p>
     <p xml:lang="tr">KShisen, Mahjong standart kiremit kümesini kullanarak oynanan, solitaire benzeri bir oyundur. Bununla birlikte Mahjong'tan farklı olarak, KShisen'in sadece tek katmanlı döşeme vardır.</p>
     <p xml:lang="uk">KShisen — гра, подібна до пасьянсу, у якій використовуються плитки маджонґа. Втім, на відміну від класичної гри у маджонґ, у KShisen ви матимете справу лише з одним шаром плиток.</p>
+    <p xml:lang="x-test">xxKShisen is a solitaire-like game played using the standard set of Mahjong tiles. Unlike Mahjong however, KShisen has only one layer of scrambled tiles.xx</p>
     <p xml:lang="zh-CN">KShisen 是一个使用麻将牌的类牌游戏。和麻将配对不同的是，KShisen 只有一层打乱的牌。</p>
     <p xml:lang="zh-TW">KShisen 是類似四川省麻將的個人遊戲。不過它只有一層。</p>
   </description>
@@ -129,6 +132,7 @@
       <caption xml:lang="sk">Hrá sa KShisen</caption>
       <caption xml:lang="sv">Spela Kshisen</caption>
       <caption xml:lang="uk">Гра у KShisen</caption>
+      <caption xml:lang="x-test">xxPlaying KShisenxx</caption>
       <caption xml:lang="zh-TW">KShisen 遊玩畫面</caption>
       <image>https://cdn.kde.org/screenshots/kshisen/kshisen.png</image>
     </screenshot>
