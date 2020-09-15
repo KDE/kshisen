@@ -32,9 +32,7 @@
 #include <QList>
 #include <QSize>
 #include <QWidget>
-
-// KDE
-#include <KRandomSequence>
+#include <QRandomGenerator>
 
 // KDEGames
 #include <KGameClock>
@@ -304,7 +302,7 @@ private:
     KMahjonggTileset m_tiles;
     KMahjonggBackground m_background;
 
-    KRandomSequence m_random;
+    QRandomGenerator m_random;
 
     std::list<std::unique_ptr<Move>> m_undo; ///< Undo history
     std::list<std::unique_ptr<Move>> m_redo; ///< Redo history

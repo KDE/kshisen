@@ -55,7 +55,7 @@ Board::Board(QWidget * parent)
     , m_gameClock()
     , m_tiles()
     , m_background()
-    , m_random()
+    , m_random(QRandomGenerator::global()->generate())
     , m_undo()
     , m_redo()
     , m_markX(0)
@@ -85,7 +85,6 @@ Board::Board(QWidget * parent)
 {
     m_tileRemove1.setX(-1);
 
-    m_random.setSeed(0);
     resetTimer();
 
     QPalette palette;
@@ -478,8 +477,8 @@ void Board::newGame()
     auto const tx = xTiles();
     auto const ty = yTiles();
     for (decltype(tx * ty * m_shuffle) i = 0; i < tx * ty * m_shuffle; ++i) {
-        auto const tilePos1 = TilePos(m_random.getLong(tx), m_random.getLong(ty));
-        auto const tilePos2 = TilePos(m_random.getLong(tx), m_random.getLong(ty));
+        auto const tilePos1 = TilePos(m_random.bounded(tx), m_random.bounded(ty));
+        auto const tilePos2 = TilePos(m_random.bounded(tx), m_random.bounded(ty));
         // keep and use t, because the next setField() call changes what field() will return
         // so there would a significant impact on shuffling with the field() call put into the
         // place where 't' is used
@@ -521,8 +520,8 @@ void Board::newGame()
         // redistribute unsolved tiles
         while (numberOfTiles > 0) {
             // get a random tile
-            auto const r1 = m_random.getLong(numberOfTiles);
-            auto const r2 = m_random.getLong(numberOfTiles);
+            auto const r1 = m_random.bounded(numberOfTiles);
+            auto const r2 = m_random.bounded(numberOfTiles);
             auto const tile = tiles.at(r1);
             auto const apos = pos.at(r2);
 

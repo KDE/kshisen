@@ -2,8 +2,8 @@ cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
 
 project(kshisen)
 
-set(QT_MIN_VERSION "5.7.0")
-set(KF5_MIN_VERSION "5.30.0")
+set (QT_MIN_VERSION "5.10.0")
+set (KF5_MIN_VERSION "5.55.0")
 
 set(CMAKE_CXX_STANDARD 14) # C++14...
 set(CMAKE_CXX_STANDARD_REQUIRED ON) # ...is required...
