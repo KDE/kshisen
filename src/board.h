@@ -151,7 +151,7 @@ public:
     */
     bool hasCheated() const;
 
-signals:
+Q_SIGNALS:
     void markMatched(); // unused?
     void newGameStarted();
     void changed();
@@ -165,7 +165,7 @@ signals:
     void selectAMatchingTile();
     void cheatStatusChanged();
 
-public slots:
+public Q_SLOTS:
     /** Does most of the newGame work.
      * This slot is called from the KShisen::invokeNewGame() signal from KShisen and
      * should call KShisen::newGame again to do the work that cannot be done
@@ -187,7 +187,7 @@ public slots:
     /// Loads the given background
     bool loadBackground(QString const & pathToBackground);
 
-private slots:
+private Q_SLOTS:
     void undrawConnection();
 
 protected:

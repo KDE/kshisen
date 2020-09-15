@@ -45,7 +45,7 @@ class App : public KXmlGuiWindow
 public:
     explicit App(QWidget * parent = nullptr);
 
-private slots:
+private Q_SLOTS:
     void slotEndOfGame();
 
     /** Updates actions, to enable and disable them where needed.
@@ -108,7 +108,7 @@ private slots:
     /// Shows the highscore table
     void showHighscores(); // const?
 
-signals:
+Q_SIGNALS:
     /** Invokes the creation of a new game.
      * This signal is connected to the newGame() slot of the Board, which
      * then does its job and sends a signal back to this class so the rest

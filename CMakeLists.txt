@@ -46,7 +46,6 @@ if (${KF5Config_VERSION} STRGREATER "5.56.0")
         MESSAGE(STATUS "compile without foreach")
 endif()
 
-
 add_definitions(
     -DQT_STRICT_ITERATORS
     -DQT_NO_CAST_FROM_ASCII
@@ -55,6 +54,7 @@ add_definitions(
     -DQT_NO_URL_CAST_FROM_STRING
     -DQT_USE_QSTRINGBUILDER
     -DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT
+    -DQT_NO_KEYWORDS
 )
 
 add_subdirectory(src)

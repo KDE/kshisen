@@ -393,7 +393,7 @@ void Board::setSize(int x, int y)
 
     resizeBoard();
     newGame();
-    emit changed();
+    Q_EMIT changed();
 }
 
 void Board::resizeEvent(QResizeEvent * e)
@@ -403,7 +403,7 @@ void Board::resizeEvent(QResizeEvent * e)
         qCDebug(KSHISEN_General) << "[resizeEvent] spontaneous";
     }
     resizeBoard();
-    emit resized();
+    Q_EMIT resized();
 }
 
 void Board::resizeBoard()
@@ -468,8 +468,8 @@ void Board::newGame()
     if (m_shuffle == 0) {
         update();
         resetTimer();
-        emit newGameStarted();
-        emit changed();
+        Q_EMIT newGameStarted();
+        Q_EMIT changed();
         return;
     }
 
@@ -491,8 +491,8 @@ void Board::newGame()
     if (!m_solvableFlag) {
         update();
         resetTimer();
-        emit newGameStarted();
-        emit changed();
+        Q_EMIT newGameStarted();
+        Q_EMIT changed();
         return;
     }
 
@@ -549,7 +549,7 @@ void Board::newGame()
 
     update();
     resetTimer();
-    emit changed();
+    Q_EMIT changed();
 }
 
 bool Board::tilesMatch(int tile1, int tile2) const
@@ -898,7 +898,7 @@ void Board::marked(TilePos tilePos)
             for (auto move : qAsConst(m_possibleMoves)) {
                 if (move.isInPath(tilePos)) {
                     performMove(move);
-                    emit selectATile();
+                    Q_EMIT selectATile();
                     return;
                 }
             }
@@ -918,7 +918,7 @@ void Board::marked(TilePos tilePos)
     if (tilePos.x() == m_markX && tilePos.y() == m_markY) { // the piece is already marked
         // unmark the piece
         unmarkTile();
-        emit selectATile();
+        Q_EMIT selectATile();
         return;
     }
 
@@ -928,7 +928,7 @@ void Board::marked(TilePos tilePos)
         drawPossibleMoves(false);
         m_possibleMoves.clear();
         repaintTile(tilePos);
-        emit selectAMatchingTile();
+        Q_EMIT selectAMatchingTile();
         return;
     }
     if (m_possibleMoves.size() > 1) { // if the click is on any of the current possible moves, make that move
@@ -936,7 +936,7 @@ void Board::marked(TilePos tilePos)
         for (auto move : qAsConst(m_possibleMoves)) {
             if (move.isInPath(tilePos)) {
                 performMove(move);
-                emit selectATile();
+                Q_EMIT selectATile();
                 return;
             }
         }
@@ -948,7 +948,7 @@ void Board::marked(TilePos tilePos)
     // both tiles do not match
     if (!tilesMatch(tile1, tile2)) {
         unmarkTile();
-        emit tilesDoNotMatch();
+        Q_EMIT tilesDoNotMatch();
         return;
     }
 
@@ -965,19 +965,19 @@ void Board::marked(TilePos tilePos)
             // if all moves have no slide, it doesn't matter
             if (withSlide > 0) {
                 drawPossibleMoves(true);
-                emit selectAMove();
+                Q_EMIT selectAMove();
                 return;
             }
         }
 
         // only one move possible, perform it
         performMove(m_possibleMoves.front());
-        emit selectATile();
+        Q_EMIT selectATile();
         // game is over?
         // Must delay until after tiles fall to make this test
         // See undrawConnection GP.
     } else {
-        emit invalidMove();
+        Q_EMIT invalidMove();
         m_connection.clear();
     }
 }
@@ -1327,7 +1327,7 @@ void Board::undrawConnection()
         applyGravity();
         m_tileRemove1.setX(-1);
         update();
-        emit tileCountChanged();
+        Q_EMIT tileCountChanged();
     }
 
     // is already undrawn?
@@ -1360,7 +1360,7 @@ void Board::undrawConnection()
     // game is over?
     if (!hint_I(dummyPossibleMoves)) {
         m_gameClock.pause();
-        emit endOfGame();
+        Q_EMIT endOfGame();
     }
     m_paintInProgress = false;
 }
@@ -1415,7 +1415,7 @@ void Board::madeMove(TilePos tilePos1, TilePos tilePos2, Slide slide)
     if (!m_redo.empty()) {
         m_redo.clear();
     }
-    emit changed();
+    Q_EMIT changed();
 }
 
 bool Board::canUndo() const
@@ -1635,7 +1635,7 @@ void Board::undo()
     repaintTile(TilePos(move->x2(), move->y2()));
 
     m_redo.push_front(std::move(move));
-    emit changed();
+    Q_EMIT changed();
 }
 
 void Board::redo()
@@ -1658,7 +1658,7 @@ void Board::redo()
         repaintTile(TilePos(move->x2(), move->y2()));
         applyGravity();
         m_undo.push_back(std::move(move));
-        emit changed();
+        Q_EMIT changed();
     }
 }
 
@@ -1860,7 +1860,7 @@ void Board::setPauseEnabled(bool enabled)
         m_gameState = GameState::Normal;
         m_gameClock.resume();
     }
-    emit changed();
+    Q_EMIT changed();
     update();
 }
 
@@ -1906,7 +1906,7 @@ void Board::setGameStuckEnabled(bool enabled)
         m_gameState = GameState::Normal;
         m_gameClock.resume();
     }
-    emit changed();
+    Q_EMIT changed();
     update();
 }
 
@@ -1916,7 +1916,7 @@ void Board::setGameOverEnabled(bool enabled)
         return;
     }
     m_gameState = GameState::Over;
-    emit changed();
+    Q_EMIT changed();
     update();
 }
 
@@ -1926,7 +1926,7 @@ void Board::setCheatModeEnabled(bool enabled)
         return;
     }
     m_cheat = enabled;
-    emit cheatStatusChanged();
+    Q_EMIT cheatStatusChanged();
 }
 
 bool Board::isOver() const
