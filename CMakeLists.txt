@@ -74,5 +74,8 @@ if (${ECM_VERSION} STRGREATER "5.58.0")
 else()
     install(FILES kshisen.categories  DESTINATION ${KDE_INSTALL_CONFDIR})
 endif()
+
+ki18n_install(po)
+
 ########### Display Summary ###############
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
