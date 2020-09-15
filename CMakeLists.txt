@@ -35,11 +35,6 @@ include(KDECompilerSettings NO_POLICY_SCOPE)
 
 include(FeatureSummary)
 include(ECMAddAppIcon)
-include(GenerateExportHeader)
-include(CMakePackageConfigHelpers)
-include(ECMSetupVersion)
-include(ECMGenerateHeaders)
-include(ECMMarkNonGuiExecutable)
 include(ECMInstallIcons)
 include(ECMQtDeclareLoggingCategory)
 
