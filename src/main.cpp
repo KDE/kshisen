@@ -36,8 +36,6 @@
 #include "app.h"
 #include "debug.h"
 
-static constexpr char description[] = I18N_NOOP("A KDE game similar to Mahjongg");
-
 int main(int argc, char ** argv)
 {
     // Fixes blurry icons with fractional scaling
@@ -53,7 +51,9 @@ int main(int argc, char ** argv)
     KLocalizedString::setApplicationDomain("kshisen");
 
     KAboutData aboutData(QStringLiteral("kshisen"), i18n("Shisen-Sho"), QStringLiteral("1.10+ #25"),
-                         i18n(description), KAboutLicense::GPL, i18n("Copyright 1997 Mario Weilguni"));
+                         i18n("A game similar to Mahjongg"),
+                         KAboutLicense::GPL,
+                         i18n("Copyright 1997 Mario Weilguni"));
     aboutData.setHomepage(QStringLiteral("https://kde.org/applications/games/org.kde.kshisen"));
     aboutData.addAuthor(i18n("Frederik Schwarzer"), i18n("Current Maintainer"), QStringLiteral("schwarzer@kde.org"));
     aboutData.addAuthor(i18n("Dave Corrie"), i18n("Former Maintainer"), QStringLiteral("kde@davecorrie.com"));
