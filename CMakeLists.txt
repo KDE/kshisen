@@ -1,6 +1,16 @@
 cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
 
-project(kshisen)
+# Release Service version, managed by release script
+set (RELEASE_SERVICE_VERSION_MAJOR "20")
+set (RELEASE_SERVICE_VERSION_MINOR "11")
+set (RELEASE_SERVICE_VERSION_MICRO "70")
+set (RELEASE_SERVICE_COMPACT_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}${RELEASE_SERVICE_VERSION_MINOR}${RELEASE_SERVICE_VERSION_MICRO}")
+
+# Bump KSHISEN_BASE_VERSION once new features are added
+set(KSHISEN_BASE_VERSION "1.10")
+set(KSHISEN_VERSION "${KSHISEN_BASE_VERSION}.${RELEASE_SERVICE_COMPACT_VERSION}")
+
+project(kshisen VERSION ${KSHISEN_VERSION})
 
 set (QT_MIN_VERSION "5.10.0")
 set (KF5_MIN_VERSION "5.55.0")
@@ -37,7 +47,7 @@ include(FeatureSummary)
 include(ECMAddAppIcon)
 include(ECMInstallIcons)
 include(ECMQtDeclareLoggingCategory)
-
+include(ECMSetupVersion)
 
 find_package(KF5KMahjongglib REQUIRED)
 find_package(KF5KDEGames 4.9.0 REQUIRED)

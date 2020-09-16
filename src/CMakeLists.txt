@@ -6,6 +6,11 @@ set(kshisen_SRCS
     possiblemove.cpp
 )
 
+ecm_setup_version(${KSHISEN_VERSION}
+    VARIABLE_PREFIX KSHISEN
+    VERSION_HEADER kshisen_version.h
+)
+
 ecm_qt_declare_logging_category(kshisen_SRCS HEADER debug.h IDENTIFIER KSHISEN_General CATEGORY_NAME kshisen)
 
 ki18n_wrap_ui(kshisen_SRCS settings.ui)

@@ -35,6 +35,7 @@
 // KShisen
 #include "app.h"
 #include "debug.h"
+#include "kshisen_version.h"
 
 int main(int argc, char ** argv)
 {
@@ -50,7 +51,8 @@ int main(int argc, char ** argv)
 
     KLocalizedString::setApplicationDomain("kshisen");
 
-    KAboutData aboutData(QStringLiteral("kshisen"), i18n("Shisen-Sho"), QStringLiteral("1.10+ #25"),
+    KAboutData aboutData(QStringLiteral("kshisen"), i18n("Shisen-Sho"),
+                         QStringLiteral(KSHISEN_VERSION_STRING),
                          i18n("A game similar to Mahjongg"),
                          KAboutLicense::GPL,
                          i18n("Copyright 1997 Mario Weilguni"));
