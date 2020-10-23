@@ -37,7 +37,6 @@
 #include <KMessageBox>
 
 // KShisen
-#include "debug.h"
 #include "prefs.h"
 
 namespace KShisen
