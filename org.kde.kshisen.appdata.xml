@@ -145,4 +145,7 @@
   <provides>
     <binary>kshisen</binary>
   </provides>
+  <releases>
+    <release version="1.10.20120" date="2020-12-10"/>
+  </releases>
 </component>
