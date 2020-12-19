@@ -39,8 +39,8 @@
 #include <KgSound>
 
 // LibKMahjongg
-#include <kmahjonggbackground.h>
-#include <kmahjonggtileset.h>
+#include <KMahjonggBackground>
+#include <KMahjonggTileset>
 
 // KShisen
 #include "debug.h"

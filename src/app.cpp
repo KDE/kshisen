@@ -47,7 +47,7 @@
 #include <KStandardGameAction>
 
 // LibKmahjongg
-#include <kmahjonggconfigdialog.h>
+#include <KMahjonggConfigDialog>
 
 // KShisen
 #include "board.h"

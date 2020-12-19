@@ -12,8 +12,8 @@ set(KSHISEN_VERSION "${KSHISEN_BASE_VERSION}.${RELEASE_SERVICE_COMPACT_VERSION}"
 
 project(kshisen VERSION ${KSHISEN_VERSION})
 
-set (QT_MIN_VERSION "5.10.0")
-set (KF5_MIN_VERSION "5.55.0")
+set(QT_MIN_VERSION "5.12.0")
+set(KF5_MIN_VERSION "5.68.0")
 
 set(CMAKE_CXX_STANDARD 14) # C++14...
 set(CMAKE_CXX_STANDARD_REQUIRED ON) # ...is required...
@@ -49,12 +49,8 @@ include(ECMInstallIcons)
 include(ECMQtDeclareLoggingCategory)
 include(ECMSetupVersion)
 
-find_package(KF5KMahjongglib REQUIRED)
+find_package(KF5KMahjongglib 5.1.0 REQUIRED)
 find_package(KF5KDEGames 4.9.0 REQUIRED)
-if (${KF5Config_VERSION} STRGREATER "5.56.0")
-        add_definitions(-DQT_NO_FOREACH)
-        MESSAGE(STATUS "compile without foreach")
-endif()
 
 add_definitions(
     -DQT_STRICT_ITERATORS
@@ -64,6 +60,7 @@ add_definitions(
     -DQT_NO_URL_CAST_FROM_STRING
     -DQT_USE_QSTRINGBUILDER
     -DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT
+    -DQT_NO_FOREACH
     -DQT_NO_KEYWORDS
     -DQT_DISABLE_DEPRECATED_BEFORE=0x050A00
     -DQT_DEPRECATED_WARNINGS_SINCE=0x060000
@@ -79,11 +76,7 @@ add_subdirectory(doc)
 install(PROGRAMS org.kde.kshisen.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install(FILES org.kde.kshisen.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
-if (${ECM_VERSION} STRGREATER "5.58.0")
-    install(FILES kshisen.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
-else()
-    install(FILES kshisen.categories  DESTINATION ${KDE_INSTALL_CONFDIR})
-endif()
+install(FILES kshisen.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
 
 ki18n_install(po)
 kdoctools_install(po)
