@@ -76,8 +76,6 @@ add_subdirectory(doc)
 install(PROGRAMS org.kde.kshisen.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install(FILES org.kde.kshisen.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
-install(FILES kshisen.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
-
 ki18n_install(po)
 kdoctools_install(po)
 

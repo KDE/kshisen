@@ -11,7 +11,13 @@ ecm_setup_version(${KSHISEN_VERSION}
     VERSION_HEADER kshisen_version.h
 )
 
-ecm_qt_declare_logging_category(kshisen_SRCS HEADER debug.h IDENTIFIER KSHISEN_General CATEGORY_NAME kshisen)
+ecm_qt_declare_logging_category(kshisen_SRCS
+    HEADER debug.h
+    IDENTIFIER KSHISEN_General
+    CATEGORY_NAME kshisen
+    DESCRIPTION "KShisen"
+    EXPORT KSHISEN
+)
 
 ki18n_wrap_ui(kshisen_SRCS settings.ui)
 
@@ -36,5 +42,11 @@ install(TARGETS kshisen ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES kshisen.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
 install(FILES kshisenui.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/kshisen)
+
+ecm_qt_install_logging_categories(
+    EXPORT KSHISEN
+    FILE kshisen.categories
+    DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
+)
 
 add_subdirectory(tests)
