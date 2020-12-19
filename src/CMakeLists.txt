@@ -23,6 +23,10 @@ ki18n_wrap_ui(kshisen_SRCS settings.ui)
 
 kconfig_add_kcfg_files(kshisen_SRCS prefs.kcfgc)
 
+qt5_add_resources(kshisen_SRCS
+    kshisen.qrc
+)
+
 file(GLOB ICON_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../icons/*-apps-kshisen.png")
 ecm_add_app_icon(kshisen_SRCS ICONS ${ICON_SRCS})
 add_executable(kshisen ${kshisen_SRCS})
@@ -41,7 +45,6 @@ target_link_libraries(kshisen
 install(TARGETS kshisen ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES kshisen.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
-install(FILES kshisenui.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/kshisen)
 
 ecm_qt_install_logging_categories(
     EXPORT KSHISEN
