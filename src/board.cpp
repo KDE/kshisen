@@ -32,7 +32,7 @@
 #include <QStandardPaths>
 #include <QTimer>
 
-// KDE
+// KF
 #include <KLocalizedString>
 #include <KMessageBox>
 

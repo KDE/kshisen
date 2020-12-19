@@ -21,7 +21,7 @@
 #ifndef KSHISEN_APP_H
 #define KSHISEN_APP_H
 
-// KDE
+// KF
 #include <KXmlGuiWindow>
 
 // Qt

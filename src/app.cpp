@@ -32,7 +32,7 @@
 #include <QStatusBar>
 #include <QTimer>
 
-// KDE
+// KF
 #include <KActionCollection>
 #include <KConfig>
 #include <KConfigDialog>
