@@ -111,16 +111,16 @@ void App::setupStatusBar()
 void App::setupActions()
 {
     // Game
-    KStandardGameAction::gameNew(this, SIGNAL(invokeNewGame()), actionCollection());
-    KStandardGameAction::restart(this, SLOT(restartGame()), actionCollection());
-    KStandardGameAction::pause(this, SLOT(togglePause()), actionCollection());
-    KStandardGameAction::highscores(this, SLOT(showHighscores()), actionCollection());
-    KStandardGameAction::quit(this, SLOT(close()), actionCollection());
+    KStandardGameAction::gameNew(this, &App::invokeNewGame, actionCollection());
+    KStandardGameAction::restart(this, &App::restartGame, actionCollection());
+    KStandardGameAction::pause(this, &App::togglePause, actionCollection());
+    KStandardGameAction::highscores(this, &App::showHighscores, actionCollection());
+    KStandardGameAction::quit(this, &App::close, actionCollection());
 
     // Move
-    KStandardGameAction::undo(this, SLOT(undo()), actionCollection());
-    KStandardGameAction::redo(this, SLOT(redo()), actionCollection());
-    KStandardGameAction::hint(this, SLOT(hint()), actionCollection());
+    KStandardGameAction::undo(this, &App::undo, actionCollection());
+    KStandardGameAction::redo(this, &App::redo, actionCollection());
+    KStandardGameAction::hint(this, &App::hint, actionCollection());
 
     auto soundAction = new KToggleAction(QIcon::fromTheme(QStringLiteral("speaker")), i18n("Play Sounds"), this);
     soundAction->setChecked(Prefs::sounds());
@@ -128,7 +128,7 @@ void App::setupActions()
     connect(soundAction, &KToggleAction::triggered, m_board, &Board::setSoundsEnabled);
 
     // Settings
-    KStandardAction::preferences(this, SLOT(showSettingsDialog()), actionCollection());
+    KStandardAction::preferences(this, &App::showSettingsDialog, actionCollection());
 
     connect(m_board, &Board::cheatStatusChanged, this, &App::updateCheatDisplay);
     connect(m_board, &Board::changed, this, &App::updateItems);

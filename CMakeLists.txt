@@ -50,7 +50,7 @@ include(ECMQtDeclareLoggingCategory)
 include(ECMSetupVersion)
 
 find_package(KF5KMahjongglib 5.1.0 REQUIRED)
-find_package(KF5KDEGames 4.9.0 REQUIRED)
+find_package(KF5KDEGames 7.3.0 REQUIRED)
 
 add_definitions(
     -DQT_STRICT_ITERATORS
