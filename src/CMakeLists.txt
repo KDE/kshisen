@@ -4,6 +4,7 @@ set(kshisen_SRCS
     main.cpp
     move.cpp
     possiblemove.cpp
+    kshisen.qrc
 )
 
 ecm_setup_version(${KSHISEN_VERSION}
@@ -22,10 +23,6 @@ ecm_qt_declare_logging_category(kshisen_SRCS
 ki18n_wrap_ui(kshisen_SRCS settings.ui)
 
 kconfig_add_kcfg_files(kshisen_SRCS prefs.kcfgc)
-
-qt5_add_resources(kshisen_SRCS
-    kshisen.qrc
-)
 
 file(GLOB ICON_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../icons/*-apps-kshisen.png")
 ecm_add_app_icon(kshisen_SRCS ICONS ${ICON_SRCS})
