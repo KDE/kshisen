@@ -106,7 +106,7 @@
     <p xml:lang="zh-CN">KShisen 是一个使用麻将牌的类牌游戏。和麻将配对不同的是，KShisen 只有一层打乱的牌。</p>
     <p xml:lang="zh-TW">KShisen 是類似四川省麻將的個人遊戲。不過它只有一層。</p>
   </description>
-  <url type="homepage">https://games.kde.org/game.php?game=kshisen</url>
+  <url type="homepage">https://games.kde.org/games/kshisen</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kshisen</url>
   <url type="help">https://docs.kde.org/?application=kshisen</url>
   <url type="donation">https://www.kde.org/community/donations/?app=kshisen&amp;source=appdata</url>
