@@ -3,3 +3,8 @@
 *.kdev4
 CMakeLists.txt.user*
 .cmake/
+/compile_commands.json
+.clangd
+.cache
+.idea
+/cmake-build*
