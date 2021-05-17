@@ -1,18 +1,21 @@
-set(kshisen_SRCS
-    app.cpp
-    board.cpp
-    main.cpp
-    move.cpp
-    possiblemove.cpp
-    kshisen.qrc
-)
-
 ecm_setup_version(${KSHISEN_VERSION}
     VARIABLE_PREFIX KSHISEN
     VERSION_HEADER kshisen_version.h
 )
 
-ecm_qt_declare_logging_category(kshisen_SRCS
+add_executable(kshisen)
+
+target_sources(kshisen PRIVATE
+    app.cpp
+    board.cpp
+    main.cpp
+    move.cpp
+    possiblemove.cpp
+
+    kshisen.qrc
+)
+
+ecm_qt_declare_logging_category(kshisen
     HEADER debug.h
     IDENTIFIER KSHISEN_General
     CATEGORY_NAME kshisen
@@ -20,23 +23,22 @@ ecm_qt_declare_logging_category(kshisen_SRCS
     EXPORT KSHISEN
 )
 
-ki18n_wrap_ui(kshisen_SRCS settings.ui)
+ki18n_wrap_ui(kshisen settings.ui)
 
-kconfig_add_kcfg_files(kshisen_SRCS prefs.kcfgc)
+kconfig_add_kcfg_files(kshisen prefs.kcfgc)
 
 file(GLOB ICON_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../icons/*-apps-kshisen.png")
-ecm_add_app_icon(kshisen_SRCS ICONS ${ICON_SRCS})
-add_executable(kshisen ${kshisen_SRCS})
+ecm_add_app_icon(kshisen ICONS ${ICON_SRCS})
 
 target_link_libraries(kshisen
-    Qt5::Gui
+    KF5KDEGames
+    KF5KDEGamesPrivate
+    KF5KMahjongglib
     KF5::Crash
     KF5::DBusAddons
     KF5::I18n
     KF5::XmlGui
-    KF5KDEGames
-    KF5KDEGamesPrivate
-    KF5KMahjongglib
+    Qt5::Gui
 )
 
 install(TARGETS kshisen ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
