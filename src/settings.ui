@@ -38,6 +38,16 @@
     </widget>
    </item>
    <item>
+    <widget class="QCheckBox" name="kcfg_ShowUnsolvableMessage">
+     <property name="whatsThis">
+      <string>&lt;b&gt;Show message if board can no longer be solved&lt;/b&gt;&lt;p&gt;Checking this makes the game show a message to abort the game in case there are no possible moves left to win the game.&lt;/p&gt;</string>
+     </property>
+     <property name="text">
+      <string>Show message if board can no longer be solved</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QCheckBox" name="kcfg_ChineseStyle">
      <property name="whatsThis">
       <string>&lt;b&gt;Use Chinese style: any flower match any flower, any season match any season&lt;/b&gt;&lt;p&gt;Use the traditional rules for matching the tiles. Previous version of the game used to allow only exact tiles matches, which is inconsistent with Mah-jongg rules. It is recommended to keep this option checked.&lt;/p&gt;</string>

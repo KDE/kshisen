@@ -95,6 +95,8 @@ public:
 
     bool solvableFlag() const;
     void setSolvableFlag(bool enabled);
+    bool showUnsolvableMessageFlag() const;
+    void setShowUnsolvableMessageFlag(bool enabled);
     bool gravityFlag() const;
     void setGravityFlag(bool enabled);
     void setChineseStyleFlag(bool enabled);
@@ -317,6 +319,7 @@ private:
 
     bool m_gravityFlag; ///< Whether game is played with gravity
     bool m_solvableFlag; ///< Whether game is solvable
+    bool m_showUnsolvableMessageFlag; ///< Whether "game unsolvable" message is shown
     bool m_chineseStyleFlag; ///< Whether game follows Chinese rules
     bool m_tilesCanSlideFlag; ///< Whether tiles can slide when connecting
 

@@ -60,6 +60,7 @@ Board::Board(QWidget * parent)
     , m_cheat(false)
     , m_gravityFlag(true)
     , m_solvableFlag(false)
+    , m_showUnsolvableMessageFlag(false)
     , m_chineseStyleFlag(false)
     , m_tilesCanSlideFlag(false)
     , m_highlightedTile(-1)
@@ -114,6 +115,7 @@ void Board::loadSettings()
     // Need to load solvable before size because setSize calls newGame which
     // uses the solvable flag. Same with shuffle.
     setSolvableFlag(Prefs::solvable());
+    setShowUnsolvableMessageFlag(Prefs::showUnsolvableMessage());
     m_shuffle = Prefs::level() * 4 + 1;
     setSize(s_sizeX.at(Prefs::size()), s_sizeY.at(Prefs::size()));
     setGravityFlag(Prefs::gravity());
@@ -1346,7 +1348,9 @@ void Board::undrawConnection()
 
     PossibleMoves dummyPossibleMoves;
     // game is over?
-    if (!pathFoundBetweenMatchingTiles(dummyPossibleMoves)) {
+    if ((!pathFoundBetweenMatchingTiles(dummyPossibleMoves)
+         && m_showUnsolvableMessageFlag)
+        || (tilesLeft() == 0)) {
         m_gameClock.pause();
         Q_EMIT endOfGame();
     }
@@ -1794,6 +1798,19 @@ void Board::setSolvableFlag(bool enabled)
     if (m_solvableFlag && !isSolvable(true)) {
         newGame();
     }
+}
+
+bool Board::showUnsolvableMessageFlag() const
+{
+    return m_showUnsolvableMessageFlag;
+}
+
+void Board::setShowUnsolvableMessageFlag(bool enabled)
+{
+    if (m_showUnsolvableMessageFlag == enabled) {
+        return;
+    }
+    m_showUnsolvableMessageFlag = enabled;
 }
 
 bool Board::gravityFlag() const
