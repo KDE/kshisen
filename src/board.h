@@ -76,7 +76,7 @@ public:
     void resizeBoard();
 
     void showHint();
-    bool hint_I(PossibleMoves & possibleMoves) const;
+    bool pathFoundBetweenMatchingTiles(PossibleMoves & possibleMoves) const;
 
 #ifdef DEBUGGING
     void makeHintMove();

@@ -1346,7 +1346,7 @@ void Board::undrawConnection()
 
     PossibleMoves dummyPossibleMoves;
     // game is over?
-    if (!hint_I(dummyPossibleMoves)) {
+    if (!pathFoundBetweenMatchingTiles(dummyPossibleMoves)) {
         m_gameClock.pause();
         Q_EMIT endOfGame();
     }
@@ -1654,19 +1654,18 @@ void Board::showHint()
 {
     undrawConnection();
 
-    if (hint_I(m_possibleMoves)) {
+    if (pathFoundBetweenMatchingTiles(m_possibleMoves)) {
         m_connection = m_possibleMoves.front().path();
         drawConnection();
     }
 }
-
 
 #ifdef DEBUGGING
 void Board::makeHintMove()
 {
     PossibleMoves possibleMoves;
 
-    if (hint_I(possibleMoves)) {
+    if (pathFoundBetweenMatchingTiles(possibleMoves)) {
         m_markX = -1;
         m_markY = -1;
         marked(TilePos(possibleMoves.front().path().front().x(), possibleMoves.front().path().front().y()));
@@ -1708,7 +1707,7 @@ int Board::lineWidth() const
     return width;
 }
 
-bool Board::hint_I(PossibleMoves & possibleMoves) const
+bool Board::pathFoundBetweenMatchingTiles(PossibleMoves & possibleMoves) const
 {
     std::array<short, Board::nTiles> done{}; // Appended {} initialises with zeroes here.
 
@@ -1754,7 +1753,7 @@ bool Board::isSolvable(bool restore)
     }
 
     PossibleMoves p;
-    while (hint_I(p)) {
+    while (pathFoundBetweenMatchingTiles(p)) {
         auto const tile1 = TilePos(p.front().path().front().x(), p.front().path().front().y());
         auto const tile2 = TilePos(p.front().path().back().x(), p.front().path().back().y());
         if (!tilesMatch(field(tile1), field(tile2))) {
