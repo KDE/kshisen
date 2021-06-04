@@ -1758,13 +1758,13 @@ bool Board::isSolvable(bool restore)
         auto const tile1 = TilePos(p.front().path().front().x(), p.front().path().front().y());
         auto const tile2 = TilePos(p.front().path().back().x(), p.front().path().back().y());
         if (!tilesMatch(field(tile1), field(tile2))) {
-            auto errMessage = QStringLiteral("Removing unmatched tiles: (%1,%2) => %3 (%4,%5) => %6")
-                                  .arg(p.front().path().front().x())
-                                  .arg(p.front().path().front().y())
-                                  .arg(field(tile1))
-                                  .arg(p.front().path().back().x())
-                                  .arg(p.front().path().back().y())
-                                  .arg(field(tile2));
+            auto const errMessage = QStringLiteral("Removing unmatched tiles: (%1,%2) => %3 (%4,%5) => %6")
+                                        .arg(p.front().path().front().x())
+                                        .arg(p.front().path().front().y())
+                                        .arg(field(tile1))
+                                        .arg(p.front().path().back().x())
+                                        .arg(p.front().path().back().y())
+                                        .arg(field(tile2));
             qCCritical(KSHISEN_General) << errMessage;
         }
         setField(tile1, EMPTY);
