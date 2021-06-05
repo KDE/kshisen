@@ -32,8 +32,8 @@
       <!-- TRANS:ROLES_OF_TRANSLATORS -->
     </authorgroup>
     <legalnotice>&FDLNotice;</legalnotice>
-    <date>2016-05-09</date>
-    <releaseinfo>1.10 (Applications 16.04)</releaseinfo>
+    <date>2021-06-05</date>
+    <releaseinfo>KDE Gear 21.08</releaseinfo>
 
     <!--Short description of this document. Do not change unless necessary!-->
     <abstract>
@@ -415,6 +415,14 @@
             If checked, you will only be presented with games that are possible to solve.
             Note: Even in solvable games you can fail to complete if you remove the tiles 
             in the wrong order.
+        </para></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guilabel>Show message if board can no longer be solved</guilabel></term>
+        <listitem><para>
+            If checked, &kshisen; will try to analyze solvability of each game position and show a message to abort
+            the game in case there are no possible moves left to win the game.
         </para></listitem>
       </varlistentry>
 
