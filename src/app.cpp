@@ -22,6 +22,7 @@
 #include <QTimer>
 
 // KF
+#include <kxmlgui_version.h>
 #include <KActionCollection>
 #include <KConfig>
 #include <KConfigDialog>
@@ -361,7 +362,11 @@ void App::showHighscores()
 
 void App::keyBindings()
 {
+#if KXMLGUI_VERSION >= QT_VERSION_CHECK(5,84,0)
+    KShortcutsDialog::showDialog(actionCollection(), KShortcutsEditor::LetterShortcutsAllowed, this);
+#else
     KShortcutsDialog::configure(actionCollection(), KShortcutsEditor::LetterShortcutsAllowed, this);
+#endif
 }
 
 void App::showSettingsDialog()
