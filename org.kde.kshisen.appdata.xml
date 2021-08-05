@@ -13,6 +13,7 @@
   <name xml:lang="en-GB">KShisen</name>
   <name xml:lang="es">KShisen</name>
   <name xml:lang="et">KShisen</name>
+  <name xml:lang="eu">KShisen</name>
   <name xml:lang="fi">KShisen</name>
   <name xml:lang="fr">KShisen</name>
   <name xml:lang="gl">KShisen</name>
@@ -46,6 +47,7 @@
   <summary xml:lang="en-GB">Shisen-Sho Mahjongg-like Tile Game</summary>
   <summary xml:lang="es">Juego de fichas similar al Shisen-Sho Mahjongg</summary>
   <summary xml:lang="et">Mahjonggi moodi klotsimäng</summary>
+  <summary xml:lang="eu">«Shisen-Sho» «Mahjongg» antzeko fitxa jokoa</summary>
   <summary xml:lang="fi">Shisen-sho, mahjongmainen laattapeli</summary>
   <summary xml:lang="fr">Jeu de tuiles Shisen-Sho dans le style du Mahjongg</summary>
   <summary xml:lang="gl">Xogo de fichas Shisen-so ao estilo do Mahjongg</summary>
@@ -82,6 +84,7 @@
     <p xml:lang="en-GB">KShisen is a solitaire-like game played using the standard set of Mahjong tiles. Unlike Mahjong however, KShisen has only one layer of scrambled tiles.</p>
     <p xml:lang="es">KShisen es un juego de solitario que se juega usando las fichas típicas del Mahjong. Al contrario del Mahjong, KShisen solo tiene una capa de fichas barajadas.</p>
     <p xml:lang="et">KShisen on Mahjonggi moodi mäng, mida mängitaksegi Mahjonggile omaste klotsidega. Viimasest erinevalt on siin aga ainult üks kiht klotse.</p>
+    <p xml:lang="eu">KShisen «Mahjong»eko fitxa-multzo estandarra erabiltzen duen bakar-joko antzeko joko bat da. Dena den, «Mahjong»ek ez bezela, KShisen-ek fitxa nahasien geruza bakarra du.</p>
     <p xml:lang="fi">KShisen on pasianssimainen peli, joka käyttää tavallisia mahjong-tiiliä. Mahjongista poiketen KShisenissä on kuitenkin vain yksi kerros sekoitettuja tiiliä.</p>
     <p xml:lang="fr">KShisen est un jeu en solitaire qui se joue en utilisant les tuiles standard du Mahjong. A la différence du Mahjong, KShisen n'a qu'une couche de tuiles mélangées.</p>
     <p xml:lang="gl">O KShisen é un xogo similar ao solitario que se xoga usando as pezas estándar do Mahjong. Porén, a diferenza do Mahjong, o KShisen ten só unha capa de pezas desordenadas.</p>
@@ -121,6 +124,7 @@
       <caption xml:lang="en-GB">Playing KShisen</caption>
       <caption xml:lang="es">Jugando a KShisen</caption>
       <caption xml:lang="et">KShiseni mängimine</caption>
+      <caption xml:lang="eu">KShisen-ean jolastea</caption>
       <caption xml:lang="fi">KShisenin pelaaminen</caption>
       <caption xml:lang="fr">Partie de KShisen en cours</caption>
       <caption xml:lang="gl">Xogando a KShisen</caption>
