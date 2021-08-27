@@ -59,13 +59,13 @@ void PossibleMove::Debug() const
 {
     qCDebug(KSHISEN_General) << "PossibleMove";
 
-    for (auto const &iter : qAsConst(m_path)) {
+    for (auto const &iter : std::as_const(m_path)) {
         qCDebug(KSHISEN_General) << "    Path:" << iter.x() << "," << iter.y();
     }
 
     if (m_hasSlide) {
         qCDebug(KSHISEN_General) << "   hasSlide";
-        for (auto const &iter : qAsConst(m_slide)) {
+        for (auto const &iter : std::as_const(m_slide)) {
             qCDebug(KSHISEN_General) << "    Slide:" << iter.x() << "," << iter.y();
         }
     }
