@@ -151,9 +151,9 @@
     <binary>kshisen</binary>
   </provides>
   <releases>
+    <release version="1.11.21082" date="2021-10-07"/>
     <release version="1.11.21081" date="2021-09-02"/>
     <release version="1.11.21080" date="2021-08-12"/>
     <release version="1.10.21043" date="2021-07-08"/>
-    <release version="1.10.21042" date="2021-06-10"/>
   </releases>
 </component>
