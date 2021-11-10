@@ -7,10 +7,15 @@ add_executable(kshisen)
 
 target_sources(kshisen PRIVATE
     app.cpp
+    app.h
     board.cpp
+    board.h
     main.cpp
     move.cpp
+    move.h
     possiblemove.cpp
+    possiblemove.h
+    types.h
 
     kshisen.qrc
 )
