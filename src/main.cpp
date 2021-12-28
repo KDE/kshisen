@@ -19,8 +19,9 @@
 #include <KCrash>
 #include <KDBusService>
 #include <KLocalizedString>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <Kdelibs4ConfigMigrator>
-
+#endif
 // KShisen
 #include "app.h"
 #include "debug.h"
@@ -29,14 +30,17 @@
 int main(int argc, char ** argv)
 {
     // Fixes blurry icons with fractional scaling
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+#endif
     QApplication a(argc, argv);
-
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     // Migrate pre-existing (4.x) configuration
     Kdelibs4ConfigMigrator migrate(QStringLiteral("kshisen"));
     migrate.setConfigFiles(QStringList() << QStringLiteral("kshisenrc"));
     migrate.setUiFiles(QStringList() << QStringLiteral("kshisenui.rc"));
     migrate.migrate();
+#endif
 
     KLocalizedString::setApplicationDomain("kshisen");
 

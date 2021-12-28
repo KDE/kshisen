@@ -13,7 +13,7 @@ set(KSHISEN_VERSION "${KSHISEN_BASE_VERSION}.${RELEASE_SERVICE_COMPACT_VERSION}"
 project(kshisen VERSION ${KSHISEN_VERSION})
 
 set(QT_MIN_VERSION "5.15.0")
-set(KF5_MIN_VERSION "5.85.0")
+set(KF5_MIN_VERSION "5.90.0")
 
 # Found this somewhere but cannot re-find it now ... but want to investigate later, so keeping this here for now.
 #set(CXX_CLANG_TIDY ON)
@@ -36,7 +36,9 @@ include(ECMQtDeclareLoggingCategory)
 include(ECMSetupVersion)
 include(FeatureSummary)
 
-find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Gui)
+find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Gui)
+find_package(Qt${QT_MAJOR_VERSION}QuickWidgets ${REQUIRED_QT_VERSION} CONFIG)
+
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Config
     Crash

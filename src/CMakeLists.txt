@@ -43,7 +43,7 @@ target_link_libraries(kshisen
     KF5::DBusAddons
     KF5::I18n
     KF5::XmlGui
-    Qt::Gui
+    Qt${QT_MAJOR_VERSION}::Gui
 )
 
 install(TARGETS kshisen ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
