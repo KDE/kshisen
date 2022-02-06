@@ -4,6 +4,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <name>KShisen</name>
+  <name xml:lang="ar">شي سن</name>
   <name xml:lang="ca">KShisen</name>
   <name xml:lang="ca-valencia">KShisen</name>
   <name xml:lang="cs">KShisen</name>
@@ -39,6 +40,7 @@
   <name xml:lang="zh-CN">KShisen</name>
   <name xml:lang="zh-TW">KShisen</name>
   <summary>Shisen-Sho Mahjongg-like Tile Game</summary>
+  <summary xml:lang="ar">شي سن لعبة قراميد مشابهة لما جونغ</summary>
   <summary xml:lang="ca">Joc de mosaics Shisen-Sho a l'estil Mahjongg</summary>
   <summary xml:lang="ca-valencia">Joc de mosaics Shisen-Sho a l'estil Mahjongg</summary>
   <summary xml:lang="cs">Hra s dlaždicemi Šisen-Šo</summary>
@@ -76,6 +78,7 @@
     <p>
       KShisen is a solitaire-like game played using the standard set of Mahjong tiles. Unlike Mahjong however, KShisen has only one layer of scrambled tiles.
     </p>
+    <p xml:lang="ar">شي سن هي لعبة تشبه لعبة سوليتير تلعب باستخدام المجموعة القياسية من بلاط ماهجونغ. على عكس ماهجونغ فإن شي سن لديها طبقة واحدة فقط من القطع المخلوطة.</p>
     <p xml:lang="ca">El KShisen és un joc de tipus solitari que es juga usant el joc de fitxes estàndard de Mahjong. A diferència de Mahjong, el KShisen només té una capa de fitxes barrejades.</p>
     <p xml:lang="ca-valencia">El KShisen és un joc de tipus solitari que es juga usant el joc de fitxes estàndard de Mahjong. A diferència de Mahjong, el KShisen només té una capa de fitxes barrejades.</p>
     <p xml:lang="cs">KShisen je hra pro jednoho hráče. Při hře se používá standardní sestava kamenů hry Mahjong. Avšak na rozdíl od Mahjongu KShisen má pouze jednu vrstvu zamíchaných dlaždic.</p>
@@ -116,6 +119,7 @@
   <screenshots>
     <screenshot type="default">
       <caption>Playing KShisen</caption>
+      <caption xml:lang="ar">يلعب شي سن</caption>
       <caption xml:lang="ca">Jugant al KShisen</caption>
       <caption xml:lang="ca-valencia">Jugant al KShisen</caption>
       <caption xml:lang="cs">Hraní KShisen</caption>
