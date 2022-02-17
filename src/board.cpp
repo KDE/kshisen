@@ -85,19 +85,67 @@ Board::Board(QWidget * parent)
 
 void Board::loadSettings()
 {
-    if (!loadTileset(Prefs::tileSet())) {
-        KMessageBox::error(this
-                           , i18nc("%1 is a path to a tileset file", "An error occurred when loading the tileset. %1 and the default tileset have been tried.\nPlease install the KMahjongg library.", Prefs::tileSet())
+    const QString tileSetBeforeLoad = Prefs::tileSet();
+    if (!loadTileset(tileSetBeforeLoad)) {
+        const QString tileSetAfterLoad = Prefs::tileSet();
+        if (tileSetBeforeLoad.isEmpty()) {
+            // This is when the user starts the app for the first time
+            if (tileSetBeforeLoad != tileSetAfterLoad) {
+                // we're good the default was loaded
+            } else {
+                KMessageBox::error(this
+                    , i18nc("%1 is a path to a tileset file", "An error occurred when loading the default tileset.\nPlease install the KMahjongg library.")
+                    , i18n("Error Loading Tiles")
+                );
+            }
+        } else {
+            // This is when there was a tileset and has disappear, maybe the user or somene else removed it
+            if (tileSetBeforeLoad != tileSetAfterLoad) {
+                // warn the user tileset could not be loaded and the default one was loaded
+                KMessageBox::information(this
+                           , i18nc("%1 is a path to a tileset file", "An error occurred when loading the tileset %1. The default tileset has been loaded.", tileSetBeforeLoad)
                            , i18n("Error Loading Tiles")
                           );
+            } else {
+                // neither the user tileset nor the default could be loaded
+                KMessageBox::error(this
+                           , i18nc("%1 is a path to a tileset file", "An error occurred when loading the tileset %1. The default tileset could also not be loaded.\nPlease install the KMahjongg library.", tileSetBeforeLoad)
+                           , i18n("Error Loading Tiles")
+                          );
+            }
+        }
     }
 
     // Load background
-    if (!loadBackground(Prefs::background())) {
-        KMessageBox::error(this
-                           , i18nc("%1 is a path to a background image file", "An error occurred when loading the background. %1 and the default background have been tried.\nPlease install the KMahjongg library.", Prefs::background())
-                           , i18n("Error Loading Background")
+    const QString backgroundBeforeLoad = Prefs::background();
+    if (!loadBackground(backgroundBeforeLoad)) {
+        const QString backgroundAfterLoad = Prefs::background();
+        if (backgroundBeforeLoad.isEmpty()) {
+            // This is when the user starts the app for the first time
+            if (backgroundBeforeLoad != backgroundAfterLoad) {
+                // we're good the default was loaded
+            } else {
+                KMessageBox::error(this
+                    , i18nc("%1 is a path to a background image file", "An error occurred when loading the default background.\nPlease install the KMahjongg library.")
+                    , i18n("Error Loading Tiles")
+                );
+            }
+        } else {
+            // This is when there was a tileset and has disappear, maybe the user or somene else removed it
+            if (backgroundBeforeLoad != backgroundAfterLoad) {
+                // warn the user tileset could not be loaded and the default one was loaded
+                KMessageBox::information(this
+                           , i18nc("%1 is a path to a background image file", "An error occurred when loading the background %1. The default background has been loaded.", backgroundBeforeLoad)
+                           , i18n("Error Loading Tiles")
                           );
+            } else {
+                // neither the user tileset nor the default could be loaded
+                KMessageBox::error(this
+                           , i18nc("%1 is a path to a background image  file", "An error occurred when loading the background %1. The default background could also not be loaded.\nPlease install the KMahjongg library.", backgroundBeforeLoad)
+                           , i18n("Error Loading Tiles")
+                          );
+            }
+        }
     }
 
     // There are tile sets, that have only one tile for e.g. the flowers group.
