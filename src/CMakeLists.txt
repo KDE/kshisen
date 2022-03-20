@@ -39,6 +39,7 @@ target_link_libraries(kshisen
     KF5KDEGames
     KF5KDEGamesPrivate
     KF5KMahjongglib
+    KF5::CoreAddons
     KF5::Crash
     KF5::DBusAddons
     KF5::I18n
