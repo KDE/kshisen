@@ -7,6 +7,7 @@ Dependencies:
     'frameworks/extra-cmake-modules': '@stable'
     'games/libkmahjongg': '@same'
     'games/libkdegames': '@same'
+    'frameworks/kcoreaddons': '@stable'
     'frameworks/kconfig': '@stable'
     'frameworks/kcrash': '@stable'
     'frameworks/kdbusaddons': '@stable'
