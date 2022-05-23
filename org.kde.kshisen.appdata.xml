@@ -116,6 +116,7 @@
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kshisen</url>
   <url type="help">https://docs.kde.org/?application=kshisen</url>
   <url type="donation">https://www.kde.org/community/donations/?app=kshisen&amp;source=appdata</url>
+  <content_rating type="oars-1.1"/>
   <screenshots>
     <screenshot type="default">
       <caption>Playing KShisen</caption>
