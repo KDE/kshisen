@@ -37,7 +37,6 @@ ecm_add_app_icon(kshisen ICONS ${ICON_SRCS})
 
 target_link_libraries(kshisen
     KF5KDEGames
-    KF5KDEGamesPrivate
     KF5KMahjongglib
     KF5::CoreAddons
     KF5::Crash
