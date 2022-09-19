@@ -48,8 +48,9 @@ int main(int argc, char ** argv)
                          QStringLiteral(KSHISEN_VERSION_STRING),
                          i18n("A game similar to Mahjongg"),
                          KAboutLicense::GPL,
-                         i18n("Copyright 1997 Mario Weilguni"));
-    aboutData.setHomepage(QStringLiteral("https://kde.org/applications/games/org.kde.kshisen"));
+                         i18n("Copyright 1997 Mario Weilguni"),
+                         QString(),
+                         QStringLiteral("https://apps.kde.org/kshisen"));
     aboutData.addAuthor(i18n("Frederik Schwarzer"), i18n("Current Maintainer"), QStringLiteral("schwarzer@kde.org"));
     aboutData.addAuthor(i18n("Dave Corrie"), i18n("Former Maintainer"), QStringLiteral("kde@davecorrie.com"));
     aboutData.addAuthor(i18n("Mario Weilguni"), i18n("Original Author"), QStringLiteral("mweilguni@sime.com"));
