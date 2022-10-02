@@ -1,0 +1,1420 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Italian "INCLUDE"
+>    <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+>     <!-- do not change this! -->
+]>
+
+<book id="kshisen" lang="&language;"
+> <!-- do not change this! -->
+  <bookinfo>
+    <title
+>Manuale di &kshisen;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+    <!-- List of immidiate authors begins here. -->
+    <!--INPORTANT! - All other contributors: [to be determined] -->
+    <authorgroup>
+      <author
+><firstname
+>Dirk</firstname
+><surname
+>Doerflinger</surname
+> <affiliation
+><address
+>&Dirk.Doerflinger.mail;</address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Frederik</firstname
+> <surname
+>Schwarzer</surname
+> <affiliation
+><address
+>&Frederik.Schwarzer.mail;</address
+></affiliation>
+      </author>
+      <othercredit role="reviewer"
+><firstname
+>Frerich</firstname
+><surname
+>Raabe</surname
+> <contrib
+>Recensore</contrib>
+        <affiliation
+><address
+>&Frerich.Raabe.mail;</address
+></affiliation>
+      </othercredit>
+      <othercredit role="translator"
+><firstname
+>Vincenzo</firstname
+><surname
+>Reale</surname
+><affiliation
+><address
+><email
+>smart2128vr@gmail.com</email
+></address
+></affiliation
+><contrib
+>Traduzione della documentazione</contrib
+></othercredit
+><othercredit role="translator"
+><firstname
+>Andrea</firstname
+><surname
+>Celli</surname
+><affiliation
+><address
+><email
+>andrea.celli@libero.it</email
+></address
+></affiliation
+><contrib
+>Traduzione dell'interfaccia grafica</contrib
+></othercredit
+><othercredit role="translator"
+><firstname
+>Andrea</firstname
+><surname
+>Rizzi</surname
+><affiliation
+><address
+><email
+>rizzi@kde.org</email
+></address
+></affiliation
+><contrib
+>Traduzione dell'interfaccia grafica</contrib
+></othercredit
+> <othercredit role="translator"
+> <firstname
+>Francesco</firstname
+><surname
+>Bresciani</surname
+> <affiliation
+><address
+><email
+>fbresciani@users.sourceforge.net</email
+> </address
+></affiliation
+><contrib
+> Traduzione della documentazione</contrib
+></othercredit
+> <othercredit role="translator"
+><firstname
+>Carlo Maria</firstname
+><surname
+>Laorenza</surname
+><affiliation
+><address
+><email
+>carlo@relazioninet.it</email
+> </address
+></affiliation
+><contrib
+>Traduzione della documentazione</contrib
+></othercredit
+><othercredit role="translator"
+><firstname
+>Luciano</firstname
+><surname
+>Montanaro</surname
+><affiliation
+><address
+><email
+>mikelima@cirulla.net</email
+></address
+></affiliation
+><contrib
+>Aggiornamento della documentazione per KDE 4</contrib
+></othercredit
+> 
+    </authorgroup>
+    <legalnotice
+>&FDLNotice;</legalnotice>
+    <date
+>15/6/2021</date>
+    <releaseinfo
+>1.10 (KDE Gear 21.08)</releaseinfo>
+
+    <!--Short description of this document. Do not change unless necessary!-->
+    <abstract>
+      <para
+>Questo documento descrive la versione 1.10 di &kshisen;</para>
+    </abstract>
+
+    <!--List of relevant keywords-->
+    <keywordset>
+      <keyword
+>KDE</keyword
+> <!-- do not change this! -->
+      <keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+      <keyword
+>gioco</keyword
+> <!-- do not change this! -->
+      <keyword
+>kshisen</keyword
+><!--Application name goes here-->
+      <!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+      <keyword
+>arcade</keyword>
+      <keyword
+>da tavolo</keyword>
+      <keyword
+>mahjong</keyword>
+      <keyword
+>tessere</keyword>
+      <!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+      <keyword
+>un giocatore</keyword>
+    </keywordset>
+  </bookinfo>
+  <!--Content begins here: -->
+  <chapter id="introduction"
+><title
+>Introduzione</title
+> <!-- do not change this! -->
+    <note
+><title
+>Tipo di gioco:</title
+><para
+>Da tavolo, arcade</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+    <note
+><title
+>Numero di giocatori possibili:</title
+><para
+>Uno</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+    <!--Short game description starts here. 3-4 sentences (paragraphs)-->
+    <para
+>&kshisen; è un gioco di tipo solitario che usa le tessere standard da mahjong. A differenza di Mahjong però, &kshisen; ha un solo strato di tessere mescolate. Puoi rimuovere i pezzi corrispondenti se riesci a connetterli con una linea spezzata di al massimo tre segmenti. La linea non deve attraversare nessun'altra tessera a parte la coppia da rimuovere. Per vincere il gioco devi rimuovere tutti i pezzi dall'area di gioco. </para>
+  </chapter>
+
+  <chapter id="howto"
+><title
+>Come si gioca</title
+> <!-- do not change this! -->
+    <screenshot>
+    <mediaobject>
+    <imageobject>
+    <imagedata fileref="gameboard.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+    <phrase
+>Tavola di gioco di &kshisen;</phrase>
+    </textobject>
+    </mediaobject>
+    </screenshot>
+    <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+    <note
+><title
+>Obiettivo:</title
+><para
+>Rimuovere tutte le tessere dall'area di gioco nel più breve tempo possibile.</para
+></note
+><!--Describe the objective of the game.-->
+    <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+    <para
+>&kshisen; caricherà una disposizione iniziale predefinita automaticamente all'inizio del gioco, e potrai cominciare a giocare subito. </para>
+    <para
+>Devi studiare accuratamente le tessere disposte nell'area di gioco e cercare due tessere che corrispondono esattamente. Quando le hai trovate usa il mouse per selezionarle. </para>
+    <para
+>Quando selezioni una coppia di tessere corrispondenti, esse scompaiono dall'area di gioco. Però anche se sembra che le tessere siano libere, saranno rimosse dall'area di gioco solo se possono essere connesse da una linea spezzata di al massimo tre segmenti che non passino sopra a nessun'altra tessera (Le linee non possono essere in diagonale). </para>
+    <para
+>Trova quante più corrispondenze possibili per rimuovere tutte le tessere dal campo di gioco. </para>
+  </chapter>
+
+  <chapter id="rules_and_tips"
+><title
+>Regole del gioco, strategie e suggerimenti</title
+> <!-- do not change this! -->
+    <sect1 id="rules">
+      <title
+>Regole</title>
+      <para
+>Un gioco di tessere standard di mahjong include: <informaltable
+> <tgroup cols="3"
+> <tbody>
+              <row
+><entry
+>Nome del gruppo</entry
+><entry
+>Nome della tessera</entry
+><entry
+>Quantità in un gioco</entry
+></row>
+              <row
+><entry
+>Cerchi</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 di cerchi</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 di cerchi</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 di cerchi</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 di cerchi</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 di cerchi</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 di cerchi</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 di cerchi</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 di cerchi</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 di cerchi</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Bambù</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 di bambù</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 di bambù</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 di bambù</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 di bambù</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 di bambù</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 di bambù</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 di bambù</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 di bambù</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 di bambù</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Caratteri</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 di caratteri</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 di caratteri</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 di caratteri</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 di caratteri</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 di caratteri</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 di caratteri</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 di caratteri</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 di caratteri</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 di caratteri</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Venti</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Vento dell'Est</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Vento del Sud</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Vento dell'Ovest</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Vento del Nord</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Draghi</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Drago rosso</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Drago verde</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Drago bianco</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Fiori</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Susino (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Giglio (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Crisantemo (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambù (4)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+>Stagioni</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Primavera (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Estate (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Autunno (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Inverno (4)</entry
+><entry
+>1</entry
+></row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+      <itemizedlist>
+        <listitem
+><para
+>Le tessere corrispondenti sono quelle in cui i pittogrammi corrispondono.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Nota:</title
+><para
+>Ci sono eccezioni a questa regola! Nel gioco tradizionale di mahjong tutte le tessere hanno delle tessere corrispondenti tranne quelle dei <quote
+>fiori</quote
+> e delle <quote
+>stagioni</quote
+>.</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>Le tessere dei <quote
+>fiori</quote
+> non sono doppie, e possono essere accoppiate fra di loro.</para
+></listitem>
+        <listitem
+><para
+>Le tessere delle <quote
+>stagioni</quote
+> non sono doppie, e possono essere accoppiate fra di loro.</para
+></listitem>
+        <listitem
+><para
+>Due tessere possono essere rimosse solo se possono essere collegate con un massimo di tre segmenti connessi che non passano sopra ad altre tessere. I segmenti possono essere orizzontali o verticali, ma non diagonali.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Nota:</title
+><para
+>Non è necessario disegnare le linee, lo fa il gioco per te. Devi solo selezionare due tessere corrispondenti sul piano di gioco; se possono essere collegate con un massimo di tre linee, le linee verranno disegnate e le tessere rimosse.</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>Le linee possono attraversare solo aree vuote.</para
+></listitem>
+        <listitem
+><para
+>Alcune partite sono irrisolvibili. Se vuoi evitare gli schemi irrisolvibili seleziona l'opzione <guilabel
+>Crea solo partite risolvibili</guilabel
+> nella finestra di configurazione.</para
+></listitem>
+        <listitem
+><para
+>Il punteggio è assegnato in base al tempo che il giocatore ha impiegato per eliminare tutte le tessere dal tabellone del gioco. Le partite con più tessere danno punteggi massimi più alti.</para
+></listitem>
+        <listitem
+><para
+>Se hai giocato con l'opzione <guilabel
+>Gravità</guilabel
+> abilitata, questo punteggio verrà moltiplicato per due.</para
+></listitem>
+        <listitem
+><para
+>Per poter entrare nella classifica dei punteggi più alti il giocatore deve completare una partita nel tempo più breve possibile.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Nota:</title
+><para
+>Se il giocatore usa la funzione per <quote
+>Annulla</quote
+> o <quote
+>Suggerimento</quote
+>, il record non verrà registrato nella classifica.</para
+></note>
+    </sect1>
+    <sect1 id="tips">
+      <title
+>Suggerimenti</title>
+      <para
+>Fai clic su una tessera con il &RMB; per evidenziare tutte le tessere corrispondenti sul tavolo. Diversamente dalle funzioni <quote
+>Annulla</quote
+> e <quote
+>Suggerimento</quote
+>, questo aiuto è permesso e non è considerato un imbroglio. </para>
+    </sect1>
+  </chapter>
+
+  <chapter id="interface"
+><title
+>Panoramica dell'interfaccia</title
+> <!-- do not change this! -->
+    <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing. -->
+    <sect1 id="menu">
+    <title
+>Voci dei menu</title>
+    <sect2 id="game-menu">
+      <title
+>Il menu Partita</title>
+
+      <para
+>Il menu <guimenu
+>Partita</guimenu
+> ti permette di controllare lo stato della partita corrente: </para>
+
+      <variablelist>
+        <varlistentry id="game-menu-new">
+          <term>
+            <menuchoice
+>	<shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Partita</guimenu
+><guimenuitem
+>Nuova</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Termina la partita corrente</action
+> ed inizia una nuova partita con nuove tessere.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-restart">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Partita</guimenu
+><guimenuitem
+>Riavvia partita</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Riavvia la partita attuale con le stesse tessere.</action
+></para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-pause">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Partita</guimenu
+><guimenuitem
+>Pausa</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Mette in pausa la partita</action
+>, in particolare il cronometro che è necessario per il calcolo del punteggio. Questa voce del menu viene usata anche per riprendere la partita.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-highscores">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Partita</guimenu
+><guimenuitem
+>Mostra la classifica</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Mostra la classifica dei migliori dieci punteggi a «&kshisen;.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Partita</guimenu
+><guimenuitem
+>Esci</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Termina</action
+> l'uso di &kshisen;.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+      <para
+>Qualche voce di menu può essere controllata anche attraverso scorciatoie di tastiera. Leggi <xref linkend="key-bindings"/> per un elenco. </para>
+
+    </sect2>
+
+    <sect2 id="move-menu">
+      <title
+>Il menu Mossa</title>
+
+      <variablelist id="move-menu-undo">
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Mossa</guimenu
+> <guimenuitem
+>Annulla</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Annulla l'ultima mossa</action
+>. Ha lo stesso effetto del pulsante <guibutton
+>Annulla</guibutton
+> nella barra degli strumenti.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="move-menu-redo">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Mossa</guimenu
+> <guimenuitem
+>Rifai</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Ripete l'ultima mossa</action
+>. Ha lo stesso effetto del pulsante <guibutton
+>Rifai</guibutton
+> nella barra degli strumenti.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="move-menu-hint">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Mossa</guimenu
+><guimenuitem
+>Suggerimento</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Mostra un suggerimento</action
+> su quale coppia di tessere rimuovere.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+    </sect2>
+
+    <sect2 id="settings-menu">
+      <title
+>Il menu Impostazioni</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guimenu
+>Impostazioni</guimenu
+><guimenuitem
+>Riproduci i suoni</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Riproduce un suono quando tocchi una tessera facendo clic con il &LMB; e quando una tessera cade giù (con la <guilabel
+>Gravità</guilabel
+> attivata).</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-settings-settings">
+          <term>
+            <menuchoice
+><guimenu
+>Impostazioni</guimenu
+><guimenuitem
+>Configura &kshisen;...</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Apre la <link linkend="configuration"
+>finestra di dialogo di configurazione</link
+> per modificare le impostazioni di &kshisen;.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+      <para
+>Inoltre &kshisen; ha le voci dei menu <guimenu
+>Impostazioni</guimenu
+> e <guimenu
+>Aiuto</guimenu
+> comuni di &kde;; per maggiori informazioni, consulta i capitoli <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu Impostazioni</ulink
+> e <ulink url="help:/fundamentals/menus.html#menus-help"
+>menu Aiuto</ulink
+> dei «Fondamentali di &kde;». </para>
+    </sect2>
+    </sect1>
+
+    <sect1 id="key-bindings">
+      <title
+>Associazioni dei tasti predefinite</title>
+
+      <para
+>Le scorciatoie predefinite sono:</para>
+
+      <informaltable>
+        <tgroup cols="2">
+          <tbody>
+            <row
+><entry
+>Nuovo</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Ricomincia la partita</entry
+><entry
+><keycap
+>F5</keycap
+></entry
+></row>
+            <row
+><entry
+>Pausa</entry
+><entry
+><keycap
+>P</keycap
+></entry
+></row>
+            <row
+><entry
+>Mostra la classifica</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Chiudi</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Annulla</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Rifai</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Suggerimento</entry
+><entry
+><keycap
+>H</keycap
+></entry
+></row>
+            <row
+><entry
+>Manuale di &kshisen;</entry
+><entry
+><keycap
+>F1</keycap
+></entry
+></row>
+            <row
+><entry
+>Che cos'è?</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry
+></row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+    </sect1>
+
+  </chapter>
+
+  <chapter id="faq"
+><title
+>Domande frequenti</title
+> <!-- do not change this! -->
+    <!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+    <qandaset>
+      <qandaentry>
+        <question
+><para
+>Voglio cambiare l'aspetto del gioco. È possibile?</para
+></question>
+        <answer
+><para
+>Sì. Per cambiare l'aspetto di &kshisen; usa la <link linkend="game-settings-settings"
+>barra dei menu</link
+> per aprire la <link linkend="configuration"
+>finestra di configurazione</link
+>.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>Si può giocare con la tastiera?</para
+></question>
+        <answer
+><para
+>No. Per il momento questo gioco non permette di giocare con la tastiera.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>Devo interrompere la partita ora, ma non ho ancora finito. Posso salvare lo stato attuale?</para
+></question>
+        <answer
+><para
+>No. Per il momento questo gioco non ha una funzione di salvataggio.</para
+></answer>
+      </qandaentry>
+    </qandaset>
+  </chapter>
+
+  <chapter id="configuration"
+><title
+>Configurazione del gioco</title
+> <!-- do not change this! -->
+    <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+    <para
+>Selezionando il menu <menuchoice
+><guimenu
+>Impostazioni</guimenu
+><guimenuitem
+>Configura &kshisen;...</guimenuitem
+></menuchoice
+> verrà aperta una finestra di configurazione che permetterà di alterare il comportamento del gioco. </para>
+
+    <screenshot>
+      <screeninfo
+>finestra di dialogo di configurazione di &kshisen;</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="kshisen-configuration.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>finestra di dialogo di configurazione di &kshisen;</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <variablelist>
+      <title
+>Pagina <guilabel
+>Generale</guilabel
+></title>
+      <varlistentry>
+        <term
+><guilabel
+>Gravità</guilabel
+></term>
+        <listitem
+><para
+>Selezionando questa voce, la partita diventerà ancora più difficile: se una tessera viene rimossa, tutte le altre poste sopra di essa cadranno verso il basso di una posizione. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Crea solo partite risolvibili</guilabel
+></term>
+        <listitem
+><para
+>Se questa casella è selezionata ti verranno presentate solo partite che sono possibili da risolvere. Nota: anche per le partite risolvibili è possibile perdere se le tessere sono rimosse nell'ordine sbagliato. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Mostra un messaggio se la partita non può essere più risolta</guilabel
+></term>
+        <listitem
+><para
+>Se selezionato, &kshisen; cercherà di analizzare la risolvibilità di ogni posizione di gioco e mostrerà un messaggio per interrompere il gioco nel caso in cui non siano rimaste mosse possibili per vincere la partita. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Usa lo stile cinese: un fiore corrisponde a qualsiasi altro fiore, una stagione a qualsiasi altra stagione</guilabel
+></term>
+        <listitem
+><para
+>Usa le regole tradizionali di confronto tra le tessere. Versioni precedenti di &kshisen; permettevano di eliminare solo tessere identiche, ma questo comportamento non era consistente con le regole del mahjong. Si consiglia di lasciare impostata questa voce. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Le tessere possono scorrere, ma possono essere connesse solo con 2 linee invece di 3</guilabel
+></term>
+        <listitem
+><para
+>Questa opzione cambia totalmente le regole del gioco, al punto da ritrovarsi praticamente con un gioco differente. Quando è attiva è possibile rimuovere tessere che possono essere connesse da una linea spezzata costituita al massimo da due segmenti, invece dei consueti tre. Tuttavia è possibile far scorrere le tessere sul tavoliere se la riga o la colonna in cui sono piazzate contengono dei posti vuoti. Per effettuare la mossa di spostamento si deve fare clic sulla tessera che si trova nella riga o colonna che si può far scorrere e successivamente fare clic sulla tessera corrispondente. Se sono possibili due mosse di scorrimento si deve fare clic sulla linea di connessione corrispondente alla mossa preferita. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Difficoltà partita</guilabel
+></term>
+        <listitem
+><para
+>Il cursore controlla la difficoltà del gioco (&ie; quanto sono mescolate le tessere) da <guilabel
+>Facile</guilabel
+>a <guilabel
+>Difficile</guilabel
+>. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Velocità di rimozione dei pezzi</guilabel
+></term>
+        <listitem
+><para
+>Impostando il cursore si altera la velocità alla quale vengono rimosse le tessere dal gioco dopo un abbinamento. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Quantità di tessere</guilabel
+></term>
+        <listitem
+><para
+>Il cursore permette di cambiare il numero di tessere nel gioco. Più tessere si avranno, più difficile (e lunga) sarà la partita. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+>La pagina <guilabel
+>Tessere</guilabel
+> e <guilabel
+>Sfondo</guilabel
+></term>
+        <listitem
+><para
+>Seleziona il tuo stile preferito per le tessere e lo sfondo. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Aiuto</guibutton
+></term>
+        <listitem
+><para
+>Apre le pagine di aiuto di &kshisen; (questo documento). </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>OK</guibutton
+></term>
+        <listitem
+><para
+>Salva le modifiche e chiude la finestra. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Applica</guibutton
+></term>
+        <listitem
+><para
+>Salva le modifiche ma non chiude la finestra. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Annulla</guibutton
+></term>
+        <listitem
+><para
+>Annulla le modifiche e chiude la finestra. </para
+></listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </chapter>
+
+  <chapter id="credits"
+><title
+>Riconoscimenti e licenza</title
+> <!-- do not change this! -->
+    <!--This chapter is for credits and licenses.-->
+
+    <para
+>&kshisen; Copyright 1997 &Mario.Weilguni; &Mario.Weilguni.mail; </para>
+    <para
+>&kshisen; Copyright 2002–2004 Dave Corrie <email
+>kde@davecorrie.com</email
+> </para>
+    <para
+>&kshisen; Copyright 2009-2012 &Frederik.Schwarzer; &Frederik.Schwarzer.mail; </para>
+
+    <para
+>Copyright della documentazione 2000 &Dirk.Doerflinger; &Dirk.Doerflinger.mail; </para>
+    <para
+>Documentazione Copyright 2009-2010 &Frederik.Schwarzer; &Frederik.Schwarzer.mail; </para>
+
+    <para
+>Traduzione italiana di Vincenzo Reale <email
+>smart2128vr@gmail.com</email
+></para
+><para
+>Traduzione italiana di Carlo Maria Laorenza <email
+>carlo@relazioninet.it</email
+></para
+><para
+>Revisione per KDE 4 a cura di Luciano Montanaro<email
+>mikelima@cirulla.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+  &documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

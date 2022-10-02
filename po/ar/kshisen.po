@@ -1,0 +1,607 @@
+# translation of kshisen.po to
+# Copyright (C) 2002, 2007 Free Software Foundation, Inc.
+# Isam Bayazidi <bayazidi@arabeyes.org>, 2002.
+# Youssef Chahibi <chahibi@gmail.com>, 2007.
+# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: kshisen\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"PO-Revision-Date: 2022-02-22 21:07+0400\n"
+"Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
+"Language-Team: Arabic <kde-l10n-ar@kde.org>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Lokalize 21.07.70\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "زايد السعيدي"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "zayed.alsaidi@gmail.com"
+
+#: src/app.cpp:86 src/app.cpp:324
+#, kde-format
+msgid "Select a tile"
+msgstr "اختر قرميدة"
+
+#: src/app.cpp:89
+#, kde-format
+msgid "Time: 0:00:00"
+msgstr "الوقت: 0:00:00"
+
+#: src/app.cpp:92
+#, kde-format
+msgid "Removed: 0/0"
+msgstr "أُزيلت: 0/0"
+
+#: src/app.cpp:95
+#, kde-format
+msgid "Cheat mode"
+msgstr "وضع الغش"
+
+#: src/app.cpp:114
+#, kde-format
+msgid "Play Sounds"
+msgstr "أسْمِع الأصوات"
+
+#: src/app.cpp:244
+#, kde-format
+msgctxt "time string: hh:mm:ss"
+msgid "%1:%2:%3"
+msgstr "%1:%2:%3"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_Gravity)
+#: src/app.cpp:253 src/app.cpp:356 src/settings.ui:26
+#, kde-format
+msgid "Gravity"
+msgstr "الجاذبية:"
+
+#: src/app.cpp:256
+#, kde-format
+msgid "Yes"
+msgstr "نعم"
+
+#: src/app.cpp:258
+#, kde-format
+msgid "No"
+msgstr "لا"
+
+#: src/app.cpp:264
+#, kde-format
+msgid ""
+"\n"
+"You could have been in the highscores\n"
+"if you did not use Undo or Hint.\n"
+"Try without them next time."
+msgstr ""
+"\n"
+"كان من الممكن أن تكون في أعلى الدرجات \n"
+"إذا لم تستخدم \"تراجع\" أو \"تلميح\". \n"
+"حاول بدونهم في المرة القادمة."
+
+#: src/app.cpp:265 src/app.cpp:273
+#, kde-format
+msgid "End of Game"
+msgstr "انتهت اللعبة"
+
+#: src/app.cpp:268
+#, kde-format
+msgid ""
+"Congratulations!\n"
+"You made it into the hall of fame."
+msgstr ""
+"تهانينا!\n"
+"لقد وصلت إلى قاعة الشهرة."
+
+#: src/app.cpp:272
+#, kde-format
+msgctxt "%1 - time string like hh:mm:ss"
+msgid "You made it in %1"
+msgstr "لقد فعلتها في %1"
+
+#: src/app.cpp:288
+#, kde-format
+msgid "Your time: %1:%2:%3 %4"
+msgstr "وقتك: %1:%2:%3 %4"
+
+#: src/app.cpp:292
+#, kde-format
+msgid "(Paused) "
+msgstr "(أوقِفَ مؤقتا) "
+
+#: src/app.cpp:300
+#, kde-format
+msgid "Removed: %1/%2 "
+msgstr "أُزيلت: %1/%2 "
+
+#: src/app.cpp:329
+#, kde-format
+msgid "Select a matching tile"
+msgstr "اختر قرميدة مطابقة"
+
+#: src/app.cpp:334
+#, kde-format
+msgid "Select the move you want by clicking on the blue line"
+msgstr "حدد الحركة التي تريدها من خلال النقر على الخط الأزرق"
+
+#: src/app.cpp:339
+#, kde-format
+msgid "This tile did not match the one you selected"
+msgstr "هذه القرميدة لا تتطابق مع الذي حددتها"
+
+#: src/app.cpp:344
+#, kde-format
+msgid "You cannot make this move"
+msgstr "لا يمكنك فعل هذه الحركة"
+
+#: src/app.cpp:375
+#, kde-format
+msgid "General"
+msgstr "عامّ"
+
+#: src/board.cpp:97
+#, kde-format
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the default tileset.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"حدث خطأ أثناء تحميل مجموعة القرميد المبدئية\n"
+"الرجاء تثبيت مكتبة KMahjongg."
+
+#: src/board.cpp:98 src/board.cpp:107 src/board.cpp:113 src/board.cpp:130
+#: src/board.cpp:139 src/board.cpp:145
+#, kde-format
+msgid "Error Loading Tiles"
+msgstr "خطأ في تحميل القراميد"
+
+#: src/board.cpp:106
+#, kde-format
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the tileset %1. The default tileset has been "
+"loaded."
+msgstr "حدث خطأ أثناء تحميل مجموعة القرميد %1. حُملت المجموعة المبدئية."
+
+#: src/board.cpp:112
+#, kde-format
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the tileset %1. The default tileset could "
+"also not be loaded.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"حدث خطأ أثناء تحميل مجموعة القرميد %1. ولم تُحمل المجموعة المبدئية أيضا. \n"
+"الرجاء تثبيت مكتبة KMahjongg."
+
+#: src/board.cpp:129
+#, kde-format
+msgctxt "%1 is a path to a background image file"
+msgid ""
+"An error occurred when loading the default background.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"حدث خطأ أثناء تحميل الخلفية. \n"
+"الرجاء تثبيت مكتبة KMahjongg."
+
+#: src/board.cpp:138
+#, kde-format
+msgctxt "%1 is a path to a background image file"
+msgid ""
+"An error occurred when loading the background %1. The default background has "
+"been loaded."
+msgstr "حدث خطأ أثناء تحميل الخلفية %1. حُملت الخلفية المبدئية."
+
+#: src/board.cpp:144
+#, kde-format
+msgctxt "%1 is a path to a background image  file"
+msgid ""
+"An error occurred when loading the background %1. The default background "
+"could also not be loaded.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"حدث خطأ أثناء تحميل الخلفية %1 والخلفية المبدئية. \n"
+"الرجاء تثبيت مكتبة KMahjongg."
+
+#: src/board.cpp:706
+#, kde-format
+msgid ""
+"Game Paused\n"
+"Click to resume game."
+msgstr ""
+"أوقفت اللعبة\n"
+"انقر لاستئناف اللعبة"
+
+#: src/board.cpp:710
+#, kde-format
+msgid ""
+"Game Stuck\n"
+"No more moves possible."
+msgstr ""
+"توقف اللعبة \n"
+"لا يوجد حركات ممكنة."
+
+#: src/board.cpp:713
+#, kde-format
+msgid ""
+"Game Over\n"
+"Click to start a new game."
+msgstr ""
+"انتهت اللعبة\n"
+"انقر لبدء لعبة جديدة."
+
+#. i18n: ectx: label, entry (TileSet), group (General)
+#: src/kshisen.kcfg:9
+#, kde-format
+msgid "The tile set to use."
+msgstr "مجموعة القراميد التي ستستخدم."
+
+#. i18n: ectx: label, entry (Background), group (General)
+#: src/kshisen.kcfg:12
+#, kde-format
+msgid "The background to use."
+msgstr "الخلفية التي ستستعمل."
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: src/kshisenui.rc:13
+#, kde-format
+msgid "Main Toolbar"
+msgstr "شريط الأدوات الرئيسي"
+
+#: src/main.cpp:47
+#, kde-format
+msgid "Shisen-Sho"
+msgstr "شي سن"
+
+#: src/main.cpp:49
+#, kde-format
+msgid "A game similar to Mahjongg"
+msgstr "لعبة شبيهة بما جونغ"
+
+#: src/main.cpp:51
+#, kde-format
+msgid "Copyright 1997 Mario Weilguni"
+msgstr "Copyright 1997 Mario Weilguni"
+
+#: src/main.cpp:54
+#, kde-format
+msgid "Frederik Schwarzer"
+msgstr "Frederik Schwarzer"
+
+#: src/main.cpp:54
+#, kde-format
+msgid "Current Maintainer"
+msgstr "المصين الحاليّ"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "Dave Corrie"
+msgstr "Dave Corrie"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "Former Maintainer"
+msgstr "المصين السّابق"
+
+#: src/main.cpp:56
+#, kde-format
+msgid "Mario Weilguni"
+msgstr "Mario Weilguni"
+
+#: src/main.cpp:56
+#, kde-format
+msgid "Original Author"
+msgstr "المؤلف الأصلي"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "Mauricio Piacentini"
+msgstr "Mauricio Piacentini"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "KMahjonggLib integration for KDE4"
+msgstr "دمج لـKMahjonggLib لكدي4"
+
+#: src/main.cpp:58
+#, kde-format
+msgid "Jason Lane"
+msgstr "Jason Lane"
+
+#: src/main.cpp:58
+#, kde-format
+msgid ""
+"Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
+msgstr ""
+"أضف عداد \"إزالة القرميد\" <br/> تحجيم القرميد بشكل سلس وتغيير حجم النافذة"
+
+#: src/main.cpp:59
+#, kde-format
+msgid "Thanks also to everyone who should be listed here but is not!"
+msgstr ""
+"الشكر أيضا لكل واحد كان من المفترض أن يكون في هذه القائمة ولكنه غير موجود!"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Gravity)
+#: src/settings.ui:23
+#, kde-format
+msgid ""
+"<b>Gravity</b><p>Checking this makes the game even harder: If a tile is "
+"removed, all tiles lying above it will fall down one step.</p>"
+msgstr ""
+"<b> الجاذبية </b> <p> يؤدي التحقق من ذلك إلى زيادة صعوبة اللعبة: إذا أزيلت "
+"قطعة ، فسوف تسقط كل القراميد الموجودة فوقها دفعة واحدة. </p>"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Solvable)
+#: src/settings.ui:33
+#, kde-format
+msgid ""
+"<b>Create solvable games only</b><p>If checked, you will only be presented "
+"with games that are possible to solve.</p><p>Note: Even in solvable games "
+"you can fail to complete if you remove the tiles in the wrong order.</p>"
+msgstr ""
+"<b> ولد ألعاب قابلة للحل فقط </b> <p> إذا حدد ، فلن يعرض سوى الألعاب التي "
+"يمكن حلها. </p> <p> ملاحظة: حتى في الألعاب القابلة للحل ، قد تفشل في إكمالها "
+"إذا أزلت القراميد بالترتيب الخاطئ. </p> "
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_Solvable)
+#: src/settings.ui:36
+#, kde-format
+msgid "Create solvable games only"
+msgstr "ولد ألعاب قابلة للحل فقط"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
+#: src/settings.ui:43
+#, kde-format
+msgid ""
+"<b>Show message if board can no longer be solved</b><p>Checking this makes "
+"the game show a message to abort the game in case there are no possible "
+"moves left to win the game.</p>"
+msgstr ""
+"<b> أظهر رسالة إذا لم يعد بالإمكان حل اللوحة </b> <p> يؤدي تحديد ذلك إلى "
+"إظهار اللعبة رسالة لإيقاف اللعبة في حالة عدم وجود حركات محتملة متبقية للفوز "
+"باللعبة. </p> "
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
+#: src/settings.ui:46
+#, kde-format
+msgid "Show message if board can no longer be solved"
+msgstr "أظهر رسالة إذا لم يعد بالإمكان حل اللوحة"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ChineseStyle)
+#: src/settings.ui:53
+#, kde-format
+msgid ""
+"<b>Use Chinese style: any flower match any flower, any season match any "
+"season</b><p>Use the traditional rules for matching the tiles. Previous "
+"version of the game used to allow only exact tiles matches, which is "
+"inconsistent with Mah-jongg rules. It is recommended to keep this option "
+"checked.</p>"
+msgstr ""
+"<b> استخدم النمط الصيني: أي زهرة تتطابق مع أي زهرة ، وأي موسم يتطابق مع أي "
+"موسم </b> <p> استخدم القواعد التقليدية لمطابقة القرميد. استخدمت الإصدارات  "
+"السابقة من اللعبة المطابقة التامة للقراميد ، وهو ما يتعارض مع قواعد ما جونغ. "
+"من المستحسن إبقاء هذا الخيار محددًا. </p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ChineseStyle)
+#: src/settings.ui:56
+#, kde-format
+msgid ""
+"Use Chinese style: any flower match any flower, any season match any season"
+msgstr ""
+"استخدم النمط الصيني: أي زهرة تتطابق مع أي زهرة ، وأي موسم يتطابق مع أي موسم"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_TilesCanSlide)
+#: src/settings.ui:63
+#, kde-format
+msgid ""
+"<b>Tiles can slide, but you can connect only in 2 lines instead of 3</"
+"b><p>This option changes the rules to the point where it almost becomes a "
+"completely different game. When it is active, you can only remove the tiles "
+"if they can be connected by a line consisting of only two segments instead "
+"of the customary three. However, you are allowed to slide the tiles on the "
+"board, if the row or column where they are placed has some empty space. To "
+"make a sliding move, you have to click on the tile containing the column or "
+"row that can slide, and then on the matching tile. If there are two possible "
+"sliding moves, you will have to click on one of the two connecting lines to "
+"choose your preferred move.</p>"
+msgstr ""
+"س<b> يمكن أن تنزلق القراميد ، لكن يمكنك وصل في سطرين فقط بدلاً من 3</b> <p> "
+"يغير هذا الخيار القواعد إلى النقطة التي تصبح فيها لعبة مختلفة تمامًا تقريبًا. "
+"عندما يكون نشطًا ، يمكنك فقط إزالة المربعات إذا كان من الممكن توصيلها بخط "
+"يتكون من جزأين فقط بدلاً من الأجزاء الثلاثة المعتادة. ومع ذلك ، يُسمح لك "
+"بتحريك القراميد على اللوحة ، إذا كان الصف أو العمود الذي يتم وضعها فيه به "
+"مساحة فارغة. للقيام بحركة منزلقة ، عليك النقر فوق المربع الذي يحتوي على "
+"العمود أو الصف الذي يمكن أن ينزلق ، ثم على المربع المطابق. إذا كانت هناك "
+"حركتان محتملتان للانزلاق ، فسيتعين عليك النقر فوق أحد الخطين المتصلين "
+"لاختيار الحركة المفضلة لديك. </p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_TilesCanSlide)
+#: src/settings.ui:66
+#, kde-format
+msgid "Tiles can slide, but you can connect only in 2 lines instead of 3"
+msgstr "يمكن أن تنزلق القراميد ، لكن يمكنك وصل في سطرين فقط بدلاً من 3"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, difficulty_groupBox)
+#: src/settings.ui:73
+#, kde-format
+msgid ""
+"<b>Board Difficulty</b><p>The slider controls the difficulty of the board "
+"from Easy to Hard.</p>"
+msgstr ""
+"<b> صعوبة اللوحة </b> <p> يتحكم شريط التمرير في صعوبة اللوحة من السهل إلى "
+"الصعب. </p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, difficulty_groupBox)
+#: src/settings.ui:76
+#, kde-format
+msgid "Board Difficulty"
+msgstr "صعوبة اللوحة"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: src/settings.ui:103
+#, kde-format
+msgid "Easy"
+msgstr "سهل"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3)
+#: src/settings.ui:123
+#, kde-format
+msgid "Hard"
+msgstr "صعب"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, speed_groupBox)
+#: src/settings.ui:138
+#, kde-format
+msgid ""
+"<b>Piece Removal Speed</b><p>Adjusting this slider alters the speed at which "
+"the pieces are removed from the screen after a match has been made.</p>"
+msgstr ""
+"<b> سرعة إزالة القطع </b> <p> يؤدي ضبط شريط التمرير هذا إلى تغيير السرعة "
+"التي تتم بها إزالة القطع من الشاشة بعد إجراء المطابقة. </p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, speed_groupBox)
+#: src/settings.ui:141
+#, kde-format
+msgid "Piece Removal Speed"
+msgstr "سرعة إزالة القطعة"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: src/settings.ui:168
+#, kde-format
+msgid "Slow"
+msgstr "بطيء"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#: src/settings.ui:188
+#, kde-format
+msgid "Fast"
+msgstr "سريع"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, size_groupBox)
+#: src/settings.ui:203
+#, kde-format
+msgid ""
+"<b>Board Size</b><p>This slider allows you to change the number of tiles on "
+"the board. The more tiles you have, the harder (and longer) the game will be."
+"</p>"
+msgstr ""
+"<b> حجم اللوحة </b> <p> يتيح لك شريط التمرير هذا تغيير عدد المربعات على "
+"اللوحة. كلما زاد عدد المربعات لديك ، ستكون اللعبة أصعب (وأطول). </p> "
+
+#. i18n: ectx: property (title), widget (QGroupBox, size_groupBox)
+#: src/settings.ui:206
+#, kde-format
+msgid "Board Size"
+msgstr "حجم اللوح"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#: src/settings.ui:236
+#, kde-format
+msgid "14x6"
+msgstr "14×6"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel9)
+#: src/settings.ui:256
+#, kde-format
+msgid "16x9"
+msgstr "16x9"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: src/settings.ui:279
+#, kde-format
+msgid "18x8"
+msgstr "18×8"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel10)
+#: src/settings.ui:302
+#, kde-format
+msgid "24x12"
+msgstr "24×12"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel11)
+#: src/settings.ui:325
+#, kde-format
+msgid "26x14"
+msgstr "26×14"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel12)
+#: src/settings.ui:348
+#, kde-format
+msgid "30x16"
+msgstr "30×16"
+
+#~ msgid "Error Loading Background"
+#~ msgstr "خطأ في تحميل الخلفية"
+
+#, fuzzy
+#~ msgctxt "Menu title"
+#~ msgid "&Move"
+#~ msgstr "&حرّك"
+
+#, fuzzy
+#~ msgid "(gravity)"
+#~ msgstr "الجاذبية"
+
+#, fuzzy
+#~ msgid "Tile Size"
+#~ msgstr "البلاطة الحجم"
+
+#, fuzzy
+#~ msgid "Hall of Fame"
+#~ msgstr "الصّالة من الشهرة"
+
+#, fuzzy
+#~ msgid "Rank"
+#~ msgstr "الرتبة"
+
+#, fuzzy
+#~ msgid "Name"
+#~ msgstr "الاسم"
+
+#, fuzzy
+#~ msgid "Time"
+#~ msgstr "الوقت"
+
+#, fuzzy
+#~ msgid "Size"
+#~ msgstr "الحجم"
+
+#, fuzzy
+#~ msgid "Score"
+#~ msgstr "النتيجة"
+
+#, fuzzy
+#~ msgid "Enter your Name"
+#~ msgstr "نهاية من لعبة"
+
+#, fuzzy
+#~ msgid ""
+#~ "You have made it into the \"Hall Of Fame\". Type in your name so mankind "
+#~ "will always remember your cool rating."
+#~ msgstr "أنت الإيطالية الصّالة من الشهرة النوع بوصة الاسم دائماً."
+
+#, fuzzy
+#~ msgid "Your name:"
+#~ msgstr "اسمك:"
+
+#, fuzzy
+#~ msgid "Game Paused"
+#~ msgstr "لعبة أوقِفَ مؤقتا"
+
+#, fuzzy
+#~ msgid "This game is solvable."
+#~ msgstr "هذا لعبة هو."
+
+#, fuzzy
+#~ msgid "This game is NOT solvable."
+#~ msgstr "هذا لعبة هو ليس."

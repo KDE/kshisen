@@ -1,0 +1,541 @@
+# kshisen ko.po
+# Copyright (C) 1999 Free Software Foundation, Inc.
+# LinuxKorea Co. <kde@linuxkorea.co.kr>, 1999.
+# Shinjo Park <kde@peremen.name>, 2011, 2013, 2019, 2020, 2021, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kshisen\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"PO-Revision-Date: 2022-04-16 23:04+0200\n"
+"Last-Translator: Shinjo Park <kde@peremen.name>\n"
+"Language-Team: Korean <kde-kr@kde.org>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 21.08.1\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "박신조"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "kde@peremen.name"
+
+#: src/app.cpp:86 src/app.cpp:324
+#, kde-format
+msgid "Select a tile"
+msgstr "타일 선택"
+
+#: src/app.cpp:89
+#, kde-format
+msgid "Time: 0:00:00"
+msgstr "시간: 0:00:00"
+
+#: src/app.cpp:92
+#, kde-format
+msgid "Removed: 0/0"
+msgstr "제거됨: 0/0"
+
+#: src/app.cpp:95
+#, kde-format
+msgid "Cheat mode"
+msgstr "치트 모드"
+
+#: src/app.cpp:114
+#, kde-format
+msgid "Play Sounds"
+msgstr "소리 재생"
+
+#: src/app.cpp:244
+#, kde-format
+msgctxt "time string: hh:mm:ss"
+msgid "%1:%2:%3"
+msgstr "%1:%2:%3"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_Gravity)
+#: src/app.cpp:253 src/app.cpp:356 src/settings.ui:26
+#, kde-format
+msgid "Gravity"
+msgstr "중력"
+
+#: src/app.cpp:256
+#, kde-format
+msgid "Yes"
+msgstr "예"
+
+#: src/app.cpp:258
+#, kde-format
+msgid "No"
+msgstr "아니요"
+
+#: src/app.cpp:264
+#, kde-format
+msgid ""
+"\n"
+"You could have been in the highscores\n"
+"if you did not use Undo or Hint.\n"
+"Try without them next time."
+msgstr ""
+"\n"
+"실행 취소나 힌트를 사용하지 않았으면\n"
+"최고 점수를 기록했을 것입니다.\n"
+"다음 기회에 다시 도전하십시오."
+
+#: src/app.cpp:265 src/app.cpp:273
+#, kde-format
+msgid "End of Game"
+msgstr "게임 끝"
+
+#: src/app.cpp:268
+#, kde-format
+msgid ""
+"Congratulations!\n"
+"You made it into the hall of fame."
+msgstr ""
+"축하합니다!\n"
+"최고 기록에 등록되었습니다."
+
+#: src/app.cpp:272
+#, kde-format
+msgctxt "%1 - time string like hh:mm:ss"
+msgid "You made it in %1"
+msgstr "%1에 끝냈습니다"
+
+#: src/app.cpp:288
+#, kde-format
+msgid "Your time: %1:%2:%3 %4"
+msgstr "진행 시간: %1:%2:%3 %4"
+
+#: src/app.cpp:292
+#, kde-format
+msgid "(Paused) "
+msgstr "(일시 정지됨) "
+
+#: src/app.cpp:300
+#, kde-format
+msgid "Removed: %1/%2 "
+msgstr "제거됨: %1/%2"
+
+#: src/app.cpp:329
+#, kde-format
+msgid "Select a matching tile"
+msgstr "일치하는 타일 선택"
+
+#: src/app.cpp:334
+#, kde-format
+msgid "Select the move you want by clicking on the blue line"
+msgstr "파란 선을 클릭해서 이동할 경로를 선택하십시오"
+
+#: src/app.cpp:339
+#, kde-format
+msgid "This tile did not match the one you selected"
+msgstr "선택한 것과 타일이 일치하지 않습니다"
+
+#: src/app.cpp:344
+#, kde-format
+msgid "You cannot make this move"
+msgstr "이렇게 이동할 수 없습니다"
+
+#: src/app.cpp:375
+#, kde-format
+msgid "General"
+msgstr "일반"
+
+#: src/board.cpp:97
+#, kde-format
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the default tileset.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"타일 모음을 불러오는 중 오류가 발생했습니다.\n"
+"KMahjongg 라이브러리를 설치하십시오."
+
+#: src/board.cpp:98 src/board.cpp:107 src/board.cpp:113 src/board.cpp:130
+#: src/board.cpp:139 src/board.cpp:145
+#, kde-format
+msgid "Error Loading Tiles"
+msgstr "타일을 불러오는 중 오류 발생"
+
+#: src/board.cpp:106
+#, kde-format
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the tileset %1. The default tileset has been "
+"loaded."
+msgstr ""
+"타일 모음 %1을(를) 불러오는 중 오류가 발생했습니다.\n"
+"KMahjongg 라이브러리를 설치하십시오."
+
+#: src/board.cpp:112
+#, kde-format
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the tileset %1. The default tileset could "
+"also not be loaded.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"타일 모음 %1을(를) 불러오는 중 오류가 발생했습니다. 기본 타일 모음을 불러올 "
+"수도 없습니다.\n"
+"KMahjongg 라이브러리를 설치하십시오."
+
+#: src/board.cpp:129
+#, kde-format
+msgctxt "%1 is a path to a background image file"
+msgid ""
+"An error occurred when loading the default background.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"기본 배경 그림을 불러오는 중 오류가 발생했습니다.\n"
+"KMahjongg 라이브러리를 설치하십시오."
+
+#: src/board.cpp:138
+#, kde-format
+msgctxt "%1 is a path to a background image file"
+msgid ""
+"An error occurred when loading the background %1. The default background has "
+"been loaded."
+msgstr ""
+"배경 그림 %1을(를) 불러오는 중 오류가 발생했습니다. 기본 배경 그림을 불러왔습"
+"니다."
+
+#: src/board.cpp:144
+#, kde-format
+msgctxt "%1 is a path to a background image  file"
+msgid ""
+"An error occurred when loading the background %1. The default background "
+"could also not be loaded.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"배경 그림 %1을(를) 불러오는 중 오류가 발생했습니다. 기본 배경 그림을 불러올 "
+"수도 없습니다.\n"
+"KMahjongg 라이브러리를 설치하십시오."
+
+#: src/board.cpp:706
+#, kde-format
+msgid ""
+"Game Paused\n"
+"Click to resume game."
+msgstr ""
+"일시 정지되었습니다\n"
+"클릭하면 다시 시작합니다."
+
+#: src/board.cpp:710
+#, kde-format
+msgid ""
+"Game Stuck\n"
+"No more moves possible."
+msgstr ""
+"갇혔습니다\n"
+"더 이상 움직일 수 없습니다."
+
+#: src/board.cpp:713
+#, kde-format
+msgid ""
+"Game Over\n"
+"Click to start a new game."
+msgstr ""
+"게임이 끝났습니다\n"
+"여기를 클릭하면 게임을 시작합니다."
+
+#. i18n: ectx: label, entry (TileSet), group (General)
+#: src/kshisen.kcfg:9
+#, kde-format
+msgid "The tile set to use."
+msgstr "사용할 타일 종류입니다."
+
+#. i18n: ectx: label, entry (Background), group (General)
+#: src/kshisen.kcfg:12
+#, kde-format
+msgid "The background to use."
+msgstr "사용할 배경 그림입니다."
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: src/kshisenui.rc:13
+#, kde-format
+msgid "Main Toolbar"
+msgstr "주 도구 모음"
+
+#: src/main.cpp:47
+#, kde-format
+msgid "Shisen-Sho"
+msgstr "Shisen-Sho"
+
+#: src/main.cpp:49
+#, kde-format
+msgid "A game similar to Mahjongg"
+msgstr "마작 게임"
+
+#: src/main.cpp:51
+#, kde-format
+msgid "Copyright 1997 Mario Weilguni"
+msgstr "Copyright 1997 Mario Weilguni"
+
+#: src/main.cpp:54
+#, kde-format
+msgid "Frederik Schwarzer"
+msgstr "Frederik Schwarzer"
+
+#: src/main.cpp:54
+#, kde-format
+msgid "Current Maintainer"
+msgstr "현재 관리자"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "Dave Corrie"
+msgstr "Dave Corrie"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "Former Maintainer"
+msgstr "이전 관리자"
+
+#: src/main.cpp:56
+#, kde-format
+msgid "Mario Weilguni"
+msgstr "Mario Weilguni"
+
+#: src/main.cpp:56
+#, kde-format
+msgid "Original Author"
+msgstr "원 작성자"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "Mauricio Piacentini"
+msgstr "Mauricio Piacentini"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "KMahjonggLib integration for KDE4"
+msgstr "KDE4 KMahjonggLib 통합"
+
+#: src/main.cpp:58
+#, kde-format
+msgid "Jason Lane"
+msgstr "Jason Lane"
+
+#: src/main.cpp:58
+#, kde-format
+msgid ""
+"Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
+msgstr "'삭제된 타일' 카운터 추가<br/>부드러운 타일 및 창 크기 조절"
+
+#: src/main.cpp:59
+#, kde-format
+msgid "Thanks also to everyone who should be listed here but is not!"
+msgstr "이 외의 많은 사람들에게 감사드립니다!"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Gravity)
+#: src/settings.ui:23
+#, kde-format
+msgid ""
+"<b>Gravity</b><p>Checking this makes the game even harder: If a tile is "
+"removed, all tiles lying above it will fall down one step.</p>"
+msgstr ""
+"<b>중력</b><p>이 옵션을 선택하면 타일을 제거했을 때 제거한 타일 위에 있는 모"
+"든 타일을 떨어트립니다. 게임을 조금 더 어렵게 만듭니다.</p>"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Solvable)
+#: src/settings.ui:33
+#, kde-format
+msgid ""
+"<b>Create solvable games only</b><p>If checked, you will only be presented "
+"with games that are possible to solve.</p><p>Note: Even in solvable games "
+"you can fail to complete if you remove the tiles in the wrong order.</p>"
+msgstr ""
+"<b>풀 수 있는 게임만 만들기</b><p>선택하면 풀 수 있는 게임만 생성합니다.</"
+"p><p>메모: 풀 수 있는 게임을 생성했더라도 잘못된 순서로 타일을 제거하면 풀 "
+"수 없습니다.</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_Solvable)
+#: src/settings.ui:36
+#, kde-format
+msgid "Create solvable games only"
+msgstr "풀 수 있는 게임만 만들기"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
+#: src/settings.ui:43
+#, kde-format
+msgid ""
+"<b>Show message if board can no longer be solved</b><p>Checking this makes "
+"the game show a message to abort the game in case there are no possible "
+"moves left to win the game.</p>"
+msgstr ""
+"<b>판을 더 이상 해결할 수 없을 때 메시지 표시</b><p>이 옵션을 사용하면 판을 "
+"해결할 수 있는 방법이 더 이상 없을 때 게임을 중단할 수 있는 메시지를 표시합니"
+"다.</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
+#: src/settings.ui:46
+#, kde-format
+msgid "Show message if board can no longer be solved"
+msgstr "판을 더 이상 해결할 수 없을 때 메시지 표시"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ChineseStyle)
+#: src/settings.ui:53
+#, kde-format
+msgid ""
+"<b>Use Chinese style: any flower match any flower, any season match any "
+"season</b><p>Use the traditional rules for matching the tiles. Previous "
+"version of the game used to allow only exact tiles matches, which is "
+"inconsistent with Mah-jongg rules. It is recommended to keep this option "
+"checked.</p>"
+msgstr ""
+"<b>중국 스타일 사용하기: 꽃 및 계절끼리 일치함</b><p>타일을 맞추는 데 전통적"
+"인 규칙을 사용합니다. 이전 버전의 게임은 완전히 같은 타일끼리만 일치하도록 했"
+"으며, 이는 Mah-jongg 규칙과도 일치하지 않습니다. 이 옵션을 선택하는 것을 추천"
+"합니다.</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ChineseStyle)
+#: src/settings.ui:56
+#, kde-format
+msgid ""
+"Use Chinese style: any flower match any flower, any season match any season"
+msgstr "중국 스타일 사용하기: 꽃 및 계절끼리 일치함"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_TilesCanSlide)
+#: src/settings.ui:63
+#, kde-format
+msgid ""
+"<b>Tiles can slide, but you can connect only in 2 lines instead of 3</"
+"b><p>This option changes the rules to the point where it almost becomes a "
+"completely different game. When it is active, you can only remove the tiles "
+"if they can be connected by a line consisting of only two segments instead "
+"of the customary three. However, you are allowed to slide the tiles on the "
+"board, if the row or column where they are placed has some empty space. To "
+"make a sliding move, you have to click on the tile containing the column or "
+"row that can slide, and then on the matching tile. If there are two possible "
+"sliding moves, you will have to click on one of the two connecting lines to "
+"choose your preferred move.</p>"
+msgstr ""
+"<b>타일이 미끄러질 수 있으나 3줄 대신 2줄로 연결해야 함</b><p>이 옵션은 게임"
+"의 규칙을 바꿔서 완전히 다른 게임이 되게 합니다. 이 옵션을 활성화하면 두 부분"
+"으로 이루어진 선으로 연결되는 조각을 없앨 수 있습니다. 하지만 행이나 열에 빈 "
+"공간이 있는 경우 조각을 미끄러트리는 것을 허용합니다. 미끄러트리려면 미끄러"
+"질 수 있는 조각을 누르고 일치하는 조각을 클릭하십시오. 두 종류의 미끄러트릴 "
+"수 있는 방법이 있으면 연결선을 눌러서 이동할 방법을 결정하십시오.</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_TilesCanSlide)
+#: src/settings.ui:66
+#, kde-format
+msgid "Tiles can slide, but you can connect only in 2 lines instead of 3"
+msgstr "타일이 미끄러질 수 있으나 3줄 대신 2줄로 연결해야 함"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, difficulty_groupBox)
+#: src/settings.ui:73
+#, kde-format
+msgid ""
+"<b>Board Difficulty</b><p>The slider controls the difficulty of the board "
+"from Easy to Hard.</p>"
+msgstr "<b>판 난이도</b><p>이 슬라이더는 각 판의 난이도를 조정합니다.</p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, difficulty_groupBox)
+#: src/settings.ui:76
+#, kde-format
+msgid "Board Difficulty"
+msgstr "판 난이도"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: src/settings.ui:103
+#, kde-format
+msgid "Easy"
+msgstr "쉬움"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3)
+#: src/settings.ui:123
+#, kde-format
+msgid "Hard"
+msgstr "어려움"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, speed_groupBox)
+#: src/settings.ui:138
+#, kde-format
+msgid ""
+"<b>Piece Removal Speed</b><p>Adjusting this slider alters the speed at which "
+"the pieces are removed from the screen after a match has been made.</p>"
+msgstr ""
+"<b>조각 제거 속도</b><p>이 슬라이더를 사용하면 조각을 맞춘 후 화면에서 조각"
+"이 제거될 속도를 지정할 수 있습니다.</p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, speed_groupBox)
+#: src/settings.ui:141
+#, kde-format
+msgid "Piece Removal Speed"
+msgstr "조각 제거 속도"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: src/settings.ui:168
+#, kde-format
+msgid "Slow"
+msgstr "느림"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#: src/settings.ui:188
+#, kde-format
+msgid "Fast"
+msgstr "빠름"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, size_groupBox)
+#: src/settings.ui:203
+#, kde-format
+msgid ""
+"<b>Board Size</b><p>This slider allows you to change the number of tiles on "
+"the board. The more tiles you have, the harder (and longer) the game will be."
+"</p>"
+msgstr ""
+"<b>판 크기</b><p>이 슬라이더를 사용하여 판 크기를 조정할 수 있습니다. 더 많"
+"은 타일을 사용할수록 게임은 더 어려워집니다.</p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, size_groupBox)
+#: src/settings.ui:206
+#, kde-format
+msgid "Board Size"
+msgstr "판 크기"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#: src/settings.ui:236
+#, kde-format
+msgid "14x6"
+msgstr "14x6"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel9)
+#: src/settings.ui:256
+#, kde-format
+msgid "16x9"
+msgstr "16x9"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: src/settings.ui:279
+#, kde-format
+msgid "18x8"
+msgstr "18x8"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel10)
+#: src/settings.ui:302
+#, kde-format
+msgid "24x12"
+msgstr "24x12"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel11)
+#: src/settings.ui:325
+#, kde-format
+msgid "26x14"
+msgstr "26x14"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel12)
+#: src/settings.ui:348
+#, kde-format
+msgid "30x16"
+msgstr "30x16"
+
+#~ msgid "Error Loading Background"
+#~ msgstr "배경을 불러오는 중 오류 발생"

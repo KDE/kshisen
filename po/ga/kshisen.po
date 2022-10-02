@@ -1,0 +1,589 @@
+# Irish translation of kshisen
+# Copyright (C) 2009 This_file_is_part_of_KDE
+# This file is distributed under the same license as the kshisen package.
+# Kevin Scannell <kscanne@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: kdegames/kshisen.po\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"PO-Revision-Date: 2004-12-03 14:52-0500\n"
+"Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
+"Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
+"Language: ga\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n < 11 ? "
+"3 : 4\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Séamus Ó Ciardhuáin,Kevin Scannell"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "seoc@iolfree.ie,kscanne@gmail.com"
+
+#: src/app.cpp:86 src/app.cpp:324
+#, kde-format
+msgid "Select a tile"
+msgstr "Roghnaigh tíl"
+
+#: src/app.cpp:89
+#, kde-format
+msgid "Time: 0:00:00"
+msgstr "Am: 0:00:00"
+
+#: src/app.cpp:92
+#, kde-format
+msgid "Removed: 0/0"
+msgstr "Bainte: 0/0"
+
+#: src/app.cpp:95
+#, kde-format
+msgid "Cheat mode"
+msgstr "Mód caimiléireachta"
+
+#: src/app.cpp:114
+#, kde-format
+msgid "Play Sounds"
+msgstr "Seinn Fuaimeanna"
+
+#: src/app.cpp:244
+#, kde-format
+msgctxt "time string: hh:mm:ss"
+msgid "%1:%2:%3"
+msgstr "%1:%2:%3"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_Gravity)
+#: src/app.cpp:253 src/app.cpp:356 src/settings.ui:26
+#, kde-format
+msgid "Gravity"
+msgstr "Domhantarraingt"
+
+#: src/app.cpp:256
+#, kde-format
+msgid "Yes"
+msgstr "Tá"
+
+#: src/app.cpp:258
+#, kde-format
+msgid "No"
+msgstr "Níl"
+
+#: src/app.cpp:264
+#, kde-format
+msgid ""
+"\n"
+"You could have been in the highscores\n"
+"if you did not use Undo or Hint.\n"
+"Try without them next time."
+msgstr ""
+"\n"
+"Bheifeá i measc na scór is fearr\n"
+"dá mba nár bhain tú úsáid as Cealaigh nó Leid.\n"
+"Déan é gan chabhair an chéad uair eile."
+
+#: src/app.cpp:265 src/app.cpp:273
+#, kde-format
+msgid "End of Game"
+msgstr "Cluiche Thart"
+
+#: src/app.cpp:268
+#, kde-format
+msgid ""
+"Congratulations!\n"
+"You made it into the hall of fame."
+msgstr ""
+"Comhghairdeas!\n"
+"Tá tá i halla na laochra anois."
+
+#: src/app.cpp:272
+#, kde-format
+msgctxt "%1 - time string like hh:mm:ss"
+msgid "You made it in %1"
+msgstr "Rinne tú é i %1"
+
+#: src/app.cpp:288
+#, kde-format
+msgid "Your time: %1:%2:%3 %4"
+msgstr "D'am: %1:%2:%3 %4"
+
+#: src/app.cpp:292
+#, kde-format
+msgid "(Paused) "
+msgstr "(Curtha ar shos) "
+
+#: src/app.cpp:300
+#, kde-format
+msgid "Removed: %1/%2 "
+msgstr "Bainte: %1/%2 "
+
+#: src/app.cpp:329
+#, kde-format
+msgid "Select a matching tile"
+msgstr "Roghnaigh tíl chomhoiriúnach"
+
+#: src/app.cpp:334
+#, kde-format
+msgid "Select the move you want by clicking on the blue line"
+msgstr "Déan do bheart tríd an líne ghorm a chliceáil"
+
+#: src/app.cpp:339
+#, kde-format
+msgid "This tile did not match the one you selected"
+msgstr "Níl an tíl seo comhoiriúnach don cheann a roghnaigh tú"
+
+#: src/app.cpp:344
+#, kde-format
+msgid "You cannot make this move"
+msgstr "Ní cheadaítear duit an beart seo"
+
+#: src/app.cpp:375
+#, kde-format
+msgid "General"
+msgstr "Ginearálta"
+
+#: src/board.cpp:97
+#, kde-format
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the default tileset.\n"
+"Please install the KMahjongg library."
+msgstr ""
+
+#: src/board.cpp:98 src/board.cpp:107 src/board.cpp:113 src/board.cpp:130
+#: src/board.cpp:139 src/board.cpp:145
+#, kde-format
+msgid "Error Loading Tiles"
+msgstr ""
+
+#: src/board.cpp:106
+#, kde-format
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the tileset %1. The default tileset has been "
+"loaded."
+msgstr ""
+
+#: src/board.cpp:112
+#, kde-format
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the tileset %1. The default tileset could "
+"also not be loaded.\n"
+"Please install the KMahjongg library."
+msgstr ""
+
+#: src/board.cpp:129
+#, kde-format
+msgctxt "%1 is a path to a background image file"
+msgid ""
+"An error occurred when loading the default background.\n"
+"Please install the KMahjongg library."
+msgstr ""
+
+#: src/board.cpp:138
+#, kde-format
+msgctxt "%1 is a path to a background image file"
+msgid ""
+"An error occurred when loading the background %1. The default background has "
+"been loaded."
+msgstr ""
+
+#: src/board.cpp:144
+#, kde-format
+msgctxt "%1 is a path to a background image  file"
+msgid ""
+"An error occurred when loading the background %1. The default background "
+"could also not be loaded.\n"
+"Please install the KMahjongg library."
+msgstr ""
+
+#: src/board.cpp:706
+#, kde-format
+msgid ""
+"Game Paused\n"
+"Click to resume game."
+msgstr ""
+"Cluiche curtha ar shos\n"
+"Cliceáil chun é a atosú."
+
+#: src/board.cpp:710
+#, kde-format
+msgid ""
+"Game Stuck\n"
+"No more moves possible."
+msgstr ""
+"Tá an cluiche i bhfostú\n"
+"Níl aon bheart ar fáil."
+
+#: src/board.cpp:713
+#, kde-format
+msgid ""
+"Game Over\n"
+"Click to start a new game."
+msgstr ""
+"Cluiche Thart\n"
+"Cliceáil chun cluiche nua a thosú."
+
+#. i18n: ectx: label, entry (TileSet), group (General)
+#: src/kshisen.kcfg:9
+#, kde-format
+msgid "The tile set to use."
+msgstr "Tacar tíleanna le húsáid."
+
+#. i18n: ectx: label, entry (Background), group (General)
+#: src/kshisen.kcfg:12
+#, kde-format
+msgid "The background to use."
+msgstr "Cúlra le húsáid."
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: src/kshisenui.rc:13
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Príomhbharra Uirlisí"
+
+#: src/main.cpp:47
+#, kde-format
+msgid "Shisen-Sho"
+msgstr "Shisen-Sho"
+
+#: src/main.cpp:49
+#, fuzzy, kde-format
+#| msgid "A KDE game similar to Mahjongg"
+msgid "A game similar to Mahjongg"
+msgstr "Cluiche KDE cosúil le Mahjongg"
+
+#: src/main.cpp:51
+#, fuzzy, kde-format
+#| msgid "(c) 1997, Mario Weilguni"
+msgid "Copyright 1997 Mario Weilguni"
+msgstr "© 1997, Mario Weilguni"
+
+#: src/main.cpp:54
+#, kde-format
+msgid "Frederik Schwarzer"
+msgstr "Frederik Schwarzer"
+
+#: src/main.cpp:54
+#, kde-format
+msgid "Current Maintainer"
+msgstr "Cothaitheoir Reatha"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "Dave Corrie"
+msgstr "Dave Corrie"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "Former Maintainer"
+msgstr "Iarchothaitheoir"
+
+#: src/main.cpp:56
+#, kde-format
+msgid "Mario Weilguni"
+msgstr "Mario Weilguni"
+
+#: src/main.cpp:56
+#, kde-format
+msgid "Original Author"
+msgstr "An Chéad Údar"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "Mauricio Piacentini"
+msgstr "Mauricio Piacentini"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "KMahjonggLib integration for KDE4"
+msgstr "Comhtháthú KMahjonggLib le haghaidh KDE4"
+
+#: src/main.cpp:58
+#, kde-format
+msgid "Jason Lane"
+msgstr "Jason Lane"
+
+#: src/main.cpp:58
+#, kde-format
+msgid ""
+"Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
+msgstr ""
+"Cuireadh áiritheoir 'tíleanna bainte' leis<br/>Mínscálú tíleanna agus athrú "
+"mhéid na fuinneoige"
+
+#: src/main.cpp:59
+#, kde-format
+msgid "Thanks also to everyone who should be listed here but is not!"
+msgstr ""
+"Táim buíoch de na daoine go léir ar chóir dóibh a bheith ar an liosta anseo "
+"ach nach bhfuil!"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Gravity)
+#: src/settings.ui:23
+#, kde-format
+msgid ""
+"<b>Gravity</b><p>Checking this makes the game even harder: If a tile is "
+"removed, all tiles lying above it will fall down one step.</p>"
+msgstr ""
+"<b>Domhantarraingt</b><p>Leis an rogha seo beidh an cluiche níos deacra fós: "
+"Má bhaintear tíl, titfidh na tíleanna os a cionn leibhéal amháin.</p>"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Solvable)
+#: src/settings.ui:33
+#, kde-format
+msgid ""
+"<b>Create solvable games only</b><p>If checked, you will only be presented "
+"with games that are possible to solve.</p><p>Note: Even in solvable games "
+"you can fail to complete if you remove the tiles in the wrong order.</p>"
+msgstr ""
+"<b>Cruthaigh cluichí indéanta amháin</b><p>Leis an rogha seo, ní thabharfar "
+"duit ach cluichí is féidir a chríochnú.</p><p>Nóta: Fiú má tá cluiche "
+"indéanta, ní bheidh tú in ann é a chríochnú má bhaineann tú na tíleanna san "
+"ord mícheart!</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_Solvable)
+#: src/settings.ui:36
+#, kde-format
+msgid "Create solvable games only"
+msgstr "Cruthaigh cluichí indéanta amháin"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
+#: src/settings.ui:43
+#, kde-format
+msgid ""
+"<b>Show message if board can no longer be solved</b><p>Checking this makes "
+"the game show a message to abort the game in case there are no possible "
+"moves left to win the game.</p>"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
+#: src/settings.ui:46
+#, kde-format
+msgid "Show message if board can no longer be solved"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ChineseStyle)
+#: src/settings.ui:53
+#, kde-format
+msgid ""
+"<b>Use Chinese style: any flower match any flower, any season match any "
+"season</b><p>Use the traditional rules for matching the tiles. Previous "
+"version of the game used to allow only exact tiles matches, which is "
+"inconsistent with Mah-jongg rules. It is recommended to keep this option "
+"checked.</p>"
+msgstr ""
+"<b>Úsáid an stíl Shíneach: tá gach bláth comhoiriúnach do gach bláth, agus "
+"tá gach séasúr comhoiriúnach le gach séasúr</b><p>Úsáid na rialacha "
+"traidisiúnta chun tíleanna a chomhoiriúnú. Sna leaganacha níos sine, níor "
+"ceadaíodh ach tíleanna comhoiriúnacha go cruinn, rud nach i gcomhréir le "
+"rialacha Mah-jongg. Moltar duit tic a chur leis an rogha seo.</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ChineseStyle)
+#: src/settings.ui:56
+#, kde-format
+msgid ""
+"Use Chinese style: any flower match any flower, any season match any season"
+msgstr ""
+"Stíl Shíneach: tá gach bláth comhoiriúnach do gach bláth, agus tá gach "
+"séasúr comhoiriúnach le gach séasúr"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_TilesCanSlide)
+#: src/settings.ui:63
+#, kde-format
+msgid ""
+"<b>Tiles can slide, but you can connect only in 2 lines instead of 3</"
+"b><p>This option changes the rules to the point where it almost becomes a "
+"completely different game. When it is active, you can only remove the tiles "
+"if they can be connected by a line consisting of only two segments instead "
+"of the customary three. However, you are allowed to slide the tiles on the "
+"board, if the row or column where they are placed has some empty space. To "
+"make a sliding move, you have to click on the tile containing the column or "
+"row that can slide, and then on the matching tile. If there are two possible "
+"sliding moves, you will have to click on one of the two connecting lines to "
+"choose your preferred move.</p>"
+msgstr ""
+"<b>Is féidir le tíleanna sleamhnú, ach ní féidir leat iad a cheangal ach in "
+"dhá líne, in ionad trí líne</b><p>Leis an rogha seo, beidh na rialacha an-"
+"difriúil, chomh difriúil gur cluiche eile ar fad é. Ní féidir na tíleanna a "
+"bhaint ach nuair atá siad ceangailte ag líne comhdhéanta de dhá mhírlíne, in "
+"ionad trí mhírlíne, an gnáthluach. Mar sin féin, tá cead agat tíl a "
+"shleamhnú ar an gclár, má tá spás folamh ina ró nó ina colún. Chun tíl a "
+"shleamhnú, caithfidh tú an tíl leis an spás folamh a chliceáil, agus ar an "
+"tíl chomhoiriúnach tar éis sin. Más féidir sleamhnú in dhá bhealach, "
+"caithfidh tú cliceáil ar cheann den dá líne chun do rogha bheart a dhéanamh."
+"</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_TilesCanSlide)
+#: src/settings.ui:66
+#, kde-format
+msgid "Tiles can slide, but you can connect only in 2 lines instead of 3"
+msgstr ""
+"Is féidir le tíleanna sleamhnú, ach ní féidir leat iad a cheangal ach in dhá "
+"líne, in ionad trí líne"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, difficulty_groupBox)
+#: src/settings.ui:73
+#, kde-format
+msgid ""
+"<b>Board Difficulty</b><p>The slider controls the difficulty of the board "
+"from Easy to Hard.</p>"
+msgstr ""
+"<b>Deacracht an Chláir</b><p>Rialaíonn an sleamhnán deacracht an chláir ó "
+"Éasca go Crua.</p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, difficulty_groupBox)
+#: src/settings.ui:76
+#, kde-format
+msgid "Board Difficulty"
+msgstr "Deacracht an Chláir"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: src/settings.ui:103
+#, kde-format
+msgid "Easy"
+msgstr "Éasca"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3)
+#: src/settings.ui:123
+#, kde-format
+msgid "Hard"
+msgstr "Crua"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, speed_groupBox)
+#: src/settings.ui:138
+#, kde-format
+msgid ""
+"<b>Piece Removal Speed</b><p>Adjusting this slider alters the speed at which "
+"the pieces are removed from the screen after a match has been made.</p>"
+msgstr ""
+"<b>Luas Bainte Píosaí</b><p>Nuair a aimsíonn tú píosaí comhoiriúnacha, "
+"baintear iad ón scáileán ar luas éigin. Coigeartaigh an sleamhnán seo chun "
+"an luas seo a athrú.</p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, speed_groupBox)
+#: src/settings.ui:141
+#, kde-format
+msgid "Piece Removal Speed"
+msgstr "Luas Bainte Píosaí"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: src/settings.ui:168
+#, kde-format
+msgid "Slow"
+msgstr "Mall"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#: src/settings.ui:188
+#, kde-format
+msgid "Fast"
+msgstr "Tapa"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, size_groupBox)
+#: src/settings.ui:203
+#, kde-format
+msgid ""
+"<b>Board Size</b><p>This slider allows you to change the number of tiles on "
+"the board. The more tiles you have, the harder (and longer) the game will be."
+"</p>"
+msgstr ""
+"<b>Méid an Chláir</b><p>Leis an sleamhnán seo, is féidir líon na dtíleanna "
+"ar an gclár a athrú. Má tá níos mó tíleanna ann, beidh an cluiche níos "
+"deacra (agus níos faide).</p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, size_groupBox)
+#: src/settings.ui:206
+#, kde-format
+msgid "Board Size"
+msgstr "Méid an Chláir"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#: src/settings.ui:236
+#, kde-format
+msgid "14x6"
+msgstr "14×6"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel9)
+#: src/settings.ui:256
+#, kde-format
+msgid "16x9"
+msgstr "16×9"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: src/settings.ui:279
+#, kde-format
+msgid "18x8"
+msgstr "18×8"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel10)
+#: src/settings.ui:302
+#, kde-format
+msgid "24x12"
+msgstr "24×12"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel11)
+#: src/settings.ui:325
+#, kde-format
+msgid "26x14"
+msgstr "26×14"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel12)
+#: src/settings.ui:348
+#, kde-format
+msgid "30x16"
+msgstr "30×16"
+
+#~ msgctxt "Menu title"
+#~ msgid "&Move"
+#~ msgstr "&Bog"
+
+#~ msgid "Congratulation!"
+#~ msgstr "Comhghairdeas!"
+
+#~ msgid "(gravity)"
+#~ msgstr "(domhantarraingt)"
+
+#~ msgid "Tile Size"
+#~ msgstr "Méid na dTíleanna"
+
+#~ msgid "Hall of Fame"
+#~ msgstr "Halla na Laochra"
+
+#~ msgid "Rank"
+#~ msgstr "Aicme"
+
+#~ msgid "Name"
+#~ msgstr "Ainm"
+
+#~ msgid "Time"
+#~ msgstr "Am"
+
+#~ msgid "Size"
+#~ msgstr "Méid"
+
+#~ msgid "Score"
+#~ msgstr "Scór"
+
+#~ msgid "Enter your Name"
+#~ msgstr "Iontráil d'Ainm"
+
+#~ msgid "Your name:"
+#~ msgstr "D'ainm:"
+
+#~ msgid "Game Paused"
+#~ msgstr "Cluiche Curtha ar Shos"
+
+#~ msgid "This game is solvable."
+#~ msgstr "Is féidir an cluiche seo a réiteach."
+
+#~ msgid "This game is NOT solvable."
+#~ msgstr "NÍ féidir an cluiche seo a réiteach."
+
+#~ msgid "&Finish"
+#~ msgstr "&Críochnaigh"

@@ -1,0 +1,1386 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kshisen;">
+  <!ENTITY kappversion "1.8.4"
+>     <!--Application version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames"
+>      <!-- do not change this! -->
+  <!ENTITY % Czech "INCLUDE"
+>    <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+>     <!-- do not change this! -->
+]>
+
+<book id="kshisen" lang="&language;"
+> <!-- do not change this! -->
+  <bookinfo>
+    <title
+>Příručka aplikace &kappname;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+    <!-- List of immidiate authors begins here. -->
+    <!--INPORTANT! - All other contributors: [to be determined] -->
+    <authorgroup>
+      <author
+><firstname
+>Dirk</firstname
+> <surname
+>Doerflinger</surname
+> <affiliation
+><address
+>&Dirk.Doerflinger.mail;</address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Frederik</firstname
+> <surname
+>Schwarzer</surname
+> <affiliation
+><address
+><email
+>schwarzer@kde.org</email
+></address
+></affiliation>
+      </author>
+      <othercredit role="reviewer"
+><firstname
+>Frerich</firstname
+><surname
+>Raabe</surname
+> <contrib
+>Kontrolor</contrib>
+        <affiliation
+><address
+>&Frerich.Raabe.mail;</address
+></affiliation>
+      </othercredit>
+      <othercredit role="translator"
+><firstname
+>Lukáš</firstname
+><surname
+>Vlček</surname
+><affiliation
+><address
+><email
+>lukas_vlcek@email.cz</email
+></address
+></affiliation
+><contrib
+>Překlad</contrib
+></othercredit
+> 
+    </authorgroup>
+    <legalnotice
+>&FDLNotice;</legalnotice>
+    <date
+>2013-05-05</date>
+    <releaseinfo
+>&kappversion; (&kde; 4.11)</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+
+    <!--Short description of this document. Do not change unless necessary!-->
+    <abstract>
+      <para
+>Tato dokumentace popisuje hru <application
+>Šisen-Šo</application
+> ve verzi &kappversion;.</para>
+    </abstract>
+
+    <!--List of relevant keywords-->
+    <keywordset>
+      <keyword
+>KDE</keyword
+> <!-- do not change this! -->
+      <keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+      <keyword
+>hra</keyword
+> <!-- do not change this! -->
+      <keyword
+>kshisen</keyword
+><!--Application name goes here-->
+      <!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+      <keyword
+>arkáda</keyword>
+      <keyword
+>desková</keyword>
+      <keyword
+>mahjong</keyword>
+      <keyword
+>kameny</keyword>
+      <!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+      <keyword
+>jeden hráč</keyword>
+    </keywordset>
+  </bookinfo>
+  <!--Content begins here: -->
+  <chapter id="introduction"
+><title
+>Úvod</title
+> <!-- do not change this! -->
+    <note
+><title
+>Typ hry:</title
+><para
+>Arkáda, desková</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+    <note
+><title
+>Počet možných hráčů:</title
+><para
+>Jeden</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+    <!--Short game description starts here. 3-4 sentences (paragraphs)-->
+    <para
+><application
+>Šisen-Šo</application
+> je hra pro jednoho hráče používající standardní sestavu kamenů hry Mahjong. Na rozdíl od hry Mahjong má <application
+>Šisen-Šo</application
+> pouze jednu vrstvu zamíchaných kamenů. Párové kusy můžete odstranit, když je spojíte rovnou čarou s nejvýše dvěma ohyby. Zároveň se však čára nesmí křížit s jiným kamenem. Chcete-li hru <application
+>Šisen-Šo</application
+> vyhrát, musíte odstranit všechny kameny z hrací desky. </para>
+  </chapter>
+
+  <chapter id="howto"
+><title
+>Jak hrát</title
+> <!-- do not change this! -->
+    <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+    <note
+><title
+>Cíl:</title
+><para
+>Odstraňte všechny kameny z hrací desky v nejkratším možném čase.</para
+></note
+><!--Describe the objective of the game.-->
+    <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+    <para
+><application
+>Šisen-Šo</application
+> po spuštění hry automaticky načte výchozí rozvržení a Vy můžete ihned začít hrát. </para>
+    <para
+>Pozorně prohlížejte kameny ležící na hrací desce a hledejte dva sobě odpovídající. Když takový pár najdete, použijte myš a vyberte je. </para>
+    <para
+>Odpovídající si pár kamenů, zmizí po jejich výběru. Avšak v případě, že vyberete kameny, které nebudou mít alespoň z jedné strany jiný kámen, budou odstraněny jen tehdy, když budou spojeny čárou maximálně se dvěma ohyby. Úseky čáry mohou být pouze horizontální a vertikální. </para>
+    <para
+>Najděte co nejvíce párových kamenů a všechny je odstraňte z hrací desky. </para>
+  </chapter>
+
+  <chapter id="rules_and_tips"
+><title
+>Herní pravidla, strategie a tipy</title
+> <!-- do not change this! -->
+    <sect1 id="rules">
+      <title
+>Pravidla</title>
+      <para
+>Standardní sestava kamenů Mahjongu zahrnuje: <informaltable
+> <tgroup cols="3"
+> <tbody>
+              <row
+><entry
+>Název skupiny</entry
+><entry
+>Název kamenu</entry
+><entry
+>Množství v sestavě</entry
+></row>
+              <row
+><entry
+>Tečky</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 kroužek</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 kroužky</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 kroužky</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 kroužky</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 kroužků</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 kroužků</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 kroužků</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 kroužků</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 kroužků</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Bambusy</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 bambus</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 Bambusy</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 Bambusy</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 Bambusy</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 Bambusů</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 bambusů</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 bambusů</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 Bambusů</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 bambusů</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Číslice</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Číslice 1</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Číslice 2</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Číslice 3</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Číslice 4</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Číslice 5</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Číslice 6</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Číslice 7</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Číslice 8</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Číslice 9</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Větry</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Východní vítr</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Jižní vítr</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Západní vítr</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Severní vítr</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Draci</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Červený drak</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Zelený drak</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bílý drak</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Květiny</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Švestka (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Lilie (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Chryzantéma (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambus (4)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+>Roční období</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Jaro (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Léto (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Podzim (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Zima (4)</entry
+><entry
+>1</entry
+></row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+      <itemizedlist>
+        <listitem
+><para
+>Párové kameny jsou takové, které mají přesně odpovídající si symboly.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Poznámka:</title
+><para
+>V pravidlech jsou výjimky. V tradiční hře Mahjong má každý kámen jeden odpovídající s výjimkou kamenů <quote
+>květin</quote
+> a <quote
+>ročních období</quote
+>.</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>Kameny <quote
+>květin</quote
+> nemají v této sestavě žádné dvojice a mohou být spárovány s kterýmkoli jiným s květinou.</para
+></listitem>
+        <listitem
+><para
+>Kameny <quote
+>ročních období</quote
+> nemají v této sestavě žádné dvojice a mohou být spárovány s kterýmkoli jiným s ročním obdobím.</para
+></listitem>
+        <listitem
+><para
+>Kameny mohou být odstraněny, pouze jestli je můžete spojit maximálně třemi čarami, které se nekříží s žádným jiným kamenem. Čáry mohou být vodorovné nebo svislé, ale ne úhlopříčné.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Poznámka:</title
+><para
+>Čáry nemusíte kreslit samy. Hra to udělá za vás. Stačí označit dva párové kameny na desce. Pokud mohou být spojeny čárou se dvěma ohyby, jsou čára a kameny odstraněny.</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>Čáry mohou na desce protínat pouze prázdné prostory.</para
+></listitem>
+        <listitem
+><para
+>Některé hry jsou neřešitelné. Chcete-li se vyvarovat neřešitelných her zaškrtněte volbu <guilabel
+>Vytvořit pouze řešitelné hry</guilabel
+> v dialogovém okně s nastavením.</para
+></listitem>
+        <listitem
+><para
+>Body jsou připisovány za čas, který hráč potřeboval k odstranění všech kamenů z hrací desky. Za hru s více kameny je větší skóre.</para
+></listitem>
+        <listitem
+><para
+>Hrajete-li s povoleným nastavením <guilabel
+>Přitažlivost</guilabel
+>, skóre bude dvojnásobné.</para
+></listitem>
+        <listitem
+><para
+>Chcete-li být umístěni mezi hráči s vysokým skóre, dokončete hru v co nejkratší možné době.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Poznámka:</title
+><para
+>Použije-li hráč funkce <quote
+>Zpět</quote
+> nebo <quote
+>Rada</quote
+>, hra nebude mít vysoké skóre.</para
+></note>
+    </sect1>
+    <sect1 id="tips">
+      <title
+>Tipy</title>
+      <para
+><mousebutton
+>Pravým tlačítkem myši</mousebutton
+> klikněte na kámen, abyste zvýraznili všechny odpovídající kameny na desce. Na rozdíl od použití funkce <quote
+>Zpět</quote
+> nebo <quote
+>Rada</quote
+>, je tato pomoc povolena, aniž by byla považována za podvádění. </para>
+    </sect1>
+  </chapter>
+
+  <chapter id="interface"
+><title
+>Náhled na rozhraní</title
+> <!-- do not change this! -->
+    <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing. -->
+    <sect1 id="game-menu">
+      <title
+>Nabídka Hra</title>
+
+      <para
+>Nabídka <guimenu
+>Hra</guimenu
+> umožňuje nastavit stav aktuální hry: </para>
+
+      <variablelist>
+        <varlistentry id="game-menu-new">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Hra</guimenu
+><guimenuitem
+>Nová</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Ukončí aktuální hru</action
+> a spustí novou relaci s novým rozložením kamenů.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-restart">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>F5</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Hra</guimenu
+><guimenuitem
+>Restartovat hru</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Restartuje aktuální hru se stejným rozložením kamenů.</action
+></para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-pause">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Hra</guimenu
+><guimenuitem
+>Pozastavit</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Pozastaví hru</action
+>, hlavně časovač, který ovlivňuje bodování. Tato položka nabídky taky hru obnovuje.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-highscores">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Hra</guimenu
+><guimenuitem
+>Zobrazit nejlepší výsledky</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Zobrazí deset nejlepších výsledků ve hře <application
+>Šisen-Šo</application
+>.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Hra</guimenu
+><guimenuitem
+>Ukončit</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Ukončí</action
+> <application
+>Šisen-Šo</application
+>.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+      <para
+>Některé položky nabídky mohou být ovládány klávesovými zkratkami. Viz seznam <link linkend="key-bindings"
+>klávesových zkratek</link
+>. </para>
+
+    </sect1>
+
+    <sect1 id="move-menu">
+      <title
+>Nabídka Tah</title>
+
+      <variablelist id="move-menu-undo">
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Tah</guimenu
+><guimenuitem
+>Zpět</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Vrátí poslední tah</action
+>. Totožné s tlačítkem <guibutton
+>Zpět</guibutton
+> na nástrojové liště.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="move-menu-redo">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Tah</guimenu
+><guimenuitem
+>Znovu</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Opětovně udělá posledně vrácený tah</action
+>. Totožné s tlačítkem <guibutton
+>Znovu</guibutton
+> na nástrojové liště.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="move-menu-hint">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Tah</guimenu
+><guimenuitem
+>Rada</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Zobrazí radu</action
+>, díky které odstraníte další dva kameny.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+    </sect1>
+
+    <sect1 id="settings-menu">
+      <title
+>Nabídka Nastavení</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guimenu
+>Nastavení</guimenu
+><guimenuitem
+>Přehrávat zvuky</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Přehraje zvuk, když se kliknutím <mousebutton
+>levého tlačítka myši</mousebutton
+> dotknete kamenu a když kámen padá dolů, přehrává se při povolené <guilabel
+>přitažlivosti</guilabel
+>.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-settings-settings">
+          <term>
+            <menuchoice
+><guimenu
+>Nastavení</guimenu
+><guimenuitem
+>Nastavit 'Šisen-Šo'...</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Otevře <link linkend="configuration"
+>dialogové okno nastavení</link
+>, abyste mohli změnit nastavení aplikace <application
+>Šisen-Šo</application
+>.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+      <para
+><application
+>Šisen-Šo</application
+> má běžné položky &kde; nabídek <guimenu
+>Nastavení</guimenu
+> a <guimenu
+>Nápověda</guimenu
+>. Pro více informací si přečtěte část o <ulink url="help:/fundamentals/ui.html#menus-settings"
+>nabídce Nastavení</ulink
+> a <ulink url="help:/fundamentals/ui.html#menus-help"
+>nabídce Nápověda</ulink
+> v nápovědě Základy &kde;. </para>
+
+    </sect1>
+
+  </chapter>
+
+  <chapter id="faq"
+><title
+>Často kladené otázky</title
+> <!-- do not change this! -->
+    <!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+    <qandaset>
+      <qandaentry>
+        <question
+><para
+>Chci změnit vzhled hry. Je to možné?</para
+></question>
+        <answer
+><para
+>Ano. Chcete-li změnit vzhled hry <application
+>Šisen-Šo</application
+>, rozbalte <link linkend="game-settings-settings"
+>hlavní nabídku</link
+> a klikněte na <link linkend="configuration"
+>Nastavit <application
+>Šisen-Šo</application
+></link
+>.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>Můžu používat klávesnici?</para
+></question>
+        <answer
+><para
+>Ne. Tato hra nepodporuje hraní pomocí klávesnice.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>Musím ukončit svoji hru, ještě před dokončením. Mohu uložit svůj průběh?</para
+></question>
+        <answer
+><para
+>Ne. Tato hra nepodporuje volbu <quote
+>Uložit</quote
+>.</para
+></answer>
+      </qandaentry>
+    </qandaset>
+  </chapter>
+
+  <chapter id="configuration"
+><title
+>Nastavení hry</title
+> <!-- do not change this! -->
+    <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+    <para
+>Kliknutí na položku nabídky <menuchoice
+><guimenu
+>Nastavení</guimenu
+><guimenuitem
+>Nastavit 'Šisen-Šo'...</guimenuitem
+></menuchoice
+> otevře dialogové okno nastavení, které umožňuje změnit chování hry. </para>
+
+    <screenshot>
+      <screeninfo
+>dialogové okno s nastavením <application
+>Šisen-Šo</application
+></screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="kshisen-configuration.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>dialogové okno s nastavením <application
+>Šisen-Šo</application
+></phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <variablelist>
+      <title
+>Stránka <guilabel
+>Obecné</guilabel
+></title>
+      <varlistentry>
+        <term
+><guilabel
+>Přitažlivost</guilabel
+></term>
+        <listitem
+><para
+>Zaškrtnutím tohoto přepínače uděláte hru ještě obtížnější: Když budou nějaké kameny odstraněny, všechny kameny ležící nad odstraněnými spadnou na jejich místo. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Vytvářet pouze řešitelné hry</guilabel
+></term>
+        <listitem
+><para
+>Je-li zaškrtnuto, budou uvedeny hry, které je možné vyřešit. Poznámka: Dokonce i v řešitelných hrách, můžete selhat, odstraníte-li nesprávné kameny ve špatném pořadí. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Použít čínský styl: kterákoli květina odpovídá kterékoli květině, kterékoli období odpovídá zase kterémukoli období</guilabel
+></term>
+        <listitem
+><para
+>Použije tradiční pravidla pro spárování kamenů. Předchozí verze aplikace <application
+>Šisen-Šo</application
+> umožňovala pouze přesné spárování kamenů, které neodpovídají pravidlům Mahjongu. Je doporučeno zatrhnout tuto volbu. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Kameny se mohou posunovat, ale vy je můžete spojit pouze ve dvou řadách namísto tří.</guilabel
+></term>
+        <listitem
+><para
+>Tato volba změní pravidla do té míry, kdy je hra téměř zcela odlišná. Když je tato volba aktivní, můžete odstranit kameny, pouze mohou-li být spojeny čarou sestávající z jednoho nebo dvou dílků namísto obvyklých tří. Nicméně, je-li volný řádek či sloupec, je umožněno kameny posunout po hrací desce. Abyste provedli posuvný pohyb, klikněte na kámen ve sloupci nebo řádku, který může být posunut, a potom na odpovídající párový kámen. Jestliže je možné provést posuvný pohyb dvěma způsoby, jsou zobrazeny modré čáry označující tyto pohyby. Pak musíte kliknout na jednu z oněch dvou spojovacích čar, abyste vybrali váš upřednostňovaný pohyb. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Obtížnost hrací desky</guilabel
+></term>
+        <listitem
+><para
+>Tento posuvník nastavuje obtížnost desky (tzn. kolik je zamícháno kamenů) od <guilabel
+>Snadná</guilabel
+> do <guilabel
+>Náročná</guilabel
+>. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Rychlost odstraňování kamenů</guilabel
+></term>
+        <listitem
+><para
+>Nastavení tohoto posuvníku upravuje rychlost odstraňování kamenů z obrazovky po jejich spárování. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Velikost desky</guilabel
+></term>
+        <listitem
+><para
+>Tento posuvník umožňuje změnit počet kamenů na desce. Více kamenů znamená obtížnější (a delší) hru. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+>Stránky <guilabel
+>Kameny</guilabel
+> a <guilabel
+>Pozadí</guilabel
+></term>
+        <listitem
+><para
+>Vyberte oblíbený vzor kamenů a pozadí </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Nápověda</guibutton
+></term>
+        <listitem
+><para
+>Otevře stránky nápovědy aplikace <application
+>Šisen-Šo</application
+> (tento dokument). </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>OK</guibutton
+></term>
+        <listitem
+><para
+>Uložit změny a zavřít dialogové okno. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Použít</guibutton
+></term>
+        <listitem
+><para
+>Uloží změny, ale nezavře dialogové okno. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Zrušit</guibutton
+></term>
+        <listitem
+><para
+>Zruší všechny změny a zavře dialog. </para
+></listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <sect1 id="key-bindings">
+      <title
+>Výchozí klávesové zkratky</title>
+
+      <para
+>Klávesové zkratky jsou:</para>
+
+      <informaltable>
+        <tgroup cols="2">
+          <tbody>
+            <row
+><entry
+>Nová</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Restartovat hru</entry
+><entry
+><keycap
+>F5</keycap
+></entry
+></row>
+            <row
+><entry
+>Pozastavit</entry
+><entry
+><keycap
+>P</keycap
+></entry
+></row>
+            <row
+><entry
+>Zobrazit nejlepší výsledky</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Ukončit</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Zpět</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Znovu</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Rada</entry
+><entry
+><keycap
+>H</keycap
+></entry
+></row>
+            <row
+><entry
+>Příručka aplikace <application
+>Šisen-Šo</application
+></entry
+><entry
+><keycap
+>F1</keycap
+></entry
+></row>
+            <row
+><entry
+>Co je toto</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry
+></row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+    </sect1>
+  </chapter>
+
+  <chapter id="credits"
+><title
+>Informace o autorech a licenční ujednání</title
+> <!-- do not change this! -->
+    <!--This chapter is for credits and licenses.-->
+
+    <para
+>Autorská práva na <application
+>Šisen-Šo</application
+> z roku 1997: &Mario.Weilguni; &Mario.Weilguni.mail; </para>
+    <para
+>Autorská práva na <application
+>Šisen-Šo</application
+> (2002-2004): Dave Corrie <email
+>kde@davecorrie.com</email
+> </para>
+    <para
+>Autorská práva na <application
+>Šisen-Šo</application
+> (2009-2012): &Frederik.Schwarzer; &Frederik.Schwarzer.mail; </para>
+
+    <para
+>Autorské právo na dokumentaci z roku 2000: &Dirk.Doerflinger; <email
+>ddoerflinger@gmx.net</email
+> </para>
+    <para
+>Autorské právo na dokumentaci (2009-2010): &Frederik.Schwarzer; &Frederik.Schwarzer.mail; </para>
+
+    <para
+>Překlad dokumentace Lukáš Vlček <email
+>lukas_vlcek@email.cz</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+  <appendix id="installation">
+    <title
+>Instalace</title>
+
+    &install.intro.documentation;
+
+
+    <sect1 id="Compilation">
+      <title
+>Kompilace a instalace</title>
+&install.compile.documentation; </sect1>
+  </appendix>
+
+  &documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

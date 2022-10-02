@@ -1,0 +1,1328 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Dutch "INCLUDE"
+>    <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+>     <!-- do not change this! -->
+]>
+
+<book id="kshisen" lang="&language;"
+> <!-- do not change this! -->
+  <bookinfo>
+    <title
+>Het handboek van &kshisen;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+    <!-- List of immidiate authors begins here. -->
+    <!--INPORTANT! - All other contributors: [to be determined] -->
+    <authorgroup>
+      <author
+><firstname
+>Dirk</firstname
+> <surname
+>Doerflinger</surname
+> <affiliation
+><address
+>&Dirk.Doerflinger.mail;</address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Frederik</firstname
+> <surname
+>Schwarzer</surname
+> <affiliation
+><address
+>&Frederik.Schwarzer.mail;</address
+></affiliation>
+      </author>
+      <othercredit role="reviewer"
+><firstname
+>Frerich</firstname
+><surname
+>Raabe</surname
+> <contrib
+>Nalezer</contrib>
+        <affiliation
+><address
+>&Frerich.Raabe.mail;</address
+></affiliation>
+      </othercredit>
+      &Niels.Reedijk;&Rinse.Devries;&Freek.de.Kruijf; 
+    </authorgroup>
+    <legalnotice
+>&FDLNotice;</legalnotice>
+    <date
+>2021-06-15</date>
+    <releaseinfo
+>1.10 (KDE Gear 21.08)</releaseinfo>
+
+    <!--Short description of this document. Do not change unless necessary!-->
+    <abstract>
+      <para
+>Deze documentatie beschrijft het spel &kshisen; versie 1.10</para>
+    </abstract>
+
+    <!--List of relevant keywords-->
+    <keywordset>
+      <keyword
+>KDE</keyword
+> <!-- do not change this! -->
+      <keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+      <keyword
+>spel</keyword
+> <!-- do not change this! -->
+      <keyword
+>kshisen</keyword
+><!--Application name goes here-->
+      <!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+      <keyword
+>arcade</keyword>
+      <keyword
+>bord</keyword>
+      <keyword
+>mahjong</keyword>
+      <keyword
+>stenen</keyword>
+      <!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+      <keyword
+>één speler</keyword>
+    </keywordset>
+  </bookinfo>
+  <!--Content begins here: -->
+  <chapter id="introduction"
+><title
+>Inleiding</title
+> <!-- do not change this! -->
+    <note
+><title
+>Speltype:</title
+><para
+>Arcade, Bordspel</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+    <note
+><title
+>Aantal mogelijke spelers:</title
+><para
+>Eén</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+    <!--Short game description starts here. 3-4 sentences (paragraphs)-->
+    <para
+>&kshisen; is een solitaire-achtig spel dat gespeeld wordt met de standaard set Mahjong-stenen. Anders dan Mahjong echter, heeft &kshisen; slechts één laag door elkaar gehutselde stenen. U kunt gelijke stenen verwijderen als ze verbonden kunnen worden met een lijn met ten hoogste twee bochten. Deze lijn mag niet door andere stenen lopen. Om een spel &kshisen; te winnen moet de speler alle stenen van het spelbord verwijderen. </para>
+  </chapter>
+
+  <chapter id="howto"
+><title
+>Hoe te spelen</title
+> <!-- do not change this! -->
+    <screenshot>
+    <mediaobject>
+    <imageobject>
+    <imagedata fileref="gameboard.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+    <phrase
+>Het spelbord van &kshisen;</phrase>
+    </textobject>
+    </mediaobject>
+    </screenshot>
+    <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+    <note
+><title
+>Doel:</title
+><para
+>Verwijder alle stenen van het bord in de kortst mogelijke tijd.</para
+></note
+><!--Describe the objective of the game.-->
+    <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+    <para
+>&kshisen; laadt automatisch een standaard indeling wanneer u het spel start waarna u direct met spelen kunt beginnen. </para>
+    <para
+>Bekijk zorgvuldig de stenen op het bord en ontdek twee volledig identieke stenen. Wanneer u zo'n paar hebt gevonden gebruik dan de muis om ze te selecteren. </para>
+    <para
+>Nadat u een overeenkomstig paar stenen hebt geselecteerd zullen ze uit het spel verdwijnen. Echter, zelfs als de geselecteerde stenen open lijken te zijn zullen zij alleen van het bord worden verwijderd als ze verbonden kunnen worden met een lijn die ten hoogste twee bochten mag hebben en geen ander stenen kruist. Verder mag de lijn alleen horizontaal en verticaal lopen. </para>
+    <para
+>Zoek zo veel mogelijk paren om alle stenen van het bord te verwijderen. </para>
+  </chapter>
+
+  <chapter id="rules_and_tips"
+><title
+>Spelregels, strategieën en tips</title
+> <!-- do not change this! -->
+    <sect1 id="rules">
+      <title
+>Spelregels</title>
+      <para
+>De standaard set Mahjong stenen is: <informaltable
+> <tgroup cols="3"
+> <tbody>
+              <row
+><entry
+>Groepsnaam</entry
+><entry
+>Naam van de steen</entry
+><entry
+>Aantal in een set</entry
+></row>
+              <row
+><entry
+>Kringen</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 van Kringen</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 van Kringen</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 van Kringen</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 van Kringen</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 van Kringen</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 van Kringen</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 van Kringen</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 van Kringen</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 van Kringen</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Bamboes</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 of Bamboes</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 of Bamboes</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 of Bamboes</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 of Bamboes</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 of Bamboes</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 of Bamboes</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 of Bamboes</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 of Bamboes</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 of Bamboes</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Tekens</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 van Tekens</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 van Tekens</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 van Tekens</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 van Tekens</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 van Tekens</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 van Tekens</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 van Tekens</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 van Tekens</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 van Tekens</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Windstreken</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Oost</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Zuid</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>West</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Noord</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Draken</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Rode draak</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Groene draak</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Witte draak</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Bloemen</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Pruimenbloesem (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Orchidee (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Chrysant (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bamboe (4)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+>Jaargetijden</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Lente (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Zomer (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Herfst (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Winter (4)</entry
+><entry
+>1</entry
+></row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+      <itemizedlist>
+        <listitem
+><para
+>Overeenkomende stenen zijn stenen waarvan de pictogramplaatjes exact overeenkomen.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Opmerking:</title
+><para
+>Er zijn uitzonderingen op deze regel. In het traditionele Mahjong spel heeft elke steen een gelijke behalve de <quote
+>Bloemen</quote
+> en <quote
+>Jaargetijden</quote
+> stenen.</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>De <quote
+>Bloemen</quote
+> stenen hebben geen dubbelen in de set en kunnen direct overeenkomen met elkaar.</para
+></listitem>
+        <listitem
+><para
+>De <quote
+>Jaargetijde</quote
+> stenen hebben geen dubbelen in de set en kunnen direct overeenkomen met elkaar.</para
+></listitem>
+        <listitem
+><para
+>Stenen kunnen alleen worden verwijderd als ze met elkaar kunnen worden verbonden met maximaal 3 lijnen die geen andere stenen kruist. De lijnen mogen horizontaal of verticaal zijn, maar niet diagonaal.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Opmerking:</title
+><para
+>U hoeft de lijnen niet zelf te tekenen, het spel doet dit voor u. U markeert twee overeenkomende stenen op het bord, als ze met een lijn met ten hoogste twee bochten verbonden kunnen worden wordt de lijn getekend en de stenen verwijderd.</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>Lijnen mogen alleen open gebieden op het bord kruisen</para
+></listitem>
+        <listitem
+><para
+>Sommige spellen zijn niet oplosbaar. Als u niet oplosbare spelen wilt vermijden activeer dan de optie <guilabel
+>Alleen oplosbare spellen aanmaken</guilabel
+> in de instellingendialoog.</para
+></listitem>
+        <listitem
+><para
+>De score wordt toegekend aan de hand van de tijd die de speler nodig heeft om alle stenen van het bord te verwijderen. Spellen met meer stenen geven een hogere score.</para
+></listitem>
+        <listitem
+><para
+>Als u het spel met de optie <guilabel
+>Zwaartekracht</guilabel
+> aangezet speelt, dan wordt dit puntentotaal met twee vermenigvuldigd.</para
+></listitem>
+        <listitem
+><para
+>Om in aanmerking te komen voor een plaats tussen de topscores moet de speler een spel in de kortst mogelijke tijd voltooien.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Opmerking:</title
+><para
+>Als de speler de functie <quote
+>Ongedaan maken</quote
+> of <quote
+>Hint</quote
+> dan kan de score niet opgenomen worden in de topscores.</para
+></note>
+    </sect1>
+    <sect1 id="tips">
+      <title
+>Tips</title>
+      <para
+>Klik op een steen met de &RMB; om alle overeenkomende stenen op het bord te laten oplichten. Anders dan het gebruik van <quote
+>Ongedaan maken</quote
+> of de <quote
+>Tip</quote
+> mogelijkheid, wordt deze hulp niet als vals spelen beschouwd. </para>
+    </sect1>
+  </chapter>
+
+  <chapter id="interface"
+><title
+>Overzicht van het interface</title
+> <!-- do not change this! -->
+    <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing. -->
+    <sect1 id="menu">
+    <title
+>Menu Items</title>
+    <sect2 id="game-menu">
+      <title
+>Het menu Spel</title>
+
+      <para
+>Het menu <guimenu
+>Spel</guimenu
+> geeft u controle over de status van het spel: </para>
+
+      <variablelist>
+        <varlistentry id="game-menu-new">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+><guimenuitem
+>Nieuw</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Stopt het huidige spel</action
+> en start een nieuwe met nieuwe stenen.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-restart">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>F5</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+><guimenuitem
+>Spel herstarten</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Herstart het huidige spel met dezelfde stenen.</action
+></para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-pause">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Pauze</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Zet het spel stil</action
+>, inclusief de tijdklok. De menuoptie verandert dan in <guimenuitem
+>Spel hervatten</guimenuitem
+> waarmee u het spel kunt voortzetten.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-highscores">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+><guimenuitem
+>Topscores tonen</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Toont de top-tien grafieken van &kshisen;.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+><guimenuitem
+>Afsluiten</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Sluit af</action
+> &kshisen;.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+      <para
+>Enkele menuopties kunnen ook worden benaderd door middel van sneltoetsen. Zie <xref linkend="key-bindings"/> voor een lijst. </para>
+
+    </sect2>
+
+    <sect2 id="move-menu">
+      <title
+>Het menu Zet</title>
+
+      <variablelist id="move-menu-undo">
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Zet</guimenu
+> <guimenuitem
+>Ongedaan maken</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Maakt de laatste zet ongedaan</action
+>. De knop <guibutton
+>Ongedaan maken</guibutton
+> op de werkbalk doet hetzelfde.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="move-menu-redo">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Zet</guimenu
+> <guimenuitem
+>Opnieuw</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Voert de laatste zet opnieuw uit</action
+>. De knop <guibutton
+>Opnieuw</guibutton
+> op de werkbalk doet hetzelfde.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="move-menu-hint">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Zet</guimenu
+> <guimenuitem
+>Hint</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Toont een hint</action
+>, twee stenen die u kunt verwijderen.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+    </sect2>
+
+    <sect2 id="settings-menu">
+      <title
+>Het menu Instellingen</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+>Geluiden afspelen</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Speelt een geluid wanneer u een steen aanraakt door er met de &LMB; op te klikken en wanneer een steen omlaag valt bij het spelen met <guilabel
+>Zwaartekracht</guilabel
+> ingeschakeld.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-settings-settings">
+          <term>
+            <menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+>&kshisen; instellen...</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Opent de <link linkend="configuration"
+>configuratiedialoog</link
+> om &kshisen;-instellingen in te stellen.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+      <para
+>Bovendien heeft &kshisen; de gezamenlijke menu-items van &kde; <guimenu
+>Instellingen</guimenu
+> en <guimenu
+>Help</guimenu
+>, voor meer informatie lees de secties over de <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu Instellingen</ulink
+> en <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu Help</ulink
+> van &kde;-fundamentals. </para>
+    </sect2>
+    </sect1>
+
+    <sect1 id="key-bindings">
+      <title
+>Standaard toetsenbindingen</title>
+
+      <para
+>Standaard sneltoetsen zijn:</para>
+
+      <informaltable>
+        <tgroup cols="2">
+          <tbody>
+            <row
+><entry
+>Nieuw</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Spel herstarten</entry
+><entry
+><keycap
+>F5</keycap
+></entry
+></row>
+            <row
+><entry
+>Pauzeren</entry
+><entry
+><keycap
+>P</keycap
+></entry
+></row>
+            <row
+><entry
+>Topscores tonen</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Afsluiten</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Ongedaan maken</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Opnieuw</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Hint</entry
+><entry
+><keycap
+>H</keycap
+></entry
+></row>
+            <row
+><entry
+>Het handboek van &kshisen;</entry
+><entry
+><keycap
+>F1</keycap
+></entry
+></row>
+            <row
+><entry
+>Wat is dit</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry
+></row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+    </sect1>
+
+  </chapter>
+
+  <chapter id="faq"
+><title
+>Veel voorkomende vragen</title
+> <!-- do not change this! -->
+    <!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+    <qandaset>
+      <qandaentry>
+        <question
+><para
+>Ik wil het uiterlijk van dit spel wijzigen. Kan dat?</para
+></question>
+        <answer
+><para
+>Ja. Om het uiterlijk van &kshisen; te wijzigen gebruikt u de <link linkend="game-settings-settings"
+>menubalk</link
+> om het <link linkend="configuration"
+>configuratieprogramma</link
+> te gebruiken.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>Kan ik toetsenbord gebruiken?</para
+></question>
+        <answer
+><para
+>Nee, dit spel kan niet met het toetsenbord worden gespeeld.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>Ik moet het spel nu beëindigen, maar ik ben nog niet klaar. Kan ik mijn spel opslaan?</para
+></question>
+        <answer
+><para
+>Nee, dit spel heeft geen functie met de optie <quote
+>Opslaan</quote
+>.</para
+></answer>
+      </qandaentry>
+    </qandaset>
+  </chapter>
+
+  <chapter id="configuration"
+><title
+>Spelconfiguratie</title
+> <!-- do not change this! -->
+    <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+    <para
+>Door het menu-item <menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+>&kshisen; instellen...</guimenuitem
+></menuchoice
+> te selecteren opent u een configuratiedialoog waarmee u het gedrag van het spel kunt veranderen. </para>
+
+    <screenshot>
+      <screeninfo
+>Instellingendialoog van &kshisen;</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="kshisen-configuration.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>Instellingendialoog van &kshisen;</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <variablelist>
+      <title
+>Pagina <guilabel
+>Algemeen</guilabel
+></title>
+      <varlistentry>
+        <term
+><guilabel
+>Zwaartekracht</guilabel
+></term>
+        <listitem
+><para
+>Als u dit selecteert zal het spel nog moeilijker worden. Als een steen wordt verwijderd zullen alle stenen die erboven liggen één stap naar beneden vallen. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Alleen oplosbare spellen aanmaken</guilabel
+></term>
+        <listitem
+><para
+>Wanneer geactiveerd worden er alleen spellen aangeboden die oplosbaar zijn. Opmerking: Zelfs met oplosbare spellen loopt u het risico als u de stenen in de onjuiste volgorde van het bord verwijdert en het spel dus niet kan beëindigen. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Bericht tonen als het bord niet langer opgelost kan worden</guilabel
+></term>
+        <listitem
+><para
+>Indien geactiveerd, zal &kshisen; proberen te analyseren of elke spelpositie opgelost kan worden en een bericht toont om het spel af te breken in het geval dat er geen mogelijke zetten zijn om het spel te winnen. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Chinese stijl gebruiken: alle bloemen komen met elkaar overeen, alle seizoenen komen met elkaar overeen</guilabel
+></term>
+        <listitem
+><para
+>Gebruikt traditionele regels om de stenen overeen te laten komen. De vorige versie van &kshisen; liet alleen exacte overeenkomst van stenen toe. Dit is niet consistent met de Mahjong-regels. Het is aanbevolen om deze optie ingeschakeld te laten. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Tegels kunnen schuiven, maar u kunt slechts 2 lijnen verbinden in plaats van 3</guilabel
+></term>
+        <listitem
+><para
+>Deze optie wijzigt de regels in zoverre dat het bijna een volledig nieuw spel wordt. Wanneer ingeschakeld kunt u alleen stenen verwijderen als ze verbonden kunnen worden met een lijn die uit 2 segmenten bestaat in plaats van de gebruikelijke 3. Echter, u mag de stenen op het bord verschuiven, als de regel of kolom waar ze geplaatst zijn een lege ruimte bevat. Om een schuifbeweging te maken, klikt u eerst op de steen in de kolom of rij die kan schuiven en dan op de overeenkomende steen. Als er 2 schuifmogelijkheden zijn, dan zijn er blauwe lijnen die deze bewegingen aangeven. Klik dan op een van de twee lijnen om de zet die uw voorkeur heeft te kiezen. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Moeilijkheidsgraad bord</guilabel
+></term>
+        <listitem
+><para
+>De schuifregelaar bepaalt de moeilijkheidsgraad van het bord (&ie; hoeveel de stenen zijn gehutseld van <guilabel
+>Gemakkelijk</guilabel
+> tot <guilabel
+>Moeilijk</guilabel
+>. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Snelheid verwijderde speelstukken</guilabel
+></term>
+        <listitem
+><para
+>Deze schuifregelaar bepaalt de snelheid waarop de stukken van het bord worden verwijderd als er een overeenkomst tot stand kwam. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Bordgrootte</guilabel
+></term>
+        <listitem
+><para
+>Deze schuifregelaar bepaalt het aantal stenen op het bord. Hoe meer stenen u hebt, hoe moeilijker (en langer) het spel zal zijn. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+>Pagina voor <guilabel
+>Stenen</guilabel
+> en <guilabel
+>Achtergrond</guilabel
+></term>
+        <listitem
+><para
+>Uw favoriete ontwerp voor stenen en achtergrond kiezen. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Help</guibutton
+></term>
+        <listitem
+><para
+>Opent de helppagina's van &kshisen; (dit document). </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>OK</guibutton
+></term>
+        <listitem
+><para
+>Slaat uw wijzigingen op en sluit de dialoog. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Toepassen</guibutton
+></term>
+        <listitem
+><para
+>Slaat uw wijzigingen op maar sluit de dialoog niet. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Annuleren</guibutton
+></term>
+        <listitem
+><para
+>Negeert alle wijzigingen die in de dialoog zijn gemaakt en sluit deze. </para
+></listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </chapter>
+
+  <chapter id="credits"
+><title
+>Dankbetuigingen en licentie</title
+> <!-- do not change this! -->
+    <!--This chapter is for credits and licenses.-->
+
+    <para
+>&kshisen; Copyright 1997 &Mario.Weilguni; &Mario.Weilguni.mail; </para>
+    <para
+>&kshisen; Copyright 2002-2004 Dave Corrie <email
+>kde@davecorrie.com</email
+> </para>
+    <para
+>&kshisen; Copyright 2009-2012 &Frederik.Schwarzer; &Frederik.Schwarzer.mail; </para>
+
+    <para
+>Documentatie Copyright 2000 &Dirk.Doerflinger; &Dirk.Doerflinger.mail; </para>
+    <para
+>Documentatie copyright 2009-2010 &Frederik.Schwarzer; &Frederik.Schwarzer.mail; </para>
+
+    &meld.fouten;&vertaling.niels;&vertaling.rinse; &underFDL; &underGPL; </chapter>
+
+  &documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

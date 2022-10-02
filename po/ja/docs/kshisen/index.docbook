@@ -1,0 +1,1494 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kshisen;">
+  <!ENTITY kappversion "1.6.0"
+><!--Application version. Use this variable everywhere it's needed.-->
+  <!ENTITY docversion "1.0"
+><!--Document version. Use this variable everywhere it's needed.-->
+  <!ENTITY docupdate "2007-09-26"
+><!--Document version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames"
+>  <!-- do not change this! -->
+  <!ENTITY % Japanese "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+ 
+<book lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>&kappname; ハンドブック</title
+> <!-- This is the title of the docbook. Live as is unless change is necessary.-->
+<!-- List of immidiate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+	<author
+><firstname
+>Dirk</firstname
+> <surname
+>Doerflinger</surname
+> <affiliation
+><address
+>&Dirk.Doerflinger.mail;</address
+></affiliation>
+	</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+	<othercredit role="reviewer"
+><firstname
+>Frerich</firstname
+><surname
+>Raabe</surname
+> <contrib
+>校閲</contrib>
+		<affiliation
+><address
+>&Frerich.Raabe.mail;</address
+></affiliation>
+	</othercredit>
+<othercredit role="translator"
+><firstname
+>Yukiko</firstname
+><surname
+>Bando</surname
+><affiliation
+><address
+><email
+></email
+></address
+></affiliation
+><contrib
+>日本語訳</contrib
+></othercredit
+> 
+</authorgroup>
+ 
+<date
+>&docupdate;</date
+><!-- Date of (re)writing, ro update. Use the variable definitions within header to change this value.-->
+<releaseinfo
+>&docversion;</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+ 
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>このドキュメントは &kappname; のバージョン &kappversion; に基づいています。</para>
+</abstract>
+ 
+<!--List of relevant keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>ゲーム</keyword
+> <!-- do not change this! -->
+	<keyword
+>四川省</keyword
+><!--Application name goes here-->
+<!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>アーケード</keyword>
+	<keyword
+>ボード</keyword>
+	<keyword
+>マージャン</keyword>
+	<keyword
+>牌</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>一人プレイ</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>はじめに</title
+> <!-- do not change this! -->
+	<note
+><title
+>ゲームの種類:</title
+><para
+>アーケードゲーム、ボードゲーム</para
+></note
+><!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>プレイヤー数:</title
+><para
+>1 人</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+ 
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>&kappname; はマージャン牌を使ってプレイするソリティアのようなゲームです。マージャン牌を使いますが、&kappname; ではかき混ぜた牌を積み重ねずに平たく並べます。マッチする 2 つの牌を他の牌にかからない 3 本以内の水平または垂直な線で結ぶと、牌をボードから取り除くことができます。このゲームに勝つには、ボード上のすべての牌を取り除かなければなりません。 </para>
+</chapter>
+ 
+<chapter id="howto"
+><title
+>プレイ方法</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>目的:</title
+><para
+>できるだけ短い時間でボードからすべての牌を取り除いてください。</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+	<para
+>&kappname; を起動すると自動的に標準のレイアウトがロードされるので、すぐにプレイを開始できます。 </para>
+	<note
+><title
+>注:</title
+><para
+>ゲームのタイマーは最初の手を打つまで開始されません。</para
+></note>
+	<para
+>ゲームボードの牌を注意深く観察して全く同じ 2 つの牌を見つけてください。マッチする牌を見つけたら、マウスを使って牌を選択します。 </para>
+	<para
+>取り除ける 2 つの牌を選択すると、牌はゲームボードから消えます。他の牌に接していない側面を持つ牌であっても、3 本以内の他の牌にかからない水平または垂直な線で結べない場合は取り除けません。斜めの線では結べません。 </para>
+	<para
+>マッチする牌をできるだけたくさん見つけて、ゲームボードからすべての牌を取り除いてください。 </para>
+</chapter>
+ 
+<chapter id="rules_and_tips"
+><title
+>ゲームのルール、戦略、ヒント</title
+> <!-- do not change this! -->
+	<sect1 id="rules">
+		<title
+>ルール</title>
+		<para
+>標準的なマージャン牌セットに含まれる牌: <informaltable
+> <tgroup cols="3"
+> <tbody>
+					<row
+><entry
+>グループ名</entry
+><entry
+>牌の名前</entry
+><entry
+>1 セットの牌の数</entry
+></row>
+					<row
+><entry
+>筒子 (ピンズ)</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>一筒 (イーピン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>二筒 (リャンピン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>三筒 (サンピン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>四筒 (スーピン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>五筒 (ウーピン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>六筒 (ローピン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>七筒 (チーピン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>八筒 (パーピン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>九筒 (チューピン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+>索子 (ソウズ)</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>一索 (イーソウ)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>二索 (リャンソウ)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>三索 (サンソウ)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>四索 (スーソウ)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>五索 (ウーソウ)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>六索 (ローソウ)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>七索 (チーソウ)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>八索 (パーソウ)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>九索 (チューソウ)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+>萬子 (マンズ)</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>一萬 (イーマン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>二萬 (リャンマン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>三萬 (サンマン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>四萬 (スーマン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>五萬 (ウーマン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>六萬 (ローマン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>七萬 (チーマン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>八萬 (パーマン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>九萬 (チューマン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+>風牌</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>東 (トン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>南 (ナン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>西 (シャ)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>北 (ペー)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+>三元牌</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>中 (チュン)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>發 (ハツ)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>白 (ハク)</entry
+><entry
+>2</entry
+></row>
+					<row
+><entry
+>花牌</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>梅 (1)</entry
+><entry
+>1</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>蘭 (2)</entry
+><entry
+>1</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>菊 (3)</entry
+><entry
+>1</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>竹 (4)</entry
+><entry
+>1</entry
+></row>
+					<row
+><entry
+>季節牌</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>春 (1)</entry
+><entry
+>1</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>夏 (2)</entry
+><entry
+>1</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>秋 (3)</entry
+><entry
+>1</entry
+></row>
+					<row
+><entry
+></entry
+><entry
+>冬 (4)</entry
+><entry
+>1</entry
+></row>
+				</tbody>
+				</tgroup>
+			</informaltable>
+		</para>
+		<itemizedlist>
+			<listitem
+><para
+>マッチする牌とは、牌の絵柄が完全に一致する牌のことです。</para
+></listitem>
+		</itemizedlist>
+		<note
+><title
+>注:</title
+><para
+>このルールには例外があります。伝統的なマージャンでは、花牌と季節牌以外の牌は 1 セットに 2 つずつあります。</para
+></note>
+		<itemizedlist>
+			<listitem
+><para
+>花牌は 1 セットに 1 つしかないので、絵柄の異なる花牌同士をマッチさせることができます。</para
+></listitem>
+			<listitem
+><para
+>季節牌は 1 セットに 1 つしかないので、絵柄の異なる季節牌同士をマッチさせることができます。 </para
+></listitem>
+			<listitem
+><para
+>2 つの牌は他の牌にかからない 3 本以内の水平または垂直な線で結べる場合にのみ取り除くことができます。斜めの線では結べません。</para
+></listitem>
+		</itemizedlist>
+		<note
+><title
+>注:</title
+><para
+>ユーザ自身が線を引く必要はありません。取り除ける 2 つの牌をクリックすると、自動的に線が引かれ、ボードから取り除かれます。</para
+></note>
+		<itemizedlist>
+			<listitem
+><para
+>線は他の牌がないところにのみ引けます。</para
+></listitem>
+			<listitem
+><para
+>解けないボードもあります。そのようなボードを除外するには、設定ダイアログで <guilabel
+>解けないゲームを許可する</guilabel
+> のチェックを外してください。</para
+></listitem>
+			<listitem
+><para
+>スコアは取り除いた牌の数とそれに要した時間によって計算されます。</para
+></listitem>
+			<listitem
+><para
+><guilabel
+>重力</guilabel
+> を有効にしてプレイした場合、スコアは 2 倍になります。</para
+></listitem>
+			<listitem
+><para
+>ハイスコアを出すには、できるだけ短い時間でゲームを完了しなければなりません。</para
+></listitem>
+		</itemizedlist>
+		<note
+><title
+>注:</title
+><para
+>「ヒント」を使った場合のスコアはハイスコアにはなりません。</para
+></note>
+	</sect1>
+</chapter>
+  
+<chapter id="interface"
+><title
+>インターフェースの概要</title
+> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+ <sect1 id="game-menu">
+<title
+><guimenu
+>ゲーム</guimenu
+> メニュー</title>
+
+<para
+><guimenu
+>ゲーム</guimenu
+> メニューの項目を使ってゲームの状態をコントロールします。</para>
+
+<variablelist>
+<varlistentry id="game-menu-new">
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>ゲーム</guimenu
+><guimenuitem
+>新規</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>現在のゲームを終了し、別の牌セットで新しいゲームを開始します。 </para
+></listitem>
+</varlistentry>
+
+<varlistentry id="game-menu-restart">
+<term
+><menuchoice
+><shortcut
+><keycombo
+><keycap
+>F5</keycap
+></keycombo
+></shortcut
+> <guimenu
+>ゲーム</guimenu
+><guimenuitem
+>ゲームを再スタート</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+><action
+>同じ牌で現在のゲームを最初からやり直します。</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="game-menu-pause">
+<term
+><menuchoice
+><shortcut
+><keycombo
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>ゲーム</guimenu
+> <guimenuitem
+>一時停止</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>ゲームを一時停止し、スコアに影響するタイマーを止めます。このメニュー項目はゲームを再開するときにも使います。</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="game-menu-highscores">
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>ゲーム</guimenu
+><guimenuitem
+>ハイスコアを表示</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>&kappname; のローカルでのトップ 10 を表示します。</para
+> </listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>ゲーム</guimenu
+><guimenuitem
+>終了</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>&kappname; を終了します。 </para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>メニュー項目の一部はキーボードショートカットでも操作できます。<link linkend="key-bindings"
+>ショートカット</link
+> のセクションに一覧があります。</para
+> 
+
+</sect1>
+
+<sect1 id="move-menu">
+<title
+><guimenu
+>移動</guimenu
+> メニュー</title>
+
+<variablelist id="move-menu-undo">
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>移動</guimenu
+> <guimenuitem
+>元に戻す</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>直前の手を取り消します。ツールバーの <guibutton
+>元に戻す</guibutton
+> ボタンと同じです。</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="move-menu-redo">
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>移動</guimenu
+> <guimenuitem
+>やり直す</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>取り消した手をやり直します。ツールバーの <guibutton
+>やり直す</guibutton
+> ボタンと同じです。</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="move-menu-hint">
+<term
+><menuchoice
+><shortcut
+><keycombo
+><keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>移動</guimenu
+> <guimenuitem
+>ヒント</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>ヒントを表示します。次に取り除くべき 2 つの牌を示します。</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+
+<sect1 id="settings-menu">
+<title
+><guimenu
+>設定</guimenu
+> メニュー</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>設定</guimenu
+> <guimenuitem
+>ツールバーを表示</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>ツールバーの表示/非表示を切り替えます。 </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>設定</guimenu
+> <guimenuitem
+>ステータスバーを表示</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>ステータスバーの表示/非表示を切り替えます。 </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>設定</guimenu
+> <guimenuitem
+>ショートカットを設定...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>キーボードショートカットの割り当てを変更するためのダイアログを開きます。</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="settings-menu-toolbar">
+<term
+><menuchoice
+><guimenu
+>設定</guimenu
+> <guimenuitem
+>ツールバーを設定...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>ツールバーに表示するボタンを設定するためのダイアログを開きます。</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="game-settings-settings">
+<term
+><menuchoice
+><guimenu
+>設定</guimenu
+> <guimenuitem
+>&kappname; を設定...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>&kappname; のオプションを設定するための <link linkend="configuration"
+>設定ダイアログ</link
+> を開きます。 </para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+<sect1 id="help"
+><!--This is a standard Help menubar entry. Only change if needed.-->
+<title
+><guimenu
+>ヘルプ</guimenu
+> メニュー</title>
+&help.menu.documentation; </sect1>
+</chapter>
+ 
+<chapter id="faq"
+><title
+>よくある質問</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+	<qandaentry>
+		<question
+><para
+>このゲームは誰が作ったのですか？</para
+></question>
+		 <answer
+><para
+>kdegames 開発チームです。<ulink url="http://games.kde.org"
+>ウェブサイト</ulink
+> をご覧ください。</para
+></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question
+><para
+>隠しコマンド (チートコード) はどこで入手できますか？</para
+></question>
+		 <answer
+><para
+>&kde; のゲームには隠しコマンドはありません。</para
+></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question
+><para
+>新しいゲームを開始するには？</para
+></question>
+		   <answer
+><para
+>新しいゲームを開始するには、ツールバーの <guibutton
+>新規</guibutton
+> ボタン、メニューバーの <menuchoice
+><guimenu
+>ゲーム</guimenu
+><guimenuitem
+>新規</guimenuitem
+></menuchoice
+>、またはショートカット <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> を使います。</para
+></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question
+><para
+>非常にまずいことをしていまいました! ゲームを最初からやり直せますか？</para
+></question>
+		 <answer
+><para
+>はい。現在のゲームを最初からやり直すには、<link linkend="game-menu-restart"
+>ショートカットキー</link
+> または <link linkend="game-menu-restart"
+>メニューバー</link
+> のメニューを使います。</para
+></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question
+><para
+>ゲームを一時停止するには？</para
+></question>
+		 <answer
+><para
+>現在のゲームを一時停止するには、<link linkend="game-menu-pause"
+>ツールバー</link
+>、<link linkend="game-menu-pause"
+>ショートカットキー</link
+>、または <link linkend="game-menu-pause"
+>メニューバー</link
+> のメニューを使います。</para
+></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question
+><para
+>ゲームの外観を変えることはできますか？</para
+></question>
+		 <answer
+><para
+>はい。&kappname; の外観を変えるには、<link linkend="game-settings-settings"
+>メニューバー</link
+> から <link linkend="configuration"
+>設定ダイアログ</link
+> を開きます。</para
+></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question
+><para
+>取り除く牌を間違えてしまいました。元に戻せますか？</para
+></question>
+		 <answer
+><para
+>はい。打った手を元に戻すには、<link linkend="move-menu-undo"
+>ショートカットキー</link
+> または <link linkend="move-menu-undo"
+>メニューバー</link
+> のメニューを使います。</para
+></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question
+><para
+>間違って良い手を元に戻してしまいました。やり直せますか？</para
+></question>
+		 <answer
+><para
+>はい。元に戻した手をやり直すには、<link linkend="move-menu-redo"
+>ショートカットキー</link
+> または <link linkend="move-menu-redo"
+>メニューバー</link
+> のメニューを使います。</para
+></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question
+><para
+>キーボードを使ってプレイできますか？</para
+></question>
+		 <answer
+><para
+>いいえ。このゲームにはキーボードでプレイするモードはありません。</para
+></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question
+><para
+>次の手が思いつきません。ヒントはありますか？</para
+></question>
+		 <answer
+><para
+>はい。&kappname; のヒント機能を利用するには、<link linkend="move-menu-hint"
+>ショートカットキー</link
+> または <link linkend="move-menu-hint"
+>メニューバー</link
+> のメニューを使います。</para
+></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question
+><para
+>途中でゲームをやめなければならないときにゲームを保存できますか？</para
+></question>
+		 <answer
+><para
+>いいえ。このゲームには「保存」する機能はありません。</para
+></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question
+><para
+>ハイスコアはどこで見ることができますか？</para
+></question>
+		 <answer
+><para
+>ハイスコアを表示するには、<link linkend="game-menu-highscores"
+>ショートカットキー</link
+> または <link linkend="game-menu-highscores"
+>メニューバー</link
+> のメニューを使います。</para
+></answer>
+	</qandaentry>
+	<qandaentry>
+		 <question
+><para
+>ゲームの設定を変更するには？</para
+></question>
+		 <answer
+><para
+><link linkend="configuration"
+>設定パネル</link
+> を開くには、メニューバーの <link linkend="game-settings-settings"
+><guimenu
+>設定</guimenu
+></link
+> を使います。</para
+></answer
+><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+	</qandaentry>
+	<qandaentry>
+		 <question
+><para
+>ツールバーのレイアウトを変更するには？</para
+></question>
+		 <answer
+><para
+>メニューバーのレイアウトを変更するには、メニューバーの <link linkend="settings-menu-toolbar"
+><menuchoice
+><guimenu
+>設定</guimenu
+><guimenuitem
+>ツールバーを設定...</guimenuitem
+></menuchoice
+></link
+> を使います。</para
+></answer
+><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+	</qandaentry>
+</qandaset>
+</chapter>
+ 
+<chapter id="configuration"
+><title
+>ゲームの設定</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+<para
+><menuchoice
+><guimenu
+>設定</guimenu
+> <guimenuitem
+>&kappname; を設定...</guimenuitem
+></menuchoice
+> を選択すると、ゲームのオプションを変更するための設定ダイアログが開きます。</para>
+
+<screenshot>
+<screeninfo
+>&kappname; の設定ダイアログ</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="kshisen-configuration.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>&kappname; の設定ダイアログ</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>重力</guilabel
+></term>
+<listitem
+><para
+>このオプションをチェックするとゲームはより難しくなります。牌を 1 つ取り除くとその上にあるすべての牌が 1 つ下に移動します。</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>解けないゲームを許可する</guilabel
+></term>
+<listitem
+><para
+>このオプションをチェックすると解くことのできないボードが与えられる可能性があります。注意: このオプションを無効にしておいても牌を取り除く順序を間違えるとボードをクリアできなくなります。 </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>絵柄の異なる花牌および季節牌同士をマッチさせる (中国式)</guilabel
+></term>
+<listitem
+><para
+>牌をマッチさせる際に伝統的なルールを用います。以前のバージョンの &kappname; ではマージャンのルールに反して完全に一致する牌しか取り除けませんでした。このオプションは有効にしておくことをお勧めします。 </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>牌をスライドする (ただし 3 本ではなく 2 本の線で結ぶ)</guilabel
+></term>
+<listitem
+><para
+>このオプションを有効にするとルールが大きく変わって全く別のゲームのようになります。これを有効にすると、通常の 3 本ではなく 2 本の線で結べる場合にしか牌を取り除けません。その代わりに、牌のある縦または横の列に空きがあれば、ボード上で牌をスライドさせることができます。牌をスライドさせるには、まずスライド可能な列の牌をクリックし、次にマッチさせる牌をクリックします。可能な手が 2 つある場合は、牌を結ぶ 2 つの線のいずれかをクリックして手を選択します。 </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>ボードの難易度</guilabel
+></term>
+<listitem
+><para
+>スライダーを使って <guilabel
+>簡単</guilabel
+> 〜 <guilabel
+>難しい</guilabel
+> の中からボードの難易度を選択します。</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>牌を消す速度</guilabel
+></term>
+<listitem
+><para
+>スライダーを使ってマッチさせた牌をスクリーンから消す速度を調整します。</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>牌の数</guilabel
+></term>
+<listitem
+><para
+>スライダーを使ってボードの牌の数を変更します。牌の数を多くするほどゲームは難しくなり、時間も長くかかります。</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>ヘルプ</guibutton
+></term>
+<listitem
+><para
+>&kappname; のヘルプページ (このドキュメント) を開きます。</para
+></listitem
+></varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>OK</guibutton
+></term>
+<listitem
+><para
+>設定の変更を保存し、ダイアログを閉じます。</para
+></listitem
+></varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>適用</guibutton
+></term>
+<listitem
+><para
+>ダイアログを閉じずに設定の変更を保存します。</para
+></listitem
+></varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>キャンセル</guibutton
+></term>
+<listitem
+><para
+>設定の変更を取り消し、ダイアログを閉じます。</para
+></listitem
+></varlistentry>
+
+</variablelist>
+
+<sect1 id="key-bindings">
+<title
+>標準のキーボードショートカット</title>
+
+<para
+>標準のショートカット: </para>
+
+<informaltable>
+<tgroup cols="2">
+<tbody>
+<row
+><entry
+>新規</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+></row>
+<row
+><entry
+>ゲームを再スタート</entry
+><entry
+><keycap
+>F5</keycap
+></entry
+></row>
+<row
+><entry
+>一時停止</entry
+><entry
+><keycap
+>P</keycap
+></entry
+></row>
+<row
+><entry
+>ハイスコアを表示</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+></row>
+<row
+><entry
+>終了</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+></row>
+<row
+><entry
+>元に戻す</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+<row
+><entry
+>やり直す</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+<row
+><entry
+>ヒント</entry
+><entry
+><keycap
+>H</keycap
+></entry
+></row>
+<row
+><entry
+>&kappname; ハンドブック</entry
+><entry
+><keycap
+>F1</keycap
+></entry
+></row>
+<row
+><entry
+>これは何？</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry
+></row>
+</tbody>
+</tgroup>
+</informaltable>
+
+</sect1>
+</chapter>
+ 
+<chapter id="credits"
+><title
+>クレジットとライセンス</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+ 
+<para
+>&kappname; Copyright 1997 &Mario.Weilguni; &Mario.Weilguni.mail; </para>
+<para
+>Copyright 2002-2004 Dave Corrie kde@davecorrie.com </para>
+
+<para
+>ドキュメンテーション Copyright 2000 &Dirk.Doerflinger; <email
+>ddoerflinger@gmx.net</email
+> </para>
+
+<para
+>日本語訳: Yukiko Bando</para
+> 
+&underFDL; &underGPL; </chapter>
+  
+<appendix id="installation">
+<title
+>インストール</title>
+ 
+&install.intro.documentation;
+ 
+ 
+<sect1 id="Compilation">
+<title
+>コンパイルとインストール</title>
+&install.compile.documentation; </sect1>
+</appendix>
+ 
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

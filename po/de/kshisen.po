@@ -1,0 +1,630 @@
+# Stefan Winter <swinter@kde.org>, 2003, 2004, 2005, 2007.
+# Thomas Reitelbach <tr@erdfunkstelle.de>, 2005.
+# Johannes Obermayr <johannesobermayr@gmx.de>, 2009, 2010.
+# Panagiotis Papadopoulos <pano_90@gmx.net>, 2009.
+# Burkhard Lück <lueck@hube-lueck.de>, 2010, 2011, 2015, 2018, 2020, 2021.
+# Frederik Schwarzer <schwarzer@kde.org>, 2011, 2016, 2018, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: kshisen\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"PO-Revision-Date: 2022-06-09 23:57+0200\n"
+"Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
+"Language-Team: German <kde-i18n-de@kde.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 21.12.2\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Matthias Kiefer, Johannes Obermayr"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "kiefer@kde.org, johannesobermayr@gmx.de"
+
+#: src/app.cpp:86 src/app.cpp:324
+#, kde-format
+msgid "Select a tile"
+msgstr "Wählen Sie einen Spielstein"
+
+#: src/app.cpp:89
+#, kde-format
+msgid "Time: 0:00:00"
+msgstr "Zeit: 0:00:00"
+
+#: src/app.cpp:92
+#, kde-format
+msgid "Removed: 0/0"
+msgstr "Entfernt: 0 / 0"
+
+#: src/app.cpp:95
+#, kde-format
+msgid "Cheat mode"
+msgstr "Mogelmodus"
+
+#: src/app.cpp:114
+#, kde-format
+msgid "Play Sounds"
+msgstr "Klänge wiedergeben"
+
+#: src/app.cpp:244
+#, kde-format
+msgctxt "time string: hh:mm:ss"
+msgid "%1:%2:%3"
+msgstr "%1:%2:%3"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_Gravity)
+#: src/app.cpp:253 src/app.cpp:356 src/settings.ui:26
+#, kde-format
+msgid "Gravity"
+msgstr "Schwerkraft"
+
+#: src/app.cpp:256
+#, kde-format
+msgid "Yes"
+msgstr "Ja"
+
+#: src/app.cpp:258
+#, kde-format
+msgid "No"
+msgstr "Nein"
+
+#: src/app.cpp:264
+#, kde-format
+msgid ""
+"\n"
+"You could have been in the highscores\n"
+"if you did not use Undo or Hint.\n"
+"Try without them next time."
+msgstr ""
+"\n"
+"Sie könnten jetzt in der Bestenliste stehen,\n"
+"wenn Sie nicht „Rückgängig“ oder „Tipps“ verwendet hätten.\n"
+"Versuchen Sie das nächstes Mal, ohne dies auszukommen."
+
+#: src/app.cpp:265 src/app.cpp:273
+#, kde-format
+msgid "End of Game"
+msgstr "Ende der Partie"
+
+#: src/app.cpp:268
+#, kde-format
+msgid ""
+"Congratulations!\n"
+"You made it into the hall of fame."
+msgstr ""
+"Glückwunsch!\n"
+"Sie haben sich einen Eintrag in der Bestenliste gesichert."
+
+#: src/app.cpp:272
+#, kde-format
+msgctxt "%1 - time string like hh:mm:ss"
+msgid "You made it in %1"
+msgstr "Sie haben es in %1 geschafft"
+
+#: src/app.cpp:288
+#, kde-format
+msgid "Your time: %1:%2:%3 %4"
+msgstr "Ihre Zeit: %1:%2:%3 %4"
+
+#: src/app.cpp:292
+#, kde-format
+msgid "(Paused) "
+msgstr " (Angehalten) "
+
+#: src/app.cpp:300
+#, kde-format
+msgid "Removed: %1/%2 "
+msgstr "Entfernt: %1 / %2 "
+
+#: src/app.cpp:329
+#, kde-format
+msgid "Select a matching tile"
+msgstr "Wählen Sie einen passenden Spielstein"
+
+#: src/app.cpp:334
+#, kde-format
+msgid "Select the move you want by clicking on the blue line"
+msgstr ""
+"Wählen Sie die gewünschte Bewegung indem Sie auf die blaue Linie klicken"
+
+#: src/app.cpp:339
+#, kde-format
+msgid "This tile did not match the one you selected"
+msgstr "Dieser Spielstein passt nicht zu dem vorher ausgewählten"
+
+#: src/app.cpp:344
+#, kde-format
+msgid "You cannot make this move"
+msgstr "Sie können diesen Zug nicht machen."
+
+#: src/app.cpp:375
+#, kde-format
+msgid "General"
+msgstr "Allgemein"
+
+#: src/board.cpp:97
+#, kde-format
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the default tileset.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"Beim Laden der Standard-Spielsteine ist ein Fehler aufgetreten.\n"
+"Installieren Sie bitte die KMahjongg-Bibliothek."
+
+#: src/board.cpp:98 src/board.cpp:107 src/board.cpp:113 src/board.cpp:130
+#: src/board.cpp:139 src/board.cpp:145
+#, kde-format
+msgid "Error Loading Tiles"
+msgstr "Fehler beim Laden der Spielsteine"
+
+#: src/board.cpp:106
+#, kde-format
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the tileset %1. The default tileset has been "
+"loaded."
+msgstr ""
+"Beim Laden der Spielsteine %1 ist ein Fehler aufgetreten. Die Standard-"
+"Spielsteine wurden geladen."
+
+#: src/board.cpp:112
+#, kde-format
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the tileset %1. The default tileset could "
+"also not be loaded.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"Beim Laden der Spielsteine %1 ist ein Fehler aufgetreten. Die Standard-"
+"Spielsteine können ebenfalls nicht geladen werden.\n"
+"Installieren Sie bitte die KMahjongg-Bibliothek."
+
+#: src/board.cpp:129
+#, kde-format
+msgctxt "%1 is a path to a background image file"
+msgid ""
+"An error occurred when loading the default background.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"Beim Laden des Standard-Hintergrundbilds ist ein Fehler aufgetreten.\n"
+"Installieren Sie bitte die KMahjongg-Bibliothek."
+
+#: src/board.cpp:138
+#, kde-format
+msgctxt "%1 is a path to a background image file"
+msgid ""
+"An error occurred when loading the background %1. The default background has "
+"been loaded."
+msgstr ""
+"Beim Laden des Hintergrundbilds %1 ist ein Fehler aufgetreten. Das Standard-"
+"Hintergrundbild wurden geladen."
+
+#: src/board.cpp:144
+#, kde-format
+msgctxt "%1 is a path to a background image  file"
+msgid ""
+"An error occurred when loading the background %1. The default background "
+"could also not be loaded.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"Beim Laden des Hintergrundbilds %1 ist ein Fehler aufgetreten. Das Standard-"
+"Hintergrundbild kann ebenfalls nicht geladen werden.\n"
+"Installieren Sie bitte die KMahjongg-Bibliothek."
+
+#: src/board.cpp:706
+#, kde-format
+msgid ""
+"Game Paused\n"
+"Click to resume game."
+msgstr ""
+"Pause\n"
+"Klicken Sie, um weiterzuspielen."
+
+#: src/board.cpp:710
+#, kde-format
+msgid ""
+"Game Stuck\n"
+"No more moves possible."
+msgstr ""
+"Spiel angehalten\n"
+"Keine weiteren Züge möglich."
+
+#: src/board.cpp:713
+#, kde-format
+msgid ""
+"Game Over\n"
+"Click to start a new game."
+msgstr ""
+"Spiel beendet.\n"
+"Klicken Sie, um ein neues Spiel zu starten."
+
+#. i18n: ectx: label, entry (TileSet), group (General)
+#: src/kshisen.kcfg:9
+#, kde-format
+msgid "The tile set to use."
+msgstr "Das zu verwendende Spielstein-Design."
+
+#. i18n: ectx: label, entry (Background), group (General)
+#: src/kshisen.kcfg:12
+#, kde-format
+msgid "The background to use."
+msgstr "Der zu verwendende Hintergrund."
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: src/kshisenui.rc:13
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Haupt-Werkzeugleiste"
+
+#: src/main.cpp:47
+#, kde-format
+msgid "Shisen-Sho"
+msgstr "Shisen-Sho"
+
+#: src/main.cpp:49
+#, kde-format
+msgid "A game similar to Mahjongg"
+msgstr "Ein Mahjongg-ähnliches Spiel"
+
+#: src/main.cpp:51
+#, kde-format
+msgid "Copyright 1997 Mario Weilguni"
+msgstr "Copyright 1997 Mario Weilguni"
+
+#: src/main.cpp:54
+#, kde-format
+msgid "Frederik Schwarzer"
+msgstr "Frederik Schwarzer"
+
+#: src/main.cpp:54
+#, kde-format
+msgid "Current Maintainer"
+msgstr "Aktueller Betreuer"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "Dave Corrie"
+msgstr "Dave Corrie"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "Former Maintainer"
+msgstr "Ehemaliger Betreuer"
+
+#: src/main.cpp:56
+#, kde-format
+msgid "Mario Weilguni"
+msgstr "Mario Weilguni"
+
+#: src/main.cpp:56
+#, kde-format
+msgid "Original Author"
+msgstr "Ursprünglicher Autor"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "Mauricio Piacentini"
+msgstr "Mauricio Piacentini"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "KMahjonggLib integration for KDE4"
+msgstr "Integration von KMahjonggLib für KDE4"
+
+#: src/main.cpp:58
+#, kde-format
+msgid "Jason Lane"
+msgstr "Jason Lane"
+
+#: src/main.cpp:58
+#, kde-format
+msgid ""
+"Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
+msgstr ""
+"Zähler für entfernte Kacheln hinzugefügt<br/>Vergrößerung und Anpassung der "
+"Fenstergröße"
+
+#: src/main.cpp:59
+#, kde-format
+msgid "Thanks also to everyone who should be listed here but is not!"
+msgstr ""
+"Danke auch an alle die hier eigentlich erwähnt sein sollten, es aber nicht "
+"sind!"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Gravity)
+#: src/settings.ui:23
+#, kde-format
+msgid ""
+"<b>Gravity</b><p>Checking this makes the game even harder: If a tile is "
+"removed, all tiles lying above it will fall down one step.</p>"
+msgstr ""
+"<b>Schwerkraft</b><p>Das Auswählen dieser Einstellung macht das Spiel noch "
+"schwieriger: Wenn ein Stein entfernt wird, fallen alle darüberliegenden "
+"Steine eins nach unten.</p> "
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Solvable)
+#: src/settings.ui:33
+#, kde-format
+msgid ""
+"<b>Create solvable games only</b><p>If checked, you will only be presented "
+"with games that are possible to solve.</p><p>Note: Even in solvable games "
+"you can fail to complete if you remove the tiles in the wrong order.</p>"
+msgstr ""
+"<b>Nur lösbare Spiele erstellen</b><p>Ist diese Einstellung aktiviert, "
+"werden nur Spiele erstellt, welche auch lösbar sind.</p><p>Hinweis: Auch bei "
+"lösbaren Spielen kann man scheitern, wenn die Steine in falscher Reihenfolge "
+"entfernt werden.</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_Solvable)
+#: src/settings.ui:36
+#, kde-format
+msgid "Create solvable games only"
+msgstr "Nur lösbare Spiele erstellen"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
+#: src/settings.ui:43
+#, kde-format
+msgid ""
+"<b>Show message if board can no longer be solved</b><p>Checking this makes "
+"the game show a message to abort the game in case there are no possible "
+"moves left to win the game.</p>"
+msgstr ""
+"<b>Nachricht anzeigen, wenn das Spiel nicht mehr gelöst werden kann</"
+"b><p>Zeigt eine Nachricht zum Abbruch des Spiels, wenn keine Züge mehr "
+"möglich sind, um das Spiel zu gewinnen.</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
+#: src/settings.ui:46
+#, kde-format
+msgid "Show message if board can no longer be solved"
+msgstr "Nachricht anzeigen, wenn das Spiel nicht mehr gelöst werden kann"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ChineseStyle)
+#: src/settings.ui:53
+#, kde-format
+msgid ""
+"<b>Use Chinese style: any flower match any flower, any season match any "
+"season</b><p>Use the traditional rules for matching the tiles. Previous "
+"version of the game used to allow only exact tiles matches, which is "
+"inconsistent with Mah-jongg rules. It is recommended to keep this option "
+"checked.</p>"
+msgstr ""
+"<b>Chinesische Regeln verwenden: Jede Blume passt zu jeder anderen, jede "
+"Jahreszeit passt zu jeder anderen</b><p>Verwendet die traditionellen Regeln "
+"für passende Spielsteine. Frühere Versionen des Spiels verlangten genaue "
+"Übereinstimmungen, dies passt jedoch nicht zu den Mahjongg-Regeln. Es wird "
+"empfohlen, diese Einstellung aktiviert zu lassen.</p> "
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ChineseStyle)
+#: src/settings.ui:56
+#, kde-format
+msgid ""
+"Use Chinese style: any flower match any flower, any season match any season"
+msgstr ""
+"Nach chinesischem Stil spielen: jede Blume passt zu jeder anderen, jede "
+"Jahreszeit passt zu jeder anderen"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_TilesCanSlide)
+#: src/settings.ui:63
+#, kde-format
+msgid ""
+"<b>Tiles can slide, but you can connect only in 2 lines instead of 3</"
+"b><p>This option changes the rules to the point where it almost becomes a "
+"completely different game. When it is active, you can only remove the tiles "
+"if they can be connected by a line consisting of only two segments instead "
+"of the customary three. However, you are allowed to slide the tiles on the "
+"board, if the row or column where they are placed has some empty space. To "
+"make a sliding move, you have to click on the tile containing the column or "
+"row that can slide, and then on the matching tile. If there are two possible "
+"sliding moves, you will have to click on one of the two connecting lines to "
+"choose your preferred move.</p>"
+msgstr ""
+"<b>Steine können verschoben werden, dafür sind nur zwei statt drei Linien "
+"erlaubt</b><p>Diese Einstellung ändert die Regeln, und zwar so drastisch, "
+"dass es fast ein anderes Spiel wird. Wenn sie eingeschaltet ist, können zwei "
+"Steine nur dann entfernt werden, wenn sie mit zwei Linien (statt der "
+"üblichen drei) verbindbar sind. Dafür dürfen Sie Steine in einer Richtung "
+"verschieben, sofern in der Zeile oder Spalte Platz dafür ist. Um einen Zug "
+"mit Verschieben zu machen, müssen Sie zuerst auf den Stein klicken, der in "
+"einer verschiebbaren Zeile oder Spalte ist, und dann auf den passenden "
+"Stein. Wenn in zwei Richtungen geschoben werden kann, müssen Sie zudem auf "
+"eine der beiden möglichen Linien klicken, um den gewünschten Zug auszuwählen."
+"</p> "
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_TilesCanSlide)
+#: src/settings.ui:66
+#, kde-format
+msgid "Tiles can slide, but you can connect only in 2 lines instead of 3"
+msgstr ""
+"Spielsteine können verschoben werden, dafür dürfen Steine nur mit zwei statt "
+"mit drei Linien verbunden werden"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, difficulty_groupBox)
+#: src/settings.ui:73
+#, kde-format
+msgid ""
+"<b>Board Difficulty</b><p>The slider controls the difficulty of the board "
+"from Easy to Hard.</p>"
+msgstr ""
+"<b>Schwierigkeit des Spielbretts</b><p>Dieser Schieberegler dient zum "
+"Einstellen der Schwierigkeit des Spiels, von Leicht bis Schwierig.</p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, difficulty_groupBox)
+#: src/settings.ui:76
+#, kde-format
+msgid "Board Difficulty"
+msgstr "Schwierigkeitsgrad"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: src/settings.ui:103
+#, kde-format
+msgid "Easy"
+msgstr "Einfach"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3)
+#: src/settings.ui:123
+#, kde-format
+msgid "Hard"
+msgstr "Schwer"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, speed_groupBox)
+#: src/settings.ui:138
+#, kde-format
+msgid ""
+"<b>Piece Removal Speed</b><p>Adjusting this slider alters the speed at which "
+"the pieces are removed from the screen after a match has been made.</p>"
+msgstr ""
+"<b>Steinentfernungsgeschwindigkeit</b><p>Dieser Schieberegler dient zum "
+"Festlegen, mit welcher Geschwindigkeit Steinpaare entfernt werden nachdem "
+"sie angeklickt wurden.</p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, speed_groupBox)
+#: src/settings.ui:141
+#, kde-format
+msgid "Piece Removal Speed"
+msgstr "Entfernungsgeschwindigkeit"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: src/settings.ui:168
+#, kde-format
+msgid "Slow"
+msgstr "Langsam"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#: src/settings.ui:188
+#, kde-format
+msgid "Fast"
+msgstr "Schnell"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, size_groupBox)
+#: src/settings.ui:203
+#, kde-format
+msgid ""
+"<b>Board Size</b><p>This slider allows you to change the number of tiles on "
+"the board. The more tiles you have, the harder (and longer) the game will be."
+"</p>"
+msgstr ""
+"<b>Spielfeldgröße</b><p>Mit diesem Schieberegler können Sie die Anzahl "
+"Steine auf dem Brett einstellen. Je mehr Steine auf dem Feld sind, desto "
+"länger und schwieriger wird das Spiel.</p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, size_groupBox)
+#: src/settings.ui:206
+#, kde-format
+msgid "Board Size"
+msgstr "Spielfeldgröße"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#: src/settings.ui:236
+#, kde-format
+msgid "14x6"
+msgstr "14×6"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel9)
+#: src/settings.ui:256
+#, kde-format
+msgid "16x9"
+msgstr "16×9"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: src/settings.ui:279
+#, kde-format
+msgid "18x8"
+msgstr "18×8"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel10)
+#: src/settings.ui:302
+#, kde-format
+msgid "24x12"
+msgstr "24×12"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel11)
+#: src/settings.ui:325
+#, kde-format
+msgid "26x14"
+msgstr "26×14"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel12)
+#: src/settings.ui:348
+#, kde-format
+msgid "30x16"
+msgstr "30×16"
+
+#~ msgid "Error Loading Background"
+#~ msgstr "Fehler beim Laden des Hintergrunds"
+
+#~ msgid "Penalty: 0s"
+#~ msgstr "Strafzeit: 0 Sek."
+
+#~ msgid "Penalty: %1s"
+#~ msgstr "Strafzeit: %1 Sek."
+
+#~ msgid "Sounds"
+#~ msgstr "Klänge"
+
+#~ msgctxt "Menu title"
+#~ msgid "&Move"
+#~ msgstr "&Zug"
+
+#~ msgid "(gravity)"
+#~ msgstr "(Schwerkraft)"
+
+#~ msgid "Tile Size"
+#~ msgstr "Kachelgröße"
+
+#~ msgid "Hall of Fame"
+#~ msgstr "Bestenliste"
+
+#~ msgid "Rank"
+#~ msgstr "Rang"
+
+#~ msgid "Name"
+#~ msgstr "Name"
+
+#~ msgid "Time"
+#~ msgstr "Zeit"
+
+#~ msgid "Size"
+#~ msgstr "Größe"
+
+#~ msgid "Score"
+#~ msgstr "Punkte"
+
+#, fuzzy
+#~| msgid "End of Game"
+#~ msgid "Enter your Name"
+#~ msgstr "Ende der Partie"
+
+#, fuzzy
+#~| msgid ""
+#~| "You have made it into the \"Hall Of Fame\". Type in\n"
+#~| "your name so mankind will always remember\n"
+#~| "your cool rating."
+#~ msgid ""
+#~ "You have made it into the \"Hall Of Fame\". Type in your name so mankind "
+#~ "will always remember your cool rating."
+#~ msgstr ""
+#~ "Sie haben es in die Bestenliste geschafft.\n"
+#~ "Geben Sie Ihren Namen ein, damit die Menschheit\n"
+#~ "auf ewig Ihre Punkte bewundern kann."
+
+#~ msgid "Your name:"
+#~ msgstr "Ihr Name:"
+
+#~ msgid "Game Paused"
+#~ msgstr "Spiel angehalten"
+
+#~ msgid "This game is solvable."
+#~ msgstr "Diese Partie ist lösbar."
+
+#~ msgid "This game is NOT solvable."
+#~ msgstr "Diese Partie ist NICHT lösbar."

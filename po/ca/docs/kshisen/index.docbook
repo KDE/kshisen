@@ -1,0 +1,1322 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Catalan  "INCLUDE"
+>    <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+>     <!-- do not change this! -->
+]>
+
+<book id="kshisen" lang="&language;"
+> <!-- do not change this! -->
+  <bookinfo>
+    <title
+>El manual del &kshisen;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+    <!-- List of immidiate authors begins here. -->
+    <!--INPORTANT! - All other contributors: [to be determined] -->
+    <authorgroup>
+      <author
+><firstname
+>Dirk</firstname
+> <surname
+>Doerflinger</surname
+> <affiliation
+><address
+>&Dirk.Doerflinger.mail;</address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Frederik</firstname
+> <surname
+>Schwarzer</surname
+> <affiliation
+><address
+>&Frederik.Schwarzer.mail;</address
+></affiliation>
+      </author>
+      <othercredit role="reviewer"
+><firstname
+>Frerich</firstname
+><surname
+>Raabe</surname
+> <contrib
+>Revisor</contrib>
+        <affiliation
+><address
+>&Frerich.Raabe.mail;</address
+></affiliation>
+      </othercredit>
+      &traductor.Antoni.Bella; 
+    </authorgroup>
+    <legalnotice
+>&FDLNotice;</legalnotice>
+    <date
+>15 de juny de 2021</date>
+    <releaseinfo
+>1.10 (KDE Gear 21.08)</releaseinfo>
+
+    <!--Short description of this document. Do not change unless necessary!-->
+    <abstract>
+      <para
+>Aquesta documentació descriu el joc &kshisen; versió 1.10</para>
+    </abstract>
+
+    <!--List of relevant keywords-->
+    <keywordset>
+      <keyword
+>KDE</keyword
+> <!-- do not change this! -->
+      <keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+      <keyword
+>joc</keyword
+> <!-- do not change this! -->
+      <keyword
+>kshisen</keyword
+><!--Application name goes here-->
+      <!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+      <keyword
+>arcade</keyword>
+      <keyword
+>tauler</keyword>
+      <keyword
+>mahjong</keyword>
+      <keyword
+>fitxes</keyword>
+      <!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+      <keyword
+>un jugador</keyword>
+    </keywordset>
+  </bookinfo>
+  <!--Content begins here: -->
+  <chapter id="introduction"
+><title
+>Introducció</title
+> <!-- do not change this! -->
+    <note
+><title
+>Tipus de joc:</title
+><para
+>Arcade, tauler</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+    <note
+><title
+>Nombre de possibles jugadors:</title
+><para
+>Un</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+    <!--Short game description starts here. 3-4 sentences (paragraphs)-->
+    <para
+>El &kshisen; és un joc similar al solitari que es juga amb el joc estàndard de fitxes de Mahjong. No obstant això, a diferència de Mahjong, el &kshisen; té una sola capa de fitxes barrejades. Podreu treure les fitxes coincidents si es poden connectar amb una línia amb un màxim de dues corbes. Al mateix temps, la línia no haurà de creuar cap altra fitxa. Per a guanyar una partida del &kshisen;, el jugador haurà de treure totes les fitxes del tauler de joc. </para>
+  </chapter>
+
+  <chapter id="howto"
+><title
+>Com jugar</title
+> <!-- do not change this! -->
+    <screenshot>
+    <mediaobject>
+    <imageobject>
+    <imagedata fileref="gameboard.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+    <phrase
+>Joc de taula &kshisen;</phrase>
+    </textobject>
+    </mediaobject>
+    </screenshot>
+    <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+    <note
+><title
+>Objectiu:</title
+><para
+>Traieu totes les fitxes del tauler de joc en el menor temps possible.</para
+></note
+><!--Describe the objective of the game.-->
+    <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+    <para
+>El &kshisen; carregarà una disposició predeterminada de forma automàtica una vegada inicieu la partida i podreu començar a jugar immediatament. </para>
+    <para
+>Haureu d'estudiar acuradament la pila de fitxes disposades en el tauler de joc i trobar-ne dues que coincideixin exactament. Quan hàgiu trobat una parella d'aquest tipus, utilitzeu el ratolí per a seleccionar-les. </para>
+    <para
+>Quan seleccioneu una parella de fitxes, desapareixeran del tauler de joc. Tanmateix, fins i tot si les fitxes que seleccioneu apareixen obertes, només es trauran del tauler si es poden connectar amb una línia que tingui com a màxim dues corbes i que no creua cap altra fitxa. A més, la línia només es pot dibuixar en horitzontal i vertical. </para>
+    <para
+>Trobeu tantes coincidències com pugueu per a treure totes les fitxes del tauler de joc. </para>
+  </chapter>
+
+  <chapter id="rules_and_tips"
+><title
+>Les regles del joc, estratègies i consells</title
+> <!-- do not change this! -->
+    <sect1 id="rules">
+      <title
+>Regles</title>
+      <para
+>El joc de fitxes estàndard de Mahjong inclou: <informaltable
+> <tgroup cols="3"
+> <tbody>
+              <row
+><entry
+>&nbsp;Nom del grup&nbsp;</entry
+><entry
+>&nbsp;Nom de la fitxa&nbsp;</entry
+><entry
+>&nbsp;Quantitat en un joc&nbsp;</entry
+></row>
+              <row
+><entry
+>Punts</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 de Punts</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 de Punts</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 de Punts</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 de Punts</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 de Punts</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 de Punts</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 de Punts</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 de Punts</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 de Punts</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Bambús</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 de Bambús</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 de Bambús</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 de Bambús</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 de Bambús</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 de Bambús</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 de Bambús</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 de Bambús</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 de Bambús</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 de Bambús</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Caràcters</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 de Caràcters</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 de Caràcters</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 de Caràcters</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 de Caràcters</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 de Caràcters</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 de Caràcters</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 de Caràcters</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 de Caràcters</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 de Caràcters</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Vents</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Vent de l'est</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Vent del sud</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Vent de l'oest</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Vent del nord</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Dracs</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Drac vermell</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Drac verd</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Drac blanc</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Flors</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Lila (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Lliri (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Crisantem (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambú (4)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+>Estacions</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Primavera (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Estiu (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Tardor (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Hivern (4)</entry
+><entry
+>1</entry
+></row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+      <itemizedlist>
+        <listitem
+><para
+>Les fitxes coincidents són aquelles en què coincideixen els pictogrames de les cares.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Nota:</title
+><para
+>Hi ha excepcions a aquesta regla! En el joc tradicional de Mahjong, cada fitxa té una coincidència, excepte per a les fitxes <quote
+>Flors</quote
+> i <quote
+>Estacions</quote
+>.</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>Les fitxes <quote
+>Flors</quote
+> no tenen dobles en el joc i es poden combinar directament entre si.</para
+></listitem>
+        <listitem
+><para
+>Les fitxes <quote
+>Estacions</quote
+> no tenen dobles en el joc i es poden combinar directament entre si.</para
+></listitem>
+        <listitem
+><para
+>Les fitxes només es poden treure si es poden connectar amb un màxim de tres línies connectades que no creuen cap altra fitxa. Les línies poden ser en horitzontal o vertical, però no en diagonal.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Nota:</title
+><para
+>No haureu de dibuixar les línies vós mateix, el joc ho farà. Senzillament marqueu dues fitxes coincidents en el tauler, si es poden connectar amb una línia amb un màxim de dues corbes, es dibuixarà la línia i es trauran les fitxes.</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>Les línies només poden creuar les àrees buides del tauler.</para
+></listitem>
+        <listitem
+><para
+>Algunes partides són irresolubles. Si voleu evitar partides sense solució, marqueu l'opció <guilabel
+>Crea només partides resolubles</guilabel
+> en el diàleg de configuració.</para
+></listitem>
+        <listitem
+><para
+>Les puntuacions s'atorguen pel temps que necessita el jugador per a treure totes les fitxes del tauler de joc. Les partides amb més fitxes donen més puntuació.</para
+></listitem>
+        <listitem
+><para
+>Si heu jugat amb l'opció de configuració <guilabel
+>Gravetat</guilabel
+> habilitada, la puntuació es duplicarà.</para
+></listitem>
+        <listitem
+><para
+>Per a ser elegit per a un lloc entre les puntuacions més altes, el jugador haurà de completar una instància del joc en el menor període de temps possible.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Nota:</title
+><para
+>Si el jugador utilitza la característica &nbsp;<quote
+>Desfés</quote
+> o <quote
+>Consell</quote
+>, el rècord no es considerarà com una puntuació alta.</para
+></note>
+    </sect1>
+    <sect1 id="tips">
+      <title
+>Consells</title>
+      <para
+>Feu clic sobre una fitxa amb el &BDR; per a ressaltar totes les fitxes coincidents en el tauler. A diferència de l'ús de l'opció <quote
+>Desfés</quote
+> o <quote
+>Consell</quote
+>, aquesta ajuda està permesa sense considerar que es fa trampa. </para>
+    </sect1>
+  </chapter>
+
+  <chapter id="interface"
+><title
+>Resum de la interfície</title
+> <!-- do not change this! -->
+    <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing. -->
+    <sect1 id="menu">
+    <title
+>Elements de menú</title>
+    <sect2 id="game-menu">
+      <title
+>El menú Joc</title>
+
+      <para
+>El menú <guimenu
+>Joc</guimenu
+> permet controlar l'estat actual de la partida: </para>
+
+      <variablelist>
+        <varlistentry id="game-menu-new">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Nova</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Finalitza la partida actual</action
+> i comença una sessió nova amb fitxes noves.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-restart">
+          <term>
+            <menuchoice
+><shortcut
+><keycap
+>F5</keycap
+></shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Reinicia la partida</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Reinicia la partida actual amb les mateixes fitxes.</action
+></para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-pause">
+          <term>
+            <menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Pausa</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Posa en pausa la partida</action
+>, especialment el temporitzador que afecta la puntuació. L'entrada de menú també s'utilitza per a reprendre la partida.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-highscores">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Mostra les puntuacions</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Mostra les deu millors gràfiques del &nbsp;&kshisen;.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Surt</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Surt</action
+> del &kshisen;.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+      <para
+>Alguns dels elements de menú també es poden controlar mitjançant dreceres de teclat. Per a una llista, vegeu <xref linkend="key-bindings"/>. </para>
+
+    </sect2>
+
+    <sect2 id="move-menu">
+      <title
+>El menú Mou</title>
+
+      <variablelist id="move-menu-undo">
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mou</guimenu
+> <guimenuitem
+>Desfés</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Desfà l'últim pas</action
+>. Igual com el botó <guibutton
+>Desfés</guibutton
+> a la barra d'eines.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="move-menu-redo">
+          <term>
+            <menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Maj;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mou</guimenu
+> <guimenuitem
+>Refés</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Refà l'últim pas</action
+>. Igual com el botó <guibutton
+>Refés</guibutton
+> a la barra d'eines.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="move-menu-hint">
+          <term>
+            <menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+> <guimenu
+>Mou</guimenu
+> <guimenuitem
+>Consell</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Mostra una pista</action
+>, quines dues fitxes treure a continuació.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+    </sect2>
+
+    <sect2 id="settings-menu">
+      <title
+>El menú Arranjament</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Reprodueix els sons</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Reprodueix un so quan es toca una fitxa fent clic amb el &BER; i quan una fitxa cau quan es juga amb la <guilabel
+>Gravetat</guilabel
+> habilitada.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-settings-settings">
+          <term>
+            <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Configura el &kshisen;...</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Obre el <link linkend="configuration"
+>diàleg de configuració</link
+> per a canviar la configuració del &kshisen;.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+      <para
+>De manera addicional, el &kshisen; té la configuració comuna al &kde; i els elements dels menús <guimenu
+>Arranjament</guimenu
+> i <guimenu
+>Ajuda</guimenu
+>. Per a obtenir més informació, llegiu les seccions sobre <ulink url="help:/fundamentals/menus.html#menus-settings"
+>El menú Arranjament</ulink
+> i <ulink url="help:/fundamentals/menus.html#menus-help"
+>El menú Ajuda</ulink
+> en els Fonaments del &kde;. </para>
+    </sect2>
+    </sect1>
+
+    <sect1 id="key-bindings">
+      <title
+>Dreceres predeterminades</title>
+
+      <para
+>Les dreceres predeterminades són:</para>
+
+      <informaltable>
+        <tgroup cols="2">
+          <tbody>
+            <row
+><entry
+>Nova</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Reinicia el joc</entry
+><entry
+><keycap
+>F5</keycap
+></entry
+></row>
+            <row
+><entry
+>Fa una pausa</entry
+><entry
+><keycap
+>P</keycap
+></entry
+></row>
+            <row
+><entry
+>Mostra les millors puntuacions</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Surt</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Desfés</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Refés</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Maj;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Consell</entry
+><entry
+><keycap
+>H</keycap
+></entry
+></row>
+            <row
+><entry
+>El manual del &kshisen;</entry
+><entry
+><keycap
+>F1</keycap
+></entry
+></row>
+            <row
+><entry
+>Ajuda «Què és això?»</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Maj;<keycap
+>F1</keycap
+></keycombo
+></entry
+></row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+    </sect1>
+
+  </chapter>
+
+  <chapter id="faq"
+><title
+>Preguntes més freqüents</title
+> <!-- do not change this! -->
+    <!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+    <qandaset>
+      <qandaentry>
+        <question
+><para
+>Vull canviar l'aparença d'aquest joc. Puc fer-ho?</para
+></question>
+        <answer
+><para
+>Sí. Per a canviar l'aparença del &kshisen;, empreu la <link linkend="game-settings-settings"
+>barra de menús</link
+> per a obrir la <link linkend="configuration"
+>utilitat de configuració</link
+>.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>Puc utilitzar el teclat?</para
+></question>
+        <answer
+><para
+>No. Aquest joc encara no compta amb un mode de joc amb el teclat.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>He de sortir del joc ara, però encara no he acabat. Puc desar el meu progrés?</para
+></question>
+        <answer
+><para
+>No. Aquest joc encara no compta amb una opció <quote
+>Desa</quote
+>.</para
+></answer>
+      </qandaentry>
+    </qandaset>
+  </chapter>
+
+  <chapter id="configuration"
+><title
+>Configuració del joc</title
+> <!-- do not change this! -->
+    <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+    <para
+>Seleccionant l'element de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+><guimenuitem
+>Configura el &kshisen;...</guimenuitem
+></menuchoice
+> s'obrirà un diàleg de configuració que permet modificar el comportament del joc. </para>
+
+    <screenshot>
+      <screeninfo
+>El diàleg de configuració del &kshisen;</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="kshisen-configuration.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>El diàleg de configuració del &kshisen;</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <variablelist>
+      <title
+>La pàgina <guilabel
+>General</guilabel
+></title>
+      <varlistentry>
+        <term
+><guilabel
+>Gravetat</guilabel
+></term>
+        <listitem
+><para
+>Marcar aquesta opció fa el joc més difícil: en eliminar una fitxa, totes les fitxes sobre ella cauen un pas. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Crea només partides resolubles</guilabel
+></term>
+        <listitem
+><para
+>Si està marcada, només se us presentaran partides que sigui possible resoldre. Nota: inclús estant marcada pot ser que sigui impossible completar una partida si traieu fitxes en l'ordre incorrecte. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Mostra un missatge si no es pot resoldre el tauler</guilabel
+></term>
+        <listitem
+><para
+>Si està marcada, el &kshisen; intentarà analitzar la viabilitat de cada posició del joc i mostrarà un missatge per a interrompre'l en cas que no quedin moviments possibles per a guanyar-lo. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Usa l'estil xinès: qualsevol flor casa amb qualsevol flor, qualsevol estació casa amb qualsevol estació</guilabel
+></term>
+        <listitem
+><para
+>Utilitza les regles tradicionals per a fer coincidir les fitxes. Versions anteriors del joc només permetien coincidències exactes, el qual és incoherent amb les regles de Mahjong. Es recomana deixar marcada aquesta opció. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Les fitxes es poden desplaçar, però només pots connectar amb dues línies en comptes de 3</guilabel
+></term>
+        <listitem
+><para
+>Aquesta opció canvia les regles fins al punt que gairebé es converteix en un joc completament diferent. Quan està activa, només podreu treure les fitxes si es poden connectar amb una línia que consisteixi en un o dos segments en lloc dels tres habituals. No obstant això, si la fila o la columna on s'estan disposa d'un espai buit, es permet fer lliscar les fitxes pel tauler. Per a fer un moviment lliscant, primer heu de fer clic sobre la fitxa que pot lliscar a la columna o fila, i després sobre la fitxa que coincideix. Si hi ha dos moviments lliscants possibles, es mostraran unes línies blaves que indicaran aquests moviments. Després, haureu de fer clic sobre una de les dues línies per a triar el moviment que preferiu. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Dificultat del tauler</guilabel
+></term>
+        <listitem
+><para
+>El control lliscant controla la dificultat del tauler (&ead;, quan s'arrossegaran les fitxes) de <guilabel
+>Fàcil</guilabel
+> a <guilabel
+>Difícil</guilabel
+>. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Velocitat en treure les peces</guilabel
+></term>
+        <listitem
+><para
+>Ajustar aquest control lliscant alterarà la velocitat amb què les peces es trauran de la pantalla després de fer una coincidència. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Mida del tauler</guilabel
+></term>
+        <listitem
+><para
+>Aquest control lliscant permet canviar el nombre de fitxes en el tauler. Com més fitxes hi hagi, la partida serà més llarga i difícil. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+>Pàgines <guilabel
+>Fitxes</guilabel
+> i <guilabel
+>Fons</guilabel
+></term>
+        <listitem
+><para
+>Seleccioneu la disposició preferida per a les fitxes i el fons. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Ajuda</guibutton
+></term>
+        <listitem
+><para
+>Obre les pàgines d'ajuda del &kshisen; (aquest document). </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>D'acord</guibutton
+></term>
+        <listitem
+><para
+>Desa els canvis i tanca el diàleg. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Aplica</guibutton
+></term>
+        <listitem
+><para
+>Desa els canvis però no tanca el diàleg. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Cancel·la</guibutton
+></term>
+        <listitem
+><para
+>Descarta tots els canvis i tanca el diàleg. </para
+></listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </chapter>
+
+  <chapter id="credits"
+><title
+>Crèdits i llicència</title
+> <!-- do not change this! -->
+    <!--This chapter is for credits and licenses.-->
+
+    <para
+>Copyright del &kshisen; 1997 &Mario.Weilguni; &Mario.Weilguni.mail; </para>
+    <para
+>Copyright del &kshisen; 2002-2004 Dave Corrie <email
+>kde@davecorrie.com</email
+> </para>
+    <para
+>Copyright del &kshisen; 2009-2012 &Frederik.Schwarzer; &Frederik.Schwarzer.mail; </para>
+
+    <para
+>Copyright de la documentació 2000 &Dirk.Doerflinger; &Dirk.Doerflinger.mail; </para>
+    <para
+>Copyright de la documentació 2009-2010 &Frederik.Schwarzer; &Frederik.Schwarzer.mail; </para>
+
+    <para
+>Traductor de la documentació: &credits.Antoni.Bella;</para
+> &underFDL; &underGPL; </chapter>
+
+  &documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

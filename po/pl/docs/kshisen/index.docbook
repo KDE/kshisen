@@ -1,0 +1,1364 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kshisen;">
+  <!ENTITY kappversion "1.7.0"
+>     <!--Application version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames"
+>      <!-- do not change this! -->
+  <!ENTITY % Polish "INCLUDE"
+>    <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+>     <!-- do not change this! -->
+]>
+
+<book lang="&language;"
+> <!-- do not change this! -->
+  <bookinfo>
+    <title
+>Podręcznik programu &kappname;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+    <!-- List of immidiate authors begins here. -->
+    <!--INPORTANT! - All other contributors: [to be determined] -->
+    <authorgroup>
+      <author
+><firstname
+>Dirk</firstname
+> <surname
+>Doerflinger</surname
+> <affiliation
+><address
+>&Dirk.Doerflinger.mail;</address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Frederik</firstname
+> <surname
+>Schwarzer</surname
+> <affiliation
+><address
+><email
+>schwarzerf@gmail.com</email
+></address
+></affiliation>
+      </author>
+      <othercredit role="reviewer"
+><firstname
+>Frerich</firstname
+><surname
+>Raabe</surname
+> <contrib
+>Recenzent</contrib>
+        <affiliation
+><address
+>&Frerich.Raabe.mail;</address
+></affiliation>
+      </othercredit>
+      <othercredit role="translator"
+> <firstname
+>Krzysztof</firstname
+><surname
+>Woźniak</surname
+> <affiliation
+><address
+><email
+>wozniakk@ceti.pl</email
+></address
+> </affiliation
+><contrib
+>Polskie tłumaczenie</contrib
+></othercredit
+> 
+    </authorgroup>
+
+    <date
+>2007-09-26</date>
+    <releaseinfo
+>&kappversion;</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+
+    <!--Short description of this document. Do not change unless necessary!-->
+    <abstract>
+      <para
+>Niniejsza dokumentacja opisuje grę &kappname; w wersji &kappversion;</para>
+    </abstract>
+
+    <!--List of relevant keywords-->
+    <keywordset>
+      <keyword
+>KDE</keyword
+> <!-- do not change this! -->
+      <keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+      <keyword
+>gra</keyword
+> <!-- do not change this! -->
+      <keyword
+>kshisen</keyword
+><!--Application name goes here-->
+      <!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+      <keyword
+>zręcznościowa</keyword>
+      <keyword
+>plansza</keyword>
+      <keyword
+>mahjong</keyword>
+      <keyword
+>płytki</keyword>
+      <!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+      <keyword
+>jeden gracz</keyword>
+    </keywordset>
+  </bookinfo>
+  <!--Content begins here: -->
+  <chapter id="introduction"
+><title
+>Wprowadzenie</title
+> <!-- do not change this! -->
+    <note
+><title
+>Rodzaj gry:</title
+><para
+>zręcznościowa, planszowa</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+    <note
+><title
+>Liczba graczy:</title
+><para
+>Jeden</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+    <!--Short game description starts here. 3-4 sentences (paragraphs)-->
+    <para
+>&kappname; jest grą w stylu pasjansa, graną za pomocą standardowego zestawu płytek z gry Mahjong. Inaczej niż w Mahjongu, w grze &kappname; stosowana jest tylko jedna warstwa pomieszanych płytek. Możesz usuwać pasujące płytki, jeżeli mogą być połączone linię z maksymalnie dwoma załamaniami. W tym samym czasie, linia nie może krzyżować się z innymi płytkami. Aby wygrać w &kappname; gracz musi usunąć wszystkie płytki z planszy. </para>
+  </chapter>
+
+  <chapter id="howto"
+><title
+>Jak grać</title
+> <!-- do not change this! -->
+    <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+    <note
+><title
+>Cel gry:</title
+><para
+>Usunięcie wszystkich płytek z planszy tak szybko jak to jest możliwe.</para
+></note
+><!--Describe the objective of the game.-->
+    <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+    <para
+>Po uruchomieniu &kappname; załadowana zostanie domyślna plansza, i gra może się od razu rozpocząć. </para>
+    <para
+>Musisz uważnie studiować płytki położone na planszy i znaleźć dwie dokładnie do siebie pasujące płytki. Jeżeli znalazłeś taką parę, wybierz ją za pomocą myszki. </para>
+    <para
+>Gdy wybierzesz pasującą do siebie parę płytek, znikają one z planszy. Jednak mimo, że wybrane płytki wydają się otwarte, mogą być usunięte tylko wtedy, gdy można je połączyć za pomocą linii mającej nie więcej niż dwa zagięcia i nie przechodzącej przez inne płytki. Dodatkowo, linia ta może być rysowana jedynie pionowo lub poziomo. </para>
+    <para
+>Wyszukuj jak możliwie jak najwięcej pasujących płytek, tak aby usunąć wszystkie z planszy gry. </para>
+  </chapter>
+
+  <chapter id="rules_and_tips"
+><title
+>Zasady gry, strategia gry i sztuczki</title
+> <!-- do not change this! -->
+    <sect1 id="rules">
+      <title
+>Zasady</title>
+      <para
+>Standardowy zbiór płytek Mahjong zawiera: <informaltable
+> <tgroup cols="3"
+> <tbody>
+              <row
+><entry
+>Nazwa grupy</entry
+><entry
+>Nazwa płytki</entry
+><entry
+>Ilość w zestawie</entry
+></row>
+              <row
+><entry
+>Kropki</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 kropka</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 kropki</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 kropki</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 kropki</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 kropek</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 kropek</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 kropek</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 kropek</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 kropek</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Bambusy</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 bambus</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 bambusy</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 bambusy </entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 bambusy</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 bambusów</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 bambusów </entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 bambusów</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 bambusów</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 bambusów</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Znaki</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 znak </entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 znaki</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 znaki</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 znaki</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 znaków</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 znaków</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 znaków</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 znaków</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 znaków</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Wiatry</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Wschodni wiatr</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Południowy wiatr </entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Zachodni wiatr</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Północny wiatr</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Smoki</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Czerwony smok</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Zielony smok</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Biały smok</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Kwiaty</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Śliwka (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Lilia (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Chryzantema (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambus (4)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+>Pory roku</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Wiosna (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Lato (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Jesień (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Zima (4)</entry
+><entry
+>1</entry
+></row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+      <itemizedlist>
+        <listitem
+><para
+>Pasujące płytki to te, na których obrazki są identyczne.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Uwaga:</title
+><para
+>Od tej zasady są wyjątki! W tradycyjnej grze Mahjong każda płytka ma pasującą do pary drugą płytkę z wyjątkiem płytek z grup <quote
+>Kwiaty</quote
+> oraz <quote
+>Pory roku</quote
+>.</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>Płytki z grupy <quote
+>Kwiaty</quote
+> nie mają drugiej pasującej płytki w zbiorze i mogą być dopasowane bezpośrednio każda do każdej innej.</para
+></listitem>
+        <listitem
+><para
+>Płytki z grupy <quote
+>Pory roku</quote
+> nie mają drugiej pasującej płytki w zbiorze i mogą być dopasowane bezpośrednio każda do każdej innej.</para
+></listitem>
+        <listitem
+><para
+>Płytki mogą być usunięte, jeżeli można je połączyć maksymalnie trzema połączonymi ze sobą liniami, nie przechodzącymi przez żadną inna płytkę. Linie mogą być pionowe lub poziome, nie może być linii ukośnej.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Uwaga:</title
+><para
+>Nie musisz rysować linii samodzielnie, gra wykona to za ciebie. Wystarczy tylko zaznaczyć dwie pasujące płytki na planszy, jeżeli mogą być połączone za pomocą linii o nie więcej niż dwóch zagięcia, linia jest rysowana a płytki usuwane.</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>Linie mogą przechodzić jedynie przez puste miejsca na planszy.</para
+></listitem>
+        <listitem
+><para
+>Niektórych gier nie da się rozwiązać. Jeżeli chcesz uniknąć pojawienia się nierozwiązywalnej gry zaznacz opcję <guilabel
+>Dopuść gry nie mające rozwiązania</guilabel
+> w oknie dialogowym konfiguracji.</para
+></listitem>
+        <listitem
+><para
+>Punkty są przyznawane za czas, który gracz potrzebował do usunięcia wszystkich płytek z planszy. Gry z większa liczbą płytek, dają więcej punktów.</para
+></listitem>
+        <listitem
+><para
+>Jeżeli w parametrach była włączona opcja <guilabel
+>Grawitacji</guilabel
+>, wynik zostanie podwojony.</para
+></listitem>
+        <listitem
+><para
+>Aby znaleźć się na liście najlepszych wyników gracz musi ukończyć grę w najkrótszym możliwym czasie.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Uwaga:</title
+><para
+>Jeżeli gracz skorzysta z funkcji <quote
+>Cofnij</quote
+> lub <quote
+>Podpowiedź</quote
+> rekord nie będzie uznany.</para
+></note>
+    </sect1>
+  </chapter>
+
+  <chapter id="interface"
+><title
+>Przegląd interfejsu</title
+> <!-- do not change this! -->
+    <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing. -->
+    <sect1 id="game-menu">
+      <title
+>Menu <guimenu
+>Gra</guimenu
+></title>
+
+      <para
+>Menu <guimenu
+>Gra</guimenu
+> pozwala kontrolować stan bieżącej gry. </para>
+
+      <variablelist>
+        <varlistentry id="game-menu-new">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Nowa</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Kończy bieżącą grę</action
+> i uruchamia nową sesję gry z nowym układem płytek.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-restart">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>F5</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Uruchom grę ponownie</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Uruchamia ponownie aktualną grę z tym samym układem płytek.</action
+></para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-pause">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+> <keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Pauza</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Wstrzymuje grę</action
+>, a głównie licznik czasu, mający wpływ na punktację. Za pomocą tej opcji można też wznowić grę.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-highscores">
+          <term>
+            <menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Pokaż najlepsze wyniki</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Pokazuje dziesięć najlepszych wyników gry &kappname;.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Zakończ</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Wychodzi</action
+> z gry &kappname;.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+      <para
+>Niektóre z poleceń menu można wywołać także za pomocą skrótów klawiszowych. Lista skrótów dostępna jest tutaj:<xref linkend="key-bindings"/>. </para>
+
+    </sect1>
+
+    <sect1 id="move-menu">
+      <title
+>Menu <guimenu
+>Ruch</guimenu
+></title>
+
+      <variablelist id="move-menu-undo">
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Przenieś</guimenu
+> <guimenuitem
+>Cofnij</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Cofa ostatni ruch</action
+>. Działa tak samo jak <guibutton
+>Cofnij</guibutton
+> na pasku narzędzi.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="move-menu-redo">
+          <term>
+            <menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Ruch</guimenu
+> <guimenuitem
+>Przywróć</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Przywraca ostatnio wycofany ruch</action
+>. Działa tak samo jak <guibutton
+>Przywróć</guibutton
+> na pasku narzędzi.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="move-menu-hint">
+          <term>
+            <menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+><guimenu
+>Ruch</guimenu
+><guimenuitem
+>Podpowiedź</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Wyświetla podpowiedź</action
+>, które z dwóch płytek należy usunąć.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+    </sect1>
+
+    <sect1 id="settings-menu">
+      <title
+>Menu <guimenu
+>Ustawienia</guimenu
+></title>
+
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Pokaż pasek narzędzi</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Włącza lub wyłącza wyświetlanie paska narzędzi.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            <menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Pokaż pasek stanu</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Włącza lub wyłącza wyświetlanie paska stanu.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            <menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja skrótów...</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Otwiera okno, które pozwala Ci na zdefiniowanie wszystkich skrótów klawiszowych.</action
+></para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="settings-menu-toolbar">
+          <term>
+            <menuchoice
+><guimenu
+>Ustawienia</guimenu
+><guimenuitem
+>Konfiguracja pasków narzędzi...</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Wyświetla standardowe okno &kde;, gdzie możesz skonfigurować ikony paska narzędzi.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-settings-settings">
+          <term>
+            <menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja &kappname;...</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Otwiera <link linkend="configuration"
+>okno dialogowe konfiguracji</link
+> pozwalające zmieniać ustawienia gry &kappname;.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+    </sect1>
+
+    <sect1 id="help"
+><!--This is a standard Help menubar entry. Only change if needed.-->
+      <title
+>Menu <guimenu
+>Pomoc</guimenu
+></title>
+&help.menu.documentation; </sect1>
+
+  </chapter>
+
+  <chapter id="faq"
+><title
+>Najczęściej zadawane pytania</title
+> <!-- do not change this! -->
+    <!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+    <qandaset>
+      <!--Following is a standard list of FAQ questions.-->
+      <qandaentry>
+        <question
+><para
+>Chciałbym zmienić wygląd gry. Czy mogę?</para
+></question>
+        <answer
+><para
+>Tak. Aby zmienić wygląd gry &kappname; użyj <link linkend="game-settings-settings"
+>paska menu</link
+> aby otworzyć <link linkend="configuration"
+>okno konfiguracji</link
+>.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>Czy mogę używać klawiatury do gry?</para
+></question>
+        <answer
+><para
+>Nie. Ta gra nie oferuje możliwości grania za pomocą klawiatury.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>Muszę zakończyć grę w trakcie rozgrywki. Czy mogę zapisać jej stan?</para
+></question>
+        <answer
+><para
+>Nie. Ta gra nie posiada funkcji <quote
+>Zapisz</quote
+>.</para
+></answer>
+      </qandaentry>
+    </qandaset>
+  </chapter>
+
+  <chapter id="configuration"
+><title
+>Konfiguracja gry</title
+> <!-- do not change this! -->
+    <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+    <para
+>Wybranie opcji menu <menuchoice
+><guimenu
+>Ustawienia</guimenu
+><guimenuitem
+>Konfiguracja &kappname;...</guimenuitem
+></menuchoice
+> otworzy okno dialogowe konfiguracji pozwalające zmieniać działanie gry. </para>
+
+    <screenshot>
+      <screeninfo
+>Okno dialogowe konfiguracji &kappname;</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="kshisen-configuration.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>Okno dialogowe konfiguracji &kappname;</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <variablelist>
+      <varlistentry>
+        <term
+><guilabel
+>Grawitacja</guilabel
+></term>
+        <listitem
+><para
+>Włączenie tej opcji jeszcze bardziej utrudnia grę: jeśli płytka jest usuwana, płytki nad nią przesuwają się jeden krok w dół. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Dopuść nierozwiązywalne rozdania</guilabel
+></term>
+        <listitem
+><para
+>Jeśli ta opcja jest włączona, mogą pojawiać się układy, których nie da się ułożyć.Uwaga: nawet jeśli ta opcja nie jest włączona, można przegrać, usuwając płytki w złej kolejności! </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Użyj stylu chińskiego: wszystkie kwiaty i wszystkie pory roku pasują do siebie</guilabel
+></term>
+        <listitem
+><para
+>Używanie tradycyjnych zasad dopasowania płytek. Poprzednia wersja &kappname; pozwalała tylko na dokładne dopasowania płytek, co jest niespójne z zasadami gry Mahjong. Rekomendujemy pozostawienie tej opcji zaznaczonej. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Kamienie można przesuwać, ale można łączyć tylko 2 linie, a nie 3.</guilabel
+></term>
+        <listitem
+><para
+>Ta opcja zmienia reguły, sprawiając, że gra staje się zupełnie inna. Jeśli jest włączona, można usuwać tylko kamienie, które dają się połączyć linią z dwóch elementów, a nie standardowych trzech. W zamian można przesuwać kamienie na planszy, o ile w kolumnie lub wierszu, gdzie leżą, jest wolne miejsce. Żeby przesunąć kamień, trzeba kliknąć na nim, a potem na pasującym. Jeśli można przesunąć oba kamienie, będziesz musiał kliknąć na jednej z dwóch linii łączących, żeby wybrać preferowany ruch. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Trudność planszy</guilabel
+></term>
+        <listitem
+><para
+>Tu można ustawić poziom trudności planszy (tzn. jak bardzo płytki są pomieszane), od <guilabel
+>łatwego</guilabel
+> do <guilabel
+>trudnego</guilabel
+>. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Szybkość usuwania kamieni</guilabel
+></term>
+        <listitem
+><para
+>Tu można zmienić szybkość, z jaką kamienie są usuwane z ekranu po dopasowaniu. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Rozmiar planszy</guilabel
+></term>
+        <listitem
+><para
+>Tu można ustawić liczbę kamieni na planszy. Im więcej kamieni, tym trudniejsza (i dłuższa) gra. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Pomoc</guibutton
+></term>
+        <listitem
+><para
+>Otwiera strony pomocy &kappname; (ten dokument). </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>OK</guibutton
+></term>
+        <listitem
+><para
+>Zapisuje zmiany i zamyka ono dialogowe. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Zastosuj</guibutton
+></term>
+        <listitem
+><para
+>Zapisuje zmiany ale nie zamyka okna dialogowego. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Anuluj</guibutton
+></term>
+        <listitem
+><para
+>Odrzuca wszystkie zmiany i zamyka ono dialogowe. </para
+></listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <sect1 id="key-bindings">
+      <title
+>Domyślne dowiązania klawiszy</title>
+
+      <para
+>Domyślne skróty to:</para>
+
+      <informaltable>
+        <tgroup cols="2">
+          <tbody>
+            <row
+><entry
+>Nowa</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Uruchom ponownie grę</entry
+><entry
+><keycap
+>F5</keycap
+></entry
+></row>
+            <row
+><entry
+>Wstrzymaj</entry
+><entry
+><keycap
+>P</keycap
+></entry
+></row>
+            <row
+><entry
+>Pokaż najlepsze wyniki</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Zakończ</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Cofnij</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Ponów</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Podpowiedź</entry
+><entry
+><keycap
+>H</keycap
+></entry
+></row>
+            <row
+><entry
+>Podręcznik programu &kappname;</entry
+><entry
+><keycap
+>F1</keycap
+></entry
+></row>
+            <row
+><entry
+>Co to jest?</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry
+></row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+    </sect1>
+  </chapter>
+
+  <chapter id="credits"
+><title
+>Zasługi i licencje</title
+> <!-- do not change this! -->
+    <!--This chapter is for credits and licenses.-->
+
+    <para
+>Prawa autorskie do &kappname; (c) 1997 &Mario.Weilguni; &Mario.Weilguni.mail; </para>
+    <para
+>Prawa autorskie do &kappname; (c) 2002-2004 Dave Corrie kde@davecorrie.com </para>
+    <para
+>Prawa autorskie do &kappname; (c) 2009 Frederik Schwarzer <email
+>schwarzerf@gmail.com</email
+> </para>
+
+    <para
+>Prawa autorskie do dokumentacji  (c) 2000 &Dirk.Doerflinger; <email
+>ddoerflinger@gmx.net</email
+> </para>
+    <para
+>Prawa autorskie do dokumentacji (c) 2009 Frederik Schwarzer <email
+>schwarzerf@gmail.com</email
+> </para>
+
+    <para
+>Polskie tłumaczenie dokumentacji: Krzysztof Woźniak<email
+>wozniakk@ceti.pl</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+  <appendix id="installation">
+    <title
+>Instalacja</title>
+
+    &install.intro.documentation;
+
+
+    <sect1 id="Compilation">
+      <title
+>Kompilacja i instalacja</title>
+&install.compile.documentation; </sect1>
+  </appendix>
+
+  &documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

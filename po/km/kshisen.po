@@ -1,0 +1,527 @@
+# translation of kshisen.po to Khmer
+# Khoem Sokhem <khoemsokhem@khmeros.info>, 2005, 2007, 2008, 2009.
+# Auk Piseth <piseth_dv@khmeros.info>, 2006, 2007, 2008.
+# Morn Met, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: kshisen\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"PO-Revision-Date: 2009-10-25 10:43+0700\n"
+"Last-Translator: Morn Met\n"
+"Language-Team: Khmer <kde-i18n-doc@kde.org>\n"
+"Language: km\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 1.0\n"
+"X-Language: km-KH\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "ខឹម សុខែម, ម៉ន ម៉េត, សេង សុត្ថា"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "khoemsokhem@khmeros.info,​​mornmet@khmeros.info,sutha@khmeros.info"
+
+#: src/app.cpp:86 src/app.cpp:324
+#, kde-format
+msgid "Select a tile"
+msgstr "ជ្រើស​ក្រឡា​"
+
+#: src/app.cpp:89
+#, kde-format
+msgid "Time: 0:00:00"
+msgstr "ពេលវេលា ៖ ០ ៖ ០០ ៖ ០០"
+
+#: src/app.cpp:92
+#, kde-format
+msgid "Removed: 0/0"
+msgstr "បាន​យកចេញ ៖ ០/០"
+
+#: src/app.cpp:95
+#, kde-format
+msgid "Cheat mode"
+msgstr "របៀប​បញ្ឆោត"
+
+#: src/app.cpp:114
+#, kde-format
+msgid "Play Sounds"
+msgstr "ចាក់​សំឡេង"
+
+#: src/app.cpp:244
+#, kde-format
+msgctxt "time string: hh:mm:ss"
+msgid "%1:%2:%3"
+msgstr "%1:%2:%3"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_Gravity)
+#: src/app.cpp:253 src/app.cpp:356 src/settings.ui:26
+#, kde-format
+msgid "Gravity"
+msgstr "ទំនាញ"
+
+#: src/app.cpp:256
+#, kde-format
+msgid "Yes"
+msgstr "បាទ/ចាស"
+
+#: src/app.cpp:258
+#, kde-format
+msgid "No"
+msgstr "ទេ"
+
+#: src/app.cpp:264
+#, kde-format
+msgid ""
+"\n"
+"You could have been in the highscores\n"
+"if you did not use Undo or Hint.\n"
+"Try without them next time."
+msgstr ""
+"\n"
+"អ្នក​​អាច​ទទួល​បាន​​ពិន្ទុ​​ខ្ពស់\n"
+"ប្រសិនបើ​អ្នក​មិន​ប្រើ ​មិន​ធ្វើ​វិញ ឬ​ជំនួយ ។\n"
+"ព្យាយាម​ដោយ​គ្មាន​ពួកវា​នៅ​ពេល​ក្រោយ ។"
+
+#: src/app.cpp:265 src/app.cpp:273
+#, kde-format
+msgid "End of Game"
+msgstr "ល្បែង​ចប់"
+
+#: src/app.cpp:268
+#, kde-format
+msgid ""
+"Congratulations!\n"
+"You made it into the hall of fame."
+msgstr ""
+"អប​អរ​សាទរ​!\n"
+"អ្នក​បាន​ធ្វើ​ឲ្យ​វា​ចូល​ទៅ​ក្នុង​តារាង​កិត្តិយស​ហើយ​ ។"
+
+#: src/app.cpp:272
+#, kde-format
+msgctxt "%1 - time string like hh:mm:ss"
+msgid "You made it in %1"
+msgstr "អ្នក​បាន​ធ្វើ​ឲ្យ​វា​ស្ថិត​នៅ​ក្នុង​ %1"
+
+#: src/app.cpp:288
+#, kde-format
+msgid "Your time: %1:%2:%3 %4"
+msgstr "ពេលវេលា​របស់​អ្នក ៖ %1:%2:%3 %4"
+
+#: src/app.cpp:292
+#, kde-format
+msgid "(Paused) "
+msgstr "(បាន​ផ្អាក) "
+
+#: src/app.cpp:300
+#, kde-format
+msgid "Removed: %1/%2 "
+msgstr "បានយកចេញ ៖ %1/%2 "
+
+#: src/app.cpp:329
+#, kde-format
+msgid "Select a matching tile"
+msgstr "ជ្រើស​ក្រឡា​ផ្គូផ្គង"
+
+#: src/app.cpp:334
+#, kde-format
+msgid "Select the move you want by clicking on the blue line"
+msgstr "ជ្រើស​ការ​ផ្លាស់ទី​ដែល​អ្នក​ចង់ ដោយ​ចុច​លើ​បន្ទាត់​ពណ៌​ខៀវ"
+
+#: src/app.cpp:339
+#, kde-format
+msgid "This tile did not match the one you selected"
+msgstr "ក្រឡា​នេះ​មិន​ផ្គូផ្គង​នឹង​អ្វី​ដែល​អ្នក​បាន​ជ្រើស​ទេ"
+
+#: src/app.cpp:344
+#, kde-format
+msgid "You cannot make this move"
+msgstr "អ្នក​មិន​អាច​ផ្លាស់ទី​វា​បាន​ទេ"
+
+#: src/app.cpp:375
+#, kde-format
+msgid "General"
+msgstr "ទូទៅ"
+
+#: src/board.cpp:97
+#, kde-format
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the default tileset.\n"
+"Please install the KMahjongg library."
+msgstr ""
+
+#: src/board.cpp:98 src/board.cpp:107 src/board.cpp:113 src/board.cpp:130
+#: src/board.cpp:139 src/board.cpp:145
+#, kde-format
+msgid "Error Loading Tiles"
+msgstr ""
+
+#: src/board.cpp:106
+#, kde-format
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the tileset %1. The default tileset has been "
+"loaded."
+msgstr ""
+
+#: src/board.cpp:112
+#, kde-format
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the tileset %1. The default tileset could "
+"also not be loaded.\n"
+"Please install the KMahjongg library."
+msgstr ""
+
+#: src/board.cpp:129
+#, kde-format
+msgctxt "%1 is a path to a background image file"
+msgid ""
+"An error occurred when loading the default background.\n"
+"Please install the KMahjongg library."
+msgstr ""
+
+#: src/board.cpp:138
+#, kde-format
+msgctxt "%1 is a path to a background image file"
+msgid ""
+"An error occurred when loading the background %1. The default background has "
+"been loaded."
+msgstr ""
+
+#: src/board.cpp:144
+#, kde-format
+msgctxt "%1 is a path to a background image  file"
+msgid ""
+"An error occurred when loading the background %1. The default background "
+"could also not be loaded.\n"
+"Please install the KMahjongg library."
+msgstr ""
+
+#: src/board.cpp:706
+#, kde-format
+msgid ""
+"Game Paused\n"
+"Click to resume game."
+msgstr ""
+"បានផ្អាក​ល្បែង\n"
+"ចុច​ដើម្បី​បន្ត​ល្បែង ។"
+
+#: src/board.cpp:710
+#, kde-format
+msgid ""
+"Game Stuck\n"
+"No more moves possible."
+msgstr ""
+"គាំង\n"
+"មិន​អាច​ផ្លាស់ទី​បាន​ទៀត​ទេ ។"
+
+#: src/board.cpp:713
+#, kde-format
+msgid ""
+"Game Over\n"
+"Click to start a new game."
+msgstr ""
+"ល្បែង​ចប់​ហើយ\n"
+"ចុច​ដើម្បី​ចាប់ផ្ដើម​ល្បែង​ថ្មី ។"
+
+#. i18n: ectx: label, entry (TileSet), group (General)
+#: src/kshisen.kcfg:9
+#, kde-format
+msgid "The tile set to use."
+msgstr "សំណុំ​ក្រឡា​ក្បឿង​ត្រូវ​ប្រើ ។"
+
+#. i18n: ectx: label, entry (Background), group (General)
+#: src/kshisen.kcfg:12
+#, kde-format
+msgid "The background to use."
+msgstr "ផ្ទៃខាង​ក្រោយ​ត្រូវ​ប្រើ ។"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: src/kshisenui.rc:13
+#, kde-format
+msgid "Main Toolbar"
+msgstr "របារ​ឧបករណ៍​មេ"
+
+#: src/main.cpp:47
+#, kde-format
+msgid "Shisen-Sho"
+msgstr "Shisen-Sho"
+
+#: src/main.cpp:49
+#, fuzzy, kde-format
+#| msgid "A KDE game similar to Mahjongg"
+msgid "A game similar to Mahjongg"
+msgstr "ល្បែង KDE មួយ​ដែល​ស្រដៀង​នឹង Mahjongg ដែរ"
+
+#: src/main.cpp:51
+#, fuzzy, kde-format
+#| msgid "(c) 1997, Mario Weilguni"
+msgid "Copyright 1997 Mario Weilguni"
+msgstr "រក្សាសិទ្ធិ​ឆ្នាំ ១៩៩៧ ដោយ Mario Weilguni"
+
+#: src/main.cpp:54
+#, kde-format
+msgid "Frederik Schwarzer"
+msgstr "Frederik Schwarzer"
+
+#: src/main.cpp:54
+#, kde-format
+msgid "Current Maintainer"
+msgstr "អ្នក​ថែទាំ​បច្ចុប្បន្ន"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "Dave Corrie"
+msgstr "Dave Corrie"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "Former Maintainer"
+msgstr "អ្នក​ថែទាំពី​មុន"
+
+#: src/main.cpp:56
+#, kde-format
+msgid "Mario Weilguni"
+msgstr "Mario Weilguni"
+
+#: src/main.cpp:56
+#, kde-format
+msgid "Original Author"
+msgstr "អ្នក​និពន្ធ​ដើម"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "Mauricio Piacentini"
+msgstr "Mauricio Piacentini"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "KMahjonggLib integration for KDE4"
+msgstr "KMahjonggLib រួម​បញ្ចូល​សម្រាប់ KDE4"
+
+#: src/main.cpp:58
+#, kde-format
+msgid "Jason Lane"
+msgstr "Jason Lane"
+
+#: src/main.cpp:58
+#, kde-format
+msgid ""
+"Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
+msgstr ""
+"បាន​បន្ថែម​កម្ម​វិធី​រាប់​ 'ក្រឡា​ដែល​បាន​យក​ចេញ'<br/> ការ​ដាក់​មាត្រដ្ឋាន​ក្រឡា​រលោង និង​ការ​ប្ដូរ​ទំហំ​បង្អួច"
+
+#: src/main.cpp:59
+#, kde-format
+msgid "Thanks also to everyone who should be listed here but is not!"
+msgstr "សូម​ថ្លែង​អំណរ​គុណ​ដល់​អ្នក​ទាំង​ឡាយ​ដែល​មិន​បាន​រាយ​ឈ្មោះ​នៅ​ទី​នេះ​ផង​ដែរ​ !"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Gravity)
+#: src/settings.ui:23
+#, kde-format
+msgid ""
+"<b>Gravity</b><p>Checking this makes the game even harder: If a tile is "
+"removed, all tiles lying above it will fall down one step.</p>"
+msgstr ""
+"<b>ភាព​ពិបាក ៖</b><p>ការ​គូស​ធីក​​លើ​វា នឹង​​ធ្វើ​ឲ្យ​ល្បែង​កាន់​តែ​ពិបាក ៖ ប្រសិន​បើ​ក្រឡា​ក្បឿង​​ត្រូវ​បាន​យក​"
+"ចេញ ក្រឡា​ក្បឿង​ទាំងអស់​ដែល​ដាក់លើ​វា​នឹង​​ធ្លាក់​ចុះ​មួយ​ជំហាន ។</p>"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Solvable)
+#: src/settings.ui:33
+#, kde-format
+msgid ""
+"<b>Create solvable games only</b><p>If checked, you will only be presented "
+"with games that are possible to solve.</p><p>Note: Even in solvable games "
+"you can fail to complete if you remove the tiles in the wrong order.</p>"
+msgstr ""
+"<b>បង្កើត​​តែ​ល្បែង​ដែល​​អាច​ដោះ​ស្រាយ​បាន</b><p>បើ​​គូស​​ធីក​ គេ​នឹង​បង្ហាញ​អ្នក​​នូវ​ល្បែង​ដែល​អាច​ដោះ​ស្រាយ​"
+"បាន​ ។</p><p>ចំណាំ​ ៖ ទោះ​បី​ជា​ល្បែង​នេះ​អាច​ដោះ​ស្រាយ​បាន​យ៉ាង​ណា​ក្ដី​​​​ អ្នក​នឹង​មិន​អាច​បញ្ចប់​ល្បែង​នេះ​​បាន​"
+"ទេ បើ​អ្នក​យក​ក្រឡា​ក្បឿង​​ចេញ​តាម​លំដាប់​​ដែល​មិន​ត្រឹម​ត្រូវ​ ។</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_Solvable)
+#: src/settings.ui:36
+#, kde-format
+msgid "Create solvable games only"
+msgstr "បង្កើត​តែ​ល្បែង​ដែល​អាច​ដោះ​ស្រាយ​បាន"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
+#: src/settings.ui:43
+#, kde-format
+msgid ""
+"<b>Show message if board can no longer be solved</b><p>Checking this makes "
+"the game show a message to abort the game in case there are no possible "
+"moves left to win the game.</p>"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
+#: src/settings.ui:46
+#, kde-format
+msgid "Show message if board can no longer be solved"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ChineseStyle)
+#: src/settings.ui:53
+#, kde-format
+msgid ""
+"<b>Use Chinese style: any flower match any flower, any season match any "
+"season</b><p>Use the traditional rules for matching the tiles. Previous "
+"version of the game used to allow only exact tiles matches, which is "
+"inconsistent with Mah-jongg rules. It is recommended to keep this option "
+"checked.</p>"
+msgstr ""
+"<b>ប្រើ​រចនាប័ទ្ម​​ចិន ៖ ផ្កា​ផ្គូផ្គង​នឹង​ផ្កា រដូវ​ផ្គូផ្គង​នឹង​រដូវ </b><p>ប្រើ​ក្បួន​បុរាណ​ដើម្បី​ផ្គូផ្គង​ក្រឡា​"
+"ក្បឿង​ ។ កំណែ​មុន​របស់​ល្បែង​​ត្រូវ​បាន​​​​ប្រើ​ដើម្បី​អនុញ្ញាត​តែ​ការ​ផ្គូផ្គង​ក្រឡា​ក្បឿង​​ជាក់លាក់​ប៉ុណ្ណោះ ដែល​មិន​ស្រប​"
+"គ្នា​ជា​មួយ​នឹង​ក្បួន Mah-jongg ទេ​ ។ អ្នក​ត្រូវ​បាន​ផ្ដល់​អនុសាសន៍​ឲ្យ​ធីក​ជម្រើស​នេះ ។</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ChineseStyle)
+#: src/settings.ui:56
+#, kde-format
+msgid ""
+"Use Chinese style: any flower match any flower, any season match any season"
+msgstr "ប្រើ​រចនាប័ទ្ម​​ចិន ៖ ផ្កា​ផ្គូផ្គង​នឹង​ផ្កា រដូវ​​​ផ្គូផ្គង​នឹង​រដូវ"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_TilesCanSlide)
+#: src/settings.ui:63
+#, kde-format
+msgid ""
+"<b>Tiles can slide, but you can connect only in 2 lines instead of 3</"
+"b><p>This option changes the rules to the point where it almost becomes a "
+"completely different game. When it is active, you can only remove the tiles "
+"if they can be connected by a line consisting of only two segments instead "
+"of the customary three. However, you are allowed to slide the tiles on the "
+"board, if the row or column where they are placed has some empty space. To "
+"make a sliding move, you have to click on the tile containing the column or "
+"row that can slide, and then on the matching tile. If there are two possible "
+"sliding moves, you will have to click on one of the two connecting lines to "
+"choose your preferred move.</p>"
+msgstr ""
+"<b>អាច​រំកិល​ក្រឡា​ក្បឿង​បាន​ ប៉ុន្តែ​អ្នក​អាច​តភ្ជាប់​បាន​​តែ​​ពីរ​បន្ទាត់​​ប៉ុណ្ណោះ មិន​អាច​ត​ភ្ជាប់​​បី​បន្ទាត់​បាន​ទេ​</"
+"b><p>ជម្រើស​នេះ​ផ្លាស់ប្ដូរ​ក្បួន​​ទៅ​ចំណុច​ដែល​វា​ស្ទើរតែ​ក្លាយ​ជា​ល្បែង​ផ្សេង​ទាំង​ស្រុង​ទៅ​ហើយ ។ នៅ​ពេល​វា​"
+"សកម្ម អ្នក​អាច​យក​ចេញ​បានតែ​ក្រឡា​ក្បឿង​ប៉ុណ្ណោះ​ ប្រសិន​បើ​ពួកវា​អាច​ត្រូវ​បាន​តភ្ជាប់​ដោយ​បន្ទាត់​ដែល​មាន​តែ​"
+"ចម្រៀក​ពីរ​ជំនួស​ឲ្យ​បន្ទាត់​ដែល​មាន​បី​ចម្រៀក​តាម​ធម្មតា​ ។ ទោះ​ជា​យ៉ាង​ណា​ក៏​ដោយ អ្នក​ត្រូវ​បាន​អនុញ្ញាត​ឲ្យ​រំកិល​"
+"ក្រឡា​ក្បឿង​នៅ​លើ​ក្ដារ ប្រសិន​បើ​ជួរដេក ឬ​ជួរឈរ​ដែល​​ដាក់​ពួក​វា​​មាន​ចន្លោះ​ទទេ ។  ដើម្បី​​រំកិល​បាន​ អ្នក​ត្រូវ​"
+"តែ​ចុច​លើ​ក្រឡា​ដែល​មាន​ជួរឈរ ឬ​ជួរដេក​ដែល​អាច​រំកិល​បាន ​បន្ទាប់មក​ចុច​​នៅ​លើ​ក្រឡា​ក្បឿង​​ដែល​ផ្គូផ្គង ។ ប្រសិន​"
+"បើ​មាន​ការ​ផ្លាស់ទី​ចំនួន​ពីរ​​​ អ្នក​​ត្រូវតែ​​​​ចុច​លើ​បន្ទាត់​តភ្ជាប់​មួយ​នៃ​បន្ទាត់​ត​ភ្ជាប់​ទាំង​ពីរ ​​ដើម្បី​ជ្រើស​ការ​ផ្លាស់ទី​"
+"ដែល​អ្នក​ពេញ​ចិត្ត ។</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_TilesCanSlide)
+#: src/settings.ui:66
+#, kde-format
+msgid "Tiles can slide, but you can connect only in 2 lines instead of 3"
+msgstr ""
+"អាច​រំកិល​ក្រឡា​ក្បឿង​បាន ប៉ុន្តែ​អ្នក​អាច​តភ្ជាប់​បាន​ត្រឹម​តែ​ពីរ​បន្ទាត់​ប៉ុណ្ណោះ មិន​អាច​តភ្ជាប់​បី​បន្ទាត់​បាន​ឡើយ"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, difficulty_groupBox)
+#: src/settings.ui:73
+#, kde-format
+msgid ""
+"<b>Board Difficulty</b><p>The slider controls the difficulty of the board "
+"from Easy to Hard.</p>"
+msgstr ""
+"<b>ភាព​លំបាក​របស់​ក្ដារ​​</b><p>គ្រាប់​រំកិល​ត្រួតពិនិត្យ​ភាព​ពិបាក​របស់​ក្ដារ​ពី​ងាយ​ស្រួល​ទៅ​ពិបាក ។</p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, difficulty_groupBox)
+#: src/settings.ui:76
+#, kde-format
+msgid "Board Difficulty"
+msgstr "ភាព​លំបាក​របស់​ក្ដារ"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: src/settings.ui:103
+#, kde-format
+msgid "Easy"
+msgstr "ស្រួល"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3)
+#: src/settings.ui:123
+#, kde-format
+msgid "Hard"
+msgstr "ពិបាក"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, speed_groupBox)
+#: src/settings.ui:138
+#, kde-format
+msgid ""
+"<b>Piece Removal Speed</b><p>Adjusting this slider alters the speed at which "
+"the pieces are removed from the screen after a match has been made.</p>"
+msgstr ""
+"<b>ល្បឿន​យក​បន្ទះ​ចេញ​</b><p>កា​រ​លៃ​តម្រូវ​គ្រាប់​រំកិល​នេះ​ ប្ដូរ​ល្បឿន​​ដែល​​​​នឹង​​ត្រូវ​​យក​បន្ទះ​ចេញ​ពី​អេក្រង់​ "
+"បន្ទាប់​ពី​បាន​​ផ្គូផ្គង​រួច ។</p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, speed_groupBox)
+#: src/settings.ui:141
+#, kde-format
+msgid "Piece Removal Speed"
+msgstr "ល្បឿន​យក​បន្ទះ​ចេញ"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: src/settings.ui:168
+#, kde-format
+msgid "Slow"
+msgstr "យឺត"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#: src/settings.ui:188
+#, kde-format
+msgid "Fast"
+msgstr "លឿន"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, size_groupBox)
+#: src/settings.ui:203
+#, kde-format
+msgid ""
+"<b>Board Size</b><p>This slider allows you to change the number of tiles on "
+"the board. The more tiles you have, the harder (and longer) the game will be."
+"</p>"
+msgstr ""
+"<b>ទំហំ​ក្ដារ​​</b><p>គ្រាប់​រំកិល​នេះ​អនុញ្ញាត​ឲ្យ​អ្នក​ផ្លាស់ប្ដូរ​ចំនួន​ក្រឡា​ក្បឿង​​នៅ​លើ​ក្ដារ ។ អ្នក​មាន​ក្រឡា​"
+"ក្បឿង​​កាន់​តែ​ច្រើន ​​ល្បែង​នឹង​កាន់​តែ​ពិបាក​​លេង​ (និង​កាន់​តែ​យូរ)  ។</p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, size_groupBox)
+#: src/settings.ui:206
+#, kde-format
+msgid "Board Size"
+msgstr "ទំហំ​ក្ដារ"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#: src/settings.ui:236
+#, kde-format
+msgid "14x6"
+msgstr "១៤x៦"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel9)
+#: src/settings.ui:256
+#, kde-format
+msgid "16x9"
+msgstr "១៦x៩"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: src/settings.ui:279
+#, kde-format
+msgid "18x8"
+msgstr "១៨x៨"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel10)
+#: src/settings.ui:302
+#, kde-format
+msgid "24x12"
+msgstr "២៤x១២"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel11)
+#: src/settings.ui:325
+#, kde-format
+msgid "26x14"
+msgstr "២៦x១៤"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel12)
+#: src/settings.ui:348
+#, kde-format
+msgid "30x16"
+msgstr "៣០x១៦"

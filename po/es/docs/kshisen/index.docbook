@@ -1,0 +1,1376 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Spanish "INCLUDE"
+>    <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+>     <!-- do not change this! -->
+]>
+
+<book id="kshisen" lang="&language;"
+> <!-- do not change this! -->
+  <bookinfo>
+    <title
+>Manual de &kshisen;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+    <!-- List of immidiate authors begins here. -->
+    <!--INPORTANT! - All other contributors: [to be determined] -->
+    <authorgroup>
+      <author
+><firstname
+>Dirk</firstname
+> <surname
+>Doerflinger</surname
+> <affiliation
+><address
+>&Dirk.Doerflinger.mail;</address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Frederik</firstname
+><surname
+>Schwarzer</surname
+> <affiliation
+><address
+>&Frederik.Schwarzer.mail;</address
+></affiliation>
+      </author>
+      <othercredit role="reviewer"
+><firstname
+>Frerich</firstname
+><surname
+>Raabe</surname
+> <contrib
+>Revisor</contrib>
+        <affiliation
+><address
+>&Frerich.Raabe.mail;</address
+></affiliation>
+      </othercredit>
+      <othercredit role="translator"
+> <firstname
+>Rafael</firstname
+> <surname
+>Osuna</surname
+> <affiliation
+><address
+><email
+>rosuna@wol.es</email
+></address
+></affiliation
+> <contrib
+>Traductor</contrib
+> </othercredit
+><othercredit role="translator"
+> <firstname
+>Pablo</firstname
+> <surname
+>de Vicente</surname
+> <affiliation
+><address
+><email
+>pvicentea@wanadoo.es</email
+></address
+></affiliation
+> <contrib
+>Traductor</contrib
+> </othercredit
+><othercredit role="translator"
+> <firstname
+>Pablo</firstname
+> <surname
+>Barneo</surname
+> <affiliation
+><address
+><email
+>pablob@nikhef.nl</email
+></address
+></affiliation
+> <contrib
+>Traductor</contrib
+> </othercredit
+> <othercredit role="translator"
+> <firstname
+>Kira</firstname
+> <surname
+>J. Fernández</surname
+> <affiliation
+><address
+><email
+>kirajfdez@gmail.com</email
+></address
+></affiliation
+> <contrib
+>Traductora</contrib
+> </othercredit
+> 
+    </authorgroup>
+    <legalnotice
+>&FDLNotice;</legalnotice>
+    <date
+>2021-06-15</date>
+    <releaseinfo
+>1.10 (KDE Gear 21.08)</releaseinfo>
+
+    <!--Short description of this document. Do not change unless necessary!-->
+    <abstract>
+      <para
+>Esta documentación describe el juego &kshisen; versión 1.10</para>
+    </abstract>
+
+    <!--List of relevant keywords-->
+    <keywordset>
+      <keyword
+>KDE</keyword
+> <!-- do not change this! -->
+      <keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+      <keyword
+>juego</keyword
+> <!-- do not change this! -->
+      <keyword
+>kshisen</keyword
+><!--Application name goes here-->
+      <!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+      <keyword
+>arcade</keyword>
+      <keyword
+>tablero</keyword>
+      <keyword
+>mahjongg</keyword>
+      <keyword
+>fichas</keyword>
+      <!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+      <keyword
+>un jugador</keyword>
+    </keywordset>
+  </bookinfo>
+  <!--Content begins here: -->
+  <chapter id="introduction"
+><title
+>Introducción</title
+> <!-- do not change this! -->
+    <note
+><title
+>Tipo de juego:</title
+><para
+>Arcade, Tablero</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+    <note
+><title
+>Número de posibles jugadores:</title
+><para
+>Uno</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+    <!--Short game description starts here. 3-4 sentences (paragraphs)-->
+    <para
+>&kshisen; es un juego para un jugador que usa el conjunto de fichas del Mahjong. Sin embargo, a diferencia del Mahjong, &kshisen; solo tiene una capa de fichas mezcladas. Puede quitar piezas coincidentes si se pueden conectar con una línea que se doble un máximo de dos veces. Al mismo tiempo, la línea no debe cruzar ninguna otra ficha. Para ganar una partida de &kshisen;, el jugador ha de eliminar todas las fichas del tablero de juego. </para>
+  </chapter>
+
+  <chapter id="howto"
+><title
+>Cómo jugar</title
+> <!-- do not change this! -->
+    <screenshot>
+    <mediaobject>
+    <imageobject>
+    <imagedata fileref="gameboard.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+    <phrase
+>El tablero de juego de &kshisen;</phrase>
+    </textobject>
+    </mediaobject>
+    </screenshot>
+    <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+    <note
+><title
+>Objetivo:</title
+><para
+>Eliminar todas las fichas del tablero de juego en el menor tiempo posible.</para
+></note
+><!--Describe the objective of the game.-->
+    <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+    <para
+>&kshisen; cargará automáticamente un patrón en el momento en que inicie el juego, por lo que podrá comenzar a jugar inmediatamente. </para>
+    <para
+>Debería estudiar con cuidado las fichas extendidas por el tablero de juego y encontrar dos fichas exactamente iguales. Cuando haya encontrado un par, utilice el ratón para seleccionarlo. </para>
+    <para
+>Una vez que haya seleccionado una pareja de fichas, estas desaparecerán del tablero de juego. Sin embargo, incluso si las fichas que selecciona aparecen abiertas, solo podrán ser eliminadas del tablero si se pueden conectar una con otra por medio de una línea que se doble un máximo de dos veces y que no cruce ninguna otra ficha. Además, la línea solo se puede dibujar horizontal o verticalmente. </para>
+    <para
+>Encuentre tantas coincidencias como sea posible para eliminar todas las fichas del tablero de juego. </para>
+  </chapter>
+
+  <chapter id="rules_and_tips"
+><title
+>Reglas del juego, estrategias y consejos</title
+> <!-- do not change this! -->
+    <sect1 id="rules">
+      <title
+>Reglas</title>
+      <para
+>Conjunto de fichas estándar del Mahjong incluidas: <informaltable
+> <tgroup cols="3"
+> <tbody>
+              <row
+><entry
+>Nombre del grupo</entry
+><entry
+>Nombre de la ficha</entry
+><entry
+>Cantidad en un conjunto</entry
+></row>
+              <row
+><entry
+>Puntos</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 de puntos</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 de puntos</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 de puntos</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 de puntos</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 de puntos</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 de puntos</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 de puntos</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 de puntos</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 de puntos</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Bambúes</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 de bambúes</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 de bambúes</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 de bambúes</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 de bambúes</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 de bambúes</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 de bambúes</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 de bambúes</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 de bambúes</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 de bambúes</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Caracteres</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 de caracteres</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 de caracteres</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 de caracteres</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 de caracteres</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 de caracteres</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 de caracteres</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 de caracteres</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 de caracteres</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 de caracteres</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Vientos</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Viento del este</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Viento del sur</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Viento del oeste</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Viento del norte</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Dragones</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Dragón rojo</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Dragón verde</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Dragón blanco</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Flores</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Ciruela (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Lirio (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Crisantemo (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambú (4)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+>Estaciones</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Primavera (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Verano (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Otoño (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Invierno (4)</entry
+><entry
+>1</entry
+></row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+      <itemizedlist>
+        <listitem
+><para
+>Forman pareja las fichas cuyos pictogramas coinciden exactamente.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Nota:</title
+><para
+>Existen excepciones a esta regla. En el juego tradicional del Mahjong, cada ficha debe coincidir exactamente, excepto las fichas de «flores» y las de «estaciones».</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>Las fichas de «Flores» no tienen dobles y puede emparejarse entre sí.</para
+></listitem>
+        <listitem
+><para
+>Las fichas de «Estaciones» no tienen dobles entre sí y pueden emparejarse entre sí.</para
+></listitem>
+        <listitem
+><para
+>Solo se pueden quitar dos fichas si se puedan unir con un máximo de tres líneas conectadas que no crucen ninguna otra ficha. Las líneas pueden ser horizontales o verticales, pero no diagonales.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Nota:</title
+><para
+>No tiene que dibujar las líneas usted mismo, el juego lo hace por usted. Simplemente marque dos fichas emparejadas en el tablero; si se pueden conectar con un máximo de tres líneas, las líneas se dibujarán y las fichas se eliminarán.</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>Las líneas solo pueden atravesar áreas vacías del tablero.</para
+></listitem>
+        <listitem
+><para
+>Algunos juegos no se pueden resolver. Si quiere que no se utilicen juegos sin solución, marque la opción <guilabel
+>Crear solo juegos con solución</guilabel
+> en el diálogo de configuración.</para
+></listitem>
+        <listitem
+><para
+>La puntuación se adjudica por el tiempo que el jugador necesita para eliminar todas las fichas del tablero. Los juegos con más fichas dan más puntos.</para
+></listitem>
+        <listitem
+><para
+>Si juega con la opción <guilabel
+>Gravedad</guilabel
+> activada, esta puntuación se multiplicará por dos.</para
+></listitem>
+        <listitem
+><para
+>Para conseguir un puesto entre los jugadores con las mejores puntuaciones, debe completar una instancia del juego en el periodo de tiempo más corto posible.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Nota:</title
+><para
+>Si el jugador utiliza la funcionalidad «Deshacer» o «Pista», la puntuación no se considerará como un récord de puntuación.</para
+></note>
+    </sect1>
+    <sect1 id="tips">
+      <title
+>Pistas</title>
+      <para
+>Haga clic en una ficha con el &RMB; para resaltar todas las fichas del tablero que coincidan. Al contrario que usar <quote
+>Deshacer</quote
+> o <quote
+>Pista</quote
+>, esta ayuda está permitida sin que se considere hacer trampas. </para>
+    </sect1>
+  </chapter>
+
+  <chapter id="interface"
+><title
+>Visión general de la interfaz</title
+> <!-- do not change this! -->
+    <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing. -->
+    <sect1 id="menu">
+    <title
+>Opciones del menú</title>
+    <sect2 id="game-menu">
+      <title
+>El menú Juego</title>
+
+      <para
+>El menú <guimenu
+>Juego</guimenu
+> le permite controlar el estado de la partida actual: </para>
+
+      <variablelist>
+        <varlistentry id="game-menu-new">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Juego</guimenu
+><guimenuitem
+>Nuevo</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Termina la partida actual</action
+> y comienza una nueva sesión con fichas nuevas.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-restart">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>F5</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Juego</guimenu
+><guimenuitem
+>Reiniciar juego</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Reinicia la partida actual con las mismas fichas.</action
+></para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-pause">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+><guimenu
+>Juego</guimenu
+><guimenuitem
+>Pausa</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Detiene la partida</action
+>, especialmente el reloj que es necesario para la puntuación. Esta entrada de menú también se utiliza para continuar el juego.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-highscores">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Juego</guimenu
+><guimenuitem
+>Mostrar mejores puntuaciones...</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Muestra las diez mejores puntuaciones de &kshisen;.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Juego</guimenu
+><guimenuitem
+>Salir</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Sale</action
+> de &kshisen;.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+      <para
+>Algunas de las entradas de menú también se pueden controlar mediante combinaciones de teclas. Consulte la sección <xref linkend="key-bindings"/> para obtener una lista. </para>
+
+    </sect2>
+
+    <sect2 id="move-menu">
+      <title
+>El menú Mover</title>
+
+      <variablelist id="move-menu-undo">
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Mover</guimenu
+> <guimenuitem
+>Deshacer</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Deshace el último paso</action
+>, al igual que el botón <guibutton
+>Deshacer</guibutton
+> en la barra de herramientas.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="move-menu-redo">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Mover</guimenu
+> <guimenuitem
+>Rehacer</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Rehace el último paso</action
+>, al igual que el botón <guibutton
+>Rehacer</guibutton
+> en la barra de herramientas.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="move-menu-hint">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Mover</guimenu
+> <guimenuitem
+>Pista</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Muestra un consejo</action
+> sobre qué dos fichas quitar a continuación.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+    </sect2>
+
+    <sect2 id="settings-menu">
+      <title
+>El menú Preferencias</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Activar sonidos</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Activa un sonido cuando toca una ficha haciendo clic sobre ella con el &LMB; y cuando una ficha se cae al jugar con la <guilabel
+>Gravedad</guilabel
+> activada.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-settings-settings">
+          <term>
+            <menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Configurar &kshisen;...</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Abre el <link linkend="configuration"
+>diálogo de configuración</link
+> para cambiar las preferencias de &kshisen;.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+      <para
+>Además &kshisen; tiene las opciones de menú <guimenu
+>Preferencias</guimenu
+> y <guimenu
+>Ayuda</guimenu
+> comunes de &kde;. Para obtener más información, consulte las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menú «Preferencias»</ulink
+> y <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menú «Ayuda» </ulink
+> de «Aspectos básicos de &kde;». </para>
+    </sect2>
+    </sect1>
+
+    <sect1 id="key-bindings">
+      <title
+>Accesos rápidos predeterminados</title>
+
+      <para
+>Los accesos rápidos predeterminados son:</para>
+
+      <informaltable>
+        <tgroup cols="2">
+          <tbody>
+            <row
+><entry
+>Nuevo</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Reiniciar juego</entry
+><entry
+><keycap
+>F5</keycap
+></entry
+></row>
+            <row
+><entry
+>Pausa</entry
+><entry
+><keycap
+>P</keycap
+></entry
+></row>
+            <row
+><entry
+>Mostrar mejores puntuaciones...</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Salir</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Deshacer</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Rehacer</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Pista</entry
+><entry
+><keycap
+>H</keycap
+></entry
+></row>
+            <row
+><entry
+>El manual de &kshisen;</entry
+><entry
+><keycap
+>F1</keycap
+></entry
+></row>
+            <row
+><entry
+>¿Qué es esto?</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry
+></row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+    </sect1>
+
+  </chapter>
+
+  <chapter id="faq"
+><title
+>Preguntas frecuentes</title
+> <!-- do not change this! -->
+    <!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+    <qandaset>
+      <qandaentry>
+        <question
+><para
+>Quiero cambiar el aspecto del juego ¿Puedo?</para
+></question>
+        <answer
+><para
+>Sí. Para cambiar el aspecto de &kshisen; use la <link linkend="game-settings-settings"
+>barra de menús</link
+> para abrir la <link linkend="configuration"
+>utilidad de configuración</link
+>.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>¿Puedo utilizar el teclado?</para
+></question>
+        <answer
+><para
+>No. Este juego no incluye la funcionalidad de un modo de juego con teclado.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>Debo abandonar el juego, pero todavía no he terminado la partida ¿puedo guardar mi progreso?</para
+></question>
+        <answer
+><para
+>No. Este juego no tiene la funcionalidad de «Guardar».</para
+></answer>
+      </qandaentry>
+    </qandaset>
+  </chapter>
+
+  <chapter id="configuration"
+><title
+>Configuración del juego</title
+> <!-- do not change this! -->
+    <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+    <para
+>Si selecciona el menú <menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Configurar &kshisen;...</guimenuitem
+></menuchoice
+> se abrirá el diálogo de configuración que le permitirá modificar el comportamiento del juego. </para>
+
+    <screenshot>
+      <screeninfo
+>Diálogo de configuración de &kshisen;</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="kshisen-configuration.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>Diálogo de configuración de &kshisen;</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <variablelist>
+      <title
+>Página <guilabel
+>General</guilabel
+></title>
+      <varlistentry>
+        <term
+><guilabel
+>Gravedad</guilabel
+></term>
+        <listitem
+><para
+>Eligiendo esta opción la partida se hace mucho más difícil: si se quita una ficha, todas las fichas que estaban por encima caerán hacia abajo un peldaño. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Crear solo juegos con solución</guilabel
+></term>
+        <listitem
+><para
+>Si está marcada, solo se le mostrarán juegos posibles de resolver. Nota: Incluso en los juegos con solución, puede no conseguir completarlos si elimina las piezas en el orden equivocado. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Mostrar un mensaje cuando el tablero no se puede resolver</guilabel
+></term>
+        <listitem
+><para
+>Si está marcada, &kshisen; tratará de analizar si el juego se puede resolver en cada posición y mostrará un mensaje para abandonar la partida en caso de que no sea posible resolverla. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Utilizar el estilo chino: cualquier flor podrá coincidir con cualquier otra flor, cualquier estación podrá coincidir con cualquier otra estación.</guilabel
+></term>
+        <listitem
+><para
+>Utilizar reglas tradicionales para la coincidencia de fichas. Las versiones anteriores de &kshisen; solo permitían la coincidencia exacta de las fichas, que se contradice con las reglas del Mahjong. Se recomienda mantener esta opción marcada. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Las fichas se pueden deslizar, pero solo podrá conectar 2 líneas en lugar de 3.</guilabel
+></term>
+        <listitem
+><para
+>Esta opción cambia las reglas hasta el punto que casi se convierte en un juego diferente. Cuando está activada, puede eliminar las fichas solo si se pueden conectar con una línea que conste de uno o dos segmentos, en lugar de los tres habituales. Sin embargo, se le permite deslizar las fichas sobre el tablero si la fila o columna donde están colocados tiene algún espacio libre. Para hacer un movimiento de deslizamiento, primero debe hacer clic en la ficha de la fila o columna donde se puede deslizar, y después en la ficha que coincida. Si hay dos posibles movimientos, se muestran líneas azules indicándolos. Después, tendrá que hacer clic en una de las dos líneas para elegir su movimiento preferido. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Dificultad del tablero</guilabel
+></term>
+        <listitem
+><para
+>El deslizador controla la dificultad del tablero (es decir, cuánto se barajan las fichas), desde <guilabel
+>Fácil</guilabel
+> a <guilabel
+>Difícil</guilabel
+>. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Velocidad de eliminación de las piezas</guilabel
+></term>
+        <listitem
+><para
+>Ajustando este deslizador se modifica la velocidad a la que las piezas se eliminan de la pantalla después de hacerlas coincidir. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Tamaño del tablero</guilabel
+></term>
+        <listitem
+><para
+>Este deslizador le permite cambiar el número de fichas en el tablero. Mientras más fichas haya, más complicado (y más largo) será el juego. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+>Página <guilabel
+>Fichas</guilabel
+> y <guilabel
+>Fondo</guilabel
+></term>
+        <listitem
+><para
+>Seleccione su diseño favorito para las fichas y el fondo. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Ayuda</guibutton
+></term>
+        <listitem
+><para
+>Abre las páginas de ayuda de &kshisen; (este documento). </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Aceptar</guibutton
+></term>
+        <listitem
+><para
+>Guarda sus cambios y cierra este diálogo. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Aplicar</guibutton
+></term>
+        <listitem
+><para
+>Guarda sus cambios pero no cierra el diálogo. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Cancelar</guibutton
+></term>
+        <listitem
+><para
+>Cancela todos sus cambios y cierra el diálogo. </para
+></listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </chapter>
+
+  <chapter id="credits"
+><title
+>Créditos y Licencia</title
+> <!-- do not change this! -->
+    <!--This chapter is for credits and licenses.-->
+
+    <para
+>&kshisen; Copyright 1997 &Mario.Weilguni; &Mario.Weilguni.mail; </para>
+    <para
+>&kshisen; Copyright 2002-2004 Dave Corrie <email
+>kde@davecorrie.com</email
+> </para>
+    <para
+>&kshisen; Copyright 2009-2012 &Frederik.Schwarzer; &Frederik.Schwarzer.mail; </para>
+
+    <para
+>Copyright de la documentación 2000 &Dirk.Doerflinger; &Dirk.Doerflinger.mail; </para>
+    <para
+>Copyright de la documentación 2009-2010 &Frederik.Schwarzer; &Frederik.Schwarzer.mail; </para>
+
+    <para
+>Traducido por Pablo de Vicente <email
+>pvicentea@wanadoo.es</email
+>, Santiago Fernández Sancho <email
+>santi@kde-es.org</email
+> y Kira J. Fernández <email
+>kirajfdez@gmail.com</email
+>.</para
+> &underFDL; &underGPL; </chapter>
+
+  &documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

@@ -1,0 +1,565 @@
+# translation of kshisen.po to Slovenian
+# Translation of kshisen.po to Slovenian
+# Copyright (C) 2001, 2003, 2004, 2006, 2007 Free Software Foundation, Inc.
+# $Id: kshisen.po 1634169 2022-09-20 01:34:14Z scripty $
+# $Source$
+#
+# Marko Samastur <markos@elite.org>, 1999.
+# Primož Peterlin <primoz.peterlin@biofiz.mf.uni-lj.si>, 2000.
+# Gregor Rakar <gregor.rakar@kiss.si>, 2003, 2004.
+# Jure Repinc <jlp@holodeck1.com>, 2006, 2008, 2009.
+# Matej Repinc <mrepinc@gmail.com>, 2007.
+# Andrej Mernik <andrejm@ubuntu.si>, 2012, 2013, 2014, 2016, 2018.
+# Matjaž Jeran <matjaz.jeran@amis.net>, 2020, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: kshisen\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"PO-Revision-Date: 2022-02-25 09:06+0100\n"
+"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
+"Language-Team: Slovenian <lugos-slo@lugos.si>\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 21.12.2\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Marko Samastur,Primož Peterlin,Gregor Rakar,Matej Repinc,Andrej Mernik"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+"markos@elite.org,primoz.peterlin@biofiz.mf.uni-lj.si,gregor.rakar@kiss.si,"
+"mrepinc@gmail.com,andrejm@ubuntu.si"
+
+#: src/app.cpp:86 src/app.cpp:324
+#, kde-format
+msgid "Select a tile"
+msgstr "Izberite ploščico"
+
+#: src/app.cpp:89
+#, kde-format
+msgid "Time: 0:00:00"
+msgstr "Čas: 0:00:00"
+
+#: src/app.cpp:92
+#, kde-format
+msgid "Removed: 0/0"
+msgstr "Odstranjenih: 0/0"
+
+#: src/app.cpp:95
+#, kde-format
+msgid "Cheat mode"
+msgstr "Goljufivi način"
+
+#: src/app.cpp:114
+#, kde-format
+msgid "Play Sounds"
+msgstr "Predvajaj zvoke"
+
+#: src/app.cpp:244
+#, kde-format
+msgctxt "time string: hh:mm:ss"
+msgid "%1:%2:%3"
+msgstr "%1:%2:%3"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_Gravity)
+#: src/app.cpp:253 src/app.cpp:356 src/settings.ui:26
+#, kde-format
+msgid "Gravity"
+msgstr "Težnost"
+
+#: src/app.cpp:256
+#, kde-format
+msgid "Yes"
+msgstr "Da"
+
+#: src/app.cpp:258
+#, kde-format
+msgid "No"
+msgstr "Ne"
+
+#: src/app.cpp:264
+#, kde-format
+msgid ""
+"\n"
+"You could have been in the highscores\n"
+"if you did not use Undo or Hint.\n"
+"Try without them next time."
+msgstr ""
+"\n"
+"Lahko bi prišli na lestvico najboljših,\n"
+"če ne bi uporabljali razveljavljanja ali namigov.\n"
+"Naslednjič poizkusite brez tega."
+
+#: src/app.cpp:265 src/app.cpp:273
+#, kde-format
+msgid "End of Game"
+msgstr "Konec igre"
+
+#: src/app.cpp:268
+#, kde-format
+msgid ""
+"Congratulations!\n"
+"You made it into the hall of fame."
+msgstr ""
+"Čestitke!\n"
+"Prišli ste med najboljše igralce."
+
+#: src/app.cpp:272
+#, kde-format
+msgctxt "%1 - time string like hh:mm:ss"
+msgid "You made it in %1"
+msgstr "Uspelo vam je v %1"
+
+#: src/app.cpp:288
+#, kde-format
+msgid "Your time: %1:%2:%3 %4"
+msgstr "Vaš čas: %1:%2:%3 %4"
+
+#: src/app.cpp:292
+#, kde-format
+msgid "(Paused) "
+msgstr "(V premoru) "
+
+#: src/app.cpp:300
+#, kde-format
+msgid "Removed: %1/%2 "
+msgstr "Odstranjeno: %1/%2 "
+
+#: src/app.cpp:329
+#, kde-format
+msgid "Select a matching tile"
+msgstr "Izberite ujemajočo ploščico"
+
+#: src/app.cpp:334
+#, kde-format
+msgid "Select the move you want by clicking on the blue line"
+msgstr "Izberite želeno potezo s klikom na modro črto"
+
+#: src/app.cpp:339
+#, kde-format
+msgid "This tile did not match the one you selected"
+msgstr "Ta ploščica se ne ujema s tisto, ki ste jo izbrali"
+
+#: src/app.cpp:344
+#, kde-format
+msgid "You cannot make this move"
+msgstr "Te poteze ni mogoče narediti"
+
+#: src/app.cpp:375
+#, kde-format
+msgid "General"
+msgstr "Splošno"
+
+#: src/board.cpp:97
+#, kde-format
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the default tileset.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"Prišlo je do napake med nalaganjem privzetega nabora ploščic.\n"
+"Namestite knjižnico KMahjongg."
+
+#: src/board.cpp:98 src/board.cpp:107 src/board.cpp:113 src/board.cpp:130
+#: src/board.cpp:139 src/board.cpp:145
+#, kde-format
+msgid "Error Loading Tiles"
+msgstr "Napaka med nalaganjem nabora ploščic"
+
+#: src/board.cpp:106
+#, kde-format
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the tileset %1. The default tileset has been "
+"loaded."
+msgstr ""
+"Prišlo je do napake med nalaganjem nabora ploščic %1. Naložen je bil "
+"privzeti nabor ploščic."
+
+#: src/board.cpp:112
+#, kde-format
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the tileset %1. The default tileset could "
+"also not be loaded.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"Prišlo je do napake med nalaganjem nabora ploščic %1. Tudi privzetega nabora "
+"ploščic ni bilo mogoče naložiti.\n"
+"Namestite knjižnico KMahjongg."
+
+#: src/board.cpp:129
+#, kde-format
+msgctxt "%1 is a path to a background image file"
+msgid ""
+"An error occurred when loading the default background.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"Med nalaganjem ozadja je prišlo do napake.\n"
+"Namestite knjižnico KMahjongg."
+
+#: src/board.cpp:138
+#, kde-format
+msgctxt "%1 is a path to a background image file"
+msgid ""
+"An error occurred when loading the background %1. The default background has "
+"been loaded."
+msgstr ""
+"Med nalaganjem ozadja %1 je prišlo do napake. Naloženo je bilo privzeto "
+"ozadje."
+
+#: src/board.cpp:144
+#, kde-format
+msgctxt "%1 is a path to a background image  file"
+msgid ""
+"An error occurred when loading the background %1. The default background "
+"could also not be loaded.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"Med nalaganjem ozadja %1 je prišlo do napake. Tudi privzetega ozadja ni bilo "
+"mogoče naložiti.\n"
+"Namestite knjižnico KMahjongg."
+
+#: src/board.cpp:706
+#, kde-format
+msgid ""
+"Game Paused\n"
+"Click to resume game."
+msgstr ""
+"Igra je v premoru.\n"
+"Kliknite za nadaljevanje."
+
+#: src/board.cpp:710
+#, kde-format
+msgid ""
+"Game Stuck\n"
+"No more moves possible."
+msgstr ""
+"Igra ni rešljiva.\n"
+"Nobena poteza ni več mogoča."
+
+#: src/board.cpp:713
+#, kde-format
+msgid ""
+"Game Over\n"
+"Click to start a new game."
+msgstr ""
+"Konec igre.\n"
+"Kliknite za začetek nove igre."
+
+#. i18n: ectx: label, entry (TileSet), group (General)
+#: src/kshisen.kcfg:9
+#, kde-format
+msgid "The tile set to use."
+msgstr "Nabor ploščic, ki bo uporabljen."
+
+#. i18n: ectx: label, entry (Background), group (General)
+#: src/kshisen.kcfg:12
+#, kde-format
+msgid "The background to use."
+msgstr "Ozadje, ki bo uporabljeno."
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: src/kshisenui.rc:13
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Glavna orodna vrstica"
+
+#: src/main.cpp:47
+#, kde-format
+msgid "Shisen-Sho"
+msgstr "Shisen-Sho"
+
+#: src/main.cpp:49
+#, kde-format
+msgid "A game similar to Mahjongg"
+msgstr "Igra podobna Mahjonggu"
+
+#: src/main.cpp:51
+#, kde-format
+msgid "Copyright 1997 Mario Weilguni"
+msgstr "Avtorske pravice 1997 Mario Weilguni"
+
+#: src/main.cpp:54
+#, kde-format
+msgid "Frederik Schwarzer"
+msgstr "Frederik Schwarzer"
+
+#: src/main.cpp:54
+#, kde-format
+msgid "Current Maintainer"
+msgstr "Trenutni vzdrževalec"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "Dave Corrie"
+msgstr "Dave Corrie"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "Former Maintainer"
+msgstr "Prejšnji vzdrževalec"
+
+#: src/main.cpp:56
+#, kde-format
+msgid "Mario Weilguni"
+msgstr "Mario Weilguni"
+
+#: src/main.cpp:56
+#, kde-format
+msgid "Original Author"
+msgstr "Prvotni avtor"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "Mauricio Piacentini"
+msgstr "Mauricio Piacentini"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "KMahjonggLib integration for KDE4"
+msgstr "KMahjonggLib vključitev v KDE4"
+
+#: src/main.cpp:58
+#, kde-format
+msgid "Jason Lane"
+msgstr "Jason Lane"
+
+#: src/main.cpp:58
+#, kde-format
+msgid ""
+"Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
+msgstr ""
+"Dodal števec »odstranjene ploščice«,<br/>gladko spreminjanje velikosti "
+"ploščic in okna"
+
+#: src/main.cpp:59
+#, kde-format
+msgid "Thanks also to everyone who should be listed here but is not!"
+msgstr "Hvala tudi tistim, ki bi morali biti navedeni, pa niso!"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Gravity)
+#: src/settings.ui:23
+#, kde-format
+msgid ""
+"<b>Gravity</b><p>Checking this makes the game even harder: If a tile is "
+"removed, all tiles lying above it will fall down one step.</p>"
+msgstr ""
+"<b>Težnost</b><p>Če omogočite to možnost, bo igra še težja. Če odstranite "
+"ploščico, bodo vse ploščice, ki ležijo nad njo, padle eno stopnjo nižje.</p>"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Solvable)
+#: src/settings.ui:33
+#, kde-format
+msgid ""
+"<b>Create solvable games only</b><p>If checked, you will only be presented "
+"with games that are possible to solve.</p><p>Note: Even in solvable games "
+"you can fail to complete if you remove the tiles in the wrong order.</p>"
+msgstr ""
+"<b>Ustvari le rešljive igre</b><p>Če je ta možnost omogočena, boste igrali "
+"le igre, ki jih je mogoče rešiti.</p><p>Opomba: tudi v rešljivih igrah lahko "
+"odstranite ploščice v napačnem vrstnem redu in igre ne boste mogli "
+"zaključiti.</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_Solvable)
+#: src/settings.ui:36
+#, kde-format
+msgid "Create solvable games only"
+msgstr "Ustvari le rešljive igre"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
+#: src/settings.ui:43
+#, kde-format
+msgid ""
+"<b>Show message if board can no longer be solved</b><p>Checking this makes "
+"the game show a message to abort the game in case there are no possible "
+"moves left to win the game.</p>"
+msgstr ""
+"<b>Prikaži sporočilo, če ta položaj ni več rešljiv</b><p>Če je to "
+"odkljukano, bo igra prikazala sporočilo, da prekinete igro, če ni več nobene "
+"poteze, ki bi dovoljevala zmago v tej igri.</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
+#: src/settings.ui:46
+#, kde-format
+msgid "Show message if board can no longer be solved"
+msgstr "Prikaži sporočilo, če ta položaj ni več rešljiv"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ChineseStyle)
+#: src/settings.ui:53
+#, kde-format
+msgid ""
+"<b>Use Chinese style: any flower match any flower, any season match any "
+"season</b><p>Use the traditional rules for matching the tiles. Previous "
+"version of the game used to allow only exact tiles matches, which is "
+"inconsistent with Mah-jongg rules. It is recommended to keep this option "
+"checked.</p>"
+msgstr ""
+"<b>Uporabi Kitajski slog: vsak cvet se ujema z vsakim cvetom, vsak letni čas "
+"z vsakim letnim časom</b><p>Igrajte po tradicionalnih pravilih za ujemanje "
+"ploščic. Prejšnje različice igre so podpirale samo točno ujemanje ploščic, "
+"kar je neskladno s pravili Mah-jongga. Priporočljivo je, da je ta možnost "
+"omogočena.</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ChineseStyle)
+#: src/settings.ui:56
+#, kde-format
+msgid ""
+"Use Chinese style: any flower match any flower, any season match any season"
+msgstr ""
+"Uporabi Kitajski slog: vsak cvet se ujema z vsakim cvetom, vsak letni čas z "
+"vsakim letnim časom"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_TilesCanSlide)
+#: src/settings.ui:63
+#, kde-format
+msgid ""
+"<b>Tiles can slide, but you can connect only in 2 lines instead of 3</"
+"b><p>This option changes the rules to the point where it almost becomes a "
+"completely different game. When it is active, you can only remove the tiles "
+"if they can be connected by a line consisting of only two segments instead "
+"of the customary three. However, you are allowed to slide the tiles on the "
+"board, if the row or column where they are placed has some empty space. To "
+"make a sliding move, you have to click on the tile containing the column or "
+"row that can slide, and then on the matching tile. If there are two possible "
+"sliding moves, you will have to click on one of the two connecting lines to "
+"choose your preferred move.</p>"
+msgstr ""
+"<b>Ploščice lahko drsijo, a jih lahko povežete samo z dvema črtama, ne "
+"tremi</b><p>Ta možnost spremeni pravila skoraj do te mere, da dobite skoraj "
+"popolnoma drugačno igro. Ko je možnost omogočena, lahko odstranite ploščice, "
+"če so lahko povezane s črto, ki ima namesto treh delov le dva. Dovoljeno vam "
+"je premakniti ploščice po igralni površini, če vsebuje stolpec ali vrstica "
+"prazen prostor. Da naredite drsni premik, kliknite na ploščico, ki vsebuje "
+"vrstico ali stolpec, ki lahko drsi, in nato še na ujemajočo ploščico. Če "
+"obstajata dve možnosti premika, morate klikniti na črto, ki povezuje želeno "
+"kombinacijo.</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_TilesCanSlide)
+#: src/settings.ui:66
+#, kde-format
+msgid "Tiles can slide, but you can connect only in 2 lines instead of 3"
+msgstr ""
+"Ploščice lahko drsijo, a jih lahko povežete samo z dvema črtama, ne tremi"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, difficulty_groupBox)
+#: src/settings.ui:73
+#, kde-format
+msgid ""
+"<b>Board Difficulty</b><p>The slider controls the difficulty of the board "
+"from Easy to Hard.</p>"
+msgstr ""
+"<b>Težavnost igralne površine</b><p>Drsnik upravlja s težavnostjo igralne "
+"površine od lahke do težke.</p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, difficulty_groupBox)
+#: src/settings.ui:76
+#, kde-format
+msgid "Board Difficulty"
+msgstr "Težavnost igralne površine"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: src/settings.ui:103
+#, kde-format
+msgid "Easy"
+msgstr "Lahko"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3)
+#: src/settings.ui:123
+#, kde-format
+msgid "Hard"
+msgstr "Težko"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, speed_groupBox)
+#: src/settings.ui:138
+#, kde-format
+msgid ""
+"<b>Piece Removal Speed</b><p>Adjusting this slider alters the speed at which "
+"the pieces are removed from the screen after a match has been made.</p>"
+msgstr ""
+"<b>Hitrost odstranjevanja ploščic</b><p>Prilagajanje tega drsnika spreminja "
+"hitrost, s katero so ploščice, ki ste jim našli par, odstranjene z zaslona.</"
+"p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, speed_groupBox)
+#: src/settings.ui:141
+#, kde-format
+msgid "Piece Removal Speed"
+msgstr "Hitrost odstranjevanja ploščic"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: src/settings.ui:168
+#, kde-format
+msgid "Slow"
+msgstr "Počasi"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#: src/settings.ui:188
+#, kde-format
+msgid "Fast"
+msgstr "Hitro"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, size_groupBox)
+#: src/settings.ui:203
+#, kde-format
+msgid ""
+"<b>Board Size</b><p>This slider allows you to change the number of tiles on "
+"the board. The more tiles you have, the harder (and longer) the game will be."
+"</p>"
+msgstr ""
+"<b>Velikost igralne površine</b><p>Ta drsnik vam omogoča spreminjati število "
+"ploščic v igri. Več kot jih imate, težja (in daljša) bo igra.</p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, size_groupBox)
+#: src/settings.ui:206
+#, kde-format
+msgid "Board Size"
+msgstr "Velikost igralne površine"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#: src/settings.ui:236
+#, kde-format
+msgid "14x6"
+msgstr "14×6"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel9)
+#: src/settings.ui:256
+#, kde-format
+msgid "16x9"
+msgstr "16x9"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: src/settings.ui:279
+#, kde-format
+msgid "18x8"
+msgstr "18×8"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel10)
+#: src/settings.ui:302
+#, kde-format
+msgid "24x12"
+msgstr "24×12"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel11)
+#: src/settings.ui:325
+#, kde-format
+msgid "26x14"
+msgstr "26×14"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel12)
+#: src/settings.ui:348
+#, kde-format
+msgid "30x16"
+msgstr "30×16"
+
+#~ msgid "Error Loading Background"
+#~ msgstr "Napaka med nalaganjem ozadja"

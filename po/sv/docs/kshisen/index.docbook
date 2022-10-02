@@ -1,0 +1,1342 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Swedish "INCLUDE"
+>    <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+>     <!-- do not change this! -->
+]>
+
+<book id="kshisen" lang="&language;"
+> <!-- do not change this! -->
+  <bookinfo>
+    <title
+>Handbok Shisen-Sho</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+    <!-- List of immidiate authors begins here. -->
+    <!--INPORTANT! - All other contributors: [to be determined] -->
+    <authorgroup>
+      <author
+><firstname
+>Dirk</firstname
+> <surname
+>Doerflinger</surname
+> <affiliation
+><address
+>&Dirk.Doerflinger.mail;</address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Frederik</firstname
+> <surname
+>Schwarzer</surname
+> <affiliation
+><address
+>&Frederik.Schwarzer.mail;</address
+></affiliation>
+      </author>
+      <othercredit role="reviewer"
+><firstname
+>Frerich</firstname
+><surname
+>Raabe</surname
+> <contrib
+>Granskare</contrib>
+        <affiliation
+><address
+>&Frerich.Raabe.mail;</address
+></affiliation>
+      </othercredit>
+      <othercredit role="translator"
+> <firstname
+>Stefan</firstname
+> <surname
+>Asserhäll</surname
+> <affiliation
+><address
+><email
+>stefan.asserhall@bredband.net</email
+></address
+></affiliation
+> <contrib
+>Översättare</contrib
+></othercredit
+> 
+    </authorgroup>
+    <legalnotice
+>&FDLNotice;</legalnotice>
+    <date
+>2021-06-15</date>
+    <releaseinfo
+>1.10 (KDE Gear 21.08)</releaseinfo>
+
+    <!--Short description of this document. Do not change unless necessary!-->
+    <abstract>
+      <para
+>Denna dokumentation beskriver spelet Shisen-Sho, version 1.10</para>
+    </abstract>
+
+    <!--List of relevant keywords-->
+    <keywordset>
+      <keyword
+>KDE</keyword
+> <!-- do not change this! -->
+      <keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+      <keyword
+>spel</keyword
+> <!-- do not change this! -->
+      <keyword
+>kshisen</keyword
+><!--Application name goes here-->
+      <!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+      <keyword
+>spelhall</keyword>
+      <keyword
+>bräde</keyword>
+      <keyword
+>mahjong</keyword>
+      <keyword
+>brickor</keyword>
+      <!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+      <keyword
+>en spelare</keyword>
+    </keywordset>
+  </bookinfo>
+  <!--Content begins here: -->
+  <chapter id="introduction"
+><title
+>Inledning</title
+> <!-- do not change this! -->
+    <note
+><title
+>Speltyp:</title
+><para
+>Spelhall, brädspel</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+    <note
+><title
+>Antal möjliga spelare:</title
+><para
+>En</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+    <!--Short game description starts here. 3-4 sentences (paragraphs)-->
+    <para
+>Shisen-Sho är ett patiensliknande spel som spelas med den vanliga uppsättningen Mahjong-brickor. I motsats till Mahjong har Shisen-Sho bara ett lager blandade brickor. Du kan ta bort brickor som passar ihop om de kan sammanbindas av en linje som inte har fler än två böjar. Samtidigt får inte linjen korsa några andra brickor. Spelaren måste ta bort alla brickorna från spelbrädet för att vinna Shisen-Sho. </para>
+  </chapter>
+
+  <chapter id="howto"
+><title
+>Hur man spelar</title
+> <!-- do not change this! -->
+    <screenshot>
+    <mediaobject>
+    <imageobject>
+    <imagedata fileref="gameboard.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+    <phrase
+>Spelbrädet i Shisen-Sho</phrase>
+    </textobject>
+    </mediaobject>
+    </screenshot>
+    <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+    <note
+><title
+>Syfte:</title
+><para
+>Ta bort alla brickor från spelbrädet inom så kort tid som möjligt.</para
+></note
+><!--Describe the objective of the game.-->
+    <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+    <para
+>Shisen-Sho laddar automatiskt en standardlayout när spelet startas, och du kan direkt börja spela. </para>
+    <para
+>Du ska noggrant studera brickorna utplacerade på spelbrädet och hitta två brickor som exakt passar ihop. När du har hittat ett sådant par, använd musen för att välja det. </para>
+    <para
+>När du väl har valt ett riktigt par brickor försvinner de från spelbrädet. Även om brickorna du väljer verkar vara tillgängliga, tas de dock bara bort från brädet om de kan sammanbindas med en linje som inte har fler än två böjar och som inte korsar någon annan bricka. Dessutom kan linjen bara ritas horisontellt eller vertikalt. </para>
+    <para
+>Hitta så många brickor som möjligt som passar ihop, för att ta bort alla brickor från brädet. </para>
+  </chapter>
+
+  <chapter id="rules_and_tips"
+><title
+>Spelets regler, strategi och tips</title
+> <!-- do not change this! -->
+    <sect1 id="rules">
+      <title
+>Regler</title>
+      <para
+>Den vanliga uppsättningen stenar i Mahjong omfattar: <informaltable
+> <tgroup cols="3"
+> <tbody>
+              <row
+><entry
+>Seriens namn</entry
+><entry
+>Stenens namn</entry
+><entry
+>Antal i en serie</entry
+></row>
+              <row
+><entry
+>Cirklar</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Cirkel 1</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Cirkel 2</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Cirkel 3</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Cirkel 4</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Cirkel 5</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Cirkel 6</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Cirkel 7</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Cirkel 8</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Cirkel 9</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Bambu</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambu 1</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambu 2</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambu 3</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambu 4</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambu 5</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambu 6</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambu 7</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambu 8</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambu 9</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Tecken</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Tecken 1</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Tecken 2</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Tecken 3</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Tecken 4</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Tecken 5</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Tecken 6</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Tecken 7</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Tecken 8</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Tecken 9</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Vindar</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Östan</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Sunnan</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Västan</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Nordan</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Drakar</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Röd drake</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Grön drake</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Vit drake</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Blommor</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Plommon (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Lilja (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Krysantemum (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambu (4)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+>Årstider</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Vår (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Sommar (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Höst (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Vinter (4)</entry
+><entry
+>1</entry
+></row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+      <itemizedlist>
+        <listitem
+><para
+>Brickor som passar ihop är sådana där framsidans ikoner är exakt likadana.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Observera:</title
+><para
+>Det finns undantag till den här regeln. I det traditionella Mahjong-spelet har varje bricka en motsvarighet, utom serierna <quote
+>Blommor</quote
+> och <quote
+>Årstider</quote
+>.</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>Brickorna i serien <quote
+>Blommor</quote
+> har inga duplicerade brickor i uppsättningen, och kan direkt passas ihop med varandra.</para
+></listitem>
+        <listitem
+><para
+>Brickorna i serien <quote
+>Årstider</quote
+> har inga duplicerade brickor i uppsättningen, och kan direkt passas ihop med varandra.</para
+></listitem>
+        <listitem
+><para
+>Brickor kan bara tas bort om de kan förbindas med maximalt tre sammanbundna linjer som inte korsar någon annan bricka. Linjer kan vara horisontella eller vertikala, men inte diagonala.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Observera:</title
+><para
+>Du behöver inte rita linjerna själv, det gör spelet åt dig. Markera bara två brickor som passar ihop på brädet. Om de kan förbindas med en linje med maximalt två böjar, så ritas linjen och brickorna tas bort.</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>Linjer kan bara korsa brädets tomma kant.</para
+></listitem>
+        <listitem
+><para
+>Vissa spel är olösbara. Om du vill undvika olösbara spel, markera alternativet <guilabel
+>Skapa bara lösbara spel</guilabel
+> i inställningsdialogrutan.</para
+></listitem>
+        <listitem
+><para
+>Poäng delas ut för tiden spelaren behöver för att ta bort alla brickor från spelbrädet. Spel med fler brickor ger högre poäng.</para
+></listitem>
+        <listitem
+><para
+>Om du spelade med alternativet <guilabel
+>Gravitation</guilabel
+> aktiverad, så dubblas resultatet.</para
+></listitem>
+        <listitem
+><para
+>För att vara berättigad till en plats bland spelarna med bästa resultat måste en spelomgång göras färdig inom kortast möjliga tid.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Observera:</title
+><para
+>Om spelaren använder funktionerna <quote
+>Ångra</quote
+> eller<quote
+>Tips</quote
+> anses inte rekordet vara ett bästa resultat.</para
+></note>
+    </sect1>
+    <sect1 id="tips">
+      <title
+>Råd</title>
+      <para
+>Klicka på en bricka med höger musknapp för att markera alla brickor som passar ihop på brädet. I motsats till att använda funktionerna <quote
+>Ångra</quote
+>  eller<quote
+>Tips</quote
+> anses inte detta vara fusk. </para>
+    </sect1>
+  </chapter>
+
+  <chapter id="interface"
+><title
+>Översikt av gränssnittet</title
+> <!-- do not change this! -->
+    <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing. -->
+    <sect1 id="menu">
+    <title
+>Menyalternativ</title>
+    <sect2 id="game-menu">
+      <title
+>Menyn Spel</title>
+
+      <para
+>Menyn <guimenu
+>Spel</guimenu
+> låter dig kontrollera det nuvarande spelets status: </para>
+
+      <variablelist>
+        <varlistentry id="game-menu-new">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+><guimenuitem
+>Ny</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Avslutar det pågående spelet</action
+> och startar en ny session med nya brickor.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-restart">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>F5</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+><guimenuitem
+>Starta om spel</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Startar om pågående spel med samma brickor.</action
+></para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-pause">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Pausa</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Gör paus i hela spelet</action
+>, i synnerhet tidtagningen som behövs för poängtoppen. Menyalternativet används också för att återuppta spelet.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-highscores">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+><guimenuitem
+>Visa bästa resultat</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Visar de tio bästa resultaten för Shisen-Sho.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+><guimenuitem
+>Avsluta</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Avslutar</action
+> Shisen-Sho.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+      <para
+>Vissa av menyalternativen kan också styras med snabbtangenter. Se avsnittet <xref linkend="key-bindings"/> för en lista. </para>
+
+    </sect2>
+
+    <sect2 id="move-menu">
+      <title
+>Menyn Flytta</title>
+
+      <variablelist id="move-menu-undo">
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Flytta</guimenu
+> <guimenuitem
+>Ångra</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Ångrar det senaste draget</action
+>. Samma som knappen <guibutton
+>Ångra</guibutton
+> i verktygsraden.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="move-menu-redo">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Flytta</guimenu
+> <guimenuitem
+>Gör om</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Gör om det senaste draget</action
+>. Samma som knappen <guibutton
+>Gör om</guibutton
+> i verktygsraden.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="move-menu-hint">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Flytta</guimenu
+><guimenuitem
+>Tips</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Visar ett tips</action
+> med vilka två brickor som ska tas bort i nästa drag.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+    </sect2>
+
+    <sect2 id="settings-menu">
+      <title
+>Menyn Inställningar</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guimenu
+>Inställningar</guimenu
+><guimenuitem
+>Spela ljud</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Spelar ett ljud när en bricka rörs genom att klicka med vänster musknapp, och när en bricka faller ner under spel med <guilabel
+>Gravitation</guilabel
+> aktiverad.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-settings-settings">
+          <term>
+            <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa Shisen-Sho...</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Öppnar <link linkend="configuration"
+>inställningsdialogrutan</link
+> för att ändra inställningar i Shisen-Sho.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+      <para
+>Dessutom har Shisen-Sho de vanliga menyalternativen <guimenu
+>Inställningar</guimenu
+> och <guimenu
+>Hjälp</guimenu
+> i &kde;. För mer information, läs avsnitten  <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menyn Inställningar</ulink
+> och <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menyn Hjälp</ulink
+> i &kde;:s Grunder. </para>
+    </sect2>
+    </sect1>
+
+    <sect1 id="key-bindings">
+      <title
+>Förvalda tangentbindningar</title>
+
+      <para
+>Förvalda genvägar är:</para>
+
+      <informaltable>
+        <tgroup cols="2">
+          <tbody>
+            <row
+><entry
+>Ny</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Starta om spel</entry
+><entry
+><keycap
+>F5</keycap
+></entry
+></row>
+            <row
+><entry
+>Paus</entry
+><entry
+><keycap
+>P</keycap
+></entry
+></row>
+            <row
+><entry
+>Visa bästa resultat</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Avsluta</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Ångra</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Gör om</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Tips</entry
+><entry
+><keycap
+>H</keycap
+></entry
+></row>
+            <row
+><entry
+>Handbok Shisen-Sho</entry
+><entry
+><keycap
+>F1</keycap
+></entry
+></row>
+            <row
+><entry
+>Vad är det här</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry
+></row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+    </sect1>
+
+  </chapter>
+
+  <chapter id="faq"
+><title
+>Vanliga frågor</title
+> <!-- do not change this! -->
+    <!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+    <qandaset>
+      <qandaentry>
+        <question
+><para
+>Jag vill ändra hur spelet ser ut. Kan man göra det?</para
+></question>
+        <answer
+><para
+>Ja. Använd <link linkend="game-settings-settings"
+>menyraden</link
+> för att öppna <link linkend="configuration"
+>inställningsverktyget</link
+> där utseendet på Shisen-Sho kan ändras.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>Kan man använda tangentbordet?</para
+></question>
+        <answer
+><para
+>Nej. Spelet har ingen funktion för att spela med tangentbordet.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>Jag måste avsluta spelet nu, men jag är inte klar än. Kan man spara det man har gjort?</para
+></question>
+        <answer
+><para
+>Nej. Spelet har ingen funktion för att spara.</para
+></answer>
+      </qandaentry>
+    </qandaset>
+  </chapter>
+
+  <chapter id="configuration"
+><title
+>Spelanpassning</title
+> <!-- do not change this! -->
+    <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+    <para
+>Att välja menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa Shisen-Sho...</guimenuitem
+></menuchoice
+> visar en inställningsdialogruta som låter dig ändra spelets beteende. </para>
+
+    <screenshot>
+      <screeninfo
+>Inställningsdialogrutan i Shisen-Sho</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="kshisen-configuration.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>Inställningsdialogrutan i Shisen-Sho</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <variablelist>
+      <title
+>Sidan <guilabel
+>Allmänt</guilabel
+></title>
+      <varlistentry>
+        <term
+><guilabel
+>Gravitation</guilabel
+></term>
+        <listitem
+><para
+>Markeras det här alternativet blir spelet ännu svårare. Om en bricka tas bort, faller alla brickor ovanför den ner ett steg. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Skapa bara lösbara spel</guilabel
+></term>
+        <listitem
+><para
+>Om markerat visas bara spel som är möjliga att  lösa. Observera: Även med lösbara spel kan du misslyckas med att avsluta dem  om du tar bort brickorna i fel ordning. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Visa meddelade om brädet inte längre kan lösas</guilabel
+></term>
+        <listitem
+><para
+>Om markerat, försöker &kshisen; analysera lösbarheten hos varje spelposition och visa ett meddelande för att avbryta spelet om det inte längre finns några möjliga drag för att vinna spelet. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Använd kinesisk stil: alla blommor och alla årstider passar ihop med varandra</guilabel
+></term>
+        <listitem
+><para
+>Använd traditionella regler för att passa ihop brickorna. Föregående versioner av Shisen-sho tillät bara att brickor passades ihop exakt, vilket inte stämmer med reglerna för Mahjong. Det rekommenderas att alternativet lämnas markerat. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Brickor kan glida, men du kan bara sammanfoga i två rader istället för tre</guilabel
+></term>
+        <listitem
+><para
+>Alternativet ändrar reglerna så långt att spelet blir nästan helt annorlunda. När det är aktivt kan du bara ta bort brickorna om de kan kopplas ihop med en linje som består av ett eller två segment istället för de vanliga tre. Du kan dock låta brickorna glida på brädet om raden eller kolumnen där de är placerade har något tomt utrymme. För att göra ett drag där brickorna glider måste du klicka på brickan som hör till kolumnen eller raden som kan glida, och därefter på brickan som passar ihop med den. Om det finns två möjliga drag där brickorna glider, visas blå linjer som anger dragen. Då måste du klicka på en av de två linjerna för att välja önskat drag. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Brädets svårighetsgrad</guilabel
+></term>
+        <listitem
+><para
+>Skjutreglaget styr brädets svårighetsgrad (dvs. hur mycket brickorna blandas) från <guilabel
+>Lätt</guilabel
+> till <guilabel
+>Svår</guilabel
+>. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Brickornas borttagningshastighet</guilabel
+></term>
+        <listitem
+><para
+>Genom att justera skjutreglaget ändras hastigheten som brickor tas bort från skärmen efter brickorna har parats ihop. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Brädstorlek</guilabel
+></term>
+        <listitem
+><para
+>Det här skjutreglaget låter dig ändra antalet brickor på brädet. Ju fler brickor du har, desto svårare (och längre) blir spelet. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+>Sidorna <guilabel
+>Brickor</guilabel
+> och <guilabel
+>Bakgrund</guilabel
+></term>
+        <listitem
+><para
+>Välj favoritdesign för brickor och bakgrund. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Hjälp</guibutton
+></term>
+        <listitem
+><para
+>Öppnar hjälpsidorna för Shisen-Sho (det här dokumentet). </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Ok</guibutton
+></term>
+        <listitem
+><para
+>Sparar dina ändringar och stänger dialogrutan. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Verkställ</guibutton
+></term>
+        <listitem
+><para
+>Sparar dina ändringar men stänger inte dialogrutan. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Avbryt</guibutton
+></term>
+        <listitem
+><para
+>Avbryter alla ändringar och stänger dialogrutan. </para
+></listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </chapter>
+
+  <chapter id="credits"
+><title
+>Tack till och licens</title
+> <!-- do not change this! -->
+    <!--This chapter is for credits and licenses.-->
+
+    <para
+>&kshisen; Copyright 1997 &Mario.Weilguni; &Mario.Weilguni.mail; </para>
+    <para
+>&kshisen; Copyright 2002-2004 Dave Corrie <email
+>kde@davecorrie.com</email
+> </para>
+    <para
+>&kshisen; Copyright 2009-2012 &Frederik.Schwarzer; &Frederik.Schwarzer.mail; </para>
+
+    <para
+>Dokumentation Copyright 2000 &Dirk.Doerflinger; &Dirk.Doerflinger.mail; </para>
+    <para
+>Dokumentation Copyright 2009-2010 &Frederik.Schwarzer; &Frederik.Schwarzer.mail; </para>
+
+    <para
+>Översättning Stefan Asserhäll <email
+>stefan.asserhall@bredband.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+  &documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

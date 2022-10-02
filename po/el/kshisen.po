@@ -1,0 +1,658 @@
+# translation of kshisen.po to Greek
+# Copyright (C) 2003, 2005, 2006, 2007 Free Software Foundation, Inc.
+#
+# Χαράλαμπος Κανιός <kaniosh@linuxmail.org>, 2003.
+# Stergios Dramis <sdramis@egnatia.ee.auth.gr>, 2003.
+# Spiros Georgaras <sng@hellug.gr>, 2005, 2006, 2007.
+# Toussis Manolis <manolis@koppermind.homelinux.org>, 2006, 2007, 2009.
+# Dimitris Kardarakos <dimkard@gmail.com>, 2013.
+# Dimitrios Glentadakis <dglent@gmail.com>, 2013.
+# Stelios <sstavra@gmail.com>, 2016, 2020, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: kshisen\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"PO-Revision-Date: 2021-07-02 08:45+0300\n"
+"Last-Translator: Stelios <sstavra@gmail.com>\n"
+"Language-Team: Greek <kde-i18n-el@kde.org>\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 20.04.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Τούσης Μανώλης"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "manolis@koppermind.homelinux.org"
+
+#: src/app.cpp:86 src/app.cpp:324
+#, kde-format
+msgid "Select a tile"
+msgstr "Επιλέξτε ένα κομμάτι"
+
+#: src/app.cpp:89
+#, kde-format
+msgid "Time: 0:00:00"
+msgstr "Χρόνος: 0:00:00"
+
+#: src/app.cpp:92
+#, kde-format
+msgid "Removed: 0/0"
+msgstr "Αφαιρέθηκαν: 0/0"
+
+#: src/app.cpp:95
+#, kde-format
+msgid "Cheat mode"
+msgstr "Λειτουργία κλεψίματος"
+
+#: src/app.cpp:114
+#, kde-format
+msgid "Play Sounds"
+msgstr "Αναπαραγωγή ήχων"
+
+#: src/app.cpp:244
+#, kde-format
+msgctxt "time string: hh:mm:ss"
+msgid "%1:%2:%3"
+msgstr "%1:%2:%3"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_Gravity)
+#: src/app.cpp:253 src/app.cpp:356 src/settings.ui:26
+#, kde-format
+msgid "Gravity"
+msgstr "Βαρύτητα"
+
+#: src/app.cpp:256
+#, kde-format
+msgid "Yes"
+msgstr "Ναι"
+
+#: src/app.cpp:258
+#, kde-format
+msgid "No"
+msgstr "Όχι"
+
+#: src/app.cpp:264
+#, kde-format
+msgid ""
+"\n"
+"You could have been in the highscores\n"
+"if you did not use Undo or Hint.\n"
+"Try without them next time."
+msgstr ""
+"\n"
+"Θα βρισκόσασταν στη λίστα υψηλότερων βαθμολογιών \n"
+"αν δεν είχατε χρησιμοποιήσει αναίρεση ή υπόδειξη. \n"
+"Δοκιμάστε χωρίς αυτά την επόμενη φορά."
+
+#: src/app.cpp:265 src/app.cpp:273
+#, kde-format
+msgid "End of Game"
+msgstr "Τέλος του παιχνιδιού"
+
+#: src/app.cpp:268
+#, kde-format
+msgid ""
+"Congratulations!\n"
+"You made it into the hall of fame."
+msgstr ""
+"Συγχαρητήρια!\n"
+"Καταφέρατε να μπείτε στο πάνθεον."
+
+#: src/app.cpp:272
+#, kde-format
+msgctxt "%1 - time string like hh:mm:ss"
+msgid "You made it in %1"
+msgstr "Τα καταφέρατε σε %1"
+
+#: src/app.cpp:288
+#, kde-format
+msgid "Your time: %1:%2:%3 %4"
+msgstr "Ο χρόνος σας: %1:%2:%3 %4"
+
+#: src/app.cpp:292
+#, kde-format
+msgid "(Paused) "
+msgstr "(Παύση) "
+
+#: src/app.cpp:300
+#, kde-format
+msgid "Removed: %1/%2 "
+msgstr "Αφαιρέθηκαν: %1/%2 "
+
+#: src/app.cpp:329
+#, kde-format
+msgid "Select a matching tile"
+msgstr "Επιλέξτε ένα κομμάτι που να ταιριάζει"
+
+#: src/app.cpp:334
+#, kde-format
+msgid "Select the move you want by clicking on the blue line"
+msgstr "Επιλέξτε την κίνηση που θέλετε κάνοντας κλικ στη μπλε γραμμή"
+
+#: src/app.cpp:339
+#, kde-format
+msgid "This tile did not match the one you selected"
+msgstr "Αυτό το κομμάτι δεν ταιριάζει με εκείνο που επιλέξατε"
+
+#: src/app.cpp:344
+#, kde-format
+msgid "You cannot make this move"
+msgstr "Δεν μπορείτε να κάνετε αυτήν την κίνηση"
+
+#: src/app.cpp:375
+#, kde-format
+msgid "General"
+msgstr "Γενικά"
+
+#: src/board.cpp:97
+#, fuzzy, kde-format
+#| msgctxt "%1 is a path to a tileset file"
+#| msgid ""
+#| "An error occurred when loading the tileset. %1 and the default tileset "
+#| "have been tried.\n"
+#| "Please install the KMahjongg library."
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the default tileset.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"Παρουσιάστηκε σφάλμα κατά τη φόρτωση του συνόλου των κομματιών. %1 και το "
+"προκαθορισμένο σύνολο έχουν δοκιμαστεί.\n"
+"Εγκαταστήστε τη βιβλιοθήκη KMahjongg."
+
+#: src/board.cpp:98 src/board.cpp:107 src/board.cpp:113 src/board.cpp:130
+#: src/board.cpp:139 src/board.cpp:145
+#, kde-format
+msgid "Error Loading Tiles"
+msgstr "Σφάλμα φόρτωσης κομματιών"
+
+#: src/board.cpp:106
+#, fuzzy, kde-format
+#| msgctxt "%1 is a path to a tileset file"
+#| msgid ""
+#| "An error occurred when loading the tileset. %1 and the default tileset "
+#| "have been tried.\n"
+#| "Please install the KMahjongg library."
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the tileset %1. The default tileset has been "
+"loaded."
+msgstr ""
+"Παρουσιάστηκε σφάλμα κατά τη φόρτωση του συνόλου των κομματιών. %1 και το "
+"προκαθορισμένο σύνολο έχουν δοκιμαστεί.\n"
+"Εγκαταστήστε τη βιβλιοθήκη KMahjongg."
+
+#: src/board.cpp:112
+#, fuzzy, kde-format
+#| msgctxt "%1 is a path to a tileset file"
+#| msgid ""
+#| "An error occurred when loading the tileset. %1 and the default tileset "
+#| "have been tried.\n"
+#| "Please install the KMahjongg library."
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the tileset %1. The default tileset could "
+"also not be loaded.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"Παρουσιάστηκε σφάλμα κατά τη φόρτωση του συνόλου των κομματιών. %1 και το "
+"προκαθορισμένο σύνολο έχουν δοκιμαστεί.\n"
+"Εγκαταστήστε τη βιβλιοθήκη KMahjongg."
+
+#: src/board.cpp:129
+#, fuzzy, kde-format
+#| msgctxt "%1 is a path to a background image file"
+#| msgid ""
+#| "An error occurred when loading the background. %1 and the default "
+#| "background have been tried.\n"
+#| "Please install the KMahjongg library."
+msgctxt "%1 is a path to a background image file"
+msgid ""
+"An error occurred when loading the default background.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"Παρουσιάστηκε σφάλμα κατά τη φόρτωση του φόντου. %1 και το προκαθορισμένο "
+"φόντο έχουν δοκιμαστεί.\n"
+"Εγκαταστήστε τη βιβλιοθήκη KMahjongg."
+
+#: src/board.cpp:138
+#, fuzzy, kde-format
+#| msgctxt "%1 is a path to a background image file"
+#| msgid ""
+#| "An error occurred when loading the background. %1 and the default "
+#| "background have been tried.\n"
+#| "Please install the KMahjongg library."
+msgctxt "%1 is a path to a background image file"
+msgid ""
+"An error occurred when loading the background %1. The default background has "
+"been loaded."
+msgstr ""
+"Παρουσιάστηκε σφάλμα κατά τη φόρτωση του φόντου. %1 και το προκαθορισμένο "
+"φόντο έχουν δοκιμαστεί.\n"
+"Εγκαταστήστε τη βιβλιοθήκη KMahjongg."
+
+#: src/board.cpp:144
+#, fuzzy, kde-format
+#| msgctxt "%1 is a path to a background image file"
+#| msgid ""
+#| "An error occurred when loading the background. %1 and the default "
+#| "background have been tried.\n"
+#| "Please install the KMahjongg library."
+msgctxt "%1 is a path to a background image  file"
+msgid ""
+"An error occurred when loading the background %1. The default background "
+"could also not be loaded.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"Παρουσιάστηκε σφάλμα κατά τη φόρτωση του φόντου. %1 και το προκαθορισμένο "
+"φόντο έχουν δοκιμαστεί.\n"
+"Εγκαταστήστε τη βιβλιοθήκη KMahjongg."
+
+#: src/board.cpp:706
+#, kde-format
+msgid ""
+"Game Paused\n"
+"Click to resume game."
+msgstr ""
+"Παιχνίδι σε παύση\n"
+"Κλικ για συνέχιση του παιχνιδιού."
+
+#: src/board.cpp:710
+#, kde-format
+msgid ""
+"Game Stuck\n"
+"No more moves possible."
+msgstr ""
+"Φρακάρισμα παιχνιδιού\n"
+"Δεν υπάρχουν άλλες δυνατές κινήσεις."
+
+#: src/board.cpp:713
+#, kde-format
+msgid ""
+"Game Over\n"
+"Click to start a new game."
+msgstr ""
+"Τέλος παιχνιδιού\n"
+"Κλικ για έναρξη νέου παιχνιδιού."
+
+#. i18n: ectx: label, entry (TileSet), group (General)
+#: src/kshisen.kcfg:9
+#, kde-format
+msgid "The tile set to use."
+msgstr "Το σύνολο των κομματιών που θα χρησιμοποιηθεί."
+
+#. i18n: ectx: label, entry (Background), group (General)
+#: src/kshisen.kcfg:12
+#, kde-format
+msgid "The background to use."
+msgstr "Το φόντο που θα χρησιμοποιηθεί."
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: src/kshisenui.rc:13
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Κύρια γραμμή εργαλείων"
+
+#: src/main.cpp:47
+#, kde-format
+msgid "Shisen-Sho"
+msgstr "Shisen-Sho"
+
+#: src/main.cpp:49
+#, kde-format
+msgid "A game similar to Mahjongg"
+msgstr "Ένα παιχνίδι παρόμοιο με το Mahjongg"
+
+#: src/main.cpp:51
+#, kde-format
+msgid "Copyright 1997 Mario Weilguni"
+msgstr "Copyright 1997 Mario Weilguni"
+
+#: src/main.cpp:54
+#, kde-format
+msgid "Frederik Schwarzer"
+msgstr "Frederik Schwarzer"
+
+#: src/main.cpp:54
+#, kde-format
+msgid "Current Maintainer"
+msgstr "Τρέχων συντηρητής"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "Dave Corrie"
+msgstr "Dave Corrie"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "Former Maintainer"
+msgstr "Πρώην συντηρητής"
+
+#: src/main.cpp:56
+#, kde-format
+msgid "Mario Weilguni"
+msgstr "Mario Weilguni"
+
+#: src/main.cpp:56
+#, kde-format
+msgid "Original Author"
+msgstr "Αρχικός συγγραφέας"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "Mauricio Piacentini"
+msgstr "Mauricio Piacentini"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "KMahjonggLib integration for KDE4"
+msgstr "Προσαρμογή του KMahjonggLib στο KDE4"
+
+#: src/main.cpp:58
+#, kde-format
+msgid "Jason Lane"
+msgstr "Jason Lane"
+
+#: src/main.cpp:58
+#, kde-format
+msgid ""
+"Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
+msgstr ""
+"Προσθήκη μετρητή 'αφαιρεμένων κομματιών'<br/>Ομαλή κλιμάκωση κομματιών και "
+"αλλαγή μεγέθους παραθύρου"
+
+#: src/main.cpp:59
+#, kde-format
+msgid "Thanks also to everyone who should be listed here but is not!"
+msgstr ""
+"Ευχαριστίες επίσης σε όσους έπρεπε να είναι καταχωρισμένοι εδώ αλλά δεν "
+"είναι!"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Gravity)
+#: src/settings.ui:23
+#, kde-format
+msgid ""
+"<b>Gravity</b><p>Checking this makes the game even harder: If a tile is "
+"removed, all tiles lying above it will fall down one step.</p>"
+msgstr ""
+"<b>Βαρύτητα</b><p>Ενεργοποιώντας αυτήν την επιλογή το παιχνίδι θα γίνει "
+"δυσκολότερο: Αν αφαιρεθεί κάποιο κομμάτι, όλα τα υπόλοιπα κομμάτια πάνω από "
+"αυτό θα πέσουν κατά ένα βήμα.</p>"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Solvable)
+#: src/settings.ui:33
+#, kde-format
+msgid ""
+"<b>Create solvable games only</b><p>If checked, you will only be presented "
+"with games that are possible to solve.</p><p>Note: Even in solvable games "
+"you can fail to complete if you remove the tiles in the wrong order.</p>"
+msgstr ""
+"<b>Δημιουργία μόνο επιλύσιμων παιχνιδιών</b><p>Αν ενεργοποιηθεί αυτή η "
+"επιλογή, θα εμφανίζονται μόνο τα παιχνίδια που είναι δυνατόν να επιλυθούν.</"
+"p><p>Σημείωση: Ακόμη και στην περίπτωση των επιλύσιμων παιχνιδιών, μπορεί να "
+"αποτύχετε να τα ολοκληρώσετε αν αφαιρέσετε τα κομμάτια με λάθος σειρά!</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_Solvable)
+#: src/settings.ui:36
+#, kde-format
+msgid "Create solvable games only"
+msgstr "Δημιουργία μόνο επιλύσιμων παιχνιδιών"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
+#: src/settings.ui:43
+#, kde-format
+msgid ""
+"<b>Show message if board can no longer be solved</b><p>Checking this makes "
+"the game show a message to abort the game in case there are no possible "
+"moves left to win the game.</p>"
+msgstr ""
+"<b>Να εμφανίζεται μήνυμα αν ο πίνακας δεν μπορεί άλλο να επιλυθεί</b><p>Με "
+"αυτήν την επιλογή το παιχνίδι εμφανίζει ένα μήνυμα για εγκατάλειψη σε "
+"περίπτωη που δεν έχουν μείνει άλλες κινήσεις για να κερδηθεί το παιχνίδι.</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
+#: src/settings.ui:46
+#, kde-format
+msgid "Show message if board can no longer be solved"
+msgstr "Να εμφανίζεται μήνυμα αν ο πίνακας δεν μπορεί άλλο να επιλυθεί"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ChineseStyle)
+#: src/settings.ui:53
+#, kde-format
+msgid ""
+"<b>Use Chinese style: any flower match any flower, any season match any "
+"season</b><p>Use the traditional rules for matching the tiles. Previous "
+"version of the game used to allow only exact tiles matches, which is "
+"inconsistent with Mah-jongg rules. It is recommended to keep this option "
+"checked.</p>"
+msgstr ""
+"<b>Χρήση Κινέζικου στυλ: κάθε λουλούδι ταιριάζει με κάθε άλλο λουλούδι, κάθε "
+"εποχή με κάθε άλλη εποχή</b><p>Χρήση των παραδοσιακών κανόνων για το "
+"ταίριασμα των κομματιών. Η προηγούμενη έκδοση του παιχνιδιού επέτρεπε μόνο "
+"ακριβή ταιριάσματα, κάτι που δεν συμπίπτει με τους κανόνες του Mah-jongg. "
+"Προτείνεται η ενεργοποίηση αυτής της επιλογής.</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ChineseStyle)
+#: src/settings.ui:56
+#, kde-format
+msgid ""
+"Use Chinese style: any flower match any flower, any season match any season"
+msgstr ""
+"Χρήση Κινέζικου στυλ: κάθε λουλούδι ταιριάζει με κάθε λουλούδι, και κάθε "
+"εποχή ταιριάζει με κάθε εποχή"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_TilesCanSlide)
+#: src/settings.ui:63
+#, kde-format
+msgid ""
+"<b>Tiles can slide, but you can connect only in 2 lines instead of 3</"
+"b><p>This option changes the rules to the point where it almost becomes a "
+"completely different game. When it is active, you can only remove the tiles "
+"if they can be connected by a line consisting of only two segments instead "
+"of the customary three. However, you are allowed to slide the tiles on the "
+"board, if the row or column where they are placed has some empty space. To "
+"make a sliding move, you have to click on the tile containing the column or "
+"row that can slide, and then on the matching tile. If there are two possible "
+"sliding moves, you will have to click on one of the two connecting lines to "
+"choose your preferred move.</p>"
+msgstr ""
+"<b>Το κομμάτια μπορούν να κυλήσουν, αλλά μπορείτε να συνδέσετε μόνο σε 2 "
+"γραμμές αντί για 3</b><p>Αυτή η επιλογή τροποποιεί τους κανόνες, μέχρι του "
+"σημείου να πρόκειται για εντελώς διαφορετικό παιχνίδι. Όταν είναι ενεργή, "
+"μπορείτε να αφαιρέσετε τα κομμάτια μόνο αν αυτά είναι συνδεδεμένα με μια "
+"γραμμή η οποία να αποτελείται από δύο τμήματα αντί των συνηθισμένων τριών. "
+"Ωστόσο, επιτρέπεται η κύλιση των κομματιών στο ταμπλό, αν η γραμμή ή η στήλη "
+"που είναι τοποθετημένα έχει κάποιο κενό. Για την εκτέλεση μιας κύλισης, "
+"πρέπει να κάνετε κλικ στο κομμάτι που περιέχει τη στήλη ή τη γραμμή με "
+"δυνατότητα κύλισης και έπειτα στο κομμάτι που ταιριάζει. Αν υπάρχουν δύο "
+"δυνατές κινήσεις κύλισης, θα πρέπει να κάνετε κλικ σε μια από τις δύο "
+"γραμμές σύνδεσης για να επιλέξετε την προτιμώμενη κίνησή σας.</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_TilesCanSlide)
+#: src/settings.ui:66
+#, kde-format
+msgid "Tiles can slide, but you can connect only in 2 lines instead of 3"
+msgstr ""
+"Τα κομμάτια μπορούν να κυλήσουν, αλλά μπορείτε να συνδέσετε μόνο σε 2 "
+"γραμμές αντί για 3"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, difficulty_groupBox)
+#: src/settings.ui:73
+#, kde-format
+msgid ""
+"<b>Board Difficulty</b><p>The slider controls the difficulty of the board "
+"from Easy to Hard.</p>"
+msgstr ""
+"<b>Δυσκολία πίνακα</b><p>Αυτή η κύλιση ελέγχει τη δυσκολία του πίνακα από "
+"εύκολο ως δύσκολο.</p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, difficulty_groupBox)
+#: src/settings.ui:76
+#, kde-format
+msgid "Board Difficulty"
+msgstr "Δυσκολία πίνακα"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: src/settings.ui:103
+#, kde-format
+msgid "Easy"
+msgstr "Εύκολος"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3)
+#: src/settings.ui:123
+#, kde-format
+msgid "Hard"
+msgstr "Δύσκολος"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, speed_groupBox)
+#: src/settings.ui:138
+#, kde-format
+msgid ""
+"<b>Piece Removal Speed</b><p>Adjusting this slider alters the speed at which "
+"the pieces are removed from the screen after a match has been made.</p>"
+msgstr ""
+"<b>Ταχύτητα αφαίρεσης κομματιού</b><p>Ρυθμίζοντας την κύλιση τροποποιεί την "
+"ταχύτητα με την οποία τα κομμάτια αφαιρούνται από την οθόνη μόλις βρεθεί "
+"κανένα ταίριασμα.</p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, speed_groupBox)
+#: src/settings.ui:141
+#, kde-format
+msgid "Piece Removal Speed"
+msgstr "Ταχύτητα αφαίρεσης κομματιού"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: src/settings.ui:168
+#, kde-format
+msgid "Slow"
+msgstr "Αργή"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#: src/settings.ui:188
+#, kde-format
+msgid "Fast"
+msgstr "Γρήγορη"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, size_groupBox)
+#: src/settings.ui:203
+#, kde-format
+msgid ""
+"<b>Board Size</b><p>This slider allows you to change the number of tiles on "
+"the board. The more tiles you have, the harder (and longer) the game will be."
+"</p>"
+msgstr ""
+"<b>Μέγεθος πίνακα</b><p>Αυτή η κύλιση επιτρέπει την τροποποίηση του αριθμού "
+"κομματιών στον πίνακα. Όσο περισσότερα κομμάτια έχετε, τόσο δυσκολότερο (και "
+"χρονοβόρο) θα είναι το παιχνίδι.</p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, size_groupBox)
+#: src/settings.ui:206
+#, kde-format
+msgid "Board Size"
+msgstr "Μέγεθος πίνακα"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#: src/settings.ui:236
+#, kde-format
+msgid "14x6"
+msgstr "14x6"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel9)
+#: src/settings.ui:256
+#, kde-format
+msgid "16x9"
+msgstr "16x9"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: src/settings.ui:279
+#, kde-format
+msgid "18x8"
+msgstr "18x8"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel10)
+#: src/settings.ui:302
+#, kde-format
+msgid "24x12"
+msgstr "24x12"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel11)
+#: src/settings.ui:325
+#, kde-format
+msgid "26x14"
+msgstr "26x14"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel12)
+#: src/settings.ui:348
+#, kde-format
+msgid "30x16"
+msgstr "30x16"
+
+#~ msgid "Error Loading Background"
+#~ msgstr "Σφάλμα φόρτωσης του φόντου"
+
+#~ msgctxt "Menu title"
+#~ msgid "&Move"
+#~ msgstr "&Μετακίνηση"
+
+#~ msgid "(gravity)"
+#~ msgstr "(βαρύτητα)"
+
+#~ msgid "Tile Size"
+#~ msgstr "Μέγεθος κομματιού"
+
+#~ msgid "Hall of Fame"
+#~ msgstr "Πίνακας βαθμολογιών"
+
+#~ msgid "Rank"
+#~ msgstr "Κατάταξη"
+
+#~ msgid "Name"
+#~ msgstr "Όνομα"
+
+#~ msgid "Time"
+#~ msgstr "Χρόνος"
+
+#~ msgid "Size"
+#~ msgstr "Μέγεθος"
+
+#~ msgid "Score"
+#~ msgstr "Βαθμός"
+
+#, fuzzy
+#~| msgid "End of Game"
+#~ msgid "Enter your Name"
+#~ msgstr "Τέλος του παιχνιδιού"
+
+#, fuzzy
+#~| msgid ""
+#~| "You have made it into the \"Hall Of Fame\". Type in\n"
+#~| "your name so mankind will always remember\n"
+#~| "your cool rating."
+#~ msgid ""
+#~ "You have made it into the \"Hall Of Fame\". Type in your name so mankind "
+#~ "will always remember your cool rating."
+#~ msgstr ""
+#~ "Μπήκατε στον \"Πίνακα βαθμολογιών\". Πληκτρολογήστε το \n"
+#~ "όνομά σας έτσι ώστε η ανθρωπότητα να θυμάται για πάντα\n"
+#~ "την τέλεια αξιολόγησή σας."
+
+#~ msgid "Your name:"
+#~ msgstr "Το όνομά σας:"
+
+#~ msgid "Game Paused"
+#~ msgstr "Το παιχνίδι σε παύση"
+
+#~ msgid "This game is solvable."
+#~ msgstr "Αυτό το παιχνίδι μπορεί να λυθεί."
+
+#~ msgid "This game is NOT solvable."
+#~ msgstr "Αυτό το παιχνίδι ΔΕΝ μπορεί να λυθεί."

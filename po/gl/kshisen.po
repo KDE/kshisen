@@ -1,0 +1,591 @@
+# translation of kshisen.po to galician
+# translation of kshisen.po to
+# Leandro Regueiro <unho@gulo.org>, 2004.
+# mvillarino <mvillarino@users.sourceforge.net>, 2007, 2008, 2009.
+# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2009, 2016.
+# Xosé <xosecalvo@gmail.com>, 2012.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018.
+msgid ""
+msgstr ""
+"Project-Id-Version: kshisen\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"PO-Revision-Date: 2018-01-18 21:36+0100\n"
+"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
+"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Leandro Regueiro, mvillarino, Adrián Chaves Fernández"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+"leandro.regueiro@gmail.com, mvillarino@users.sourceforge.net, adrian@chaves."
+"io"
+
+#: src/app.cpp:86 src/app.cpp:324
+#, kde-format
+msgid "Select a tile"
+msgstr "Escolle unha peza"
+
+#: src/app.cpp:89
+#, kde-format
+msgid "Time: 0:00:00"
+msgstr "Tempo: 0:00:00"
+
+#: src/app.cpp:92
+#, kde-format
+msgid "Removed: 0/0"
+msgstr "Retiradas: 0/0"
+
+#: src/app.cpp:95
+#, kde-format
+msgid "Cheat mode"
+msgstr "Modo con trampas"
+
+#: src/app.cpp:114
+#, kde-format
+msgid "Play Sounds"
+msgstr "Reproducir os sons"
+
+#: src/app.cpp:244
+#, kde-format
+msgctxt "time string: hh:mm:ss"
+msgid "%1:%2:%3"
+msgstr "%1:%2:%3"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_Gravity)
+#: src/app.cpp:253 src/app.cpp:356 src/settings.ui:26
+#, kde-format
+msgid "Gravity"
+msgstr "Gravidade"
+
+#: src/app.cpp:256
+#, kde-format
+msgid "Yes"
+msgstr "Si"
+
+#: src/app.cpp:258
+#, kde-format
+msgid "No"
+msgstr "Non"
+
+#: src/app.cpp:264
+#, kde-format
+msgid ""
+"\n"
+"You could have been in the highscores\n"
+"if you did not use Undo or Hint.\n"
+"Try without them next time."
+msgstr ""
+"\n"
+"De non ser porque usaches Desfacer ou Pista,\n"
+"entrarías na lista das mellores puntuacións.\n"
+"Para a seguinte a ver se non as usas."
+
+#: src/app.cpp:265 src/app.cpp:273
+#, kde-format
+msgid "End of Game"
+msgstr "Fin da partida"
+
+#: src/app.cpp:268
+#, kde-format
+msgid ""
+"Congratulations!\n"
+"You made it into the hall of fame."
+msgstr ""
+"Parabéns!\n"
+"Entraches no salón da fama."
+
+#: src/app.cpp:272
+#, kde-format
+msgctxt "%1 - time string like hh:mm:ss"
+msgid "You made it in %1"
+msgstr "Fixéchelo en %1"
+
+#: src/app.cpp:288
+#, kde-format
+msgid "Your time: %1:%2:%3 %4"
+msgstr "O teu tempo: %1:%2:%3 %4"
+
+#: src/app.cpp:292
+#, kde-format
+msgid "(Paused) "
+msgstr "(Pausado) "
+
+#: src/app.cpp:300
+#, kde-format
+msgid "Removed: %1/%2 "
+msgstr "Retirado: %1/%2 "
+
+#: src/app.cpp:329
+#, kde-format
+msgid "Select a matching tile"
+msgstr "Escolle unha peza coa que case"
+
+#: src/app.cpp:334
+#, kde-format
+msgid "Select the move you want by clicking on the blue line"
+msgstr "Escolle o movemento que queiras premendo a liña azul"
+
+#: src/app.cpp:339
+#, kde-format
+msgid "This tile did not match the one you selected"
+msgstr "Esta peza non casa coa que escolliches"
+
+#: src/app.cpp:344
+#, kde-format
+msgid "You cannot make this move"
+msgstr "Non podes realizar este movemento"
+
+#: src/app.cpp:375
+#, kde-format
+msgid "General"
+msgstr "Xeral"
+
+#: src/board.cpp:97
+#, fuzzy, kde-format
+#| msgctxt "%1 is a path to a tileset file"
+#| msgid ""
+#| "An error occurred when loading the tileset. %1 and the default tileset "
+#| "have been tried.\n"
+#| "Please install the KMahjongg library."
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the default tileset.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"Produciuse un erro ao cargar o conxunto de pezas. Intentáronse cargar %1 e "
+"mailo conxunto de pezas predeterminado.\n"
+"Instale a biblioteca KMahjongg."
+
+#: src/board.cpp:98 src/board.cpp:107 src/board.cpp:113 src/board.cpp:130
+#: src/board.cpp:139 src/board.cpp:145
+#, kde-format
+msgid "Error Loading Tiles"
+msgstr "Erro ao cargar as pezas"
+
+#: src/board.cpp:106
+#, fuzzy, kde-format
+#| msgctxt "%1 is a path to a tileset file"
+#| msgid ""
+#| "An error occurred when loading the tileset. %1 and the default tileset "
+#| "have been tried.\n"
+#| "Please install the KMahjongg library."
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the tileset %1. The default tileset has been "
+"loaded."
+msgstr ""
+"Produciuse un erro ao cargar o conxunto de pezas. Intentáronse cargar %1 e "
+"mailo conxunto de pezas predeterminado.\n"
+"Instale a biblioteca KMahjongg."
+
+#: src/board.cpp:112
+#, fuzzy, kde-format
+#| msgctxt "%1 is a path to a tileset file"
+#| msgid ""
+#| "An error occurred when loading the tileset. %1 and the default tileset "
+#| "have been tried.\n"
+#| "Please install the KMahjongg library."
+msgctxt "%1 is a path to a tileset file"
+msgid ""
+"An error occurred when loading the tileset %1. The default tileset could "
+"also not be loaded.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"Produciuse un erro ao cargar o conxunto de pezas. Intentáronse cargar %1 e "
+"mailo conxunto de pezas predeterminado.\n"
+"Instale a biblioteca KMahjongg."
+
+#: src/board.cpp:129
+#, fuzzy, kde-format
+#| msgctxt "%1 is a path to a background image file"
+#| msgid ""
+#| "An error occurred when loading the background. %1 and the default "
+#| "background have been tried.\n"
+#| "Please install the KMahjongg library."
+msgctxt "%1 is a path to a background image file"
+msgid ""
+"An error occurred when loading the default background.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"Produciuse un erro ao cargar o fondo. Intentáronse cargar %1 e mailo fondo "
+"predeterminado.\n"
+"Instale a biblioteca KMahjongg."
+
+#: src/board.cpp:138
+#, fuzzy, kde-format
+#| msgctxt "%1 is a path to a background image file"
+#| msgid ""
+#| "An error occurred when loading the background. %1 and the default "
+#| "background have been tried.\n"
+#| "Please install the KMahjongg library."
+msgctxt "%1 is a path to a background image file"
+msgid ""
+"An error occurred when loading the background %1. The default background has "
+"been loaded."
+msgstr ""
+"Produciuse un erro ao cargar o fondo. Intentáronse cargar %1 e mailo fondo "
+"predeterminado.\n"
+"Instale a biblioteca KMahjongg."
+
+#: src/board.cpp:144
+#, fuzzy, kde-format
+#| msgctxt "%1 is a path to a background image file"
+#| msgid ""
+#| "An error occurred when loading the background. %1 and the default "
+#| "background have been tried.\n"
+#| "Please install the KMahjongg library."
+msgctxt "%1 is a path to a background image  file"
+msgid ""
+"An error occurred when loading the background %1. The default background "
+"could also not be loaded.\n"
+"Please install the KMahjongg library."
+msgstr ""
+"Produciuse un erro ao cargar o fondo. Intentáronse cargar %1 e mailo fondo "
+"predeterminado.\n"
+"Instale a biblioteca KMahjongg."
+
+#: src/board.cpp:706
+#, kde-format
+msgid ""
+"Game Paused\n"
+"Click to resume game."
+msgstr ""
+"Partida en pausa\n"
+"Preme para continuar."
+
+#: src/board.cpp:710
+#, kde-format
+msgid ""
+"Game Stuck\n"
+"No more moves possible."
+msgstr ""
+"A partida está trancada\n"
+"Non se poden facer máis movementos."
+
+#: src/board.cpp:713
+#, kde-format
+msgid ""
+"Game Over\n"
+"Click to start a new game."
+msgstr ""
+"Rematou a partida\n"
+"Preme para comezar unha nova."
+
+#. i18n: ectx: label, entry (TileSet), group (General)
+#: src/kshisen.kcfg:9
+#, kde-format
+msgid "The tile set to use."
+msgstr "O conxunto de pezas para usar."
+
+#. i18n: ectx: label, entry (Background), group (General)
+#: src/kshisen.kcfg:12
+#, kde-format
+msgid "The background to use."
+msgstr "O fondo que se usará."
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: src/kshisenui.rc:13
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Barra de ferramentas principal"
+
+#: src/main.cpp:47
+#, kde-format
+msgid "Shisen-Sho"
+msgstr "Shisen-Sho"
+
+#: src/main.cpp:49
+#, fuzzy, kde-format
+#| msgid "A KDE game similar to Mahjongg"
+msgid "A game similar to Mahjongg"
+msgstr "Un xogo similar ao Mahjong para KDE"
+
+#: src/main.cpp:51
+#, kde-format
+msgid "Copyright 1997 Mario Weilguni"
+msgstr "© 1997 Mario Weilguni"
+
+#: src/main.cpp:54
+#, kde-format
+msgid "Frederik Schwarzer"
+msgstr "Frederik Schwarzer"
+
+#: src/main.cpp:54
+#, kde-format
+msgid "Current Maintainer"
+msgstr "Mantedor actual"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "Dave Corrie"
+msgstr "Dave Corrie"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "Former Maintainer"
+msgstr "Mantedor orixinal"
+
+#: src/main.cpp:56
+#, kde-format
+msgid "Mario Weilguni"
+msgstr "Mario Weilguni"
+
+#: src/main.cpp:56
+#, kde-format
+msgid "Original Author"
+msgstr "Autor orixinal"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "Mauricio Piacentini"
+msgstr "Mauricio Piacentini"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "KMahjonggLib integration for KDE4"
+msgstr "Integración de KMahjonggLib en KDE4"
+
+#: src/main.cpp:58
+#, kde-format
+msgid "Jason Lane"
+msgstr "Jason Lane"
+
+#: src/main.cpp:58
+#, kde-format
+msgid ""
+"Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
+msgstr ""
+"Engadiuse o contador de pezas retiradas<br/>Cambio de escala suave de pezas "
+"e cambio de tamaño da xanela"
+
+#: src/main.cpp:59
+#, kde-format
+msgid "Thanks also to everyone who should be listed here but is not!"
+msgstr ""
+"Grazas tamén a todos aqueles que deberían estar na lista e non o están!"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Gravity)
+#: src/settings.ui:23
+#, kde-format
+msgid ""
+"<b>Gravity</b><p>Checking this makes the game even harder: If a tile is "
+"removed, all tiles lying above it will fall down one step.</p>"
+msgstr ""
+"<b>Gravidade:</b><p>Marcando esta opción o xogo será aínda máis difícil: se "
+"se retira unha peza, todas as pezas sobre ela caerán unha posición.</p>"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Solvable)
+#: src/settings.ui:33
+#, kde-format
+msgid ""
+"<b>Create solvable games only</b><p>If checked, you will only be presented "
+"with games that are possible to solve.</p><p>Note: Even in solvable games "
+"you can fail to complete if you remove the tiles in the wrong order.</p>"
+msgstr ""
+"<b>Crear só partidas que se poidan resolver</b>:<p>Marcando esta opción, só "
+"terás partidas que sexa posíbel resolver</p> <p>Nota: Mesmo nas partidas que "
+"se poden resolver podes non completar se retiras as pezas na orde equivocada!"
+"</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_Solvable)
+#: src/settings.ui:36
+#, kde-format
+msgid "Create solvable games only"
+msgstr "Crear só partidas que se poidan resolver"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
+#: src/settings.ui:43
+#, kde-format
+msgid ""
+"<b>Show message if board can no longer be solved</b><p>Checking this makes "
+"the game show a message to abort the game in case there are no possible "
+"moves left to win the game.</p>"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
+#: src/settings.ui:46
+#, kde-format
+msgid "Show message if board can no longer be solved"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ChineseStyle)
+#: src/settings.ui:53
+#, kde-format
+msgid ""
+"<b>Use Chinese style: any flower match any flower, any season match any "
+"season</b><p>Use the traditional rules for matching the tiles. Previous "
+"version of the game used to allow only exact tiles matches, which is "
+"inconsistent with Mah-jongg rules. It is recommended to keep this option "
+"checked.</p>"
+msgstr ""
+"<b>Usar o estilo chinés: calquera flor casa con calquera flor, calquera "
+"estación con calquera estación</b><p>Usa as regras tradicionais para casar "
+"as pezas. A versión anterior do xogo adoitaba permitir só coincidencias "
+"exactas de pezas, o que non é consistente coas regras do Mah-jongg. "
+"Recoméndase manter marcada esta opción.</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ChineseStyle)
+#: src/settings.ui:56
+#, kde-format
+msgid ""
+"Use Chinese style: any flower match any flower, any season match any season"
+msgstr ""
+"Usar o estilo Chinés: calquera flor casa con calquera flor, e o mesmo para "
+"as estacións"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_TilesCanSlide)
+#: src/settings.ui:63
+#, kde-format
+msgid ""
+"<b>Tiles can slide, but you can connect only in 2 lines instead of 3</"
+"b><p>This option changes the rules to the point where it almost becomes a "
+"completely different game. When it is active, you can only remove the tiles "
+"if they can be connected by a line consisting of only two segments instead "
+"of the customary three. However, you are allowed to slide the tiles on the "
+"board, if the row or column where they are placed has some empty space. To "
+"make a sliding move, you have to click on the tile containing the column or "
+"row that can slide, and then on the matching tile. If there are two possible "
+"sliding moves, you will have to click on one of the two connecting lines to "
+"choose your preferred move.</p>"
+msgstr ""
+"<b>As pezas poden desprazarse, pero só podes conectar 2 liñas no canto de 3</"
+"b><p>Esta opción cambia as regras ata tal punto que case se converte nun "
+"xogo distinto. Ao estar activado, só podes retirar as pezas se estean "
+"conectadas por unha liña que conste de só dous segmentos no canto dos tres "
+"normais. Porén, permíteseche desprazar as pezas no taboleiro se a fila ou "
+"columna na que están ten algún espazo baleiro. Para facer un desprazamento, "
+"tes que premer a peza que conteña a columna ou fila que se pode desprazar, e "
+"logo na peza que cadre. Se hai dous movementos posíbeis terás que premer "
+"nunha das dúas liñas de conexión para escoller o movemento que prefiras.</p>"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_TilesCanSlide)
+#: src/settings.ui:66
+#, kde-format
+msgid "Tiles can slide, but you can connect only in 2 lines instead of 3"
+msgstr ""
+"As pezas poden deslizar, pero só pode conectar en 2 liñas no canto de 3"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, difficulty_groupBox)
+#: src/settings.ui:73
+#, kde-format
+msgid ""
+"<b>Board Difficulty</b><p>The slider controls the difficulty of the board "
+"from Easy to Hard.</p>"
+msgstr ""
+"<b>Dificultade do taboleiro</b><p>A barra de desprazamento controla a "
+"dificultade do taboleiro de Fácil a Difícil.</p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, difficulty_groupBox)
+#: src/settings.ui:76
+#, kde-format
+msgid "Board Difficulty"
+msgstr "Dificultade do taboleiro"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: src/settings.ui:103
+#, kde-format
+msgid "Easy"
+msgstr "Fácil"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3)
+#: src/settings.ui:123
+#, kde-format
+msgid "Hard"
+msgstr "Difícil"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, speed_groupBox)
+#: src/settings.ui:138
+#, kde-format
+msgid ""
+"<b>Piece Removal Speed</b><p>Adjusting this slider alters the speed at which "
+"the pieces are removed from the screen after a match has been made.</p>"
+msgstr ""
+"<b>Velocidade de retiración das pezas</b><p>Ao axustar esta barra de "
+"desprazamento alteras a velocidade coa que retira as pezas da pantalla tras "
+"casar dúas pezas.</p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, speed_groupBox)
+#: src/settings.ui:141
+#, kde-format
+msgid "Piece Removal Speed"
+msgstr "Velocidade de eliminación das pezas"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: src/settings.ui:168
+#, kde-format
+msgid "Slow"
+msgstr "A modo"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#: src/settings.ui:188
+#, kde-format
+msgid "Fast"
+msgstr "Rápido"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, size_groupBox)
+#: src/settings.ui:203
+#, kde-format
+msgid ""
+"<b>Board Size</b><p>This slider allows you to change the number of tiles on "
+"the board. The more tiles you have, the harder (and longer) the game will be."
+"</p>"
+msgstr ""
+"<b>Tamaño do taboleiro</b><p>Esta barra de desprazamento permíteche cambiar "
+"o número de pezas que caberán no taboleiro. Cantas máis pezas teña, máis "
+"longa e difícil será a partida.</p>"
+
+#. i18n: ectx: property (title), widget (QGroupBox, size_groupBox)
+#: src/settings.ui:206
+#, kde-format
+msgid "Board Size"
+msgstr "Tamaño do taboleiro"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#: src/settings.ui:236
+#, kde-format
+msgid "14x6"
+msgstr "14x6"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel9)
+#: src/settings.ui:256
+#, kde-format
+msgid "16x9"
+msgstr "16x9"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: src/settings.ui:279
+#, kde-format
+msgid "18x8"
+msgstr "18x8"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel10)
+#: src/settings.ui:302
+#, kde-format
+msgid "24x12"
+msgstr "24x12"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel11)
+#: src/settings.ui:325
+#, kde-format
+msgid "26x14"
+msgstr "26x14"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel12)
+#: src/settings.ui:348
+#, kde-format
+msgid "30x16"
+msgstr "30x16"
+
+#~ msgid "Error Loading Background"
+#~ msgstr "Erro ao cargar o fondo"

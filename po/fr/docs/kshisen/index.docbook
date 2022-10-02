@@ -1,0 +1,1350 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kshisen;">
+  <!ENTITY kappversion "1.7.0"
+>     <!--Application version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames"
+>      <!-- do not change this! -->
+  <!ENTITY % French "INCLUDE"
+>    <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+>     <!-- do not change this! -->
+]>
+
+<book lang="&language;"
+> <!-- do not change this! -->
+  <bookinfo>
+    <title
+>Le Manuel de &kappname;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+    <!-- List of immidiate authors begins here. -->
+    <!--INPORTANT! - All other contributors: [to be determined] -->
+    <authorgroup>
+      <author
+><firstname
+>Dirk</firstname
+> <surname
+>Doerflinger</surname
+> <affiliation
+><address
+>&Dirk.Doerflinger.mail;</address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Frederik</firstname
+> <surname
+>Schwarzer</surname
+> <affiliation
+><address
+><email
+>schwarzerf@gmail.com</email
+></address
+></affiliation>
+      </author>
+      <othercredit role="reviewer"
+><firstname
+>Frerich</firstname
+><surname
+>Raabe</surname
+> <contrib
+>Relecture</contrib>
+        <affiliation
+><address
+>&Frerich.Raabe.mail;</address
+></affiliation>
+      </othercredit>
+      &traducteurYvesDessertine; 
+    </authorgroup>
+
+    <date
+>2007-09-26</date>
+    <releaseinfo
+>&kappversion;</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+
+    <!--Short description of this document. Do not change unless necessary!-->
+    <abstract>
+      <para
+>Cette documentation décrit le jeu &kappname; version &kappversion;</para>
+    </abstract>
+
+    <!--List of relevant keywords-->
+    <keywordset>
+      <keyword
+>KDE</keyword
+> <!-- do not change this! -->
+      <keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+      <keyword
+>jeu</keyword
+> <!-- do not change this! -->
+      <keyword
+>KShisen</keyword
+><!--Application name goes here-->
+      <!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+      <keyword
+>arcade</keyword>
+      <keyword
+>plateau</keyword>
+      <keyword
+>mahjong</keyword>
+      <keyword
+>tuiles</keyword>
+      <!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+      <keyword
+>un joueur</keyword>
+    </keywordset>
+  </bookinfo>
+  <!--Content begins here: -->
+  <chapter id="introduction"
+><title
+>Introduction</title
+> <!-- do not change this! -->
+    <note
+><title
+>Type de jeu : </title
+><para
+>Arcade, plateau</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+    <note
+><title
+>Nombre possible de joueurs : </title
+><para
+>Un</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+    <!--Short game description starts here. 3-4 sentences (paragraphs)-->
+    <para
+>&kappname; est un jeu de type solitaire qui se joue en utilisant un jeu de tuiles standard de Mahjong. À la différence de Mahjong cependant, &kappname; a seulement une couche de tuiles. Vous pouvez supprimer les pièces correspondantes si celles ci sont connectées avec une ligne avec pas plus de deux bords. Dans le même temps, la ligne ne doit pas traverser d'autres tuiles. Pour remporter une partie de &kappname;, le joueur doit supprimer toutes les tuiles du plateau de jeu. </para>
+  </chapter>
+
+  <chapter id="howto"
+><title
+>Comment jouer</title
+> <!-- do not change this! -->
+    <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+    <note
+><title
+>Objectif : </title
+><para
+>Supprimer toutes les tuiles du plateau de jeu en moins de temps possible.</para
+></note
+><!--Describe the objective of the game.-->
+    <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+    <para
+>&kappname; chargera un affichage par défaut automatiquement une fois démarré et vous pouvez commencer la partie. </para>
+    <para
+>Vous devez étudier attentivement les tuiles placées sur le plateau de jeu et trouver deux tuiles correspondants exactement. Quand vous avez trouvé une paire, utilisez votre souris et sélectionnez la. </para>
+    <para
+>Une fois que vous avez sélectionné une paire possible, celle ci va disparaître du plateau de jeu. Cependant, même si les tuiles que vous sélectionnez apparaissent comme ouvertes, elles ne seront seulement supprimées du plateau que si elles sont connectées avec une ligne n'ayant pas plus de deux bords et ne traversant pas d'autres tuiles. De plus, la ligne peut être seulement dessinée horizontalement et verticalement. </para>
+    <para
+>Trouvez le plus de correspondances que possible pour supprimer toutes les tuiles du plateau de jeu. </para>
+  </chapter>
+
+  <chapter id="rules_and_tips"
+><title
+>Règles du jeu, stratégies et astuces</title
+> <!-- do not change this! -->
+    <sect1 id="rules">
+      <title
+>Règles</title>
+      <para
+>Jeu de tuiles standard de Mahjong inclus :  <informaltable
+> <tgroup cols="3"
+> <tbody>
+              <row
+><entry
+>Nom du groupe</entry
+><entry
+>Nom de la tuile</entry
+><entry
+>Quantité dans le jeu</entry
+></row>
+              <row
+><entry
+>Point</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Point 1</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Point 2</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Point 3</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Point 4</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Point 5</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Point 6</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Point 7</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Point 8</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Point 9</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Bambous</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambou 1</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambou 2</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambou 3</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambou 4</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambou 5</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambou 6</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambou 7</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambou 8</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambou 9</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Lettres</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Lettre 1</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Lettre 2</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Lettre 3</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Lettre 4</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Lettre 5</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Lettre 6</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Lettre 7</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Lettre 8</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Lettre 9</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Vents</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Vent d'est</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Vent du sud</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Vent de l'ouest</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Vent du nord</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Dragons</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Dragon rouge</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Dragon vert</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Dragon blanc</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Fleurs</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Prune (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Lys (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Chrysanthème (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambou (4)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+>Saisons</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Printemps (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Été (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Automne (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Hiver (4)</entry
+><entry
+>1</entry
+></row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+      <itemizedlist>
+        <listitem
+><para
+>Les tuiles correspondantes sont des tuiles semblables où le pictogramme facial correspond exactement.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Remarque : </title
+><para
+>Il y a des exceptions à la règle. Dans le jeu traditionnel de Mahjong, chaque tuile a une correspondance exceptée pour les tuiles<quote
+>Fleurs</quote
+> et <quote
+>Saisons</quote
+>.</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>Les tuiles <quote
+>Fleurs</quote
+> n'ont pas de double dans le jeu et peuvent être mises en correspondances directement avec d'autres.</para
+></listitem>
+        <listitem
+><para
+>Les tuiles <quote
+>Saisons</quote
+> n'ont pas de double dans le jeu et peuvent être mises en correspondances directement avec d'autres.</para
+></listitem>
+        <listitem
+><para
+>Les tuiles ne peuvent seulement être retirées que lorsqu'elles sont reliées par au maximum trois segments consécutifs qui ne traversent pas d'autres tuiles. Ces segments peuvent êtres horizontaux ou verticaux, mais pas diagonaux.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Remarque : </title
+><para
+>Vous n'avez pas à dessiner les lignes vous même, le jeu le fait pour vous. Indiquez juste deux tuiles correspondantes sur le plateau de jeu. Si elles peuvent être reliées par une ligne avec pas plus de deux bords, la ligne est tracée et les tuiles seront retirées.</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>Les lignes peuvent seulement traverser les bords vides</para
+></listitem>
+        <listitem
+><para
+>Quelques parties sont impossible à résoudre. Si vous voulez éviter les parties infinissables, décochez l'option <guilabel
+>Autoriser les parties sans solutions</guilabel
+> dans la boîte de dialogue de configuration.</para
+></listitem>
+        <listitem
+><para
+>Les scores sont attribués pour la quantité de tuiles supprimées pendant le temps de jeu effectif. Des parties avec plus de tuiles donnent un score plus élevé.</para
+></listitem>
+        <listitem
+><para
+> Si vous avez joué avec l'option de <guilabel
+>Gravité</guilabel
+> activée, ce score sera en outre multiplié par deux.</para
+></listitem>
+        <listitem
+><para
+>Pour avoir le droit d'être affiché parmi les meilleurs scores, le joueur doit compléter le plateau en le moins de temps possible.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Remarque : </title
+><para
+>Si le joueur utilise la fonctionnalité <quote
+>Annuler</quote
+> ou <quote
+>Conseil</quote
+>, son record de points ne sera pas ajouté dans les meilleurs scores.</para
+></note>
+    </sect1>
+  </chapter>
+
+  <chapter id="interface"
+><title
+>Vue d'ensemble de l'interface</title
+> <!-- do not change this! -->
+    <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing. -->
+    <sect1 id="game-menu">
+      <title
+>Le menu <guimenu
+>Jeu</guimenu
+></title>
+
+      <para
+>Le menu <guimenu
+>Jeu</guimenu
+> vous permet de contrôler l'état de la partie courante, à savoir : </para>
+
+      <variablelist>
+        <varlistentry id="game-menu-new">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jeu</guimenu
+><guimenuitem
+>Nouveau</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Termine le jeu en cours</action
+>, crée et commence un nouveau jeu avec de nouvelles tuiles.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-restart">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>F5</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jeu</guimenu
+><guimenuitem
+>Recommencer la partie</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Recommence le jeu en cours avec les mêmes tuiles.</action
+></para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-pause">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Pause</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Met l'ensemble du jeu en pause</action
+>, spécialement le chronomètre, qui sert pour les meilleurs scores. Cette entrée est aussi utilisée pour résumer une partie.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-highscores">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+><guimenuitem
+>Afficher les meilleurs scores</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Affiche le tableau des dix meilleurs scores de &kappname;.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jeu</guimenu
+><guimenuitem
+>Quitter</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Quitte</action
+> &kappname;.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+      <para
+>Certaines des entrées de menu peuvent aussi être appelées via des raccourcis clavier. Consultez la section <xref linkend="key-bindings"/> pour une liste. </para>
+
+    </sect1>
+
+    <sect1 id="move-menu">
+      <title
+>Le menu <guimenu
+>Déplacement</guimenu
+></title>
+
+      <variablelist id="move-menu-undo">
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Déplacer</guimenu
+> <guimenuitem
+>Annuler</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Annule la dernière action</action
+>. Même effet que le bouton <guibutton
+>Annuler</guibutton
+> de la barre d'outils.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="move-menu-redo">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Maj;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Déplacer</guimenu
+> <guimenuitem
+>Refaire</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Rétablit la dernière action</action
+>. Même effet que le bouton <guibutton
+>Refaire</guibutton
+> de la barre d'outils.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="move-menu-hint">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Déplacer</guimenu
+><guimenuitem
+>Conseil</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Affiche un conseil</action
+> indiquant quelles deux tuiles retirer en prochain.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+    </sect1>
+
+    <sect1 id="settings-menu">
+      <title
+>Le menu <guimenu
+>Configuration</guimenu
+></title>
+
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Afficher la barre d'outils</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Affiche ou cache la barre d'outils.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            <menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Afficher la barre d'état</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Affiche ou cache la barre d'état.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            <menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Configurer les raccourcis...</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Ouvrir une boîte de dialogue qui vous permet de redéfinir tous les raccourcis clavier.</action
+></para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="settings-menu-toolbar">
+          <term>
+            <menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Configurer les barre d'outils...</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Affiche une boîte de dialogue standard &kde; où vous pouvez configurer les icônes de la barre d'outils.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-settings-settings">
+          <term>
+            <menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Configurer &kappname;...</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Ouvre la <link linkend="configuration"
+>boîte de dialogue de configuration</link
+> pour modifier la configuration &kappname;.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+    </sect1>
+
+    <sect1 id="help"
+><!--This is a standard Help menubar entry. Only change if needed.-->
+      <title
+>Le menu <guimenu
+>Aide</guimenu
+></title>
+&help.menu.documentation; </sect1>
+
+  </chapter>
+
+  <chapter id="faq"
+><title
+>Foire aux questions</title
+> <!-- do not change this! -->
+    <!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+    <qandaset>
+      <!--Following is a standard list of FAQ questions.-->
+      <qandaentry>
+        <question
+><para
+>Je veux modifier la façon dont le jeu s'affiche. Est-ce possible ?</para
+></question>
+        <answer
+><para
+>Oui. Pour modifier la manière dont &kappname; s'affiche, utilisez la <link linkend="game-settings-settings"
+>barre de menu</link
+> pour ouvrir <link linkend="configuration"
+>l'utilitaire de configuration</link
+>.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>Puis-je utiliser le clavier ?</para
+></question>
+        <answer
+><para
+>Non. &kappname; ne fournit pas le moyen de jouer avec le clavier.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>Je veux quitter le jeu maintenant, mais ma partie n'est pas terminée. Puis je l'enregistrer ?</para
+></question>
+        <answer
+><para
+>Non. &kappname; n'inclut pas cette option <quote
+>d'enregistrement</quote
+>.</para
+></answer>
+      </qandaentry>
+    </qandaset>
+  </chapter>
+
+  <chapter id="configuration"
+><title
+>Configuration du jeu</title
+> <!-- do not change this! -->
+    <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+    <para
+>En sélectionnant <menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Configurer &kappname;...</guimenuitem
+></menuchoice
+>, ceci ouvrira une boîte de dialogue de configuration qui vous permet d'ajuster le comportement de ce jeu. </para>
+
+    <screenshot>
+      <screeninfo
+>Boîte de dialogue de configuration de &kappname;</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="kshisen-configuration.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>Boîte de dialogue de configuration de &kappname;</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <variablelist>
+      <varlistentry>
+        <term
+><guilabel
+>Gravité</guilabel
+></term>
+        <listitem
+><para
+>Activer cette option rend le jeu encore plus difficile : lorsqu'une tuile est retirée, toutes les tuiles situées au-dessus de celle-ci descendront d'un cran. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Autoriser les parties sans solution</guilabel
+></term>
+        <listitem
+><para
+>Vous risquez de jouer des parties qui sont impossibles à terminer si cette option est activée. Remarque : même si cette option n'est pas activée, vous risquez d'échouer à terminer la partie si vous supprimez des tuiles dans le mauvais ordre. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Utiliser le style Chinois : chaque fleur correspond à chaque fleur, chaque saison à chaque saison</guilabel
+></term>
+        <listitem
+><para
+>Utiliser les règles traditionnelles pour la correspondance des tuiles. La version précédente de &kappname; permettait seulement les correspondances de tuiles identiques, laquelle ne suit pas les règles du Mahjong. Il est recommandé de conserver cette option cochée. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Les tuiles peuvent coulisser, mais vous ne pouvez connecter seulement que deux lignes à la place de trois</guilabel
+></term>
+        <listitem
+><para
+>Cette option modifie les règles au point où le jeu en devient complètement différent. Si l'option est activée, vous ne pouvez seulement supprimer que les tuiles si elles se connectent avec une ligne de seulement deux segments à la place de trois. Cependant, vous pouvez coulisser les tuiles sur le plateau, si la ligne ou colonne où elles sont placées a un espace de libre. Pour faire coulisser une tuile, vous devez cliquer sur la tuile contenant la colonne ou la ligne qui peut coulisser, et ensuite sur la tuile correspondante. S'il y a deux coulissements possibles, vous cliquerez sur une des deux lignes connectées pour choisir votre mouvement. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Difficulté du plateau</guilabel
+></term>
+        <listitem
+><para
+>Les glissières contrôlent la difficulté du plateau (&cad; combien de tuiles sont mélangées) de <guilabel
+>Facile</guilabel
+> à <guilabel
+>Difficile</guilabel
+>. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Vitesse de suppression des pièces</guilabel
+></term>
+        <listitem
+><para
+>Les glissières permettent d'ajuster la vitesse à laquelle les pièces sont supprimées de l'écran après qu'une correspondance à été faite. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Taille du plateau</guilabel
+></term>
+        <listitem
+><para
+>Les glissières vous permettent de modifier le nombre de tuile sur le plateau. Plus vous aurez de tuiles, plus le jeu sera difficile (et long). </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Aide</guibutton
+></term>
+        <listitem
+><para
+>Ouvre le manuel de &kappname; (ce document). </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Ok</guibutton
+></term>
+        <listitem
+><para
+>Enregistre vos modifications et ferme la boîte de dialogue. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Appliquer</guibutton
+></term>
+        <listitem
+><para
+>Enregistre vos modifications mais ne ferme pas la boîte de dialogue. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Annuler</guibutton
+></term>
+        <listitem
+><para
+>Annule toutes vos modifications et ferme la boîte de dialogue. </para
+></listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <sect1 id="key-bindings">
+      <title
+>Les raccourcis clavier par défaut sont :</title>
+
+      <para
+>Les raccourcis par défaut sont : </para>
+
+      <informaltable>
+        <tgroup cols="2">
+          <tbody>
+            <row
+><entry
+>Nouveau</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Recommencer la partie</entry
+><entry
+><keycap
+>F5</keycap
+></entry
+></row>
+            <row
+><entry
+>Pause</entry
+><entry
+><keycap
+>P</keycap
+></entry
+></row>
+            <row
+><entry
+>Afficher les meilleurs scores</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Quitter</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Annuler</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Rétablir</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Maj;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Conseil</entry
+><entry
+><keycap
+>H</keycap
+></entry
+></row>
+            <row
+><entry
+>Le manuel de &kshisen;</entry
+><entry
+><keycap
+>F1</keycap
+></entry
+></row>
+            <row
+><entry
+>Qu'est-ce que c'est ?</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Maj;<keycap
+>F1</keycap
+></keycombo
+></entry
+></row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+    </sect1>
+  </chapter>
+
+  <chapter id="credits"
+><title
+>Remerciements et licence</title
+> <!-- do not change this! -->
+    <!--This chapter is for credits and licenses.-->
+
+    <para
+>&kappname; Copyright 1997 &Mario.Weilguni; &Mario.Weilguni.mail; </para>
+    <para
+>&kappname; Copyright 2002-2004 Dave Corrie kde@davecorrie.com </para>
+    <para
+>&kappname; Copyright 2009 Frederik Schwarzer <email
+>schwarzerf@gmail.com</email
+> </para>
+
+    <para
+>Copyright de la documentation 2000 &Dirk.Doerflinger; <email
+>ddoerflinger@gmx.net</email
+> </para>
+    <para
+>Copyright de la documentation 2009 Frederik Schwarzer <email
+>schwarzerf@gmail.com</email
+> </para>
+
+    <para
+>Traduction française par &YvesDessertine;.</para
+> 
+&underFDL; &underGPL; </chapter>
+
+  <appendix id="installation">
+    <title
+>Installation</title>
+
+    &install.intro.documentation;
+
+
+    <sect1 id="Compilation">
+      <title
+>Compilation et Installation</title>
+&install.compile.documentation; </sect1>
+  </appendix>
+
+  &documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
