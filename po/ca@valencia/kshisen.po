@@ -254,13 +254,13 @@ msgstr ""
 #: src/kshisen.kcfg:9
 #, kde-format
 msgid "The tile set to use."
-msgstr "El joc de fitxes a utilitzar."
+msgstr "El joc de fitxes que s'utilitzarà."
 
 #. i18n: ectx: label, entry (Background), group (General)
 #: src/kshisen.kcfg:12
 #, kde-format
 msgid "The background to use."
-msgstr "El fons a utilitzar."
+msgstr "El fons que s'utilitzarà."
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: src/kshisenui.rc:13
