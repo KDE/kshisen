@@ -20,6 +20,7 @@
   <name xml:lang="gl">KShisen</name>
   <name xml:lang="id">KShisen</name>
   <name xml:lang="it">KShisen</name>
+  <name xml:lang="ka">KShisen</name>
   <name xml:lang="ko">KShisen</name>
   <name xml:lang="nl">KShisen</name>
   <name xml:lang="nn">KShisen</name>
@@ -55,6 +56,7 @@
   <summary xml:lang="gl">Xogo de fichas Shisen-so ao estilo do Mahjongg</summary>
   <summary xml:lang="id">Shisen-Sho Permainan Kartu Seperti Mahjongg</summary>
   <summary xml:lang="it">Gioco di tessere in stile Shisen-Sho Mahjongg</summary>
+  <summary xml:lang="ka">Shisen-Sho Mahjongg-ის მსგავსი თამაში</summary>
   <summary xml:lang="ko">시센-쇼 마작과 같은 타일 게임</summary>
   <summary xml:lang="nl">Shisen-Sho Mahjongg-achtig stenenspel</summary>
   <summary xml:lang="nn">Shisen-Sho mahjong-liknande brikkespel</summary>
@@ -136,6 +138,7 @@
       <caption xml:lang="gl">Xogando a KShisen</caption>
       <caption xml:lang="id">Memainkan KShisen</caption>
       <caption xml:lang="it">Giocare con KShisen</caption>
+      <caption xml:lang="ka">KShisen-ის თამაში</caption>
       <caption xml:lang="ko">KShisen 플레이</caption>
       <caption xml:lang="nl">KShisen spelen</caption>
       <caption xml:lang="nn">Spelar KShisen</caption>
