@@ -136,7 +136,7 @@ msgstr "Trieu una fitxa que coincidisca"
 #: src/app.cpp:334
 #, kde-format
 msgid "Select the move you want by clicking on the blue line"
-msgstr "Trieu el moviment que vols fer clicant a la línia blava"
+msgstr "Trieu el moviment que vols fer clicant en la línia blava"
 
 #: src/app.cpp:339
 #, kde-format
@@ -434,9 +434,9 @@ msgstr ""
 "es poden connectar amb una línia que tinga dos segments en comptes dels tres "
 "típics. En contrapartida, podràs desplaçar les fitxes pel tauler, si la fila "
 "o columna tenen espais en blanc. Per a fer un moviment amb desplaçament, has "
-"de clicar a la fitxa que continga la columna o fila que es pot desplaçar i "
+"de clicar en la fitxa que continga la columna o fila que es pot desplaçar i "
 "després la fitxa que coincidisca. Si hi ha dos moviments possibles, hauràs "
-"de clicar a la connexió que preferiu.</p>"
+"de clicar en la connexió que preferiu.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_TilesCanSlide)
 #: src/settings.ui:66
