@@ -14,4 +14,4 @@ Dependencies:
     'frameworks/kdoctools': '@stable'
     'frameworks/kxmlgui': '@stable'
 Options:
-  require-passing-tests-on: [ 'Linux', 'FreeBSD']
+  require-passing-tests-on: [ 'Linux', 'FreeBSD', 'Windows']
