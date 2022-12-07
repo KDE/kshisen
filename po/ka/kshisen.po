@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-20 00:42+0000\n"
-"PO-Revision-Date: 2022-10-07 13:11+0200\n"
+"PO-Revision-Date: 2022-12-06 09:13+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -95,6 +95,8 @@ msgid ""
 "Congratulations!\n"
 "You made it into the hall of fame."
 msgstr ""
+"გილოცავთ!\n"
+"თქვენ გამარჯვებულთა სიაში ჩაიწერებით."
 
 #: src/app.cpp:272
 #, kde-format
@@ -218,18 +220,20 @@ msgid ""
 "Game Over\n"
 "Click to start a new game."
 msgstr ""
+"თამაში დასრულდა\n"
+"ახალი თამაშის დასაწყებად დააწკაპუნეთ."
 
 #. i18n: ectx: label, entry (TileSet), group (General)
 #: src/kshisen.kcfg:9
 #, kde-format
 msgid "The tile set to use."
-msgstr ""
+msgstr "სათაური."
 
 #. i18n: ectx: label, entry (Background), group (General)
 #: src/kshisen.kcfg:12
 #, kde-format
 msgid "The background to use."
-msgstr ""
+msgstr "გამოსაყენებელი ფონი."
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: src/kshisenui.rc:13
