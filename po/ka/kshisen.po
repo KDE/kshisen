@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-20 00:42+0000\n"
-"PO-Revision-Date: 2022-12-12 09:52+0100\n"
+"PO-Revision-Date: 2022-12-13 06:11+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -339,6 +339,8 @@ msgid ""
 "<b>Gravity</b><p>Checking this makes the game even harder: If a tile is "
 "removed, all tiles lying above it will fall down one step.</p>"
 msgstr ""
+"<b>მიზიდულობა</b><p>ჩართვით თამაში კიდევ უფრო რთულდება: თუ ფილა წაიშლება, "
+"ყველა ფილა, რომელიც ზემოდან ელაგა, ერთი ნაბიჯით დაბლა ჩამოცვივდება.</p>"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Solvable)
 #: src/settings.ui:33
