@@ -276,7 +276,7 @@ msgstr "Shisen-Sho"
 #: src/main.cpp:49
 #, kde-format
 msgid "A game similar to Mahjongg"
-msgstr "Un joc similar al Mahjongg"
+msgstr "Un joc similar a Mahjongg"
 
 #: src/main.cpp:51
 #, kde-format
