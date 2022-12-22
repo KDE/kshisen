@@ -13,7 +13,7 @@ set(KSHISEN_VERSION "${KSHISEN_BASE_VERSION}.${RELEASE_SERVICE_COMPACT_VERSION}"
 project(kshisen VERSION ${KSHISEN_VERSION})
 
 set(QT_MIN_VERSION "5.15.0")
-set(KF5_MIN_VERSION "5.90.0")
+set(KF5_MIN_VERSION "5.91.0")
 
 # Found this somewhere but cannot re-find it now ... but want to investigate later, so keeping this here for now.
 #set(CXX_CLANG_TIDY ON)
@@ -35,6 +35,7 @@ include(ECMInstallIcons)
 include(ECMQtDeclareLoggingCategory)
 include(ECMSetupVersion)
 include(FeatureSummary)
+include(ECMDeprecationSettings)
 
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Gui)
 
@@ -50,11 +51,9 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 find_package(KF5KMahjongglib 5.1.0 REQUIRED)
 find_package(KF5KDEGames 7.3.0 REQUIRED)
 
-add_definitions(
-    -DQT_DISABLE_DEPRECATED_BEFORE=0x050F00
-    -DQT_DEPRECATED_WARNINGS_SINCE=0x060000
-    -DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055900
-    -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
+ecm_set_disabled_deprecation_versions(
+    QT 5.15.2
+    KF 5.101
 )
 
 add_subdirectory(src)
