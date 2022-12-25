@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-20 00:42+0000\n"
-"PO-Revision-Date: 2022-12-13 06:11+0100\n"
+"PO-Revision-Date: 2022-12-24 07:08+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -326,6 +326,8 @@ msgstr "Jason Lane"
 msgid ""
 "Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
 msgstr ""
+"დაემატა 'წაშლილი ფილების' მთვლელი <br/>ფილების რბილი გადიდება და ფანჯრის "
+"ზომის შეცვლა"
 
 #: src/main.cpp:59
 #, kde-format
@@ -350,6 +352,9 @@ msgid ""
 "with games that are possible to solve.</p><p>Note: Even in solvable games "
 "you can fail to complete if you remove the tiles in the wrong order.</p>"
 msgstr ""
+"<b>მხოლოდ ამოხსნადი თამაშების შექმნა</b><p>თუ ჩართულია, წარმოდგენილი იქნება "
+"თამაშები, რომელიც ამოხსნადია.</p><p>გაფრთხილება: შესაძლებელია ამოხსნადი "
+"თამაშის წაგებაც, თუ ფილებს არასწორად დააწყობთ.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_Solvable)
 #: src/settings.ui:36
@@ -365,6 +370,9 @@ msgid ""
 "the game show a message to abort the game in case there are no possible "
 "moves left to win the game.</p>"
 msgstr ""
+"<b>შეტყობინების ჩვენება, თუ დაფა ამოხსნადი აღარაა</b><p>ჩართვით თამაშს "
+"აიძულებთ, გაჩვენოთ შეტყობინება, თუ შანსი, რომ თამაში მოიგოთ, აღარ არსებობს.</"
+"p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
 #: src/settings.ui:46
@@ -382,6 +390,11 @@ msgid ""
 "inconsistent with Mah-jongg rules. It is recommended to keep this option "
 "checked.</p>"
 msgstr ""
+"<b>ჩინური სტილის გამოყენება: ყველა ყვავილი სხვა ყველა ყვავილს ემთხვევა, "
+"ნებისმიერი სეზონი კი ნებისმიერ სეზონს</b><p>ფილების დამთხვევის ტრადიციული "
+"წესების გამოყენება. თამაშის წინა ვერსია მხოლოდ ფილების ზუსტ დამთხვევას "
+"იყენებდა, ამიტომ ის არ შეესაბამებოდა Mah-jongg-ის წესებს. რეკომენდებულია, ეს "
+"პარამეტრი ჩართული გქონდეთ.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ChineseStyle)
 #: src/settings.ui:56
@@ -407,12 +420,23 @@ msgid ""
 "sliding moves, you will have to click on one of the two connecting lines to "
 "choose your preferred move.</p>"
 msgstr ""
+"<b>შესაძლებელია ფილების გასიარება, მაგრამ სამის მაგიერ მხოლოდ ორ ხაზს "
+"შეაერთებთ</b><p>ეს პარამეტრი ცვლის თამაშის წესებს ისე, რომ ის თითქმის სხვა "
+"თამაშად იქცევა. თუ ის ჩართულია, თქვენ ფილების წაშლა მხოლოდ მაშინ შეგიძლიათ, "
+"როცა ის ორი სეგმენტისგან შედგება, სამის მაგიერ. მაგრამ მაგიდაზე ფილების "
+"გასრიალების ფულება გეძლევათ, თუ სვეტი ან მწკრივი, სადაც ისინია განთავსებული, "
+"რამე ცარიელი ადგილი აქვთ, გასრიალებისვის დააწკაპუნეთ ფილას, რომელიც "
+"გასრიალებად სვეტს ან მწკრივს შეიცავს, შემდეგ კი შესაბამის ფილაზე. თუ "
+"გადაადგილებას ორი შესაძლო შანსი აქვს, სვლის ასარჩევად მათ შემაერთბელ ხაზს "
+"უნდა დააწკაპუნოთ.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_TilesCanSlide)
 #: src/settings.ui:66
 #, kde-format
 msgid "Tiles can slide, but you can connect only in 2 lines instead of 3"
 msgstr ""
+"ფილების გადასრიალება შესაძლებელია, მაგრამ მხოლოდ 2 ხაზის შეერთება შეგიძლიათ, "
+"სამის მაგიერ"
 
 #. i18n: ectx: property (whatsThis), widget (QGroupBox, difficulty_groupBox)
 #: src/settings.ui:73
@@ -449,6 +473,8 @@ msgid ""
 "<b>Piece Removal Speed</b><p>Adjusting this slider alters the speed at which "
 "the pieces are removed from the screen after a match has been made.</p>"
 msgstr ""
+"<b>ნაწილის წაშლის სიჩქარე</b><p>ამ ჩოჩიის გასწორება ცვლის სიჩქარეს, რომლითაც "
+"ნაწილები დამთხვევის შემდეგ ქრება.</p>"
 
 #. i18n: ectx: property (title), widget (QGroupBox, speed_groupBox)
 #: src/settings.ui:141
@@ -476,6 +502,8 @@ msgid ""
 "the board. The more tiles you have, the harder (and longer) the game will be."
 "</p>"
 msgstr ""
+"<b>მაგიდის ზომა</b><p>ეს ჩოჩია მაგიდაზე ფილების რაოდენობას განსაზღვრავს, რაც "
+"მეტი ფილაა, მით ძნელი (და გრძელი) იქნება თამაში.</p>"
 
 #. i18n: ectx: property (title), widget (QGroupBox, size_groupBox)
 #: src/settings.ui:206
