@@ -14,20 +14,21 @@
 # Simon Depiets <sdepiets@gmail.com>, 2017, 2018.
 # Update : 1999-03-16
 #
+# Xavier BESNARD <xavier.besnard]neuf.fr>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-20 00:42+0000\n"
-"PO-Revision-Date: 2022-02-22 20:03+0100\n"
-"Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
-"Language-Team: French <kde-francophone@kde.org>\n"
+"PO-Revision-Date: 2023-01-06 16:23+0100\n"
+"Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
+"Language-Team: fr\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 21.12.2\n"
+"X-Generator: Lokalize 22.12.0\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -283,7 +284,7 @@ msgstr "Shisen-Sho"
 #: src/main.cpp:49
 #, kde-format
 msgid "A game similar to Mahjongg"
-msgstr "Un jeu semblable au Mah-jong"
+msgstr "Un jeu semblable au Mahjong"
 
 #: src/main.cpp:51
 #, kde-format
@@ -411,7 +412,7 @@ msgstr ""
 "saison correspond à toute saison</b> <p>Employez les règles traditionnelles "
 "pour l'établissement des correspondances entre les tuiles. La version "
 "précédente de ce jeu n'autorisait que les correspondances strictement "
-"exactes, ce qui ne respectait pas les règles du Mah-jongg. Il est recommandé "
+"exactes, ce qui ne respectait pas les règles du Mahjong. Il est recommandé "
 "de conserver cette option sélectionnée.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ChineseStyle)
