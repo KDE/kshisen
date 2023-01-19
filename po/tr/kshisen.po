@@ -12,13 +12,13 @@
 # Volkan Gezer <volkangezer@gmail.com>, 2013.
 # Yıldız Kardeşler <turkishprogram@xposta.com>, 2004.
 # Y. Kürşat Tuncel <kursat@linux.org.tr>, 1999.
-# Emir SARI <emir_sari@icloud.com>, 2022.
+# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-20 00:42+0000\n"
-"PO-Revision-Date: 2022-12-11 20:09+0300\n"
+"PO-Revision-Date: 2023-01-18 22:31+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -374,7 +374,7 @@ msgstr ""
 #: src/settings.ui:36
 #, kde-format
 msgid "Create solvable games only"
-msgstr "Sadece çözülebilir oyunlar oluştur"
+msgstr "Yalnızca çözülebilir oyunlar oluştur"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
 #: src/settings.ui:43
@@ -436,7 +436,7 @@ msgid ""
 msgstr ""
 "<b>Karolar kayabilir; ancak 3 yerine yalnızca 2 çizgiye bağlanabilirsiniz</"
 "b> <p>Bu seçenek oyunu neredeyse tamamı ile değiştirmektedir. Etkin "
-"olduğunda, karoları, geleneksel üçlü yerine sadece iki parçadan oluşan bir "
+"olduğunda, karoları, geleneksel üçlü yerine yalnızca iki parçadan oluşan bir "
 "satırla birleştiklerinde kaldırabilirsiniz. Yine de, eğer bulundukları satır "
 "ya da sütunun boşlukları varsa karoları bu boşluklara kaydırabilirsiniz. "
 "Kayma hareketi yapmak için, önce kayabilecek satır veya sütunun bulunduğu "
