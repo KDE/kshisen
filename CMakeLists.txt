@@ -13,12 +13,12 @@ set(KSHISEN_VERSION "${KSHISEN_BASE_VERSION}.${RELEASE_SERVICE_COMPACT_VERSION}"
 project(kshisen VERSION ${KSHISEN_VERSION})
 
 set(QT_MIN_VERSION "5.15.0")
-set(KF5_MIN_VERSION "5.91.0")
+set(KF_MIN_VERSION "5.91.0")
 
 # Found this somewhere but cannot re-find it now ... but want to investigate later, so keeping this here for now.
 #set(CXX_CLANG_TIDY ON)
 
-find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
+find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 
 if(ENABLE_CLAZY)
     set(CMAKE_CXX_COMPILER clazy)
@@ -39,7 +39,7 @@ include(ECMDeprecationSettings)
 
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Gui)
 
-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+find_package(KF5 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     Config
     Crash
