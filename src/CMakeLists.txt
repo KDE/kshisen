@@ -38,11 +38,11 @@ ecm_add_app_icon(kshisen ICONS ${ICON_SRCS})
 target_link_libraries(kshisen
     KF5KDEGames
     KF5KMahjongglib
-    KF5::CoreAddons
-    KF5::Crash
-    KF5::DBusAddons
-    KF5::I18n
-    KF5::XmlGui
+    KF${KF_MAJOR_VERSION}::CoreAddons
+    KF${KF_MAJOR_VERSION}::Crash
+    KF${KF_MAJOR_VERSION}::DBusAddons
+    KF${KF_MAJOR_VERSION}::I18n
+    KF${KF_MAJOR_VERSION}::XmlGui
     Qt${QT_MAJOR_VERSION}::Gui
 )
 
