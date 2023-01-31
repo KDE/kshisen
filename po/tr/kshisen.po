@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-20 00:42+0000\n"
-"PO-Revision-Date: 2023-01-18 22:31+0300\n"
+"PO-Revision-Date: 2023-01-31 01:19+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -168,7 +168,7 @@ msgid ""
 "Please install the KMahjongg library."
 msgstr ""
 "Öntanımlı karo kümesi yüklenirken bir hata oluştu.\n"
-"Lütfen, KMahjongg kitaplığını yükleyin."
+"Lütfen, KMahjongg kitaplığını kurun."
 
 #: src/board.cpp:98 src/board.cpp:107 src/board.cpp:113 src/board.cpp:130
 #: src/board.cpp:139 src/board.cpp:145
@@ -195,7 +195,7 @@ msgid ""
 msgstr ""
 "%1 karo kümesi yüklenirken bir hata oluştu. Öntanımlı karo seti de "
 "yüklenemedi.\n"
-"Lütfen, KMahjongg kitaplığını yükleyin."
+"Lütfen, KMahjongg kitaplığını kurun."
 
 #: src/board.cpp:129
 #, kde-format
@@ -205,7 +205,7 @@ msgid ""
 "Please install the KMahjongg library."
 msgstr ""
 "Öntanımlı arka plan yüklenirken bir hata oluştu.\n"
-"Lütfen, KMahjongg kitaplığını yükleyin."
+"Lütfen, KMahjongg kitaplığını kurun."
 
 #: src/board.cpp:138
 #, kde-format
@@ -226,7 +226,7 @@ msgid ""
 msgstr ""
 "%1 arka planı yüklenirken bir hata oluştu. Öntanımlı arka plan da "
 "yüklenemedi.\n"
-"Lütfen, KMahjongg kitaplığını yükleyin."
+"Lütfen, KMahjongg kitaplığını kurun."
 
 #: src/board.cpp:706
 #, kde-format
