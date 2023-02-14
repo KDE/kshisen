@@ -60,7 +60,7 @@ find_package(KF5KDEGames 7.3.0 REQUIRED)
 
 ecm_set_disabled_deprecation_versions(
     QT 6.4
-    KF 5.101
+    KF 5.103
 )
 
 add_subdirectory(src)
