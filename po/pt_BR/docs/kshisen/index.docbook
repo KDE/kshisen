@@ -44,9 +44,7 @@
 >Schwarzer</surname
 > <affiliation
 ><address
-><email
->schwarzer@kde.org</email
-></address
+>&Frederik.Schwarzer.mail;</address
 ></affiliation>
       </author>
       <othercredit role="reviewer"
@@ -80,9 +78,9 @@
     <legalnotice
 >&FDLNotice;</legalnotice>
     <date
->09/05/2016</date>
+>15/06/2021</date>
     <releaseinfo
->1.10 (Applications 16.04)</releaseinfo>
+>1.10 (KDE Gear 21.08)</releaseinfo>
 
     <!--Short description of this document. Do not change unless necessary!-->
     <abstract>
@@ -1171,6 +1169,17 @@
       <varlistentry>
         <term
 ><guilabel
+>Mostrar mensagem se o tabuleiro não puder mais ser resolvido</guilabel
+></term>
+        <listitem
+><para
+>Se marcado, o &kshisen; tentará analisar a solubilidade de cada posição do jogo e mostrará uma mensagem para cancelar o jogo caso não haja mais movimentos possíveis para vencer o jogo. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
 >Usar o estilo chinês: uma flor combina com qualquer outra flor, uma estação combina com qualquer outra estação</guilabel
 ></term>
         <listitem
@@ -1197,7 +1206,7 @@
 ></term>
         <listitem
 ><para
->A barra controla a dificuldade do tabuleiro (i.e., quão embaralhadas estão as peças) de <guilabel
+>A barra controla a dificuldade do tabuleiro (&ie; quão embaralhadas estão as peças) de <guilabel
 >Fácil</guilabel
 > a <guilabel
 >Difícil</guilabel
@@ -1304,9 +1313,7 @@
 >Direitos autorais do &kshisen; 2009-2012 &Frederik.Schwarzer; &Frederik.Schwarzer.mail; </para>
 
     <para
->Direitos autorais da documentação 2000 &Dirk.Doerflinger; <email
->ddoerflinger@gmx.net</email
-> </para>
+>Direitos autorais da documentação 2000 &Dirk.Doerflinger; &Dirk.Doerflinger.mail; </para>
     <para
 >Direitos autorais da documentação 2009-2010 &Frederik.Schwarzer; &Frederik.Schwarzer.mail; </para>
 
