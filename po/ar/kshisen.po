@@ -311,7 +311,7 @@ msgstr "Mauricio Piacentini"
 #: src/main.cpp:57
 #, kde-format
 msgid "KMahjonggLib integration for KDE4"
-msgstr "دمج لـKMahjonggLib لكدي4"
+msgstr "دمج لـKMahjonggLib لكِيدِي4"
 
 #: src/main.cpp:58
 #, kde-format
