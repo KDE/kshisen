@@ -37,7 +37,6 @@ ecm_add_app_icon(kshisen ICONS ${ICON_SRCS})
 
 target_link_libraries(kshisen
     KF5KDEGames
-    KF5KMahjongglib
     KF${KF_MAJOR_VERSION}::CoreAddons
     KF${KF_MAJOR_VERSION}::Crash
     KF${KF_MAJOR_VERSION}::DBusAddons
@@ -45,6 +44,11 @@ target_link_libraries(kshisen
     KF${KF_MAJOR_VERSION}::XmlGui
     Qt${QT_MAJOR_VERSION}::Gui
 )
+if (QT_MAJOR_VERSION STREQUAL "6")
+    target_link_libraries(kshisen KMahjongglib6)
+else()
+    target_link_libraries(kshisen KF5KMahjongglib)
+endif()
 
 install(TARGETS kshisen ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
