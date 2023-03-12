@@ -36,7 +36,6 @@ file(GLOB ICON_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../icons/*-apps-kshisen.png")
 ecm_add_app_icon(kshisen ICONS ${ICON_SRCS})
 
 target_link_libraries(kshisen
-    KF5KDEGames
     KF${KF_MAJOR_VERSION}::CoreAddons
     KF${KF_MAJOR_VERSION}::Crash
     KF${KF_MAJOR_VERSION}::DBusAddons
@@ -45,9 +44,9 @@ target_link_libraries(kshisen
     Qt${QT_MAJOR_VERSION}::Gui
 )
 if (QT_MAJOR_VERSION STREQUAL "6")
-    target_link_libraries(kshisen KMahjongglib6)
+    target_link_libraries(kshisen KMahjongglib6 KDEGames6)
 else()
-    target_link_libraries(kshisen KF5KMahjongglib)
+    target_link_libraries(kshisen KF5KMahjongglib KF5KDEGames)
 endif()
 
 install(TARGETS kshisen ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
