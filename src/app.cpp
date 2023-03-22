@@ -98,7 +98,7 @@ void App::setupActions()
     KStandardGameAction::gameNew(this, &App::invokeNewGame, actionCollection());
     KStandardGameAction::restart(this, &App::restartGame, actionCollection());
     KStandardGameAction::pause(this, &App::togglePause, actionCollection());
-    KStandardGameAction::highscores(this, &App::showHighscores, actionCollection());
+    KStandardGameAction::highscores(this, &App::showHighScores, actionCollection());
     KStandardGameAction::quit(this, &App::close, actionCollection());
 
     // Move
@@ -342,7 +342,7 @@ void App::setCheatModeEnabled(bool enabled)
     m_gameCheatLabel->setVisible(enabled);
 }
 
-void App::showHighscores()
+void App::showHighScores()
 {
     KScoreDialog scoreDialog(KScoreDialog::Name | KScoreDialog::Time, this);
     scoreDialog.addField(KScoreDialog::Custom1, i18n("Gravity"), QStringLiteral("gravity"));

@@ -89,13 +89,13 @@ private Q_SLOTS:
 
     /** Shows a hint and sets cheat flag.
      * The Hint action should set the cheat flag, so the user cannot end up in
-     * the highscore dialog by having been told what to do. :)
+     * the high score dialog by having been told what to do. :)
      */
     void hint();
-    /// Calls showHighscore without arguments
+    /// Calls KShortcutsDialog without arguments
     void keyBindings();
-    /// Shows the highscore table
-    void showHighscores(); // const?
+    /// Shows the high score table
+    void showHighScores(); // const?
 
 Q_SIGNALS:
     /** Invokes the creation of a new game.
