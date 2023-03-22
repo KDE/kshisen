@@ -302,14 +302,14 @@ void App::updateCheatDisplay()
 
 int App::score(int x, int y, int seconds, bool gravity) const
 {
-    auto const ntiles = static_cast<double>(x * y);
-    auto const tilespersec = ntiles / static_cast<double>(seconds);
+    auto const nTiles = static_cast<double>(x * y);
+    auto const tilesPerSec = nTiles / static_cast<double>(seconds);
 
-    auto const sizebonus = std::sqrt(ntiles / static_cast<double>(14.0 * 6.0));
-    auto const points = tilespersec / 0.14 * 100.0;
+    auto const sizeBonus = std::sqrt(nTiles / static_cast<double>(14.0 * 6.0));
+    auto const points = tilesPerSec / 0.14 * 100.0;
     auto const gravityBonus = gravity ? 2.0 : 1.0;
 
-    return static_cast<int>(points * sizebonus * gravityBonus);
+    return static_cast<int>(points * sizeBonus * gravityBonus);
 }
 
 void App::notifySelectATile()
