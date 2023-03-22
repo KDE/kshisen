@@ -66,22 +66,22 @@ void Board::loadSettings()
                 // we're good the default was loaded
             } else {
                 KMessageBox::error(this
-                    , i18nc("%1 is a path to a tileset file", "An error occurred when loading the default tileset.\nPlease install the KMahjongg library.")
+                    , i18nc("%1 is a path to a tile set file", "An error occurred when loading the default tile set.\nPlease install the KMahjongg library.")
                     , i18n("Error Loading Tiles")
                 );
             }
         } else {
-            // This is when there was a tileset and has disappear, maybe the user or somene else removed it
+            // This is when there was a tile set and has disappear, maybe the user or someone else removed it
             if (tileSetBeforeLoad != tileSetAfterLoad) {
-                // warn the user tileset could not be loaded and the default one was loaded
+                // warn the user tile set could not be loaded and the default one was loaded
                 KMessageBox::information(this
-                           , i18nc("%1 is a path to a tileset file", "An error occurred when loading the tileset %1. The default tileset has been loaded.", tileSetBeforeLoad)
+                           , i18nc("%1 is a path to a tile set file", "An error occurred when loading the tile set %1. The default tile set has been loaded.", tileSetBeforeLoad)
                            , i18n("Error Loading Tiles")
                           );
             } else {
-                // neither the user tileset nor the default could be loaded
+                // neither the user tile set nor the default could be loaded
                 KMessageBox::error(this
-                           , i18nc("%1 is a path to a tileset file", "An error occurred when loading the tileset %1. The default tileset could also not be loaded.\nPlease install the KMahjongg library.", tileSetBeforeLoad)
+                           , i18nc("%1 is a path to a tile set file", "An error occurred when loading the tile set %1. The default tile set could also not be loaded.\nPlease install the KMahjongg library.", tileSetBeforeLoad)
                            , i18n("Error Loading Tiles")
                           );
             }
@@ -103,15 +103,15 @@ void Board::loadSettings()
                 );
             }
         } else {
-            // This is when there was a tileset and has disappear, maybe the user or somene else removed it
+            // This is when there was a background and has disappear, maybe the user or someone else removed it
             if (backgroundBeforeLoad != backgroundAfterLoad) {
-                // warn the user tileset could not be loaded and the default one was loaded
+                // warn the user background could not be loaded and the default one was loaded
                 KMessageBox::information(this
                            , i18nc("%1 is a path to a background image file", "An error occurred when loading the background %1. The default background has been loaded.", backgroundBeforeLoad)
                            , i18n("Error Loading Tiles")
                           );
             } else {
-                // neither the user tileset nor the default could be loaded
+                // neither the user background nor the default could be loaded
                 KMessageBox::error(this
                            , i18nc("%1 is a path to a background image  file", "An error occurred when loading the background %1. The default background could also not be loaded.\nPlease install the KMahjongg library.", backgroundBeforeLoad)
                            , i18n("Error Loading Tiles")
@@ -288,7 +288,7 @@ void Board::mousePressEvent(QMouseEvent * e)
     // Clicking on one of the already connected tiles would have selected
     // it before removing it. This is more a workaround than a proper fix
     // but I have to understand the usage of m_paintConnection first in
-    // order to consider its reusage here. (schwarzer)
+    // order to consider its reuse here. (schwarzer)
     if (m_paintInProgress) {
         return;
     }
@@ -1478,7 +1478,7 @@ void Board::undo()
             qCDebug(KSHISEN_General) << "[undo] gravity from slide s1(" << move->slideX1() << "," << move->slideY1() << ")=>s2(" << move->slideX2() << "," << move->slideY2() << ") matching (" << move->x1() << "," << move->y1() << ")=>(" << move->x2() << "," << move->y2() << ")";
 
             // horizontal slide
-            // because tiles that slides horizontaly may fall down
+            // because tiles that slides horizontally may fall down
             // in columns different than the taken tiles columns
             // we need to take them back up then undo the slide
             if (move->slideY1() == move->slideY2()) {

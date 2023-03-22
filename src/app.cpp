@@ -256,7 +256,7 @@ void App::slotEndOfGame()
         scoreDialog->setConfigGroup(qMakePair(QByteArray(configGroup.toUtf8()), configGroup));
 
         if (m_board->hasCheated()) {
-            auto const message = i18n("\nYou could have been in the highscores\nif you did not use Undo or Hint.\nTry without them next time.");
+            auto const message = i18n("\nYou could have been in the high scores\nif you did not use Undo or Hint.\nTry without them next time.");
             KMessageBox::information(this, message, i18n("End of Game"));
         } else {
             if (scoreDialog->addScore(scoreInfo) > 0) {
@@ -365,7 +365,7 @@ void App::showSettingsDialog()
         return;
     }
 
-    //Use the classes exposed by LibKmahjongg for our configuration dialog
+    //Use the classes exposed by LibKMahjongg for our configuration dialog
     auto dialog = new KMahjonggConfigDialog(this, QStringLiteral("settings"), Prefs::self());
     dialog->addPage(new Settings(nullptr), i18n("General"), QStringLiteral("games-config-options"));
     dialog->addTilesetPage();
