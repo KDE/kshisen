@@ -307,11 +307,9 @@ int App::score(int x, int y, int seconds, bool gravity) const
 
     auto const sizebonus = std::sqrt(ntiles / static_cast<double>(14.0 * 6.0));
     auto const points = tilespersec / 0.14 * 100.0;
+    auto const gravityBonus = gravity ? 2.0 : 1.0;
 
-    if (gravity) {
-        return static_cast<int>(2.0 * points * sizebonus);
-    }
-    return static_cast<int>(points * sizebonus);
+    return static_cast<int>(points * sizebonus * gravityBonus);
 }
 
 void App::notifySelectATile()
