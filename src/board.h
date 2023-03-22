@@ -288,48 +288,48 @@ private: // functions
     bool isTileSeason(int tile) const;
 
 private:
-    KGameClock m_gameClock;
+    KGameClock m_gameClock{};
 
-    KMahjonggTileset m_tiles;
-    KMahjonggBackground m_background;
+    KMahjonggTileset m_tiles{};
+    KMahjonggBackground m_background{};
 
-    QRandomGenerator m_random;
+    QRandomGenerator m_random{};
 
-    std::list<std::unique_ptr<Move>> m_undo; ///< Undo history
-    std::list<std::unique_ptr<Move>> m_redo; ///< Redo history
+    std::list<std::unique_ptr<Move>> m_undo{}; ///< Undo history
+    std::list<std::unique_ptr<Move>> m_redo{}; ///< Redo history
 
-    int m_markX;
-    int m_markY;
-    Path m_connection;
-    PossibleMoves m_possibleMoves;
-    std::vector<int> m_field; ///< Matrix holding the game board grid
-    int m_xTiles;
-    int m_yTiles;
-    int m_delay;
-    int m_level;
-    int m_shuffle;
+    int m_markX{0};
+    int m_markY{0};
+    Path m_connection{};
+    PossibleMoves m_possibleMoves{};
+    std::vector<int> m_field{}; ///< Matrix holding the game board grid
+    int m_xTiles{};
+    int m_yTiles{};
+    int m_delay{};
+    int m_level{};
+    int m_shuffle{};
 
     // The game can be in one of the following states.
     enum class GameState { Normal,
                            Paused,
                            Stuck,
                            Over };
-    GameState m_gameState;
-    bool m_cheat; ///< Whether the cheat mode is set
+    GameState m_gameState{GameState::Normal};
+    bool m_cheat{}; ///< Whether the cheat mode is set
 
-    bool m_gravityFlag; ///< Whether game is played with gravity
-    bool m_solvableFlag; ///< Whether game is solvable
-    bool m_showUnsolvableMessageFlag; ///< Whether "game unsolvable" message is shown
-    bool m_chineseStyleFlag; ///< Whether game follows Chinese rules
-    bool m_tilesCanSlideFlag; ///< Whether tiles can slide when connecting
+    bool m_gravityFlag{true}; ///< Whether game is played with gravity
+    bool m_solvableFlag{}; ///< Whether game is solvable
+    bool m_showUnsolvableMessageFlag{}; ///< Whether "game unsolvable" message is shown
+    bool m_chineseStyleFlag{}; ///< Whether game follows Chinese rules
+    bool m_tilesCanSlideFlag{}; ///< Whether tiles can slide when connecting
 
-    int m_highlightedTile;
+    int m_highlightedTile{-1};
 
-    bool m_paintConnection;
-    bool m_paintPossibleMoves;
-    bool m_paintInProgress;
-    TilePos m_tileRemove1;
-    TilePos m_tileRemove2;
+    bool m_paintConnection{};
+    bool m_paintPossibleMoves{};
+    bool m_paintInProgress{};
+    TilePos m_tileRemove1{};
+    TilePos m_tileRemove2{};
     KgSound m_soundPick; ///< Sound object to play when tile is selected
     KgSound m_soundFall; ///< Sound object to play when tiles fall down in gravity mode
 };

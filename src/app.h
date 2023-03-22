@@ -125,11 +125,11 @@ private:
     void setCheatModeEnabled(bool enabled);
 
 private:
-    QLabel * m_gameTipLabel; ///< Status bar area for game tips
-    QLabel * m_gameTimerLabel; ///< Status bar area for the timer
-    QLabel * m_gameTilesLabel; ///< Status bar area for the tile counter
-    QLabel * m_gameCheatLabel; ///< Status bar area for the cheat mode
-    Board * m_board; ///< Holds the game board
+    QLabel * m_gameTipLabel{nullptr}; ///< Status bar area for game tips
+    QLabel * m_gameTimerLabel{nullptr}; ///< Status bar area for the timer
+    QLabel * m_gameTilesLabel{nullptr}; ///< Status bar area for the tile counter
+    QLabel * m_gameCheatLabel{nullptr}; ///< Status bar area for the cheat mode
+    Board * m_board{nullptr}; ///< Holds the game board
 };
 } // namespace KShisen
 
