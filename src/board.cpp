@@ -34,9 +34,9 @@ namespace KShisen
 #define SEASONS_START 28
 #define FLOWERS_START 39
 
-static std::array<int, 5> constexpr s_delay {{1000, 750, 500, 250, 125}};
-static std::array<int, 6> constexpr s_sizeX {{14, 16, 18, 24, 26, 30}};
-static std::array<int, 6> constexpr s_sizeY {{6, 9, 8, 12, 14, 16}};
+static std::array constexpr s_delay {1000, 750, 500, 250, 125};
+static std::array constexpr s_sizeX {14, 16, 18, 24, 26, 30};
+static std::array constexpr s_sizeY {6, 9, 8, 12, 14, 16};
 
 Board::Board(QWidget * parent)
     : QWidget(parent)
@@ -1208,8 +1208,8 @@ int Board::findPath(TilePos tilePos1, TilePos tilePos2, PossibleMoves & possible
     }
 
     // Find paths of 3 segments
-    std::array<int, 4> constexpr dx {{1, 0, -1, 0}};
-    std::array<int, 4> constexpr dy {{0, 1, 0, -1}};
+    std::array constexpr dx {1, 0, -1, 0};
+    std::array constexpr dy {0, 1, 0, -1};
 
     for (auto i = 0; i < 4; ++i) {
         auto tempX = tilePos1.x() + dx.at(i);
@@ -1733,7 +1733,7 @@ int Board::lineWidth() const
 
 bool Board::pathFoundBetweenMatchingTiles(PossibleMoves & possibleMoves) const
 {
-    std::array<short, Board::nTiles> done{}; // Appended {} initialises with zeroes here.
+    std::array<short, Board::nTiles> done{};
 
     for (decltype(xTiles()) x = 0; x < xTiles(); ++x) {
         for (decltype(yTiles()) y = 0; y < yTiles(); ++y) {
