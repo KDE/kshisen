@@ -109,7 +109,7 @@ Q_SIGNALS:
 
 private:
     /// Calculates the scores
-    int score(int x, int y, int seconds, bool gravity) const;
+    static int score(int x, int y, int seconds, bool gravity);
 
     /** Sets up the status bar areas.
      * There are four areas in the status bar:

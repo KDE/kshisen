@@ -299,7 +299,7 @@ void App::updateCheatDisplay()
     m_gameCheatLabel->setVisible(m_board->hasCheated());
 }
 
-int App::score(int x, int y, int seconds, bool gravity) const
+int App::score(int x, int y, int seconds, bool gravity)
 {
     auto const nTiles = static_cast<double>(x * y);
     auto const tilesPerSec = nTiles / static_cast<double>(seconds);
