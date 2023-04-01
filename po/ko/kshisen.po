@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"POT-Creation-Date: 2023-04-01 00:48+0000\n"
 "PO-Revision-Date: 2022-04-16 23:04+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -28,58 +28,63 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde@peremen.name"
 
-#: src/app.cpp:86 src/app.cpp:324
+#: src/app.cpp:81 src/app.cpp:317
 #, kde-format
 msgid "Select a tile"
 msgstr "타일 선택"
 
-#: src/app.cpp:89
+#: src/app.cpp:84
 #, kde-format
 msgid "Time: 0:00:00"
 msgstr "시간: 0:00:00"
 
-#: src/app.cpp:92
+#: src/app.cpp:87
 #, kde-format
 msgid "Removed: 0/0"
 msgstr "제거됨: 0/0"
 
-#: src/app.cpp:95
+#: src/app.cpp:90
 #, kde-format
 msgid "Cheat mode"
 msgstr "치트 모드"
 
-#: src/app.cpp:114
+#: src/app.cpp:109
 #, kde-format
 msgid "Play Sounds"
 msgstr "소리 재생"
 
-#: src/app.cpp:244
+#: src/app.cpp:239
 #, kde-format
 msgctxt "time string: hh:mm:ss"
 msgid "%1:%2:%3"
 msgstr "%1:%2:%3"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_Gravity)
-#: src/app.cpp:253 src/app.cpp:356 src/settings.ui:26
+#: src/app.cpp:248 src/app.cpp:349 src/settings.ui:26
 #, kde-format
 msgid "Gravity"
 msgstr "중력"
 
-#: src/app.cpp:256
+#: src/app.cpp:251
 #, kde-format
 msgid "Yes"
 msgstr "예"
 
-#: src/app.cpp:258
+#: src/app.cpp:253
 #, kde-format
 msgid "No"
 msgstr "아니요"
 
-#: src/app.cpp:264
-#, kde-format
+#: src/app.cpp:259
+#, fuzzy, kde-format
+#| msgid ""
+#| "\n"
+#| "You could have been in the highscores\n"
+#| "if you did not use Undo or Hint.\n"
+#| "Try without them next time."
 msgid ""
 "\n"
-"You could have been in the highscores\n"
+"You could have been in the high scores\n"
 "if you did not use Undo or Hint.\n"
 "Try without them next time."
 msgstr ""
@@ -88,12 +93,12 @@ msgstr ""
 "최고 점수를 기록했을 것입니다.\n"
 "다음 기회에 다시 도전하십시오."
 
-#: src/app.cpp:265 src/app.cpp:273
+#: src/app.cpp:260 src/app.cpp:268
 #, kde-format
 msgid "End of Game"
 msgstr "게임 끝"
 
-#: src/app.cpp:268
+#: src/app.cpp:263
 #, kde-format
 msgid ""
 "Congratulations!\n"
@@ -102,83 +107,96 @@ msgstr ""
 "축하합니다!\n"
 "최고 기록에 등록되었습니다."
 
-#: src/app.cpp:272
+#: src/app.cpp:267
 #, kde-format
 msgctxt "%1 - time string like hh:mm:ss"
 msgid "You made it in %1"
 msgstr "%1에 끝냈습니다"
 
-#: src/app.cpp:288
+#: src/app.cpp:283
 #, kde-format
 msgid "Your time: %1:%2:%3 %4"
 msgstr "진행 시간: %1:%2:%3 %4"
 
-#: src/app.cpp:292
+#: src/app.cpp:287
 #, kde-format
 msgid "(Paused) "
 msgstr "(일시 정지됨) "
 
-#: src/app.cpp:300
+#: src/app.cpp:295
 #, kde-format
 msgid "Removed: %1/%2 "
 msgstr "제거됨: %1/%2"
 
-#: src/app.cpp:329
+#: src/app.cpp:322
 #, kde-format
 msgid "Select a matching tile"
 msgstr "일치하는 타일 선택"
 
-#: src/app.cpp:334
+#: src/app.cpp:327
 #, kde-format
 msgid "Select the move you want by clicking on the blue line"
 msgstr "파란 선을 클릭해서 이동할 경로를 선택하십시오"
 
-#: src/app.cpp:339
+#: src/app.cpp:332
 #, kde-format
 msgid "This tile did not match the one you selected"
 msgstr "선택한 것과 타일이 일치하지 않습니다"
 
-#: src/app.cpp:344
+#: src/app.cpp:337
 #, kde-format
 msgid "You cannot make this move"
 msgstr "이렇게 이동할 수 없습니다"
 
-#: src/app.cpp:375
+#: src/app.cpp:368
 #, kde-format
 msgid "General"
 msgstr "일반"
 
-#: src/board.cpp:97
-#, kde-format
-msgctxt "%1 is a path to a tileset file"
+#: src/board.cpp:69
+#, fuzzy, kde-format
+#| msgctxt "%1 is a path to a tileset file"
+#| msgid ""
+#| "An error occurred when loading the default tileset.\n"
+#| "Please install the KMahjongg library."
+msgctxt "%1 is a path to a tile set file"
 msgid ""
-"An error occurred when loading the default tileset.\n"
+"An error occurred when loading the default tile set.\n"
 "Please install the KMahjongg library."
 msgstr ""
 "타일 모음을 불러오는 중 오류가 발생했습니다.\n"
 "KMahjongg 라이브러리를 설치하십시오."
 
-#: src/board.cpp:98 src/board.cpp:107 src/board.cpp:113 src/board.cpp:130
-#: src/board.cpp:139 src/board.cpp:145
+#: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
+#: src/board.cpp:111 src/board.cpp:117
 #, kde-format
 msgid "Error Loading Tiles"
 msgstr "타일을 불러오는 중 오류 발생"
 
-#: src/board.cpp:106
-#, kde-format
-msgctxt "%1 is a path to a tileset file"
+#: src/board.cpp:78
+#, fuzzy, kde-format
+#| msgctxt "%1 is a path to a tileset file"
+#| msgid ""
+#| "An error occurred when loading the tileset %1. The default tileset has "
+#| "been loaded."
+msgctxt "%1 is a path to a tile set file"
 msgid ""
-"An error occurred when loading the tileset %1. The default tileset has been "
-"loaded."
+"An error occurred when loading the tile set %1. The default tile set has "
+"been loaded."
 msgstr ""
 "타일 모음 %1을(를) 불러오는 중 오류가 발생했습니다.\n"
 "KMahjongg 라이브러리를 설치하십시오."
 
-#: src/board.cpp:112
-#, kde-format
-msgctxt "%1 is a path to a tileset file"
+#: src/board.cpp:84
+#, fuzzy, kde-format
+#| msgctxt "%1 is a path to a tileset file"
+#| msgid ""
+#| "An error occurred when loading the tileset %1. The default tileset could "
+#| "also not be loaded.\n"
+#| "Please install the KMahjongg library."
+msgctxt "%1 is a path to a tile set file"
 msgid ""
-"An error occurred when loading the tileset %1. The default tileset could "
+"An error occurred when loading the tile set %1. The default tile set could "
 "also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
@@ -186,7 +204,7 @@ msgstr ""
 "수도 없습니다.\n"
 "KMahjongg 라이브러리를 설치하십시오."
 
-#: src/board.cpp:129
+#: src/board.cpp:101
 #, kde-format
 msgctxt "%1 is a path to a background image file"
 msgid ""
@@ -196,7 +214,7 @@ msgstr ""
 "기본 배경 그림을 불러오는 중 오류가 발생했습니다.\n"
 "KMahjongg 라이브러리를 설치하십시오."
 
-#: src/board.cpp:138
+#: src/board.cpp:110
 #, kde-format
 msgctxt "%1 is a path to a background image file"
 msgid ""
@@ -206,7 +224,7 @@ msgstr ""
 "배경 그림 %1을(를) 불러오는 중 오류가 발생했습니다. 기본 배경 그림을 불러왔습"
 "니다."
 
-#: src/board.cpp:144
+#: src/board.cpp:116
 #, kde-format
 msgctxt "%1 is a path to a background image  file"
 msgid ""
@@ -218,7 +236,7 @@ msgstr ""
 "수도 없습니다.\n"
 "KMahjongg 라이브러리를 설치하십시오."
 
-#: src/board.cpp:706
+#: src/board.cpp:678
 #, kde-format
 msgid ""
 "Game Paused\n"
@@ -227,7 +245,7 @@ msgstr ""
 "일시 정지되었습니다\n"
 "클릭하면 다시 시작합니다."
 
-#: src/board.cpp:710
+#: src/board.cpp:682
 #, kde-format
 msgid ""
 "Game Stuck\n"
@@ -236,7 +254,7 @@ msgstr ""
 "갇혔습니다\n"
 "더 이상 움직일 수 없습니다."
 
-#: src/board.cpp:713
+#: src/board.cpp:685
 #, kde-format
 msgid ""
 "Game Over\n"

@@ -1,7 +1,7 @@
 # translation of kshisen.po to Slovenian
 # Translation of kshisen.po to Slovenian
 # Copyright (C) 2001, 2003, 2004, 2006, 2007 Free Software Foundation, Inc.
-# $Id: kshisen.po 1634169 2022-09-20 01:34:14Z scripty $
+# $Id: kshisen.po 1648503 2023-04-01 01:32:41Z scripty $
 # $Source$
 #
 # Marko Samastur <markos@elite.org>, 1999.
@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"POT-Creation-Date: 2023-04-01 00:48+0000\n"
 "PO-Revision-Date: 2022-02-25 09:06+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -39,58 +39,63 @@ msgstr ""
 "markos@elite.org,primoz.peterlin@biofiz.mf.uni-lj.si,gregor.rakar@kiss.si,"
 "mrepinc@gmail.com,andrejm@ubuntu.si"
 
-#: src/app.cpp:86 src/app.cpp:324
+#: src/app.cpp:81 src/app.cpp:317
 #, kde-format
 msgid "Select a tile"
 msgstr "Izberite ploščico"
 
-#: src/app.cpp:89
+#: src/app.cpp:84
 #, kde-format
 msgid "Time: 0:00:00"
 msgstr "Čas: 0:00:00"
 
-#: src/app.cpp:92
+#: src/app.cpp:87
 #, kde-format
 msgid "Removed: 0/0"
 msgstr "Odstranjenih: 0/0"
 
-#: src/app.cpp:95
+#: src/app.cpp:90
 #, kde-format
 msgid "Cheat mode"
 msgstr "Goljufivi način"
 
-#: src/app.cpp:114
+#: src/app.cpp:109
 #, kde-format
 msgid "Play Sounds"
 msgstr "Predvajaj zvoke"
 
-#: src/app.cpp:244
+#: src/app.cpp:239
 #, kde-format
 msgctxt "time string: hh:mm:ss"
 msgid "%1:%2:%3"
 msgstr "%1:%2:%3"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_Gravity)
-#: src/app.cpp:253 src/app.cpp:356 src/settings.ui:26
+#: src/app.cpp:248 src/app.cpp:349 src/settings.ui:26
 #, kde-format
 msgid "Gravity"
 msgstr "Težnost"
 
-#: src/app.cpp:256
+#: src/app.cpp:251
 #, kde-format
 msgid "Yes"
 msgstr "Da"
 
-#: src/app.cpp:258
+#: src/app.cpp:253
 #, kde-format
 msgid "No"
 msgstr "Ne"
 
-#: src/app.cpp:264
-#, kde-format
+#: src/app.cpp:259
+#, fuzzy, kde-format
+#| msgid ""
+#| "\n"
+#| "You could have been in the highscores\n"
+#| "if you did not use Undo or Hint.\n"
+#| "Try without them next time."
 msgid ""
 "\n"
-"You could have been in the highscores\n"
+"You could have been in the high scores\n"
 "if you did not use Undo or Hint.\n"
 "Try without them next time."
 msgstr ""
@@ -99,12 +104,12 @@ msgstr ""
 "če ne bi uporabljali razveljavljanja ali namigov.\n"
 "Naslednjič poizkusite brez tega."
 
-#: src/app.cpp:265 src/app.cpp:273
+#: src/app.cpp:260 src/app.cpp:268
 #, kde-format
 msgid "End of Game"
 msgstr "Konec igre"
 
-#: src/app.cpp:268
+#: src/app.cpp:263
 #, kde-format
 msgid ""
 "Congratulations!\n"
@@ -113,83 +118,96 @@ msgstr ""
 "Čestitke!\n"
 "Prišli ste med najboljše igralce."
 
-#: src/app.cpp:272
+#: src/app.cpp:267
 #, kde-format
 msgctxt "%1 - time string like hh:mm:ss"
 msgid "You made it in %1"
 msgstr "Uspelo vam je v %1"
 
-#: src/app.cpp:288
+#: src/app.cpp:283
 #, kde-format
 msgid "Your time: %1:%2:%3 %4"
 msgstr "Vaš čas: %1:%2:%3 %4"
 
-#: src/app.cpp:292
+#: src/app.cpp:287
 #, kde-format
 msgid "(Paused) "
 msgstr "(V premoru) "
 
-#: src/app.cpp:300
+#: src/app.cpp:295
 #, kde-format
 msgid "Removed: %1/%2 "
 msgstr "Odstranjeno: %1/%2 "
 
-#: src/app.cpp:329
+#: src/app.cpp:322
 #, kde-format
 msgid "Select a matching tile"
 msgstr "Izberite ujemajočo ploščico"
 
-#: src/app.cpp:334
+#: src/app.cpp:327
 #, kde-format
 msgid "Select the move you want by clicking on the blue line"
 msgstr "Izberite želeno potezo s klikom na modro črto"
 
-#: src/app.cpp:339
+#: src/app.cpp:332
 #, kde-format
 msgid "This tile did not match the one you selected"
 msgstr "Ta ploščica se ne ujema s tisto, ki ste jo izbrali"
 
-#: src/app.cpp:344
+#: src/app.cpp:337
 #, kde-format
 msgid "You cannot make this move"
 msgstr "Te poteze ni mogoče narediti"
 
-#: src/app.cpp:375
+#: src/app.cpp:368
 #, kde-format
 msgid "General"
 msgstr "Splošno"
 
-#: src/board.cpp:97
-#, kde-format
-msgctxt "%1 is a path to a tileset file"
+#: src/board.cpp:69
+#, fuzzy, kde-format
+#| msgctxt "%1 is a path to a tileset file"
+#| msgid ""
+#| "An error occurred when loading the default tileset.\n"
+#| "Please install the KMahjongg library."
+msgctxt "%1 is a path to a tile set file"
 msgid ""
-"An error occurred when loading the default tileset.\n"
+"An error occurred when loading the default tile set.\n"
 "Please install the KMahjongg library."
 msgstr ""
 "Prišlo je do napake med nalaganjem privzetega nabora ploščic.\n"
 "Namestite knjižnico KMahjongg."
 
-#: src/board.cpp:98 src/board.cpp:107 src/board.cpp:113 src/board.cpp:130
-#: src/board.cpp:139 src/board.cpp:145
+#: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
+#: src/board.cpp:111 src/board.cpp:117
 #, kde-format
 msgid "Error Loading Tiles"
 msgstr "Napaka med nalaganjem nabora ploščic"
 
-#: src/board.cpp:106
-#, kde-format
-msgctxt "%1 is a path to a tileset file"
+#: src/board.cpp:78
+#, fuzzy, kde-format
+#| msgctxt "%1 is a path to a tileset file"
+#| msgid ""
+#| "An error occurred when loading the tileset %1. The default tileset has "
+#| "been loaded."
+msgctxt "%1 is a path to a tile set file"
 msgid ""
-"An error occurred when loading the tileset %1. The default tileset has been "
-"loaded."
+"An error occurred when loading the tile set %1. The default tile set has "
+"been loaded."
 msgstr ""
 "Prišlo je do napake med nalaganjem nabora ploščic %1. Naložen je bil "
 "privzeti nabor ploščic."
 
-#: src/board.cpp:112
-#, kde-format
-msgctxt "%1 is a path to a tileset file"
+#: src/board.cpp:84
+#, fuzzy, kde-format
+#| msgctxt "%1 is a path to a tileset file"
+#| msgid ""
+#| "An error occurred when loading the tileset %1. The default tileset could "
+#| "also not be loaded.\n"
+#| "Please install the KMahjongg library."
+msgctxt "%1 is a path to a tile set file"
 msgid ""
-"An error occurred when loading the tileset %1. The default tileset could "
+"An error occurred when loading the tile set %1. The default tile set could "
 "also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
@@ -197,7 +215,7 @@ msgstr ""
 "ploščic ni bilo mogoče naložiti.\n"
 "Namestite knjižnico KMahjongg."
 
-#: src/board.cpp:129
+#: src/board.cpp:101
 #, kde-format
 msgctxt "%1 is a path to a background image file"
 msgid ""
@@ -207,7 +225,7 @@ msgstr ""
 "Med nalaganjem ozadja je prišlo do napake.\n"
 "Namestite knjižnico KMahjongg."
 
-#: src/board.cpp:138
+#: src/board.cpp:110
 #, kde-format
 msgctxt "%1 is a path to a background image file"
 msgid ""
@@ -217,7 +235,7 @@ msgstr ""
 "Med nalaganjem ozadja %1 je prišlo do napake. Naloženo je bilo privzeto "
 "ozadje."
 
-#: src/board.cpp:144
+#: src/board.cpp:116
 #, kde-format
 msgctxt "%1 is a path to a background image  file"
 msgid ""
@@ -229,7 +247,7 @@ msgstr ""
 "mogoče naložiti.\n"
 "Namestite knjižnico KMahjongg."
 
-#: src/board.cpp:706
+#: src/board.cpp:678
 #, kde-format
 msgid ""
 "Game Paused\n"
@@ -238,7 +256,7 @@ msgstr ""
 "Igra je v premoru.\n"
 "Kliknite za nadaljevanje."
 
-#: src/board.cpp:710
+#: src/board.cpp:682
 #, kde-format
 msgid ""
 "Game Stuck\n"
@@ -247,7 +265,7 @@ msgstr ""
 "Igra ni rešljiva.\n"
 "Nobena poteza ni več mogoča."
 
-#: src/board.cpp:713
+#: src/board.cpp:685
 #, kde-format
 msgid ""
 "Game Over\n"
