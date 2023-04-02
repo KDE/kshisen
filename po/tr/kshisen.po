@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-01 00:48+0000\n"
-"PO-Revision-Date: 2023-01-31 21:45+0300\n"
+"PO-Revision-Date: 2023-04-01 12:05+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -88,12 +88,7 @@ msgid "No"
 msgstr "Hayır"
 
 #: src/app.cpp:259
-#, fuzzy, kde-format
-#| msgid ""
-#| "\n"
-#| "You could have been in the highscores\n"
-#| "if you did not use Undo or Hint.\n"
-#| "Try without them next time."
+#, kde-format
 msgid ""
 "\n"
 "You could have been in the high scores\n"
@@ -101,9 +96,9 @@ msgid ""
 "Try without them next time."
 msgstr ""
 "\n"
-"Geri Alma ya da Hile kullanmasaydınız\n"
+"Geri Al veya İpucu kullanmasaydınız\n"
 "Puan tablosunda yer alabilirdiniz.\n"
-"Bir dahaki sefere bunları kullanmadan deneyin."
+"Bir sonraki oyunda bunları kullanmadan deneyin."
 
 #: src/app.cpp:260 src/app.cpp:268
 #, kde-format
@@ -138,7 +133,7 @@ msgstr "(Duraklatıldı) "
 #: src/app.cpp:295
 #, kde-format
 msgid "Removed: %1/%2 "
-msgstr "Silindi: %1/%2 "
+msgstr "Kaldırılan: %1/%2 "
 
 #: src/app.cpp:322
 #, kde-format
@@ -166,18 +161,14 @@ msgid "General"
 msgstr "Genel"
 
 #: src/board.cpp:69
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the default tileset.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the default tile set.\n"
 "Please install the KMahjongg library."
 msgstr ""
 "Öntanımlı karo kümesi yüklenirken bir hata oluştu.\n"
-"Lütfen, KMahjongg kitaplığını kurun."
+"Lütfen KMahjongg kitaplığını kurun."
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
 #: src/board.cpp:111 src/board.cpp:117
@@ -186,11 +177,7 @@ msgid "Error Loading Tiles"
 msgstr "Karolar Yüklenirken Hata"
 
 #: src/board.cpp:78
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset %1. The default tileset has "
-#| "been loaded."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the tile set %1. The default tile set has "
@@ -199,12 +186,7 @@ msgstr ""
 "%1 karo kümesi yüklenirken bir hata oluştu. Öntanımlı karo kümesi yüklendi."
 
 #: src/board.cpp:84
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset %1. The default tileset could "
-#| "also not be loaded.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the tile set %1. The default tile set could "
@@ -213,7 +195,7 @@ msgid ""
 msgstr ""
 "%1 karo kümesi yüklenirken bir hata oluştu. Öntanımlı karo seti de "
 "yüklenemedi.\n"
-"Lütfen, KMahjongg kitaplığını kurun."
+"Lütfen KMahjongg kitaplığını kurun."
 
 #: src/board.cpp:101
 #, kde-format
@@ -223,7 +205,7 @@ msgid ""
 "Please install the KMahjongg library."
 msgstr ""
 "Öntanımlı arka plan yüklenirken bir hata oluştu.\n"
-"Lütfen, KMahjongg kitaplığını kurun."
+"Lütfen KMahjongg kitaplığını kurun."
 
 #: src/board.cpp:110
 #, kde-format
@@ -244,7 +226,7 @@ msgid ""
 msgstr ""
 "%1 arka planı yüklenirken bir hata oluştu. Öntanımlı arka plan da "
 "yüklenemedi.\n"
-"Lütfen, KMahjongg kitaplığını kurun."
+"Lütfen KMahjongg kitaplığını kurun."
 
 #: src/board.cpp:678
 #, kde-format
@@ -545,34 +527,34 @@ msgstr "Tahta Boyutu"
 #: src/settings.ui:236
 #, kde-format
 msgid "14x6"
-msgstr "14x6"
+msgstr "14 x 6"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel9)
 #: src/settings.ui:256
 #, kde-format
 msgid "16x9"
-msgstr "16x9"
+msgstr "16 x 9"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel7)
 #: src/settings.ui:279
 #, kde-format
 msgid "18x8"
-msgstr "18x8"
+msgstr "18 x 8"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel10)
 #: src/settings.ui:302
 #, kde-format
 msgid "24x12"
-msgstr "24x12"
+msgstr "24 x 12"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel11)
 #: src/settings.ui:325
 #, kde-format
 msgid "26x14"
-msgstr "26x14"
+msgstr "26 x 14"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel12)
 #: src/settings.ui:348
 #, kde-format
 msgid "30x16"
-msgstr "30x16"
+msgstr "30 x 16"

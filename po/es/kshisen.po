@@ -1,22 +1,22 @@
 # translation of kshisen.po to Español
 # traducción de kshisen.po a Español
 # Sofia Priego <spriego@darksylvania.net>, %Y.
+# Sofía Priego <spriego@darksylvania.net>, %Y.
 # Miguel Revilla Rodríguez <yo@miguelrevilla.com>, 2002, 2003.
 # Lucas Garcia <tanke@escomposlinux.org>, 2003.
 # Rafael Osuna <rosuna@wol.es>, 2004.
 # Santiago Fernandez Sancho <santi@kde-es.org>, 2004, 2006.
 # santi <santi@kde-es.org>, 2005.
 # Santiago Fernández Sancho <santi@kde-es.org>, 2007.
-# Eloy Cuadra <ecuadra@eloihr.net>, 2009, 2016, 2018, 2020, 2021, 2022.
+# Eloy Cuadra <ecuadra@eloihr.net>, 2009, 2016, 2018, 2020, 2021, 2022, 2023.
 # Huever, 2009.
 # Kira J. Fernandez <kirajfdez@gmail.com>, 2010, 2011.
-# Sofía Priego <spriego@darksylvania.net>, %Y.
 msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-01 00:48+0000\n"
-"PO-Revision-Date: 2022-02-25 00:10+0100\n"
+"PO-Revision-Date: 2023-04-01 14:11+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: Víctor Romero <livingstone@thepentagon.com>\n"
-"X-Generator: Lokalize 21.12.2\n"
+"X-Generator: Lokalize 23.03.80\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -89,12 +89,7 @@ msgid "No"
 msgstr "No"
 
 #: src/app.cpp:259
-#, fuzzy, kde-format
-#| msgid ""
-#| "\n"
-#| "You could have been in the highscores\n"
-#| "if you did not use Undo or Hint.\n"
-#| "Try without them next time."
+#, kde-format
 msgid ""
 "\n"
 "You could have been in the high scores\n"
@@ -103,7 +98,7 @@ msgid ""
 msgstr ""
 "\n"
 "Podrá aparecer en las mejores puntuaciones\n"
-"si no utiliza deshacer o las pistas.\n"
+"si no utiliza deshacer ni las pistas.\n"
 "Pruebe sin ellas la próxima vez."
 
 #: src/app.cpp:260 src/app.cpp:268
@@ -167,11 +162,7 @@ msgid "General"
 msgstr "General"
 
 #: src/board.cpp:69
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the default tileset.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the default tile set.\n"
@@ -187,11 +178,7 @@ msgid "Error Loading Tiles"
 msgstr "Error al cargar las fichas"
 
 #: src/board.cpp:78
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset %1. The default tileset has "
-#| "been loaded."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the tile set %1. The default tile set has "
@@ -201,12 +188,7 @@ msgstr ""
 "de fichas predeterminado."
 
 #: src/board.cpp:84
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset %1. The default tileset could "
-#| "also not be loaded.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the tile set %1. The default tile set could "

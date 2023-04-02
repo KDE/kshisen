@@ -10,26 +10,26 @@
 # Wilbert Berendsen <wbsoft@xs4all.nl>, 2004.
 # Bram Schoenmakers <bramschoenmakers@kde.nl>, 2004.
 # Rinse de Vries <rinsedevries@kde.nl>, 2004, 2005, 2007.
-# Freek de Kruijf <freekdekruijf@kde.nl>, 2009, 2010, 2011, 2016, 2018, 2020, 2021, 2022.
+# Freek de Kruijf <freekdekruijf@kde.nl>, 2009, 2010, 2011, 2016, 2018, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-01 00:48+0000\n"
-"PO-Revision-Date: 2022-02-22 12:20+0100\n"
+"PO-Revision-Date: 2023-04-01 16:26+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.12.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Rinse de Vries,Chris Hooijer,Freek de Kruijf - t/m 2022"
+msgstr "Rinse de Vries,Chris Hooijer,Freek de Kruijf - t/m 2023"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
@@ -84,12 +84,7 @@ msgid "No"
 msgstr "Nee"
 
 #: src/app.cpp:259
-#, fuzzy, kde-format
-#| msgid ""
-#| "\n"
-#| "You could have been in the highscores\n"
-#| "if you did not use Undo or Hint.\n"
-#| "Try without them next time."
+#, kde-format
 msgid ""
 "\n"
 "You could have been in the high scores\n"
@@ -99,7 +94,7 @@ msgstr ""
 "\n"
 "U had in de topscore kunnen staan als u geen\n"
 "gebruik had gemaakt van 'Ongedaan' of 'Hint'.\n"
-"Probeer het volgende spel zonder deze hulpmiddelen te spelen."
+"Probeer het de volgende keer zonder hen."
 
 #: src/app.cpp:260 src/app.cpp:268
 #, kde-format
@@ -162,11 +157,7 @@ msgid "General"
 msgstr "Algemeen"
 
 #: src/board.cpp:69
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the default tileset.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the default tile set.\n"
@@ -182,11 +173,7 @@ msgid "Error Loading Tiles"
 msgstr "Fout bij laden van stenen"
 
 #: src/board.cpp:78
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset %1. The default tileset has "
-#| "been loaded."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the tile set %1. The default tile set has "
@@ -196,12 +183,7 @@ msgstr ""
 "stenenset is geladen."
 
 #: src/board.cpp:84
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset %1. The default tileset could "
-#| "also not be loaded.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the tile set %1. The default tile set could "
