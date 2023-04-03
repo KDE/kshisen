@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-01 00:48+0000\n"
-"PO-Revision-Date: 2022-12-15 09:39+0100\n"
+"PO-Revision-Date: 2023-04-02 05:35+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -76,12 +76,7 @@ msgid "No"
 msgstr "არა"
 
 #: src/app.cpp:259
-#, fuzzy, kde-format
-#| msgid ""
-#| "\n"
-#| "You could have been in the highscores\n"
-#| "if you did not use Undo or Hint.\n"
-#| "Try without them next time."
+#, kde-format
 msgid ""
 "\n"
 "You could have been in the high scores\n"
@@ -154,18 +149,14 @@ msgid "General"
 msgstr "საერთო"
 
 #: src/board.cpp:69
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the default tileset.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the default tile set.\n"
 "Please install the KMahjongg library."
 msgstr ""
 "შეცდომა ნაგულისხმები ფილების ნაკრების ჩატვირთვისას.\n"
-"დააყენეთ ბიბლიოთეკა KMahjongg."
+"დააყენეთ KMahjongg-is ბიბლიოთეკა."
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
 #: src/board.cpp:111 src/board.cpp:117
@@ -174,11 +165,7 @@ msgid "Error Loading Tiles"
 msgstr "ფილების ჩატვირთვის შეცდომა"
 
 #: src/board.cpp:78
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset %1. The default tileset has "
-#| "been loaded."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the tile set %1. The default tile set has "
@@ -188,12 +175,7 @@ msgstr ""
 "სეტი."
 
 #: src/board.cpp:84
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset %1. The default tileset could "
-#| "also not be loaded.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the tile set %1. The default tile set could "
@@ -202,7 +184,7 @@ msgid ""
 msgstr ""
 "შეცდომა ფილების სეტის (%1) ჩატვირთვისას. ასევე შეუძლებელია ნაგულისხმები "
 "ფილების სეტის ჩატვირთვაც.\n"
-"დააყენეთ ბიბლიოთეკა KMahjongg."
+"დააყენეთ KMahjongg-ის ბიბლიოთეკა ."
 
 #: src/board.cpp:101
 #, kde-format

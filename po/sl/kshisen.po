@@ -1,7 +1,7 @@
 # translation of kshisen.po to Slovenian
 # Translation of kshisen.po to Slovenian
 # Copyright (C) 2001, 2003, 2004, 2006, 2007 Free Software Foundation, Inc.
-# $Id: kshisen.po 1648503 2023-04-01 01:32:41Z scripty $
+# $Id: kshisen.po 1648654 2023-04-03 01:32:31Z scripty $
 # $Source$
 #
 # Marko Samastur <markos@elite.org>, 1999.
@@ -16,16 +16,16 @@ msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-01 00:48+0000\n"
-"PO-Revision-Date: 2022-02-25 09:06+0100\n"
+"PO-Revision-Date: 2023-04-02 09:08+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.12.2\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -87,12 +87,7 @@ msgid "No"
 msgstr "Ne"
 
 #: src/app.cpp:259
-#, fuzzy, kde-format
-#| msgid ""
-#| "\n"
-#| "You could have been in the highscores\n"
-#| "if you did not use Undo or Hint.\n"
-#| "Try without them next time."
+#, kde-format
 msgid ""
 "\n"
 "You could have been in the high scores\n"
@@ -101,7 +96,7 @@ msgid ""
 msgstr ""
 "\n"
 "Lahko bi prišli na lestvico najboljših,\n"
-"če ne bi uporabljali razveljavljanja ali namigov.\n"
+"če ne bi uporabljali Razveljavi ali Namig.\n"
 "Naslednjič poizkusite brez tega."
 
 #: src/app.cpp:260 src/app.cpp:268
@@ -165,17 +160,13 @@ msgid "General"
 msgstr "Splošno"
 
 #: src/board.cpp:69
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the default tileset.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the default tile set.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"Prišlo je do napake med nalaganjem privzetega nabora ploščic.\n"
+"Prišlo je do napake ob nalaganju privzetega nabora ploščic.\n"
 "Namestite knjižnico KMahjongg."
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
@@ -185,33 +176,24 @@ msgid "Error Loading Tiles"
 msgstr "Napaka med nalaganjem nabora ploščic"
 
 #: src/board.cpp:78
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset %1. The default tileset has "
-#| "been loaded."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the tile set %1. The default tile set has "
 "been loaded."
 msgstr ""
-"Prišlo je do napake med nalaganjem nabora ploščic %1. Naložen je bil "
-"privzeti nabor ploščic."
+"Prišlo je do napake ob nalaganju nabora ploščic %1. Naložen je bil privzeti "
+"nabor ploščic."
 
 #: src/board.cpp:84
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset %1. The default tileset could "
-#| "also not be loaded.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the tile set %1. The default tile set could "
 "also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"Prišlo je do napake med nalaganjem nabora ploščic %1. Tudi privzetega nabora "
+"Prišlo je do napake ob nalaganju nabora ploščic %1. Tudi privzetega nabora "
 "ploščic ni bilo mogoče naložiti.\n"
 "Namestite knjižnico KMahjongg."
 

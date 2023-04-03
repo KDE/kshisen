@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-01 00:48+0000\n"
-"PO-Revision-Date: 2023-01-06 16:23+0100\n"
+"PO-Revision-Date: 2023-04-01 14:19+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -91,12 +91,7 @@ msgid "No"
 msgstr "Non"
 
 #: src/app.cpp:259
-#, fuzzy, kde-format
-#| msgid ""
-#| "\n"
-#| "You could have been in the highscores\n"
-#| "if you did not use Undo or Hint.\n"
-#| "Try without them next time."
+#, kde-format
 msgid ""
 "\n"
 "You could have been in the high scores\n"
@@ -105,8 +100,7 @@ msgid ""
 msgstr ""
 "\n"
 "Vous auriez pu entrer au tableau des meilleurs scores\n"
-"si vous n'aviez pas utilisé l'annulation\n"
-"ou demandé un indice.\n"
+"si vous n'aviez pas utilisé l'annulation ou demandé un indice.\n"
 "Essayez sans cela la prochaine fois."
 
 #: src/app.cpp:260 src/app.cpp:268
@@ -171,18 +165,14 @@ msgid "General"
 msgstr "Général"
 
 #: src/board.cpp:69
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the default tileset.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the default tile set.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"Une erreur s'est produite lors du chargement du jeu de tuiles par défaut.\n"
-"Veuillez installer la bibliothèque KMahjongg."
+"Une erreur s'est survenue lors du chargement du jeu de tuiles par défaut.\n"
+"Veuillez installer la bibliothèque de KMahjongg."
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
 #: src/board.cpp:111 src/board.cpp:117
@@ -191,35 +181,26 @@ msgid "Error Loading Tiles"
 msgstr "Erreur leur du chargement des tuiles"
 
 #: src/board.cpp:78
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset %1. The default tileset has "
-#| "been loaded."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the tile set %1. The default tile set has "
 "been loaded."
 msgstr ""
-"Une erreur s'est produite lors du chargement du jeu de tuiles %1. Le jeu de "
+"Une erreur est survenue lors du chargement du jeu de tuiles %1. Le jeu de "
 "tuiles par défaut a été chargé."
 
 #: src/board.cpp:84
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset %1. The default tileset could "
-#| "also not be loaded.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the tile set %1. The default tile set could "
 "also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"Une erreur s'est produite lors du chargement du jeu de tuiles %1. Le jeu de "
-"tuiles par défaut n'a pu aussi être chargé. Veuillez installer la "
-"bibliothèque KMahjongg."
+"Une erreur est survenue lors du chargement du jeu de tuiles %1. Le jeu de "
+"tuiles par défaut n'a pu aussi être chargé. \n"
+"Veuillez installer la bibliothèque de KMahjongg."
 
 #: src/board.cpp:101
 #, kde-format
