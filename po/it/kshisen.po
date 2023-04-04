@@ -1,13 +1,13 @@
 # translation of kshisen.po to Italian
 # Francesco Bresciani <fbresciani@users.sourceforge.net>, 2003, 2004, 2005, 2007.
 # Andrea Celli <andrea.celli@libero.it>, 2009.
-# Valter Mura <valtermura@gmail.com>, 2009, 2010, 2011, 2016, 2018, 2020, 2021, 2022.
+# Valter Mura <valtermura@gmail.com>, 2009, 2010, 2011, 2016, 2018, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-01 00:48+0000\n"
-"PO-Revision-Date: 2022-03-02 20:37+0100\n"
+"PO-Revision-Date: 2023-04-02 21:48+0200\n"
 "Last-Translator: Valter Mura <valtermura@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.12.2\n"
+"X-Generator: Lokalize 23.03.90\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -75,12 +75,7 @@ msgid "No"
 msgstr "No"
 
 #: src/app.cpp:259
-#, fuzzy, kde-format
-#| msgid ""
-#| "\n"
-#| "You could have been in the highscores\n"
-#| "if you did not use Undo or Hint.\n"
-#| "Try without them next time."
+#, kde-format
 msgid ""
 "\n"
 "You could have been in the high scores\n"
@@ -153,11 +148,7 @@ msgid "General"
 msgstr "Generale"
 
 #: src/board.cpp:69
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the default tileset.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the default tile set.\n"
@@ -165,7 +156,7 @@ msgid ""
 msgstr ""
 "Si è verificato un errore durante il caricamento dell'insieme di tessere "
 "predefinito.\n"
-" Installa la libreria KMahjongg."
+"Installa la libreria KMahjongg."
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
 #: src/board.cpp:111 src/board.cpp:117
@@ -174,11 +165,7 @@ msgid "Error Loading Tiles"
 msgstr "Errore nel caricamento delle tessere"
 
 #: src/board.cpp:78
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset %1. The default tileset has "
-#| "been loaded."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the tile set %1. The default tile set has "
@@ -188,12 +175,7 @@ msgstr ""
 "È stato caricato l'insieme di tessere predefinito."
 
 #: src/board.cpp:84
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset %1. The default tileset could "
-#| "also not be loaded.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the tile set %1. The default tile set could "
