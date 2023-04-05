@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-01 00:48+0000\n"
-"PO-Revision-Date: 2023-02-22 14:27+0100\n"
+"PO-Revision-Date: 2023-04-04 14:40+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -77,12 +77,7 @@ msgid "No"
 msgstr "Ne"
 
 #: src/app.cpp:259
-#, fuzzy, kde-format
-#| msgid ""
-#| "\n"
-#| "You could have been in the highscores\n"
-#| "if you did not use Undo or Hint.\n"
-#| "Try without them next time."
+#, kde-format
 msgid ""
 "\n"
 "You could have been in the high scores\n"
@@ -90,8 +85,8 @@ msgid ""
 "Try without them next time."
 msgstr ""
 "\n"
-"Mohl byste se dostat do seznamu s nejlepšími výsledky,\n"
-"kdybyste nevracel své kroky Zpět nebo si nenechal radit.\n"
+"Mohli byste se dostat do seznamu s nejlepšími výsledky,\n"
+"kdybyste nevraceli své kroky Zpět nebo si nenechali radit.\n"
 "Příště to zkuste bez této pomoci."
 
 #: src/app.cpp:260 src/app.cpp:268
@@ -161,6 +156,8 @@ msgid ""
 "An error occurred when loading the default tile set.\n"
 "Please install the KMahjongg library."
 msgstr ""
+"Při načítání výchozí sestavy kamenů došlo k chybě.\n"
+"Prosím, nainstalujte knihovnu KMahjongg."
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
 #: src/board.cpp:111 src/board.cpp:117
@@ -175,6 +172,8 @@ msgid ""
 "An error occurred when loading the tile set %1. The default tile set has "
 "been loaded."
 msgstr ""
+"Při načítání sestavy kamenů %1 došlo k chybě. Byla načtena výchozí sestava "
+"kamenů."
 
 #: src/board.cpp:84
 #, kde-format
@@ -184,6 +183,9 @@ msgid ""
 "also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
+"Při načítání sestavy kamenů %1 došlo k chybě.Výchozí sestava kamenůrovněž "
+"nebyla načtena.\n"
+"Prosím, nainstalujte knihovnu KMahjongg."
 
 #: src/board.cpp:101
 #, kde-format
