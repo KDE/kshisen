@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-01 00:48+0000\n"
-"PO-Revision-Date: 2023-03-27 11:59\n"
+"PO-Revision-Date: 2023-04-10 14:10\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -75,22 +75,13 @@ msgid "No"
 msgstr "否"
 
 #: src/app.cpp:259
-#, fuzzy, kde-format
-#| msgid ""
-#| "\n"
-#| "You could have been in the highscores\n"
-#| "if you did not use Undo or Hint.\n"
-#| "Try without them next time."
+#, kde-format
 msgid ""
 "\n"
 "You could have been in the high scores\n"
 "if you did not use Undo or Hint.\n"
 "Try without them next time."
 msgstr ""
-"\n"
-"如果您不使用撤销或提示，\n"
-"高分榜才会收录您的名字。\n"
-"下次不妨试着不要用这些。"
 
 #: src/app.cpp:260 src/app.cpp:268
 #, kde-format
