@@ -1,17 +1,17 @@
 # translation of kshisen.po to Polish
-# Version: $Revision: 1634169 $
+# Version: $Revision: 1649515 $
 # translation of kshisen.po to
 # Michał Rudolf <mrudolf@kdewebdev.org>, 2002.
 # Michal Rudolf <mrudolf@kdewebdev.org>, 2003, 2004, 2005, 2007, 2009.
 # Marta Rybczyńska <kde-i18n@rybczynska.net>, 2008.
 # Maciej Wikło <maciej.wiklo@wp.pl>, 2010.
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2011, 2016, 2018, 2020, 2021, 2022.
+# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2011, 2016, 2018, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-20 00:42+0000\n"
-"PO-Revision-Date: 2022-03-13 11:11+0100\n"
+"PO-Revision-Date: 2023-04-15 11:34+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -24,7 +24,7 @@ msgstr ""
 ">\n"
 ">\n"
 ">\n"
-"X-Generator: Lokalize 22.03.70\n"
+"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
@@ -172,7 +172,7 @@ msgstr ""
 #: src/board.cpp:139 src/board.cpp:145
 #, kde-format
 msgid "Error Loading Tiles"
-msgstr "Błąd wczytywania pól"
+msgstr "Błąd wczytywania kamieni"
 
 #: src/board.cpp:106
 #, kde-format
