@@ -4,20 +4,21 @@
 # mvillarino <mvillarino@users.sourceforge.net>, 2007, 2008, 2009.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2009, 2016.
 # Xosé <xosecalvo@gmail.com>, 2012.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-20 00:42+0000\n"
-"PO-Revision-Date: 2018-01-18 21:36+0100\n"
+"PO-Revision-Date: 2023-04-30 11:27+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
-"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
+"Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 23.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -152,19 +153,13 @@ msgid "General"
 msgstr "Xeral"
 
 #: src/board.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset. %1 and the default tileset "
-#| "have been tried.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tileset file"
 msgid ""
 "An error occurred when loading the default tileset.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"Produciuse un erro ao cargar o conxunto de pezas. Intentáronse cargar %1 e "
-"mailo conxunto de pezas predeterminado.\n"
+"Produciuse un erro ao cargar o conxunto de pezas predeterminado.\n"
 "Instale a biblioteca KMahjongg."
 
 #: src/board.cpp:98 src/board.cpp:107 src/board.cpp:113 src/board.cpp:130
@@ -174,84 +169,55 @@ msgid "Error Loading Tiles"
 msgstr "Erro ao cargar as pezas"
 
 #: src/board.cpp:106
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset. %1 and the default tileset "
-#| "have been tried.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tileset file"
 msgid ""
 "An error occurred when loading the tileset %1. The default tileset has been "
 "loaded."
 msgstr ""
-"Produciuse un erro ao cargar o conxunto de pezas. Intentáronse cargar %1 e "
-"mailo conxunto de pezas predeterminado.\n"
-"Instale a biblioteca KMahjongg."
+"Produciuse un erro ao cargar o conxunto de pezas %1. Cargouse o conxunto de "
+"pezas predeterminado."
 
 #: src/board.cpp:112
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset. %1 and the default tileset "
-#| "have been tried.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tileset file"
 msgid ""
 "An error occurred when loading the tileset %1. The default tileset could "
 "also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"Produciuse un erro ao cargar o conxunto de pezas. Intentáronse cargar %1 e "
-"mailo conxunto de pezas predeterminado.\n"
+"Produciuse un erro ao cargar o conxunto de pezas %1. Tampouco se puido "
+"cargar o conxunto de pezas predeterminado.\n"
 "Instale a biblioteca KMahjongg."
 
 #: src/board.cpp:129
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a background image file"
-#| msgid ""
-#| "An error occurred when loading the background. %1 and the default "
-#| "background have been tried.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a background image file"
 msgid ""
 "An error occurred when loading the default background.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"Produciuse un erro ao cargar o fondo. Intentáronse cargar %1 e mailo fondo "
-"predeterminado.\n"
+"Produciuse un erro ao cargar o fondo predeterminado\n"
 "Instale a biblioteca KMahjongg."
 
 #: src/board.cpp:138
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a background image file"
-#| msgid ""
-#| "An error occurred when loading the background. %1 and the default "
-#| "background have been tried.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a background image file"
 msgid ""
 "An error occurred when loading the background %1. The default background has "
 "been loaded."
 msgstr ""
-"Produciuse un erro ao cargar o fondo. Intentáronse cargar %1 e mailo fondo "
-"predeterminado.\n"
-"Instale a biblioteca KMahjongg."
+"Produciuse un erro ao cargar o fondo %1. Cargouse o fondo predeterminado."
 
 #: src/board.cpp:144
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a background image file"
-#| msgid ""
-#| "An error occurred when loading the background. %1 and the default "
-#| "background have been tried.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a background image  file"
 msgid ""
 "An error occurred when loading the background %1. The default background "
 "could also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"Produciuse un erro ao cargar o fondo. Intentáronse cargar %1 e mailo fondo "
+"Produciuse un erro ao cargar o fondo %1. Tampouco se puido cargar o fondo "
 "predeterminado.\n"
 "Instale a biblioteca KMahjongg."
 
@@ -306,10 +272,9 @@ msgid "Shisen-Sho"
 msgstr "Shisen-Sho"
 
 #: src/main.cpp:49
-#, fuzzy, kde-format
-#| msgid "A KDE game similar to Mahjongg"
+#, kde-format
 msgid "A game similar to Mahjongg"
-msgstr "Un xogo similar ao Mahjong para KDE"
+msgstr "Un xogo similar ao Mahjong"
 
 #: src/main.cpp:51
 #, kde-format
@@ -412,12 +377,15 @@ msgid ""
 "the game show a message to abort the game in case there are no possible "
 "moves left to win the game.</p>"
 msgstr ""
+"<b>Mostrar unha mensaxe se xa non se pode resolver o taboleiro</b><p>Marcar "
+"isto fai que o xogo mostre unha mensaxe para interromper a partida en caso "
+"de que non existan movementos posíbeis para gañar a partida.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
 #: src/settings.ui:46
 #, kde-format
 msgid "Show message if board can no longer be solved"
-msgstr ""
+msgstr "Mostrar unha mensaxe se xa non se pode resolver o taboleiro"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ChineseStyle)
 #: src/settings.ui:53
@@ -511,7 +479,7 @@ msgid ""
 "<b>Piece Removal Speed</b><p>Adjusting this slider alters the speed at which "
 "the pieces are removed from the screen after a match has been made.</p>"
 msgstr ""
-"<b>Velocidade de retiración das pezas</b><p>Ao axustar esta barra de "
+"<b>Velocidade de retirada das pezas</b><p>Ao axustar esta barra de "
 "desprazamento alteras a velocidade coa que retira as pezas da pantalla tras "
 "casar dúas pezas.</p>"
 
