@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-01 00:48+0000\n"
-"PO-Revision-Date: 2023-04-01 12:05+0300\n"
+"PO-Revision-Date: 2023-06-11 22:09+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -168,7 +168,7 @@ msgid ""
 "Please install the KMahjongg library."
 msgstr ""
 "Öntanımlı karo kümesi yüklenirken bir hata oluştu.\n"
-"Lütfen KMahjongg kitaplığını kurun."
+"Lütfen K Mahjongg kitaplığını kurun."
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
 #: src/board.cpp:111 src/board.cpp:117
@@ -195,7 +195,7 @@ msgid ""
 msgstr ""
 "%1 karo kümesi yüklenirken bir hata oluştu. Öntanımlı karo seti de "
 "yüklenemedi.\n"
-"Lütfen KMahjongg kitaplığını kurun."
+"Lütfen K Mahjongg kitaplığını kurun."
 
 #: src/board.cpp:101
 #, kde-format
@@ -205,7 +205,7 @@ msgid ""
 "Please install the KMahjongg library."
 msgstr ""
 "Öntanımlı arka plan yüklenirken bir hata oluştu.\n"
-"Lütfen KMahjongg kitaplığını kurun."
+"Lütfen K Mahjongg kitaplığını kurun."
 
 #: src/board.cpp:110
 #, kde-format
@@ -226,7 +226,7 @@ msgid ""
 msgstr ""
 "%1 arka planı yüklenirken bir hata oluştu. Öntanımlı arka plan da "
 "yüklenemedi.\n"
-"Lütfen KMahjongg kitaplığını kurun."
+"Lütfen K Mahjongg kitaplığını kurun."
 
 #: src/board.cpp:678
 #, kde-format
@@ -326,7 +326,7 @@ msgstr "Mauricio Piacentini"
 #: src/main.cpp:57
 #, kde-format
 msgid "KMahjonggLib integration for KDE4"
-msgstr "KMahjonggLib KDE4 tümleştirmesi"
+msgstr "K MahjonggLib KDE4 tümleştirmesi"
 
 #: src/main.cpp:58
 #, kde-format
