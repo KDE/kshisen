@@ -35,7 +35,7 @@
   <name xml:lang="sr-ijekavian">К‑шисен</name>
   <name xml:lang="sr-ijekavianlatin">KShisen</name>
   <name xml:lang="sv">Kshisen</name>
-  <name xml:lang="tr">KShisen</name>
+  <name xml:lang="tr">K Şisen</name>
   <name xml:lang="uk">KShisen</name>
   <name xml:lang="x-test">xxKShisenxx</name>
   <name xml:lang="zh-CN">KShisen</name>
@@ -110,7 +110,7 @@
     <p xml:lang="sr-ijekavian">К‑шисен је игра налик на пасијанс са стандардним скупом маџонг плочица. За разлику од маџонга, К‑шисен има само један слој измешаних плочица.</p>
     <p xml:lang="sr-ijekavianlatin">KShisen je igra nalik na pasijans sa standardnim skupom madžong pločica. Za razliku od madžonga, KShisen ima samo jedan sloj izmešanih pločica.</p>
     <p xml:lang="sv">Kshisen är ett patiensliknande spel som spelas med den vanliga uppsättningen Mahjong-brickor. I motsats till Mahjong har Kshisen dock bara ett lager med blandade brickor.</p>
-    <p xml:lang="tr">KShisen, Mahjong standart karo kümesini kullanarak oynanan, Solitaire benzeri bir oyundur. Bununla birlikte Mahjong'tan farklı olarak, KShisen'de yalnızca tek katmanlı karolar vardır.</p>
+    <p xml:lang="tr">K Şisen, Mahjong standart karo kümesini kullanarak oynanan, Solitaire benzeri bir oyundur. Bununla birlikte Mahjong'tan farklı olarak, K Şisen'de yalnızca tek katmanlı karolar vardır.</p>
     <p xml:lang="uk">KShisen — гра, подібна до пасьянсу, у якій використовуються плитки маджонґа. Втім, на відміну від класичної гри у маджонґ, у KShisen ви матимете справу лише з одним шаром плиток.</p>
     <p xml:lang="x-test">xxKShisen is a solitaire-like game played using the standard set of Mahjong tiles. Unlike Mahjong however, KShisen has only one layer of scrambled tiles.xx</p>
     <p xml:lang="zh-CN">KShisen 是一个使用麻将牌的类牌游戏。和麻将配对不同的是，KShisen 只有一层打乱的牌。</p>
@@ -150,7 +150,7 @@
       <caption xml:lang="sk">Hrá sa KShisen</caption>
       <caption xml:lang="sl">Igra KShisen</caption>
       <caption xml:lang="sv">Spela Kshisen</caption>
-      <caption xml:lang="tr">KShisen Oynarken</caption>
+      <caption xml:lang="tr">K Şisen Oynarken</caption>
       <caption xml:lang="uk">Гра у KShisen</caption>
       <caption xml:lang="x-test">xxPlaying KShisenxx</caption>
       <caption xml:lang="zh-CN">KShisen 游戏界面</caption>
