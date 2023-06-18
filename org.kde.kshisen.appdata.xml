@@ -12,6 +12,7 @@
   <name xml:lang="de">KShisen</name>
   <name xml:lang="el">KShisen</name>
   <name xml:lang="en-GB">KShisen</name>
+  <name xml:lang="eo">KShisen</name>
   <name xml:lang="es">KShisen</name>
   <name xml:lang="et">KShisen</name>
   <name xml:lang="eu">KShisen</name>
@@ -48,6 +49,7 @@
   <summary xml:lang="de">Spiel mit Mahjongg-Spielsteinen</summary>
   <summary xml:lang="el">Παιχνίδι Shisen-Sho με πλακάκια όπως το Mahjongg</summary>
   <summary xml:lang="en-GB">Shisen-Sho Mahjongg-like Tile Game</summary>
+  <summary xml:lang="eo">Shisen-Sho-kahelludo simila al Mahjongg</summary>
   <summary xml:lang="es">Juego de fichas similar al Shisen-Sho Mahjongg</summary>
   <summary xml:lang="et">Mahjonggi moodi klotsimäng</summary>
   <summary xml:lang="eu">«Shisen-Sho» «Mahjongg» antzeko fitxa jokoa</summary>
@@ -131,6 +133,7 @@
       <caption xml:lang="de">KShisen spielen</caption>
       <caption xml:lang="el">Παίζω KShisen</caption>
       <caption xml:lang="en-GB">Playing KShisen</caption>
+      <caption xml:lang="eo">Ludante KShisen</caption>
       <caption xml:lang="es">Jugando a KShisen</caption>
       <caption xml:lang="et">KShiseni mängimine</caption>
       <caption xml:lang="eu">KShisen-ean jolastea</caption>
