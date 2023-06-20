@@ -377,15 +377,15 @@ msgid ""
 "the game show a message to abort the game in case there are no possible "
 "moves left to win the game.</p>"
 msgstr ""
-"<b>Mostrar unha mensaxe se xa non se pode resolver o taboleiro</b><p>Marcar "
-"isto fai que o xogo mostre unha mensaxe para interromper a partida en caso "
-"de que non existan movementos posíbeis para gañar a partida.</p>"
+"<b>Amosar unha mensaxe se xa non se pode resolver o taboleiro</b><p>Marcar "
+"isto fai que o xogo amose unha mensaxe para interromper a partida en caso de "
+"que non existan movementos posíbeis para gañar a partida.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
 #: src/settings.ui:46
 #, kde-format
 msgid "Show message if board can no longer be solved"
-msgstr "Mostrar unha mensaxe se xa non se pode resolver o taboleiro"
+msgstr "Amosar unha mensaxe se xa non se pode resolver o taboleiro"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ChineseStyle)
 #: src/settings.ui:53
