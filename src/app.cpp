@@ -374,5 +374,7 @@ void App::showSettingsDialog()
 }
 } // namespace KShisen
 
+#include "moc_app.cpp"
+
 // vim: expandtab:tabstop=4:shiftwidth=4
 // kate: space-indent on; indent-width 4
