@@ -12,7 +12,6 @@
   <name xml:lang="de">KShisen</name>
   <name xml:lang="el">KShisen</name>
   <name xml:lang="en-GB">KShisen</name>
-  <name xml:lang="eo">KShisen</name>
   <name xml:lang="es">KShisen</name>
   <name xml:lang="et">KShisen</name>
   <name xml:lang="eu">KShisen</name>
@@ -36,7 +35,7 @@
   <name xml:lang="sr-ijekavian">К‑шисен</name>
   <name xml:lang="sr-ijekavianlatin">KShisen</name>
   <name xml:lang="sv">Kshisen</name>
-  <name xml:lang="tr">K Şisen</name>
+  <name xml:lang="tr">KShisen</name>
   <name xml:lang="uk">KShisen</name>
   <name xml:lang="x-test">xxKShisenxx</name>
   <name xml:lang="zh-CN">KShisen</name>
@@ -49,7 +48,6 @@
   <summary xml:lang="de">Spiel mit Mahjongg-Spielsteinen</summary>
   <summary xml:lang="el">Παιχνίδι Shisen-Sho με πλακάκια όπως το Mahjongg</summary>
   <summary xml:lang="en-GB">Shisen-Sho Mahjongg-like Tile Game</summary>
-  <summary xml:lang="eo">Shisen-Sho-kahelludo simila al Mahjongg</summary>
   <summary xml:lang="es">Juego de fichas similar al Shisen-Sho Mahjongg</summary>
   <summary xml:lang="et">Mahjonggi moodi klotsimäng</summary>
   <summary xml:lang="eu">«Shisen-Sho» «Mahjongg» antzeko fitxa jokoa</summary>
@@ -89,7 +87,6 @@
     <p xml:lang="de">KShisen ähnelt dem Spiel Solitär und wird mit Mahjong-Steinen gespielt. Anders als bei Mahjong, gibt es bei KShisen aber nur eine Ebene gemischter Steine.</p>
     <p xml:lang="el">Το KShisen είναι ένα παιχνίδι που παίζεται με τα πλακάκια του Mahjong. Όμως αντίθετα από το Mahjong, το KShisen έχει ένα μόνο επίπεδο με πλακάκια.</p>
     <p xml:lang="en-GB">KShisen is a solitaire-like game played using the standard set of Mahjong tiles. Unlike Mahjong however, KShisen has only one layer of scrambled tiles.</p>
-    <p xml:lang="eo">KShisen estas solitaire-simila ludo ludita uzante la norman aron de Mahjong-kaheloj. Male al Mahjong tamen, KShisen havas nur unu tavolon de miksitaj kaheloj.</p>
     <p xml:lang="es">KShisen es un juego de solitario que se juega usando las fichas típicas del Mahjong. Al contrario del Mahjong, KShisen solo tiene una capa de fichas barajadas.</p>
     <p xml:lang="et">KShisen on Mahjonggi moodi mäng, mida mängitaksegi Mahjonggile omaste klotsidega. Viimasest erinevalt on siin aga ainult üks kiht klotse.</p>
     <p xml:lang="eu">KShisen «Mahjong»eko fitxa-multzo estandarra erabiltzen duen bakar-joko antzeko joko bat da. Dena den, «Mahjong»ek ez bezela, KShisen-ek fitxa nahasien geruza bakarra du.</p>
@@ -113,7 +110,7 @@
     <p xml:lang="sr-ijekavian">К‑шисен је игра налик на пасијанс са стандардним скупом маџонг плочица. За разлику од маџонга, К‑шисен има само један слој измешаних плочица.</p>
     <p xml:lang="sr-ijekavianlatin">KShisen je igra nalik na pasijans sa standardnim skupom madžong pločica. Za razliku od madžonga, KShisen ima samo jedan sloj izmešanih pločica.</p>
     <p xml:lang="sv">Kshisen är ett patiensliknande spel som spelas med den vanliga uppsättningen Mahjong-brickor. I motsats till Mahjong har Kshisen dock bara ett lager med blandade brickor.</p>
-    <p xml:lang="tr">K Şisen, Mahjong standart karo kümesini kullanarak oynanan, Solitaire benzeri bir oyundur. Bununla birlikte Mahjong'tan farklı olarak, K Şisen'de yalnızca tek katmanlı karolar vardır.</p>
+    <p xml:lang="tr">KShisen, Mahjong standart karo kümesini kullanarak oynanan, Solitaire benzeri bir oyundur. Bununla birlikte Mahjong'tan farklı olarak, KShisen'de yalnızca tek katmanlı karolar vardır.</p>
     <p xml:lang="uk">KShisen — гра, подібна до пасьянсу, у якій використовуються плитки маджонґа. Втім, на відміну від класичної гри у маджонґ, у KShisen ви матимете справу лише з одним шаром плиток.</p>
     <p xml:lang="x-test">xxKShisen is a solitaire-like game played using the standard set of Mahjong tiles. Unlike Mahjong however, KShisen has only one layer of scrambled tiles.xx</p>
     <p xml:lang="zh-CN">KShisen 是一个使用麻将牌的类牌游戏。和麻将配对不同的是，KShisen 只有一层打乱的牌。</p>
@@ -134,7 +131,6 @@
       <caption xml:lang="de">KShisen spielen</caption>
       <caption xml:lang="el">Παίζω KShisen</caption>
       <caption xml:lang="en-GB">Playing KShisen</caption>
-      <caption xml:lang="eo">Ludante KShisen</caption>
       <caption xml:lang="es">Jugando a KShisen</caption>
       <caption xml:lang="et">KShiseni mängimine</caption>
       <caption xml:lang="eu">KShisen-ean jolastea</caption>
@@ -154,7 +150,7 @@
       <caption xml:lang="sk">Hrá sa KShisen</caption>
       <caption xml:lang="sl">Igra KShisen</caption>
       <caption xml:lang="sv">Spela Kshisen</caption>
-      <caption xml:lang="tr">K Şisen Oynarken</caption>
+      <caption xml:lang="tr">KShisen Oynarken</caption>
       <caption xml:lang="uk">Гра у KShisen</caption>
       <caption xml:lang="x-test">xxPlaying KShisenxx</caption>
       <caption xml:lang="zh-CN">KShisen 游戏界面</caption>
