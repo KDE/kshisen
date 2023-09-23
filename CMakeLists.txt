@@ -12,8 +12,8 @@ set(KSHISEN_VERSION "${KSHISEN_BASE_VERSION}.${RELEASE_SERVICE_COMPACT_VERSION}"
 
 project(kshisen VERSION ${KSHISEN_VERSION})
 
-set(QT_MIN_VERSION "5.15.0")
-set(KF_MIN_VERSION "5.91.0")
+set(QT_MIN_VERSION "6.5.0")
+set(KF_MIN_VERSION "5.240.0")
 
 # Found this somewhere but cannot re-find it now ... but want to investigate later, so keeping this here for now.
 #set(CXX_CLANG_TIDY ON)
@@ -36,17 +36,13 @@ include(ECMQtDeclareLoggingCategory)
 include(ECMSetupVersion)
 include(FeatureSummary)
 include(ECMDeprecationSettings)
-if (QT_MAJOR_VERSION STREQUAL "6")
-    set(QT_REQUIRED_VERSION "6.5.0")
-    set(KF_MIN_VERSION "5.240.0")
-    set(KF_MAJOR_VERSION "6")
-else()
-    set(KF_MAJOR_VERSION "5")
-endif()
 
-find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Gui)
+find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS
+    Core
+    Gui
+)
 
-find_package(KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
+find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     Config
     Crash
@@ -55,27 +51,14 @@ find_package(KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
     XmlGui
 )
 
-if (QT_MAJOR_VERSION STREQUAL "6")
-    find_package(KMahjongglib6 5.1.0 REQUIRED)
-    find_package(KDEGames6 7.5.0 REQUIRED)
-else()
-    find_package(KF5KMahjongglib 5.1.0 REQUIRED)
-    find_package(KF5KDEGames 7.3.0 REQUIRED)
-endif()
+find_package(KMahjongglib6 5.1.0 REQUIRED)
+find_package(KDEGames6 7.5.0 REQUIRED)
 
-if (QT_MAJOR_VERSION STREQUAL "6")
-    ecm_set_disabled_deprecation_versions(
-        QT 6.5
-        KF 5.239
-        KDEGAMES 7.5
-    )
-else()
-    ecm_set_disabled_deprecation_versions(
-        QT 5.15.2
-        KF 5.103
-        KDEGAMES 7.3
-    )
-endif()
+ecm_set_disabled_deprecation_versions(
+    QT 6.5
+    KF 5.239
+    KDEGAMES 7.5
+)
 
 add_subdirectory(src)
 add_subdirectory(icons)
