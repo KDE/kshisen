@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-01 00:48+0000\n"
+"POT-Creation-Date: 2023-09-25 01:40+0000\n"
 "PO-Revision-Date: 2011-01-25 08:31+0100\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -253,76 +253,76 @@ msgstr "De Achtergrund, de bruukt warrn schall."
 msgid "Main Toolbar"
 msgstr "Hööft-Warktüüchbalken"
 
-#: src/main.cpp:47
+#: src/main.cpp:34
 #, kde-format
 msgid "Shisen-Sho"
 msgstr "Shisen-Sho"
 
-#: src/main.cpp:49
+#: src/main.cpp:36
 #, fuzzy, kde-format
 #| msgid "A KDE game similar to Mahjongg"
 msgid "A game similar to Mahjongg"
 msgstr "En KDE-Speel, liek as Mahjongg"
 
-#: src/main.cpp:51
+#: src/main.cpp:38
 #, fuzzy, kde-format
 #| msgid "(c) 1997, Mario Weilguni"
 msgid "Copyright 1997 Mario Weilguni"
 msgstr "© 1997, Mario Weilguni"
 
-#: src/main.cpp:54
+#: src/main.cpp:41
 #, kde-format
 msgid "Frederik Schwarzer"
 msgstr "Frederik Schwarzer"
 
-#: src/main.cpp:54
+#: src/main.cpp:41
 #, kde-format
 msgid "Current Maintainer"
 msgstr "Pleger opstunns"
 
-#: src/main.cpp:55
+#: src/main.cpp:42
 #, kde-format
 msgid "Dave Corrie"
 msgstr "Dave Corrie"
 
-#: src/main.cpp:55
+#: src/main.cpp:42
 #, kde-format
 msgid "Former Maintainer"
 msgstr "Verleden Pleger"
 
-#: src/main.cpp:56
+#: src/main.cpp:43
 #, kde-format
 msgid "Mario Weilguni"
 msgstr "Mario Weilguni"
 
-#: src/main.cpp:56
+#: src/main.cpp:43
 #, kde-format
 msgid "Original Author"
 msgstr "Orginaal-Schriever"
 
-#: src/main.cpp:57
+#: src/main.cpp:44
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "Mauricio Piacentini"
 
-#: src/main.cpp:57
+#: src/main.cpp:44
 #, kde-format
 msgid "KMahjonggLib integration for KDE4"
 msgstr "KMahjonggLib-Inbinnen för KDE 4"
 
-#: src/main.cpp:58
+#: src/main.cpp:45
 #, kde-format
 msgid "Jason Lane"
 msgstr "Jason Lane"
 
-#: src/main.cpp:58
+#: src/main.cpp:45
 #, kde-format
 msgid ""
 "Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
 msgstr ""
 "Klock för wegdaan Steen toföögt<br/>Week Steentopassen un Finstergröttännern"
 
-#: src/main.cpp:59
+#: src/main.cpp:46
 #, kde-format
 msgid "Thanks also to everyone who should be listed here but is not!"
 msgstr "Dank ok an all, de hier stahn schullt, aver nich nöömt sünd!"

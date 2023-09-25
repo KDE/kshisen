@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-01 00:48+0000\n"
+"POT-Creation-Date: 2023-09-25 01:40+0000\n"
 "PO-Revision-Date: 2022-06-03 18:20+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Russian <l10n@basealt.ru>\n"
@@ -293,74 +293,74 @@ msgstr "Изменить фоновый рисунок."
 msgid "Main Toolbar"
 msgstr "Основная панель инструментов"
 
-#: src/main.cpp:47
+#: src/main.cpp:34
 #, kde-format
 msgid "Shisen-Sho"
 msgstr "Ши-сен-Сё"
 
-#: src/main.cpp:49
+#: src/main.cpp:36
 #, kde-format
 msgid "A game similar to Mahjongg"
 msgstr "Игра, похожая на маджонг"
 
-#: src/main.cpp:51
+#: src/main.cpp:38
 #, kde-format
 msgid "Copyright 1997 Mario Weilguni"
 msgstr "© Mario Weilguni, 1997"
 
-#: src/main.cpp:54
+#: src/main.cpp:41
 #, kde-format
 msgid "Frederik Schwarzer"
 msgstr "Frederik Schwarzer"
 
-#: src/main.cpp:54
+#: src/main.cpp:41
 #, kde-format
 msgid "Current Maintainer"
 msgstr "Сопровождающий"
 
-#: src/main.cpp:55
+#: src/main.cpp:42
 #, kde-format
 msgid "Dave Corrie"
 msgstr "Dave Corrie"
 
-#: src/main.cpp:55
+#: src/main.cpp:42
 #, kde-format
 msgid "Former Maintainer"
 msgstr "Бывший ведущий проекта"
 
-#: src/main.cpp:56
+#: src/main.cpp:43
 #, kde-format
 msgid "Mario Weilguni"
 msgstr "Mario Weilguni"
 
-#: src/main.cpp:56
+#: src/main.cpp:43
 #, kde-format
 msgid "Original Author"
 msgstr "Автор идеи"
 
-#: src/main.cpp:57
+#: src/main.cpp:44
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "Mauricio Piacentini"
 
-#: src/main.cpp:57
+#: src/main.cpp:44
 #, kde-format
 msgid "KMahjonggLib integration for KDE4"
 msgstr "Интеграция KMahjonggLib для KDE4"
 
-#: src/main.cpp:58
+#: src/main.cpp:45
 #, kde-format
 msgid "Jason Lane"
 msgstr "Jason Lane"
 
-#: src/main.cpp:58
+#: src/main.cpp:45
 #, kde-format
 msgid ""
 "Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
 msgstr ""
 "Добавление счётчика удалённых плиток<br/>Изменение размера плиток и окна"
 
-#: src/main.cpp:59
+#: src/main.cpp:46
 #, kde-format
 msgid "Thanks also to everyone who should be listed here but is not!"
 msgstr ""

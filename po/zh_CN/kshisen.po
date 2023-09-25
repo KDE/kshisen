@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-01 00:48+0000\n"
+"POT-Creation-Date: 2023-09-25 01:40+0000\n"
 "PO-Revision-Date: 2023-09-16 10:09\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -244,73 +244,73 @@ msgstr "要使用的背景。"
 msgid "Main Toolbar"
 msgstr "主工具栏"
 
-#: src/main.cpp:47
+#: src/main.cpp:34
 #, kde-format
 msgid "Shisen-Sho"
 msgstr "连连看"
 
-#: src/main.cpp:49
+#: src/main.cpp:36
 #, kde-format
 msgid "A game similar to Mahjongg"
 msgstr "一个类似于麻将的连连看游戏"
 
-#: src/main.cpp:51
+#: src/main.cpp:38
 #, kde-format
 msgid "Copyright 1997 Mario Weilguni"
 msgstr "版权 1997 Mario Weilguni"
 
-#: src/main.cpp:54
+#: src/main.cpp:41
 #, kde-format
 msgid "Frederik Schwarzer"
 msgstr "Frederik Schwarzer"
 
-#: src/main.cpp:54
+#: src/main.cpp:41
 #, kde-format
 msgid "Current Maintainer"
 msgstr "当前维护者"
 
-#: src/main.cpp:55
+#: src/main.cpp:42
 #, kde-format
 msgid "Dave Corrie"
 msgstr "Dave Corrie"
 
-#: src/main.cpp:55
+#: src/main.cpp:42
 #, kde-format
 msgid "Former Maintainer"
 msgstr "前任维护者"
 
-#: src/main.cpp:56
+#: src/main.cpp:43
 #, kde-format
 msgid "Mario Weilguni"
 msgstr "Mario Weilguni"
 
-#: src/main.cpp:56
+#: src/main.cpp:43
 #, kde-format
 msgid "Original Author"
 msgstr "原作者"
 
-#: src/main.cpp:57
+#: src/main.cpp:44
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "Mauricio Piacentini"
 
-#: src/main.cpp:57
+#: src/main.cpp:44
 #, kde-format
 msgid "KMahjonggLib integration for KDE4"
 msgstr "KDE4 中的 KMahjonggLib 集成"
 
-#: src/main.cpp:58
+#: src/main.cpp:45
 #, kde-format
 msgid "Jason Lane"
 msgstr "Jason Lane"
 
-#: src/main.cpp:58
+#: src/main.cpp:45
 #, kde-format
 msgid ""
 "Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
 msgstr "增加“消去的块数”计数<br/>牌面平滑放缩和改变窗口大小"
 
-#: src/main.cpp:59
+#: src/main.cpp:46
 #, kde-format
 msgid "Thanks also to everyone who should be listed here but is not!"
 msgstr "同时感谢没能在此列出的各位朋友！"

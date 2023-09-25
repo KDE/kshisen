@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-01 00:48+0000\n"
+"POT-Creation-Date: 2023-09-25 01:40+0000\n"
 "PO-Revision-Date: 2023-04-02 05:35+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -261,67 +261,67 @@ msgstr "გამოსაყენებელი ფონი."
 msgid "Main Toolbar"
 msgstr "ხელსაწყოთა მთავარი ზოლი"
 
-#: src/main.cpp:47
+#: src/main.cpp:34
 #, kde-format
 msgid "Shisen-Sho"
 msgstr "Shisen-Sho"
 
-#: src/main.cpp:49
+#: src/main.cpp:36
 #, kde-format
 msgid "A game similar to Mahjongg"
 msgstr "Mahjongg-ის მსგავსი თამაში"
 
-#: src/main.cpp:51
+#: src/main.cpp:38
 #, kde-format
 msgid "Copyright 1997 Mario Weilguni"
 msgstr "1997 Mario Weilguni, ყველა უფლება დაცულია"
 
-#: src/main.cpp:54
+#: src/main.cpp:41
 #, kde-format
 msgid "Frederik Schwarzer"
 msgstr "Frederik Schwarzer"
 
-#: src/main.cpp:54
+#: src/main.cpp:41
 #, kde-format
 msgid "Current Maintainer"
 msgstr "პროექტის მიმდინარე ხელმძღვანელი"
 
-#: src/main.cpp:55
+#: src/main.cpp:42
 #, kde-format
 msgid "Dave Corrie"
 msgstr "Dave Corrie"
 
-#: src/main.cpp:55
+#: src/main.cpp:42
 #, kde-format
 msgid "Former Maintainer"
 msgstr "ყოფილი პროგრამისტი"
 
-#: src/main.cpp:56
+#: src/main.cpp:43
 #, kde-format
 msgid "Mario Weilguni"
 msgstr "Mario Weilguni"
 
-#: src/main.cpp:56
+#: src/main.cpp:43
 #, kde-format
 msgid "Original Author"
 msgstr "საწყისი ავტორი"
 
-#: src/main.cpp:57
+#: src/main.cpp:44
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "Mauricio Piacentini"
 
-#: src/main.cpp:57
+#: src/main.cpp:44
 #, kde-format
 msgid "KMahjonggLib integration for KDE4"
 msgstr "KMahjonggLib integration for KDE4"
 
-#: src/main.cpp:58
+#: src/main.cpp:45
 #, kde-format
 msgid "Jason Lane"
 msgstr "Jason Lane"
 
-#: src/main.cpp:58
+#: src/main.cpp:45
 #, kde-format
 msgid ""
 "Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
@@ -329,7 +329,7 @@ msgstr ""
 "დაემატა 'წაშლილი ფილების' მთვლელი <br/>ფილების რბილი გადიდება და ფანჯრის "
 "ზომის შეცვლა"
 
-#: src/main.cpp:59
+#: src/main.cpp:46
 #, kde-format
 msgid "Thanks also to everyone who should be listed here but is not!"
 msgstr "ასევე მადლობა მათ, ვინც ამ სიაში უნდა იყვნენ, მაგრამ არ არიან!"

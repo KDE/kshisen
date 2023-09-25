@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-01 00:48+0000\n"
+"POT-Creation-Date: 2023-09-25 01:40+0000\n"
 "PO-Revision-Date: 2006-04-26 01:27+0200\n"
 "Last-Translator: Zaklina Gjalevska <gjalevska@yahoo.com>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -245,68 +245,68 @@ msgstr ""
 msgid "Main Toolbar"
 msgstr ""
 
-#: src/main.cpp:47
+#: src/main.cpp:34
 #, kde-format
 msgid "Shisen-Sho"
 msgstr "Shisen-Sho"
 
-#: src/main.cpp:49
+#: src/main.cpp:36
 #, fuzzy, kde-format
 msgid "A game similar to Mahjongg"
 msgstr "Игра во KDE слична на Mahjongg"
 
-#: src/main.cpp:51
+#: src/main.cpp:38
 #, kde-format
 msgid "Copyright 1997 Mario Weilguni"
 msgstr ""
 
-#: src/main.cpp:54
+#: src/main.cpp:41
 #, kde-format
 msgid "Frederik Schwarzer"
 msgstr ""
 
-#: src/main.cpp:54
+#: src/main.cpp:41
 #, kde-format
 msgid "Current Maintainer"
 msgstr "Тековен одржувач"
 
-#: src/main.cpp:55
+#: src/main.cpp:42
 #, kde-format
 msgid "Dave Corrie"
 msgstr ""
 
-#: src/main.cpp:55
+#: src/main.cpp:42
 #, fuzzy, kde-format
 #| msgid "Current Maintainer"
 msgid "Former Maintainer"
 msgstr "Тековен одржувач"
 
-#: src/main.cpp:56
+#: src/main.cpp:43
 #, kde-format
 msgid "Mario Weilguni"
 msgstr ""
 
-#: src/main.cpp:56
+#: src/main.cpp:43
 #, kde-format
 msgid "Original Author"
 msgstr "Оригинален автор"
 
-#: src/main.cpp:57
+#: src/main.cpp:44
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr ""
 
-#: src/main.cpp:57
+#: src/main.cpp:44
 #, kde-format
 msgid "KMahjonggLib integration for KDE4"
 msgstr ""
 
-#: src/main.cpp:58
+#: src/main.cpp:45
 #, kde-format
 msgid "Jason Lane"
 msgstr ""
 
-#: src/main.cpp:58
+#: src/main.cpp:45
 #, fuzzy, kde-format
 #| msgid ""
 #| "Added 'tiles removed' counter\n"
@@ -317,7 +317,7 @@ msgstr ""
 "Додаден бројач на „отстранети плочки“\n"
 "Мазно менување размер на плочката и промена на големината на прозорецот"
 
-#: src/main.cpp:59
+#: src/main.cpp:46
 #, fuzzy, kde-format
 msgid "Thanks also to everyone who should be listed here but is not!"
 msgstr ""

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-01 00:48+0000\n"
+"POT-Creation-Date: 2023-09-25 01:40+0000\n"
 "PO-Revision-Date: 2009-06-13 16:24+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: icelandic <kde-isl@molar.is>\n"
@@ -253,68 +253,68 @@ msgstr "Bakgrunnsmynd sem á að nota."
 msgid "Main Toolbar"
 msgstr "Aðaltækjaslá"
 
-#: src/main.cpp:47
+#: src/main.cpp:34
 #, kde-format
 msgid "Shisen-Sho"
 msgstr "Shisen-Sho"
 
-#: src/main.cpp:49
+#: src/main.cpp:36
 #, fuzzy, kde-format
 msgid "A game similar to Mahjongg"
 msgstr "KDE leikur svipaður og Mahjongg"
 
-#: src/main.cpp:51
+#: src/main.cpp:38
 #, fuzzy, kde-format
 msgid "Copyright 1997 Mario Weilguni"
 msgstr "Mario Weilguni"
 
-#: src/main.cpp:54
+#: src/main.cpp:41
 #, kde-format
 msgid "Frederik Schwarzer"
 msgstr ""
 
-#: src/main.cpp:54
+#: src/main.cpp:41
 #, kde-format
 msgid "Current Maintainer"
 msgstr "Núvarandi umsjónarmaður"
 
-#: src/main.cpp:55
+#: src/main.cpp:42
 #, kde-format
 msgid "Dave Corrie"
 msgstr ""
 
-#: src/main.cpp:55
+#: src/main.cpp:42
 #, fuzzy, kde-format
 #| msgid "Current Maintainer"
 msgid "Former Maintainer"
 msgstr "Fyrrum viðhaldari"
 
-#: src/main.cpp:56
+#: src/main.cpp:43
 #, fuzzy, kde-format
 msgid "Mario Weilguni"
 msgstr "Mario Weilguni"
 
-#: src/main.cpp:56
+#: src/main.cpp:43
 #, kde-format
 msgid "Original Author"
 msgstr "Upprunalegur höfundur"
 
-#: src/main.cpp:57
+#: src/main.cpp:44
 #, fuzzy, kde-format
 msgid "Mauricio Piacentini"
 msgstr "Mauricio Piacentini"
 
-#: src/main.cpp:57
+#: src/main.cpp:44
 #, kde-format
 msgid "KMahjonggLib integration for KDE4"
 msgstr ""
 
-#: src/main.cpp:58
+#: src/main.cpp:45
 #, kde-format
 msgid "Jason Lane"
 msgstr ""
 
-#: src/main.cpp:58
+#: src/main.cpp:45
 #, fuzzy, kde-format
 #| msgid ""
 #| "Added 'tiles removed' counter\n"
@@ -325,7 +325,7 @@ msgstr ""
 "Bætti við 'reitir fjarlægðir' teljara\n"
 "Mýking skölunar og stærðarbreytingar á glugga"
 
-#: src/main.cpp:59
+#: src/main.cpp:46
 #, fuzzy, kde-format
 msgid "Thanks also to everyone who should be listed here but is not!"
 msgstr "Þakkir til allra seem ættu að vera á þessum lista en eru þar ekki!"
