@@ -25,7 +25,7 @@
 
 // KDEGames
 #include <KGameClock>
-#include <KgSound>
+#include <KGameSound>
 
 // LibKMahjongg
 #include <KMahjonggBackground>
@@ -330,8 +330,8 @@ private:
     bool m_paintInProgress{};
     TilePos m_tileRemove1{};
     TilePos m_tileRemove2{};
-    KgSound m_soundPick; ///< Sound object to play when tile is selected
-    KgSound m_soundFall; ///< Sound object to play when tiles fall down in gravity mode
+    KGameSound m_soundPick; ///< Sound object to play when tile is selected
+    KGameSound m_soundFall; ///< Sound object to play when tiles fall down in gravity mode
 };
 } // namespace KShisen
 
