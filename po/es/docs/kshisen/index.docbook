@@ -987,10 +987,10 @@
 
     <sect1 id="key-bindings">
       <title
->Accesos rápidos predeterminados</title>
+>Atajos de teclado predeterminados</title>
 
       <para
->Los accesos rápidos predeterminados son:</para>
+>Los atajos de teclado predeterminados son:</para>
 
       <informaltable>
         <tgroup cols="2">
