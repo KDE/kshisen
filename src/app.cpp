@@ -33,7 +33,7 @@
 
 // KDEGames
 #include <KScoreDialog>
-#include <KStandardGameAction>
+#include <KGameStandardAction>
 
 // LibKmahjongg
 #include <KMahjonggConfigDialog>
@@ -95,16 +95,16 @@ void App::setupStatusBar()
 void App::setupActions()
 {
     // Game
-    KStandardGameAction::gameNew(this, &App::invokeNewGame, actionCollection());
-    KStandardGameAction::restart(this, &App::restartGame, actionCollection());
-    KStandardGameAction::pause(this, &App::togglePause, actionCollection());
-    KStandardGameAction::highscores(this, &App::showHighScores, actionCollection());
-    KStandardGameAction::quit(this, &App::close, actionCollection());
+    KGameStandardAction::gameNew(this, &App::invokeNewGame, actionCollection());
+    KGameStandardAction::restart(this, &App::restartGame, actionCollection());
+    KGameStandardAction::pause(this, &App::togglePause, actionCollection());
+    KGameStandardAction::highscores(this, &App::showHighScores, actionCollection());
+    KGameStandardAction::quit(this, &App::close, actionCollection());
 
     // Move
-    KStandardGameAction::undo(this, &App::undo, actionCollection());
-    KStandardGameAction::redo(this, &App::redo, actionCollection());
-    KStandardGameAction::hint(this, &App::hint, actionCollection());
+    KGameStandardAction::undo(this, &App::undo, actionCollection());
+    KGameStandardAction::redo(this, &App::redo, actionCollection());
+    KGameStandardAction::hint(this, &App::hint, actionCollection());
 
     auto soundAction = new KToggleAction(QIcon::fromTheme(QStringLiteral("speaker")), i18n("Play Sounds"), this);
     soundAction->setChecked(Prefs::sounds());
@@ -207,26 +207,26 @@ void App::hint()
 void App::updateItems()
 {
     if (m_board->isOver()) {
-        actionCollection()->action(QLatin1String(KStandardGameAction::name(KStandardGameAction::Undo)))->setEnabled(false);
-        actionCollection()->action(QLatin1String(KStandardGameAction::name(KStandardGameAction::Redo)))->setEnabled(false);
-        actionCollection()->action(QLatin1String(KStandardGameAction::name(KStandardGameAction::Pause)))->setEnabled(false);
-        actionCollection()->action(QLatin1String(KStandardGameAction::name(KStandardGameAction::Hint)))->setEnabled(false);
+        actionCollection()->action(QLatin1String(KGameStandardAction::name(KGameStandardAction::Undo)))->setEnabled(false);
+        actionCollection()->action(QLatin1String(KGameStandardAction::name(KGameStandardAction::Redo)))->setEnabled(false);
+        actionCollection()->action(QLatin1String(KGameStandardAction::name(KGameStandardAction::Pause)))->setEnabled(false);
+        actionCollection()->action(QLatin1String(KGameStandardAction::name(KGameStandardAction::Hint)))->setEnabled(false);
     } else if (m_board->isPaused()) {
-        actionCollection()->action(QLatin1String(KStandardGameAction::name(KStandardGameAction::Undo)))->setEnabled(false);
-        actionCollection()->action(QLatin1String(KStandardGameAction::name(KStandardGameAction::Redo)))->setEnabled(false);
-        actionCollection()->action(QLatin1String(KStandardGameAction::name(KStandardGameAction::Restart)))->setEnabled(false);
-        actionCollection()->action(QLatin1String(KStandardGameAction::name(KStandardGameAction::Pause)))->setChecked(true);
-        actionCollection()->action(QLatin1String(KStandardGameAction::name(KStandardGameAction::Hint)))->setEnabled(false);
+        actionCollection()->action(QLatin1String(KGameStandardAction::name(KGameStandardAction::Undo)))->setEnabled(false);
+        actionCollection()->action(QLatin1String(KGameStandardAction::name(KGameStandardAction::Redo)))->setEnabled(false);
+        actionCollection()->action(QLatin1String(KGameStandardAction::name(KGameStandardAction::Restart)))->setEnabled(false);
+        actionCollection()->action(QLatin1String(KGameStandardAction::name(KGameStandardAction::Pause)))->setChecked(true);
+        actionCollection()->action(QLatin1String(KGameStandardAction::name(KGameStandardAction::Hint)))->setEnabled(false);
     } else if (m_board->isStuck()) {
-        actionCollection()->action(QLatin1String(KStandardGameAction::name(KStandardGameAction::Pause)))->setEnabled(false);
-        actionCollection()->action(QLatin1String(KStandardGameAction::name(KStandardGameAction::Hint)))->setEnabled(false);
+        actionCollection()->action(QLatin1String(KGameStandardAction::name(KGameStandardAction::Pause)))->setEnabled(false);
+        actionCollection()->action(QLatin1String(KGameStandardAction::name(KGameStandardAction::Hint)))->setEnabled(false);
     } else {
-        actionCollection()->action(QLatin1String(KStandardGameAction::name(KStandardGameAction::Undo)))->setEnabled(m_board->canUndo());
-        actionCollection()->action(QLatin1String(KStandardGameAction::name(KStandardGameAction::Redo)))->setEnabled(m_board->canRedo());
-        actionCollection()->action(QLatin1String(KStandardGameAction::name(KStandardGameAction::Restart)))->setEnabled(m_board->canUndo());
-        actionCollection()->action(QLatin1String(KStandardGameAction::name(KStandardGameAction::Pause)))->setEnabled(true);
-        actionCollection()->action(QLatin1String(KStandardGameAction::name(KStandardGameAction::Pause)))->setChecked(false);
-        actionCollection()->action(QLatin1String(KStandardGameAction::name(KStandardGameAction::Hint)))->setEnabled(true);
+        actionCollection()->action(QLatin1String(KGameStandardAction::name(KGameStandardAction::Undo)))->setEnabled(m_board->canUndo());
+        actionCollection()->action(QLatin1String(KGameStandardAction::name(KGameStandardAction::Redo)))->setEnabled(m_board->canRedo());
+        actionCollection()->action(QLatin1String(KGameStandardAction::name(KGameStandardAction::Restart)))->setEnabled(m_board->canUndo());
+        actionCollection()->action(QLatin1String(KGameStandardAction::name(KGameStandardAction::Pause)))->setEnabled(true);
+        actionCollection()->action(QLatin1String(KGameStandardAction::name(KGameStandardAction::Pause)))->setChecked(false);
+        actionCollection()->action(QLatin1String(KGameStandardAction::name(KGameStandardAction::Hint)))->setEnabled(true);
     }
 }
 
