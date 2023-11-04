@@ -11,20 +11,20 @@
 # Nick Shaforostoff <shaforostoff@kde.ru>, 2009.
 # Alexander Potashev <aspotashev@gmail.com>, 2010, 2017.
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
-# Olesya Gerasimenko <translation-team@basealt.ru>, 2021, 2022.
+# Olesya Gerasimenko <translation-team@basealt.ru>, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-01 00:48+0000\n"
-"PO-Revision-Date: 2022-06-03 18:20+0300\n"
+"PO-Revision-Date: 2023-11-03 11:42+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
-"Language-Team: Russian <l10n@basealt.ru>\n"
+"Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.04.3\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
@@ -90,12 +90,7 @@ msgid "No"
 msgstr "Нет"
 
 #: src/app.cpp:259
-#, fuzzy, kde-format
-#| msgid ""
-#| "\n"
-#| "You could have been in the highscores\n"
-#| "if you did not use Undo or Hint.\n"
-#| "Try without them next time."
+#, kde-format
 msgid ""
 "\n"
 "You could have been in the high scores\n"
@@ -103,9 +98,9 @@ msgid ""
 "Try without them next time."
 msgstr ""
 "\n"
-"В список лучших результатов можно попасть только\n"
-"если вы не использовали отмену ходов и подсказки.\n"
-"Попробуйте без них в следующий раз."
+"В список лучших результатов можно попасть только в том\n"
+"случае, если не использовались отмена ходов и подсказки.\n"
+"Попробуйте обойтись без них в следующий раз."
 
 #: src/app.cpp:260 src/app.cpp:268
 #, kde-format
@@ -168,11 +163,7 @@ msgid "General"
 msgstr "Общие"
 
 #: src/board.cpp:69
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the default tileset.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the default tile set.\n"
@@ -188,11 +179,7 @@ msgid "Error Loading Tiles"
 msgstr "Ошибка загрузки плиток"
 
 #: src/board.cpp:78
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset %1. The default tileset has "
-#| "been loaded."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the tile set %1. The default tile set has "
@@ -202,12 +189,7 @@ msgstr ""
 "загружен."
 
 #: src/board.cpp:84
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset %1. The default tileset could "
-#| "also not be loaded.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the tile set %1. The default tile set could "
