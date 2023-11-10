@@ -32,7 +32,7 @@
 #include <KToggleAction>
 
 // KDEGames
-#include <KScoreDialog>
+#include <KGameHighScoreDialog>
 #include <KGameStandardAction>
 
 // LibKmahjongg
@@ -240,17 +240,17 @@ void App::slotEndOfGame()
                                       QString::asprintf("%02d", m_board->currentTime() / 3600),
                                       QString::asprintf("%02d", (m_board->currentTime() / 60) % 60),
                                       QString::asprintf("%02d", m_board->currentTime() % 60));
-        KScoreDialog::FieldInfo scoreInfo;
-        scoreInfo[KScoreDialog::Score].setNum(score(m_board->xTiles(), m_board->yTiles(), m_board->currentTime(), m_board->gravityFlag()));
-        scoreInfo[KScoreDialog::Time] = timeString;
+        KGameHighScoreDialog::FieldInfo scoreInfo;
+        scoreInfo[KGameHighScoreDialog::Score].setNum(score(m_board->xTiles(), m_board->yTiles(), m_board->currentTime(), m_board->gravityFlag()));
+        scoreInfo[KGameHighScoreDialog::Time] = timeString;
 
-        QPointer<KScoreDialog> scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Time | KScoreDialog::Score, this);
-        scoreDialog->addField(KScoreDialog::Custom1, i18n("Gravity"), QStringLiteral("gravity"));
+        QPointer<KGameHighScoreDialog> scoreDialog = new KGameHighScoreDialog(KGameHighScoreDialog::Name | KGameHighScoreDialog::Time | KGameHighScoreDialog::Score, this);
+        scoreDialog->addField(KGameHighScoreDialog::Custom1, i18n("Gravity"), QStringLiteral("gravity"));
         // FIXME: This is bad, because the translated words are stored in the highscores and thus switching the language makes ugly things (schwarzer)
         if (m_board->gravityFlag()) {
-            scoreInfo[KScoreDialog::Custom1] = i18n("Yes");
+            scoreInfo[KGameHighScoreDialog::Custom1] = i18n("Yes");
         } else {
-            scoreInfo[KScoreDialog::Custom1] = i18n("No");
+            scoreInfo[KGameHighScoreDialog::Custom1] = i18n("No");
         }
         auto const configGroup = QStringLiteral("%1x%2").arg(m_board->xTiles()).arg(m_board->yTiles());
         scoreDialog->setConfigGroup(qMakePair(QByteArray(configGroup.toUtf8()), configGroup));
@@ -345,8 +345,8 @@ void App::setCheatModeEnabled(bool enabled)
 
 void App::showHighScores()
 {
-    KScoreDialog scoreDialog(KScoreDialog::Name | KScoreDialog::Time, this);
-    scoreDialog.addField(KScoreDialog::Custom1, i18n("Gravity"), QStringLiteral("gravity"));
+    KGameHighScoreDialog scoreDialog(KGameHighScoreDialog::Name | KGameHighScoreDialog::Time, this);
+    scoreDialog.addField(KGameHighScoreDialog::Custom1, i18n("Gravity"), QStringLiteral("gravity"));
     auto const configGroup = QStringLiteral("%1x%2").arg(m_board->xTiles()).arg(m_board->yTiles());
     scoreDialog.setConfigGroup(qMakePair(QByteArray(configGroup.toUtf8()), configGroup));
     scoreDialog.exec();
