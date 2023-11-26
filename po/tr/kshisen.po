@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-25 01:40+0000\n"
-"PO-Revision-Date: 2023-06-11 22:09+0300\n"
+"PO-Revision-Date: 2023-11-26 00:58+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.07.70\n"
+"X-Generator: Lokalize 23.11.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -527,34 +527,34 @@ msgstr "Tahta Boyutu"
 #: src/settings.ui:236
 #, kde-format
 msgid "14x6"
-msgstr "14 x 6"
+msgstr "14 × 6"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel9)
 #: src/settings.ui:256
 #, kde-format
 msgid "16x9"
-msgstr "16 x 9"
+msgstr "16 × 9"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel7)
 #: src/settings.ui:279
 #, kde-format
 msgid "18x8"
-msgstr "18 x 8"
+msgstr "18 × 8"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel10)
 #: src/settings.ui:302
 #, kde-format
 msgid "24x12"
-msgstr "24 x 12"
+msgstr "24 × 12"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel11)
 #: src/settings.ui:325
 #, kde-format
 msgid "26x14"
-msgstr "26 x 14"
+msgstr "26 × 14"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel12)
 #: src/settings.ui:348
 #, kde-format
 msgid "30x16"
-msgstr "30 x 16"
+msgstr "30 × 16"
