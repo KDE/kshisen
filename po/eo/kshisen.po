@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kshisen 1.0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-25 01:40+0000\n"
-"PO-Revision-Date: 2023-11-30 19:46+0100\n"
+"PO-Revision-Date: 2023-12-01 06:54+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
 "Language: eo\n"
@@ -46,7 +46,7 @@ msgstr "Forigita: 0/0"
 #: src/app.cpp:90
 #, kde-format
 msgid "Cheat mode"
-msgstr ""
+msgstr "Trompa reĝimo"
 
 #: src/app.cpp:109
 #, kde-format
@@ -63,7 +63,7 @@ msgstr "%1:%2:%3"
 #: src/app.cpp:248 src/app.cpp:349 src/settings.ui:26
 #, kde-format
 msgid "Gravity"
-msgstr ""
+msgstr "Gravito"
 
 #: src/app.cpp:251
 #, kde-format
@@ -83,6 +83,10 @@ msgid ""
 "if you did not use Undo or Hint.\n"
 "Try without them next time."
 msgstr ""
+"\n"
+"Vi povus esti en la altaj poentoj\n"
+"se vi ne uzis Malfari aŭ Sugeston.\n"
+"Provu sen ili venontfoje."
 
 #: src/app.cpp:260 src/app.cpp:268
 #, kde-format
@@ -95,6 +99,8 @@ msgid ""
 "Congratulations!\n"
 "You made it into the hall of fame."
 msgstr ""
+"Gratulon!\n"
+"Vi eniris la halon de famo."
 
 #: src/app.cpp:267
 #, kde-format
@@ -120,22 +126,22 @@ msgstr "Forigis: %1/%2 "
 #: src/app.cpp:322
 #, kde-format
 msgid "Select a matching tile"
-msgstr ""
+msgstr "Elektu kongruan kahelon"
 
 #: src/app.cpp:327
 #, kde-format
 msgid "Select the move you want by clicking on the blue line"
-msgstr ""
+msgstr "Elektu la movon, kiun vi volas, alklakante la bluan linion"
 
 #: src/app.cpp:332
 #, kde-format
 msgid "This tile did not match the one you selected"
-msgstr ""
+msgstr "Ĉi tiu kahelo ne kongruis kun tiu, kiun vi elektis"
 
 #: src/app.cpp:337
 #, kde-format
 msgid "You cannot make this move"
-msgstr ""
+msgstr "Vi ne povas fari ĉi tiun movon"
 
 #: src/app.cpp:368
 #, kde-format
@@ -149,12 +155,14 @@ msgid ""
 "An error occurred when loading the default tile set.\n"
 "Please install the KMahjongg library."
 msgstr ""
+"Eraro okazis dum ŝargo de la defaŭlta kahelaro.\n"
+"Bonvolu instali la bibliotekon KMahjongg."
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
 #: src/board.cpp:111 src/board.cpp:117
 #, kde-format
 msgid "Error Loading Tiles"
-msgstr ""
+msgstr "Eraro Ŝargante Kahelojn"
 
 #: src/board.cpp:78
 #, kde-format
@@ -163,6 +171,7 @@ msgid ""
 "An error occurred when loading the tile set %1. The default tile set has "
 "been loaded."
 msgstr ""
+"Eraro okazis dum ŝargo de la kahelaro %1. La defaŭlta kahelaro estis ŝargita."
 
 #: src/board.cpp:84
 #, kde-format
@@ -172,6 +181,9 @@ msgid ""
 "also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
+"Eraro okazis dum ŝargo de la kahelaro %1. La defaŭlta kahelaro ankaŭ ne "
+"povus esti ŝargita.\n"
+"Bonvolu instali la bibliotekon KMahjongg."
 
 #: src/board.cpp:101
 #, kde-format
@@ -180,6 +192,8 @@ msgid ""
 "An error occurred when loading the default background.\n"
 "Please install the KMahjongg library."
 msgstr ""
+"Okazis eraro dum ŝargi la defaŭltan fonon.\n"
+"Bonvolu instali la bibliotekon KMahjongg."
 
 #: src/board.cpp:110
 #, kde-format
@@ -187,7 +201,7 @@ msgctxt "%1 is a path to a background image file"
 msgid ""
 "An error occurred when loading the background %1. The default background has "
 "been loaded."
-msgstr ""
+msgstr "Eraro okazis dum ŝargo de la fono %1. La defaŭlta fono estis ŝargita."
 
 #: src/board.cpp:116
 #, kde-format
@@ -197,6 +211,9 @@ msgid ""
 "could also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
+"Eraro okazis dum ŝargo de la fono %1. La defaŭlta fono ankaŭ ne povus esti "
+"ŝargita.\n"
+"Bonvolu instali la bibliotekon KMahjongg."
 
 #: src/board.cpp:678
 #, kde-format
@@ -204,6 +221,8 @@ msgid ""
 "Game Paused\n"
 "Click to resume game."
 msgstr ""
+"Ludo Paŭzita\n"
+"Alklaku por rekomenci la ludon."
 
 #: src/board.cpp:682
 #, kde-format
@@ -211,6 +230,8 @@ msgid ""
 "Game Stuck\n"
 "No more moves possible."
 msgstr ""
+"Ludo Blokiĝis\n"
+"e eblas pliaj movoj."
 
 #: src/board.cpp:685
 #, kde-format
@@ -218,18 +239,20 @@ msgid ""
 "Game Over\n"
 "Click to start a new game."
 msgstr ""
+"Game Over\n"
+"Alklaku por komenci novan ludon."
 
 #. i18n: ectx: label, entry (TileSet), group (General)
 #: src/kshisen.kcfg:9
 #, kde-format
 msgid "The tile set to use."
-msgstr ""
+msgstr "La kahelo estas uzata."
 
 #. i18n: ectx: label, entry (Background), group (General)
 #: src/kshisen.kcfg:12
 #, kde-format
 msgid "The background to use."
-msgstr ""
+msgstr "La fono por uzi."
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: src/kshisenui.rc:13
@@ -245,12 +268,12 @@ msgstr "Shisen-Sho"
 #: src/main.cpp:36
 #, kde-format
 msgid "A game similar to Mahjongg"
-msgstr ""
+msgstr "Ludo simila al Mahjongg"
 
 #: src/main.cpp:38
 #, kde-format
 msgid "Copyright 1997 Mario Weilguni"
-msgstr ""
+msgstr "Kopirajto 1997 Mario Weilguni"
 
 #: src/main.cpp:41
 #, kde-format
@@ -290,7 +313,7 @@ msgstr "Mauricio Piacentini"
 #: src/main.cpp:44
 #, kde-format
 msgid "KMahjonggLib integration for KDE4"
-msgstr ""
+msgstr "KMahjonggLib integriĝo por KDE4"
 
 #: src/main.cpp:45
 #, kde-format
@@ -302,11 +325,13 @@ msgstr "Jason Lane"
 msgid ""
 "Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
 msgstr ""
+"Aldonita 'kaheloj forigitaj' nombrilo<br/>Kahelo glat-skalado kaj fenestro "
+"regrandigo"
 
 #: src/main.cpp:46
 #, kde-format
 msgid "Thanks also to everyone who should be listed here but is not!"
-msgstr ""
+msgstr "Dankon ankaŭ al ĉiuj, kiuj devus esti listigitaj ĉi tie sed ne estas!"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Gravity)
 #: src/settings.ui:23
@@ -315,6 +340,9 @@ msgid ""
 "<b>Gravity</b><p>Checking this makes the game even harder: If a tile is "
 "removed, all tiles lying above it will fall down one step.</p>"
 msgstr ""
+"<b>Gravito</b><p>Kontroli ĉi tion faras la ludon eĉ pli malfacila: Se kahelo "
+"estas forigita, ĉiuj kaheloj kuŝantaj super ĝi falos malsupren unu ŝtupon.</"
+"p>"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Solvable)
 #: src/settings.ui:33
@@ -324,12 +352,15 @@ msgid ""
 "with games that are possible to solve.</p><p>Note: Even in solvable games "
 "you can fail to complete if you remove the tiles in the wrong order.</p>"
 msgstr ""
+"<b>Kreu nur solveblajn ludojn</b><p>Se markite, oni prezentos al vi nur "
+"ludojn solveblajn.</p><p>Noto: Eĉ en solveblaj ludoj oni povas malsukcesi "
+"plenumi se vi forigu la kahelojn en malĝusta ordo.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_Solvable)
 #: src/settings.ui:36
 #, kde-format
 msgid "Create solvable games only"
-msgstr ""
+msgstr "Krei nur solveblajn ludojn"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
 #: src/settings.ui:43
@@ -339,12 +370,15 @@ msgid ""
 "the game show a message to abort the game in case there are no possible "
 "moves left to win the game.</p>"
 msgstr ""
+"<b>Montri mesaĝon se tabulo ne plu povas esti solvita</b><p>Kontrolante ĉi "
+"tion, la ludo montras mesaĝon por ĉesigi la ludon se ne restas eblaj movoj "
+"por gajni la ludon.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
 #: src/settings.ui:46
 #, kde-format
 msgid "Show message if board can no longer be solved"
-msgstr ""
+msgstr "Montri mesaĝon se tabulo ne plu povas esti solvita"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ChineseStyle)
 #: src/settings.ui:53
@@ -356,6 +390,11 @@ msgid ""
 "inconsistent with Mah-jongg rules. It is recommended to keep this option "
 "checked.</p>"
 msgstr ""
+"<b>Uzu ĉinan stilon: ajna floro kongruas kun ajna floro, ajna sezono "
+"kongruas kun ajna sezono</b><p>Uzu la tradiciajn regulojn por kongrui la "
+"kahelojn. Antaŭa versio de la ludo kutimis permesi nur precizajn kahelajn "
+"kongruojn, kio estas malkonsekvenca kun Mah-jongg-reguloj. Oni rekomendas "
+"konservi ĉi tiun opcion markita.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ChineseStyle)
 #: src/settings.ui:56
@@ -363,6 +402,8 @@ msgstr ""
 msgid ""
 "Use Chinese style: any flower match any flower, any season match any season"
 msgstr ""
+"Uzu ĉinan stilon: ajna floro kongruas kun ajna floro, ajna sezono kongruas "
+"kun ajna sezono"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_TilesCanSlide)
 #: src/settings.ui:63
@@ -379,12 +420,22 @@ msgid ""
 "sliding moves, you will have to click on one of the two connecting lines to "
 "choose your preferred move.</p>"
 msgstr ""
+"<b>Kaheloj povas gliti, sed vi povas konekti nur en 2 linioj anstataŭ 3</"
+"b><p>Ĉi tiu opcio ŝanĝas la regulojn ĝis la punkto, kie ĝi preskaŭ fariĝas "
+"tute alia ludo. Kiam ĝi estas aktiva, vi povas forigi la kahelojn nur se ili "
+"povas esti kunligitaj per linio konsistanta el nur du segmentoj anstataŭ la "
+"kutimaj tri. Tamen, vi rajtas gliti la kahelojn sur la tabulon, se la vico "
+"aŭ kolumno kie ili estas metitaj havas iom da malplena spaco. Por fari "
+"glitan movon, vi devas klaki sur la kahelo enhavanta la kolumnon aŭ vicon, "
+"kiu povas gliti, kaj poste sur la kongruan kahelon. Se estas du eblaj glitaj "
+"movoj, vi devos klaki sur unu el la du kunligaj linioj por elekti vian "
+"preferatan movon.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_TilesCanSlide)
 #: src/settings.ui:66
 #, kde-format
 msgid "Tiles can slide, but you can connect only in 2 lines instead of 3"
-msgstr ""
+msgstr "Kaheloj povas gliti, sed vi povas konekti nur en 2 linioj anstataŭ 3"
 
 #. i18n: ectx: property (whatsThis), widget (QGroupBox, difficulty_groupBox)
 #: src/settings.ui:73
@@ -393,12 +444,14 @@ msgid ""
 "<b>Board Difficulty</b><p>The slider controls the difficulty of the board "
 "from Easy to Hard.</p>"
 msgstr ""
+"<b>Tabulmalfacilaĵo</b><p>La glitilo kontrolas la malfacilecon de la tabulo "
+"de Facila al Malfacila.</p>"
 
 #. i18n: ectx: property (title), widget (QGroupBox, difficulty_groupBox)
 #: src/settings.ui:76
 #, kde-format
 msgid "Board Difficulty"
-msgstr ""
+msgstr "Estraro Malfacilo"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
 #: src/settings.ui:103
@@ -419,12 +472,15 @@ msgid ""
 "<b>Piece Removal Speed</b><p>Adjusting this slider alters the speed at which "
 "the pieces are removed from the screen after a match has been made.</p>"
 msgstr ""
+"<b>Rapideco de Forigo de Pecoj</b><p>Alĝustigi ĉi tiun glitilon ŝanĝas la "
+"rapidecon je kiu la pecoj estas forigitaj de la ekrano post kiam kongruo "
+"estas farita.</p>"
 
 #. i18n: ectx: property (title), widget (QGroupBox, speed_groupBox)
 #: src/settings.ui:141
 #, kde-format
 msgid "Piece Removal Speed"
-msgstr ""
+msgstr "Peco Forigo Rapido"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
 #: src/settings.ui:168
@@ -446,6 +502,9 @@ msgid ""
 "the board. The more tiles you have, the harder (and longer) the game will be."
 "</p>"
 msgstr ""
+"<b>Tabulgrando</b><p>Ĉi tiu glitilo permesas ŝanĝi la nombron da kaheloj sur "
+"la tabulo. Ju pli da kaheloj vi havas, des pli malfacila (kaj pli longa) "
+"estos la ludo.</p>"
 
 #. i18n: ectx: property (title), widget (QGroupBox, size_groupBox)
 #: src/settings.ui:206
