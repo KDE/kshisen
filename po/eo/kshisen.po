@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kshisen 1.0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-25 01:40+0000\n"
-"PO-Revision-Date: 2023-12-01 06:54+0100\n"
+"PO-Revision-Date: 2023-12-16 23:54+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
 "Language: eo\n"
@@ -231,7 +231,7 @@ msgid ""
 "No more moves possible."
 msgstr ""
 "Ludo Blokiĝis\n"
-"e eblas pliaj movoj."
+"Ne eblas pliaj movoj."
 
 #: src/board.cpp:685
 #, kde-format
@@ -451,7 +451,7 @@ msgstr ""
 #: src/settings.ui:76
 #, kde-format
 msgid "Board Difficulty"
-msgstr "Estraro Malfacilo"
+msgstr "Tabula Malfacilo"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
 #: src/settings.ui:103
