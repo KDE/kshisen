@@ -29,7 +29,7 @@ int main(int argc, char ** argv)
 {
     QApplication a(argc, argv);
 
-    KLocalizedString::setApplicationDomain("kshisen");
+    KLocalizedString::setApplicationDomain(QByteArrayLiteral("kshisen"));
 
     KAboutData aboutData(QStringLiteral("kshisen"), i18n("Shisen-Sho"),
                          QStringLiteral(KSHISEN_VERSION_STRING),
