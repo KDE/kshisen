@@ -140,5 +140,5 @@ GenericName[x-test]=xxShisen-Sho Mahjongg-like Tile Gamexx
 GenericName[zh_CN]=类似连连看的麻将游戏
 GenericName[zh_TW]=四川省麻將牌遊戲
 Icon=kshisen
-X-KDE-StartupNotify=true
+StartupNotify=true
 Categories=Qt;KDE;Game;BoardGame;
