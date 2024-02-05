@@ -12,62 +12,63 @@
 # Diego Iastrubni <elcuco@kde.org>, 2005.
 # Israel Berger <israelb@gmail.com>, 2005.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
+# SPDX-FileCopyrightText: 2024 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-25 01:40+0000\n"
-"PO-Revision-Date: 2017-05-16 07:01-0400\n"
-"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
-"Language-Team: Hebrew <kde-l10n-he@kde.org>\n"
+"PO-Revision-Date: 2024-02-04 22:12+0200\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Zanata 3.9.6\n"
+"X-Generator: Lokalize 23.08.4\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Israel Berger"
+msgstr "Israel Berger,צוות התרגום של KDE ישראל"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "israelb@gmail.com"
+msgstr "israelb@gmail.com,kde-l10n-he@kde.org"
 
 #: src/app.cpp:81 src/app.cpp:317
 #, kde-format
 msgid "Select a tile"
-msgstr ""
+msgstr "בחירת קובץ"
 
 #: src/app.cpp:84
 #, kde-format
 msgid "Time: 0:00:00"
-msgstr ""
+msgstr "זמן: 0:00:00"
 
 #: src/app.cpp:87
-#, fuzzy, kde-format
+#, kde-format
 msgid "Removed: 0/0"
-msgstr " הוסרו: %1 מתוך %2 "
+msgstr "הוסרו: 0/0"
 
 #: src/app.cpp:90
-#, fuzzy, kde-format
+#, kde-format
 msgid "Cheat mode"
 msgstr " מצב רמאות"
 
 #: src/app.cpp:109
 #, kde-format
 msgid "Play Sounds"
-msgstr ""
+msgstr "השמעת צלילים"
 
 #: src/app.cpp:239
 #, kde-format
 msgctxt "time string: hh:mm:ss"
 msgid "%1:%2:%3"
-msgstr ""
+msgstr "%1:%2:%3"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_Gravity)
 #: src/app.cpp:248 src/app.cpp:349 src/settings.ui:26
@@ -78,12 +79,12 @@ msgstr "כבידה"
 #: src/app.cpp:251
 #, kde-format
 msgid "Yes"
-msgstr ""
+msgstr "כן"
 
 #: src/app.cpp:253
 #, kde-format
 msgid "No"
-msgstr ""
+msgstr "לא"
 
 #: src/app.cpp:259
 #, kde-format
@@ -93,6 +94,10 @@ msgid ""
 "if you did not use Undo or Hint.\n"
 "Try without them next time."
 msgstr ""
+"\n"
+"יכולת להגיע לטבלת השיאנים\n"
+"אבל השתמשת ברמז או הסגה.\n"
+"בפעם הבאה כדאי לנסות בלי להשתמש בהם."
 
 #: src/app.cpp:260 src/app.cpp:268
 #, kde-format
@@ -100,22 +105,24 @@ msgid "End of Game"
 msgstr "סוף המשחק"
 
 #: src/app.cpp:263
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Congratulations!\n"
 "You made it into the hall of fame."
-msgstr "מזל טוב! עשית זאת תוך %1:%2:%3"
+msgstr ""
+"מזל טוב!\n"
+"הגעת להיכל התהילה."
 
 #: src/app.cpp:267
 #, kde-format
 msgctxt "%1 - time string like hh:mm:ss"
 msgid "You made it in %1"
-msgstr ""
+msgstr "הצלחת תוך %1"
 
 #: src/app.cpp:283
-#, fuzzy, kde-format
+#, kde-format
 msgid "Your time: %1:%2:%3 %4"
-msgstr " הזמן שלך: %1:%2: %3 %4 "
+msgstr " הזמן שלך: %1:%2:%3 %4"
 
 #: src/app.cpp:287
 #, kde-format
@@ -123,29 +130,29 @@ msgid "(Paused) "
 msgstr "(מושהה) "
 
 #: src/app.cpp:295
-#, fuzzy, kde-format
+#, kde-format
 msgid "Removed: %1/%2 "
 msgstr " הוסרו: %1 מתוך %2 "
 
 #: src/app.cpp:322
 #, kde-format
 msgid "Select a matching tile"
-msgstr ""
+msgstr "נא לבחור אריח תואם"
 
 #: src/app.cpp:327
 #, kde-format
 msgid "Select the move you want by clicking on the blue line"
-msgstr ""
+msgstr "נא לבחור את המהלך הרצוי בלחיצה על הקו הכחול"
 
 #: src/app.cpp:332
 #, kde-format
 msgid "This tile did not match the one you selected"
-msgstr ""
+msgstr "האריח הזה לא תואם לזה שבחרת"
 
 #: src/app.cpp:337
 #, kde-format
 msgid "You cannot make this move"
-msgstr ""
+msgstr "אי אפשר לעשות את המהלך הזה"
 
 #: src/app.cpp:368
 #, kde-format
@@ -159,12 +166,14 @@ msgid ""
 "An error occurred when loading the default tile set.\n"
 "Please install the KMahjongg library."
 msgstr ""
+"אירעה שגיאה בטעינת ערכת אריחי ברירת המחדל.\n"
+"נא להתקין את ספריית KMahjongg."
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
 #: src/board.cpp:111 src/board.cpp:117
 #, kde-format
 msgid "Error Loading Tiles"
-msgstr ""
+msgstr "שגיאה בטעינת אריחים"
 
 #: src/board.cpp:78
 #, kde-format
@@ -172,7 +181,7 @@ msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the tile set %1. The default tile set has "
 "been loaded."
-msgstr ""
+msgstr "אירעה שגיאה בטעינת ערכת האריחים %1. ערכת אריחי ברירת המחדל נטענה."
 
 #: src/board.cpp:84
 #, kde-format
@@ -182,6 +191,9 @@ msgid ""
 "also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
+"אירעה שגיאה בטעינת ערכת האריחים %1. גם ערכת אריחי ברירת המחדל לא הצליחה "
+"להיטען.\n"
+"נא להתקין את ספריית KMahjongg."
 
 #: src/board.cpp:101
 #, kde-format
@@ -190,6 +202,8 @@ msgid ""
 "An error occurred when loading the default background.\n"
 "Please install the KMahjongg library."
 msgstr ""
+"אירעה שגיאה בטעינת רקע ברירת המחדל.\n"
+"נא להתקין את ספריית KMahjongg."
 
 #: src/board.cpp:110
 #, kde-format
@@ -197,7 +211,7 @@ msgctxt "%1 is a path to a background image file"
 msgid ""
 "An error occurred when loading the background %1. The default background has "
 "been loaded."
-msgstr ""
+msgstr "אירעה שגיאה בטעינת הרקע %1. נטען רקע ברירת המחדל."
 
 #: src/board.cpp:116
 #, kde-format
@@ -207,6 +221,8 @@ msgid ""
 "could also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
+"שגיאה בטעינת הרקע %1. רקע ברירת המחדל גם כן לא הצליח להיטען.\n"
+"נא להתקין את ספריית KMahjongg."
 
 #: src/board.cpp:678
 #, kde-format
@@ -214,13 +230,17 @@ msgid ""
 "Game Paused\n"
 "Click to resume game."
 msgstr ""
+"המשחק מושהה\n"
+"לחיצה תמשיך במשחק."
 
 #: src/board.cpp:682
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Game Stuck\n"
 "No more moves possible."
-msgstr "אין עוד מהלכים אפשריים!"
+msgstr ""
+"המשחק נתקע!\n"
+"אין עוד מהלכים אפשריים."
 
 #: src/board.cpp:685
 #, kde-format
@@ -228,24 +248,26 @@ msgid ""
 "Game Over\n"
 "Click to start a new game."
 msgstr ""
+"המשחק נגמר\n"
+"לחיצה תתחיל משחק חדש."
 
 #. i18n: ectx: label, entry (TileSet), group (General)
 #: src/kshisen.kcfg:9
 #, kde-format
 msgid "The tile set to use."
-msgstr ""
+msgstr "ערכת האריחים לשימוש."
 
 #. i18n: ectx: label, entry (Background), group (General)
 #: src/kshisen.kcfg:12
 #, kde-format
 msgid "The background to use."
-msgstr ""
+msgstr "הרקע לשימוש."
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: src/kshisenui.rc:13
 #, kde-format
 msgid "Main Toolbar"
-msgstr ""
+msgstr "סרגל כלים ראשי"
 
 #: src/main.cpp:34
 #, kde-format
@@ -253,19 +275,19 @@ msgid "Shisen-Sho"
 msgstr "שישן שו"
 
 #: src/main.cpp:36
-#, fuzzy, kde-format
+#, kde-format
 msgid "A game similar to Mahjongg"
-msgstr "משחק KDE דומה למה ג'ונג"
+msgstr "משחק דומה למהג׳ונג"
 
 #: src/main.cpp:38
 #, kde-format
 msgid "Copyright 1997 Mario Weilguni"
-msgstr ""
+msgstr "כל הזכויות שמורות 1997 למריו ויילגוני"
 
 #: src/main.cpp:41
 #, kde-format
 msgid "Frederik Schwarzer"
-msgstr ""
+msgstr "פרדריק שוורצר"
 
 #: src/main.cpp:41
 #, kde-format
@@ -275,17 +297,17 @@ msgstr "מתחזק נוכחי"
 #: src/main.cpp:42
 #, kde-format
 msgid "Dave Corrie"
-msgstr ""
+msgstr "דייב קורי"
 
 #: src/main.cpp:42
-#, fuzzy, kde-format
+#, kde-format
 msgid "Former Maintainer"
-msgstr "מתחזק נוכחי"
+msgstr "מתחזק לשעבר"
 
 #: src/main.cpp:43
 #, kde-format
 msgid "Mario Weilguni"
-msgstr ""
+msgstr "מריו ויילגוני"
 
 #: src/main.cpp:43
 #, kde-format
@@ -295,30 +317,29 @@ msgstr "מפתח מקורי"
 #: src/main.cpp:44
 #, kde-format
 msgid "Mauricio Piacentini"
-msgstr ""
+msgstr "מאוריציו פיאצנטיני"
 
 #: src/main.cpp:44
 #, kde-format
 msgid "KMahjonggLib integration for KDE4"
-msgstr ""
+msgstr "שילוב של KMahjonggLib ל־KDE4"
 
 #: src/main.cpp:45
 #, kde-format
 msgid "Jason Lane"
-msgstr ""
+msgstr "ג׳ייסון ליין"
 
 #: src/main.cpp:45
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
 msgstr ""
-"הוספת מונה \"לבנים שהוסרו\"\n"
-"שינוי גודל של הלבנים באופן חלק ושינוי גודל החלון"
+"נוסף מונה ‚אריחים שהוסרו’<br/>שינוי קנה מידה חלק לאריחים ולשינוי גודל החלון"
 
 #: src/main.cpp:46
-#, fuzzy, kde-format
+#, kde-format
 msgid "Thanks also to everyone who should be listed here but is not!"
-msgstr "תודה גם לכל מי שאמור להיות רשום כאן אבל לא רשום!"
+msgstr "תודה ג לכל מי שאמור להיות רשום כאן אבל לא מופיע!"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Gravity)
 #: src/settings.ui:23
@@ -327,6 +348,8 @@ msgid ""
 "<b>Gravity</b><p>Checking this makes the game even harder: If a tile is "
 "removed, all tiles lying above it will fall down one step.</p>"
 msgstr ""
+"<b>כבידה</b><p>סימון האפשרות הזאת הופך את המשחק לקשה יותר: אם אריח נשמט, כל "
+"האריחים שמעליו נופלים למטה ברמה אחת.</p>"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Solvable)
 #: src/settings.ui:33
@@ -336,12 +359,15 @@ msgid ""
 "with games that are possible to solve.</p><p>Note: Even in solvable games "
 "you can fail to complete if you remove the tiles in the wrong order.</p>"
 msgstr ""
+"<b>ליצור משחקים פתירים בלבד</b><p>אם האפשרות מסומנת, ייווצרו רק משחקים שאפשר "
+"לפתור.</p><p>לתשומת ליבך: אפילו במשחקים שניתן לפתוח אפשר להיפסל אם מסירים את "
+"האריחים בסדר שגוי.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_Solvable)
 #: src/settings.ui:36
-#, fuzzy, kde-format
+#, kde-format
 msgid "Create solvable games only"
-msgstr "אפשר משחקים שאינם ניתנים לסיום"
+msgstr "ליצור משחקים פתירים בלבד"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
 #: src/settings.ui:43
@@ -351,12 +377,15 @@ msgid ""
 "the game show a message to abort the game in case there are no possible "
 "moves left to win the game.</p>"
 msgstr ""
+"<b>להציג הודעה אם אי אפשר לפתור את הלוח עוד</b><p>סימון האפשרות הזאת גורמת "
+"למשחק להציג הודעה לביטול המשחק אם אין עוד מהלכים שניתן לבצע כדי לנצח במשחק.</"
+"p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
 #: src/settings.ui:46
 #, kde-format
 msgid "Show message if board can no longer be solved"
-msgstr ""
+msgstr "להציג הודעה אם אי אפשר לפתור את הלוח עוד"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ChineseStyle)
 #: src/settings.ui:53
@@ -368,13 +397,17 @@ msgid ""
 "inconsistent with Mah-jongg rules. It is recommended to keep this option "
 "checked.</p>"
 msgstr ""
+"<b>להשתמש בסגנון הסיני: כל פרח תואם לכל פרח, כל עונה תואמת לכל עונה</"
+"b><p>אפשר להשתמש בכללים המסורתיים להתאמת אריחים. גרסאות קודמות של המשחק הרשו "
+"רק התאמות מדויקות של אריחים שזה לא תואם לכללים של מהג׳ונג. מומלץ להשאיר את "
+"האפשרות הזאת מסומנת.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ChineseStyle)
 #: src/settings.ui:56
 #, kde-format
 msgid ""
 "Use Chinese style: any flower match any flower, any season match any season"
-msgstr ""
+msgstr "להשמש בסגנון סיני: כל פרח מתאים לכל פרח וכל עונה מתאימה לכל עונה"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_TilesCanSlide)
 #: src/settings.ui:63
@@ -391,12 +424,20 @@ msgid ""
 "sliding moves, you will have to click on one of the two connecting lines to "
 "choose your preferred move.</p>"
 msgstr ""
+"<b>אריחים יכולים להחליק ,אבל אפשר לחבר רק 2 קווים במקום 3</b><p>אפשרות זו "
+"משנה את הכללים עד לנקודה שבה זה הופך להיות כמעט משחק שונה לחלוטין. כשהיא "
+"פעילהף אשר להסיר את האירחים אם אפשר לחבר אותם בקו שמורכב משני מקטעים במקום "
+"השלושה המסורתיים. עם זאת, מותר לך להחליק את האריחים על גבי הלוח, אם השורה או "
+"העמודה שבהם הם מוצבים יש חלל פנוי. כדי להניע את ההחלקה, יש ללחוץ על האריח "
+"שמכיל את העמודה או השורה שמאפשרת החלקה, ואז על האריח התואם. אם יש שני מהלכי "
+"החלקה אפשריים, צריך ללחוץ על אחד מבין שני הקווים המחברים כדי לבחור את המהלך "
+"המועדף.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_TilesCanSlide)
 #: src/settings.ui:66
 #, kde-format
 msgid "Tiles can slide, but you can connect only in 2 lines instead of 3"
-msgstr ""
+msgstr "אריחים יכולים להחליק אבל אפשר לחבר רק 2 שורות במקום 3"
 
 #. i18n: ectx: property (whatsThis), widget (QGroupBox, difficulty_groupBox)
 #: src/settings.ui:73
@@ -405,6 +446,8 @@ msgid ""
 "<b>Board Difficulty</b><p>The slider controls the difficulty of the board "
 "from Easy to Hard.</p>"
 msgstr ""
+"<b>רמת קושי של הלוח</b><p>המחוון שולט בכמה קשה לפתרון יהיה הלוח מקל ועד קשה."
+"</p>"
 
 #. i18n: ectx: property (title), widget (QGroupBox, difficulty_groupBox)
 #: src/settings.ui:76
@@ -416,7 +459,7 @@ msgstr "רמת קושי של הלוח"
 #: src/settings.ui:103
 #, kde-format
 msgid "Easy"
-msgstr "קל"
+msgstr "קלה"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3)
 #: src/settings.ui:123
@@ -431,6 +474,8 @@ msgid ""
 "<b>Piece Removal Speed</b><p>Adjusting this slider alters the speed at which "
 "the pieces are removed from the screen after a match has been made.</p>"
 msgstr ""
+"<b>מהירות הסרת אריחים</b><p>כיוון המחוון הזה משנה את המהירות שבה מוסרים "
+"החלקים מהמסך לאחר איתור התאמה.</p>"
 
 #. i18n: ectx: property (title), widget (QGroupBox, speed_groupBox)
 #: src/settings.ui:141
@@ -458,45 +503,47 @@ msgid ""
 "the board. The more tiles you have, the harder (and longer) the game will be."
 "</p>"
 msgstr ""
+"<b>גודל הלוח</b><p>המחוון מאפשר לשנות את מספר האריחים בלוח. ככל שיש יותר "
+"אריחים ככה המשחק קשה (וארוך יותר).</p>"
 
 #. i18n: ectx: property (title), widget (QGroupBox, size_groupBox)
 #: src/settings.ui:206
 #, kde-format
 msgid "Board Size"
-msgstr ""
+msgstr "גודל לוח"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel8)
 #: src/settings.ui:236
 #, kde-format
 msgid "14x6"
-msgstr "14x6"
+msgstr "14×6"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel9)
 #: src/settings.ui:256
 #, kde-format
 msgid "16x9"
-msgstr ""
+msgstr "16×9"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel7)
 #: src/settings.ui:279
 #, kde-format
 msgid "18x8"
-msgstr "18x8"
+msgstr "18×8"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel10)
 #: src/settings.ui:302
 #, kde-format
 msgid "24x12"
-msgstr "24x12"
+msgstr "24×12"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel11)
 #: src/settings.ui:325
 #, kde-format
 msgid "26x14"
-msgstr "26x14"
+msgstr "26×14"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel12)
 #: src/settings.ui:348
 #, kde-format
 msgid "30x16"
-msgstr "30x16"
+msgstr "30×16"
