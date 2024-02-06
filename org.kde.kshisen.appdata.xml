@@ -20,6 +20,7 @@
   <name xml:lang="fi">KShisen</name>
   <name xml:lang="fr">KShisen</name>
   <name xml:lang="gl">KShisen</name>
+  <name xml:lang="he">KShisen</name>
   <name xml:lang="ia">KShisen</name>
   <name xml:lang="id">KShisen</name>
   <name xml:lang="it">KShisen</name>
@@ -58,6 +59,7 @@
   <summary xml:lang="fi">Shisen-sho, mahjongmainen laattapeli</summary>
   <summary xml:lang="fr">Jeu de tuiles Shisen-Sho dans le style du Mahjongg</summary>
   <summary xml:lang="gl">Xogo de fichas Shisen-so ao estilo do Mahjongg</summary>
+  <summary xml:lang="he">משחק אריחים דמוי מהג׳ונג בשם שיסן־שו</summary>
   <summary xml:lang="id">Shisen-Sho Permainan Kartu Seperti Mahjongg</summary>
   <summary xml:lang="it">Gioco di tessere in stile Shisen-Sho Mahjongg</summary>
   <summary xml:lang="ka">Shisen-Sho Mahjongg-ის მსგავსი თამაში</summary>
@@ -98,6 +100,7 @@
     <p xml:lang="fi">KShisen on pasianssimainen peli, joka käyttää tavallisia mahjong-tiiliä. Mahjongista poiketen KShisenissä on kuitenkin vain yksi kerros sekoitettuja tiiliä.</p>
     <p xml:lang="fr">KShisen est un jeu en solitaire qui se joue en utilisant les tuiles standard du Mahjong. A la différence du Mahjong, KShisen n'a qu'une couche de tuiles mélangées.</p>
     <p xml:lang="gl">O KShisen é un xogo similar ao solitario que se xoga usando as pezas estándar do Mahjong. Porén, a diferenza do Mahjong, o KShisen ten só unha capa de pezas desordenadas.</p>
+    <p xml:lang="he">KShisen הוא משחק ליחיד שמשחקים בו בערכת אריחים דמויי מהג׳ונג. בניגוד למהג׳ונג, ל־KShisen יש רק שכבה אחת של אריחים מפוזרים.</p>
     <p xml:lang="id">KShisen adalah game seperti solitaire yang dimainkan menggunakan set standar kartu Mahjong. Namun tidak seperti Mahjong, KShisen hanya memiliki satu lapis kartu yang diacak.</p>
     <p xml:lang="it">KShisen è un solitario che si gioca col gruppo standard di tessere Mahjong. Tuttavia, a differenza del Mahjong, KShisen possiede solo un livello di tessere mescolate.</p>
     <p xml:lang="ka">KShisen პასეანსის მსგავსი თამაშია. Mahjong-ისგან განსხვავების KShisen -ს მხოლოდ ერთი ფენა გააჩნია.</p>
@@ -143,6 +146,7 @@
       <caption xml:lang="fi">KShisenin pelaaminen</caption>
       <caption xml:lang="fr">Partie de KShisen en cours</caption>
       <caption xml:lang="gl">Xogando a KShisen</caption>
+      <caption xml:lang="he">איך משחקים ב־KShisen</caption>
       <caption xml:lang="id">Memainkan KShisen</caption>
       <caption xml:lang="it">Giocare con KShisen</caption>
       <caption xml:lang="ka">KShisen-ის თამაში</caption>
