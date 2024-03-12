@@ -5,19 +5,20 @@
 # pan93412 <pan93412@gmail.com>, 2018.
 # Franklin Weng <franklin at goodhorse dot idv dot tw>, 2007.
 # Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2009.
+# SPDX-FileCopyrightText: 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-25 01:40+0000\n"
-"PO-Revision-Date: 2018-03-24 16:50+0800\n"
-"Last-Translator: pan93412 <pan93412@gmail.com>\n"
-"Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
+"PO-Revision-Date: 2024-03-12 02:03+0900\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Lokalize 24.04.70\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #, kde-format
@@ -78,12 +79,7 @@ msgid "No"
 msgstr "否"
 
 #: src/app.cpp:259
-#, fuzzy, kde-format
-#| msgid ""
-#| "\n"
-#| "You could have been in the highscores\n"
-#| "if you did not use Undo or Hint.\n"
-#| "Try without them next time."
+#, kde-format
 msgid ""
 "\n"
 "You could have been in the high scores\n"
@@ -153,18 +149,13 @@ msgid "General"
 msgstr "一般"
 
 #: src/board.cpp:69
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset. %1 and the default tileset "
-#| "have been tried.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the default tile set.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"載入磚塊組時發生問題。%1 和預設磚塊組已經嘗試過。\n"
+"載入預設磚塊組時發生問題。\n"
 "請安裝 KMahjongg 函式庫。"
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
@@ -174,80 +165,51 @@ msgid "Error Loading Tiles"
 msgstr "載入磚塊時失敗。"
 
 #: src/board.cpp:78
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset. %1 and the default tileset "
-#| "have been tried.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the tile set %1. The default tile set has "
 "been loaded."
-msgstr ""
-"載入磚塊組時發生問題。%1 和預設磚塊組已經嘗試過。\n"
-"請安裝 KMahjongg 函式庫。"
+msgstr "載入磚塊組 %1 時發生問題。已經載入預設磚塊組。"
 
 #: src/board.cpp:84
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a tileset file"
-#| msgid ""
-#| "An error occurred when loading the tileset. %1 and the default tileset "
-#| "have been tried.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a tile set file"
 msgid ""
 "An error occurred when loading the tile set %1. The default tile set could "
 "also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"載入磚塊組時發生問題。%1 和預設磚塊組已經嘗試過。\n"
+"載入磚塊組 %1 時發生問題。也無法載入預設磚塊組。\n"
 "請安裝 KMahjongg 函式庫。"
 
 #: src/board.cpp:101
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a background image file"
-#| msgid ""
-#| "An error occurred when loading the background. %1 and the default "
-#| "background have been tried.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a background image file"
 msgid ""
 "An error occurred when loading the default background.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"載入背景時發生錯誤。%1 和預設背景已經嘗試。\n"
+"載入預設背景時發生錯誤。\n"
 "請安裝 KMahjongg 函式庫。"
 
 #: src/board.cpp:110
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a background image file"
-#| msgid ""
-#| "An error occurred when loading the background. %1 and the default "
-#| "background have been tried.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a background image file"
 msgid ""
 "An error occurred when loading the background %1. The default background has "
 "been loaded."
-msgstr ""
-"載入背景時發生錯誤。%1 和預設背景已經嘗試。\n"
-"請安裝 KMahjongg 函式庫。"
+msgstr "載入背景 %1 時發生錯誤。已經載入預設背景。"
 
 #: src/board.cpp:116
-#, fuzzy, kde-format
-#| msgctxt "%1 is a path to a background image file"
-#| msgid ""
-#| "An error occurred when loading the background. %1 and the default "
-#| "background have been tried.\n"
-#| "Please install the KMahjongg library."
+#, kde-format
 msgctxt "%1 is a path to a background image  file"
 msgid ""
 "An error occurred when loading the background %1. The default background "
 "could also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"載入背景時發生錯誤。%1 和預設背景已經嘗試。\n"
+"載入背景 %1 時發生錯誤。也無法載入預設背景。\n"
 "請安裝 KMahjongg 函式庫。"
 
 #: src/board.cpp:678
@@ -301,10 +263,9 @@ msgid "Shisen-Sho"
 msgstr "四川省"
 
 #: src/main.cpp:36
-#, fuzzy, kde-format
-#| msgid "A KDE game similar to Mahjongg"
+#, kde-format
 msgid "A game similar to Mahjongg"
-msgstr "KDE 的四川省麻將遊戲"
+msgstr "類似麻將的遊戲"
 
 #: src/main.cpp:38
 #, kde-format
@@ -402,12 +363,14 @@ msgid ""
 "the game show a message to abort the game in case there are no possible "
 "moves left to win the game.</p>"
 msgstr ""
+"<b>牌局不再可解時顯示訊息</b><p>勾選此選項會讓遊戲在沒有任何移動可以贏得遊戲"
+"時顯示中止遊戲的訊息。</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
 #: src/settings.ui:46
 #, kde-format
 msgid "Show message if board can no longer be solved"
-msgstr ""
+msgstr "牌局不再可解時顯示訊息"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ChineseStyle)
 #: src/settings.ui:53
