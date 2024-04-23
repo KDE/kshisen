@@ -12,13 +12,13 @@
 # Volkan Gezer <volkangezer@gmail.com>, 2013.
 # Yıldız Kardeşler <turkishprogram@xposta.com>, 2004.
 # Y. Kürşat Tuncel <kursat@linux.org.tr>, 1999.
-# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-25 01:40+0000\n"
-"PO-Revision-Date: 2023-11-26 00:58+0300\n"
+"PO-Revision-Date: 2024-04-23 00:34+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -456,8 +456,7 @@ msgstr "Karolar kayabilir; ancak 3 yerine 2 satırla bitişik olmalısınız"
 msgid ""
 "<b>Board Difficulty</b><p>The slider controls the difficulty of the board "
 "from Easy to Hard.</p>"
-msgstr ""
-"<b>Oyun Zorluğu</b><p>Kaydırıcı, oyunun zorluk derecesini denetler.</p>"
+msgstr "<b>Oyun Zorluğu</b><p>Sürgü, oyunun zorluk derecesini denetler.</p>"
 
 #. i18n: ectx: property (title), widget (QGroupBox, difficulty_groupBox)
 #: src/settings.ui:76
@@ -484,7 +483,7 @@ msgid ""
 "<b>Piece Removal Speed</b><p>Adjusting this slider alters the speed at which "
 "the pieces are removed from the screen after a match has been made.</p>"
 msgstr ""
-"<b>Parça Kaybolma Hızı</b><p>Kaydırıcıyı sürmek, eşleşen parçaların ekrandan "
+"<b>Parça Kaybolma Hızı</b><p>Sürgüyü sürmek, eşleşen parçaların ekrandan "
 "kaybolma hızını değiştirir.</p>"
 
 #. i18n: ectx: property (title), widget (QGroupBox, speed_groupBox)
@@ -513,7 +512,7 @@ msgid ""
 "the board. The more tiles you have, the harder (and longer) the game will be."
 "</p>"
 msgstr ""
-"<b>Tahta Boyutu</b><p>Bu kaydırıcı, tahta üzerindeki karo sayısını "
+"<b>Tahta Boyutu</b><p>Bu sürgü, tahta üzerindeki karo sayısını "
 "değiştirmenize izin verir. Ne kadar çok karo varsa oyun o kadar zor (ve "
 "uzun) olacaktır.</p>"
 
