@@ -67,7 +67,7 @@ void Board::loadSettings()
             } else {
                 KMessageBox::error(this
                     , i18nc("%1 is a path to a tile set file", "An error occurred when loading the default tile set.\nPlease install the KMahjongg library.")
-                    , i18n("Error Loading Tiles")
+                    , i18nc("@title:window", "Error Loading Tiles")
                 );
             }
         } else {
@@ -76,13 +76,13 @@ void Board::loadSettings()
                 // warn the user tile set could not be loaded and the default one was loaded
                 KMessageBox::information(this
                            , i18nc("%1 is a path to a tile set file", "An error occurred when loading the tile set %1. The default tile set has been loaded.", tileSetBeforeLoad)
-                           , i18n("Error Loading Tiles")
+                           , i18nc("@title:window", "Error Loading Tiles")
                           );
             } else {
                 // neither the user tile set nor the default could be loaded
                 KMessageBox::error(this
                            , i18nc("%1 is a path to a tile set file", "An error occurred when loading the tile set %1. The default tile set could also not be loaded.\nPlease install the KMahjongg library.", tileSetBeforeLoad)
-                           , i18n("Error Loading Tiles")
+                           , i18nc("@title:window", "Error Loading Tiles")
                           );
             }
         }
@@ -99,7 +99,7 @@ void Board::loadSettings()
             } else {
                 KMessageBox::error(this
                     , i18nc("%1 is a path to a background image file", "An error occurred when loading the default background.\nPlease install the KMahjongg library.")
-                    , i18n("Error Loading Tiles")
+                    , i18nc("@title:window", "Error Loading Tiles")
                 );
             }
         } else {
@@ -108,13 +108,13 @@ void Board::loadSettings()
                 // warn the user background could not be loaded and the default one was loaded
                 KMessageBox::information(this
                            , i18nc("%1 is a path to a background image file", "An error occurred when loading the background %1. The default background has been loaded.", backgroundBeforeLoad)
-                           , i18n("Error Loading Tiles")
+                           , i18nc("@title:window", "Error Loading Tiles")
                           );
             } else {
                 // neither the user background nor the default could be loaded
                 KMessageBox::error(this
                            , i18nc("%1 is a path to a background image  file", "An error occurred when loading the background %1. The default background could also not be loaded.\nPlease install the KMahjongg library.", backgroundBeforeLoad)
-                           , i18n("Error Loading Tiles")
+                           , i18nc("@title:window", "Error Loading Tiles")
                           );
             }
         }

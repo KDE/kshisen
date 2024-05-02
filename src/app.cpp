@@ -106,7 +106,7 @@ void App::setupActions()
     KGameStandardAction::redo(this, &App::redo, actionCollection());
     KGameStandardAction::hint(this, &App::hint, actionCollection());
 
-    auto soundAction = new KToggleAction(QIcon::fromTheme(QStringLiteral("speaker")), i18n("Play Sounds"), this);
+    auto soundAction = new KToggleAction(i18nc("@option:check", "Play Sounds"), this);
     soundAction->setChecked(Prefs::sounds());
     actionCollection()->addAction(QStringLiteral("sounds"), soundAction);
     connect(soundAction, &KToggleAction::triggered, m_board, &Board::setSoundsEnabled);
@@ -257,7 +257,7 @@ void App::slotEndOfGame()
 
         if (m_board->hasCheated()) {
             auto const message = i18n("\nYou could have been in the high scores\nif you did not use Undo or Hint.\nTry without them next time.");
-            KMessageBox::information(this, message, i18n("End of Game"));
+            KMessageBox::information(this, message, i18nc("@title:window", "End of Game"));
         } else {
             if (scoreDialog->addScore(scoreInfo) > 0) {
                 auto const message = i18n("Congratulations!\nYou made it into the hall of fame.");
@@ -265,7 +265,7 @@ void App::slotEndOfGame()
                 scoreDialog->exec();
             } else {
                 auto const message = i18nc("%1 - time string like hh:mm:ss", "You made it in %1", timeString);
-                KMessageBox::information(this, message, i18n("End of Game"));
+                KMessageBox::information(this, message, i18nc("@title:window", "End of Game"));
             }
         }
         delete scoreDialog;
@@ -365,7 +365,7 @@ void App::showSettingsDialog()
 
     //Use the classes exposed by LibKMahjongg for our configuration dialog
     auto dialog = new KMahjonggConfigDialog(this, QStringLiteral("settings"), Prefs::self());
-    dialog->addPage(new Settings(nullptr), i18n("General"), QStringLiteral("games-config-options"));
+    dialog->addPage(new Settings(nullptr), i18nc("@title:tab", "General"), QStringLiteral("games-config-options"));
     dialog->addTilesetPage();
     dialog->addBackgroundPage();
 
