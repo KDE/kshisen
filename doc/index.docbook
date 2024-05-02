@@ -323,7 +323,7 @@
         <varlistentry id="game-settings-settings">
           <term>
             <menuchoice>
-              <guimenu>Settings</guimenu><guimenuitem>Configure &kshisen;...</guimenuitem>
+              <guimenu>Settings</guimenu><guimenuitem>Configure &kshisen;…</guimenuitem>
             </menuchoice>
           </term>
           <listitem><para>Opens the <link linkend="configuration">configuration dialog</link> to change &kshisen; settings.</para></listitem>
@@ -387,7 +387,7 @@
   <chapter id="configuration"><title>Game Configuration</title> <!-- do not change this! -->
     <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
     <para>
-      Selecting the <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kshisen;...</guimenuitem></menuchoice>
+      Selecting the <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kshisen;…</guimenuitem></menuchoice>
       menu item will open a configuration dialog which lets you alter the behavior of the game.
     </para>
 
