@@ -106,7 +106,8 @@ void App::setupActions()
     KGameStandardAction::redo(this, &App::redo, actionCollection());
     KGameStandardAction::hint(this, &App::hint, actionCollection());
 
-    auto soundAction = new KToggleAction(i18nc("@option:check", "Play Sounds"), this);
+    auto soundAction = new KToggleAction(QIcon::fromTheme(QStringLiteral("speaker")),
+                                         i18nc("@option:check", "Play Sounds"), this);
     soundAction->setChecked(Prefs::sounds());
     actionCollection()->addAction(QStringLiteral("sounds"), soundAction);
     connect(soundAction, &KToggleAction::triggered, m_board, &Board::setSoundsEnabled);
