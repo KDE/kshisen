@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:40+0000\n"
+"POT-Creation-Date: 2024-05-03 00:37+0000\n"
 "PO-Revision-Date: 2022-09-27 18:12+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -28,7 +28,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "wantoyo@yahoo.com"
 
-#: src/app.cpp:81 src/app.cpp:317
+#: src/app.cpp:81 src/app.cpp:318
 #, kde-format
 msgid "Select a tile"
 msgstr "Pilih kartu"
@@ -48,34 +48,36 @@ msgstr "Dibuang: 0/0"
 msgid "Cheat mode"
 msgstr "Mode curang"
 
-#: src/app.cpp:109
-#, kde-format
+#: src/app.cpp:110
+#, fuzzy, kde-format
+#| msgid "Play Sounds"
+msgctxt "@option:check"
 msgid "Play Sounds"
 msgstr "Bunyikan Suara"
 
-#: src/app.cpp:239
+#: src/app.cpp:240
 #, kde-format
 msgctxt "time string: hh:mm:ss"
 msgid "%1:%2:%3"
 msgstr "%1:%2:%3"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_Gravity)
-#: src/app.cpp:248 src/app.cpp:349 src/settings.ui:26
+#: src/app.cpp:249 src/app.cpp:350 src/settings.ui:26
 #, kde-format
 msgid "Gravity"
 msgstr "Gravitasi"
 
-#: src/app.cpp:251
+#: src/app.cpp:252
 #, kde-format
 msgid "Yes"
 msgstr "Ya"
 
-#: src/app.cpp:253
+#: src/app.cpp:254
 #, kde-format
 msgid "No"
 msgstr "Tidak"
 
-#: src/app.cpp:259
+#: src/app.cpp:260
 #, fuzzy, kde-format
 #| msgid ""
 #| "\n"
@@ -93,12 +95,14 @@ msgstr ""
 "jika kamu tidak menggunakan Urung atau Petunjuk.\n"
 "Cobalah tanpa mereka untuk waktu selanjutnya."
 
-#: src/app.cpp:260 src/app.cpp:268
-#, kde-format
+#: src/app.cpp:261 src/app.cpp:269
+#, fuzzy, kde-format
+#| msgid "End of Game"
+msgctxt "@title:window"
 msgid "End of Game"
 msgstr "Akhir dari Permainan"
 
-#: src/app.cpp:263
+#: src/app.cpp:264
 #, kde-format
 msgid ""
 "Congratulations!\n"
@@ -107,49 +111,51 @@ msgstr ""
 "Selamat!\n"
 "Anda berhasil masuk ke dalam ruang ketenaran."
 
-#: src/app.cpp:267
+#: src/app.cpp:268
 #, kde-format
 msgctxt "%1 - time string like hh:mm:ss"
 msgid "You made it in %1"
 msgstr "Kamu berhasil dalam %1"
 
-#: src/app.cpp:283
+#: src/app.cpp:284
 #, kde-format
 msgid "Your time: %1:%2:%3 %4"
 msgstr "Waktumu: %1:%2:%3 %4"
 
-#: src/app.cpp:287
+#: src/app.cpp:288
 #, kde-format
 msgid "(Paused) "
 msgstr "(Dijeda) "
 
-#: src/app.cpp:295
+#: src/app.cpp:296
 #, kde-format
 msgid "Removed: %1/%2 "
 msgstr "Dibuang: %1/%2 "
 
-#: src/app.cpp:322
+#: src/app.cpp:323
 #, kde-format
 msgid "Select a matching tile"
 msgstr "Pilih kartu yang cocok"
 
-#: src/app.cpp:327
+#: src/app.cpp:328
 #, kde-format
 msgid "Select the move you want by clicking on the blue line"
 msgstr "Pilih yang ingin kamu pindah dengan mengeklik pada baris biru"
 
-#: src/app.cpp:332
+#: src/app.cpp:333
 #, kde-format
 msgid "This tile did not match the one you selected"
 msgstr "Kartu ini tidak cocok dengan kartu yang kamu pilih"
 
-#: src/app.cpp:337
+#: src/app.cpp:338
 #, kde-format
 msgid "You cannot make this move"
 msgstr "Kamu tidak bisa pindah ini"
 
-#: src/app.cpp:368
-#, kde-format
+#: src/app.cpp:369
+#, fuzzy, kde-format
+#| msgid "General"
+msgctxt "@title:tab"
 msgid "General"
 msgstr "Umum"
 
@@ -171,7 +177,9 @@ msgstr ""
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
 #: src/board.cpp:111 src/board.cpp:117
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error Loading Tiles"
+msgctxt "@title:window"
 msgid "Error Loading Tiles"
 msgstr "Error Memuat Kartu"
 

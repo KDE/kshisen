@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:40+0000\n"
+"POT-Creation-Date: 2024-05-03 00:37+0000\n"
 "PO-Revision-Date: 2024-02-04 22:12+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -39,7 +39,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "israelb@gmail.com,kde-l10n-he@kde.org"
 
-#: src/app.cpp:81 src/app.cpp:317
+#: src/app.cpp:81 src/app.cpp:318
 #, kde-format
 msgid "Select a tile"
 msgstr "בחירת קובץ"
@@ -59,34 +59,36 @@ msgstr "הוסרו: 0/0"
 msgid "Cheat mode"
 msgstr " מצב רמאות"
 
-#: src/app.cpp:109
-#, kde-format
+#: src/app.cpp:110
+#, fuzzy, kde-format
+#| msgid "Play Sounds"
+msgctxt "@option:check"
 msgid "Play Sounds"
 msgstr "השמעת צלילים"
 
-#: src/app.cpp:239
+#: src/app.cpp:240
 #, kde-format
 msgctxt "time string: hh:mm:ss"
 msgid "%1:%2:%3"
 msgstr "%1:%2:%3"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_Gravity)
-#: src/app.cpp:248 src/app.cpp:349 src/settings.ui:26
+#: src/app.cpp:249 src/app.cpp:350 src/settings.ui:26
 #, kde-format
 msgid "Gravity"
 msgstr "כבידה"
 
-#: src/app.cpp:251
+#: src/app.cpp:252
 #, kde-format
 msgid "Yes"
 msgstr "כן"
 
-#: src/app.cpp:253
+#: src/app.cpp:254
 #, kde-format
 msgid "No"
 msgstr "לא"
 
-#: src/app.cpp:259
+#: src/app.cpp:260
 #, kde-format
 msgid ""
 "\n"
@@ -99,12 +101,14 @@ msgstr ""
 "אבל השתמשת ברמז או הסגה.\n"
 "בפעם הבאה כדאי לנסות בלי להשתמש בהם."
 
-#: src/app.cpp:260 src/app.cpp:268
-#, kde-format
+#: src/app.cpp:261 src/app.cpp:269
+#, fuzzy, kde-format
+#| msgid "End of Game"
+msgctxt "@title:window"
 msgid "End of Game"
 msgstr "סוף המשחק"
 
-#: src/app.cpp:263
+#: src/app.cpp:264
 #, kde-format
 msgid ""
 "Congratulations!\n"
@@ -113,49 +117,51 @@ msgstr ""
 "מזל טוב!\n"
 "הגעת להיכל התהילה."
 
-#: src/app.cpp:267
+#: src/app.cpp:268
 #, kde-format
 msgctxt "%1 - time string like hh:mm:ss"
 msgid "You made it in %1"
 msgstr "הצלחת תוך %1"
 
-#: src/app.cpp:283
+#: src/app.cpp:284
 #, kde-format
 msgid "Your time: %1:%2:%3 %4"
 msgstr " הזמן שלך: %1:%2:%3 %4"
 
-#: src/app.cpp:287
+#: src/app.cpp:288
 #, kde-format
 msgid "(Paused) "
 msgstr "(מושהה) "
 
-#: src/app.cpp:295
+#: src/app.cpp:296
 #, kde-format
 msgid "Removed: %1/%2 "
 msgstr " הוסרו: %1 מתוך %2 "
 
-#: src/app.cpp:322
+#: src/app.cpp:323
 #, kde-format
 msgid "Select a matching tile"
 msgstr "נא לבחור אריח תואם"
 
-#: src/app.cpp:327
+#: src/app.cpp:328
 #, kde-format
 msgid "Select the move you want by clicking on the blue line"
 msgstr "נא לבחור את המהלך הרצוי בלחיצה על הקו הכחול"
 
-#: src/app.cpp:332
+#: src/app.cpp:333
 #, kde-format
 msgid "This tile did not match the one you selected"
 msgstr "האריח הזה לא תואם לזה שבחרת"
 
-#: src/app.cpp:337
+#: src/app.cpp:338
 #, kde-format
 msgid "You cannot make this move"
 msgstr "אי אפשר לעשות את המהלך הזה"
 
-#: src/app.cpp:368
-#, kde-format
+#: src/app.cpp:369
+#, fuzzy, kde-format
+#| msgid "General"
+msgctxt "@title:tab"
 msgid "General"
 msgstr "כללי"
 
@@ -171,7 +177,9 @@ msgstr ""
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
 #: src/board.cpp:111 src/board.cpp:117
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error Loading Tiles"
+msgctxt "@title:window"
 msgid "Error Loading Tiles"
 msgstr "שגיאה בטעינת אריחים"
 

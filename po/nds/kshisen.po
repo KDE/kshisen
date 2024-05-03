@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:40+0000\n"
+"POT-Creation-Date: 2024-05-03 00:37+0000\n"
 "PO-Revision-Date: 2011-01-25 08:31+0100\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -27,7 +27,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "m.j.wiese@web.de"
 
-#: src/app.cpp:81 src/app.cpp:317
+#: src/app.cpp:81 src/app.cpp:318
 #, kde-format
 msgid "Select a tile"
 msgstr "Bitte en Steen kören"
@@ -47,34 +47,36 @@ msgstr "Wegdaan: 0/0"
 msgid "Cheat mode"
 msgstr "Schummelbedrief"
 
-#: src/app.cpp:109
-#, kde-format
+#: src/app.cpp:110
+#, fuzzy, kde-format
+#| msgid "Play Sounds"
+msgctxt "@option:check"
 msgid "Play Sounds"
 msgstr "Kläng afspelen"
 
-#: src/app.cpp:239
+#: src/app.cpp:240
 #, kde-format
 msgctxt "time string: hh:mm:ss"
 msgid "%1:%2:%3"
 msgstr "%1.%2:%3"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_Gravity)
-#: src/app.cpp:248 src/app.cpp:349 src/settings.ui:26
+#: src/app.cpp:249 src/app.cpp:350 src/settings.ui:26
 #, kde-format
 msgid "Gravity"
 msgstr "Swoorkraft"
 
-#: src/app.cpp:251
+#: src/app.cpp:252
 #, kde-format
 msgid "Yes"
 msgstr "Jo"
 
-#: src/app.cpp:253
+#: src/app.cpp:254
 #, kde-format
 msgid "No"
 msgstr "Nee"
 
-#: src/app.cpp:259
+#: src/app.cpp:260
 #, fuzzy, kde-format
 #| msgid ""
 #| "\n"
@@ -92,12 +94,14 @@ msgstr ""
 "man Du hest \"Torüchnehmen\" oder \"Tipp\" bruukt.\n"
 "Versöök dat bi't nakamen Speel maal ahn disse Hülp."
 
-#: src/app.cpp:260 src/app.cpp:268
-#, kde-format
+#: src/app.cpp:261 src/app.cpp:269
+#, fuzzy, kde-format
+#| msgid "End of Game"
+msgctxt "@title:window"
 msgid "End of Game"
 msgstr "Speelenn"
 
-#: src/app.cpp:263
+#: src/app.cpp:264
 #, kde-format
 msgid ""
 "Congratulations!\n"
@@ -106,49 +110,51 @@ msgstr ""
 "Graleren!\n"
 "Du hest dat in de Bestenlist schafft."
 
-#: src/app.cpp:267
+#: src/app.cpp:268
 #, kde-format
 msgctxt "%1 - time string like hh:mm:ss"
 msgid "You made it in %1"
 msgstr "Du hest dat in %1 henkregen."
 
-#: src/app.cpp:283
+#: src/app.cpp:284
 #, kde-format
 msgid "Your time: %1:%2:%3 %4"
 msgstr "Dien Tiet: %1.%2:%3 %4"
 
-#: src/app.cpp:287
+#: src/app.cpp:288
 #, kde-format
 msgid "(Paused) "
 msgstr "(Anhollen) "
 
-#: src/app.cpp:295
+#: src/app.cpp:296
 #, kde-format
 msgid "Removed: %1/%2 "
 msgstr "Wegmaakt: %1/%2 "
 
-#: src/app.cpp:322
+#: src/app.cpp:323
 #, kde-format
 msgid "Select a matching tile"
 msgstr "Bitte en passen Steen kören"
 
-#: src/app.cpp:327
+#: src/app.cpp:328
 #, kde-format
 msgid "Select the move you want by clicking on the blue line"
 msgstr "Köör Dien Tog dör en Klick op de blaag Lien"
 
-#: src/app.cpp:332
+#: src/app.cpp:333
 #, kde-format
 msgid "This tile did not match the one you selected"
 msgstr "Disse Steen hett nich to Dien Köör paßt"
 
-#: src/app.cpp:337
+#: src/app.cpp:338
 #, kde-format
 msgid "You cannot make this move"
 msgstr "Du kannst dissenTog nich maken"
 
-#: src/app.cpp:368
-#, kde-format
+#: src/app.cpp:369
+#, fuzzy, kde-format
+#| msgid "General"
+msgctxt "@title:tab"
 msgid "General"
 msgstr "Allgemeen"
 
@@ -163,6 +169,7 @@ msgstr ""
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
 #: src/board.cpp:111 src/board.cpp:117
 #, kde-format
+msgctxt "@title:window"
 msgid "Error Loading Tiles"
 msgstr ""
 
