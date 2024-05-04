@@ -1,9 +1,9 @@
 # Translation of kshisen.po to Catalan (Valencian)
-# Copyright (C) 2000-2023 This_file_is_part_of_KDE
+# Copyright (C) 2000-2024 This_file_is_part_of_KDE
 #
 # Francesc J Devesa i Berenguer <frandeve@hotmail.com>, 2000, 2001.
 # Albert Astals Cid <aacid@kde.org>, 2003, 2004, 2007.
-# Josep M. Ferrer <txemaq@gmail.com>, 2005, 2006, 2009, 2010, 2011, 2012, 2014, 2015, 2016, 2018, 2020, 2021, 2022, 2023.
+# Josep M. Ferrer <txemaq@gmail.com>, 2005, 2006, 2009, 2010, 2011, 2012, 2014, 2015, 2016, 2018, 2020, 2021, 2022, 2023, 2024.
 # Manuel Tortosa <manutortosa@chakra-project.org>, 2011.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2020, 2021.
 msgid ""
@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:37+0000\n"
-"PO-Revision-Date: 2023-04-01 11:34+0200\n"
+"PO-Revision-Date: 2024-05-03 09:04+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -54,8 +54,7 @@ msgid "Cheat mode"
 msgstr "Mode trampes"
 
 #: src/app.cpp:110
-#, fuzzy, kde-format
-#| msgid "Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
 msgstr "Reproduïx els sons"
@@ -96,8 +95,7 @@ msgstr ""
 "Consell. La pròxima vegada intenta-ho sense."
 
 #: src/app.cpp:261 src/app.cpp:269
-#, fuzzy, kde-format
-#| msgid "End of Game"
+#, kde-format
 msgctxt "@title:window"
 msgid "End of Game"
 msgstr "Final de la partida"
@@ -153,8 +151,7 @@ msgid "You cannot make this move"
 msgstr "No pots fer este moviment"
 
 #: src/app.cpp:369
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "General"
@@ -171,8 +168,7 @@ msgstr ""
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
 #: src/board.cpp:111 src/board.cpp:117
-#, fuzzy, kde-format
-#| msgid "Error Loading Tiles"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Tiles"
 msgstr "S'ha produït un error en carregar les fitxes"
@@ -356,8 +352,8 @@ msgid ""
 "<b>Gravity</b><p>Checking this makes the game even harder: If a tile is "
 "removed, all tiles lying above it will fall down one step.</p>"
 msgstr ""
-"<b>Gravetat</b><p>Seleccionar esta opció fa el joc més difícil: en eliminar "
-"una fitxa, totes les fitxes sobre ella cauen un pas.</p>"
+"<b>Gravetat</b><p>Marcar esta opció fa el joc més difícil: en eliminar una "
+"fitxa, totes les fitxes sobre ella cauen un pas.</p>"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Solvable)
 #: src/settings.ui:33
@@ -367,7 +363,7 @@ msgid ""
 "with games that are possible to solve.</p><p>Note: Even in solvable games "
 "you can fail to complete if you remove the tiles in the wrong order.</p>"
 msgstr ""
-"<b>Crea només partides resolubles</b><p>Si se selecciona, només se vos "
+"<b>Crea només partides resolubles</b><p>Si està marcada, només se vos "
 "presentaran partides que siga possible resoldre.</p><p>Nota: inclús estant "
 "activada pot ser que siga impossible completar una partida si elimineu "
 "fitxes en l'ordre incorrecte.</p>"
@@ -438,13 +434,13 @@ msgid ""
 msgstr ""
 "<b>Les fitxes es poden desplaçar, però només pots connectar amb 2 línies en "
 "comptes de 3</b><p>Esta opció canvia les regles fins al punt que quasi es "
-"convertix en un joc diferent. Si se selecciona, només podràs traure fitxes "
-"si es poden connectar amb una línia que tinga dos segments en comptes dels "
-"tres típics. En contrapartida, podràs desplaçar les fitxes pel tauler, si la "
-"fila o columna tenen espais en blanc. Per a fer un moviment amb "
-"desplaçament, has de clicar en la fitxa que continga la columna o fila que "
-"es pot desplaçar i després la fitxa que coincidisca. Si hi ha dos moviments "
-"possibles, hauràs de clicar en la connexió que preferiu.</p>"
+"convertix en un joc diferent. Si està marcada, només podràs traure fitxes si "
+"es poden connectar amb una línia que tinga dos segments en comptes dels tres "
+"típics. En contrapartida, podràs desplaçar les fitxes pel tauler, si la fila "
+"o columna tenen espais en blanc. Per a fer un moviment amb desplaçament, has "
+"de clicar en la fitxa que continga la columna o fila que es pot desplaçar i "
+"després la fitxa que coincidisca. Si hi ha dos moviments possibles, hauràs "
+"de clicar en la connexió que preferiu.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_TilesCanSlide)
 #: src/settings.ui:66
