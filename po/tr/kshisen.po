@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-25 01:40+0000\n"
-"PO-Revision-Date: 2024-04-23 00:34+0300\n"
+"PO-Revision-Date: 2024-05-04 01:33+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -276,7 +276,7 @@ msgstr "Ana Araç Çubuğu"
 #: src/main.cpp:34
 #, kde-format
 msgid "Shisen-Sho"
-msgstr "Shisen-Sho"
+msgstr "Shisen–Sho"
 
 #: src/main.cpp:36
 #, kde-format
@@ -338,7 +338,7 @@ msgstr "Jason Lane"
 msgid ""
 "Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
 msgstr ""
-"'Çıkarılan karolar' sayacı eklendi<br/>Karo düz-ölçeklemesi ve pencere "
+"“Çıkarılan karolar” sayacı eklendi<br/>Karo pürüzsüz ölçeklemesi ve pencere "
 "boyutlandırması"
 
 #: src/main.cpp:46
@@ -353,7 +353,7 @@ msgid ""
 "<b>Gravity</b><p>Checking this makes the game even harder: If a tile is "
 "removed, all tiles lying above it will fall down one step.</p>"
 msgstr ""
-"<b>Yer çekimi</b><p>Bunu seçmek oyunu daha da zorlaştırır: Bir karo "
+"<b>Yerçekimi</b><p>Bunu seçmek oyunu daha da zorlaştırır: Bir karo "
 "kaybolduğunda, onun altında yer alan bütün karolar bir adım aşağı düşecektir."
 "</p>"
 
@@ -407,7 +407,7 @@ msgstr ""
 "<b>Çin Biçemi Kullan: herhangi bir çiçek herhangi bir çiçeğe, herhangi bir "
 "sezon herhangi bir sezona</b><p> Karoları eşleştirmek için geleneksel "
 "kuralları kullan. Oyunun önceki sürümü, yalnızca tam eşleşen karolara izin "
-"veriyordu, bu da Mah-jongg kurallarına aykırıydı. Bu seçeneğin seçili "
+"veriyordu, bu da Mah–jongg kurallarına aykırıydı. Bu seçeneğin seçili "
 "tutulması önerilir.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ChineseStyle)
@@ -416,7 +416,7 @@ msgstr ""
 msgid ""
 "Use Chinese style: any flower match any flower, any season match any season"
 msgstr ""
-"Çin Biçemi kullan: Herhangi bir çiçek herhangi bir çiçeğe, herhangi bir "
+"Çin stilini kullan: Herhangi bir çiçek herhangi bir çiçeğe, herhangi bir "
 "sezon herhangi bir sezona"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_TilesCanSlide)
