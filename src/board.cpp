@@ -687,7 +687,7 @@ void Board::paintEvent(QPaintEvent * e)
     }
 
     if (m_paintConnection) {
-        p.setPen(QPen(QColor("red"), lineWidth()));
+        p.setPen(QPen(QColor(Qt::red), lineWidth()));
 
         auto pt1 = m_connection.cbegin();
         auto pt2 = pt1 + 1;
@@ -700,7 +700,7 @@ void Board::paintEvent(QPaintEvent * e)
         m_paintConnection = false;
     }
     if (m_paintPossibleMoves) {
-        p.setPen(QPen(QColor("blue"), lineWidth()));
+        p.setPen(QPen(QColor(Qt::blue), lineWidth()));
         // paint all possible moves
         for (auto const &move : std::as_const(m_possibleMoves)) {
             auto pt1 = move.path().cbegin();
