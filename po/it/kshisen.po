@@ -1,7 +1,7 @@
 # translation of kshisen.po to Italian
+# SPDX-FileCopyrightText: 2009, 2010, 2011, 2016, 2018, 2020, 2021, 2022, 2023, 2024 Valter Mura <valtermura@gmail.com>
 # Francesco Bresciani <fbresciani@users.sourceforge.net>, 2003, 2004, 2005, 2007.
 # Andrea Celli <andrea.celli@libero.it>, 2009.
-# Valter Mura <valtermura@gmail.com>, 2009, 2010, 2011, 2016, 2018, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.03.90\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
