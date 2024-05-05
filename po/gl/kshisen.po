@@ -1,24 +1,24 @@
 # translation of kshisen.po to galician
 # translation of kshisen.po to
+# SPDX-FileCopyrightText: 2024 Adrián Chaves (Gallaecio)
 # Leandro Regueiro <unho@gulo.org>, 2004.
 # mvillarino <mvillarino@users.sourceforge.net>, 2007, 2008, 2009.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2009, 2016.
 # Xosé <xosecalvo@gmail.com>, 2012.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:37+0000\n"
-"PO-Revision-Date: 2023-06-05 15:01+0200\n"
+"PO-Revision-Date: 2024-05-04 10:44+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
-"Language-Team: Galician <proxecto@trasno.gal>\n"
+"Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -53,11 +53,10 @@ msgid "Cheat mode"
 msgstr "Modo con trampas"
 
 #: src/app.cpp:110
-#, fuzzy, kde-format
-#| msgid "Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "Reproducir os sons"
+msgstr "Reproducir os sons."
 
 #: src/app.cpp:240
 #, kde-format
@@ -95,8 +94,7 @@ msgstr ""
 "Para a seguinte a ver se non as usas."
 
 #: src/app.cpp:261 src/app.cpp:269
-#, fuzzy, kde-format
-#| msgid "End of Game"
+#, kde-format
 msgctxt "@title:window"
 msgid "End of Game"
 msgstr "Fin da partida"
@@ -152,8 +150,7 @@ msgid "You cannot make this move"
 msgstr "Non podes realizar este movemento"
 
 #: src/app.cpp:369
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "Xeral"
@@ -170,8 +167,7 @@ msgstr ""
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
 #: src/board.cpp:111 src/board.cpp:117
-#, fuzzy, kde-format
-#| msgid "Error Loading Tiles"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Tiles"
 msgstr "Erro ao cargar as pezas"

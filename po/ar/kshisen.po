@@ -2,13 +2,13 @@
 # Copyright (C) 2002, 2007 Free Software Foundation, Inc.
 # Isam Bayazidi <bayazidi@arabeyes.org>, 2002.
 # Youssef Chahibi <chahibi@gmail.com>, 2007.
-# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:37+0000\n"
-"PO-Revision-Date: 2023-04-06 12:16+0400\n"
+"PO-Revision-Date: 2024-05-04 11:54+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -50,11 +50,10 @@ msgid "Cheat mode"
 msgstr "وضع الغش"
 
 #: src/app.cpp:110
-#, fuzzy, kde-format
-#| msgid "Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "أسْمِع الأصوات"
+msgstr "شغّل الأصوات"
 
 #: src/app.cpp:240
 #, kde-format
@@ -92,8 +91,7 @@ msgstr ""
 "حاول بدونهم في المرة القادمة."
 
 #: src/app.cpp:261 src/app.cpp:269
-#, fuzzy, kde-format
-#| msgid "End of Game"
+#, kde-format
 msgctxt "@title:window"
 msgid "End of Game"
 msgstr "انتهت اللعبة"
@@ -149,8 +147,7 @@ msgid "You cannot make this move"
 msgstr "لا يمكنك فعل هذه الحركة"
 
 #: src/app.cpp:369
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "عامّ"
@@ -167,8 +164,7 @@ msgstr ""
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
 #: src/board.cpp:111 src/board.cpp:117
-#, fuzzy, kde-format
-#| msgid "Error Loading Tiles"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Tiles"
 msgstr "خطأ في تحميل القراميد"

@@ -1,13 +1,13 @@
 # translation of kshisen.po to Italian
+# SPDX-FileCopyrightText: 2009, 2010, 2011, 2016, 2018, 2020, 2021, 2022, 2023, 2024 Valter Mura <valtermura@gmail.com>
 # Francesco Bresciani <fbresciani@users.sourceforge.net>, 2003, 2004, 2005, 2007.
 # Andrea Celli <andrea.celli@libero.it>, 2009.
-# Valter Mura <valtermura@gmail.com>, 2009, 2010, 2011, 2016, 2018, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:37+0000\n"
-"PO-Revision-Date: 2023-04-02 21:48+0200\n"
+"PO-Revision-Date: 2024-05-03 22:34+0200\n"
 "Last-Translator: Valter Mura <valtermura@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.03.90\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -48,11 +48,10 @@ msgid "Cheat mode"
 msgstr "Hai barato un po'"
 
 #: src/app.cpp:110
-#, fuzzy, kde-format
-#| msgid "Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "Esegui suoni"
+msgstr "Riproduci i suoni"
 
 #: src/app.cpp:240
 #, kde-format
@@ -90,11 +89,10 @@ msgstr ""
 "Riprova senza utilizzare queste funzioni."
 
 #: src/app.cpp:261 src/app.cpp:269
-#, fuzzy, kde-format
-#| msgid "End of Game"
+#, kde-format
 msgctxt "@title:window"
 msgid "End of Game"
-msgstr "Fine del gioco"
+msgstr "Fine della partita"
 
 #: src/app.cpp:264
 #, kde-format
@@ -147,8 +145,7 @@ msgid "You cannot make this move"
 msgstr "Non puoi effettuare questa mossa"
 
 #: src/app.cpp:369
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "Generale"
@@ -166,8 +163,7 @@ msgstr ""
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
 #: src/board.cpp:111 src/board.cpp:117
-#, fuzzy, kde-format
-#| msgid "Error Loading Tiles"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Tiles"
 msgstr "Errore nel caricamento delle tessere"
