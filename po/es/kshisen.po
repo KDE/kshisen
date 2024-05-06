@@ -8,7 +8,7 @@
 # Santiago Fernandez Sancho <santi@kde-es.org>, 2004, 2006.
 # santi <santi@kde-es.org>, 2005.
 # Santiago Fernández Sancho <santi@kde-es.org>, 2007.
-# Eloy Cuadra <ecuadra@eloihr.net>, 2009, 2016, 2018, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2009, 2016, 2018, 2020, 2021, 2022, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
 # Huever, 2009.
 # Kira J. Fernandez <kirajfdez@gmail.com>, 2010, 2011.
 msgid ""
@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:37+0000\n"
-"PO-Revision-Date: 2023-04-01 14:11+0100\n"
+"PO-Revision-Date: 2024-05-05 21:18+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: Víctor Romero <livingstone@thepentagon.com>\n"
-"X-Generator: Lokalize 23.03.80\n"
+"X-Generator: Lokalize 24.02.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -44,7 +44,7 @@ msgstr ""
 #: src/app.cpp:81 src/app.cpp:318
 #, kde-format
 msgid "Select a tile"
-msgstr "Seleccione una ficha"
+msgstr "Selecciona una ficha"
 
 #: src/app.cpp:84
 #, kde-format
@@ -54,7 +54,7 @@ msgstr "Tiempo: 0:00:00"
 #: src/app.cpp:87
 #, kde-format
 msgid "Removed: 0/0"
-msgstr " Eliminado: 0/0"
+msgstr "Eliminadas: 0/0"
 
 #: src/app.cpp:90
 #, kde-format
@@ -62,8 +62,7 @@ msgid "Cheat mode"
 msgstr "Modo con trampas"
 
 #: src/app.cpp:110
-#, fuzzy, kde-format
-#| msgid "Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
 msgstr "Reproducir sonidos"
@@ -99,13 +98,12 @@ msgid ""
 "Try without them next time."
 msgstr ""
 "\n"
-"Podrá aparecer en las mejores puntuaciones\n"
-"si no utiliza deshacer ni las pistas.\n"
-"Pruebe sin ellas la próxima vez."
+"Podrías haber estado en las mejores puntuaciones\n"
+"si no hubieras usado la función de deshacer o las pistas.\n"
+"Prueba sin ellas la próxima vez."
 
 #: src/app.cpp:261 src/app.cpp:269
-#, fuzzy, kde-format
-#| msgid "End of Game"
+#, kde-format
 msgctxt "@title:window"
 msgid "End of Game"
 msgstr "Fin de la partida"
@@ -117,52 +115,51 @@ msgid ""
 "You made it into the hall of fame."
 msgstr ""
 "¡Felicidades!\n"
-"Ha conseguido entrar en el cuadro de honor."
+"Has conseguido entrar en el cuadro de honor."
 
 #: src/app.cpp:268
 #, kde-format
 msgctxt "%1 - time string like hh:mm:ss"
 msgid "You made it in %1"
-msgstr "Lo ha conseguido en %1"
+msgstr "Lo has conseguido en %1"
 
 #: src/app.cpp:284
 #, kde-format
 msgid "Your time: %1:%2:%3 %4"
-msgstr "Su tiempo: %1:%2:%3 %4"
+msgstr "Tu tiempo: %1:%2:%3 %4"
 
 #: src/app.cpp:288
 #, kde-format
 msgid "(Paused) "
-msgstr " (Parado) "
+msgstr "(En pausa) "
 
 #: src/app.cpp:296
 #, kde-format
 msgid "Removed: %1/%2 "
-msgstr "Eliminado: %1/%2 "
+msgstr "Eliminadas: %1/%2 "
 
 #: src/app.cpp:323
 #, kde-format
 msgid "Select a matching tile"
-msgstr "Seleccionar una ficha coincidente"
+msgstr "Selecciona una ficha coincidente"
 
 #: src/app.cpp:328
 #, kde-format
 msgid "Select the move you want by clicking on the blue line"
-msgstr "Seleccione el movimiento que desee pulsando en la línea azul"
+msgstr "Selecciona el movimiento que quieras pulsando en la línea azul"
 
 #: src/app.cpp:333
 #, kde-format
 msgid "This tile did not match the one you selected"
-msgstr "La ficha no coincide con la que ha seleccionado"
+msgstr "La ficha no coincide con la que has seleccionado"
 
 #: src/app.cpp:338
 #, kde-format
 msgid "You cannot make this move"
-msgstr "No puede hacer este movimiento"
+msgstr "No puedes hacer este movimiento"
 
 #: src/app.cpp:369
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "General"
@@ -175,12 +172,11 @@ msgid ""
 "Please install the KMahjongg library."
 msgstr ""
 "Ha ocurrido un error al cargar el juego de fichas predeterminado.\n"
-"Instale la biblioteca de KMahjongg."
+"Instala la biblioteca de KMahjongg."
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
 #: src/board.cpp:111 src/board.cpp:117
-#, fuzzy, kde-format
-#| msgid "Error Loading Tiles"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Tiles"
 msgstr "Error al cargar las fichas"
@@ -205,7 +201,7 @@ msgid ""
 msgstr ""
 "Ha ocurrido un error al cargar el juego de fichas %1. Tampoco se ha podido "
 "cargar el juego de fichas predeterminado.\n"
-"Instale la biblioteca de KMahjongg."
+"Instala la biblioteca de KMahjongg."
 
 #: src/board.cpp:101
 #, kde-format
@@ -215,7 +211,7 @@ msgid ""
 "Please install the KMahjongg library."
 msgstr ""
 "Ha ocurrido un error al cargar el fondo predeterminado.\n"
-"Instale la biblioteca de KMahjongg."
+"Instala la biblioteca de KMahjongg."
 
 #: src/board.cpp:110
 #, kde-format
@@ -237,7 +233,7 @@ msgid ""
 msgstr ""
 "Ha ocurrido un error al cargar el fondo %1. Tampoco se ha podido cargar el "
 "fondo predeterminado.\n"
-"Instale la biblioteca de KMahjongg."
+"Instala la biblioteca de KMahjongg."
 
 #: src/board.cpp:678
 #, kde-format
@@ -245,8 +241,8 @@ msgid ""
 "Game Paused\n"
 "Click to resume game."
 msgstr ""
-"Partida en pausa\n"
-"Pulse para continuar la partida."
+"Partida en pausa.\n"
+"Haz clic para continuar la partida."
 
 #: src/board.cpp:682
 #, kde-format
@@ -254,8 +250,8 @@ msgid ""
 "Game Stuck\n"
 "No more moves possible."
 msgstr ""
-"Juego bloqueado\n"
-"No hay más movimientos posibles"
+"Juego bloqueado.\n"
+"No hay más movimientos posibles."
 
 #: src/board.cpp:685
 #, kde-format
@@ -263,20 +259,20 @@ msgid ""
 "Game Over\n"
 "Click to start a new game."
 msgstr ""
-"Partida terminada\n"
-"Pulse para iniciar una nueva."
+"Partida terminada.\n"
+"Haz clic para empezar una nueva."
 
 #. i18n: ectx: label, entry (TileSet), group (General)
 #: src/kshisen.kcfg:9
 #, kde-format
 msgid "The tile set to use."
-msgstr "El conjunto de fichas a utilizar."
+msgstr "El conjunto de fichas que se usará."
 
 #. i18n: ectx: label, entry (Background), group (General)
 #: src/kshisen.kcfg:12
 #, kde-format
 msgid "The background to use."
-msgstr "El fondo a utilizar"
+msgstr "El fondo que se usará."
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: src/kshisenui.rc:13
@@ -307,7 +303,7 @@ msgstr "Frederik Schwarzer"
 #: src/main.cpp:41
 #, kde-format
 msgid "Current Maintainer"
-msgstr "Responsable actual"
+msgstr "Responsable actual."
 
 #: src/main.cpp:42
 #, kde-format
@@ -317,7 +313,7 @@ msgstr "Dave Corrie"
 #: src/main.cpp:42
 #, kde-format
 msgid "Former Maintainer"
-msgstr "Responsable anterior"
+msgstr "Responsable anterior."
 
 #: src/main.cpp:43
 #, kde-format
@@ -327,7 +323,7 @@ msgstr "Mario Weilguni"
 #: src/main.cpp:43
 #, kde-format
 msgid "Original Author"
-msgstr "Autor original"
+msgstr "Autor original."
 
 #: src/main.cpp:44
 #, kde-format
@@ -337,7 +333,7 @@ msgstr "Mauricio Piacentini"
 #: src/main.cpp:44
 #, kde-format
 msgid "KMahjonggLib integration for KDE4"
-msgstr "Integración de KMahjonggLib para KDE4"
+msgstr "Integración de KMahjonggLib para KDE4."
 
 #: src/main.cpp:45
 #, kde-format
@@ -349,15 +345,14 @@ msgstr "Jason Lane"
 msgid ""
 "Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
 msgstr ""
-"Añadido contador de «fichas eliminadas»<br/>Suavizado de las fichas y "
-"redimensión de la ventana"
+"Contador de «fichas eliminadas».<br/>Escalado suave de las fichas y cambio "
+"de tamaño de la ventana."
 
 #: src/main.cpp:46
 #, kde-format
 msgid "Thanks also to everyone who should be listed here but is not!"
 msgstr ""
-"¡Gracias también a todos los que deberían estar reseñados aquí pero no lo "
-"están!"
+"¡Gracias también a todos los que deberían aparecer aquí aunque no lo estén!"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Gravity)
 #: src/settings.ui:23
@@ -366,8 +361,8 @@ msgid ""
 "<b>Gravity</b><p>Checking this makes the game even harder: If a tile is "
 "removed, all tiles lying above it will fall down one step.</p>"
 msgstr ""
-"<b>Gravedad</b><p>Marcándola el juego se vuelve más complicado: Si una ficha "
-"se elimina, todas las fichas de su alrededor caen un paso.</p>"
+"<b>Gravedad</b><p>Al marcarla, el juego se vuelve más complicado: si una "
+"ficha se elimina, todas las fichas de su alrededor caen un paso.</p>"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Solvable)
 #: src/settings.ui:33
@@ -378,8 +373,8 @@ msgid ""
 "you can fail to complete if you remove the tiles in the wrong order.</p>"
 msgstr ""
 "<b>Crear solo juegos con solución</b><p>Si se marca, solo se le mostrarán "
-"juegos que sea posible resolver.</p><p>Nota: Incluso en juegos resolubles, "
-"puede que no complete la partida si elimina las fichas en el orden "
+"juegos que se puedan resolver.</p><p>Nota: incluso en juegos resolubles, es "
+"posible que no completes la partida si eliminas las fichas en el orden "
 "incorrecto.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_Solvable)
@@ -396,9 +391,9 @@ msgid ""
 "the game show a message to abort the game in case there are no possible "
 "moves left to win the game.</p>"
 msgstr ""
-"<b>Mostrar un mensaje cuando el tablero no se puede resolver</b><p>Si marca "
-"esto, el juego mostrará un mensaje para interrumpir la partida en el caso de "
-"que ya no queden movimientos posibles para ganar la partida.</p>"
+"<b>Mostrar un mensaje cuando el tablero no se puede resolver</b><p>Si marcas "
+"esta opción, se mostrará un mensaje para interrumpir la partida en el caso "
+"de que ya no queden movimientos posibles para ganarla.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
 #: src/settings.ui:46
@@ -416,12 +411,11 @@ msgid ""
 "inconsistent with Mah-jongg rules. It is recommended to keep this option "
 "checked.</p>"
 msgstr ""
-"<b>Utilizar el estilo chino: cualquier flor coincidirá con cualquier otra "
-"flor, cualquier estación coincidirá con cualquier otra estación</"
-"b><p>Utiliza las reglas tradicionales para la coincidencia de las fichas. "
-"Las versiones anteriores del juego solo permitían coincidencias exactas de "
-"fichas, que se contradicen con las reglas del Mah-jongg. Se recomienda "
-"mantener esta opción marcada.</p>"
+"<b>Usar el estilo chino: cualquier flor coincidirá con cualquier otra flor, "
+"cualquier estación coincidirá con cualquier otra estación</b><p>Usar las "
+"reglas tradicionales para emparejar las fichas. Las versiones anteriores del "
+"juego solo permitían coincidencias exactas de fichas, que se contradicen con "
+"las reglas del Mahjongg. Se recomienda mantener esta opción marcada.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ChineseStyle)
 #: src/settings.ui:56
@@ -429,8 +423,8 @@ msgstr ""
 msgid ""
 "Use Chinese style: any flower match any flower, any season match any season"
 msgstr ""
-"Utilizar el estilo chino: Cualquier flor coincide con cualquier flor. "
-"Cualquier estación coincide con cualquier estación."
+"Usar el estilo chino: cualquier flor coincide con cualquier flor. Cualquier "
+"estación coincide con cualquier estación."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_TilesCanSlide)
 #: src/settings.ui:63
@@ -447,23 +441,24 @@ msgid ""
 "sliding moves, you will have to click on one of the two connecting lines to "
 "choose your preferred move.</p>"
 msgstr ""
-"<b>Las fichas pueden deslizarse, pero puede conectar solo 2 líneas en lugar "
+"<b>Las fichas pueden deslizarse, pero puedes conectar solo 2 líneas en lugar "
 "de 3</b><p>Esta opción cambia las reglas hasta el punto de convertirlo en un "
-"juego diferente. Cuando se activa, solo podrá eliminar fichas si puede "
-"conectarse con una línea de dos segmentos en un lugar de tres. Sin embargo, "
-"podrá deslizar las fichas en el tablero, si la fila o la columna donde están "
-"situadas tienen un espacio vacío. Para realizar un deslizamiento, debe "
-"pulsar en la ficha que contenga la columna o fila que pueda deslizarse, y a "
-"continuación en la ficha coincidente. Si es posible realizar dos "
-"deslizamientos, debe pulsar en una de las dos líneas de conexión para elegir "
-"el que desee.</p>"
+"juego diferente. Cuando se activa, solo podrás eliminar fichas si se pueden "
+"conectar con una línea de dos segmentos en un lugar de tres. Sin embargo, "
+"podrás deslizar las fichas por el tablero si la fila o la columna donde "
+"están situadas tiene un espacio vacío. Para realizar un deslizamiento, debes "
+"pulsar en la ficha que contenga la columna o fila que pueda deslizarse y, a "
+"continuación, en la ficha coincidente. Si se pueden realizar dos "
+"deslizamientos, debes pulsar en una de las dos líneas de conexión para "
+"elegir el que quieras.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_TilesCanSlide)
 #: src/settings.ui:66
 #, kde-format
 msgid "Tiles can slide, but you can connect only in 2 lines instead of 3"
 msgstr ""
-"Las fichas pueden deslizarse, pero podrá conectar solo 2 líneas en lugar de 3"
+"Las fichas se pueden deslizar, pero podrás conectar solo 2 líneas en lugar "
+"de 3"
 
 #. i18n: ectx: property (whatsThis), widget (QGroupBox, difficulty_groupBox)
 #: src/settings.ui:73
@@ -500,27 +495,27 @@ msgid ""
 "<b>Piece Removal Speed</b><p>Adjusting this slider alters the speed at which "
 "the pieces are removed from the screen after a match has been made.</p>"
 msgstr ""
-"<b>Velocidad de eliminación de las piezas</b><p>Ajustar este deslizador "
-"modifica la velocidad a la que las piezas se eliminarán de la pantalla "
-"después de haberlas hecho coincidir.</p>"
+"<b>Velocidad de eliminación de las fichas</b><p>El ajuste de este deslizador "
+"modifica la velocidad a la que las fichas se eliminarán de la pantalla "
+"después de haberlas emparejado.</p>"
 
 #. i18n: ectx: property (title), widget (QGroupBox, speed_groupBox)
 #: src/settings.ui:141
 #, kde-format
 msgid "Piece Removal Speed"
-msgstr "Velocidad de eliminación de las piezas"
+msgstr "Velocidad de eliminación de las fichas"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
 #: src/settings.ui:168
 #, kde-format
 msgid "Slow"
-msgstr "Lento"
+msgstr "Lenta"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel6)
 #: src/settings.ui:188
 #, kde-format
 msgid "Fast"
-msgstr "Rápido"
+msgstr "Rápida"
 
 #. i18n: ectx: property (whatsThis), widget (QGroupBox, size_groupBox)
 #: src/settings.ui:203
@@ -531,7 +526,7 @@ msgid ""
 "</p>"
 msgstr ""
 "<b>Tamaño del tablero</b><p>Este deslizador permite cambiar el número de "
-"fichas del tablero. Mientras más fichas tenga, más complicada (y larga) será "
+"fichas del tablero. Cuantas más fichas tenga, más complicada (y larga) será "
 "la partida.</p>"
 
 #. i18n: ectx: property (title), widget (QGroupBox, size_groupBox)
