@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the kshisen package.
 #
-# giovanni <g.sora@tiscali.it>, 2023.
+# giovanni <g.sora@tiscali.it>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:37+0000\n"
-"PO-Revision-Date: 2023-12-18 12:36+0100\n"
+"PO-Revision-Date: 2024-05-06 12:54+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -48,8 +48,7 @@ msgid "Cheat mode"
 msgstr ""
 
 #: src/app.cpp:110
-#, fuzzy, kde-format
-#| msgid "Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
 msgstr "Reproduce sonos"
@@ -86,8 +85,7 @@ msgid ""
 msgstr ""
 
 #: src/app.cpp:261 src/app.cpp:269
-#, fuzzy, kde-format
-#| msgid "End of Game"
+#, kde-format
 msgctxt "@title:window"
 msgid "End of Game"
 msgstr "Fin de joco"
@@ -141,8 +139,7 @@ msgid "You cannot make this move"
 msgstr ""
 
 #: src/app.cpp:369
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "General"
@@ -246,7 +243,7 @@ msgstr "Barra de instrumento principal"
 #: src/main.cpp:34
 #, kde-format
 msgid "Shisen-Sho"
-msgstr ""
+msgstr "Shisen-Sho"
 
 #: src/main.cpp:36
 #, kde-format
