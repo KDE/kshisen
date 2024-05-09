@@ -1000,7 +1000,7 @@
 ><guimenu
 >Impostazioni</guimenu
 ><guimenuitem
->Configura &kshisen;...</guimenuitem
+>Configura &kshisen;…</guimenuitem
 > </menuchoice>
           </term>
           <listitem
@@ -1192,7 +1192,7 @@
 ><guimenuitem
 >Configura &kshisen;...</guimenuitem
 ></menuchoice
-> verrà aperta una finestra di configurazione che permetterà di alterare il comportamento del gioco. </para>
+> sarà aperta una finestra di configurazione che ti consentirà di modificare il comportamento del gioco. </para>
 
     <screenshot>
       <screeninfo
