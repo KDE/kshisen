@@ -1,21 +1,16 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-  <!ENTITY kappname "&kshisen;">
-  <!ENTITY kappversion "1.7.0"
->     <!--Application version. Use this variable everywhere it's needed.-->
-  <!ENTITY package "kdegames"
->      <!-- do not change this! -->
   <!ENTITY % French "INCLUDE"
 >    <!-- change language only here -->
   <!ENTITY % addindex "IGNORE"
 >     <!-- do not change this! -->
 ]>
 
-<book lang="&language;"
+<book id="kshisen" lang="&language;"
 > <!-- do not change this! -->
   <bookinfo>
     <title
->Le Manuel de &kappname;</title
+>Le manuel utilisateur de &kshisen;</title
 > <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
     <!-- List of immidiate authors begins here. -->
     <!--INPORTANT! - All other contributors: [to be determined] -->
@@ -49,9 +44,7 @@
 >Schwarzer</surname
 > <affiliation
 ><address
-><email
->schwarzerf@gmail.com</email
-></address
+>&Frederik.Schwarzer.mail;</address
 ></affiliation>
       </author>
       <othercredit role="reviewer"
@@ -68,17 +61,17 @@
       </othercredit>
       &traducteurYvesDessertine; 
     </authorgroup>
-
+    <legalnotice
+>&FDLNotice;</legalnotice>
     <date
->2007-09-26</date>
+>15-06-2021</date>
     <releaseinfo
->&kappversion;</releaseinfo
-><!-- Application version number. Use the variable definitions within header to change this value.-->
+>1.10 (KDE Gear 21.08)</releaseinfo>
 
     <!--Short description of this document. Do not change unless necessary!-->
     <abstract>
       <para
->Cette documentation décrit le jeu &kappname; version &kappversion;</para>
+>Cette documentation décrit le jeu &kshisen; en version 1.10</para>
     </abstract>
 
     <!--List of relevant keywords-->
@@ -101,7 +94,7 @@
       <keyword
 >plateau</keyword>
       <keyword
->mahjong</keyword>
+>Mahjong</keyword>
       <keyword
 >tuiles</keyword>
       <!--Number of possible players. It can be: One, Two,..., Multiplayer-->
@@ -131,13 +124,24 @@
 
     <!--Short game description starts here. 3-4 sentences (paragraphs)-->
     <para
->&kappname; est un jeu de type solitaire qui se joue en utilisant un jeu de tuiles standard de Mahjong. À la différence de Mahjong cependant, &kappname; a seulement une couche de tuiles. Vous pouvez supprimer les pièces correspondantes si celles ci sont connectées avec une ligne avec pas plus de deux bords. Dans le même temps, la ligne ne doit pas traverser d'autres tuiles. Pour remporter une partie de &kappname;, le joueur doit supprimer toutes les tuiles du plateau de jeu. </para>
+>&kshisen; est un jeu de type solitaire se jouant en utilisant un jeu de tuiles standard de Mahjong. À la différence de Mahjong cependant, &kshisen; possède seulement une couche de tuiles. Vous pouvez supprimer les pièces correspondantes si celles ci sont connectées avec une ligne avec pas plus de deux bords. Dans le même temps, la ligne ne doit traverser aucune autre tuile. Pour remporter une partie de &kshisen;, le joueur doit supprimer toutes les tuiles du plateau de jeu. </para>
   </chapter>
 
   <chapter id="howto"
 ><title
 >Comment jouer</title
 > <!-- do not change this! -->
+    <screenshot>
+    <mediaobject>
+    <imageobject>
+    <imagedata fileref="gameboard.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+    <phrase
+>Le plateau de jeu de &kshisen;</phrase>
+    </textobject>
+    </mediaobject>
+    </screenshot>
     <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
     <note
 ><title
@@ -148,7 +152,7 @@
 ><!--Describe the objective of the game.-->
     <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
     <para
->&kappname; chargera un affichage par défaut automatiquement une fois démarré et vous pouvez commencer la partie. </para>
+>&kshisen; chargera automatiquement une disposition par défaut une fois que vous aurez démarré et vous pouvez commencer la partie. </para>
     <para
 >Vous devez étudier attentivement les tuiles placées sur le plateau de jeu et trouver deux tuiles correspondants exactement. Quand vous avez trouvé une paire, utilisez votre souris et sélectionnez la. </para>
     <para
@@ -619,7 +623,7 @@
 ></listitem>
         <listitem
 ><para
->Quelques parties sont impossible à résoudre. Si vous voulez éviter les parties infinissables, décochez l'option <guilabel
+>Quelques parties sont impossible à résoudre. Si vous voulez éviter les parties sans conclusion, décochez l'option <guilabel
 >Autoriser les parties sans solutions</guilabel
 > dans la boîte de dialogue de configuration.</para
 ></listitem>
@@ -649,6 +653,16 @@
 >, son record de points ne sera pas ajouté dans les meilleurs scores.</para
 ></note>
     </sect1>
+    <sect1 id="tips">
+      <title
+>Astuces</title>
+      <para
+>Veuillez cliquer sur une tuile avec le &BDS; pour mettre en valeur toutes les tuiles correspondantes sur le plateau. Sauf utilisation des fonctionnalités <quote
+>Annuler</quote
+> ou <quote
+>Conseil</quote
+>, cette aide est autorisée sans être considéré comme une triche. </para>
+    </sect1>
   </chapter>
 
   <chapter id="interface"
@@ -659,11 +673,12 @@
 > and <varlistentry
 >. Split the chapter into sections using <sect1(2,3)
 > for better viewing. -->
-    <sect1 id="game-menu">
+    <sect1 id="menu">
+    <title
+>Éléments de menu</title>
+    <sect2 id="game-menu">
       <title
->Le menu <guimenu
->Jeu</guimenu
-></title>
+>Le menu « Jeu »</title>
 
       <para
 >Le menu <guimenu
@@ -757,7 +772,7 @@
           </term>
           <listitem
 ><para
->Affiche le tableau des dix meilleurs scores de &kappname;.</para
+>Affiche le tableau des dix meilleurs scores de &kshisen;.</para
 ></listitem>
         </varlistentry>
 
@@ -780,7 +795,7 @@
 ><para
 ><action
 >Quitte</action
-> &kappname;.</para
+> &kshisen;.</para
 ></listitem>
         </varlistentry>
 
@@ -789,13 +804,11 @@
       <para
 >Certaines des entrées de menu peuvent aussi être appelées via des raccourcis clavier. Consultez la section <xref linkend="key-bindings"/> pour une liste. </para>
 
-    </sect1>
+    </sect2>
 
-    <sect1 id="move-menu">
+    <sect2 id="move-menu">
       <title
->Le menu <guimenu
->Déplacement</guimenu
-></title>
+>Le menu « Se déplacer »</title>
 
       <variablelist id="move-menu-undo">
         <varlistentry>
@@ -873,13 +886,11 @@
 
       </variablelist>
 
-    </sect1>
+    </sect2>
 
-    <sect1 id="settings-menu">
+    <sect2 id="settings-menu">
       <title
->Le menu <guimenu
->Configuration</guimenu
-></title>
+>Le menu « Configuration »</title>
 
       <variablelist>
         <varlistentry>
@@ -888,59 +899,14 @@
 ><guimenu
 >Configuration</guimenu
 ><guimenuitem
->Afficher la barre d'outils</guimenuitem
+>Jouer des sons</guimenuitem
 > </menuchoice>
           </term>
           <listitem
 ><para
->Affiche ou cache la barre d'outils.</para
-></listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>
-            <menuchoice
-><guimenu
->Configuration</guimenu
-><guimenuitem
->Afficher la barre d'état</guimenuitem
-> </menuchoice>
-          </term>
-          <listitem
-><para
->Affiche ou cache la barre d'état.</para
-></listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>
-            <menuchoice
-><guimenu
->Configuration</guimenu
-><guimenuitem
->Configurer les raccourcis...</guimenuitem
-> </menuchoice>
-          </term>
-          <listitem
-><para
-><action
->Ouvrir une boîte de dialogue qui vous permet de redéfinir tous les raccourcis clavier.</action
-></para
-></listitem>
-        </varlistentry>
-
-        <varlistentry id="settings-menu-toolbar">
-          <term>
-            <menuchoice
-><guimenu
->Configuration</guimenu
-><guimenuitem
->Configurer les barre d'outils...</guimenuitem
-> </menuchoice>
-          </term>
-          <listitem
-><para
->Affiche une boîte de dialogue standard &kde; où vous pouvez configurer les icônes de la barre d'outils.</para
+>Joue un son lorsque vous touchez une tuile grâce à un clic de &BGS; et lorsqu'une tuile tombe en jouant avec l'option <guilabel
+>Gravité</guilabel
+> activée.</para
 ></listitem>
         </varlistentry>
 
@@ -950,233 +916,30 @@
 ><guimenu
 >Configuration</guimenu
 ><guimenuitem
->Configurer &kappname;...</guimenuitem
+>Configurer &kshisen;...</guimenuitem
 > </menuchoice>
           </term>
           <listitem
 ><para
 >Ouvre la <link linkend="configuration"
 >boîte de dialogue de configuration</link
-> pour modifier la configuration &kappname;.</para
+> pour modifier la configuration de &kshisen;.</para
 ></listitem>
         </varlistentry>
 
       </variablelist>
-
-    </sect1>
-
-    <sect1 id="help"
-><!--This is a standard Help menubar entry. Only change if needed.-->
-      <title
->Le menu <guimenu
->Aide</guimenu
-></title>
-&help.menu.documentation; </sect1>
-
-  </chapter>
-
-  <chapter id="faq"
-><title
->Foire aux questions</title
-> <!-- do not change this! -->
-    <!--This chapter is for frequently asked questions. Please use <qandaset
-> <qandaentry
-> only!-->
-    <qandaset>
-      <!--Following is a standard list of FAQ questions.-->
-      <qandaentry>
-        <question
-><para
->Je veux modifier la façon dont le jeu s'affiche. Est-ce possible ?</para
-></question>
-        <answer
-><para
->Oui. Pour modifier la manière dont &kappname; s'affiche, utilisez la <link linkend="game-settings-settings"
->barre de menu</link
-> pour ouvrir <link linkend="configuration"
->l'utilitaire de configuration</link
->.</para
-></answer>
-      </qandaentry>
-      <qandaentry>
-        <question
-><para
->Puis-je utiliser le clavier ?</para
-></question>
-        <answer
-><para
->Non. &kappname; ne fournit pas le moyen de jouer avec le clavier.</para
-></answer>
-      </qandaentry>
-      <qandaentry>
-        <question
-><para
->Je veux quitter le jeu maintenant, mais ma partie n'est pas terminée. Puis je l'enregistrer ?</para
-></question>
-        <answer
-><para
->Non. &kappname; n'inclut pas cette option <quote
->d'enregistrement</quote
->.</para
-></answer>
-      </qandaentry>
-    </qandaset>
-  </chapter>
-
-  <chapter id="configuration"
-><title
->Configuration du jeu</title
-> <!-- do not change this! -->
-    <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
-    <para
->En sélectionnant <menuchoice
-><guimenu
+      <para
+>De plus, &kshisen; possède les éléments communs de menus de &kde; <guimenu
 >Configuration</guimenu
-> <guimenuitem
->Configurer &kappname;...</guimenuitem
-></menuchoice
->, ceci ouvrira une boîte de dialogue de configuration qui vous permet d'ajuster le comportement de ce jeu. </para>
-
-    <screenshot>
-      <screeninfo
->Boîte de dialogue de configuration de &kappname;</screeninfo>
-      <mediaobject>
-        <imageobject
-><imagedata fileref="kshisen-configuration.png" format="PNG"/></imageobject>
-        <textobject
-><phrase
->Boîte de dialogue de configuration de &kappname;</phrase
-></textobject>
-      </mediaobject>
-    </screenshot>
-
-    <variablelist>
-      <varlistentry>
-        <term
-><guilabel
->Gravité</guilabel
-></term>
-        <listitem
-><para
->Activer cette option rend le jeu encore plus difficile : lorsqu'une tuile est retirée, toutes les tuiles situées au-dessus de celle-ci descendront d'un cran. </para
-></listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term
-><guilabel
->Autoriser les parties sans solution</guilabel
-></term>
-        <listitem
-><para
->Vous risquez de jouer des parties qui sont impossibles à terminer si cette option est activée. Remarque : même si cette option n'est pas activée, vous risquez d'échouer à terminer la partie si vous supprimez des tuiles dans le mauvais ordre. </para
-></listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term
-><guilabel
->Utiliser le style Chinois : chaque fleur correspond à chaque fleur, chaque saison à chaque saison</guilabel
-></term>
-        <listitem
-><para
->Utiliser les règles traditionnelles pour la correspondance des tuiles. La version précédente de &kappname; permettait seulement les correspondances de tuiles identiques, laquelle ne suit pas les règles du Mahjong. Il est recommandé de conserver cette option cochée. </para
-></listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term
-><guilabel
->Les tuiles peuvent coulisser, mais vous ne pouvez connecter seulement que deux lignes à la place de trois</guilabel
-></term>
-        <listitem
-><para
->Cette option modifie les règles au point où le jeu en devient complètement différent. Si l'option est activée, vous ne pouvez seulement supprimer que les tuiles si elles se connectent avec une ligne de seulement deux segments à la place de trois. Cependant, vous pouvez coulisser les tuiles sur le plateau, si la ligne ou colonne où elles sont placées a un espace de libre. Pour faire coulisser une tuile, vous devez cliquer sur la tuile contenant la colonne ou la ligne qui peut coulisser, et ensuite sur la tuile correspondante. S'il y a deux coulissements possibles, vous cliquerez sur une des deux lignes connectées pour choisir votre mouvement. </para
-></listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term
-><guilabel
->Difficulté du plateau</guilabel
-></term>
-        <listitem
-><para
->Les glissières contrôlent la difficulté du plateau (&cad; combien de tuiles sont mélangées) de <guilabel
->Facile</guilabel
-> à <guilabel
->Difficile</guilabel
->. </para
-></listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term
-><guilabel
->Vitesse de suppression des pièces</guilabel
-></term>
-        <listitem
-><para
->Les glissières permettent d'ajuster la vitesse à laquelle les pièces sont supprimées de l'écran après qu'une correspondance à été faite. </para
-></listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term
-><guilabel
->Taille du plateau</guilabel
-></term>
-        <listitem
-><para
->Les glissières vous permettent de modifier le nombre de tuile sur le plateau. Plus vous aurez de tuiles, plus le jeu sera difficile (et long). </para
-></listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term
-><guibutton
->Aide</guibutton
-></term>
-        <listitem
-><para
->Ouvre le manuel de &kappname; (ce document). </para
-></listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term
-><guibutton
->Ok</guibutton
-></term>
-        <listitem
-><para
->Enregistre vos modifications et ferme la boîte de dialogue. </para
-></listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term
-><guibutton
->Appliquer</guibutton
-></term>
-        <listitem
-><para
->Enregistre vos modifications mais ne ferme pas la boîte de dialogue. </para
-></listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term
-><guibutton
->Annuler</guibutton
-></term>
-        <listitem
-><para
->Annule toutes vos modifications et ferme la boîte de dialogue. </para
-></listitem>
-      </varlistentry>
-
-    </variablelist>
+> et <guimenu
+>Aide</guimenu
+>. Pour plus d'informations, veuillez consulter les sections <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu de configuration</ulink
+> et <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu d'aide</ulink
+> des fondamentaux de &kde;. </para>
+    </sect2>
+    </sect1>
 
     <sect1 id="key-bindings">
       <title
@@ -1264,7 +1027,7 @@
 ></row>
             <row
 ><entry
->Le manuel de &kshisen;</entry
+>Le manuel utilisateur de &kshisen;</entry
 ><entry
 ><keycap
 >F1</keycap
@@ -1285,6 +1048,239 @@
       </informaltable>
 
     </sect1>
+
+  </chapter>
+
+  <chapter id="faq"
+><title
+>Foire aux questions</title
+> <!-- do not change this! -->
+    <!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+    <qandaset>
+      <qandaentry>
+        <question
+><para
+>Je veux modifier la façon dont le jeu s'affiche. Est-ce possible ?</para
+></question>
+        <answer
+><para
+>Oui. Pour modifier la façon dont &kshisen; se présente, veuillez utiliser la <link linkend="game-settings-settings"
+>barre de menus</link
+> pour ouvrir <link linkend="configuration"
+>l'utilitaire de configuration</link
+>.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>Puis-je utiliser le clavier ?</para
+></question>
+        <answer
+><para
+>Non. &kappname; ne fournit pas le moyen de jouer avec le clavier.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>Je veux quitter le jeu maintenant, mais ma partie n'est pas terminée. Puis je l'enregistrer ?</para
+></question>
+        <answer
+><para
+>Non. &kappname; n'inclut pas cette option <quote
+>d'enregistrement</quote
+>.</para
+></answer>
+      </qandaentry>
+    </qandaset>
+  </chapter>
+
+  <chapter id="configuration"
+><title
+>Configuration du jeu</title
+> <!-- do not change this! -->
+    <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+    <para
+>L'élément de menu <menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Configurer &kshisen;...</guimenuitem
+></menuchoice
+> ouvrira une boîte de dialogue de configuration vous permettant d'ajuster le comportement de ce jeu. </para>
+
+    <screenshot>
+      <screeninfo
+>Boîte de dialogue de configuration de &kshisen;</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="kshisen-configuration.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>Boîte de dialogue de configuration de &kshisen;</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <variablelist>
+      <title
+>Page <guilabel
+>générale</guilabel
+></title>
+      <varlistentry>
+        <term
+><guilabel
+>Gravité</guilabel
+></term>
+        <listitem
+><para
+>Activer cette option rend le jeu encore plus difficile : lorsqu'une tuile est retirée, toutes les tuiles situées au-dessus de celle-ci descendront d'un cran. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Ne créer que des parties ayant des solutions</guilabel
+></term>
+        <listitem
+><para
+>Si cette option est sélectionnée, seules les parties pouvant être résolues vous seront présentées. Remarque : même si cette option n'est pas activée, vous risquez d'échouer à terminer la partie si vous supprimez les tuiles dans le mauvais ordre. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Afficher un message si le tableau ne peut plus être résolu.</guilabel
+></term>
+        <listitem
+><para
+>Si cette option est sélectionnée, &kshisen; essaiera d'analyser la solvabilité de chaque position du jeu. Il affichera un message pour interrompre le jeu au cas où il n'y aurait plus de coups possibles pour gagner le jeu. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Utiliser le style Chinois : chaque fleur correspond à chaque fleur, chaque saison à chaque saison</guilabel
+></term>
+        <listitem
+><para
+>Veuillez utiliser les règles traditionnelles pour la correspondance des tuiles. La version précédente de &kshisen; ne permettait que les correspondances exactes de tuiles, ce qui est non cohérent avec les règles du Mahjong. Il est recommandé de conserver cette option sélectionnée. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Les tuiles peuvent coulisser, mais vous ne pouvez connecter seulement que deux lignes à la place de trois</guilabel
+></term>
+        <listitem
+><para
+>Cette option modifie les règles au point où le jeu en devient complètement différent. Lorsque l'option est sélectionnée, vous ne pouvez supprimer que les tuiles si elles peuvent être reliées par une ligne de seulement un ou deux segments à la place des trois habituels. Cependant, vous pouvez faire glisser les tuiles sur le plateau, si la ligne ou la colonne où elles sont placées présente un espace de libre. Pour faire un mouvement de glisser, vous devez d'abord cliquer sur la tuile contenant la colonne ou la ligne pouvant accueillir le glisser et ensuite sur la tuile correspondante. S'il y a deux glissements possibles, des lignes bleues sont affichées indiquant ces mouvements. Vous devez ensuite cliquer sur une des deux lignes pour sélectionner votre mouvement préféré. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Difficulté du plateau</guilabel
+></term>
+        <listitem
+><para
+>Le curseur contrôle la difficulté du plateau (&cad; combien de tuiles sont mélangées) de <guilabel
+>Facile</guilabel
+> à <guilabel
+>Difficile</guilabel
+>. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Vitesse de suppression des pièces</guilabel
+></term>
+        <listitem
+><para
+>Le curseur permet d'ajuster la vitesse à laquelle les pièces sont supprimées de l'écran après qu'une correspondance à été faite. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Taille du plateau</guilabel
+></term>
+        <listitem
+><para
+>Ce curseur vous permet de modifier le nombre de tuiles sur le plateau. Plus vous aurez de tuiles, plus le jeu sera difficile (et long). </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Tuiles</guilabel
+> et page <guilabel
+>d'arrière-plan</guilabel
+></term>
+        <listitem
+><para
+>Sélectionnez votre apparence préféré pour les carreaux et l'arrière-plan. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Aide</guibutton
+></term>
+        <listitem
+><para
+>Ouvre les pages d'aide de &kshisen; (Ce document). </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Ok</guibutton
+></term>
+        <listitem
+><para
+>Enregistre vos modifications et ferme la boîte de dialogue. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Appliquer</guibutton
+></term>
+        <listitem
+><para
+>Enregistre vos modifications mais ne ferme pas la boîte de dialogue. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Annuler</guibutton
+></term>
+        <listitem
+><para
+>Annule toutes vos modifications et ferme la boîte de dialogue. </para
+></listitem>
+      </varlistentry>
+
+    </variablelist>
+
   </chapter>
 
   <chapter id="credits"
@@ -1294,40 +1290,20 @@
     <!--This chapter is for credits and licenses.-->
 
     <para
->&kappname; Copyright 1997 &Mario.Weilguni; &Mario.Weilguni.mail; </para>
+>&kshisen; Licence 1997 par &Mario.Weilguni; &Mario.Weilguni.mail; </para>
     <para
->&kappname; Copyright 2002-2004 Dave Corrie kde@davecorrie.com </para>
+>&kshisen; Licence 2002 - 2004 par Dave Corrie kde@davecorrie.com </para>
     <para
->&kappname; Copyright 2009 Frederik Schwarzer <email
->schwarzerf@gmail.com</email
-> </para>
+>&kshisen; Licence 2009 par Frederik Schwarzer &Frederik.Schwarzer.mail; </para>
 
     <para
->Copyright de la documentation 2000 &Dirk.Doerflinger; <email
->ddoerflinger@gmx.net</email
-> </para>
+>Licence de la documentation 2000 &Dirk.Doerflinger; &Dirk.Doerflinger.mail; </para>
     <para
->Copyright de la documentation 2009 Frederik Schwarzer <email
->schwarzerf@gmail.com</email
-> </para>
+>Licence de la documentation 2009 par Frederik Schwarzer &Frederik.Schwarzer.mail; </para>
 
     <para
 >Traduction française par &YvesDessertine;.</para
-> 
-&underFDL; &underGPL; </chapter>
-
-  <appendix id="installation">
-    <title
->Installation</title>
-
-    &install.intro.documentation;
-
-
-    <sect1 id="Compilation">
-      <title
->Compilation et Installation</title>
-&install.compile.documentation; </sect1>
-  </appendix>
+> &underFDL; &underGPL; </chapter>
 
   &documentation.index;
 </book>
