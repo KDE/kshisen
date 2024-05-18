@@ -1,15 +1,15 @@
 # Esperantaj mesaĝoj por "kshisen"
 # Copyright (C) 1998 Free Software Foundation, Inc.
 # Wolfram Diestel <diestel@rzaix340.rz.uni-leipzig.de>, 1998.
-# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
+# Oliver Kellogg <olivermkellogg@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kshisen 1.0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-25 01:40+0000\n"
-"PO-Revision-Date: 2024-01-03 14:17+0100\n"
-"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
+"PO-Revision-Date: 2024-05-04 07:47+0100\n"
+"Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Wolfram Diestel,Oliver Kellogg"
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "wolfram@steloj.de,okellogg@users.sourceforge.net"
+msgstr "wolfram@steloj.de,olivermkellogg@gmail.com"
 
 #: src/app.cpp:81 src/app.cpp:317
 #, kde-format
@@ -51,7 +51,7 @@ msgstr "Trompa reĝimo"
 #: src/app.cpp:109
 #, kde-format
 msgid "Play Sounds"
-msgstr "Ludi Sonorojn"
+msgstr "Aŭdigi Sonorojn"
 
 #: src/app.cpp:239
 #, kde-format
