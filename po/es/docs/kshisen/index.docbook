@@ -115,6 +115,20 @@
 > <contrib
 >Traductora</contrib
 > </othercredit
+> <othercredit role="translator"
+><firstname
+>Eloy</firstname
+> <surname
+>Cuadra</surname
+> <affiliation
+><address
+><email
+>ecuadra@eloihr.net</email
+></address
+></affiliation
+> <contrib
+>Corrección de la traducción</contrib
+></othercredit
 > 
     </authorgroup>
     <legalnotice
@@ -146,11 +160,11 @@
 ><!--Application name goes here-->
       <!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
       <keyword
->arcade</keyword>
+>recreativo</keyword>
       <keyword
 >tablero</keyword>
       <keyword
->mahjongg</keyword>
+>mahjong</keyword>
       <keyword
 >fichas</keyword>
       <!--Number of possible players. It can be: One, Two,..., Multiplayer-->
@@ -167,7 +181,7 @@
 ><title
 >Tipo de juego:</title
 ><para
->Arcade, Tablero</para
+>Recreativo, Tablero</para
 ></note
 ><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
     <note
@@ -180,7 +194,7 @@
 
     <!--Short game description starts here. 3-4 sentences (paragraphs)-->
     <para
->&kshisen; es un juego para un jugador que usa el conjunto de fichas del Mahjong. Sin embargo, a diferencia del Mahjong, &kshisen; solo tiene una capa de fichas mezcladas. Puede quitar piezas coincidentes si se pueden conectar con una línea que se doble un máximo de dos veces. Al mismo tiempo, la línea no debe cruzar ninguna otra ficha. Para ganar una partida de &kshisen;, el jugador ha de eliminar todas las fichas del tablero de juego. </para>
+>&kshisen; es un juego para un jugador que usa el conjunto de fichas del mahjong. Sin embargo, a diferencia del mahjong, &kshisen; solo tiene una capa de fichas mezcladas. Puedes quitar las piezas coincidentes si se pueden conectar con una línea que se doble un máximo de dos veces. Al mismo tiempo, la línea no debe cruzar ninguna otra ficha. Para ganar una partida de &kshisen;, tienes que eliminar todas las fichas del tablero de juego. </para>
   </chapter>
 
   <chapter id="howto"
@@ -208,13 +222,13 @@
 ><!--Describe the objective of the game.-->
     <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
     <para
->&kshisen; cargará automáticamente un patrón en el momento en que inicie el juego, por lo que podrá comenzar a jugar inmediatamente. </para>
+>&kshisen; cargará automáticamente un patrón en el momento en que empieces el juego, por lo que podrás comenzar a jugar inmediatamente. </para>
     <para
->Debería estudiar con cuidado las fichas extendidas por el tablero de juego y encontrar dos fichas exactamente iguales. Cuando haya encontrado un par, utilice el ratón para seleccionarlo. </para>
+>Deberías estudiar con cuidado las fichas del tablero de juego y encontrar dos fichas exactamente iguales. Cuando hayas encontrado una pareja, usa el ratón para seleccionarla. </para>
     <para
->Una vez que haya seleccionado una pareja de fichas, estas desaparecerán del tablero de juego. Sin embargo, incluso si las fichas que selecciona aparecen abiertas, solo podrán ser eliminadas del tablero si se pueden conectar una con otra por medio de una línea que se doble un máximo de dos veces y que no cruce ninguna otra ficha. Además, la línea solo se puede dibujar horizontal o verticalmente. </para>
+>Una vez que hayas seleccionado una pareja de fichas, estas desaparecerán del tablero de juego. Sin embargo, incluso si las fichas que seleccionas aparecen abiertas, solo las podrás eliminar del tablero si se pueden conectar entre sí por medio de una línea que se doble un máximo de dos veces y que no cruce ninguna otra ficha. Además, esta línea solo se puede dibujar horizontal o verticalmente. </para>
     <para
->Encuentre tantas coincidencias como sea posible para eliminar todas las fichas del tablero de juego. </para>
+>Encuentra tantas coincidencias como sea posible para eliminar todas las fichas del tablero de juego. </para>
   </chapter>
 
   <chapter id="rules_and_tips"
@@ -225,7 +239,7 @@
       <title
 >Reglas</title>
       <para
->Conjunto de fichas estándar del Mahjong incluidas: <informaltable
+>Conjunto de fichas estándar del mahjong incluidas: <informaltable
 > <tgroup cols="3"
 > <tbody>
               <row
@@ -642,27 +656,27 @@
 ><title
 >Nota:</title
 ><para
->Existen excepciones a esta regla. En el juego tradicional del Mahjong, cada ficha debe coincidir exactamente, excepto las fichas de «flores» y las de «estaciones».</para>
+>Existen excepciones a esta regla. En el juego tradicional del mahjong, cada ficha debe coincidir exactamente, excepto las fichas de «flores» y las de «estaciones».</para>
       </note>
       <itemizedlist>
         <listitem
 ><para
->Las fichas de «Flores» no tienen dobles y puede emparejarse entre sí.</para
+>Las fichas de «flores» no tienen dobles y pueden emparejarse entre sí.</para
 ></listitem>
         <listitem
 ><para
->Las fichas de «Estaciones» no tienen dobles entre sí y pueden emparejarse entre sí.</para
+>Las fichas de «estaciones» no tienen dobles y pueden emparejarse entre sí.</para
 ></listitem>
         <listitem
 ><para
->Solo se pueden quitar dos fichas si se puedan unir con un máximo de tres líneas conectadas que no crucen ninguna otra ficha. Las líneas pueden ser horizontales o verticales, pero no diagonales.</para
+>Solo se pueden quitar dos fichas si se pueden unir con un máximo de tres líneas conectadas que no crucen ninguna otra ficha. Estas líneas pueden ser horizontales o verticales, pero no diagonales.</para
 ></listitem>
       </itemizedlist>
       <note
 ><title
 >Nota:</title
 ><para
->No tiene que dibujar las líneas usted mismo, el juego lo hace por usted. Simplemente marque dos fichas emparejadas en el tablero; si se pueden conectar con un máximo de tres líneas, las líneas se dibujarán y las fichas se eliminarán.</para>
+>No tienes que dibujar las líneas por ti mismo, el juego lo hace por ti. Solo tienes que marcar dos fichas emparejadas en el tablero: si se pueden conectar con un máximo de tres líneas, se muestran dichas líneas y las fichas se eliminan.</para>
       </note>
       <itemizedlist>
         <listitem
@@ -671,7 +685,7 @@
 ></listitem>
         <listitem
 ><para
->Algunos juegos no se pueden resolver. Si quiere que no se utilicen juegos sin solución, marque la opción <guilabel
+>Algunos juegos no se pueden resolver. Si quieres que no se usen juegos sin solución, marca la opción <guilabel
 >Crear solo juegos con solución</guilabel
 > en el diálogo de configuración.</para
 ></listitem>
@@ -681,37 +695,33 @@
 ></listitem>
         <listitem
 ><para
->Si juega con la opción <guilabel
+>Si juegas con la opción <guilabel
 >Gravedad</guilabel
 > activada, esta puntuación se multiplicará por dos.</para
 ></listitem>
         <listitem
 ><para
->Para conseguir un puesto entre los jugadores con las mejores puntuaciones, debe completar una instancia del juego en el periodo de tiempo más corto posible.</para
+>Para conseguir un puesto entre los jugadores con las mejores puntuaciones debes completar una partida en el menor tiempo posible.</para
 ></listitem>
       </itemizedlist>
       <note
 ><title
 >Nota:</title
 ><para
->Si el jugador utiliza la funcionalidad «Deshacer» o «Pista», la puntuación no se considerará como un récord de puntuación.</para
+>Si el jugador usa la función de «Deshacer» o de «Pista», la puntuación no se considerará como un récord de puntuación.</para
 ></note>
     </sect1>
     <sect1 id="tips">
       <title
 >Pistas</title>
       <para
->Haga clic en una ficha con el &RMB; para resaltar todas las fichas del tablero que coincidan. Al contrario que usar <quote
->Deshacer</quote
-> o <quote
->Pista</quote
->, esta ayuda está permitida sin que se considere hacer trampas. </para>
+>Haz clic en una ficha con el &RMB; para resaltar todas las fichas del tablero que coincidan. Al contrario que cuando se usa «Deshacer» o «Pista», este tipo de ayuda está permitido sin que se considere hacer trampas. </para>
     </sect1>
   </chapter>
 
   <chapter id="interface"
 ><title
->Visión general de la interfaz</title
+>Vista general de la interfaz</title
 > <!-- do not change this! -->
     <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
 > and <varlistentry
@@ -727,7 +737,7 @@
       <para
 >El menú <guimenu
 >Juego</guimenu
-> le permite controlar el estado de la partida actual: </para>
+> permite controlar el estado de la partida actual: </para>
 
       <variablelist>
         <varlistentry id="game-menu-new">
@@ -749,7 +759,7 @@
 ><para
 ><action
 >Termina la partida actual</action
-> y comienza una nueva sesión con fichas nuevas.</para
+> y empieza una nueva sesión con fichas nuevas.</para
 ></listitem>
         </varlistentry>
 
@@ -765,7 +775,7 @@
 > <guimenu
 >Juego</guimenu
 ><guimenuitem
->Reiniciar juego</guimenuitem
+>Reiniciar partida</guimenuitem
 > </menuchoice>
           </term>
           <listitem
@@ -795,7 +805,7 @@
 ><para
 ><action
 >Detiene la partida</action
->, especialmente el reloj que es necesario para la puntuación. Esta entrada de menú también se utiliza para continuar el juego.</para
+>, especialmente el reloj que es necesario para la puntuación. Esta entrada de menú también se usa para continuar el juego.</para
 ></listitem>
         </varlistentry>
 
@@ -846,7 +856,7 @@
       </variablelist>
 
       <para
->Algunas de las entradas de menú también se pueden controlar mediante combinaciones de teclas. Consulte la sección <xref linkend="key-bindings"/> para obtener una lista. </para>
+>Algunas de las entradas de menú también se pueden controlar mediante combinaciones de teclas. Consulta la sección <xref linkend="key-bindings"/> para obtener una lista de ellas. </para>
 
     </sect2>
 
@@ -876,7 +886,7 @@
 >Deshace el último paso</action
 >, al igual que el botón <guibutton
 >Deshacer</guibutton
-> en la barra de herramientas.</para
+> de la barra de herramientas.</para
 ></listitem>
         </varlistentry>
 
@@ -901,7 +911,7 @@
 >Rehace el último paso</action
 >, al igual que el botón <guibutton
 >Rehacer</guibutton
-> en la barra de herramientas.</para
+> de la barra de herramientas.</para
 ></listitem>
         </varlistentry>
 
@@ -923,8 +933,8 @@
           <listitem
 ><para
 ><action
->Muestra un consejo</action
-> sobre qué dos fichas quitar a continuación.</para
+>Muestra una pista</action
+> sobre dos fichas que se pueden quitar.</para
 ></listitem>
         </varlistentry>
 
@@ -948,7 +958,7 @@
           </term>
           <listitem
 ><para
->Activa un sonido cuando toca una ficha haciendo clic sobre ella con el &LMB; y cuando una ficha se cae al jugar con la <guilabel
+>Reproduce un sonido cuando tocas una ficha haciendo clic sobre ella con el &LMB; y cuando una ficha cae al jugar con la <guilabel
 >Gravedad</guilabel
 > activada.</para
 ></listitem>
@@ -973,11 +983,11 @@
 
       </variablelist>
       <para
->Además &kshisen; tiene las opciones de menú <guimenu
+>Además, &kshisen; tiene las opciones de los menús <guimenu
 >Preferencias</guimenu
 > y <guimenu
 >Ayuda</guimenu
-> comunes de &kde;. Para obtener más información, consulte las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
+> comunes de &kde;. Para obtener más información, consulta las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
 >Menú «Preferencias»</ulink
 > y <ulink url="help:/fundamentals/menus.html#menus-help"
 >Menú «Ayuda» </ulink
@@ -1007,7 +1017,7 @@
 ></row>
             <row
 ><entry
->Reiniciar juego</entry
+>Reiniciar la partida</entry
 ><entry
 ><keycap
 >F5</keycap
@@ -1106,11 +1116,11 @@
       <qandaentry>
         <question
 ><para
->Quiero cambiar el aspecto del juego ¿Puedo?</para
+>Quiero cambiar el aspecto del juego. ¿Puedo?</para
 ></question>
         <answer
 ><para
->Sí. Para cambiar el aspecto de &kshisen; use la <link linkend="game-settings-settings"
+>Sí. Para cambiar el aspecto de &kshisen;, usa la <link linkend="game-settings-settings"
 >barra de menús</link
 > para abrir la <link linkend="configuration"
 >utilidad de configuración</link
@@ -1120,17 +1130,17 @@
       <qandaentry>
         <question
 ><para
->¿Puedo utilizar el teclado?</para
+>¿Puedo usar el teclado?</para
 ></question>
         <answer
 ><para
->No. Este juego no incluye la funcionalidad de un modo de juego con teclado.</para
+>No. Este juego no incluye la posibilidad de jugar con teclado.</para
 ></answer>
       </qandaentry>
       <qandaentry>
         <question
 ><para
->Debo abandonar el juego, pero todavía no he terminado la partida ¿puedo guardar mi progreso?</para
+>Debo salir del juego, pero todavía no he terminado la partida. ¿Puedo guardar el estado actual?</para
 ></question>
         <answer
 ><para
@@ -1146,13 +1156,13 @@
 > <!-- do not change this! -->
     <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
     <para
->Si selecciona el menú <menuchoice
+>Si seleccionas la opción del menú <menuchoice
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
 >Configurar &kshisen;...</guimenuitem
 ></menuchoice
-> se abrirá el diálogo de configuración que le permitirá modificar el comportamiento del juego. </para>
+> se abrirá el diálogo de configuración que te permitirá modificar el comportamiento del juego. </para>
 
     <screenshot>
       <screeninfo
@@ -1179,7 +1189,7 @@
 ></term>
         <listitem
 ><para
->Eligiendo esta opción la partida se hace mucho más difícil: si se quita una ficha, todas las fichas que estaban por encima caerán hacia abajo un peldaño. </para
+>Si marcas esta opción, la partida se hará mucho más difícil: si se quita una ficha, todas las fichas que estaban por encima caerán hacia abajo un peldaño. </para
 ></listitem>
       </varlistentry>
 
@@ -1190,14 +1200,14 @@
 ></term>
         <listitem
 ><para
->Si está marcada, solo se le mostrarán juegos posibles de resolver. Nota: Incluso en los juegos con solución, puede no conseguir completarlos si elimina las piezas en el orden equivocado. </para
+>Si está marcada, solo se mostrarán juegos que se puedan resolver. Nota: incluso en los juegos con solución, es posible que no consigas resolverlos si eliminas las fichas en el orden incorrecto. </para
 ></listitem>
       </varlistentry>
 
       <varlistentry>
         <term
 ><guilabel
->Mostrar un mensaje cuando el tablero no se puede resolver</guilabel
+>Mostrar un mensaje cuando el tablero no se pueda resolver</guilabel
 ></term>
         <listitem
 ><para
@@ -1208,22 +1218,22 @@
       <varlistentry>
         <term
 ><guilabel
->Utilizar el estilo chino: cualquier flor podrá coincidir con cualquier otra flor, cualquier estación podrá coincidir con cualquier otra estación.</guilabel
+>Usar el estilo chino: cualquier flor podrá coincidir con cualquier otra flor, cualquier estación podrá coincidir con cualquier otra estación.</guilabel
 ></term>
         <listitem
 ><para
->Utilizar reglas tradicionales para la coincidencia de fichas. Las versiones anteriores de &kshisen; solo permitían la coincidencia exacta de las fichas, que se contradice con las reglas del Mahjong. Se recomienda mantener esta opción marcada. </para
+>Usar reglas tradicionales para la coincidencia de fichas. Las versiones anteriores de &kshisen; solo permitían la coincidencia exacta de las fichas, algo que se contradice con las reglas del mahjong. Se recomienda mantener esta opción marcada. </para
 ></listitem>
       </varlistentry>
 
       <varlistentry>
         <term
 ><guilabel
->Las fichas se pueden deslizar, pero solo podrá conectar 2 líneas en lugar de 3.</guilabel
+>Las fichas se pueden deslizar, pero solo podrás conectarlas en 2 líneas en lugar de en 3</guilabel
 ></term>
         <listitem
 ><para
->Esta opción cambia las reglas hasta el punto que casi se convierte en un juego diferente. Cuando está activada, puede eliminar las fichas solo si se pueden conectar con una línea que conste de uno o dos segmentos, en lugar de los tres habituales. Sin embargo, se le permite deslizar las fichas sobre el tablero si la fila o columna donde están colocados tiene algún espacio libre. Para hacer un movimiento de deslizamiento, primero debe hacer clic en la ficha de la fila o columna donde se puede deslizar, y después en la ficha que coincida. Si hay dos posibles movimientos, se muestran líneas azules indicándolos. Después, tendrá que hacer clic en una de las dos líneas para elegir su movimiento preferido. </para
+>Esta opción cambia las reglas hasta el punto que casi se convierte en un juego diferente. Cuando está activada, puedes eliminar fichas solo si se pueden conectar con una línea que conste de uno o dos segmentos, en lugar de los tres habituales. Sin embargo, se permite deslizar las fichas sobre el tablero si la fila o columna donde están colocados tiene algún espacio libre. Para hacer un movimiento de deslizamiento, primero debes hacer clic en la ficha de la fila o columna donde se puede deslizar, y después en la ficha que coincida. Si hay dos movimientos posibles, se muestran líneas azules para indicarlos. En este caso, tendrás que hacer clic en una de las dos líneas para elegir el movimiento que quieras hacer. </para
 ></listitem>
       </varlistentry>
 
@@ -1245,11 +1255,11 @@
       <varlistentry>
         <term
 ><guilabel
->Velocidad de eliminación de las piezas</guilabel
+>Velocidad de eliminación de las fichas</guilabel
 ></term>
         <listitem
 ><para
->Ajustando este deslizador se modifica la velocidad a la que las piezas se eliminan de la pantalla después de hacerlas coincidir. </para
+>Ajustando este deslizador se modifica la velocidad a la que las piezas se eliminan de la pantalla después de emparejarlas. </para
 ></listitem>
       </varlistentry>
 
@@ -1260,7 +1270,7 @@
 ></term>
         <listitem
 ><para
->Este deslizador le permite cambiar el número de fichas en el tablero. Mientras más fichas haya, más complicado (y más largo) será el juego. </para
+>Este deslizador permite cambiar el número de fichas del tablero. Cuantas más fichas haya, más complicado (y más largo) será el juego. </para
 ></listitem>
       </varlistentry>
 
@@ -1273,7 +1283,7 @@
 ></term>
         <listitem
 ><para
->Seleccione su diseño favorito para las fichas y el fondo. </para
+>Selecciona tu diseño favorito para las fichas y el fondo. </para
 ></listitem>
       </varlistentry>
 
@@ -1295,7 +1305,7 @@
 ></term>
         <listitem
 ><para
->Guarda sus cambios y cierra este diálogo. </para
+>Guarda los cambios y cierra este diálogo. </para
 ></listitem>
       </varlistentry>
 
@@ -1306,7 +1316,7 @@
 ></term>
         <listitem
 ><para
->Guarda sus cambios pero no cierra el diálogo. </para
+>Guarda los cambios sin cerrar el diálogo. </para
 ></listitem>
       </varlistentry>
 
@@ -1317,7 +1327,7 @@
 ></term>
         <listitem
 ><para
->Cancela todos sus cambios y cierra el diálogo. </para
+>Cancela todos los cambios y cierra el diálogo. </para
 ></listitem>
       </varlistentry>
 
@@ -1346,12 +1356,16 @@
 >Copyright de la documentación 2009-2010 &Frederik.Schwarzer; &Frederik.Schwarzer.mail; </para>
 
     <para
->Traducido por Pablo de Vicente <email
+>Documentación traducida por Pablo de Vicente <email
 >pvicentea@wanadoo.es</email
 >, Santiago Fernández Sancho <email
 >santi@kde-es.org</email
 > y Kira J. Fernández <email
 >kirajfdez@gmail.com</email
+>.</para
+><para
+>Corregida por Eloy Cuadra <email
+>ecuadra@eloihr.net</email
 >.</para
 > &underFDL; &underGPL; </chapter>
 
