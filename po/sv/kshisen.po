@@ -2,21 +2,21 @@
 # Översättning kshisen.po till Svenska
 # KTranslator Generated File
 # Mattias Newzella <newzella@linux.nu>, 2003.
-# Stefan Asserhäll <stefan.asserhall@gmail.com>, 2004, 2005, 2007, 2009, 2010.
+# SPDX-FileCopyrightText: 2004, 2005, 2007, 2009, 2010, 2024 Stefan Asserhäll <stefan.asserhall@gmail.com>
 # Stefan Asserhall <stefan.asserhall@gmail.com>, 2010, 2011, 2016, 2018, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:37+0000\n"
-"PO-Revision-Date: 2023-07-24 15:48+0200\n"
+"PO-Revision-Date: 2024-06-19 22:25+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 20.08.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -50,8 +50,7 @@ msgid "Cheat mode"
 msgstr "Fuskläge"
 
 #: src/app.cpp:110
-#, fuzzy, kde-format
-#| msgid "Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
 msgstr "Spela ljud"
@@ -92,11 +91,10 @@ msgstr ""
 "Försök utan dem nästa gång."
 
 #: src/app.cpp:261 src/app.cpp:269
-#, fuzzy, kde-format
-#| msgid "End of Game"
+#, kde-format
 msgctxt "@title:window"
 msgid "End of Game"
-msgstr "Slut på spelet"
+msgstr "Spelet är slut"
 
 #: src/app.cpp:264
 #, kde-format
@@ -149,8 +147,7 @@ msgid "You cannot make this move"
 msgstr "Du kan inte göra det här draget"
 
 #: src/app.cpp:369
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "Allmänt"
@@ -167,8 +164,7 @@ msgstr ""
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
 #: src/board.cpp:111 src/board.cpp:117
-#, fuzzy, kde-format
-#| msgid "Error Loading Tiles"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Tiles"
 msgstr "Fel vid inläsning av brickor"
