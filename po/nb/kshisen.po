@@ -56,7 +56,6 @@ msgstr "Juksemodus "
 
 #: src/app.cpp:110
 #, fuzzy, kde-format
-#| msgid "Play Sounds"
 msgctxt "@option:check"
 msgid "Play Sounds"
 msgstr "Spill lyder"
@@ -94,7 +93,6 @@ msgstr ""
 
 #: src/app.cpp:261 src/app.cpp:269
 #, fuzzy, kde-format
-#| msgid "End of Game"
 msgctxt "@title:window"
 msgid "End of Game"
 msgstr "Slutt på spillet"
@@ -151,7 +149,6 @@ msgstr "Du kan ikke gjøre dette trekket"
 
 #: src/app.cpp:369
 #, fuzzy, kde-format
-#| msgid "General"
 msgctxt "@title:tab"
 msgid "General"
 msgstr "Generelt"
