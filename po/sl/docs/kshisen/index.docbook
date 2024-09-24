@@ -1,0 +1,1344 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Slovenian "INCLUDE"
+>    <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+>     <!-- do not change this! -->
+]>
+
+<book id="kshisen" lang="&language;"
+> <!-- do not change this! -->
+  <bookinfo>
+    <title
+>&kshisen; Priročnik</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+    <!-- List of immidiate authors begins here. -->
+    <!--INPORTANT! - All other contributors: [to be determined] -->
+    <authorgroup>
+      <author
+><firstname
+>Dirk</firstname
+> <surname
+>Doerflinger</surname
+> <affiliation
+><address
+>&Dirk.Doerflinger.mail;</address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Frederik</firstname
+> <surname
+>Schwarzer</surname
+> <affiliation
+><address
+>&Frederik.Schwarzer.mail;</address
+></affiliation>
+      </author>
+      <othercredit role="reviewer"
+><firstname
+>Frerich</firstname
+><surname
+>Raabe</surname
+> <contrib
+>Recenzent</contrib>
+        <affiliation
+><address
+>&Frerich.Raabe.mail;</address
+></affiliation>
+      </othercredit>
+      <othercredit role="translator"
+><firstname
+>Matjaž</firstname
+><surname
+>Jeran</surname
+><affiliation
+><address
+><email
+>matjaz.jeran@amis.net</email
+></address
+></affiliation
+><contrib
+>Prevod</contrib
+></othercredit
+> 
+    </authorgroup>
+    <legalnotice
+>&FDLNotice;</legalnotice>
+    <date
+>15.06.2021</date>
+    <releaseinfo
+>1.10 (KDE Gear 21.08)</releaseinfo>
+
+    <!--Short description of this document. Do not change unless necessary!-->
+    <abstract>
+      <para
+>Ta dokumentacija opisuje igro &kshisen; različica 1.10</para>
+    </abstract>
+
+    <!--List of relevant keywords-->
+    <keywordset>
+      <keyword
+>KDE</keyword
+> <!-- do not change this! -->
+      <keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+      <keyword
+>igra</keyword
+> <!-- do not change this! -->
+      <keyword
+>kshisen</keyword
+><!--Application name goes here-->
+      <!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+      <keyword
+>arkadna</keyword>
+      <keyword
+>tabla</keyword>
+      <keyword
+>mahjong</keyword>
+      <keyword
+>ploščice</keyword>
+      <!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+      <keyword
+>en igralec</keyword>
+    </keywordset>
+  </bookinfo>
+  <!--Content begins here: -->
+  <chapter id="introduction"
+><title
+>Uvod</title
+> <!-- do not change this! -->
+    <note
+><title
+>Vrsta igre:</title
+><para
+>Arkadna, Namizna</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+    <note
+><title
+>Število možnih igralcev:</title
+><para
+>Eden</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+    <!--Short game description starts here. 3-4 sentences (paragraphs)-->
+    <para
+>&kshisen; je igra, podobna pasjansi, ki se igra s standardnim nizom Mahjong ploščic. Za razliko od Mahjonga pa &kshisen; ima samo eno plast premešanih ploščic. Ujemajoče se dele lahko odstranite, če jih je mogoče povezati s črto z največ dvema pregiboma. Hkrati črta ne sme prečkati drugih ploščic. Za zmago v igri &kshisen; igralec mora odstraniti vse ploščice z igralne plošče. </para>
+  </chapter>
+
+  <chapter id="howto"
+><title
+>Kako igrati</title
+> <!-- do not change this! -->
+    <screenshot>
+    <mediaobject>
+    <imageobject>
+    <imagedata fileref="gameboard.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+    <phrase
+>&kshisen; igralna plošča</phrase>
+    </textobject>
+    </mediaobject>
+    </screenshot>
+    <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+    <note
+><title
+>Cilj:</title
+><para
+>Odstranite vse ploščice z igralne plošče v najkrajšem možnem času.</para
+></note
+><!--Describe the objective of the game.-->
+    <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+    <para
+>&kshisen; bo samodejno naložil privzeto postavitev, ko začnete igro in lahko začnete igrati takoj. </para>
+    <para
+>Pozorno preučite ploščice na igralni plošči in poiščite dve ploščici, ki se popolnoma ujemata. Ko najdete tak par, ju izberite z miško. </para>
+    <para
+>Ko izberete ujemajoči se par ploščic, bosta izginili z igralne plošče. Tudi če so ploščice, ki jih izberete, prikazane kot odprte, bodo odstranjene s plošče samo, če jih je mogoče povezati s črto, ki ima največ dva ovinka in ne prečka nobene druge ploščice. Poleg tega je črto mogoče narisati samo vodoravno in navpično. </para>
+    <para
+>Poiščite čim več zadetkov, da odstranite vse ploščice z igralne plošče. </para>
+  </chapter>
+
+  <chapter id="rules_and_tips"
+><title
+>Pravila igre, strategije in nasveti</title
+> <!-- do not change this! -->
+    <sect1 id="rules">
+      <title
+>Pravila</title>
+      <para
+>Standardni komplet Mahjong ploščic vključuje: <informaltable
+> <tgroup cols="3"
+> <tbody>
+              <row
+><entry
+>Ime skupine</entry
+><entry
+>Ime ploščice</entry
+><entry
+>Količina v kompletu</entry
+></row>
+              <row
+><entry
+>Pike</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 pik</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 piki</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 pike</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 pike</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 pik</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 pik</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 pik</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 pik</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 pik</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Bambusi</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 od bambusa</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 bambusov</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 bambusov</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 bambusov</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 bambusov</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 bambusov</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 bambusov</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 bambusov</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 bambusov</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Znaki</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 znak</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 znaka</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 znaki</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 znaki</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 znakov</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 znakov</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 znakov</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 znakov</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 znakov</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Vetrovi</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Vzhodni veter</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Južni veter</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Zahodni veter</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Severni veter</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Zmaji</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Rdeči zmaj</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Zeleni zmaj</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Beli zmaj</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Rože</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Sliva (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Lilija (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Krizantema (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Bambus (4)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+>Letni časi</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Pomlad (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Poletje (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Jesen (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Zima (4)</entry
+><entry
+>1</entry
+></row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+      <itemizedlist>
+        <listitem
+><para
+>Ujemajoče se ploščice so takšne ploščice, kjer se piktogrami obrazov natančno ujemajo.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Opomba:</title
+><para
+>Obstajajo izjeme od tega pravila. V tradicionalni igri Mahjong ima vsaka ploščica ujemajočo se ploščico, razen ploščic <quote
+>Rože</quote
+> in <quote
+>Letni časi</quote
+>.</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>Ploščice <quote
+>Flowers</quote
+> v kompletu nimajo dvojnikov in jih je mogoče povezati neposredno med seboj.</para
+></listitem>
+        <listitem
+><para
+>Ploščice <quote
+>Letni časi</quote
+> v kompletu nimajo dvojnikov in jih je mogoče povezati neposredno med seboj.</para
+></listitem>
+        <listitem
+><para
+>Ploščice je mogoče odstraniti samo, če jih je mogoče povezati z največ tremi povezanimi črtami, ki ne sekajo nobene druge ploščice. Črte so lahko vodoravne ali navpične, ne pa diagonalne.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Opomba:</title
+><para
+>Ni vam treba risati črt sami, igra to naredi namesto vas. Samo označite dve ujemajoči se ploščici na tabli, če ju lahko povežete s črto z največ dvema pregiboma, črta se nariše in ploščice se odstranijo.</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>Črte lahko prečkajo le prazna področja plošče.</para
+></listitem>
+        <listitem
+><para
+>Nekatere igre so nerešljive. Če se želite izogniti nerešljivim igram, izberite možnost <guilabel
+>Ustvari samo rešljive igre</guilabel
+> v konfiguracijskem pogovornem oknu.</para
+></listitem>
+        <listitem
+><para
+>Rezultati se dodelijo za čas, ki ga igralec potrebuje, da odstrani vse ploščice z igralne plošče. Igre z več ploščicami dajejo več točk.</para
+></listitem>
+        <listitem
+><para
+>Če ste igrali z omogočeno nastavitvijo <guilabel
+>Težnost</guilabel
+>, bo rezultat podvojen.</para
+></listitem>
+        <listitem
+><para
+>Da bi bil igralec upravičen do mesta med najboljšimi rezultati, mora dokončati primer igre v najkrajšem možnem času.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Opomba:</title
+><para
+>Če igralec uporabi funkcijo <quote
+>Razveljavi</quote
+> ali <quote
+>Namig</quote
+>, zapis ne bo obravnavan kot visok rezultat.</para
+></note>
+    </sect1>
+    <sect1 id="tips">
+      <title
+>Nasveti</title>
+      <para
+>Kliknite na ploščico z &RMB; da označite vse ujemajoče se ploščice na tabli. Za razliko od uporabe funkcije <quote
+>Razveljavi</quote
+> ali <quote
+>Namig</quote
+> je ta pomoč dovoljena, ne da bi se obravnavala kot goljufanje. </para>
+    </sect1>
+  </chapter>
+
+  <chapter id="interface"
+><title
+>Pregled vmesnika</title
+> <!-- do not change this! -->
+    <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing. -->
+    <sect1 id="menu">
+    <title
+>Elementi menija</title>
+    <sect2 id="game-menu">
+      <title
+>Meni igre</title>
+
+      <para
+>Meni <guimenu
+>Igra</guimenu
+> vam omogoča nadzor statusa trenutne igre: </para>
+
+      <variablelist>
+        <varlistentry id="game-menu-new">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Igra</guimenu
+><guimenuitem
+>Nova</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Konča trenutno igro</action
+> in začne novo sejo z novimi ploščicami.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-restart">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>F5</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Igra</guimenu
+><guimenuitem
+>Znova zaženi igro</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Ponovno zažene trenutno igro z istimi ploščicami.</action
+></para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-pause">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Igra</guimenu
+><guimenuitem
+>Premor</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Začasno ustavi igro</action
+>, zlasti časovnik, ki vpliva na točkovanje. Vnos v meni se uporablja tudi za nadaljevanje igre.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-highscores">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Igra</guimenu
+><guimenuitem
+>Prikaži najboljše rezultate</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Prikaže vaših deset najboljših lestvic &kshisen;.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Igra</guimenu
+><guimenuitem
+>Zapusti</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Zapusti</action
+> &kshisen;.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+      <para
+>Nekatere elemente menija lahko upravljate tudi z bližnjicami na tipkovnici. Glejte <xref linkend="key-bindings"/> za seznam. </para>
+
+    </sect2>
+
+    <sect2 id="move-menu">
+      <title
+>Meni Premakni</title>
+
+      <variablelist id="move-menu-undo">
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Premakni</guimenu
+><guimenuitem
+>Razveljavi</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Razveljavi zadnji korak</action
+>. Enako kot gumb <guibutton
+>Razveljavi</guibutton
+> v orodni vrstici.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="move-menu-redo">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Premakni</guimenu
+><guimenuitem
+>Ponovi</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Ponovi zadnji korak</action
+>. Enako kot gumb <guibutton
+>Ponovi</guibutton
+> v orodni vrstici.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="move-menu-hint">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Premakni</guimenu
+><guimenuitem
+>Namig</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>Prikaže namig</action
+>, kateri dve ploščici odstraniti.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+    </sect2>
+
+    <sect2 id="settings-menu">
+      <title
+>Meni z nastavitvami</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guimenu
+>Nastavitve</guimenu
+><guimenuitem
+>Predvajaj zvoke</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Predvaja zvok, ko se dotaknete ploščice tako, da z njo kliknete &LMB; in ko ploščica pada dol, igranje z omogočeno <guilabel
+>Težnost</guilabel
+>.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-settings-settings">
+          <term>
+            <menuchoice
+><guimenu
+>Nastavitve</guimenu
+><guimenuitem
+>Konfiguriraj &kshisen;…</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>Odpre <link linkend="configuration"
+>konfiguracijsko pogovorno okno</link
+> za spremembo &kshisen; nastavitve.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+      <para
+>Poleg tega &kshisen; ima skupno &kde; Elementi menija <guimenu
+>Nastavitve</guimenu
+> in <guimenu
+>Pomoč</guimenu
+>, za več informacij preberite razdelke o <ulink url="help:/fundamentals/menus.html#menus-settings"
+>meniju z nastavitvami</ulink
+> in <ulink url="help:/fundamentals/menus.html#menus-help"
+>meni Pomoč</ulink
+> v &kde; Osnove. </para>
+    </sect2>
+    </sect1>
+
+    <sect1 id="key-bindings">
+      <title
+>Privzete vezave tipk</title>
+
+      <para
+>Privzete bližnjice so:</para>
+
+      <informaltable>
+        <tgroup cols="2">
+          <tbody>
+            <row
+><entry
+>Nova</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Ponovno zaženi igro</entry
+><entry
+><keycap
+>F5</keycap
+></entry
+></row>
+            <row
+><entry
+>Premor</entry
+><entry
+><keycap
+>P</keycap
+></entry
+></row>
+            <row
+><entry
+>Pokaži najboljše rezultate</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Zapusti</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Razveljavi</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Ponovi</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>Namig</entry
+><entry
+><keycap
+>H</keycap
+></entry
+></row>
+            <row
+><entry
+>&kshisen; Priročnik</entry
+><entry
+><keycap
+>F1</keycap
+></entry
+></row>
+            <row
+><entry
+>Kaj je to</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry
+></row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+    </sect1>
+
+  </chapter>
+
+  <chapter id="faq"
+><title
+>Pogosto zastavljena vprašanja</title
+> <!-- do not change this! -->
+    <!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+    <qandaset>
+      <qandaentry>
+        <question
+><para
+>Želim spremeniti videz te igre. Ali lahko?</para
+></question>
+        <answer
+><para
+>Da. Če želite spremeniti način &kshisen; izgleda uporabite <link linkend="game-settings-settings"
+>menijsko vrstico</link
+>, da odprete <link linkend="configuration"
+>pripomoček za konfiguracijo</link
+>.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>Ali lahko uporabljam tipkovnico?</para
+></question>
+        <answer
+><para
+>Ne. Ta igra nima načina igranja s tipkovnico.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>Zdaj moram zapustiti igro, vendar še nisem končal. Ali lahko shranim svoj napredek?</para
+></question>
+        <answer
+><para
+>Ne. Ta igra nima možnosti <quote
+>Shrani</quote
+>.</para
+></answer>
+      </qandaentry>
+    </qandaset>
+  </chapter>
+
+  <chapter id="configuration"
+><title
+>Konfiguracija igre</title
+> <!-- do not change this! -->
+    <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+    <para
+>Če izberete menijsko postavko <menuchoice
+><guimenu
+>Nastavitve</guimenu
+><guimenuitem
+>Konfiguriraj &kshisen;…</guimenuitem
+></menuchoice
+>, se odpre konfiguracijsko pogovorno okno, ki vam omogoča spreminjanje obnašanja igre. </para>
+
+    <screenshot>
+      <screeninfo
+>&kshisen; konfiguracijsko pogovorno okno</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="kshisen-configuration.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>&kshisen; konfiguracijsko pogovorno okno</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <variablelist>
+      <title
+>Stran <guilabel
+>Splošno</guilabel
+></title>
+      <varlistentry>
+        <term
+><guilabel
+>Težnost</guilabel
+></term>
+        <listitem
+><para
+>Če preverite to, je igra še težja: če ploščico odstranite, bodo vse ploščice, ki ležijo nad njo, padle eno stopničko navzdol. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Ustvari samo rešljive igre</guilabel
+></term>
+        <listitem
+><para
+>Če je označeno, vam bodo prikazane samo igre, ki jih je mogoče rešiti. Opomba: Tudi v rešljivih igrah vam lahko ne uspe dokončati, če odstranite ploščice v napačnem vrstnem redu. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Pokaži sporočilo, če plošče ni več mogoče rešiti</guilabel
+></term>
+        <listitem
+><para
+>Če je označeno, &kshisen; bo poskušal analizirati rešljivost vsake igralne pozicije in prikazal sporočilo za prekinitev igre, če ni več možnih potez za zmago v igri. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Uporabite kitajski slog: katera koli roža se ujema z vsako rožo, kateri koli letni čas se ujema z vsakim letnim časom</guilabel
+></term>
+        <listitem
+><para
+>Uporabite tradicionalna pravila za ujemanje ploščic. Prejšnja različica &kshisen; uporablja se za omogočanje samo natančnih ujemanj ploščic, kar ni v skladu s pravili Mahjonga. Priporočljivo je, da to možnost obdržite potrjeno. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Ploščice lahko drsijo, vendar jih lahko povežete le v 2 vrsticah namesto v 3</guilabel
+></term>
+        <listitem
+><para
+>Ta možnost spremeni pravila do te mere, da skoraj postane popolnoma drugačna igra. Ko je aktiven, lahko ploščice odstranite le, če jih je mogoče povezati s črto, sestavljeno iz enega ali dveh segmentov namesto običajnih treh. Vendar pa lahko ploščice drsite po tabli, če je v vrstici ali stolpcu, kjer so postavljene, nekaj praznega prostora. Če želite izvesti drsečo potezo, morate najprej klikniti ploščico v stolpcu ali vrstici, ki lahko drsi, nato pa še ujemajočo se ploščico. Če sta možni dve drseči potezi, so prikazane modre črte, ki označujejo te poteze. Nato morate klikniti eno od dveh vrstic, da izberete želeno potezo. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Težavnost deske</guilabel
+></term>
+        <listitem
+><para
+>Drsnik nadzira težavnost plošče (tj. koliko so ploščice premešane) od <guilabel
+>Enostavno</guilabel
+> do <guilabel
+>Težko</guilabel
+>. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Hitrost odstranjevanja kosov</guilabel
+></term>
+        <listitem
+><para
+>Prilagoditev tega drsnika spremeni hitrost, s katero se figure po ujemanju odstranijo z zaslona. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Velikost plošče</guilabel
+></term>
+        <listitem
+><para
+>Ta drsnik vam omogoča spreminjanje števila ploščic na plošči. Več ploščic kot imate, težja (in daljša) bo igra. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Ploščice</guilabel
+> in stran <guilabel
+>Ozadje</guilabel
+></term>
+        <listitem
+><para
+>Izberite svoj najljubši dizajn za ploščice in ozadje. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Pomoč</guibutton
+></term>
+        <listitem
+><para
+>Odpre &kshisen; strani s pomočjo (ta dokument). </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>V redu</guibutton
+></term>
+        <listitem
+><para
+>Shrani vaše spremembe in zapre pogovorno okno. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Uveljavi</guibutton
+></term>
+        <listitem
+><para
+>Shrani vaše spremembe, vendar ne zapre pogovornega okna. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Prekliči</guibutton
+></term>
+        <listitem
+><para
+>Zavrže vse vaše spremembe in zapre pogovorno okno. </para
+></listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </chapter>
+
+  <chapter id="credits"
+><title
+>Zasluge in licenca</title
+> <!-- do not change this! -->
+    <!--This chapter is for credits and licenses.-->
+
+    <para
+>&kshisen; Copyright 1997 &Mario.Weilguni; &Mario.Weilguni.mail; </para>
+    <para
+>&kshisen; Avtorske pravice 2002-2004 Dave Corrie <email
+>kde@davecorrie.com</email
+> </para>
+    <para
+>&kshisen; Avtorske pravice 2009-2012 &Frederik.Schwarzer; &Frederik.Schwarzer.mail; </para>
+
+    <para
+>Dokumentacija Copyright 2000 &Dirk.Doerflinger; &Dirk.Doerflinger.mail; </para>
+    <para
+>Dokumentacija Copyright 2009-2010 &Frederik.Schwarzer; &Frederik.Schwarzer.mail; </para>
+
+    <para
+>Prevod: Matjaž Jeran<email
+>matjaz.jeran@amis.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+  &documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
