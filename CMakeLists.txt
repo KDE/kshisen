@@ -45,6 +45,7 @@ find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS
 find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     Config
+    IconThemes
     ConfigWidgets
     Crash
     DBusAddons
@@ -52,6 +53,7 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     I18n
     WidgetsAddons
     XmlGui
+
 )
 
 find_package(KMahjongglib6 6.0.0 REQUIRED)

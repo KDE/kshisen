@@ -13,6 +13,7 @@ Dependencies:
     'frameworks/ki18n': '@latest-kf6'
     'frameworks/kxmlgui': '@latest-kf6'
     'games/libkdegames': '@same'
+    'frameworks/kiconthemes': '@latest-kf6'
     'games/libkmahjongg': '@same'
 
 Options:
