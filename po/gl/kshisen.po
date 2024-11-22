@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-03 00:37+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2024-05-04 10:44+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -270,67 +270,67 @@ msgstr "O fondo que se usará."
 msgid "Main Toolbar"
 msgstr "Barra de ferramentas principal"
 
-#: src/main.cpp:34
+#: src/main.cpp:52
 #, kde-format
 msgid "Shisen-Sho"
 msgstr "Shisen-Sho"
 
-#: src/main.cpp:36
+#: src/main.cpp:54
 #, kde-format
 msgid "A game similar to Mahjongg"
 msgstr "Un xogo similar ao Mahjong"
 
-#: src/main.cpp:38
+#: src/main.cpp:56
 #, kde-format
 msgid "Copyright 1997 Mario Weilguni"
 msgstr "© 1997 Mario Weilguni"
 
-#: src/main.cpp:41
+#: src/main.cpp:59
 #, kde-format
 msgid "Frederik Schwarzer"
 msgstr "Frederik Schwarzer"
 
-#: src/main.cpp:41
+#: src/main.cpp:59
 #, kde-format
 msgid "Current Maintainer"
 msgstr "Mantedor actual"
 
-#: src/main.cpp:42
+#: src/main.cpp:60
 #, kde-format
 msgid "Dave Corrie"
 msgstr "Dave Corrie"
 
-#: src/main.cpp:42
+#: src/main.cpp:60
 #, kde-format
 msgid "Former Maintainer"
 msgstr "Mantedor orixinal"
 
-#: src/main.cpp:43
+#: src/main.cpp:61
 #, kde-format
 msgid "Mario Weilguni"
 msgstr "Mario Weilguni"
 
-#: src/main.cpp:43
+#: src/main.cpp:61
 #, kde-format
 msgid "Original Author"
 msgstr "Autor orixinal"
 
-#: src/main.cpp:44
+#: src/main.cpp:62
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "Mauricio Piacentini"
 
-#: src/main.cpp:44
+#: src/main.cpp:62
 #, kde-format
 msgid "KMahjonggLib integration for KDE4"
 msgstr "Integración de KMahjonggLib en KDE4"
 
-#: src/main.cpp:45
+#: src/main.cpp:63
 #, kde-format
 msgid "Jason Lane"
 msgstr "Jason Lane"
 
-#: src/main.cpp:45
+#: src/main.cpp:63
 #, kde-format
 msgid ""
 "Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
@@ -338,7 +338,7 @@ msgstr ""
 "Engadiuse o contador de pezas retiradas<br/>Cambio de escala suave de pezas "
 "e cambio de tamaño da xanela"
 
-#: src/main.cpp:46
+#: src/main.cpp:64
 #, kde-format
 msgid "Thanks also to everyone who should be listed here but is not!"
 msgstr ""

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-03 00:37+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2022-04-15 19:15+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -291,67 +291,67 @@ msgstr "Použité pozadie."
 msgid "Main Toolbar"
 msgstr "Hlavný panel nástrojov"
 
-#: src/main.cpp:34
+#: src/main.cpp:52
 #, kde-format
 msgid "Shisen-Sho"
 msgstr "Šisen-Šo"
 
-#: src/main.cpp:36
+#: src/main.cpp:54
 #, kde-format
 msgid "A game similar to Mahjongg"
 msgstr "Hra podobná Mahjongg"
 
-#: src/main.cpp:38
+#: src/main.cpp:56
 #, kde-format
 msgid "Copyright 1997 Mario Weilguni"
 msgstr "Copyright 1997 Mario Weilguni"
 
-#: src/main.cpp:41
+#: src/main.cpp:59
 #, kde-format
 msgid "Frederik Schwarzer"
 msgstr "Frederik Schwarzer"
 
-#: src/main.cpp:41
+#: src/main.cpp:59
 #, kde-format
 msgid "Current Maintainer"
 msgstr "Aktuálny správca"
 
-#: src/main.cpp:42
+#: src/main.cpp:60
 #, kde-format
 msgid "Dave Corrie"
 msgstr "Dave Corrie"
 
-#: src/main.cpp:42
+#: src/main.cpp:60
 #, kde-format
 msgid "Former Maintainer"
 msgstr "Pôvodný správca"
 
-#: src/main.cpp:43
+#: src/main.cpp:61
 #, kde-format
 msgid "Mario Weilguni"
 msgstr "Mario Weilguni"
 
-#: src/main.cpp:43
+#: src/main.cpp:61
 #, kde-format
 msgid "Original Author"
 msgstr "Pôvodný autor"
 
-#: src/main.cpp:44
+#: src/main.cpp:62
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "Mauricio Piacentini"
 
-#: src/main.cpp:44
+#: src/main.cpp:62
 #, kde-format
 msgid "KMahjonggLib integration for KDE4"
 msgstr "Integrácia KMahjonggLib do KDE4"
 
-#: src/main.cpp:45
+#: src/main.cpp:63
 #, kde-format
 msgid "Jason Lane"
 msgstr "Jason Lane"
 
-#: src/main.cpp:45
+#: src/main.cpp:63
 #, kde-format
 msgid ""
 "Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
@@ -359,7 +359,7 @@ msgstr ""
 "Pridal počítadlo 'odstránených kameňov<br/>Vyhladená zmena veľkosti okna a "
 "kameňov"
 
-#: src/main.cpp:46
+#: src/main.cpp:64
 #, kde-format
 msgid "Thanks also to everyone who should be listed here but is not!"
 msgstr ""

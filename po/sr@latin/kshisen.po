@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-03 00:37+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2016-05-17 01:39+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -275,68 +275,68 @@ msgstr "Željena pozadina."
 msgid "Main Toolbar"
 msgstr "Glavna traka"
 
-#: src/main.cpp:34
+#: src/main.cpp:52
 #, kde-format
 msgid "Shisen-Sho"
 msgstr "Šisen‑šo"
 
-#: src/main.cpp:36
+#: src/main.cpp:54
 #, fuzzy, kde-format
 #| msgid "A KDE game similar to Mahjongg"
 msgid "A game similar to Mahjongg"
 msgstr "KDE igra nalik na madžong"
 
-#: src/main.cpp:38
+#: src/main.cpp:56
 #, kde-format
 msgid "Copyright 1997 Mario Weilguni"
 msgstr "© 1997, Mario Vajlguni"
 
-#: src/main.cpp:41
+#: src/main.cpp:59
 #, kde-format
 msgid "Frederik Schwarzer"
 msgstr "Frederik Švarcer"
 
-#: src/main.cpp:41
+#: src/main.cpp:59
 #, kde-format
 msgid "Current Maintainer"
 msgstr "Trenutni održavalac"
 
-#: src/main.cpp:42
+#: src/main.cpp:60
 #, kde-format
 msgid "Dave Corrie"
 msgstr "Dejv Kori"
 
-#: src/main.cpp:42
+#: src/main.cpp:60
 #, kde-format
 msgid "Former Maintainer"
 msgstr "Bivši održavalac"
 
-#: src/main.cpp:43
+#: src/main.cpp:61
 #, kde-format
 msgid "Mario Weilguni"
 msgstr "Mario Vajlguni"
 
-#: src/main.cpp:43
+#: src/main.cpp:61
 #, kde-format
 msgid "Original Author"
 msgstr "Prvobitni autor"
 
-#: src/main.cpp:44
+#: src/main.cpp:62
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "Mauričo Pjaćentini"
 
-#: src/main.cpp:44
+#: src/main.cpp:62
 #, kde-format
 msgid "KMahjonggLib integration for KDE4"
 msgstr "Uklapanje KMahjonggLib u KDE4"
 
-#: src/main.cpp:45
+#: src/main.cpp:63
 #, kde-format
 msgid "Jason Lane"
 msgstr "Džejson Lejn"
 
-#: src/main.cpp:45
+#: src/main.cpp:63
 #, kde-format
 msgid ""
 "Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
@@ -345,7 +345,7 @@ msgstr ""
 "glatko skaliranje pločica i promena veličine prozora"
 
 # rewrite-msgid: /listed/mentioned/
-#: src/main.cpp:46
+#: src/main.cpp:64
 #, kde-format
 msgid "Thanks also to everyone who should be listed here but is not!"
 msgstr "Hvala i svima ostalima koji treba da su pomenuti a nisu!"

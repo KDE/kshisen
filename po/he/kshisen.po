@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-03 00:37+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2024-05-03 08:30+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -273,74 +273,74 @@ msgstr "הרקע לשימוש."
 msgid "Main Toolbar"
 msgstr "סרגל כלים ראשי"
 
-#: src/main.cpp:34
+#: src/main.cpp:52
 #, kde-format
 msgid "Shisen-Sho"
 msgstr "שישן שו"
 
-#: src/main.cpp:36
+#: src/main.cpp:54
 #, kde-format
 msgid "A game similar to Mahjongg"
 msgstr "משחק דומה למהג׳ונג"
 
-#: src/main.cpp:38
+#: src/main.cpp:56
 #, kde-format
 msgid "Copyright 1997 Mario Weilguni"
 msgstr "כל הזכויות שמורות 1997 למריו ויילגוני"
 
-#: src/main.cpp:41
+#: src/main.cpp:59
 #, kde-format
 msgid "Frederik Schwarzer"
 msgstr "פרדריק שוורצר"
 
-#: src/main.cpp:41
+#: src/main.cpp:59
 #, kde-format
 msgid "Current Maintainer"
 msgstr "מתחזק נוכחי"
 
-#: src/main.cpp:42
+#: src/main.cpp:60
 #, kde-format
 msgid "Dave Corrie"
 msgstr "דייב קורי"
 
-#: src/main.cpp:42
+#: src/main.cpp:60
 #, kde-format
 msgid "Former Maintainer"
 msgstr "מתחזק לשעבר"
 
-#: src/main.cpp:43
+#: src/main.cpp:61
 #, kde-format
 msgid "Mario Weilguni"
 msgstr "מריו ויילגוני"
 
-#: src/main.cpp:43
+#: src/main.cpp:61
 #, kde-format
 msgid "Original Author"
 msgstr "מפתח מקורי"
 
-#: src/main.cpp:44
+#: src/main.cpp:62
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "מאוריציו פיאצנטיני"
 
-#: src/main.cpp:44
+#: src/main.cpp:62
 #, kde-format
 msgid "KMahjonggLib integration for KDE4"
 msgstr "שילוב של KMahjonggLib ל־KDE4"
 
-#: src/main.cpp:45
+#: src/main.cpp:63
 #, kde-format
 msgid "Jason Lane"
 msgstr "ג׳ייסון ליין"
 
-#: src/main.cpp:45
+#: src/main.cpp:63
 #, kde-format
 msgid ""
 "Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
 msgstr ""
 "נוסף מונה ‚אריחים שהוסרו’<br/>שינוי קנה מידה חלק לאריחים ולשינוי גודל החלון"
 
-#: src/main.cpp:46
+#: src/main.cpp:64
 #, kde-format
 msgid "Thanks also to everyone who should be listed here but is not!"
 msgstr "תודה ג לכל מי שאמור להיות רשום כאן אבל לא מופיע!"
