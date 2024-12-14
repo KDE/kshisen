@@ -36,6 +36,7 @@
   <name xml:lang="pt">KShisen</name>
   <name xml:lang="pt-BR">KShisen</name>
   <name xml:lang="ru">KShisen</name>
+  <name xml:lang="sa">क्षिसेन्</name>
   <name xml:lang="sk">KShisen</name>
   <name xml:lang="sl">KShisen</name>
   <name xml:lang="sr">К‑шисен</name>
@@ -75,6 +76,7 @@
   <summary xml:lang="pt">Jogo de Peças à Mahjongg Shisen-Sho</summary>
   <summary xml:lang="pt-BR">Jogo de peças parecido com Shisen-Sho Mahjongg</summary>
   <summary xml:lang="ru">Вариант маджонга: ши-сен-сё</summary>
+  <summary xml:lang="sa">शिसेन्-शो महजोङ्ग-सदृशं टाइल गेम</summary>
   <summary xml:lang="sk">Hra typu Shisen-Sho Mahjongg</summary>
   <summary xml:lang="sl">Igra s ploščicami Shisen-Sho, podobna Mahjonggu</summary>
   <summary xml:lang="sr">Игра с плочицама попут маџонга</summary>
@@ -117,6 +119,7 @@
     <p xml:lang="pt">O KShisen é um jogo solitário, jogando com um conjunto-padrão de peças do Mahjong. Ao contrário do Mahjong, contudo, o KShisen só tem uma camada de peças baralhadas.</p>
     <p xml:lang="pt-BR">KShisen é um jogo solitário, jogado com um conjunto padrão de peças do Mahjong. Ao contrário do Mahjong, o KShisen tem apenas uma camada de peças embaralhadas.</p>
     <p xml:lang="ru">KShisen — это игра, похожая на раскладывание пасьянса, в которой используется стандартный набор плиток маджонга. Впрочем, в отличие от маджонга, в KShisen присутствует только один слой плиток.</p>
+    <p xml:lang="sa">केशिसेन् इति एकान्तवासी-सदृशः क्रीडा महजोङ्ग-टाइल्-इत्यस्य मानकसमूहस्य उपयोगेन क्रीड्यते । परन्तु महजोङ्ग इत्यस्य विपरीतम् केशिसेन् इत्यत्र केवलं एकः एव स्तरः स्क्रैम्ब्ल्ड् टाइल्स् अस्ति ।</p>
     <p xml:lang="sk">KShinsen je hra podobná Solitaire, ktorá sa hrá so štandardnou sadou Mahjong. Na rozdiel od Mahjong má iba jednu vrstvu zamiešaných kariet.</p>
     <p xml:lang="sl">KShisen je pasjansi podobna igra, ki uporablja običajni nabor ploščic Mahjonga. Za razliko od Mahjonga pa ima KShisen le eno plast pomešanih ploščic.</p>
     <p xml:lang="sr">К‑шисен је игра налик на пасијанс са стандардним скупом маџонг плочица. За разлику од маџонга, К‑шисен има само један слој измешаних плочица.</p>
@@ -164,6 +167,7 @@
       <caption xml:lang="pt">Jogo do KShisen</caption>
       <caption xml:lang="pt-BR">Jogando KShisen</caption>
       <caption xml:lang="ru">Игра в KShisen</caption>
+      <caption xml:lang="sa">KShisen इति क्रीडन्</caption>
       <caption xml:lang="sk">Hrá sa KShisen</caption>
       <caption xml:lang="sl">Igra KShisen</caption>
       <caption xml:lang="sv">Spela Kshisen</caption>
