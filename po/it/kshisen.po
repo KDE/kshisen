@@ -84,7 +84,7 @@ msgid ""
 "Try without them next time."
 msgstr ""
 "\n"
-"Avresti potuto entrare nell'alta classifica,\n"
+"Avresti potuto entrare nella classifica,\n"
 "se tu non avessi usato Annulla o Suggerisci.\n"
 "Riprova senza utilizzare queste funzioni."
 
