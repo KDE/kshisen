@@ -30,6 +30,7 @@
   <name xml:lang="it">KShisen</name>
   <name xml:lang="ka">KShisen</name>
   <name xml:lang="ko">KShisen</name>
+  <name xml:lang="lv">KShisen</name>
   <name xml:lang="nl">KShisen</name>
   <name xml:lang="nn">KShisen</name>
   <name xml:lang="pl">KShisen</name>
@@ -70,6 +71,7 @@
   <summary xml:lang="it">Gioco di tessere in stile Shisen-Sho Mahjongg</summary>
   <summary xml:lang="ka">Shisen-Sho Mahjongg-ის მსგავსი თამაში</summary>
   <summary xml:lang="ko">시센-쇼 마작과 같은 타일 게임</summary>
+  <summary xml:lang="lv">„Mahjongg“ līdzīga kauliņu spēle „Shisen-Sho“</summary>
   <summary xml:lang="nl">Shisen-Sho Mahjongg-achtig stenenspel</summary>
   <summary xml:lang="nn">Shisen-Sho mahjong-liknande brikkespel</summary>
   <summary xml:lang="pl">Gra typu Shisen-Sho Mahjongg</summary>
@@ -113,6 +115,7 @@
     <p xml:lang="it">KShisen è un solitario che si gioca col gruppo standard di tessere Mahjong. Tuttavia, a differenza del Mahjong, KShisen possiede solo un livello di tessere mescolate.</p>
     <p xml:lang="ka">KShisen პასეანსის მსგავსი თამაშია. Mahjong-ისგან განსხვავების KShisen -ს მხოლოდ ერთი ფენა გააჩნია.</p>
     <p xml:lang="ko">KShisen은 마작 타일을 사용하는 카드 놀이 게임입니다. KShisen에는 한 층의 타일만 존재합니다.</p>
+    <p xml:lang="lv">„KShisen“ ir viena spēlētāja galda spēle, ko spēlē ar standarta „Mahjong“ kauliņiem. Atšķirībā no „Mahjong“ šajā spēlē visi kauliņi ir izvietoti vienā līmenī.</p>
     <p xml:lang="nl">KShisen is een solitaire-achtig spel dat wordt gespeeld met de standaard set Mahjong stenen. Anders dan Mahjong heeft KShisen slechts één laag door elkaar gehaalde stenen.</p>
     <p xml:lang="nn">KShisen er eit kaballiknande spel som ein spelar med vanleg mahjongbrikker. I motsetning ti spelet mahjong har ein berre eitt lag med brikker.</p>
     <p xml:lang="pl">KShisen jest grą typu pasjans z standardowym zestawem kamieni Mahjong. W odróżnieniu od Mahjonga, KShisen ma tylko jedną warstwę rozrzuconych kamieni.</p>
@@ -161,6 +164,7 @@
       <caption xml:lang="it">Giocare con KShisen</caption>
       <caption xml:lang="ka">KShisen-ის თამაში</caption>
       <caption xml:lang="ko">KShisen 플레이</caption>
+      <caption xml:lang="lv">„KShisen“ spēlēšana</caption>
       <caption xml:lang="nl">KShisen spelen</caption>
       <caption xml:lang="nn">Spelar KShisen</caption>
       <caption xml:lang="pl">Granie w KShisen</caption>
