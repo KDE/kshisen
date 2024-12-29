@@ -5,31 +5,34 @@
 # Viesturs Zarins <viesturs.zarins@mii.lu.lv>, 2008.
 # Viesturs Zariņš <viesturs.zarins@mii.lu.lv>, 2009.
 # Einars Sprugis <einars8@gmail.com>, 2010.
+# SPDX-FileCopyrightText: 2024 Toms Trasuns <toms.trasuns@posteo.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-22 00:38+0000\n"
-"PO-Revision-Date: 2010-04-24 21:25+0300\n"
-"Last-Translator: Einars Sprugis <einars8@gmail.com>\n"
-"Language-Team: Latvian <locale@laka.lv>\n"
+"PO-Revision-Date: 2024-12-18 19:17+0200\n"
+"Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
+"Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 24.12.0\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Andris Maziks, Māris Nartišs, Einārs Sprūģis"
+msgstr "Andris Maziks, Māris Nartišs, Einārs Sprūģis, Toms Trasūns"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "andris.m@delfi.lv, maris.kde@gmail.com, einars8@gmail.com"
+msgstr ""
+"andris.m@delfi.lv, maris.kde@gmail.com, einars8@gmail.com, toms."
+"trasuns@posteo.net"
 
 #: src/app.cpp:81 src/app.cpp:318
 #, kde-format
@@ -52,8 +55,7 @@ msgid "Cheat mode"
 msgstr "Krāpšanās režīms"
 
 #: src/app.cpp:110
-#, fuzzy, kde-format
-#| msgid "Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
 msgstr "Atskaņot skaņas"
@@ -81,12 +83,7 @@ msgid "No"
 msgstr "Nē"
 
 #: src/app.cpp:260
-#, fuzzy, kde-format
-#| msgid ""
-#| "\n"
-#| "You could have been in the highscores\n"
-#| "if you did not use Undo or Hint.\n"
-#| "Try without them next time."
+#, kde-format
 msgid ""
 "\n"
 "You could have been in the high scores\n"
@@ -99,8 +96,7 @@ msgstr ""
 "Nākamreiz mēģini bez tiem."
 
 #: src/app.cpp:261 src/app.cpp:269
-#, fuzzy, kde-format
-#| msgid "End of Game"
+#, kde-format
 msgctxt "@title:window"
 msgid "End of Game"
 msgstr "Spēles beigas"
@@ -111,7 +107,7 @@ msgid ""
 "Congratulations!\n"
 "You made it into the hall of fame."
 msgstr ""
-"Apsveicu! \n"
+"Apsveicam! \n"
 "Tu iekļuvi labāko rezultātu sarakstā."
 
 #: src/app.cpp:268
@@ -123,7 +119,7 @@ msgstr "Tu to paveici %1"
 #: src/app.cpp:284
 #, kde-format
 msgid "Your time: %1:%2:%3 %4"
-msgstr " Tavs laiks: %1:%2:%3 %4"
+msgstr "Tavs laiks: %1:%2:%3 %4"
 
 #: src/app.cpp:288
 #, kde-format
@@ -153,11 +149,10 @@ msgstr "Izvēlētais kauliņš neatbilst otram izvēlētajam kauliņam"
 #: src/app.cpp:338
 #, kde-format
 msgid "You cannot make this move"
-msgstr "Tu nevari veikt šo gājienu"
+msgstr "Šo gājienu veikt nevari"
 
 #: src/app.cpp:369
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "Pamata"
@@ -169,13 +164,15 @@ msgid ""
 "An error occurred when loading the default tile set.\n"
 "Please install the KMahjongg library."
 msgstr ""
+"Kļūda, ielādējot noklusējuma kauliņu komplektu.\n"
+"Ieinstalējiet „KMahjongg“ bibliotēku."
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
 #: src/board.cpp:111 src/board.cpp:117
 #, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Tiles"
-msgstr ""
+msgstr "Kļūda, ielādējot kauliņus"
 
 #: src/board.cpp:78
 #, kde-format
@@ -184,6 +181,8 @@ msgid ""
 "An error occurred when loading the tile set %1. The default tile set has "
 "been loaded."
 msgstr ""
+"Notika kļūda, mēģinot ielādēt „%1“ kauliņu komplektu. Programma ielādēja "
+"noklusējuma komplektu."
 
 #: src/board.cpp:84
 #, kde-format
@@ -193,6 +192,9 @@ msgid ""
 "also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
+"Notika kļūda, ielādējot „%1“ kauliņu komplektu. Programmai neizdevās ielādēt "
+"arī noklusējuma kauliņu komplektu.\n"
+"Instalējiet „KMahjongg“ bibliotēku."
 
 #: src/board.cpp:101
 #, kde-format
@@ -201,6 +203,8 @@ msgid ""
 "An error occurred when loading the default background.\n"
 "Please install the KMahjongg library."
 msgstr ""
+"Notika kļūda, mēģinot ielādēt noklusējuma fonu.\n"
+"Instalējiet „KMahjongg“ bibliotēku."
 
 #: src/board.cpp:110
 #, kde-format
@@ -209,6 +213,7 @@ msgid ""
 "An error occurred when loading the background %1. The default background has "
 "been loaded."
 msgstr ""
+"Notika kļūda, mēģinot ielādēt „%1“ fonu. Programma ielādēja noklusējuma fonu."
 
 #: src/board.cpp:116
 #, kde-format
@@ -218,6 +223,9 @@ msgid ""
 "could also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
+"Notika kļūda, ielādējot „%1“ fonu. Programmai neizdevās ielādēt arī "
+"noklusējuma fonu.\n"
+"Instalējiet „KMahjongg“ bibliotēku."
 
 #: src/board.cpp:678
 #, kde-format
@@ -225,16 +233,17 @@ msgid ""
 "Game Paused\n"
 "Click to resume game."
 msgstr ""
-"Spēle nopauzēta\n"
+"Spēle pauzēta\n"
 "Noklikšķini, lai turpinātu."
 
 #: src/board.cpp:682
-#, fuzzy, kde-format
-#| msgid "No more moves possible!"
+#, kde-format
 msgid ""
 "Game Stuck\n"
 "No more moves possible."
-msgstr "Nav vairāk gājienu!"
+msgstr ""
+"Spēle iesprūdusi.\n"
+"Gājieni vairs nav iespējami."
 
 #: src/board.cpp:685
 #, kde-format
@@ -249,7 +258,7 @@ msgstr ""
 #: src/kshisen.kcfg:9
 #, kde-format
 msgid "The tile set to use."
-msgstr "Izmantojamā kauliņu kopa."
+msgstr "Izmantojamie kauliņi."
 
 #. i18n: ectx: label, entry (Background), group (General)
 #: src/kshisen.kcfg:12
@@ -269,16 +278,14 @@ msgid "Shisen-Sho"
 msgstr "Shisen-Sho"
 
 #: src/main.cpp:54
-#, fuzzy, kde-format
-#| msgid "A KDE game similar to Mahjongg"
+#, kde-format
 msgid "A game similar to Mahjongg"
-msgstr "KDE spēle, līdzīga Mahjongg"
+msgstr "„Mahjongg“ līdzīga spēle"
 
 #: src/main.cpp:56
-#, fuzzy, kde-format
-#| msgid "(c) 1997, Mario Weilguni"
+#, kde-format
 msgid "Copyright 1997 Mario Weilguni"
-msgstr "(c) 1997, Mario Weilguni"
+msgstr "Autortiesības 1997 Mario Weilguni"
 
 #: src/main.cpp:59
 #, kde-format
@@ -308,7 +315,7 @@ msgstr "Mario Weilguni"
 #: src/main.cpp:61
 #, kde-format
 msgid "Original Author"
-msgstr "Oriģinālais autors"
+msgstr "Sākotnējās versijas autors"
 
 #: src/main.cpp:62
 #, kde-format
@@ -318,7 +325,7 @@ msgstr "Mauricio Piacentini"
 #: src/main.cpp:62
 #, kde-format
 msgid "KMahjonggLib integration for KDE4"
-msgstr "KMahjonggLib integrācija priekš KDE4"
+msgstr "„KMahjonggLib“ KDE 4 integrācija"
 
 #: src/main.cpp:63
 #, kde-format
@@ -330,7 +337,7 @@ msgstr "Jason Lane"
 msgid ""
 "Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
 msgstr ""
-"Pievienoja noņemto kauliņu skaitītāju,<br/>kauliņu gludo mērogošanu un loga "
+"Pievienoja noņemto kauliņu skaitītāju,<br/>gludo kauliņu mērogošanu un loga "
 "izmēru maiņu"
 
 #: src/main.cpp:64
@@ -346,33 +353,27 @@ msgid ""
 "<b>Gravity</b><p>Checking this makes the game even harder: If a tile is "
 "removed, all tiles lying above it will fall down one step.</p>"
 msgstr ""
-"<b>Gravitācija</b><p>Aktivizējot šo iespēju, spēle paliek vēl sarežģītāka - "
+"<b>Gravitācija</b><p>Ieslēdziet šo iespēju, lai spēli padarītu sarežģītāku — "
 "ja noņem kauliņu, visi virs tā esošie kauliņi nokritīs pa soli zemāk.</p>"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Solvable)
 #: src/settings.ui:33
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>Allow unsolvable games</b><p>If checked, you run the risk of being "
-#| "presented with games that are impossible to solve.</p><p>Note: Even if "
-#| "not checked, you will fail to complete a game if you remove the tiles in "
-#| "the wrong order!</p>"
+#, kde-format
 msgid ""
 "<b>Create solvable games only</b><p>If checked, you will only be presented "
 "with games that are possible to solve.</p><p>Note: Even in solvable games "
 "you can fail to complete if you remove the tiles in the wrong order.</p>"
 msgstr ""
-"<b>Atļaut neizspēlējamas spēles</b><p>Ja šī opcija ir aktivizēta, tad tev "
-"pastāv iespēja uzsākt spēli, kuru nemaz nav iespējams izspēlēt līdz galam.</"
-"p> <p>Piezīme: pat tad, ja šī opcija nav atzīmēta, tev var neizdoties "
-"izspēlēt spēli līdz galam, ja noņemsi kauliņus nepareizā secībā!</p>"
+"<b>Atļaut neizspēlējamas spēles</b><p>Ja ieslēgts, tad pastāv iespēja uzsākt "
+"spēli, kuru nemaz nav iespējams izspēlēt līdz galam.</p> <p>Piezīme: pat "
+"tad, ja šī opcija nav ieslēgta, tev, noņemot kauliņus nepareiza secībā, var "
+"neizdoties spēli izspēlēt līdz galam.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_Solvable)
 #: src/settings.ui:36
-#, fuzzy, kde-format
-#| msgid "Allow unsolvable games"
+#, kde-format
 msgid "Create solvable games only"
-msgstr "Atļaut neizspēlējamas spēles"
+msgstr "Veidot tikai neizspēlējamas spēles"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
 #: src/settings.ui:43
@@ -382,12 +383,15 @@ msgid ""
 "the game show a message to abort the game in case there are no possible "
 "moves left to win the game.</p>"
 msgstr ""
+"<b>Rādīt ziņojumu, ja attiecīgo spēli vairs nevar atrisināt</b><p>Šīs "
+"opcijas atzīmēšana parādīs ziņojumu ar iespēju spēli atcelt, ja vairs nav "
+"tādu gājienu, kas palīdzētu spēli uzvarēt.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
 #: src/settings.ui:46
 #, kde-format
 msgid "Show message if board can no longer be solved"
-msgstr ""
+msgstr "Rādīt ziņojumu, ja spēli vairs nevar atrisināt"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ChineseStyle)
 #: src/settings.ui:53
@@ -399,11 +403,11 @@ msgid ""
 "inconsistent with Mah-jongg rules. It is recommended to keep this option "
 "checked.</p>"
 msgstr ""
-"<b>Lietot ķīniešu stilu: zieds atbilst jebkuram ziedam un gadalaiks - "
-"jebkuram gadalaikam</b><p>Izmantot tradicionālos kauliņu atbilstības "
+"<b>Lietot ķīniešu stilu: zieds atbilst jebkuram ziedam, bet gadalaiks — "
+"jebkuram gadalaikam</b><p>Izmanto tradicionālos kauliņu atbilstības "
 "noteikumus. Iepriekšējā spēles versija atļāva tikai pilnīgu atbilstību starp "
-"kauliņiem, kas ir pretrunā ar standarta Mah-jong noteikumiem. Tiek "
-"rekomendēts atstāt šo opciju ieslēgtu.</p>"
+"kauliņiem, kas ir pretrunā ar standarta „Mah-jongg“ noteikumiem. Ieteicams "
+"atstāt šo opciju ieslēgtu.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ChineseStyle)
 #: src/settings.ui:56
@@ -411,8 +415,8 @@ msgstr ""
 msgid ""
 "Use Chinese style: any flower match any flower, any season match any season"
 msgstr ""
-"Lietot ķīniešu stilu: zieds atbilst jebkuram ziedam un gadalaiks - jebkuram "
-"gadalaikam"
+"Lietot ķīniešu stilu: zieds atbilst jebkuram ziedam, bet gadalaiks — "
+"jebkuram gadalaikam"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_TilesCanSlide)
 #: src/settings.ui:63
@@ -429,23 +433,23 @@ msgid ""
 "sliding moves, you will have to click on one of the two connecting lines to "
 "choose your preferred move.</p>"
 msgstr ""
-"<b>Kauliņi var slīdēt, bet tu vari savienot tikai divās līnijās triju vietā</"
-"b><p>Šī opcija maina noteikumus tik tālu, ka šī pārvēršas gandrīz par citu "
-"spēli. Kad tā ir aktīva, tu vari noņemt kauliņus tikai tad, ja tie ir "
+"<b>Kauliņi var slīdēt, bet spēlētājs var savienot tikai divās līnijās triju "
+"vietā</b><p>Šī opcija maina noteikumus tik tālu, ka šo gandrīz pārvēršas par "
+"citu spēli. Ja ieslēgts, spēlētājs var noņemt kauliņus tikai tad, ja tie ir "
 "savienoti līnijā, kas sastāv tikai no diviem nevis trim segmentiem. Tomēr ir "
 "ļauts pārvietot kauliņus pa laukumu, ja rindā vai kolonnā, kurā tie atrodas, "
-"ir kāda brīva vieta. Lai izdarītu slīdošo kustību, tev jānoklikšķina uz "
-"kauliņa, kas satur kolonnu vai rindu, kas var slīdēt, un tad uz atbilstošā "
-"kauliņa. Ja ir iespējamas divas slīdošās kustības, tev būs jānoklikšķina uz "
-"vienas no divām savienojošām līnijām, lai izvēlētos tev vajadzīgo kustību.</"
-"p>"
+"ir kāda brīva vieta. Lai izdarītu slīdošo kustību, jānoklikšķina uz kauliņa, "
+"kas satur kolonnu vai rindu, kas var slīdēt, un tad uz atbilstošā kauliņa. "
+"Ja ir iespējamas divas slīdošās kustības, tev būs jānoklikšķina uz vienas no "
+"divām savienojošām līnijām, lai izvēlētos iecerēto kustību.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_TilesCanSlide)
 #: src/settings.ui:66
 #, kde-format
 msgid "Tiles can slide, but you can connect only in 2 lines instead of 3"
 msgstr ""
-"Kauliņi var slīdēt, taču tu vari savienot vienīgi divās līnijās triju vietā"
+"Kauliņi var slīdēt, taču spēlētājs var savienot vienīgi divās līnijās triju "
+"vietā"
 
 #. i18n: ectx: property (whatsThis), widget (QGroupBox, difficulty_groupBox)
 #: src/settings.ui:73
@@ -454,8 +458,8 @@ msgid ""
 "<b>Board Difficulty</b><p>The slider controls the difficulty of the board "
 "from Easy to Hard.</p>"
 msgstr ""
-"<b>Spēles sarežģītības pakāpe</b><p>Slīdnis kontrolē spēles sarežģītības "
-"pakāpi no vieglas līdz sarežģītai.</p>"
+"<b>Spēles sarežģītības pakāpe</b><p>Slīdnis nosaka spēles sarežģītības "
+"pakāpi — no vieglas līdz sarežģītai.</p>"
 
 #. i18n: ectx: property (title), widget (QGroupBox, difficulty_groupBox)
 #: src/settings.ui:76
@@ -482,8 +486,8 @@ msgid ""
 "<b>Piece Removal Speed</b><p>Adjusting this slider alters the speed at which "
 "the pieces are removed from the screen after a match has been made.</p>"
 msgstr ""
-"<b>Kauliņu noņemšanas ātrums</b><p>Slīdņa regulēšana maina ātrumu, ar kādu "
-"tiek noņemti no ekrāna atbilstošie kauliņi pēc to aktivizēšanas.</p>"
+"<b>Kauliņu noņemšanas ātrums</b><p>Slīdnis nosaka ātrumu, ar kādu tiek "
+"noņemti no ekrāna atbilstošie kauliņi.</p>"
 
 #. i18n: ectx: property (title), widget (QGroupBox, speed_groupBox)
 #: src/settings.ui:141
@@ -511,47 +515,47 @@ msgid ""
 "the board. The more tiles you have, the harder (and longer) the game will be."
 "</p>"
 msgstr ""
-"<b>Kauliņu izmērs</b><p>Slīdnis ļauj kontrolēt uz laukuma esošo kauliņu "
-"skaitu. Jo vairāk kauliņu, jo spēle kļūst sarežģītāka.</p>"
+"<b>Spēles lielums</b><p>Slīdnis nosaka uz laukuma esošo kauliņu skaitu. Jo "
+"vairāk kauliņu, jo spēle kļūst sarežģītāka.</p>"
 
 #. i18n: ectx: property (title), widget (QGroupBox, size_groupBox)
 #: src/settings.ui:206
 #, kde-format
 msgid "Board Size"
-msgstr "Kauliņu izmērs"
+msgstr "Spēles lielums"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel8)
 #: src/settings.ui:236
 #, kde-format
 msgid "14x6"
-msgstr "14x6"
+msgstr "14×6"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel9)
 #: src/settings.ui:256
 #, kde-format
 msgid "16x9"
-msgstr "16x9"
+msgstr "16×9"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel7)
 #: src/settings.ui:279
 #, kde-format
 msgid "18x8"
-msgstr "18x8"
+msgstr "18×8"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel10)
 #: src/settings.ui:302
 #, kde-format
 msgid "24x12"
-msgstr "24x12"
+msgstr "24×12"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel11)
 #: src/settings.ui:325
 #, kde-format
 msgid "26x14"
-msgstr "26x14"
+msgstr "26×14"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel12)
 #: src/settings.ui:348
 #, kde-format
 msgid "30x16"
-msgstr "30x16"
+msgstr "30×16"
