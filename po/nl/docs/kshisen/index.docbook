@@ -1116,13 +1116,13 @@
 
     <screenshot>
       <screeninfo
->Instellingendialoog van &kshisen;</screeninfo>
+>Configuratiedialoog van &kshisen;</screeninfo>
       <mediaobject>
         <imageobject
 ><imagedata fileref="kshisen-configuration.png" format="PNG"/></imageobject>
         <textobject
 ><phrase
->Instellingendialoog van &kshisen;</phrase
+>Configuratiedialoog van &kshisen;</phrase
 ></textobject>
       </mediaobject>
     </screenshot>
