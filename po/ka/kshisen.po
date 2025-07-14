@@ -158,7 +158,7 @@ msgid ""
 "An error occurred when loading the default tile set.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"შეცდომა ნაგულისხმები ფილების ნაკრების ჩატვირთვისას.\n"
+"შეცდომა ნაგულისხმევი ფილების ნაკრების ჩატვირთვისას.\n"
 "დააყენეთ KMahjongg-is ბიბლიოთეკა."
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
@@ -175,7 +175,7 @@ msgid ""
 "An error occurred when loading the tile set %1. The default tile set has "
 "been loaded."
 msgstr ""
-"შეცდომა ფილების სეტის (%1) ჩატვირთვისას. ჩატვირთულია ფილების ნაგულისხმები "
+"შეცდომა ფილების სეტის (%1) ჩატვირთვისას. ჩატვირთულია ფილების ნაგულისხმევი "
 "სეტი."
 
 #: src/board.cpp:84
@@ -186,7 +186,7 @@ msgid ""
 "also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"შეცდომა ფილების სეტის (%1) ჩატვირთვისას. ასევე შეუძლებელია ნაგულისხმები "
+"შეცდომა ფილების სეტის (%1) ჩატვირთვისას. ასევე შეუძლებელია ნაგულისხმევი "
 "ფილების სეტის ჩატვირთვაც.\n"
 "დააყენეთ KMahjongg-ის ბიბლიოთეკა ."
 
@@ -197,7 +197,7 @@ msgid ""
 "An error occurred when loading the default background.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"შეცდომა ნაგულისხმები ფონის სურათის ჩატვირთვისას.\n"
+"შეცდომა ნაგულისხმევი ფონის სურათის ჩატვირთვისას.\n"
 "დააყენეთ ბიბლიოთეკა KMahjongg."
 
 #: src/board.cpp:110
@@ -206,7 +206,7 @@ msgctxt "%1 is a path to a background image file"
 msgid ""
 "An error occurred when loading the background %1. The default background has "
 "been loaded."
-msgstr "შეცდომა ფონის (%1) ჩატვირთვისას. ჩაიტვირთება ნაგულისხმები ფონი."
+msgstr "შეცდომა ფონის (%1) ჩატვირთვისას. ჩაიტვირთება ნაგულისხმევი ფონი."
 
 #: src/board.cpp:116
 #, kde-format
@@ -216,7 +216,7 @@ msgid ""
 "could also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"შეცდომა ფონის (%1) ჩატვირთვისას. ასევე შეუძლებელია ნაგულისხმები ფონის "
+"შეცდომა ფონის (%1) ჩატვირთვისას. ასევე შეუძლებელია ნაგულისხმევი ფონის "
 "ჩატვირთვაც.\n"
 "დააყენეთ ბიბლიოთეკა KMahjongg."
 
