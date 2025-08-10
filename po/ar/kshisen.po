@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-22 00:38+0000\n"
-"PO-Revision-Date: 2025-08-03 12:04+0400\n"
+"PO-Revision-Date: 2025-08-09 19:50+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -343,7 +343,7 @@ msgid ""
 "removed, all tiles lying above it will fall down one step.</p>"
 msgstr ""
 "<b> الجاذبية </b> <p> يؤدي التحقق من ذلك إلى زيادة صعوبة اللعبة: إذا أزيلت "
-"قطعة ، فسوف تسقط كل القراميد الموجودة فوقها دفعة واحدة. </p>"
+"قطعة، فسوف تسقط كل القراميد الموجودة فوقها دفعة واحدة. </p>"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Solvable)
 #: src/settings.ui:33
@@ -353,8 +353,8 @@ msgid ""
 "with games that are possible to solve.</p><p>Note: Even in solvable games "
 "you can fail to complete if you remove the tiles in the wrong order.</p>"
 msgstr ""
-"<b> ولد ألعاب قابلة للحل فقط </b> <p> إذا حدد ، فلن يعرض سوى الألعاب التي "
-"يمكن حلها. </p> <p> ملاحظة: حتى في الألعاب القابلة للحل ، قد تفشل في إكمالها "
+"<b> ولد ألعاب قابلة للحل فقط </b> <p> إذا حدد، فلن يعرض سوى الألعاب التي "
+"يمكن حلها. </p> <p> ملاحظة: حتى في الألعاب القابلة للحل، قد تفشل في إكمالها "
 "إذا أزلت القراميد بالترتيب الخاطئ. </p> "
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_Solvable)
@@ -391,9 +391,9 @@ msgid ""
 "inconsistent with Mah-jongg rules. It is recommended to keep this option "
 "checked.</p>"
 msgstr ""
-"<b> استخدم النمط الصيني: أي زهرة تتطابق مع أي زهرة ، وأي موسم يتطابق مع أي "
+"<b> استخدم النمط الصيني: أي زهرة تتطابق مع أي زهرة، وأي موسم يتطابق مع أي "
 "موسم </b> <p> استخدم القواعد التقليدية لمطابقة القرميد. استخدمت الإصدارات  "
-"السابقة من اللعبة المطابقة التامة للقراميد ، وهو ما يتعارض مع قواعد ما جونغ. "
+"السابقة من اللعبة المطابقة التامة للقراميد، وهو ما يتعارض مع قواعد ما جونغ. "
 "من المستحسن إبقاء هذا الخيار محددًا. </p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ChineseStyle)
@@ -402,7 +402,7 @@ msgstr ""
 msgid ""
 "Use Chinese style: any flower match any flower, any season match any season"
 msgstr ""
-"استخدم النمط الصيني: أي زهرة تتطابق مع أي زهرة ، وأي موسم يتطابق مع أي موسم"
+"استخدم النمط الصيني: أي زهرة تتطابق مع أي زهرة، وأي موسم يتطابق مع أي موسم"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_TilesCanSlide)
 #: src/settings.ui:63
@@ -419,21 +419,21 @@ msgid ""
 "sliding moves, you will have to click on one of the two connecting lines to "
 "choose your preferred move.</p>"
 msgstr ""
-"س<b> يمكن أن تنزلق القراميد ، لكن يمكنك وصل في سطرين فقط بدلاً من 3</b> <p> "
+"<b> يمكن أن تنزلق القراميد، لكن يمكنك وصل في سطرين فقط بدلاً من 3</b> <p> "
 "يغير هذا الخيار القواعد إلى النقطة التي تصبح فيها لعبة مختلفة تمامًا تقريبًا. "
-"عندما يكون نشطًا ، يمكنك فقط إزالة المربعات إذا كان من الممكن توصيلها بخط "
-"يتكون من جزأين فقط بدلاً من الأجزاء الثلاثة المعتادة. ومع ذلك ، يُسمح لك "
-"بتحريك القراميد على اللوحة ، إذا كان الصف أو العمود الذي يتم وضعها فيه به "
-"مساحة فارغة. للقيام بحركة منزلقة ، عليك النقر فوق المربع الذي يحتوي على "
-"العمود أو الصف الذي يمكن أن ينزلق ، ثم على المربع المطابق. إذا كانت هناك "
-"حركتان محتملتان للانزلاق ، فسيتعين عليك النقر فوق أحد الخطين المتصلين "
-"لاختيار الحركة المفضلة لديك. </p>"
+"عندما يكون نشطًا، يمكنك فقط إزالة المربعات إذا كان من الممكن توصيلها بخط "
+"يتكون من جزأين فقط بدلاً من الأجزاء الثلاثة المعتادة. ومع ذلك، يُسمح لك بتحريك "
+"القراميد على اللوحة، إذا كان الصف أو العمود الذي تُضع فيه به مساحة فارغة. "
+"للقيام بحركة منزلقة، عليك النقر فوق المربع الذي يحتوي على العمود أو الصف "
+"الذي يمكن أن ينزلق، ثم على المربع المطابق. إذا كانت هناك حركتان محتملتان "
+"للانزلاق، فسيتعين عليك النقر فوق أحد الخطين المتصلين لاختيار الحركة المفضلة "
+"لديك. </p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_TilesCanSlide)
 #: src/settings.ui:66
 #, kde-format
 msgid "Tiles can slide, but you can connect only in 2 lines instead of 3"
-msgstr "يمكن أن تنزلق القراميد ، لكن يمكنك وصل في سطرين فقط بدلاً من 3"
+msgstr "يمكن أن تنزلق القراميد، لكن يمكنك وصل في سطرين فقط بدلاً من 3"
 
 #. i18n: ectx: property (whatsThis), widget (QGroupBox, difficulty_groupBox)
 #: src/settings.ui:73
@@ -500,7 +500,7 @@ msgid ""
 "</p>"
 msgstr ""
 "<b> حجم اللوحة </b> <p> يتيح لك شريط التمرير هذا تغيير عدد المربعات على "
-"اللوحة. كلما زاد عدد المربعات لديك ، ستكون اللعبة أصعب (وأطول). </p> "
+"اللوحة. كلما زاد عدد المربعات لديك، ستكون اللعبة أصعب (وأطول). </p> "
 
 #. i18n: ectx: property (title), widget (QGroupBox, size_groupBox)
 #: src/settings.ui:206
