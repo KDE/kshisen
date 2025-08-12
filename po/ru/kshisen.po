@@ -11,15 +11,15 @@
 # Nick Shaforostoff <shaforostoff@kde.ru>, 2009.
 # Alexander Potashev <aspotashev@gmail.com>, 2010, 2017.
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
-# SPDX-FileCopyrightText: 2021, 2022, 2024 Olesya Gerasimenko <translation-team@basealt.ru>
+# SPDX-FileCopyrightText: 2021, 2022, 2024, 2025 Olesya Gerasimenko <translation-team@basealt.ru>
 # SPDX-FileCopyrightText: 2024 Alexander Yavorsky <kekcuha@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-22 00:38+0000\n"
-"PO-Revision-Date: 2024-10-08 11:29+0300\n"
-"Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
+"PO-Revision-Date: 2025-08-11 15:54+0300\n"
+"Last-Translator: Olesya Gerasimenko <goa@altlinux.org>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -100,8 +100,8 @@ msgid ""
 "Try without them next time."
 msgstr ""
 "\n"
-"В список лучших результатов можно попасть только\n"
-"если вы не использовали отмену ходов и подсказки.\n"
+"В список лучших результатов можно попасть только в том\n"
+"случае, если не использовались отмена ходов и подсказки.\n"
 "Попробуйте без них в следующий раз."
 
 #: src/app.cpp:261 src/app.cpp:269
@@ -361,8 +361,8 @@ msgid ""
 "<b>Gravity</b><p>Checking this makes the game even harder: If a tile is "
 "removed, all tiles lying above it will fall down one step.</p>"
 msgstr ""
-"<b>Гравитация</b><p>Выбор этого пункта делает игру сложнее: Если плитка "
-"удалена, все плитки лежащие выше опустятся на одну линию.</p>"
+"<b>Гравитация</b><p>Выбор этого пункта делает игру сложнее: если плитка "
+"удалена, все лежащие выше плитки опустятся на одну линию.</p>"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_Solvable)
 #: src/settings.ui:33
@@ -372,9 +372,10 @@ msgid ""
 "with games that are possible to solve.</p><p>Note: Even in solvable games "
 "you can fail to complete if you remove the tiles in the wrong order.</p>"
 msgstr ""
-"<b>Начинать только решаемые игры</b><p>Если отмечено, то все выпавшие игры "
-"будут иметь решение.</p><p>Примечание: Но даже когда отмечено, вы не сможете "
-"закончить игру, если будете удалять плитки в неверном порядке!</p>"
+"<b>Начинать только решаемые игры</b><p>Если флажок установлен, то все "
+"выпавшие игры будут иметь решение.</p><p>Примечание: даже если флажок "
+"установлен, игру будет невозможно закончить, если удаление плиток будет "
+"выполняться в неверном порядке!</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_Solvable)
 #: src/settings.ui:36
@@ -412,9 +413,9 @@ msgid ""
 "checked.</p>"
 msgstr ""
 "<b>Использовать китайский стиль: любой цветок составляет пару другому "
-"цветку, а время года — другому времени года </b><p>Используются традиционные "
+"цветку, а время года — другому времени года</b><p>Использовать традиционные "
 "правила для составления пар плиток. Предыдущая версия игры требовала "
-"строгого соответствия плиток, что не совсем соответствует правилам Маджонга. "
+"строгого соответствия плиток, что не совсем соответствует правилам маджонга. "
 "Рекомендуется включить этот параметр.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ChineseStyle)
@@ -441,15 +442,16 @@ msgid ""
 "sliding moves, you will have to click on one of the two connecting lines to "
 "choose your preferred move.</p>"
 msgstr ""
-"<b>Плитки могут сдвигаться, но соединяться они должны только двумя, а не "
-"тремя звеньями.</b><p>Этот параметр меняет правила настолько, что игра "
-"становится совсем другой. Когда он включен, вы можете удалить плитки, если "
-"они соединены линией, состоящей только из двух звеньев, вместо привычных "
-"трёх. Однако вы можете сдвигать плитки на доске, если в столбце или строке "
-"есть пустое место. Чтобы совершить сдвиг, нужно щёлкнуть плитку в колонке "
-"или в строке, в которых есть пустое место, а затем схожую плитку. Если сдвиг "
-"возможен двумя способами, выберите предпочитаемый вариант, щёлкнув одну из "
-"пересекающихся линий.</p>"
+"<b>Сдвигающиеся плитки (но соединяться плитки могут только двумя, а не тремя "
+"звеньями)</b><p>Этот параметр меняет правила настолько, что игра становится "
+"совсем другой. Когда он включён, плитки можно удалять только в том случае, "
+"если их можно соединить линией, состоящей из одного или двух звеньев вместо "
+"привычных трёх. Однако можно сдвигать плитки на доске, если в столбце или "
+"строке с ними есть пустое место. Чтобы совершить сдвиг, нужно щёлкнуть по "
+"плитке в столбце или в строке, в которых есть пустое место, а затем по такой "
+"же плитке. Если сдвиг возможен двумя способами, то оба возможных хода будут "
+"показаны синими линиями. Щелкните по одной из них для выбора предпочитаемого "
+"варианта.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_TilesCanSlide)
 #: src/settings.ui:66
@@ -466,8 +468,8 @@ msgid ""
 "<b>Board Difficulty</b><p>The slider controls the difficulty of the board "
 "from Easy to Hard.</p>"
 msgstr ""
-"<b>Сложность доски</b><p>Этот ползунок изменяет сложность доски от Лёгкой до "
-"Трудной.</p>"
+"<b>Уровень трудности доски</b><p>Этот ползунок изменяет уровень сложности "
+"(от «Лёгкого» до «Трудного»).</p>"
 
 #. i18n: ectx: property (title), widget (QGroupBox, difficulty_groupBox)
 #: src/settings.ui:76
@@ -495,8 +497,7 @@ msgid ""
 "the pieces are removed from the screen after a match has been made.</p>"
 msgstr ""
 "<b>Скорость удаления плиток</b><p>Перемещение этого ползунка изменяет "
-"скорость с которой плитки удаляются с экрана, после того как были найдены их "
-"пары.</p>"
+"скорость, с которой плитки удаляются с экрана после нахождения их пар.</p>"
 
 #. i18n: ectx: property (title), widget (QGroupBox, speed_groupBox)
 #: src/settings.ui:141
