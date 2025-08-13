@@ -1,47 +1,65 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-  <!ENTITY kappname "&kshisen;">
-  <!ENTITY package "kdegames">
   <!ENTITY % Russian "INCLUDE"
-> <!-- change language only here -->
-  <!ENTITY % addindex "IGNORE">
+>    <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+>     <!-- do not change this! -->
 ]>
 
-<book lang="&language;">
-<bookinfo>
-<title
->Справочное руководство по &kshisen;</title>
-
-<authorgroup>
-<author
+<book id="kshisen" lang="&language;"
+> <!-- do not change this! -->
+  <bookinfo>
+    <title
+>Руководство пользователя &kshisen;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+    <!-- List of immidiate authors begins here. -->
+    <!--INPORTANT! - All other contributors: [to be determined] -->
+    <authorgroup>
+      <author
 ><firstname
 >Dirk</firstname
 > <surname
 >Doerflinger</surname
 > <affiliation
-> <address
+><address
+>&Dirk.Doerflinger.mail;</address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Евгений</firstname
+> <surname
+>Трунев</surname
+> <affiliation
+><address
 ><email
->ddoerflinger@web.de</email
-></address>
-</affiliation>
-</author>
-<othercredit role="reviewer"
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Frederik</firstname
+> <surname
+>Schwarzer</surname
+> <affiliation
+><address
+>&Frederik.Schwarzer.mail;</address
+></affiliation>
+      </author>
+      <othercredit role="reviewer"
 ><firstname
 >Frerich</firstname
 ><surname
 >Raabe</surname
 > <contrib
 >Редактор</contrib>
-<affiliation
+        <affiliation
 ><address
-><email
->raabe@kde.org</email
-></address
+>&Frerich.Raabe.mail;</address
 ></affiliation>
-</othercredit>
-</authorgroup>
-
-<othercredit role="translator"
+      </othercredit>
+      <othercredit role="translator"
 ><firstname
 >Валя</firstname
 ><surname
@@ -69,111 +87,648 @@
 ><contrib
 >Обновление перевода</contrib
 ></othercredit
+> <othercredit role="translator"
+><firstname
+>Олеся</firstname
+><surname
+>Герасименко</surname
+><affiliation
+><address
+><email
+>goa@altlinux.org</email
+></address
+></affiliation
+><contrib
+>Обновление перевода</contrib
+></othercredit
 > 
+    </authorgroup>
+    <legalnotice
+>&FDLNotice;</legalnotice>
+    <date
+>15 июня 2021 г.</date>
+    <releaseinfo
+>1.10 (KDE Gear 21.08)</releaseinfo>
 
-<date
->2003-09-17</date>
-<releaseinfo
->1.4.90</releaseinfo>
+    <!--Short description of this document. Do not change unless necessary!-->
+    <abstract>
+      <para
+>Это руководство описывает &kshisen; версии 1.10</para>
+    </abstract>
 
-<abstract>
-<para
->Это руководство описывает &kshisen; версии 1.4.90</para>
-</abstract>
-
-<keywordset>
+    <!--List of relevant keywords-->
+    <keywordset>
       <keyword
->KDE</keyword>
+>KDE</keyword
+> <!-- do not change this! -->
       <keyword
->kdegames</keyword>
+>kdegames</keyword
+> <!-- do not change this! -->
       <keyword
->kshisen</keyword>
+>игра</keyword
+> <!-- do not change this! -->
       <keyword
->игра</keyword>
+>kshisen</keyword
+><!--Application name goes here-->
+      <!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+      <keyword
+>аркада</keyword>
+      <keyword
+>настольная игра</keyword>
       <keyword
 >маджонг</keyword>
-</keywordset>
+      <keyword
+>плитки</keyword>
+      <!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+      <keyword
+>один игрок</keyword>
+    </keywordset>
+  </bookinfo>
+  <!--Content begins here: -->
+  <chapter id="introduction"
+><title
+>Введение</title
+> <!-- do not change this! -->
+    <note
+><title
+>Тип игры:</title
+><para
+>Аркада, настольная игра</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+    <note
+><title
+>Число игроков:</title
+><para
+>Один</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
 
-</bookinfo>
+    <!--Short game description starts here. 3-4 sentences (paragraphs)-->
+    <para
+>&kshisen; — игра, похожая на пасьянс, в которую играют с использованием стандартного набора плиток маджонга. В отличие от маджонга, в &kshisen; присутствует только один слой перемешанных плиток. Одинаковые плитки можно убрать, если их можно соединить линией, имеющей не более двух изгибов. Кроме того, эта линия не должна пересекать другие плитки. Чтобы одержать победу в &kshisen;, игроку нужно убрать с игровой доски все плитки. </para>
+  </chapter>
 
+  <chapter id="howto"
+><title
+>Как играть</title
+> <!-- do not change this! -->
+    <screenshot>
+    <mediaobject>
+    <imageobject>
+    <imagedata fileref="gameboard.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+    <phrase
+>Игровая доска &kshisen;</phrase>
+    </textobject>
+    </mediaobject>
+    </screenshot>
+    <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+    <note
+><title
+>Цель:</title
+><para
+>В кратчайший срок убрать с игровой доски все плитки.</para
+></note
+><!--Describe the objective of the game.-->
+    <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+    <para
+>После запуска &kshisen; автоматически загрузит стандартное игровое поле, что позволяет сразу же приступить к игре. </para>
+    <para
+>Необходимо внимательно изучить разложенные на игровой доске плитки и найти две полностью одинаковые. Когда такая пара будет найдена, выделите эти плитки с помощью мыши. </para>
+    <para
+>Состоящая из двух одинаковых плиток пара исчезнет с игровой доски. Тем не менее, даже если выбранные плитки являются открытыми, они будут убраны с доски только в том случае, если их можно соединить линий, которая имеет не более двух изгибов и не пересекает другие плитки. Более того, эта линия может проводиться только по горизонтали и по вертикали. </para>
+    <para
+>Найдите как можно больше совпадений, чтобы убрать все плитки с игровой доски. </para>
+  </chapter>
 
-<chapter id="introduction">
-<title
->Ведение</title>
-
-<para
->&kshisen; &mdash; настольная игра на одного человека, похожая на маджонг. Даже костяшки в ней такие же, как и в маджонге.</para
-> 
-
-<para
->Цель игры &mdash; убрать все костяшки с поля.</para>
-
-</chapter>
-
-<chapter id="playing-kshisen">
-<title
->Игра</title>
-
-<sect1 id="rules">
-<title
+  <chapter id="rules_and_tips"
+><title
+>Правила, стратегия и советы по игре</title
+> <!-- do not change this! -->
+    <sect1 id="rules">
+      <title
 >Правила</title>
-
-<para
->Цель игры &mdash; убрать с поля все костяшки. За один ход можно убрать только одну пару, у которой совпадают рисунки. Убирать можно только те костяшки, которые можно соединить ломаной из не более чем трех отрезков. При этом отрезки могут быть только вертикальными или горизонтальными, но не диагональными. </para>
-
-<para
->Вам не нужно провожить линии самостоятельно, это делается автоматически. Просто выделите две одинаковые костяшки, и если они могут быть соединены такой ломаной, вы ее увидите, а костяшки будут убраны с поля. </para>
-
-<para
->Помните, что линию можно проводить только по пустому пространству. Если вы не знаете, какой ход сделать дальше, можете воспользоваться функцией <quote
->Подсказка</quote
->: вам будет показано, какую пару можно выбрать. Щелкнув по костяшке правой кнопкой мыши, вы увидите, что все соответствующие ей подсвечены, независимо от того, можно их сейчас убрать или нет.</para>
-
-<para
->Игра заканчивается, когда никакие костяшки больше нельзя убрать с поля, даже если вы убрали не все пары (такого не должно быть, если стоит флажок <guimenuitem
->Не начинать нерешаемые игры</guimenuitem
-> в меню <guimenu
->Настройка</guimenu
->: для таких партий есть хотя бы одна успешная стретгия, но вы можете сделать неверный ход).</para>
-
-<para
->Счёт завершения <quote
->S</quote
-> рассчитывается по следующей формуле, где <quote
->n</quote
-> представляет количество плиток в начале игры и <quote
->t</quote
-> - затраченное время (в секундах) на очистку поля.</para>
-
-<mediaobject
-><imageobject>
-<imagedata fileref="score-formula.png" format="PNG"/>
-</imageobject
-><textobject>
-<phrase
->S=(n/t)*sqrt(n/84)/0.0014</phrase>
-</textobject
-></mediaobject>
-
-<para
->Если вы играли с установленным параметром <guilabel
+      <para
+>Стандартный набор плиток маджонга включает: <informaltable
+> <tgroup cols="3"
+> <tbody>
+              <row
+><entry
+>Название группы</entry
+><entry
+>Название плитки</entry
+><entry
+>Количество в наборе</entry
+></row>
+              <row
+><entry
+>Точки</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 точка</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 точки</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 точки</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 точки</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 точек</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 точек</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 точек</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 точек</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 точек</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Стебли бамбука</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 стебель бамбука</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 стебля бамбука</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 стебля бамбука</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 стебля бамбука</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 стеблей бамбука</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 стеблей бамбука</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 стеблей бамбука</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 стеблей бамбука</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 стеблей бамбука</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Символы</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 символ</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 символа</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 символа</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 символа</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 символов</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 символов</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 символов</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 символов</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 символов</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Ветры</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Восточный ветер</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Южный ветер</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Западный ветер</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Северный ветер</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Драконы</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Красный дракон</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Зелёный дракон</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Белый дракон</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>Цветы</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Слива (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Лилия (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Хризантема (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Бамбук (4)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+>Времена года</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Весна (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Лето (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Осень (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>Зима (4)</entry
+><entry
+>1</entry
+></row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+      <itemizedlist>
+        <listitem
+><para
+>Плитки, на которых изображены полностью одинаковые пиктограммы, считаются совпадающими.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Примечание:</title
+><para
+>Из этого правила есть исключения. В традиционной игре в маджонг соответствия имеются у всех плиток, кроме <quote
+>Цветов</quote
+> и <quote
+>Времён года</quote
+>.</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>У <quote
+>Цветов</quote
+> нет дубликатов в наборе, эти плитки можно сопоставлять непосредственно друг с другом.</para
+></listitem>
+        <listitem
+><para
+>У <quote
+>Времён года</quote
+> нет дубликатов в наборе, эти плитки можно сопоставлять непосредственно друг с другом.</para
+></listitem>
+        <listitem
+><para
+>Убирать можно только те плитки, которые можно соединить ломаной линией из не более чем трёх звеньев, не пересекающих другие плитки. Звенья могут быть вертикальными или горизонтальными, но не диагональными.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Примечание:</title
+><para
+>Игроку не нужно проводить линии самостоятельно, это делается автоматически. Просто выделите две одинаковые плитки; если они могут быть соединены линией с не более чем двумя изгибами, она будет показана, а плитки будут убраны.</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>Линии могут пересекать только пустые промежутки на доске.</para
+></listitem>
+        <listitem
+><para
+>У некоторых игр нет решения. Чтобы такие игры не создавались, установите флажок <guilabel
+>Начинать только решаемые игры</guilabel
+> в диалоговом окне настройки.</para
+></listitem>
+        <listitem
+><para
+>Баллы начисляются в соответствии со временем, которое потребовалось игроку на удаление всех плиток с игровой доски. Чем больше плиток в игре, тем больше баллов можно получить.</para
+></listitem>
+        <listitem
+><para
+>Если при игре был включён параметр <guilabel
 >Гравитация</guilabel
->, этот счёт дополнительно будет умножен на два.</para>
-</sect1>
+>, количество набранных баллов будет удвоено.</para
+></listitem>
+        <listitem
+><para
+>Чтобы результат попал в список лучших, игроку необходимо максимально быстро пройти игру.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>Примечание:</title
+><para
+>Если игрок использует опции <quote
+>Отменить</quote
+> или <quote
+>Подсказка</quote
+>, результат не попадёт в список лучших.</para
+></note>
+    </sect1>
+    <sect1 id="tips">
+      <title
+>Советы</title>
+      <para
+>Щёлкните по плитке с помощью правой кнопки мыши &RMB; для просмотра всех парных плиток на доске. В отличие от использования опций <quote
+>Отменить</quote
+> или <quote
+>Подсказка</quote
+>, такая помощь в игре не считается «жульничеством». </para>
+    </sect1>
+  </chapter>
 
-<sect1 id="game-menu">
-<title
->Меню <guimenu
->Игра</guimenu
-></title>
+  <chapter id="interface"
+><title
+>Обзор интерфейса</title
+> <!-- do not change this! -->
+    <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing. -->
+    <sect1 id="menu">
+    <title
+>Пункты меню</title>
+    <sect2 id="game-menu">
+      <title
+>Меню «Игра»</title>
 
-<para
->С помощью этого меню вы можете управлять текущей игрой.</para>
+      <para
+>С помощью этого меню можно управлять текущей игрой. </para>
 
-<variablelist>
-<varlistentry>
-<term
-><menuchoice
+      <variablelist>
+        <varlistentry id="game-menu-new">
+          <term>
+            <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl;<keycap
@@ -183,20 +738,20 @@
 > <guimenu
 >Игра</guimenu
 ><guimenuitem
->Новая игра</guimenuitem
-></menuchoice
-></term>
-<listitem
+>Начать игру</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
 ><para
 ><action
->Прервать текущую партию</action
-> и начать новую, в которой костяшки расположены по-другому. </para
+>Завершает текущую игру</action
+> и начинает новый сеанс с новым расположением плиток.</para
 ></listitem>
-</varlistentry>
+        </varlistentry>
 
-<varlistentry>
-<term
-><menuchoice
+        <varlistentry id="game-menu-restart">
+          <term>
+            <menuchoice
 ><shortcut
 ><keycombo
 ><keycap
@@ -206,45 +761,43 @@
 > <guimenu
 >Игра</guimenu
 ><guimenuitem
->Перезапуск игры</guimenuitem
-></menuchoice
-></term>
-<listitem
+>Начать заново</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
 ><para
 ><action
->Начать заново текущую партию.</action
+>Перезапускает текущую игру с теми же плитками.</action
 ></para
 ></listitem>
-</varlistentry>
+        </varlistentry>
 
-<varlistentry>
-<term
-><menuchoice
+        <varlistentry id="game-menu-pause">
+          <term>
+            <menuchoice
 ><shortcut
-><keycombo action="simul"
->&Ctrl;<keycap
+><keycombo
+><keycap
 >P</keycap
 ></keycombo
 ></shortcut
 > <guimenu
 >Игра</guimenu
 ><guimenuitem
->Приостановить игру</guimenuitem
-></menuchoice
-></term>
-<listitem
+>Приостановить</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
 ><para
 ><action
->Приостановить партию</action
->, при этом таймер также будет приостановлен. После выбора этот элемент меню меняется на <guimenuitem
->Начать игру заново</guimenuitem
->, с помощью которого можно возобновить партию.</para
+>Приостанавливает игру</action
+>, в том числе таймер, влияющий на её результат. Для возобновления игры используется этот же пункт меню.</para
 ></listitem>
-</varlistentry>
+        </varlistentry>
 
-<varlistentry>
-<term
-><menuchoice
+        <varlistentry id="game-menu-highscores">
+          <term>
+            <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl;<keycap
@@ -254,21 +807,21 @@
 > <guimenu
 >Игра</guimenu
 ><guimenuitem
->Показать рекорды</guimenuitem
-></menuchoice
-></term>
-<listitem
+>Показать лучшие результаты</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
 ><para
->Показать персональную таблицу рекордов &kshisen;.</para
-> </listitem>
-</varlistentry>
+>Показывает десять лучших результатов в &kshisen;.</para
+></listitem>
+        </varlistentry>
 
-<varlistentry>
-<term
-><menuchoice
+        <varlistentry>
+          <term>
+            <menuchoice
 ><shortcut
 ><keycombo action="simul"
->&Ctrl; <keycap
+>&Ctrl;<keycap
 >Q</keycap
 ></keycombo
 ></shortcut
@@ -276,35 +829,31 @@
 >Игра</guimenu
 ><guimenuitem
 >Выход</guimenuitem
-></menuchoice
-></term>
-<listitem
+> </menuchoice>
+          </term>
+          <listitem
 ><para
 ><action
->Выйти</action
-> из &kshisen;. </para
+>Выполняет выход</action
+> из &kshisen;.</para
 ></listitem>
-</varlistentry>
+        </varlistentry>
 
+      </variablelist>
 
-</variablelist>
+      <para
+>Для некоторых элементов меню также предусмотрены комбинации клавиш. Список комбинаций клавиш: <xref linkend="key-bindings"/>. </para>
 
-<para
->Для некоторых элементов меню есть клавиши быстрого доступа. См. также <xref linkend="key-bindings"/>.</para
-> 
+    </sect2>
 
-</sect1>
+    <sect2 id="move-menu">
+      <title
+>Меню «Ход»</title>
 
-<sect1 id="move-menu">
-<title
->Меню <guimenu
->Ход</guimenu
-></title>
-
-<variablelist>
-<varlistentry>
-<term
-><menuchoice
+      <variablelist id="move-menu-undo">
+        <varlistentry>
+          <term>
+            <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl;<keycap
@@ -313,23 +862,23 @@
 ></shortcut
 > <guimenu
 >Ход</guimenu
-> <guimenuitem
+><guimenuitem
 >Отменить</guimenuitem
-></menuchoice
-></term>
-<listitem
+> </menuchoice>
+          </term>
+          <listitem
 ><para
 ><action
->Отменить последний ход</action
+>Отменяет последний ход</action
 >. То же, что и кнопка <guibutton
->Отменить действие</guibutton
+>Отменить</guibutton
 > на панели инструментов.</para
 ></listitem>
-</varlistentry>
+        </varlistentry>
 
-<varlistentry>
-<term
-><menuchoice
+        <varlistentry id="move-menu-redo">
+          <term>
+            <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl;&Shift;<keycap
@@ -338,23 +887,23 @@
 ></shortcut
 > <guimenu
 >Ход</guimenu
-> <guimenuitem
->Повторить отменённое действие</guimenuitem
-></menuchoice
-></term>
-<listitem
+><guimenuitem
+>Вернуть</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
 ><para
 ><action
->Повторить последний отмененный ход</action
+>Повторяет последний отменённый ход</action
 >. То же, что и кнопка <guibutton
->Повторить отменённое действие</guibutton
+>Вернуть</guibutton
 > на панели инструментов.</para
 ></listitem>
-</varlistentry>
+        </varlistentry>
 
-<varlistentry>
-<term
-><menuchoice
+        <varlistentry id="move-menu-hint">
+          <term>
+            <menuchoice
 ><shortcut
 ><keycombo
 ><keycap
@@ -363,234 +912,438 @@
 ></shortcut
 > <guimenu
 >Ход</guimenu
-> <guimenuitem
+><guimenuitem
 >Подсказка</guimenuitem
-></menuchoice
-></term>
-<listitem
+> </menuchoice>
+          </term>
+          <listitem
 ><para
 ><action
->Подсказка</action
+>Показывает подсказку</action
 >: какую пару убрать следующей.</para
 ></listitem>
-</varlistentry>
+        </varlistentry>
 
-</variablelist>
-</sect1>
-</chapter>
+      </variablelist>
 
-<chapter id="configuration">
-<title
->Настройка</title>
+    </sect2>
 
-<sect1 id="settings-menu">
-<title
->Меню <guimenu
->Настройка</guimenu
-></title>
+    <sect2 id="settings-menu">
+      <title
+>Меню «Настройка»</title>
 
-<para
->Вы можете изменить некоторые параметры игры в &kshisen;. Все они доступны через меню <guimenu
->Настройка</guimenu
->.</para>
-
-<para
->Все изменения сохраняются автоматически.</para>
-
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice
-><guimenu
->Настройка</guimenu
-><guisubmenu
->Размер</guisubmenu
-></menuchoice
-></term>
-<listitem
-><para
->В подменю <guisubmenu
->Размер</guisubmenu
-> вы можете выбрать число костяшек на поле. Чем больше костяшек, тем сложнее (и дольше) будет игра. </para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><menuchoice
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice
 ><guimenu
 >Настройка</guimenu
 ><guimenuitem
->Скорость анимации</guimenuitem
-></menuchoice
-></term>
-<listitem
+>Звуковое сопровождение</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
 ><para
->В подменю <guisubmenu
->Скорость анимации</guisubmenu
-> вы можете выбрать время, через которое костяшки будут исчезать, если выбрана правильная пара. </para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><menuchoice
-><guimenu
->Настройка</guimenu
-><guisubmenu
->Уровень</guisubmenu
-></menuchoice
-></term>
-<listitem
-><para
->В этом подменю вы можете выбрать уровень сложности игры.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><menuchoice
-><guimenu
->Настройка</guimenu
-><guimenuitem
->Гравитация</guimenuitem
-></menuchoice
-></term>
-<listitem
-><para
->Установив этот флажок, вы усложните игру: если костяшки удаляется, все костяшки над ней сместятся вниз на одну позицию. </para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><menuchoice
-><guimenu
->Настройка</guimenu
-><guimenuitem
->Не начинать нерешаемые игры</guimenuitem
-></menuchoice
-></term>
-<listitem
-><para
->Если этот флажок установлен, будут создаваться только партии, для которых есть стратегии, приводящие к выигрышу. Примечание: несмотря на это, вы можете сделать неверный ход и не пройти партию, но в любом случае можете быть уверены, для нее выигрышная стратегия <emphasis
->есть</emphasis
+>Воспроизводит звук при щелчке по плитке с помощью левой кнопки мыши, а также во время падения плитки при включённом параметре <guilabel
+>Гравитация</guilabel
 >.</para
 ></listitem>
-</varlistentry>
+        </varlistentry>
 
-<varlistentry>
-<term
-><menuchoice
+        <varlistentry id="game-settings-settings">
+          <term>
+            <menuchoice
 ><guimenu
 >Настройка</guimenu
-> <guimenuitem
->Плитки фиксированного размера</guimenuitem
-></menuchoice
-></term>
-<listitem
+><guimenuitem
+>Настроить &kshisen;…</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
 ><para
->Изменение размера окна, вызывает изменение изменение размеров плиток, чтобы они соответствовали размеру окна. Если этот параметр установлен, размер окна будет изменён чтобы соответствовать естественному размеру плиток. Вы всё ещё можете корректировать размер окна. Но при этом такой режим будет отменён.</para
+>Открывает <link linkend="configuration"
+>диалоговое окно настройки</link
+> для изменения параметров &kshisen;.</para
 ></listitem>
-</varlistentry>
+        </varlistentry>
 
-</variablelist>
+      </variablelist>
+      <para
+>Кроме того, в &kshisen; присутствуют стандартные меню &kde;: <guimenu
+>Настройка</guimenu
+> и <guimenu
+>Справка</guimenu
+>. Дополнительные сведения доступны в разделе справки «Основы &kde;» (подразделы <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Меню «Настройка»</ulink
+> и <ulink url="help:/fundamentals/menus.html#menus-help"
+>Меню «Справка»</ulink
+>). </para>
+    </sect2>
+    </sect1>
 
-</sect1>
+    <sect1 id="key-bindings">
+      <title
+>Стандартные комбинации клавиш</title>
 
-<sect1 id="key-bindings">
-<title
->Комбинации клавиш</title>
+      <para
+>Комбинации клавиш по умолчанию:</para>
 
-<para
->По умолчанию используются такие комбинации клавиш: </para>
-<simplelist>
-<member
->Начать: <keycombo action="simul"
+      <informaltable>
+        <tgroup cols="2">
+          <tbody>
+            <row
+><entry
+>Начать игру</entry
+><entry
+><keycombo action="simul"
 >&Ctrl;<keycap
 >N</keycap
 ></keycombo
-></member>
-<member
->Перезапуск игры: <keycombo
+></entry
+></row>
+            <row
+><entry
+>Перезапуск игры</entry
+><entry
 ><keycap
 >F5</keycap
-></keycombo
-></member>
-<member
->Пауза: <keycombo
+></entry
+></row>
+            <row
+><entry
+>Пауза</entry
+><entry
 ><keycap
 >P</keycap
-></keycombo
-></member>
-<member
->Показать рекорды: <keycombo action="simul"
+></entry
+></row>
+            <row
+><entry
+>Показать лучшие результаты</entry
+><entry
+><keycombo action="simul"
 >&Ctrl;<keycap
 >H</keycap
 ></keycombo
-></member>
-<member
->Выход &mdash; <keycombo action="simul"
+></entry
+></row>
+            <row
+><entry
+>Выход</entry
+><entry
+><keycombo action="simul"
 >&Ctrl;<keycap
 >Q</keycap
 ></keycombo
-></member>
-
-<member
->Отменить действие &mdash; <keycombo action="simul"
+></entry
+></row>
+            <row
+><entry
+>Отменить</entry
+><entry
+><keycombo action="simul"
 >&Ctrl;<keycap
 >Z</keycap
 ></keycombo
-></member>
-<member
->Повторить отменённое действие &mdash; <keycombo action="simul"
+></entry
+></row>
+            <row
+><entry
+>Вернуть</entry
+><entry
+><keycombo action="simul"
 >&Ctrl;&Shift;<keycap
 >Z</keycap
 ></keycombo
-></member>
-<member
->Подсказка: <keycombo
+></entry
+></row>
+            <row
+><entry
+>Подсказка</entry
+><entry
 ><keycap
 >H</keycap
-></keycombo
-></member>
-
-<member
->Плитки фиксированного размера: <keycombo
+></entry
+></row>
+            <row
+><entry
+>Руководство пользователя &kshisen;</entry
+><entry
 ><keycap
->S</keycap
-></keycombo
-></member>
-
-<member
-><quote
->Что это?</quote
-> &mdash; <keycombo action="simul"
->&Shift;<keycap
+>F1</keycap
+></entry
+></row>
+            <row
+><entry
+>Что это?</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
 >F1</keycap
 ></keycombo
-></member>
-</simplelist>
-</sect1>
-</chapter>
+></entry
+></row>
+          </tbody>
+        </tgroup>
+      </informaltable>
 
+    </sect1>
 
-<chapter id="credits">
-<title
->Авторские права и лицензирование</title>
+  </chapter>
 
-<para
->Авторские права на игру &kshisen; принадлежат Марио Вейлгуни (Mario Weilguni) <email
->mweilguni@sime.com</email
->, 1999. </para>
+  <chapter id="faq"
+><title
+>Часто задаваемые вопросы</title
+> <!-- do not change this! -->
+    <!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+    <qandaset>
+      <qandaentry>
+        <question
+><para
+>Можно ли изменить внешний вид игры?</para
+></question>
+        <answer
+><para
+>Да. Чтобы изменить внешний вид &kshisen;, воспользуйтесь пунктом <link linkend="game-settings-settings"
+>меню</link
+>, который открывает <link linkend="configuration"
+>средство настройки</link
+>.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>Можно ли использовать клавиатуру?</para
+></question>
+        <answer
+><para
+>Нет. В этой игре не предусмотрен режим игры с помощью клавиатуры.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>Нужно выйти из игры, но она ещё не закончена. Можно ли сохранить текущее состояние?</para
+></question>
+        <answer
+><para
+>Нет. В этой игре нет опции <quote
+>Сохранить</quote
+>.</para
+></answer>
+      </qandaentry>
+    </qandaset>
+  </chapter>
 
+  <chapter id="configuration"
+><title
+>Настройка игры</title
+> <!-- do not change this! -->
+    <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+    <para
+>При выборе пункта меню <menuchoice
+><guimenu
+>Настройка</guimenu
+><guimenuitem
+>Настроить &kshisen;…</guimenuitem
+></menuchoice
+> будет открыто диалоговое окно настройки, с помощью которого можно изменить параметры игры. </para>
 
-<para
->Авторские права на документацию принадлежат Дирку Дёрфлингеру (Dirk Doerflinger) <email
->ddoerflinger@gmx.net</email
->, 2000. </para>
+    <screenshot>
+      <screeninfo
+>Диалоговое окно настройки &kshisen;</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="kshisen-configuration.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>Диалоговое окно настройки &kshisen;</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
 
-<para
+    <variablelist>
+      <title
+>Страница <guilabel
+>Основное</guilabel
+></title>
+      <varlistentry>
+        <term
+><guilabel
+>Гравитация</guilabel
+></term>
+        <listitem
+><para
+>Выбор этого пункта делает игру сложнее: если плитка удалена, все лежащие выше плитки опустятся на одну линию. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Начинать только решаемые игры</guilabel
+></term>
+        <listitem
+><para
+>Если флажок установлен, то все выпавшие игры будут иметь решение. Примечание: даже если флажок установлен, игру будет невозможно закончить, если удаление плиток будет выполняться в неверном порядке! </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Выводить сообщение, если дальнейшее решение невозможно</guilabel
+></term>
+        <listitem
+><para
+>Если этот флажок установлен, &kshisen; будет показывать сообщение с предложением завершить игру, когда не остаётся возможных ходов, которые могли бы обеспечить выигрыш. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Использовать китайский стиль: любой цветок составляет пару другому цветку, а время года — другому времени года</guilabel
+></term>
+        <listitem
+><para
+>Использовать традиционные правила для составления пар плиток. Предыдущая версия игры требовала строгого соответствия плиток, что не совсем соответствует правилам маджонга. Рекомендуется включить этот параметр. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Сдвигающиеся плитки (но соединяться плитки могут только двумя, а не тремя звеньями)</guilabel
+></term>
+        <listitem
+><para
+>Этот параметр меняет правила настолько, что игра становится совсем другой. Когда он включён, плитки можно удалять только в том случае, если их можно соединить линией, состоящей из одного или двух звеньев вместо привычных трёх. Однако можно сдвигать плитки на доске, если в столбце или строке с ними есть пустое место. Чтобы совершить сдвиг, нужно щёлкнуть по плитке в столбце или в строке, в которых есть пустое место, а затем по такой же плитке. Если сдвиг возможен двумя способами, то оба возможных хода будут показаны синими линиями. Щелкните по одной из них для выбора предпочитаемого варианта. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Уровень трудности доски</guilabel
+></term>
+        <listitem
+><para
+>Этот ползунок изменяет уровень сложности (то есть насколько сильно перемешаны плитки): от <guilabel
+>Лёгкого</guilabel
+> до <guilabel
+>Трудного</guilabel
+>. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Скорость удаления плиток</guilabel
+></term>
+        <listitem
+><para
+>Перемещение этого ползунка изменяет скорость, с которой плитки удаляются с экрана после нахождения их пар. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>Размер поля</guilabel
+></term>
+        <listitem
+><para
+>Этот ползунок позволяет изменять количество плиток на доске. Чем больше плиток, тем сложнее (и дольше) будет игра. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+>Страница <guilabel
+>Плитки</guilabel
+> и <guilabel
+>Фон</guilabel
+></term>
+        <listitem
+><para
+>Выберите предпочитаемое оформление для плиток и фона. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Справка</guibutton
+></term>
+        <listitem
+><para
+>Открывает страницы справки &kshisen; (этот документ). </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>OK</guibutton
+></term>
+        <listitem
+><para
+>Сохраняет изменения и закрывает диалоговое окно. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Применить</guibutton
+></term>
+        <listitem
+><para
+>Сохраняет изменения, но не закрывает диалоговое окно. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>Отмена</guibutton
+></term>
+        <listitem
+><para
+>Отменяет все изменения и закрывает диалоговое окно. </para
+></listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </chapter>
+
+  <chapter id="credits"
+><title
+>Авторские права и лицензия</title
+> <!-- do not change this! -->
+    <!--This chapter is for credits and licenses.-->
+
+    <para
+>Авторские права на игру &kshisen; принадлежат &Mario.Weilguni; &Mario.Weilguni.mail;, 1997 </para>
+    <para
+>Авторские права на игру &kshisen; принадлежат Dave Corrie <email
+>kde@davecorrie.com</email
+>, 2002-2004 </para>
+    <para
+>Авторские права на игру &kshisen; принадлежат &Frederik.Schwarzer; &Frederik.Schwarzer.mail;, 2009-2012 </para>
+
+    <para
+>Авторские права на документацию принадлежат &Dirk.Doerflinger; &Dirk.Doerflinger.mail;, 2000 </para>
+    <para
+>Авторские права на документацию принадлежат &Frederik.Schwarzer; &Frederik.Schwarzer.mail;, 2009-2010 </para>
+
+    <para
 >Перевод на русский - Валя Ванеева <email
 >fattie@altlinux.ru</email
 ></para
@@ -598,32 +1351,24 @@
 >Обновление перевода - Олег Баталов<email
 >olegbatalov@mail.ru</email
 ></para
->  
-&underFDL; &underGPL; </chapter>
+>  &underFDL; &underGPL; </chapter>
 
-<appendix id="installation">
-<title
->Установка</title>
-
-<sect1 id="getting-kshisen">
-<title
->Как получить &kshisen;</title>
-&install.intro.documentation; </sect1>
-
-<sect1 id="requirements">
-<title
->Системные требования</title>
-
-<para
->Для успешной сборки &kshisen; требуется &kde; 3.x. Все необходимые библиотеки и саму программу &kshisen; можно взять на сайте &kde-ftp;.</para>
-</sect1>
-
-
-<sect1 id="compilation">
-<title
->Компиляция и установка</title>
-&install.compile.documentation; </sect1>
-</appendix>
-
+  &documentation.index;
 </book>
-
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
