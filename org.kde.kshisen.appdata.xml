@@ -189,6 +189,7 @@
     <binary>kshisen</binary>
   </provides>
   <releases>
+    <release version="1.11.25081" date="2025-09-11"/>
     <release version="1.11.25080" date="2025-08-14"/>
     <release version="1.11.25043" date="2025-07-03"/>
     <release version="1.11.25042" date="2025-06-05"/>
