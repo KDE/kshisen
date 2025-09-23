@@ -821,7 +821,7 @@
 > <guimenu
 >Juego</guimenu
 ><guimenuitem
->Mostrar mejores puntuaciones...</guimenuitem
+>Mostrar mejores puntuaciones…</guimenuitem
 > </menuchoice>
           </term>
           <listitem
@@ -970,7 +970,7 @@
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Configurar &kshisen;...</guimenuitem
+>Configurar &kshisen;…</guimenuitem
 > </menuchoice>
           </term>
           <listitem
@@ -1033,7 +1033,7 @@
 ></row>
             <row
 ><entry
->Mostrar mejores puntuaciones...</entry
+>Mostrar mejores puntuaciones…</entry
 ><entry
 ><keycombo action="simul"
 >&Ctrl;<keycap
@@ -1160,7 +1160,7 @@
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Configurar &kshisen;...</guimenuitem
+>Configurar &kshisen;…</guimenuitem
 ></menuchoice
 > se abrirá el diálogo de configuración que te permitirá modificar el comportamiento del juego. </para>
 
@@ -1358,6 +1358,8 @@
     <para
 >Documentación traducida por Pablo de Vicente <email
 >pvicentea@wanadoo.es</email
+>, Pablo Barneo <email
+>pablob@nikhef.nl</email
 >, Santiago Fernández Sancho <email
 >santi@kde-es.org</email
 > y Kira J. Fernández <email
