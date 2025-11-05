@@ -156,7 +156,7 @@
     <para
 >Vous devez étudier attentivement les tuiles placées sur le plateau de jeu et trouver deux tuiles correspondants exactement. Quand vous avez trouvé une paire, utilisez votre souris et sélectionnez la. </para>
     <para
->Une fois que vous avez sélectionné une paire possible, celle ci va disparaître du plateau de jeu. Cependant, même si les tuiles que vous sélectionnez apparaissent comme ouvertes, elles ne seront seulement supprimées du plateau que si elles sont connectées avec une ligne n'ayant pas plus de deux bords et ne traversant pas d'autres tuiles. De plus, la ligne peut être seulement dessinée horizontalement et verticalement. </para>
+>Une fois que vous avez sélectionné une paire possible, celle ci va disparaitre du plateau de jeu. Cependant, même si les tuiles que vous sélectionnez apparaissent comme ouvertes, elles ne seront seulement supprimées du plateau que si elles sont connectées avec une ligne n'ayant pas plus de deux bords et ne traversant pas d'autres tuiles. De plus, la ligne peut être seulement dessinée horizontalement et verticalement. </para>
     <para
 >Trouvez le plus de correspondances que possible pour supprimer toutes les tuiles du plateau de jeu. </para>
   </chapter>
@@ -625,7 +625,7 @@
 ><para
 >Quelques parties sont impossible à résoudre. Si vous voulez éviter les parties sans conclusion, décochez l'option <guilabel
 >Autoriser les parties sans solutions</guilabel
-> dans la boîte de dialogue de configuration.</para
+> dans la boite de dialogue de configuration.</para
 ></listitem>
         <listitem
 ><para
@@ -922,7 +922,7 @@
           <listitem
 ><para
 >Ouvre la <link linkend="configuration"
->boîte de dialogue de configuration</link
+>boite de dialogue de configuration</link
 > pour modifier la configuration de &kshisen;.</para
 ></listitem>
         </varlistentry>
@@ -1110,7 +1110,7 @@
 > <guimenuitem
 >Configurer &kshisen;...</guimenuitem
 ></menuchoice
-> ouvrira une boîte de dialogue de configuration vous permettant d'ajuster le comportement de ce jeu. </para>
+> ouvrira une boite de dialogue de configuration vous permettant d'ajuster le comportement de ce jeu. </para>
 
     <screenshot>
       <screeninfo
@@ -1253,7 +1253,7 @@
 ></term>
         <listitem
 ><para
->Enregistre vos modifications et ferme la boîte de dialogue. </para
+>Enregistre vos modifications et ferme la boite de dialogue. </para
 ></listitem>
       </varlistentry>
 
@@ -1264,7 +1264,7 @@
 ></term>
         <listitem
 ><para
->Enregistre vos modifications mais ne ferme pas la boîte de dialogue. </para
+>Enregistre vos modifications mais ne ferme pas la boite de dialogue. </para
 ></listitem>
       </varlistentry>
 
@@ -1275,7 +1275,7 @@
 ></term>
         <listitem
 ><para
->Annule toutes vos modifications et ferme la boîte de dialogue. </para
+>Annule toutes vos modifications et ferme la boite de dialogue. </para
 ></listitem>
       </varlistentry>
 
