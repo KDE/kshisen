@@ -163,7 +163,7 @@ msgid ""
 "An error occurred when loading the default tile set.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"S'ha detectat un error en carregar el joc de fitxes predeterminat.\n"
+"S'ha detectat un error mentre es carregava el joc de fitxes predeterminat.\n"
 "Instal·la la biblioteca de KMahjongg."
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
@@ -171,7 +171,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Tiles"
-msgstr "S'ha produït un error en carregar les fitxes"
+msgstr "S'ha produït un error mentre es carregaven les fitxes"
 
 #: src/board.cpp:78
 #, kde-format
@@ -180,8 +180,8 @@ msgid ""
 "An error occurred when loading the tile set %1. The default tile set has "
 "been loaded."
 msgstr ""
-"S'ha detectat un error en carregar el joc de fitxes %1. S'ha carregat el joc "
-"predeterminat de fitxes."
+"S'ha detectat un error mentre es carregava el joc de fitxes %1. S'ha "
+"carregat el joc predeterminat de fitxes."
 
 #: src/board.cpp:84
 #, kde-format
@@ -191,8 +191,8 @@ msgid ""
 "also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"S'ha detectat un error en carregar el joc de fitxes %1. Tampoc s'ha pogut "
-"carregar el joc predeterminat de fitxes.\n"
+"S'ha detectat un error mentre es carregava el joc de fitxes %1. Tampoc s'ha "
+"pogut carregar el joc predeterminat de fitxes.\n"
 "Instal·la la biblioteca de KMahjongg."
 
 #: src/board.cpp:101
@@ -202,7 +202,7 @@ msgid ""
 "An error occurred when loading the default background.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"S'ha detectat un error en carregar el fons predeterminat.\n"
+"S'ha detectat un error mentre es carregava el fons predeterminat.\n"
 "Instal·la la biblioteca de KMahjongg."
 
 #: src/board.cpp:110
@@ -212,7 +212,7 @@ msgid ""
 "An error occurred when loading the background %1. The default background has "
 "been loaded."
 msgstr ""
-"S'ha detectat un error en carregar el fons %1. S'ha carregat el fons "
+"S'ha detectat un error mentre es carregava el fons %1. S'ha carregat el fons "
 "predeterminat."
 
 #: src/board.cpp:116
@@ -223,8 +223,8 @@ msgid ""
 "could also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"S'ha detectat un error en carregar el fons %1. El fons predeterminat tampoc "
-"s'ha pogut carregar.\n"
+"S'ha detectat un error mentre es carregava el fons %1. El fons predeterminat "
+"tampoc s'ha pogut carregar.\n"
 "Instal·la la biblioteca de KMahjongg."
 
 #: src/board.cpp:678
