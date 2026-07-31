@@ -182,7 +182,7 @@
     <para
 >Shisen-Sho lädt beim Start ein Standard-Layout, sodass Sie sofort mit dem Spiel beginnen können. </para>
     <para
->Betrachten Sie die auf dem Spielfeld ausgelegten Spielsteine sorgfältig und suchen Sie zwei genau gleiche Steine. Haben Sie so ein Paar gefunden, benutzen Sie Ihre Maus um beide Steine auszuwählen. </para>
+>Betrachten Sie die auf dem Spielfeld ausgelegten Spielsteine sorgfältig und suchen Sie zwei genau gleiche Steine. Haben Sie so ein Paar gefunden, verwenden Sie Ihre Maus um beide Steine auszuwählen. </para>
     <para
 >Wenn Sie ein passendes Steinpaar ausgewählt haben, verschwinden beide Steine vom Spielbrett. Obwohl Steine manchmal frei erscheinen, werden Sie nur entfernt, wenn sie mit einer Linie mit maximal zwei Knicken verbunden werden können und wenn diese Linie keine anderen Steine kreuzen würde. Zudem kann die Linie nur waagerecht und senkrecht verlaufen. </para>
     <para
@@ -642,7 +642,7 @@
 ><title
 >Hinweis:</title
 ><para
->Sie brauchen die Linien nicht selbst zu ziehen, das Spiel erledigt das für Sie. Markieren Sie einfach mit Mausklicks zwei zusammenpassende Steine. Wenn diese mit einem Linienzug mit nicht mehr als zwei Knicken verbunden werden können, wird diese Verbindungslinie gezeichnet und die Steine werden entfernt.</para>
+>Sie benötigen die Linien nicht selbst zu ziehen, das Spiel erledigt das für Sie. Markieren Sie einfach mit Mausklicks zwei zusammenpassende Steine. Wenn diese mit einem Linienzug mit nicht mehr als zwei Knicken verbunden werden können, wird diese Verbindungslinie gezeichnet und die Steine werden entfernt.</para>
       </note>
       <itemizedlist>
         <listitem
@@ -678,7 +678,7 @@
 >Zurücknehmen</quote
 > oder <quote
 >Tipp</quote
-> als Hilfe benutzt, wird das Spielergebnis nicht in die Bestenliste eingetragen.</para
+> als Hilfe verwendet, wird das Spielergebnis nicht in die Bestenliste eingetragen.</para
 ></note>
     </sect1>
     <sect1 id="tips">
@@ -689,7 +689,7 @@
 >Zurücknehmen</quote
 > oder <quote
 >Tipp</quote
-> können Sie diese Funktion als Hilfe benutzen, das Spielergebnis wird in die Bestenliste eingetragen. </para>
+> können Sie diese Funktion als Hilfe verwenden, das Spielergebnis wird in die Bestenliste eingetragen. </para>
     </sect1>
   </chapter>
 
