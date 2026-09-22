@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:50+0000\n"
-"PO-Revision-Date: 2026-05-31 19:42-0400\n"
+"PO-Revision-Date: 2026-09-22 18:03+0900\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
-"Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
+"Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -58,7 +58,7 @@ msgstr ""
 #, kde-format
 msgctxt "time string: hh:mm:ss"
 msgid "%1:%2:%3"
-msgstr "%1:%2:%3"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_Gravity)
 #: src/app.cpp:249 src/app.cpp:350 src/settings.ui:26
@@ -244,7 +244,7 @@ msgstr "ئاساسىي قورال بالداق"
 #: src/main.cpp:52
 #, kde-format
 msgid "Shisen-Sho"
-msgstr "Shisen-Sho"
+msgstr ""
 
 #: src/main.cpp:54
 #, kde-format
