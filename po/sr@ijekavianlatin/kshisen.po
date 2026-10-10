@@ -5,13 +5,14 @@
 # Toplica Tanaskovic <toptan@kde.org.yu>, 2004.
 # Slobodan Simic <slsimic@gmail.com>, 2005, 2009, 2010.
 # Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>, 2010.
+# Nemanja Hiršl <nemhirsl@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kshisen\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:50+0000\n"
-"PO-Revision-Date: 2016-05-17 01:39+0200\n"
-"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"PO-Revision-Date: 2026-10-09 22:30+0200\n"
+"Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
 "Language: sr@ijekavianlatin\n"
 "MIME-Version: 1.0\n"
@@ -27,12 +28,14 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Miloš Puzović,Časlav Ilić,Slobodan Simić"
+msgstr "Miloš Puzović,Časlav Ilić,Slobodan Simić,Nemanja Hiršl"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "m.puzovic@etoncollege.org.uk,caslav.ilic@gmx.net,slsimic@gmail.com"
+msgstr ""
+"m.puzovic@etoncollege.org.uk,caslav.ilic@gmx.net,slsimic@gmail.com,"
+"nemhirsl@gmail.com"
 
 #: src/app.cpp:81 src/app.cpp:318
 #, kde-format
@@ -58,8 +61,7 @@ msgid "Cheat mode"
 msgstr "varanje"
 
 #: src/app.cpp:110
-#, fuzzy, kde-format
-#| msgid "Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
 msgstr "Puštaj zvukove"
@@ -89,12 +91,7 @@ msgid "No"
 msgstr "ne"
 
 #: src/app.cpp:260
-#, fuzzy, kde-format
-#| msgid ""
-#| "\n"
-#| "You could have been in the highscores\n"
-#| "if you did not use Undo or Hint.\n"
-#| "Try without them next time."
+#, kde-format
 msgid ""
 "\n"
 "You could have been in the high scores\n"
@@ -107,8 +104,7 @@ msgstr ""
 "Pokušajte bez toga sljedeći put."
 
 #: src/app.cpp:261 src/app.cpp:269
-#, fuzzy, kde-format
-#| msgid "End of Game"
+#, kde-format
 msgctxt "@title:window"
 msgid "End of Game"
 msgstr "Kraj igre"
@@ -167,8 +163,7 @@ msgid "You cannot make this move"
 msgstr "Ne možete napraviti taj potez."
 
 #: src/app.cpp:369
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "Opšte"
@@ -180,13 +175,15 @@ msgid ""
 "An error occurred when loading the default tile set.\n"
 "Please install the KMahjongg library."
 msgstr ""
+"Greška pri učitavanju podrazumijevanog kompleta pločica.\n"
+"Instalirajte biblioteku K‑madžonga."
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
 #: src/board.cpp:111 src/board.cpp:117
 #, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Tiles"
-msgstr ""
+msgstr "Greška pri učitavanju pločica"
 
 #: src/board.cpp:78
 #, kde-format
@@ -195,6 +192,8 @@ msgid ""
 "An error occurred when loading the tile set %1. The default tile set has "
 "been loaded."
 msgstr ""
+"Greška pri učitavanju kompleta pločica %1. Učitan je podrazumijevani komplet "
+"pločica."
 
 #: src/board.cpp:84
 #, kde-format
@@ -204,6 +203,9 @@ msgid ""
 "also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
+"Greška pri učitavanju kompleta pločica %1. Ne mogu da učitam ni "
+"podrazumijevani komplet pločica.\n"
+"Instalirajte biblioteku K‑madžonga."
 
 #: src/board.cpp:101
 #, kde-format
@@ -212,6 +214,8 @@ msgid ""
 "An error occurred when loading the default background.\n"
 "Please install the KMahjongg library."
 msgstr ""
+"Greška pri učitavanju podrazumijevane pozadine.\n"
+"Instalirajte biblioteku K‑madžonga."
 
 #: src/board.cpp:110
 #, kde-format
@@ -220,6 +224,7 @@ msgid ""
 "An error occurred when loading the background %1. The default background has "
 "been loaded."
 msgstr ""
+"Greška pri učitavanju pozadine %1. Učitana je podrazumijevana pozadina."
 
 #: src/board.cpp:116
 #, kde-format
@@ -229,6 +234,9 @@ msgid ""
 "could also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
+"Greška pri učitavanju pozadine %1. Ne mogu da učitam ni podrazumijevanu "
+"pozadinu.\n"
+"Instalirajte biblioteku K‑madžonga."
 
 #: src/board.cpp:678
 #, kde-format
@@ -281,10 +289,9 @@ msgid "Shisen-Sho"
 msgstr "Šisen‑šo"
 
 #: src/main.cpp:54
-#, fuzzy, kde-format
-#| msgid "A KDE game similar to Mahjongg"
+#, kde-format
 msgid "A game similar to Mahjongg"
-msgstr "KDE igra nalik na madžong"
+msgstr "Igra nalik na madžong"
 
 #: src/main.cpp:56
 #, kde-format
@@ -342,7 +349,7 @@ msgid ""
 "Added 'tiles removed' counter<br/>Tile smooth-scaling and window resizing"
 msgstr ""
 "Brojač uklonjenih domina;\n"
-"glatko skaliranje pločica i promena veličine prozora"
+"glatko skaliranje pločica i promjena veličine prozora"
 
 # rewrite-msgid: /listed/mentioned/
 #: src/main.cpp:64
@@ -368,15 +375,15 @@ msgid ""
 "with games that are possible to solve.</p><p>Note: Even in solvable games "
 "you can fail to complete if you remove the tiles in the wrong order.</p>"
 msgstr ""
-"<b>Stvaraj samo rešive partije</b><p>Ako je popunjeno, dobijaćete samo "
-"partije koje je moguće riješiti.</p><p>Napomena: Čak i rešivu partiju možda "
+"<b>Stvaraj samo rješive partije</b><p>Ako je popunjeno, dobijaćete samo "
+"partije koje je moguće riješiti.</p><p>Napomena: Čak i rješivu partiju možda "
 "nećete uspjeti da završite, ako uklanjate pločice pogrešnim redoslijedom.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_Solvable)
 #: src/settings.ui:36
 #, kde-format
 msgid "Create solvable games only"
-msgstr "Stvaraj samo rešive partije"
+msgstr "Stvaraj samo rješive partije"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
 #: src/settings.ui:43
@@ -386,12 +393,15 @@ msgid ""
 "the game show a message to abort the game in case there are no possible "
 "moves left to win the game.</p>"
 msgstr ""
+"<b>Prikaži poruku ako tabla više ne može da se riješi</b><p>Ako je ovo "
+"popunjeno, igra prikazuje poruku sa ponudom da se partija prekine kad više "
+"nema poteza koji vode do pobjede.</p>"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowUnsolvableMessage)
 #: src/settings.ui:46
 #, kde-format
 msgid "Show message if board can no longer be solved"
-msgstr ""
+msgstr "Prikaži poruku ako tabla više ne može da se riješi"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ChineseStyle)
 #: src/settings.ui:53
@@ -431,22 +441,22 @@ msgid ""
 "sliding moves, you will have to click on one of the two connecting lines to "
 "choose your preferred move.</p>"
 msgstr ""
-"<b>Pločice klizaju, ali povezivanje samo s dvije umesto tri linije</b><p>Ova "
-"opcija mijenja pravila toliko da praktično dobijate potpuno različitu igru. "
-"Kada je aktivna, možete uklanjati pločice samo ako ih povezuje dvodijelna "
-"linija, umjesto uobičajene trodijelne. Međutim, dozvoljeno je da klizate po "
-"tabli pločice u čijem redu ili koloni ima praznog prostora. Da biste "
-"napravili klizajući potez, treba da kliknete na pločicu u koloni ili redu "
-"gde je moguće klizanje, pa na pločicu sa kojom se poklapa. Ako postoje dva "
-"moguća klizajuća poteza, željeni potez birate klikom na jednu od dvije "
-"povezujuće linije.</p>"
+"<b>Pločice klizaju, ali povezivanje samo s dvije umjesto tri linije</"
+"b><p>Ova opcija mijenja pravila toliko da praktično dobijate potpuno "
+"različitu igru. Kada je aktivna, možete uklanjati pločice samo ako ih "
+"povezuje dvodijelna linija, umjesto uobičajene trodijelne. Međutim, "
+"dozvoljeno je da klizate po tabli pločice u čijem redu ili koloni ima "
+"praznog prostora. Da biste napravili klizajući potez, treba da kliknete na "
+"pločicu u koloni ili redu gdje je moguće klizanje, pa na pločicu sa kojom se "
+"poklapa. Ako postoje dva moguća klizajuća poteza, željeni potez birate "
+"klikom na jednu od dvije povezujuće linije.</p>"
 
 # skip-rule: t-line
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_TilesCanSlide)
 #: src/settings.ui:66
 #, kde-format
 msgid "Tiles can slide, but you can connect only in 2 lines instead of 3"
-msgstr "Pločice klizaju, ali povezivanje samo s dvije umesto tri linije"
+msgstr "Pločice klizaju, ali povezivanje samo s dvije umjesto tri linije"
 
 #. i18n: ectx: property (whatsThis), widget (QGroupBox, difficulty_groupBox)
 #: src/settings.ui:73
