@@ -126,8 +126,8 @@
     <p xml:lang="sl">KShisen je pasjansi podobna igra, ki uporablja običajni nabor ploščic Mahjonga. Za razliko od Mahjonga pa ima KShisen le eno plast pomešanih ploščic.</p>
     <p xml:lang="sr">К‑шисен је игра налик на пасијанс са стандардним скупом маџонг плочица. За разлику од маџонга, К‑шисен има само један слој измешаних плочица.</p>
     <p xml:lang="sr-Latn">KShisen je igra nalik na pasijans sa standardnim skupom madžong pločica. Za razliku od madžonga, KShisen ima samo jedan sloj izmešanih pločica.</p>
-    <p xml:lang="sr-ijekavian">К‑шисен је игра налик на пасијанс са стандардним скупом маџонг плочица. За разлику од маџонга, К‑шисен има само један слој измешаних плочица.</p>
-    <p xml:lang="sr-ijekavianlatin">KShisen je igra nalik na pasijans sa standardnim skupom madžong pločica. Za razliku od madžonga, KShisen ima samo jedan sloj izmešanih pločica.</p>
+    <p xml:lang="sr-ijekavian">К‑шисен је игра налик на пасијанс са стандардним скупом маџонг плочица. За разлику од маџонга, К‑шисен има само један слој измијешаних плочица.</p>
+    <p xml:lang="sr-ijekavianlatin">KShisen je igra nalik na pasijans sa standardnim skupom madžong pločica. Za razliku od madžonga, KShisen ima samo jedan sloj izmiješanih pločica.</p>
     <p xml:lang="sv">Kshisen är ett patiensliknande spel som spelas med den vanliga uppsättningen Mahjong-brickor. I motsats till Mahjong har Kshisen dock bara ett lager med blandade brickor.</p>
     <p xml:lang="tr">K Şisen, Mahjong standart karo kümesini kullanarak oynanan, Solitaire benzeri bir oyundur. Bununla birlikte Mahjong'tan farklı olarak, K Şisen'de yalnızca tek katmanlı karolar vardır.</p>
     <p xml:lang="uk">KShisen — гра, подібна до пасьянсу, у якій використовуються плитки маджонґа. Втім, на відміну від класичної гри у маджонґ, у KShisen ви матимете справу лише з одним шаром плиток.</p>
@@ -172,6 +172,10 @@
       <caption xml:lang="sa">KShisen इति क्रीडन्</caption>
       <caption xml:lang="sk">Hrá sa KShisen</caption>
       <caption xml:lang="sl">Igra KShisen</caption>
+      <caption xml:lang="sr">Играње К‑шисена</caption>
+      <caption xml:lang="sr-Latn">Igranje KShisena</caption>
+      <caption xml:lang="sr-ijekavian">Играње К‑шисена</caption>
+      <caption xml:lang="sr-ijekavianlatin">Igranje KShisena</caption>
       <caption xml:lang="sv">Spela Kshisen</caption>
       <caption xml:lang="tr">K Şisen Oynarken</caption>
       <caption xml:lang="uk">Гра у KShisen</caption>
