@@ -1,0 +1,1340 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Arabic "INCLUDE"
+>    <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+>     <!-- do not change this! -->
+]>
+
+<book id="kshisen" lang="&language;"
+> <!-- do not change this! -->
+  <bookinfo>
+    <title
+>دليل شي سن</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+    <!-- List of immidiate authors begins here. -->
+    <!--INPORTANT! - All other contributors: [to be determined] -->
+    <authorgroup>
+      <author
+><firstname
+>Dirk</firstname
+> <surname
+>Doerflinger</surname
+> <affiliation
+><address
+>&Dirk.Doerflinger.mail;</address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+      </author>
+      <author
+><firstname
+>Frederik</firstname
+> <surname
+>Schwarzer</surname
+> <affiliation
+><address
+>&Frederik.Schwarzer.mail;</address
+></affiliation>
+      </author>
+      <othercredit role="reviewer"
+><firstname
+>Frerich</firstname
+><surname
+>Raabe</surname
+> <contrib
+>مُراجِع</contrib>
+        <affiliation
+><address
+>&Frerich.Raabe.mail;</address
+></affiliation>
+      </othercredit>
+      <othercredit role="translator"
+><firstname
+>زايد</firstname
+><surname
+>السعيدي</surname
+><affiliation
+><address
+><email
+>zayed.alsaidi@gmail.com</email
+></address
+></affiliation
+><contrib
+>التّرجمة العربيّة</contrib
+></othercredit
+> 
+    </authorgroup>
+    <legalnotice
+>&FDLNotice;</legalnotice>
+    <date
+>2021-06-15</date>
+    <releaseinfo
+>1.10 (ترس كيدي 21.08)</releaseinfo>
+
+    <!--Short description of this document. Do not change unless necessary!-->
+    <abstract>
+      <para
+>تصف هذه الوثائق لعبة شي سن الإصدار 1.10</para>
+    </abstract>
+
+    <!--List of relevant keywords-->
+    <keywordset>
+      <keyword
+>كيدي</keyword
+> <!-- do not change this! -->
+      <keyword
+>ألعاب كيدي</keyword
+> <!-- do not change this! -->
+      <keyword
+>لعبة</keyword
+> <!-- do not change this! -->
+      <keyword
+>شي سن</keyword
+><!--Application name goes here-->
+      <!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+      <keyword
+>أركيد</keyword>
+      <keyword
+>لوحة</keyword>
+      <keyword
+>ما جونغ</keyword>
+      <keyword
+>قطع</keyword>
+      <!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+      <keyword
+>لاعب واحد</keyword>
+    </keywordset>
+  </bookinfo>
+  <!--Content begins here: -->
+  <chapter id="introduction"
+><title
+>مقدمة</title
+> <!-- do not change this! -->
+    <note
+><title
+>نوع اللعبة:</title
+><para
+>أركيد، لوحة</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+    <note
+><title
+>عدد اللاعبين الممكنين:</title
+><para
+>واحد</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+    <!--Short game description starts here. 3-4 sentences (paragraphs)-->
+    <para
+>شي سن هي لعبة شبيهة بالسوليتير تُلعب باستخدام مجموعة قطع ماهجونج القياسية. وبخلاف الماهجونج، تتكون شي سن من طبقة واحدة فقط من القطع المبعثرة. يمكنك إزالة القطع المتطابقة إذا أمكن وصلها بخط لا يتجاوز انحناءين. وفي الوقت نفسه، يجب ألا يقطع الخط أي قطع أخرى. للفوز في لعبة شي سن، يتعين على اللاعب إزالة جميع القطع من لوحة اللعبة. </para>
+  </chapter>
+
+  <chapter id="howto"
+><title
+>كيف تلعب</title
+> <!-- do not change this! -->
+    <screenshot>
+    <mediaobject>
+    <imageobject>
+    <imagedata fileref="gameboard.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+    <phrase
+>لوحة لعبة شي سن</phrase>
+    </textobject>
+    </mediaobject>
+    </screenshot>
+    <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+    <note
+><title
+>الهدف:</title
+><para
+>أزِل جميع القطع من لوحة اللعبة في أقصر وقت ممكن.</para
+></note
+><!--Describe the objective of the game.-->
+    <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+    <para
+>ستحمل شي سن تخطيطًا مبدئيًا آليًا عندما تبدأ اللعبة ويمكنك البدء باللعب فورًا. </para>
+    <para
+>ينبغي لك دراسة القطع الموضوعة على لوحة اللعبة بعناية والعثور على قطعتين متطابقتين تمامًا. عندما تجد زوجًا كهذا، استخدم الفأرة لاختيارهما. </para>
+    <para
+>بمجرد اختيار زوج متطابق من القطع، ستختفي من لوحة اللعبة. ومع ذلك، حتى لو ظهرت القطع التي اخترتها كمكشوفة، فلن تُزال من اللوحة إلا إذا أمكن وصلها بخط يحتوي على انحناءين على الأكثر ولا يمر عبر أي قطع أخرى. علاوة على ذلك، لا يمكن رسم الخط إلا أفقيًا وعموديًا. </para>
+    <para
+>أوجد أكبر قدر ممكن من التطابقات لإزالة كل المربعات من لوح اللعب. </para>
+  </chapter>
+
+  <chapter id="rules_and_tips"
+><title
+>قواعد اللعبة واستراتيجياتها وتلميحاتها</title
+> <!-- do not change this! -->
+    <sect1 id="rules">
+      <title
+>القواعد</title>
+      <para
+>تتضمن مجموعة قطع ماهجونج القياسية: <informaltable
+> <tgroup cols="3"
+> <tbody>
+              <row
+><entry
+>اسم المجموعة</entry
+><entry
+>اسم القطعة</entry
+><entry
+>الكمية في المجموعة</entry
+></row>
+              <row
+><entry
+>نقاط</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 نقاط</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 نقاط</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 نقاط</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 نقاط</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 نقاط</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 نقاط</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 نقاط</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 نقاط</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 نقاط</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>خيزران</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 خيزران</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 خيزران</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 خيزران</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 خيزران</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 خيزران</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 خيزران</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 خيزران</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 خيزران</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 خيزران</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>المحارف</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>1 محارف</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>2 محارف</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>3 محارف</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>4 محارف</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>5 محارف</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>6 محارف</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>7 محارف</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>8 محارف</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>9 محارف</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>الرياح</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>رياح شرقية</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>رياح جنوبية</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>رياح غربية</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>رياح شمالية</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>تنانين</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>التنين الأحمر</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>التنين الأخضر</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>التنين الأبيض</entry
+><entry
+>2</entry
+></row>
+              <row
+><entry
+>الزهور</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>إجاصي (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>ليلي (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>أقحوان (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>خيزران (4)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+>مواسم</entry
+><entry
+></entry
+><entry
+></entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>الربيع (1)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>الصيف (2)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>الخريف (3)</entry
+><entry
+>1</entry
+></row>
+              <row
+><entry
+></entry
+><entry
+>شتاء (4)</entry
+><entry
+>1</entry
+></row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+      <itemizedlist>
+        <listitem
+><para
+>القطع المتطابقة هي تلك القطع التي تتطابق الرسوم التوضيحية لوجهها تمامًا.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>الملاحظة:</title
+><para
+>توجد استثناءات لهذه القاعدة. في لعبة ماهجونج التقليدية، لكل قطعة واحدة تطابقها باستثناء قطع "الزهور" و"المواسم".</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>لا يوجد في مجموعة <quote
+>الأزهار</quote
+> قطع مزدوجة ويمكن مطابقتها مباشرة مع بعضها البعض.</para
+></listitem>
+        <listitem
+><para
+>لا يوجد في مجموعة <quote
+>الفصول</quote
+> قطع مزدوجة ويمكن مطابقتها مباشرة مع بعضها البعض.</para
+></listitem>
+        <listitem
+><para
+>لا تُزال القطع إلا إذا أمكن وصلها بحد أقصى ثلاثة خطوط متصلة لا تقطع أي قطعة أخرى. يمكن أن تكون الخطوط أفقية أو عمودية، ولكن ليس مائلة.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>الملاحظة:</title
+><para
+>لا تضطر لرسم الخطوط بنفسك، فاللعبة تقوم بذلك نيابة عنك. فقط حدد قطعتين متطابقتين على اللوحة، وإذا أمكن وصلهما بخط لا يتجاوز انحناءين، سيُرسم الخط وتُزال القطع.</para>
+      </note>
+      <itemizedlist>
+        <listitem
+><para
+>لا يجوز للخطوط أن تعبر إلا المناطق الفارغة من اللوحة.</para
+></listitem>
+        <listitem
+><para
+>بعض الألعاب غير قابلة للحل. إذا كنت ترغب في تجنب الألعاب غير القابلة للحل، فحدد الخيار <guilabel
+>ولد ألعاب قابلة للحل فقط</guilabel
+> في حوار الضبط.</para
+></listitem>
+        <listitem
+><para
+>تُمنح النقاط بناءً على الوقت الذي يحتاجه اللاعب لإزالة جميع القطع من لوحة اللعبة. الألعاب التي تحتوي على قطع أكثر تمنح نقاطًا أعلى.</para
+></listitem>
+        <listitem
+><para
+>إذا لُعبت اللعبة مع تمكين إعداد <guilabel
+>الجاذبية</guilabel
+>، ستُضاعف النتيجة.</para
+></listitem>
+        <listitem
+><para
+>لكي يكون اللاعب مؤهلًا للحصول على مكان ضمن قائمة النتائج القياسية، يتعين عليه إكمال اللعبة في أقصر فترة زمنية ممكنة.</para
+></listitem>
+      </itemizedlist>
+      <note
+><title
+>الملاحظة:</title
+><para
+>إذا استخدم اللاعب ميزة <quote
+>تراجع</quote
+> أو <quote
+>تلميح</quote
+>، فلن يُعتبر الرقم المسجل نتيجة قياسية.</para
+></note>
+    </sect1>
+    <sect1 id="tips">
+      <title
+>تلميحات</title>
+      <para
+>انقر على قطعة بزر الفأرة الأيمن لإبراز جميع القطع المطابقة على اللوحة. وبخلاف استخدام ميزة <quote
+>تراجع</quote
+> أو <quote
+>تلميح</quote
+>، يُسمح بهذه المساعدة دون اعتبارها غشًا. </para>
+    </sect1>
+  </chapter>
+
+  <chapter id="interface"
+><title
+>نظرة عامة على الواجهة</title
+> <!-- do not change this! -->
+    <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing. -->
+    <sect1 id="menu">
+    <title
+>عناصر القائمة</title>
+    <sect2 id="game-menu">
+      <title
+>قائمة اللعبة</title>
+
+      <para
+>تتيح لك قائمة <guimenu
+>لعبة</guimenu
+> التحكم في حالة اللعبة الحالية: </para>
+
+      <variablelist>
+        <varlistentry id="game-menu-new">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>جديد</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>تُنهي اللعبة الحالية</action
+> وتبدأ جلسة جديدة بقطع جديدة.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-restart">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>F5</keycap
+></keycombo
+></shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>أعد بدء اللعبة</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>تُعيد بدء اللعبة الحالية بنفس القطع.</action
+></para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-pause">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>ألبث</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>تُلبث اللعبة</action
+>، لا سيما المؤقت الذي يؤثر على تسجيل النقاط. يُستخدم هذا المدخل أيضًا لاستئناف اللعبة.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-menu-highscores">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>أظهر أعلى النتائج</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>تعرض أفضل عشرة مراكز في شي سن.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>أنهِ</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>تُنهي</action
+> شي سن.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+      <para
+>يمكن أيضًا التحكم في بعض عناصر القائمة بواسطة اختصارات لوحة المفاتيح. راجع <xref linkend="key-bindings"/> للاطلاع على القائمة. </para>
+
+    </sect2>
+
+    <sect2 id="move-menu">
+      <title
+>قائمة تحرك</title>
+
+      <variablelist id="move-menu-undo">
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>حركة</guimenu
+> <guimenuitem
+>تراجع</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>تتراجع عن الخطوة الأخيرة</action
+>. وهي مطابقة لزر <guibutton
+>تراجع</guibutton
+> في شريط الأدوات.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="move-menu-redo">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>حركة</guimenu
+><guimenuitem
+>كرر</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>تكرر الخطوة الأخيرة</action
+>. وهي مطابقة لزر <guibutton
+>كرر</guibutton
+> في شريط الأدوات.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="move-menu-hint">
+          <term>
+            <menuchoice
+><shortcut
+><keycombo
+><keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>حركة</guimenu
+> <guimenuitem
+>تلميح</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+><action
+>تُظهر تلميحًا</action
+> للقطعتين اللتين يجب إزالتهما تاليًا.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+
+    </sect2>
+
+    <sect2 id="settings-menu">
+      <title
+>قائمة الإعدادات</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>شغل الأصوات</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>تُشغّل صوتًا عند لمس قطعة بالنقر عليها بزر الفأرة الأيسر وعند سقوط قطعة أثناء اللعب مع تمكين <guilabel
+>الجاذبية</guilabel
+>.</para
+></listitem>
+        </varlistentry>
+
+        <varlistentry id="game-settings-settings">
+          <term>
+            <menuchoice
+><guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>اضبط شي سن…</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem
+><para
+>تفتح <link linkend="configuration"
+>حوار الضبط</link
+> لتغيير إعدادات شي سن.</para
+></listitem>
+        </varlistentry>
+
+      </variablelist>
+      <para
+>بالإضافة إلى ذلك، تحتوي شي سن على عنصري القائمة الشائعين في كيدي: <guimenu
+>إعدادات</guimenu
+> و <guimenu
+>مساعدة</guimenu
+>. لمزيد من المعلومات، اقرأ الأقسام المتعلقة بـ <ulink url="help:/fundamentals/menus.html#menus-settings"
+>قائمة الإعدادات</ulink
+> و <ulink url="help:/fundamentals/menus.html#menus-help"
+>قائمة المساعدة</ulink
+> في أساسيات كيدي. </para>
+    </sect2>
+    </sect1>
+
+    <sect1 id="key-bindings">
+      <title
+>ارتباطات المفاتيح المبدئية</title>
+
+      <para
+>الاختصارات المبدئية هي:</para>
+
+      <informaltable>
+        <tgroup cols="2">
+          <tbody>
+            <row
+><entry
+>جديد</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>أعد بدء اللعبة.</entry
+><entry
+><keycap
+>F5</keycap
+></entry
+></row>
+            <row
+><entry
+>ألبث</entry
+><entry
+><keycap
+>P</keycap
+></entry
+></row>
+            <row
+><entry
+>أظهر أعلى النتائج</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>أنهِ</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>تراجع</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>كرّر</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></entry
+></row>
+            <row
+><entry
+>تلميح</entry
+><entry
+><keycap
+>H</keycap
+></entry
+></row>
+            <row
+><entry
+>دليل شي سن</entry
+><entry
+><keycap
+>F1</keycap
+></entry
+></row>
+            <row
+><entry
+>ما هذا</entry
+><entry
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry
+></row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+    </sect1>
+
+  </chapter>
+
+  <chapter id="faq"
+><title
+>الأسئلة الشائعة</title
+> <!-- do not change this! -->
+    <!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+    <qandaset>
+      <qandaentry>
+        <question
+><para
+>أريد تغيير شكل اللعبة. هل يمكنني ذلك؟</para
+></question>
+        <answer
+><para
+>نعم. لتغيير مظهر شي سن، استخدم <link linkend="game-settings-settings"
+>شريط القوائم</link
+> لفتح <link linkend="configuration"
+>أداة الضبط</link
+>.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>هل يمكنني استخدام لوحة المفاتيح؟</para
+></question>
+        <answer
+><para
+>لا. لا توفر هذه اللعبة وضع لعب بواسطة لوحة المفاتيح.</para
+></answer>
+      </qandaentry>
+      <qandaentry>
+        <question
+><para
+>يجب أن أخرج من اللعبة الآن، لكنني لم أنتهِ بعد. هل يمكنني حفظ تقدمي؟</para
+></question>
+        <answer
+><para
+>لا. لا توفر هذه اللعبة خيار <quote
+>حفظ</quote
+>.</para
+></answer>
+      </qandaentry>
+    </qandaset>
+  </chapter>
+
+  <chapter id="configuration"
+><title
+>ضبط اللعبة</title
+> <!-- do not change this! -->
+    <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+    <para
+>يؤدي اختيار عنصر القائمة <menuchoice
+><guimenu
+>إعدادات</guimenu
+><guimenuitem
+>اضبط شي سن…</guimenuitem
+></menuchoice
+> إلى فتح حوار الضبط الذي يتيح لك تعديل سلوك اللعبة. </para>
+
+    <screenshot>
+      <screeninfo
+>حوار ضبط شي سن</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="kshisen-configuration.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>حوار ضبط شي سن</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <variablelist>
+      <title
+>صفحة <guilabel
+>عام</guilabel
+></title>
+      <varlistentry>
+        <term
+><guilabel
+>الجاذبية:</guilabel
+></term>
+        <listitem
+><para
+>يؤدي تحديد هذا الخيار إلى جعل اللعبة أكثر صعوبة: إذا أُزيلت قطعة، فإن جميع القطع التي فوقها ستسقط خطوة واحدة لأسفل. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>ولد ألعاب قابلة للحل فقط</guilabel
+></term>
+        <listitem
+><para
+>في حال تحديده، لن تُعرض عليك إلا الألعاب الممكن حلها. ملاحظة: حتى في الألعاب القابلة للحل، قد تخفق في الإكمال إذا أزلت القطع بترتيب خاطئ. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>أظهر رسالة إذا لم يعد بالإمكان حل اللوحة</guilabel
+></term>
+        <listitem
+><para
+>في حال تحديده، ستحاول شي سن تحليل إمكانية حل كل موضع في اللعبة وتُظهر رسالة لإجهاض اللعبة في حال عدم بقاء أي حركات ممكنة للفوز باللعبة. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>استخدم النمط الصيني: أي زهرة تتطابق مع أي زهرة، وأي موسم يتطابق مع أي موسم</guilabel
+></term>
+        <listitem
+><para
+>استخدم القواعد التقليدية لمطابقة القطع. كانت الإصدارات السابقة من شي سن تسمح فقط بمطابقة القطع المتماثلة تمامًا، وهو ما يتعارض مع قواعد الماهجونج. يُوصى بإبقاء هذا الخيار محددًا. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>يمكن أن تنزلق القراميد، لكن يمكنك وصل في سطرين فقط بدلًا من 3</guilabel
+></term>
+        <listitem
+><para
+>يغير هذا الخيار القواعد لدرجة أنها تصبح لعبة مختلفة تمامًا تقريبًا. عند تنشيطه، لا يمكنك إزالة القطع إلا إذا أمكن وصلها بخط يتكون من مقطع واحد أو اثنين بدلًا من الثلاثة المعتادة. ومع ذلك، يُسمح لك بتحريك القطع على اللوحة إذا كان الصف أو العمود الذي توجد فيه يحتوي على بعض المساحة الفارغة. للقيام بحركة انزلاقية، يتعين عليك النقر أولًا على القطعة في العمود أو الصف التي يمكنها الانزلاق، ثم على القطعة المطابقة. إذا كان هناك حركتان انزلاقيتان ممكنتان، فستظهر خطوط زرقاء تشير إلى هاتين الحركتين. يتعين عليك حينها النقر على أحد الخطين لاختيار حركتك المفضلة. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>صعوبة اللوحة</guilabel
+></term>
+        <listitem
+><para
+>يتحكم هذا المنزلق في صعوبة اللوحة (أي مدى بعثرة القطع) من <guilabel
+>سهل</guilabel
+> إلى <guilabel
+>صعب</guilabel
+>. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>سرعة إزالة القطعة</guilabel
+></term>
+        <listitem
+><para
+>يؤدي ضبط هذا المنزلق إلى تغيير السرعة التي تُزال بها القطع من الشاشة بعد حدوث التطابق. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guilabel
+>حجم اللوحة</guilabel
+></term>
+        <listitem
+><para
+>يتيح لك هذا المنزلق تغيير عدد القطع على اللوحة. كلما زاد عدد القطع، زادت صعوبة (وطول) اللعبة. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+>صفحة <guilabel
+>القطع</guilabel
+> و <guilabel
+>الخلفية</guilabel
+></term>
+        <listitem
+><para
+>اختر تصميمك المفضل للقطع والخلفية. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>مساعدة</guibutton
+></term>
+        <listitem
+><para
+>تفتح صفحات مساعدة شي سن (هذا المستند). </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>حسنًا</guibutton
+></term>
+        <listitem
+><para
+>تحفظ تغييراتك وتغلق الحوار. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>طبّق</guibutton
+></term>
+        <listitem
+><para
+>تحفظ تغييراتك ولكن لا تغلق الحوار. </para
+></listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term
+><guibutton
+>ألغِ</guibutton
+></term>
+        <listitem
+><para
+>تتجاهل جميع تغييراتك وتغلق الحوار. </para
+></listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </chapter>
+
+  <chapter id="credits"
+><title
+>الحقوق والترخيص</title
+> <!-- do not change this! -->
+    <!--This chapter is for credits and licenses.-->
+
+    <para
+>حقوق نشر شي سن 1997 محفوظة لـ &Mario.Weilguni; &Mario.Weilguni.mail; </para>
+    <para
+>حقوق نشر شي سن 2002-2004 محفوظة لـ Dave Corrie <email
+>kde@davecorrie.com</email
+> </para>
+    <para
+>حقوق نشر شي سن 2009-2012 محفوظة لـ &Frederik.Schwarzer; &Frederik.Schwarzer.mail; </para>
+
+    <para
+>حقوق نشر التوثيق لعام 2000 محفوظة لـ &Dirk.Doerflinger; &Dirk.Doerflinger.mail; </para>
+    <para
+>حقوق نشر التوثيق 2009-2010 محفوظة لـ &Frederik.Schwarzer; &Frederik.Schwarzer.mail; </para>
+
+    <para
+>الترجمة: زايد السعيدي <email
+>zayed.alsaidi@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+  &documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
