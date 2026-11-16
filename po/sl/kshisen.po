@@ -1,7 +1,7 @@
 # translation of kshisen.po to Slovenian
 # Translation of kshisen.po to Slovenian
 # Copyright (C) 2001, 2003, 2004, 2006, 2007 Free Software Foundation, Inc.
-# $Id: kshisen.po 1723087 2025-11-17 12:44:32Z scripty $
+# $Id$
 # $Source$
 #
 # Marko Samastur <markos@elite.org>, 1999.
