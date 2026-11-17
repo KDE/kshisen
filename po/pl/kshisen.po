@@ -1,5 +1,5 @@
 # translation of kshisen.po to Polish
-# Version: $Revision: 1723076 $
+# Version: $Revision$
 # translation of kshisen.po to
 # SPDX-FileCopyrightText: 2011, 2016, 2018, 2020, 2021, 2022, 2023, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # Michał Rudolf <mrudolf@kdewebdev.org>, 2002.
