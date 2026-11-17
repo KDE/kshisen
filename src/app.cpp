@@ -254,7 +254,7 @@ void App::slotEndOfGame()
             scoreInfo[KGameHighScoreDialog::Custom1] = i18n("No");
         }
         auto const configGroup = QStringLiteral("%1x%2").arg(m_board->xTiles()).arg(m_board->yTiles());
-        scoreDialog->setConfigGroup(qMakePair(QByteArray(configGroup.toUtf8()), configGroup));
+        scoreDialog->setConfigGroup(std::make_pair(QByteArray(configGroup.toUtf8()), configGroup));
 
         if (m_board->hasCheated()) {
             auto const message = i18n("\nYou could have been in the high scores\nif you did not use Undo or Hint.\nTry without them next time.");
@@ -349,7 +349,7 @@ void App::showHighScores()
     KGameHighScoreDialog scoreDialog(KGameHighScoreDialog::Name | KGameHighScoreDialog::Time, this);
     scoreDialog.addField(KGameHighScoreDialog::Custom1, i18n("Gravity"), QStringLiteral("gravity"));
     auto const configGroup = QStringLiteral("%1x%2").arg(m_board->xTiles()).arg(m_board->yTiles());
-    scoreDialog.setConfigGroup(qMakePair(QByteArray(configGroup.toUtf8()), configGroup));
+    scoreDialog.setConfigGroup(std::make_pair(QByteArray(configGroup.toUtf8()), configGroup));
     scoreDialog.exec();
 }
 
