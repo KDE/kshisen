@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:50+0000\n"
-"PO-Revision-Date: 2026-11-10 21:36+0300\n"
+"PO-Revision-Date: 2026-11-23 17:58+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -170,7 +170,7 @@ msgid ""
 "An error occurred when loading the default tile set.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"Öntanımlı karo kümesi yüklenirken bir hata oluştu.\n"
+"Varsayılan karo kümesi yüklenirken bir hata oluştu.\n"
 "Lütfen K Mahjongg kitaplığını kurun."
 
 #: src/board.cpp:70 src/board.cpp:79 src/board.cpp:85 src/board.cpp:102
@@ -187,7 +187,7 @@ msgid ""
 "An error occurred when loading the tile set %1. The default tile set has "
 "been loaded."
 msgstr ""
-"%1 karo kümesi yüklenirken bir hata oluştu. Öntanımlı karo kümesi yüklendi."
+"%1 karo kümesi yüklenirken bir hata oluştu. Varsayılan karo kümesi yüklendi."
 
 #: src/board.cpp:84
 #, kde-format
@@ -197,7 +197,7 @@ msgid ""
 "also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"%1 karo kümesi yüklenirken bir hata oluştu. Öntanımlı karo seti de "
+"%1 karo kümesi yüklenirken bir hata oluştu. Varsayılan karo seti de "
 "yüklenemedi.\n"
 "Lütfen K Mahjongg kitaplığını kurun."
 
@@ -208,7 +208,7 @@ msgid ""
 "An error occurred when loading the default background.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"Öntanımlı arka plan yüklenirken bir hata oluştu.\n"
+"Varsayılan arka plan yüklenirken bir hata oluştu.\n"
 "Lütfen K Mahjongg kitaplığını kurun."
 
 #: src/board.cpp:110
@@ -218,7 +218,7 @@ msgid ""
 "An error occurred when loading the background %1. The default background has "
 "been loaded."
 msgstr ""
-"%1 arka planı yüklenirken bir hata oluştu. Öntanımlı arka plan yüklendi."
+"%1 arka planı yüklenirken bir hata oluştu. Varsayılan arka plan yüklendi."
 
 #: src/board.cpp:116
 #, kde-format
@@ -228,7 +228,7 @@ msgid ""
 "could also not be loaded.\n"
 "Please install the KMahjongg library."
 msgstr ""
-"%1 arka planı yüklenirken bir hata oluştu. Öntanımlı arka plan da "
+"%1 arka planı yüklenirken bir hata oluştu. Varsayılan arka plan da "
 "yüklenemedi.\n"
 "Lütfen K Mahjongg kitaplığını kurun."
 
